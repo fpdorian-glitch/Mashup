@@ -696,6 +696,7 @@
   }
 })();
 </script>
+  <link rel="stylesheet" href="./03-games.css?v=8">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -709,7 +710,7 @@
       <nav class="navigation" aria-label="Navigation principale">
         <button class="nav-item active" data-view="packs"><span class="nav-icon">◈</span><span>Boosters</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="collection"><span class="nav-icon">▦</span><span>Collection</span><span class="nav-chevron">↗</span></button>
-        <button class="nav-item" data-view="arena"><span class="nav-icon">⚔</span><span>Arène</span><span class="nav-chevron">↗</span></button>
+        <button class="nav-item" data-view="games"><span class="nav-icon">⚔</span><span>Jeux</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="decks"><span class="nav-icon">▤</span><span>Decks</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="online"><span class="nav-icon">◎</span><span>Joueurs</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="profile"><span class="nav-icon">◉</span><span>Mon profil</span><span class="nav-chevron">↗</span></button>
@@ -1023,6 +1024,7 @@
 </style>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
+import { createGamesUI } from './04-games-ui.js?v=8';
 const mashupAuth=createClient('https://sejlgfqwporkdgpaqqfl.supabase.co','sb_publishable_EdahImtfX3AyEYCcdehomw_YmEzYI62',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
@@ -1216,21 +1218,46 @@ function cardMarkup(card,options={}){
 function labelIntro(eyebrow,title,sub){return `<div class="page-lead"><div class="eyebrow">${eyebrow}</div><h1 class="heading">${title}</h1><p class="text-sub">${sub}</p></div>`;}
 function render(){
   if(!onlineUser)return;
-  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',profile:'PROFIL'};
+  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',profile:'PROFIL'};
   document.getElementById('breadcrumb-current').textContent=names[view];
-  document.querySelectorAll('.nav-item').forEach(btn=>{btn.classList.toggle('active',btn.dataset.view===view);btn.setAttribute('aria-current',btn.dataset.view===view?'page':'false');});
+  document.querySelectorAll('.nav-item').forEach(btn=>{btn.classList.toggle('active',btn.dataset.view===view||(view==='arena'&&btn.dataset.view==='games'));btn.setAttribute('aria-current',btn.dataset.view===view?'page':'false');});
   updateBalances();
   if(view==='packs')renderPacks();
   if(view==='collection')renderCollection();
   if(view==='arena')renderArena();
+  if(view==='games')gamesUI.mount(document.getElementById('page'));
   if(view==='decks')renderDecks();
   if(view==='creator')renderCreator();
   if(view==='rules')renderRules();
-  if(view==='admin')renderAdmin();
+  if(view==='admin'){renderAdmin();gamesUI.mountAdmin(document.getElementById('page'));}
   if(view==='profile')renderProfile();
   if(view==='online')renderPlayersDirectory();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','decks','creator','rules','admin','profile','online'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();window.scrollTo({top:0,behavior:'smooth'});}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','decks','creator','rules','admin','profile','online'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();window.scrollTo({top:0,behavior:'smooth'});}
+// V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
+const gamesUI = createGamesUI({
+  getUser:()=>onlineUser,
+  showArena:()=>setView('arena'),
+  toast:(message,error)=>toast(message,error),
+  api:async (route,body)=>{
+    const session=(await mashupAuth.auth.getSession()).data.session;
+    if(!session?.access_token)throw new Error('Reconnecte-toi pour jouer.');
+    const endpoint='https://sejlgfqwporkdgpaqqfl.supabase.co/functions/v1/mashup-games?route='+encodeURIComponent(route);
+    const options={method:body===undefined?'GET':'POST',headers:{
+      Authorization:'Bearer '+session.access_token,
+      apikey:'sb_publishable_EdahImtfX3AyEYCcdehomw_YmEzYI62',
+      'Content-Type':'application/json',
+      'X-Mashup-Request':'1'
+    }};
+    if(body!==undefined)options.body=JSON.stringify(body);
+    const reply=await fetch(endpoint,options);
+    const output=await reply.json().catch(()=>({error:'Réponse serveur invalide.'}));
+    if(!reply.ok)throw new Error(output.error||'Le Casino ne répond pas.');
+    if(Number.isFinite(output.credits)){state.coins=output.credits;updateBalances();}
+    return output;
+  }
+});
+
 function renderPacks(){
   document.getElementById('page').innerHTML=`
     <section class="hero"><div class="hero-copy"><div class="hero-tag">✧ BIENVENUE DANS LE MULTIVERS</div><h2>Le jeux de carte qui regroupe <em>tout les univers</em></h2><p>Des héros, des icônes et même des objets du quotidien : ouvre des boosters, complète ta collection et défie tes amis dans l’univers Mashup.</p><div class="hero-actions"><button class="btn btn-primary btn-lg" data-action="open-pack" data-pack="${PACKS.find(p=>p.free)?.id||PACKS[0]?.id||'starter'}">${!state.freePackUsed?'Ouvrir mon booster gratuit':'Ouvrir un booster'} <span class="arrow">↗</span></button><button class="btn btn-quiet btn-lg" data-view="collection">Voir ma collection</button></div></div><div class="hero-art"><div class="hero-orbit"></div><span class="hero-spark a">✦</span><div class="hero-card-stack"><div class="mini-back"></div><div class="mini-back"></div><div class="mini-back"></div></div><span class="hero-spark b">✧</span></div></section>
