@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="referrer" content="no-referrer" />
+<title>Mashup — Récupérer mon compte</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,'Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box}body{min-height:100vh;background:radial-gradient(ellipse at 70% 8%,#24372f 0,#0b0e13 55%);color:#f5f1e9;display:flex;align-items:center;justify-content:center;padding:20px;margin:0}main{width:100%;max-width:480px;border:1px solid #2b323e;border-radius:24px;background:#151b25;box-shadow:0 30px 80px #0007;padding:34px}header{font-weight:900;font-size:28px;letter-spacing:-1px}header span{display:inline-flex;align-items:center;justify-content:center;width:41px;height:41px;border-radius:12px;background:#e6ef79;color:#141812;transform:rotate(-8deg)}h1{font-size:25px;letter-spacing:-.8px;margin:25px 0 8px}p{color:#acb4c0;line-height:1.6;font-size:15px}form{margin-top:25px}label{display:block;font-size:14px;font-weight:700;margin:16px 0 9px}input{width:100%;background:#0d1118;color:#fff;border:1px solid #414b58;border-radius:12px;padding:14px;font-size:16px}input:focus{outline:2px solid #e6ef79;outline-offset:1px}button,.primary{display:block;border:0;background:#e6ef79;color:#1c251e;font-size:15px;font-weight:800;cursor:pointer;width:100%;text-align:center;padding:14px;border-radius:12px;margin-top:22px;text-decoration:none}button:disabled{opacity:.55;cursor:wait}.return{display:block;text-align:center;color:#cbd5df;margin-top:21px;font-size:14px}.msg{padding:13px;border-radius:11px;margin-top:16px;background:#27322c;color:#e2f7e8}.msg.error{background:#452b2c;color:#ffd7d7}.small{font-size:13px}#change,#sent,#done{display:none}
+</style>
+</head>
+<body>
+<main>
+<header><span>✳</span> MASHUP</header>
+<section id="request">
+  <h1>Mot de passe oublié ?</h1>
+  <p>Indique l'adresse e-mail de ton compte. Tu recevras un lien sécurisé pour choisir un nouveau mot de passe.</p>
+  <form id="request-form"><label for="email">Adresse e-mail du compte</label><input id="email" type="email" autocomplete="email" required placeholder="exemple@domaine.fr"><button type="submit">Recevoir un lien de récupération</button></form>
+  <p class="small">Si tu as déjà demandé un lien depuis Supabase, utilise le plus récent.</p>
+</section>
+<section id="sent">
+  <h1>Vérifie ta boîte mail</h1>
+  <p>Si cette adresse correspond à un compte existant, un e-mail de récupération te sera envoyé. Ouvre le lien le plus récent.</p>
+  <button id="again" type="button">Faire une autre demande</button>
+</section>
+<section id="change">
+  <h1>Choisir un nouveau mot de passe</h1>
+  <p>Le lien de récupération a été reconnu. Choisis maintenant ton nouveau mot de passe.</p>
+  <form id="change-form"><label for="pass1">Nouveau mot de passe (12 caractères minimum)</label><input id="pass1" type="password" autocomplete="new-password" minlength="12" maxlength="256" required><label for="pass2">Confirmer le nouveau mot de passe</label><input id="pass2" type="password" autocomplete="new-password" minlength="12" maxlength="256" required><button type="submit">Enregistrer mon nouveau mot de passe</button></form>
+</section>
+<section id="done"><h1>Mot de passe modifié !</h1><p>Ton compte est conservé. Tu peux maintenant te connecter à Mashup avec ton adresse e-mail et ce nouveau mot de passe.</p><a class="primary" href="./">Retour à Mashup</a></section>
+<div role="status" aria-live="polite" class="msg" id="message" hidden></div>
+<a href="./" class="return" id="back">← Retour à Mashup</a>
+</main>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
+const client=createClient('https://sejlgfqwporkdgpaqqfl.supabase.co','sb_publishable_EdahImtfX3AyEYCcdehomw_YmEzYI62',{
+ auth:{detectSessionInUrl:true,persistSession:false,autoRefreshToken:false}
+});
+const $=id=>document.getElementById(id);
+const sections=['request','sent','change','done'];
+function show(name){for(const id of sections)$(id).style.display=id===name?'block':'none';$('message').hidden=true;}
+function status(s,error=false){$('message').hidden=false;$('message').className='msg'+(error?' error':'');$('message').textContent=s;}
+const fragment=new URLSearchParams(location.hash.slice(1)),query=new URLSearchParams(location.search);
+const hasRecoveryLink=fragment.get('type')==='recovery'||query.get('type')==='recovery'||query.has('code');
+show('request');
+if(hasRecoveryLink){
+  status('Vérification du lien sécurisé…');
+  try{
+    const {data,error}=await client.auth.getSession();
+    if(error)throw error;
+    if(data.session){show('change');}
+    else status('Ce lien n’est pas valide ou a expiré. Demande un nouveau lien ci-dessus.',true);
+  }catch(e){status('Le lien de récupération n’a pas fonctionné. Demande un nouveau lien depuis cette page.',true);}
+}
+$('request-form').addEventListener('submit',async e=>{
+ e.preventDefault();const btn=e.currentTarget.querySelector('button');btn.disabled=true;
+ try{
+  const {error}=await client.auth.resetPasswordForEmail($('email').value.trim(),{redirectTo:new URL('reset.html',location.href).href});
+  if(error)throw error;
+  show('sent');
+ }catch(err){status('Envoi impossible : '+(err?.message||'vérifie ta connexion.'),true);}
+ finally{btn.disabled=false;}
+});
+$('again').addEventListener('click',()=>show('request'));
+$('change-form').addEventListener('submit',async e=>{
+ e.preventDefault();const p=$('pass1').value,confirm=$('pass2').value;
+ if(p.length<12||p.length>256){status('Le mot de passe doit contenir entre 12 et 256 caractères.',true);return;}
+ if(p!==confirm){status('Les deux mots de passe ne sont pas identiques.',true);return;}
+ const btn=e.currentTarget.querySelector('button');btn.disabled=true;
+ try{
+  const {data:existing,error:sessionError}=await client.auth.getSession();
+  if(sessionError||!existing.session)throw new Error('Le lien de récupération a expiré.');
+  const {error}=await client.auth.updateUser({password:p});
+  if(error)throw error;
+  try{await client.auth.signOut();}catch(_e){}
+  show('done');
+  history.replaceState({},'',location.pathname);
+ }catch(err){status('Modification impossible : '+(err?.message||'réessaie avec un nouveau lien.'),true);}
+ finally{btn.disabled=false;}
+});
+</script>
+</body>
+</html>
