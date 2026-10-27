@@ -70,3 +70,18 @@
 .games-end-card{text-align:center;border:2px solid;border-radius:23px;padding:clamp(25px,5vw,70px) 18px;margin:20px auto;max-width:700px;background:linear-gradient(155deg,#24332b,#131d23)}.games-end-win{border-color:#bfe087;background:radial-gradient(ellipse at top,#3b5639 0,#131d23 65%)}.games-end-loss{border-color:#d17b83;background:radial-gradient(ellipse at top,#593039 0,#131923 65%)}.games-end-emblem{font-size:55px}.games-end-card h2{font:900 clamp(35px,6vw,62px) var(--display);margin:10px 0}.games-end-card p{color:#bdc9c4}.games-end-credit{display:block;margin:25px 0;color:#d5eda3;font-size:22px}.games-end-loss .games-end-credit{color:#f8b1ad}.games-result-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 @media(max-width:900px){.games-mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.games-versus{grid-template-columns:minmax(0,1fr);gap:9px}.games-vs{font-size:14px}.games-team-v9{padding:12px}.games-team-head{min-height:0}.games-fighter-avatar{height:34px;width:34px;flex-basis:34px}.games-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.games-stats-grid>div:last-child{grid-column:span 2}.games-mini-grid{grid-template-columns:minmax(0,1fr)}.games-answers{grid-template-columns:minmax(0,1fr)}.games-leader-games{grid-template-columns:22px minmax(0,1fr) 25px 25px 45px;font-size:10px;gap:4px;padding:11px 6px}.games-round{grid-template-columns:75px minmax(0,1fr) 45px}.games-time-chip{min-width:110px;padding:8px}.games-time-chip strong{font-size:22px}.games-row{grid-template-columns:minmax(0,1fr) 40px 75px;gap:4px;padding:10px 8px}}
+
+/* Mashup V9.2 — Memory à deux faces (affichage commandé par la session serveur). */
+.games-memory-instruction{margin:10px 0 18px;font-size:17px;font-weight:800;color:#e8f8db;min-height:24px}
+.games-memory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;max-width:690px;margin:0 auto 18px}
+.games-memory-card{height:110px;min-width:0;padding:0;border:0;background:transparent;perspective:800px;cursor:pointer;border-radius:14px;color:#f5ffeb}
+.games-memory-card:disabled{cursor:default;opacity:1}
+.games-memory-inner{position:relative;display:block;width:100%;height:100%;transition:transform .42s ease;transform-style:preserve-3d}
+.games-memory-card.is-flipped .games-memory-inner{transform:rotateY(180deg)}
+.games-memory-back,.games-memory-front{position:absolute;inset:0;border-radius:14px;display:flex;align-items:center;justify-content:center;padding:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 7px 21px #0005;overflow-wrap:anywhere;overflow:hidden;text-align:center}
+.games-memory-back{background:radial-gradient(circle at 32% 20%,#5d477f,#201e34 78%);border:2px solid #957bb8;font-size:37px;color:#d9d1f5}
+.games-memory-front{transform:rotateY(180deg);background:linear-gradient(140deg,#254c4c,#18322d);border:2px solid #a2d8bb;font-size:clamp(11px,1.7vw,14px);font-weight:900;line-height:1.25}
+.games-memory-card.is-matched .games-memory-front{background:linear-gradient(140deg,#36674a,#20412e);border-color:#bdf78b;box-shadow:0 0 0 2px #6ac48b55,0 7px 20px #0005}
+.games-memory-card:focus-visible{outline:3px solid #fcdf85;outline-offset:3px}
+@media(max-width:480px){.games-memory-grid{gap:7px}.games-memory-card{height:79px}.games-memory-back,.games-memory-front{padding:5px;border-radius:9px}.games-memory-back{font-size:25px}.games-memory-front{font-size:10px}.games-memory-instruction{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.games-memory-inner{transition:none}}
