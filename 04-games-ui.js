@@ -1,4 +1,4 @@
-/* Mashup V9 — Casino Ligue en direct et mini-jeux rejouables. */
+/* Mashup V9.1 — Casino Ligue en direct et mini-jeux rejouables. */
 export function createGamesUI({api,toast,getUser,showArena}){
   const TYPES=['memory','quiz','higherLower'];
   const LABELS={memory:'Memory · Duel des paires',quiz:'Quiz des univers',higherLower:'Plus ou moins'};
@@ -115,7 +115,14 @@ export function createGamesUI({api,toast,getUser,showArena}){
     }
   }
   function activateTicker(){if(tick)return;tick=setInterval(()=>{
-    refreshTimer();const now=Date.now();if(now-lastPoll>=4000 && (available()&&section==='casino'||snapshot?.bet)){
+    refreshTimer();const now=Date.now();// Ajuster la fréquence au besoin : alerte et combat en direct restent réactifs.
+    const closeIn=(snapshot?.current?.closesAt??0)-serverNow();
+    const nearFight=closeIn>0&&closeIn<=30000;
+    const watching=available()&&section==='casino';
+    const hasBet=!!snapshot?.bet;
+    const allowed=!!getUser()&&(watching||hasBet)&&(!document.hidden||hasBet);
+    const pace=snapshot?.live?.live||(nearFight&&(watching||hasBet))?3000:watching?15000:hasBet?20000:Infinity;
+    if(allowed&&!loading&&now-lastPoll>=pace){
       lastPoll=now;request('status');
     }
   },1000);}
