@@ -1,4 +1,4 @@
-/* Mashup V9.1 — Casino Ligue en direct et mini-jeux rejouables. */
+/* Mashup V9.2 — Casino Ligue en direct et mini-jeux rejouables. */
 export function createGamesUI({api,toast,getUser,showArena}){
   const TYPES=['memory','quiz','higherLower'];
   const LABELS={memory:'Memory · Duel des paires',quiz:'Quiz des univers',higherLower:'Plus ou moins'};
@@ -7,7 +7,7 @@ export function createGamesUI({api,toast,getUser,showArena}){
   const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const n=v=>Number(v||0).toLocaleString('fr-FR');
   const $=id=>document.getElementById(id);
-  let root=null,section='hub',snapshot=null,loading=false,delta=0,tick=null,hiddenReveal=false,lockedUntil=0,lastAlert='',lastPoll=0;
+  let root=null,section='hub',snapshot=null,loading=false,delta=0,tick=null,lockedUntil=0,lastAlert='',lastPoll=0,memoryRevealTimer=null;
   const serverNow=()=>Date.now()-delta;
   const profile=f=>h(f?.name||'IA inconnue');
   const sideName=(c,i)=>(c?.sides?.[i]||[]).map(f=>f.name).join(' + ')||'Équipe '+(i?'B':'A');
@@ -17,8 +17,8 @@ export function createGamesUI({api,toast,getUser,showArena}){
     try{
       const oldAmount=$('games-amount')?.value,oldSide=document.querySelector('input[name="games-side"]:checked')?.value;
       const data=await api(route,body);snapshot=data;delta=Date.now()-Number(data.now||Date.now());
-      if(route==='move'&&data.active?.type==='memory'&&data.active.last&&!data.active.last.correct){lockedUntil=Date.now()+1100;hiddenReveal=false;setTimeout(()=>{hiddenReveal=true;if(available()&&section==='mini')draw();},1150);}
-      if(route==='start')hiddenReveal=false;
+      // Le serveur commande désormais l'affichage temporaire des cartes : pas d'état local ambigu.
+      if(route==='start')lockedUntil=0;
       if(available()){
         draw();if(route==='status'&&section==='casino'){
           if(oldAmount&&$('games-amount'))$('games-amount').value=oldAmount;
@@ -84,11 +84,17 @@ export function createGamesUI({api,toast,getUser,showArena}){
   function miniSession(s){if(s.done)return miniResult(s);
     let content='';
     if(s.type==='memory'){
-      content=`<div class="games-memory-meters"><span>🟩 Paires : <b>${n(s.pairs)} / 6</b></span><span>❌ Erreurs de suite : <b>${n(s.mistakes)} / 3</b></span></div><div class="games-tile-grid">${s.tiles.map((t,i)=>{
-        const shown=!!t &&(t.matched||!hiddenReveal||s.first!==null&&t===s.tiles[s.first]);
-        return `<button class="games-tile ${shown?'face-up':''} ${t?.matched?'paired':''}" data-games="flip" data-index="${i}" ${t?.matched?'disabled':''} aria-label="Carte ${i+1}${shown?' : '+h(t.name):' cachée'}">${shown?h(t.name):'✦'}</button>`;
-      }).join('')}</div><p class="games-muted">Trouve les 6 paires sans faire 3 erreurs consécutives. Une paire réussie remet le compteur d’erreurs à zéro.</p>`;
-    }else if(s.type==='quiz'){
+      const revealActive=(s.revealUntil||0)>serverNow();
+      const prompt=revealActive?'Observe bien ces deux cartes…':s.first!==null?'Choisis la deuxième carte':'Choisis une première carte';
+      content=`<div class="games-memory-meters"><span>🟩 Paires : <b>${n(s.pairs)} / 6</b></span><span>❌ Erreurs consécutives : <b>${n(s.mistakes)} / 3</b></span><span>🎯 Tentatives : <b>${n(s.attempts||0)}</b></span></div>
+        <p class="games-memory-instruction" aria-live="polite">${h(prompt)}</p>
+        <div class="games-memory-grid" role="group" aria-label="Jeu de Memory">${s.tiles.map((t,i)=>{
+          const flipped=!!t&&(!!t.matched||s.first===i||revealActive);
+          const disabled=!!t?.matched||s.first===i||revealActive;
+          const cls=flipped?'is-flipped':'';
+          return `<button type="button" class="games-memory-card ${cls} ${t?.matched?'is-matched':''}" data-games="flip" data-index="${i}" ${disabled?'disabled':''} aria-label="Carte ${i+1}${flipped?': '+h(t.name):' cachée'}"><span class="games-memory-inner"><span class="games-memory-back">✦</span><span class="games-memory-front">${flipped?h(t.name):''}</span></span></button>`;
+        }).join('')}</div>
+        <p class="games-muted">Retourne deux cartes et retrouve les 6 paires identiques. Une paire trouvée reste visible et remet les erreurs consécutives à zéro. Trois erreurs de suite terminent la partie.</p>`;    }else if(s.type==='quiz'){
       content=`<div class="games-question"><span class="games-question-number">QUESTION ${n(s.steps+1)} / ${n(s.total)}</span><h2>Quelle est la statistique la plus élevée pour <em>${h(s.question?.name)}</em> ?</h2></div><div class="games-answers">${(s.question?.options||[]).map(opt=>`<button class="btn" data-games="answer" data-answer="${h(opt)}">${h(opt)}</button>`).join('')}</div>`;
     }else{
       content=`<div class="games-question"><span class="games-question-number">COMPARAISON ${n(s.steps+1)} / ${n(s.total)}</span><h2>${h(s.question?.baseName)} : <em>${n(s.question?.baseValue)}</em> en ${h(s.question?.stat)}</h2><p>${h(s.question?.nextName)} possède-t-il une valeur supérieure ou égale ?</p></div><div class="games-answers"><button class="btn btn-primary" data-games="answer" data-answer="higher">↑ Supérieure ou égale</button><button class="btn" data-games="answer" data-answer="lower">↓ Inférieure</button></div>`;
@@ -104,7 +110,20 @@ export function createGamesUI({api,toast,getUser,showArena}){
     <section class="panel games-panel"><h3>✦ Défi quotidien</h3><p class="games-muted">Remporte au moins une fois chacun des trois mini-jeux aujourd’hui pour récupérer ${n(s.settings?.daily)} crédits de bonus. Les autres victoires restent récompensées.</p><div class="games-progress"><strong>${count} / 3 jeux validés</strong><button class="btn btn-primary" data-games="daily" ${count!==3||daily.claimed?'disabled':''}>${daily.claimed?'Bonus déjà obtenu':'Réclamer le bonus'}</button></div></section>`;
   }
   let showPicker=false;
-  function draw(){if(!available())return;root.innerHTML=section==='casino'?casino():section==='mini'?mini():hub();refreshTimer();}
+  function draw(){
+    if(!available())return;
+    if(memoryRevealTimer){clearTimeout(memoryRevealTimer);memoryRevealTimer=null;}
+    root.innerHTML=section==='casino'?casino():section==='mini'?mini():hub();
+    const active=snapshot?.active;
+    if(section==='mini'&&active?.type==='memory'&&!active.done){
+      const remaining=(active.revealUntil||0)-serverNow();
+      if(remaining>0)memoryRevealTimer=setTimeout(()=>{
+        memoryRevealTimer=null;
+        if(available()&&section==='mini'&&snapshot?.active?.id===active.id)draw();
+      },remaining+40);
+    }
+    refreshTimer();
+  }
   function refreshTimer(){
     const c=snapshot?.current,clock=$('games-clock');if(!c)return;
     const diff=Math.max(0,c.closesAt-serverNow()),sec=Math.ceil(diff/1000);
@@ -152,7 +171,7 @@ export function createGamesUI({api,toast,getUser,showArena}){
     }
     if(action==='start'||action==='replay'){showPicker=false;await request('start',{type:target.dataset.type});section='mini';draw();return;}
     if(action==='flip'){
-      if(Date.now()<lockedUntil)return;
+      if((snapshot.active?.revealUntil||0)>serverNow()||loading)return;
       await request('move',{index:Number(target.dataset.index),sessionId:snapshot.active?.id});return;
     }
     if(action==='answer'){
