@@ -1366,7 +1366,13 @@ async function finishOpening(){
  const done=document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
  try{
   const r=await api('/api/packs/commit',{id,openingId});
-  state=r.state;if(Array.isArray(r.cards))BASE_CARDS=r.cards;
+  state=r.state;
+  // V9.1: le serveur renvoie les cartes sans dupliquer toutes les illustrations.
+  if(Array.isArray(r.cards)){
+    const artwork=new Map(BASE_CARDS.filter(c=>c&&!c.hidden&&c.art).map(c=>[c.id,c.art]));
+    for(const drawn of r.results||[])if(drawn?.id&&drawn.art)artwork.set(drawn.id,drawn.art);
+    BASE_CARDS=r.cards.map(c=>({...c,art:c.art||artwork.get(c.id)||''}));
+  }
   packPendingId=null;packPendingPackId=null;updateBalances();packFinalizing=false;
   closeModal();if(view!=='collection')setView('collection');toast('Booster confirmé : tes cartes sont dans ta collection.');
  }catch(e){packFinalizing=false;if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}toast(e.message+' Tu peux réessayer sans payer deux fois.',true);}
