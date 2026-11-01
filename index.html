@@ -1025,7 +1025,7 @@
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=9.2';
-const mashupAuth=createClient('https://sejlgfqwporkdgpaqqfl.supabase.co','sb_publishable_EdahImtfX3AyEYCcdehomw_YmEzYI62',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
 'use strict';
@@ -1242,10 +1242,10 @@ const gamesUI = createGamesUI({
   api:async (route,body)=>{
     const session=(await mashupAuth.auth.getSession()).data.session;
     if(!session?.access_token)throw new Error('Reconnecte-toi pour jouer.');
-    const endpoint='https://sejlgfqwporkdgpaqqfl.supabase.co/functions/v1/mashup-games?route='+encodeURIComponent(route);
+    const endpoint='https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-games?route='+encodeURIComponent(route);
     const options={method:body===undefined?'GET':'POST',headers:{
       Authorization:'Bearer '+session.access_token,
-      apikey:'sb_publishable_EdahImtfX3AyEYCcdehomw_YmEzYI62',
+      apikey:'sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',
       'Content-Type':'application/json',
       'X-Mashup-Request':'1'
     }};
@@ -1967,11 +1967,11 @@ document.getElementById('modal-root').addEventListener('pointercancel',inspectPo
 async function api(path,data){
   const {data:authData}=await mashupAuth.auth.getSession();
   const access=authData?.session?.access_token;
-  const headers={'apikey': 'sb_publishable_EdahImtfX3AyEYCcdehomw_YmEzYI62', 'X-Mashup-Request':'1'};
+  const headers={'apikey': 'sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG', 'X-Mashup-Request':'1'};
   if(access)headers.Authorization='Bearer '+access;
   const options={method:data===undefined?'GET':'POST',headers,mode:'cors'};
   if(data!==undefined){headers['Content-Type']='application/json';options.body=JSON.stringify(data);}
-  const url='https://sejlgfqwporkdgpaqqfl.supabase.co/functions/v1/mashup-api-gh?route='+encodeURIComponent(path);
+  const url='https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route='+encodeURIComponent(path);
   const response=await fetch(url,options);let result;
   try{result=await response.json();}catch{throw new Error('Le serveur Supabase ne répond pas correctement.');}
   if(!response.ok)throw new Error(result.error||'Erreur du serveur');
