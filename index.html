@@ -1151,7 +1151,7 @@ function allCards(){return [...BASE_CARDS,...state.custom];}
 function getCard(id){return allCards().find(c=>c.id===id);}
 function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function CSSColor(value,fallback){return /^#[0-9a-fA-F]{6}$/.test(value||'')?value:fallback;}
-function safeImage(uri){return typeof uri==='string'&&/^data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(uri)?uri:'';}
+function safeImage(uri){return typeof uri==='string'&&(/^(?:data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/=]+)$/.test(uri)||/^https:\/\/lxpgdhwfxeicuofycqup\.supabase\.co\/functions\/v1\/mashup-art\?card=[A-Za-z0-9_-]{1,95}&key=[a-fA-F0-9-]{36}$/.test(uri))?uri:'';}
 function updateBalances(){document.getElementById('coin-balance').textContent=Number(state.coins||0).toLocaleString('fr-FR');document.getElementById('dust-balance').textContent=Number(state.dust||0).toLocaleString('fr-FR');}
 function toast(message,error=false){const root=document.getElementById('toast-root');root.innerHTML=`<div class="toast ${error?'error':''}">${esc(message)}</div>`;clearTimeout(toast.t);toast.t=setTimeout(()=>root.innerHTML='',3300);}
 function newDraft(){return {editionSeries:SERIES.find(x=>x.number!==1)?.number||1,name:'',subtitle:'Une nouvelle légende',family:'Original',rarity:'rare',power:72,size:50,def:66,aura:78,intelligence:76,icon:'✨',color1:'#5c7f8d',color2:'#453d69',ability:'Talent unique',desc:'Une carte imaginée dans ton univers.',art:'',variant:'standard'};}
