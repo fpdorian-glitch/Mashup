@@ -1,10 +1,10 @@
-/* Mashup Updater v10.3 — works in Safari and iOS Home Screen Web App.
+/* Mashup Updater v10.4 — works in Safari and iOS Home Screen Web App.
  * No service worker, no local-storage reset. Future releases update version.json
  * and bump versioned asset URLs in index.html in the same GitHub commit.
  */
 (()=>{
   'use strict';
-  const CURRENT_VERSION='10.3.0';
+  const CURRENT_VERSION='10.4.0';
   const CHECK_EVERY_MS=4*60*1000;
   const REFRESH_GUARD_MS=45000;
   const $=id=>document.getElementById(id);
