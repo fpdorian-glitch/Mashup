@@ -1,13 +1,15 @@
-/* Mashup V9.2 — Casino Ligue en direct et mini-jeux rejouables. */
+/* Mashup V9.3 — Memory corrigé, nouveau mini-jeu Mashup Run. */
+import {createRunner} from './05-mashup-run.js?v=9.3';
 export function createGamesUI({api,toast,getUser,showArena}){
-  const TYPES=['memory','quiz','higherLower'];
-  const LABELS={memory:'Memory · Duel des paires',quiz:'Quiz des univers',higherLower:'Plus ou moins'};
-  const HELP={memory:'Retrouve 6 paires. Trois erreurs consécutives = défaite !',quiz:'5 bonnes réponses pour gagner. Une seule erreur = défaite.',higherLower:'5 comparaisons successives. Une erreur = défaite.'};
-  const ICONS={memory:'🧠',quiz:'🎓',higherLower:'📈'};
+  const TYPES=['memory','runner','higherLower'];
+  const LABELS={memory:'Memory · Duel des paires',runner:'Mashup Run · Arcade',higherLower:'Plus ou moins'};
+  const HELP={memory:'Retrouve 6 paires. Le premier essai raté est gratuit, puis trois erreurs consécutives = défaite.',runner:'Évite les tonneaux, récolte des pièces et atteins l’arrivée. La vitesse augmente à chaque niveau !',higherLower:'5 comparaisons successives. Une erreur = défaite.'};
+  const ICONS={memory:'🧠',runner:'🏃',higherLower:'📈'};
   const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const n=v=>Number(v||0).toLocaleString('fr-FR');
   const $=id=>document.getElementById(id);
   let root=null,section='hub',snapshot=null,loading=false,delta=0,tick=null,lockedUntil=0,lastAlert='',lastPoll=0,memoryRevealTimer=null;
+  const arcade=createRunner((sessionId,path)=>request('move',{sessionId,path}));
   const serverNow=()=>Date.now()-delta;
   const profile=f=>h(f?.name||'IA inconnue');
   const sideName=(c,i)=>(c?.sides?.[i]||[]).map(f=>f.name).join(' + ')||'Équipe '+(i?'B':'A');
@@ -77,11 +79,12 @@ export function createGamesUI({api,toast,getUser,showArena}){
       </section>`+
       betsList(c)+standings()+historical()+`<section class="panel games-panel"><h3>Mes paris</h3>${betHistory()}</section>`;
   }
-  function miniResult(s){return intro('Mini-<em>jeux.</em>','Tu peux rejouer immédiatement et autant de fois que tu veux.')+tabs()+`<section class="games-end-card ${s.won?'games-end-win':'games-end-loss'}" role="status" aria-live="assertive"><div class="games-end-emblem">${s.won?'🏆':'✕'}</div><div class="eyebrow">${h(LABELS[s.type])}</div><h2>${s.won?'VICTOIRE !':'DÉFAITE !'}</h2><p>${s.won?'Bravo ! Tu as réussi toutes les étapes.':s.type==='memory'?'Trois paires ratées consécutivement.':'Une réponse incorrecte termine la partie.'}</p>
+  function miniResult(s){return intro('Mini-<em>jeux.</em>','Tu peux rejouer immédiatement et autant de fois que tu veux.')+tabs()+`<section class="games-end-card ${s.won?'games-end-win':'games-end-loss'}" role="status" aria-live="assertive"><div class="games-end-emblem">${s.won?'🏆':'✕'}</div><div class="eyebrow">${h(LABELS[s.type])}</div><h2>${s.won?'VICTOIRE !':'DÉFAITE !'}</h2><p>${s.won?'Bravo ! Tu as réussi toutes les étapes.':s.type==='memory'?'Trois paires ratées consécutivement.':s.type==='runner'?'Un tonneau a stoppé ta course.':'Une réponse incorrecte termine la partie.'}</p>
+    ${s.type==='runner'?`<p>🪙 ${n(s.coins||0)} pièces ramassées · ${n(s.steps||0)} / ${n(s.total||36)} sections parcourues</p>`:''}
     ${s.last?.rightAnswer&&!s.won?`<p>Bonne réponse : <b>${h(s.last.rightAnswer)}</b></p>`:''}
     <strong class="games-end-credit">${s.won?'+'+n(s.reward)+' crédits remportés':'0 crédit · Réessaie !'}</strong>
     <div class="games-result-actions"><button class="btn btn-primary btn-lg" data-games="replay" data-type="${s.type}">↻ Rejouer ${h(LABELS[s.type])}</button><button class="btn" data-games="mini">Choisir un autre jeu</button></div></section>`;}
-  function miniSession(s){if(s.done)return miniResult(s);
+  function miniSession(s){if(s.done&&!(s.type==='memory'&&s.revealUntil>serverNow()))return miniResult(s);
     let content='';
     if(s.type==='memory'){
       const revealActive=(s.revealUntil||0)>serverNow();
@@ -94,17 +97,20 @@ export function createGamesUI({api,toast,getUser,showArena}){
           const cls=flipped?'is-flipped':'';
           return `<button type="button" class="games-memory-card ${cls} ${t?.matched?'is-matched':''}" data-games="flip" data-index="${i}" ${disabled?'disabled':''} aria-label="Carte ${i+1}${flipped?': '+h(t.name):' cachée'}"><span class="games-memory-inner"><span class="games-memory-back">✦</span><span class="games-memory-front">${flipped?h(t.name):''}</span></span></button>`;
         }).join('')}</div>
-        <p class="games-muted">Retourne deux cartes et retrouve les 6 paires identiques. Une paire trouvée reste visible et remet les erreurs consécutives à zéro. Trois erreurs de suite terminent la partie.</p>`;    }else if(s.type==='quiz'){
+        <p class="games-muted">Retourne deux cartes et retrouve les 6 paires identiques. Une paire trouvée reste visible et remet les erreurs consécutives à zéro. Le premier essai raté est gratuit ; ensuite, trois erreurs de suite terminent la partie.</p>`;
+    }else if(s.type==='runner'){
+      content=arcade.html(s);
+    }else if(s.type==='quiz'){
       content=`<div class="games-question"><span class="games-question-number">QUESTION ${n(s.steps+1)} / ${n(s.total)}</span><h2>Quelle est la statistique la plus élevée pour <em>${h(s.question?.name)}</em> ?</h2></div><div class="games-answers">${(s.question?.options||[]).map(opt=>`<button class="btn" data-games="answer" data-answer="${h(opt)}">${h(opt)}</button>`).join('')}</div>`;
     }else{
       content=`<div class="games-question"><span class="games-question-number">COMPARAISON ${n(s.steps+1)} / ${n(s.total)}</span><h2>${h(s.question?.baseName)} : <em>${n(s.question?.baseValue)}</em> en ${h(s.question?.stat)}</h2><p>${h(s.question?.nextName)} possède-t-il une valeur supérieure ou égale ?</p></div><div class="games-answers"><button class="btn btn-primary" data-games="answer" data-answer="higher">↑ Supérieure ou égale</button><button class="btn" data-games="answer" data-answer="lower">↓ Inférieure</button></div>`;
     }
-    return intro(h(LABELS[s.type]),HELP[s.type])+tabs()+`<section class="panel games-mini-playing"><div class="games-progress"><strong>${h(LABELS[s.type])}</strong><span>${s.type==='memory'?n(s.pairs)+' / 6 paires':n(s.score)+' / 5 réussites'}</span></div>
+    return intro(h(LABELS[s.type]),HELP[s.type])+tabs()+`<section class="panel games-mini-playing"><div class="games-progress"><strong>${h(LABELS[s.type])}</strong><span>${s.type==='memory'?n(s.pairs)+' / 6 paires':s.type==='runner'?n(s.steps)+' / '+n(s.total)+' sections':n(s.score)+' / 5 réussites'}</span></div>
       ${s.last?`<div class="games-feedback ${s.last.correct?'games-feedback-ok':'games-feedback-error'}">${s.last.correct?'✓ ':'✕ '}${h(s.last.message)}</div>`:''}${content}
       <div class="games-progress"><button class="btn" data-games="abandon">Quitter la partie</button><span class="games-muted">Récompense : ${n(snapshot?.settings?.[s.type])} crédits</span></div></section>`;
   }
-  function mini(){const s=snapshot;if(!s)return intro('Mini-<em>jeux.</em>','Jeux sans limite.')+tabs()+loadingBox();if(!s.league)return intro('Mini-<em>jeux.</em>','Mise à jour des règles en cours.')+tabs()+'<section class="panel"><h3>Installation du nouveau serveur nécessaire</h3><p>Les parties illimitées seront disponibles après la mise à jour de la fonction Supabase.</p><button class="btn" data-games="refresh">Actualiser</button></section>';if(s.active&&!s.active.done)return miniSession(s.active);if(s.active?.done&&section==='mini'&&!showPicker)return miniResult(s.active);
-    const daily=s.daily||{wins:[],played:[],claimed:false};const count=daily.wins?.length||0;
+  function mini(){const s=snapshot;if(!s)return intro('Mini-<em>jeux.</em>','Jeux sans limite.')+tabs()+loadingBox();if(!s.league)return intro('Mini-<em>jeux.</em>','Mise à jour des règles en cours.')+tabs()+'<section class="panel"><h3>Installation du nouveau serveur nécessaire</h3><p>Les parties illimitées seront disponibles après la mise à jour de la fonction Supabase.</p><button class="btn" data-games="refresh">Actualiser</button></section>';if(s.active&&(!s.active.done||(s.active.type==='memory'&&s.active.revealUntil>serverNow())))return miniSession(s.active);if(s.active?.done&&section==='mini'&&!showPicker)return miniResult(s.active);
+    const daily=s.daily||{wins:[],played:[],claimed:false};const count=TYPES.filter(type=>daily.wins?.includes(type)).length;
     return intro('Mini-<em>jeux.</em>','Trois défis améliorés. Une victoire rapporte les crédits configurés par l’admin, et tu peux rejouer autant de fois que tu veux.')+tabs()+
     `<div class="games-mini-grid">${TYPES.map(type=>`<article class="games-mini-item"><div class="games-mini-emoji">${ICONS[type]}</div><div class="eyebrow">${daily.wins?.includes(type)?'✓ DÉFI DU JOUR VALIDÉ':'PARTIES ILLIMITÉES'}</div><h3>${h(LABELS[type])}</h3><p>${HELP[type]}</p><p>🏅 Victoire : <strong>+${n(s.settings?.[type])} crédits</strong></p><button class="btn btn-primary" data-games="start" data-type="${type}">Jouer maintenant</button></article>`).join('')}</div>
     <section class="panel games-panel"><h3>✦ Défi quotidien</h3><p class="games-muted">Remporte au moins une fois chacun des trois mini-jeux aujourd’hui pour récupérer ${n(s.settings?.daily)} crédits de bonus. Les autres victoires restent récompensées.</p><div class="games-progress"><strong>${count} / 3 jeux validés</strong><button class="btn btn-primary" data-games="daily" ${count!==3||daily.claimed?'disabled':''}>${daily.claimed?'Bonus déjà obtenu':'Réclamer le bonus'}</button></div></section>`;
@@ -115,13 +121,14 @@ export function createGamesUI({api,toast,getUser,showArena}){
     if(memoryRevealTimer){clearTimeout(memoryRevealTimer);memoryRevealTimer=null;}
     root.innerHTML=section==='casino'?casino():section==='mini'?mini():hub();
     const active=snapshot?.active;
-    if(section==='mini'&&active?.type==='memory'&&!active.done){
+    if(section==='mini'&&active?.type==='memory'){
       const remaining=(active.revealUntil||0)-serverNow();
       if(remaining>0)memoryRevealTimer=setTimeout(()=>{
         memoryRevealTimer=null;
         if(available()&&section==='mini'&&snapshot?.active?.id===active.id)draw();
       },remaining+40);
     }
+    if(section==='mini'&&active?.type==='runner'&&!active.done)arcade.mount(active,root);
     refreshTimer();
   }
   function refreshTimer(){
@@ -150,13 +157,13 @@ export function createGamesUI({api,toast,getUser,showArena}){
     if(getUser()?.role!=='admin')return;const box=document.createElement('section');box.className='panel games-admin-settings';box.id='games-admin-settings';
     box.innerHTML='<div class="eyebrow">RÉGLAGES · LIGUE & MINI-JEUX</div><h3>Casino IA — Cotes et récompenses</h3><div id="games-admin-form">Chargement…</div>';element.appendChild(box);
     const data=await request('status');if(!data||!box.isConnected)return;
-    const keys=[['memory','Crédits gagnés · Memory',0,5000,1],['quiz','Crédits gagnés · Quiz',0,5000,1],['higherLower','Crédits gagnés · Plus ou moins',0,5000,1],['daily','Bonus du défi quotidien',0,5000,1],['multiplierSimple','Coefficient de cotes · Simple',1,10,.01],['multiplierDouble','Coefficient de cotes · Double',1,10,.01],['doubleChance','Fréquence Double (0 à 1)',0,1,.01]];
+    const keys=[['memory','Crédits gagnés · Memory',0,5000,1],['runner','Crédits gagnés · Mashup Run',0,5000,1],['higherLower','Crédits gagnés · Plus ou moins',0,5000,1],['daily','Bonus du défi quotidien',0,5000,1],['multiplierSimple','Coefficient de cotes · Simple',1,10,.01],['multiplierDouble','Coefficient de cotes · Double',1,10,.01],['doubleChance','Fréquence Double (0 à 1)',0,1,.01]];
     $('games-admin-form').innerHTML=`<div class="games-admin-grid">${keys.map(([k,title,min,max,step])=>`<label>${title}<input data-games-setting="${k}" type="number" min="${min}" max="${max}" step="${step}" value="${Number(data.settings[k])}"></label>`).join('')}</div><p class="games-muted">Les cotes réelles évoluent selon l’Elo, les victoires et la forme des IA. Ces deux coefficients modifient le niveau des cotes des nouveaux combats (valeurs actuellement 1,8 simple et 2,6 double). Les paris déjà posés ne changent pas. Les crédits gagnés en mini-jeux sont attribués à chaque victoire.</p><button class="btn btn-primary" data-games="save-admin">Enregistrer les réglages</button>`;
   }
   document.addEventListener('click',async event=>{
     const target=event.target.closest('[data-games]');if(!target)return;
     const action=target.dataset.games;if(action==='arena'){showArena();return;}
-    if(['hub','casino','mini'].includes(action)){section=action;if(action==='mini')showPicker=true;draw();if(action!=='hub')request('status');return;}
+    if(['hub','casino','mini'].includes(action)){if(action!=='mini')arcade.stop();section=action;if(action==='mini')showPicker=true;draw();if(action!=='hub')request('status');return;}
     if(action==='refresh'){await request('status');return;}
     if(action==='notifications'){
       if(typeof Notification==='undefined')return toast('Ton navigateur ne prend pas en charge les notifications.',true);
@@ -169,7 +176,8 @@ export function createGamesUI({api,toast,getUser,showArena}){
       if(!confirm(`Miser ${n(amount)} crédits sur ${sideName(snapshot.current,side)} ? La mise est débitée immédiatement.`))return;
       await request('bet',{amount,side});return;
     }
-    if(action==='start'||action==='replay'){showPicker=false;await request('start',{type:target.dataset.type});section='mini';draw();return;}
+    if(action==='start'||action==='replay'){arcade.reset();showPicker=false;await request('start',{type:target.dataset.type});section='mini';draw();return;}
+    if(action==='runner-left'||action==='runner-right'){arcade.move(action==='runner-left'?-1:1);return;}
     if(action==='flip'){
       if((snapshot.active?.revealUntil||0)>serverNow()||loading)return;
       await request('move',{index:Number(target.dataset.index),sessionId:snapshot.active?.id});return;
@@ -178,7 +186,7 @@ export function createGamesUI({api,toast,getUser,showArena}){
       if(Date.now()<lockedUntil)return;
       await request('move',{answer:target.dataset.answer,sessionId:snapshot.active?.id});return;
     }
-    if(action==='abandon'){if(confirm('Abandonner cette partie ? Tu peux rejouer ensuite.')){await request('abandon',{sessionId:snapshot.active?.id});showPicker=true;draw();}return;}
+    if(action==='abandon'){if(confirm('Abandonner cette partie ? Tu peux rejouer ensuite.')){arcade.reset();await request('abandon',{sessionId:snapshot.active?.id});showPicker=true;draw();}return;}
     if(action==='daily'){const r=await request('daily',{});if(r)toast('Bonus quotidien attribué !');return;}
     if(action==='save-admin'){
       const settings={};document.querySelectorAll('#games-admin-form [data-games-setting]').forEach(x=>settings[x.dataset.gamesSetting]=Number(x.value));
