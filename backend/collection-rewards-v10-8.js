@@ -1,0 +1,37 @@
+/* Mashup V10.8 — collection rewards (server authoritative).
+ * Claim idempotence is stored with the player in mashup_private.game_runtime,
+ * in the same transaction as the existing wallet mirror.
+ * Secret cards never contribute to milestones.
+ */
+const COLLECTION_REWARD_TIERS=Object.freeze({25:300,50:600,75:1000,100:2000});
+function collectionRewardSummary(u,db){
+  const claimed=u.collectionRewardsV108&&typeof u.collectionRewardsV108==='object'&&!Array.isArray(u.collectionRewardsV108)?u.collectionRewardsV108:{};
+  const catalog=Array.isArray(db.cards)?db.cards:[];
+  return (Array.isArray(db.series)?db.series:[]).map(series=>{
+    const number=Number(series.number);
+    const cards=catalog.filter(c=>!c.archived&&c.variant!=='secret'&&(Number(c.editionSeries)||1)===number);
+    const total=number===1?158:(Number.isSafeInteger(Number(series.targetCount))&&Number(series.targetCount)>0?Number(series.targetCount):cards.length||1);
+    const owned=cards.filter(c=>Number(u.state?.owned?.[c.id])>0).length;
+    return {series:number,name:String(series.name||'Série'),owned,total,percent:Math.min(100,Math.floor(100*owned/Math.max(1,total))),
+      tiers:Object.entries(COLLECTION_REWARD_TIERS).map(([threshold,value])=>{
+        const pct=Number(threshold);
+        return {percent:pct,reward:value,unlocked:owned*100>=total*pct,claimed:claimed[number+':'+pct]===true};
+      }),
+      badge:claimed[number+':100']===true?'Maître de la série':null
+    };
+  }).filter(s=>Number.isSafeInteger(s.series)&&s.series>0);
+}
+function claimCollectionReward(u,db,series,percent){
+  if(!Number.isSafeInteger(series)||!Number.isSafeInteger(percent)||!Object.prototype.hasOwnProperty.call(COLLECTION_REWARD_TIERS,percent))fail(400,'Palier de collection inconnu.');
+  const entry=collectionRewardSummary(u,db).find(x=>x.series===series);
+  if(!entry)fail(404,'Série introuvable.');
+  const tier=entry.tiers.find(x=>x.percent===percent);
+  if(!tier?.unlocked)fail(409,'Collection insuffisante pour ce palier.');
+  if(tier.claimed)fail(409,'Récompense déjà récupérée.');
+  const balance=Number(u.state?.coins),reward=tier.reward;
+  if(!Number.isSafeInteger(balance)||balance<0||balance+reward>1000000)fail(409,'Plafond de crédits atteint : dépense quelques crédits avant la récompense.');
+  u.collectionRewardsV108||={};
+  u.collectionRewardsV108[series+':'+percent]=true;
+  u.state.coins=balance+reward;
+  return {ok:true,reward,state:u.state,collectionRewards:collectionRewardSummary(u,db)};
+}
