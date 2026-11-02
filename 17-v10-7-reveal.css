@@ -1,0 +1,14 @@
+/* Mashup V10.7 — pre-flip anticipation and synchronized reveal. */
+.opening-fullscreen.fx-prelude .opening-vfx{opacity:1;visibility:visible}
+.opening-fullscreen.fx-prelude .opening-vfx::before{content:"";position:absolute;inset:0;background:rgba(1,3,10,calc(.42 * var(--fx-intensity, .6)));animation:v107-curtain .24s ease-out both}
+.opening-fullscreen.fx-prelude .pack-stack-surface{animation:v107-anticipation .24s ease-in-out both}
+.opening-fullscreen.fx-active .opening-vfx::before{content:"";position:absolute;inset:0;background:rgba(1,3,10,.18);animation:v107-curtain-out .55s ease-out both}
+.opening-fullscreen.fx-active:not(.fx-unveiled) .opening-vfx-name{animation:none!important;opacity:0!important}
+.opening-fullscreen.fx-active.fx-unveiled .opening-vfx-name{animation:v105-label 1.55s ease-out both}
+@keyframes v107-curtain{from{opacity:0}to{opacity:1}}
+@keyframes v107-curtain-out{from{opacity:1}to{opacity:0}}
+@keyframes v107-anticipation{0%{transform:scale(1)}65%{transform:scale(1.027)}100%{transform:scale(1.047)}}
+@media(max-width:720px){.opening-fullscreen.fx-prelude .pack-stack-surface{animation:v107-anticipation .18s ease-out both}}
+@media(prefers-reduced-motion:reduce){.opening-fullscreen.fx-prelude .opening-vfx,.opening-fullscreen.fx-active .opening-vfx::before{display:none!important}.opening-fullscreen.fx-prelude .pack-stack-surface{animation:none!important}}
+.opening-fullscreen.opening-quick.fx-prelude .opening-vfx{display:none!important}
+.opening-fullscreen.opening-quick.fx-prelude .pack-stack-surface{animation:none!important}
