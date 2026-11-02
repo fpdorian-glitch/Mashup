@@ -1191,12 +1191,13 @@ function cardMarkup(card,options={}){
   if(!card)return '<div class="card-empty">Carte inconnue</div>';
   // Admin sees everything. Player's unknown slot has no hidden metadata from API.
   if(card.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[card.id]&&!options.revealedOpponent))return `<div class="tcg-card locked-card" ${options.accessible?'role="img" aria-label="Carte mystère non découverte"':''}><div class="locked-inner"><span class="locked-decoration">✦</span><span class="locked-mark">?</span><small>CARTE INCONNUE</small></div></div>`;
+  const imageLoading=options.lazy?'loading="lazy" decoding="async" fetchpriority="low"':'loading="eager" decoding="async"';
   const variant=['full_art','gold','secret'].includes(card.variant)?card.variant:'standard';
   if(variant!=='standard'){
     const rar=RARITIES[card.rarity]?card.rarity:'common';
     const image=safeImage(options.image??state.artwork[card.id]??card.art);
     return `<div class="tcg-card ${esc(rar)} variant-${variant}" style="--art1:${CSSColor(card.color1,'#345874')};--art2:${CSSColor(card.color2,'#23283c')}" ${options.accessible?`role="button" tabindex="0" aria-label="Voir ${esc(card.name)}" data-action="detail" data-id="${esc(card.id)}"`:''}>
-      ${image?`<img class="full-art-image" src="${image}" alt="Illustration de ${esc(card.name)}">`:`<div class="full-art-fallback">${esc(card.icon||'✦')}</div>`}
+      ${image?`<img class="full-art-image" ${imageLoading} src="${image}" alt="Illustration de ${esc(card.name)}">`:`<div class="full-art-fallback">${esc(card.icon||'✦')}</div>`}
       <div class="full-art-shade"></div><div class="full-art-head"><div><strong>${esc(card.name)}</strong><small>${esc(card.subtitle)}</small></div><span class="full-art-tag">${esc(cardRarityLabel(card))}</span></div>
       <div class="full-art-foot"><b>${esc(card.family||'Original')} · ${esc(card.ability||'✦ Mashup')}</b><div class="full-art-stats">${STAT_FIELDS.map(f=>`<span><small>${esc(f.short)}</small><strong>${statValue(card,f.key)}</strong></span>`).join('')}</div></div>
       <div class="edition-serial edition-serial-art">${esc(editionText(card))}</div>
@@ -1208,7 +1209,7 @@ function cardMarkup(card,options={}){
   const serial=editionText(card);
   return `<div class="tcg-card ${esc(rar)}" style="--art1:${CSSColor(card.color1,'#445c70')};--art2:${CSSColor(card.color2,'#263445')}" ${options.accessible?`role="button" tabindex="0" aria-label="Voir ${esc(card.name)}" data-action="detail" data-id="${esc(card.id)}"`:''}>
     <div class="card-head"><div class="card-head-name"><strong>${esc(card.name)}</strong><small>${esc(card.subtitle||'Pièce unique')}</small></div><div class="rarity-gem" title="${rarityName(rar)}"></div></div>
-    <div class="card-art">${image?`<img src="${image}" alt="Illustration de ${esc(card.name)}">`:`<span class="card-art-symbol" aria-hidden="true">${esc(card.icon||'✦')}</span><span class="card-art-caption">MASHUP · VISUEL À VENIR</span>`}</div>
+    <div class="card-art">${image?`<img ${imageLoading} src="${image}" alt="Illustration de ${esc(card.name)}">`:`<span class="card-art-symbol" aria-hidden="true">${esc(card.icon||'✦')}</span><span class="card-art-caption">MASHUP · VISUEL À VENIR</span>`}</div>
     <div class="card-type"><span>${esc(card.family||'Original')}</span><span>${esc(cardRarityLabel(card))}</span></div>
     <div class="card-stats">${STAT_FIELDS.map(field=>`<div class="card-stat"><small title="${field.label}">${field.short}</small><strong>${statValue(card,field.key)}</strong></div>`).join('')}</div>
     <div class="card-footer"><span>✳ MASHUP</span><span>${serial}</span></div>
@@ -1432,7 +1433,7 @@ function renderCollectionGrid(){
     return rankB-rankA||byName;
   });
   const countElement=document.getElementById('collection-count');if(countElement)countElement.textContent='Filtres cumulables';
-  document.getElementById('collection-grid').innerHTML=result.length?result.map(c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin')})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`).join(''):`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">✳</div><h3>Aucune carte trouvée</h3><p>Modifie tes filtres ou ouvre quelques boosters.</p><button class="btn btn-primary" data-view="packs">Découvrir les boosters</button></div>`;
+  document.getElementById('collection-grid').innerHTML=result.length?result.map(c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin'),lazy:true})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`).join(''):`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">✳</div><h3>Aucune carte trouvée</h3><p>Modifie tes filtres ou ouvre quelques boosters.</p><button class="btn btn-primary" data-view="packs">Découvrir les boosters</button></div>`;
 }
 function showDetail(id){
   const c=getCard(id);if(!c||c.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[id]))return;
@@ -1584,7 +1585,7 @@ function deckVisibleCards(){
 function renderDeckRoster(){
  const root=document.getElementById('deck-roster');if(!root)return;
  const list=deckVisibleCards();const key=deckSelectionMode==='double'?'deckDouble':'deck';const selected=state[key]||[];const max=deckSelectionMode==='double'?6:3;
- root.innerHTML=list.length?list.map(c=>`<button class="deck-visual-choice ${selected.includes(c.id)?'selected':''}" data-action="deck-add" data-id="${esc(c.id)}" aria-label="${selected.includes(c.id)?'Retirer':'Ajouter'} ${esc(c.name)} du deck ${deckSelectionMode}" title="${esc(c.name)}">${cardMarkup(c)}<strong>${esc(c.name)} ${selected.includes(c.id)?'✓':''}</strong><small>${esc(cardRarityLabel(c))} · ×${state.owned[c.id]}</small></button>`).join(''):'<div class="empty-state">Aucune carte pour ces filtres.</div>';
+ root.innerHTML=list.length?list.map(c=>`<button class="deck-visual-choice ${selected.includes(c.id)?'selected':''}" data-action="deck-add" data-id="${esc(c.id)}" aria-label="${selected.includes(c.id)?'Retirer':'Ajouter'} ${esc(c.name)} du deck ${deckSelectionMode}" title="${esc(c.name)}">${cardMarkup(c,{lazy:true})}<strong>${esc(c.name)} ${selected.includes(c.id)?'✓':''}</strong><small>${esc(cardRarityLabel(c))} · ×${state.owned[c.id]}</small></button>`).join(''):'<div class="empty-state">Aucune carte pour ces filtres.</div>';
  const counter=document.getElementById('deck-result-count');if(counter)counter.textContent=`${list.length} cartes trouvées · ${selected.length}/${max} dans le deck ${deckSelectionMode==='double'?'Double':'Classique'}`;
 }
 function renderDecks(){
