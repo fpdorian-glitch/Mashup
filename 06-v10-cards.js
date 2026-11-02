@@ -18,6 +18,7 @@ export function renderMashupV10Card(card,options={},context){
   const family=esc(card.family||'Original');
   const series='S'+String(Math.max(1,Math.floor(Number(card.editionSeries)||1))).padStart(2,'0');
   const loading=options.lazy?'loading="lazy" fetchpriority="low" decoding="async"':'loading="eager" decoding="async"';
+  const frameLoading=options.lazy?'loading="lazy" fetchpriority="low"':'loading="eager"';
   const picture=imageUrl?'<img class="v10-picture-img" '+loading+' src="'+esc(imageUrl)+'" alt="Illustration de '+safeName+'">'
     :'<span class="v10-picture-symbol" aria-hidden="true">'+esc(card.icon||'✦')+'</span>';
   // Une seule lettre par statistique : lisible même en combat sur écran étroit.
@@ -35,7 +36,7 @@ export function renderMashupV10Card(card,options={},context){
   return '<div class="'+className+'" '+interactive+' style="--art1:'+CSSColor(card.color1,'#486e69')+';--art2:'+CSSColor(card.color2,'#162d38')+'">'+
     '<div class="v10-picture">'+picture+'</div>'+
     (special?'<div class="v101-art-tint" aria-hidden="true"></div><div class="v101-special-border" aria-hidden="true"></div>'+secretArcs:
-      '<img class="v10-frame" src="./assets/v10-3-'+rarity+'-frame.svg" loading="lazy" decoding="async" alt="" aria-hidden="true">')+
+      '<img class="v10-frame" src="./assets/v10-3-'+rarity+'-frame.svg" '+frameLoading+' decoding="async" width="300" height="425" alt="" aria-hidden="true">')+
     '<div class="v10-rarity">'+esc(rarityName(rarity))+(variantName?' <small>'+variantName+'</small>':'')+'</div>'+
     '<div class="v10-name" title="'+safeName+'">'+safeName+'</div>'+
     '<div class="v10-universe" title="'+family+'">'+family+'</div>'+
