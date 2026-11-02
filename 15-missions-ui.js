@@ -88,6 +88,7 @@ export function createMissionsUI({api,getUser,esc,toast,onState}){
     </div>`;
   }
   function setData(value,{rerender=true}={}){
+    if(value===null){data=null;lastFetch=0;return;}
     if(!value||typeof value!=='object')return;
     data=value;lastFetch=Date.now();
     if(rerender&&$('page')&&document.querySelector('.missions-screen'))render();
