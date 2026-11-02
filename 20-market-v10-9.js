@@ -34,7 +34,7 @@ export function createMarketUI({api,esc,toast,onAccepted,getOwnCards,getCurrentU
   if(busy)return;
   busy=true;try{
     const r=await api('/api/trades');players=r.players||[];trades=r.trades||[];
-    render();
+    if(document.querySelector('.market-compose'))render();
   }catch(e){toast(e.message||'Marché indisponible.',true);}
   finally{busy=false;}
  }
