@@ -64,6 +64,8 @@
         if(!info || typeof info.version!=='string'||!/^\d+(?:\.\d+){0,2}$/.test(info.version))throw Error('Version incorrecte');
         if(newer(info.version,CURRENT_VERSION)){
           available={version:info.version,notes:info.notes};
+          // A manual check reopens a banner previously dismissed with "Plus tard".
+          if(manual)dismissedVersion='';
           showRelease(available);
           if(manual)notify('Mashup V'+info.version+' est disponible !','success');
         }else{
