@@ -1,0 +1,59 @@
+/* MASHUP V10 — CARTES FANTASY DYNAMIQUES. Le cadre SVG est sur GitHub Pages. */
+.tcg-card.v10-tcg{--glow:#c9b07c55;container-type:inline-size;position:relative;display:block;width:100%;height:auto;min-height:0;aspect-ratio:300/425;border:0!important;border-radius:5.7%;overflow:hidden;isolation:isolate;background:linear-gradient(#17434a,#0d2b38);color:#332414;box-shadow:0 0 0 1px #f4ddb5,0 10px 30px #0009,0 0 23px var(--glow);transition:transform .2s,box-shadow .2s}
+.tcg-card.v10-tcg::before,.tcg-card.v10-tcg::after{display:none!important}
+.v10-tcg .v10-picture{position:absolute;z-index:1;top:19%;bottom:30%;left:6.7%;right:6.7%;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle,var(--art1),var(--art2));border-radius:3%}
+.v10-tcg .v10-picture-img{width:100%;height:100%;display:block;object-fit:cover}
+.v10-tcg .v10-picture-symbol{font-size:25cqw;color:#ffedbc;text-shadow:0 4px 24px #fff9}
+.v10-tcg .v10-frame{position:absolute;z-index:3;inset:0;width:100%;height:100%;display:block;object-fit:fill;pointer-events:none;filter:drop-shadow(0 0 2px var(--glow))}
+.v10-tcg .v10-rarity,.v10-tcg .v10-name,.v10-tcg .v10-universe,.v10-tcg .v10-ability-title,.v10-tcg .v10-ability-description,.v10-tcg .v10-stats,.v10-tcg .v10-series{position:absolute;z-index:5;pointer-events:none;overflow:hidden}
+.v10-tcg .v10-rarity{top:2.1%;left:28%;right:28%;height:5%;display:flex;align-items:center;justify-content:center;gap:1cqw;color:#ffedcb;text-shadow:0 1px 3px #000;font:800 5cqw Georgia,serif;white-space:nowrap}
+.v10-tcg .v10-rarity small{font:800 2.3cqw system-ui;color:#aaffdf}
+.v10-tcg .v10-name{top:8.2%;left:11%;right:11%;height:7.6%;display:flex;align-items:center;justify-content:center;color:#382819;text-align:center;font:900 7.2cqw/1 Georgia,serif;letter-spacing:-.04em;word-break:break-word}
+.v10-tcg .v10-universe{top:16.5%;left:24%;right:24%;height:3.6%;display:flex;align-items:center;justify-content:center;color:#f0ffe9;font:italic 800 4.1cqw Georgia,serif;white-space:nowrap;text-overflow:ellipsis}
+.v10-tcg .v10-ability-title{top:70%;left:22%;right:22%;height:4.6%;display:flex;align-items:center;justify-content:center;color:#fff0c1;font:italic 800 4.9cqw Georgia,serif;text-align:center;text-shadow:0 1px 3px #28170a;white-space:nowrap;text-overflow:ellipsis}
+.v10-tcg .v10-ability-description{top:75.8%;left:24%;right:9%;height:8.3%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;font:500 4.5cqw/1.13 Georgia,serif;color:#3c2b1a}
+.v10-tcg .v10-stats{top:86.2%;left:6.8%;right:6.3%;height:9.2%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.8%}
+.v10-tcg .v10-stat{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:1.2cqw;overflow:hidden}
+.v10-tcg .v10-stat-label{height:44%;width:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:white;text-shadow:0 1px 2px #000;font:800 2.7cqw/1.1 Georgia,serif;letter-spacing:-.06em;white-space:nowrap}
+.v10-tcg .v10-stat-number{font:900 7cqw/.9 Georgia,serif;color:#372410}
+.v10-tcg .v10-series{left:10%;right:9%;bottom:.6%;height:3.4%;display:flex;align-items:center;justify-content:space-between;color:#f7e0ab;font:700 3.1cqw Georgia,serif;text-shadow:0 1px 2px #141b22}
+.v10-tcg .v10-serial{max-width:62%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v10-tcg .v10-series-badge{margin-right:35%;font-size:3.6cqw}
+.v10-tcg .v10-foil{position:absolute;z-index:7;inset:-40%;opacity:0;pointer-events:none;background:linear-gradient(118deg,transparent 30%,#ffffed55 49%,transparent 65%);transform:translateX(-60%) rotate(-5deg)}
+.v10-tcg:hover .v10-foil{animation:v10-gleam 3.4s ease-in-out infinite;opacity:.6}
+@keyframes v10-gleam{0%,100%{transform:translateX(-60%) rotate(-5deg)}65%{transform:translateX(60%) rotate(-5deg)}}
+.tcg-card.v10-tcg.common{--glow:#a7ad9f35}
+.tcg-card.v10-tcg.rare{--glow:#4bcbff9c;box-shadow:0 0 0 2px #8dddff,0 8px 27px #000a,0 0 26px var(--glow)}
+.tcg-card.v10-tcg.epic{--glow:#af81f9b9;box-shadow:0 0 0 2px #d5afff,0 8px 27px #000a,0 0 30px var(--glow)}
+.tcg-card.v10-tcg.legendary{--glow:#ffd06dd4;box-shadow:0 0 0 2px #ffe29a,0 8px 27px #000a,0 0 32px var(--glow)}
+.tcg-card.v10-tcg.mythic{--glow:#ed4b58cc;box-shadow:0 0 0 2px #e7a18d,0 8px 27px #000a,0 0 34px var(--glow)}
+.tcg-card.v10-tcg.mythic .v10-picture:after{content:'';position:absolute;inset:0;border:5px solid #3a101e7a;pointer-events:none}
+.tcg-card.v10-tcg.ultra{--glow:#c0eeffdf;box-shadow:0 0 0 2px #effcff,0 8px 26px #000a,0 0 38px var(--glow)}
+.tcg-card.v10-tcg.ultra .v10-frame{filter:brightness(1.22) saturate(.64) drop-shadow(0 0 4px #fff)}
+.tcg-card.v10-tcg.variant-gold{--glow:#ffdb70df;box-shadow:0 0 0 4px #ffe58c,0 0 0 6px #8c5d24,0 8px 27px #000a,0 0 30px var(--glow)}
+.tcg-card.v10-tcg.variant-secret{--glow:#50ffb9e5;box-shadow:0 0 0 2px #88ffcf,0 8px 27px #000a,0 0 38px var(--glow)}
+.tcg-card.v10-tcg.variant-secret .v10-foil{opacity:.25;background:conic-gradient(from 100deg,transparent,#80ffba90,transparent,#87fbcd90,transparent);animation:v10-arc 8s linear infinite}
+@keyframes v10-arc{to{transform:rotate(360deg)}}
+.tcg-card.v10-tcg.variant-full_art .v10-picture{top:1%;bottom:15%;left:4%;right:4%}
+.tcg-card.v10-tcg.variant-full_art .v10-picture:after{content:'';position:absolute;inset:0;background:linear-gradient(#0f222781,transparent 24%,transparent 64%,#06171f98)}
+.tcg-card.v10-tcg.variant-full_art .v10-frame{opacity:.94}
+.tcg-card.v10-tcg .foil-layer{display:none!important}
+.tcg-card.locked-card.v10-unknown{background:radial-gradient(circle at 50% 24%,#3a6862,#11222c 78%);border-color:#d8bc80;color:#f7db9f;box-shadow:0 0 0 1px #ffdb8b,0 10px 24px #0009}
+.collection-item.unowned .tcg-card.v10-tcg{filter:none;opacity:1}
+.opening-fullscreen .opening-top-card .flip-back .tcg-card.v10-tcg{width:100%;height:100%;min-height:0;border:0!important;aspect-ratio:300/425;border-radius:5.7%;background:#12333c;box-shadow:none}
+.inspect-front .tcg-card.v10-tcg{width:100%;height:100%;min-height:0;border:0!important;aspect-ratio:300/425}
+.deck-slot-grid .tcg-card.v10-tcg{border:0!important}
+.collection-grid{grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:17px}
+.collection-item .ownership{z-index:8;bottom:5%;right:6%;background:#10303ae8;border-color:#e9cf916f;color:#ffe7ae}
+@media(max-width:800px){.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.v10-tcg .v10-ability-description{font-size:4.8cqw}.v10-tcg .v10-stat-label{font-size:2.65cqw}}
+@media(max-width:420px){.v10-tcg .v10-rarity small{display:none}.v10-tcg .v10-ability-description{font-size:4.4cqw}}
+@media(prefers-reduced-motion:reduce){.tcg-card.v10-tcg,.v10-tcg .v10-foil{transition:none!important;animation:none!important}}
+
+/* On a 150-200px wide mobile card, use compact three-letter stat labels. */
+.v10-tcg .v10-stat-short{display:none}
+@container (max-width:225px){
+ .v10-tcg .v10-stat-long{display:none}
+ .v10-tcg .v10-stat-short{display:inline}
+ .v10-tcg .v10-stat-label{font-size:3.7cqw}
+ .v10-tcg .v10-stat-number{font-size:7.8cqw}
+}

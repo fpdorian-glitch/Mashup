@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 425" preserveAspectRatio="none">
+<defs>
+ <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#777268"/><stop offset=".28" stop-color="#282b2d"/><stop offset=".6" stop-color="#56554a"/><stop offset="1" stop-color="#1b272a"/></linearGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff3c5"/><stop offset=".2" stop-color="#d9a74b"/><stop offset=".46" stop-color="#744515"/><stop offset=".68" stop-color="#ffd88c"/><stop offset="1" stop-color="#9d6029"/></linearGradient>
+ <linearGradient id="parch" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff6d5"/><stop offset=".5" stop-color="#e5cf9e"/><stop offset="1" stop-color="#c5a878"/></linearGradient>
+ <linearGradient id="teal" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#174e51"/><stop offset=".55" stop-color="#082e36"/><stop offset="1" stop-color="#367e72"/></linearGradient>
+ <radialGradient id="gem"><stop stop-color="#edffff"/><stop offset=".36" stop-color="#55fff0"/><stop offset="1" stop-color="#027d82"/></radialGradient>
+ <pattern id="etch" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18L18 0M-5 4L4 -5M14 23L23 14" fill="none" stroke="#fff3ce" stroke-width=".35" opacity=".15"/></pattern>
+ <filter id="glow" x="-75%" y="-75%" width="250%" height="250%"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<!-- sculpted head, footer and outer rim; central artwork remains transparent -->
+<path d="M18 3H282Q297 3 297 21V405Q297 422 280 422H20Q3 422 3 405V21Q3 3 18 3Z" fill="none" stroke="#5c3c21" stroke-width="6"/>
+<path d="M18 5H282Q295 5 295 21V403Q295 419 280 419H20Q5 419 5 403V21Q5 5 18 5Z" fill="none" stroke="url(#metal)" stroke-width="6"/>
+<rect x="10" y="10" width="280" height="405" rx="14" fill="none" stroke="#f4e2a7" stroke-width="1.5" opacity=".85"/>
+<path d="M17 14H283L284 84H16Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="1.5"/>
+<path d="M16 294H284V410H16Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="1.7"/>
+<path d="M16 294H284V410H16Z" fill="url(#etch)" opacity=".85"/>
+<!-- title and rarity medallions -->
+<path d="M91 8H209L220 21L210 33H90L79 21Z" fill="#39281f" stroke="url(#metal)" stroke-width="3"/>
+<path d="M30 34H270L281 52L267 70H33L19 52Z" fill="url(#parch)" stroke="url(#metal)" stroke-width="3.5"/>
+<path d="M69 68H231L242 79L230 87H70L58 79Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="2.3"/>
+<!-- art window border: genuinely transparent -->
+<path d="M19 89Q19 83 25 83H275Q281 83 281 89V289Q281 296 273 296H27Q19 296 19 289Z" fill="none" stroke="#5f401d" stroke-width="6"/>
+<path d="M21 89Q21 85 26 85H274Q279 85 279 89V288Q279 293 273 293H27Q21 293 21 288Z" fill="none" stroke="url(#metal)" stroke-width="2.8"/>
+<path d="M23 87H277M22 290H278" stroke="#fff8ca" stroke-width="1" opacity=".7"/>
+<!-- hanging ruined stone corner engravings -->
+<g fill="url(#stone)" stroke="#c3a16a" stroke-width="1.4">
+<path d="M12 89L35 89L27 108L12 127Z"/>
+<path d="M12 127L27 108L31 129L12 148Z"/>
+<path d="M12 148L31 129L27 155L12 166Z"/>
+<path d="M288 89L266 89L274 108L288 127Z"/>
+<path d="M288 127L274 108L270 129L288 148Z"/>
+<path d="M288 148L270 129L274 155L288 166Z"/>
+</g>
+<!-- leaf etchings under title -->
+<g fill="none" stroke="#9aaf77" stroke-width="1.1" opacity=".8">
+<path d="M25 87Q55 94 70 121M276 87Q244 98 234 123"/>
+<path d="M36 92q13 1 17 8q-15 3-17-8M44 104q10-2 16 8q-13 0-16-8M263 95q-14 1-18 9q14 4 18-9M252 109q-11-2-15 7q13 2 15-7"/>
+</g>
+<!-- ability heading and parchment content; actual text is rendered by HTML -->
+<path d="M68 292H232L243 304L231 317H69L57 304Z" fill="#563d29" stroke="url(#metal)" stroke-width="3"/>
+<path d="M24 318H276L284 325V354L272 362H28L16 352V327Z" fill="url(#parch)" stroke="url(#metal)" stroke-width="3"/>
+<path d="M48 325L55 339L48 353L41 339Z" fill="url(#gem)" stroke="#b6ffff" stroke-width="1.5"/>
+<path d="M62 327V352" stroke="#966d37" stroke-width="1"/>
+<!-- five miniature parchment stat plaques -->
+<g stroke="url(#metal)" stroke-width="2">
+<path d="M20 370L26 364H70L76 370V402L70 408H26L20 402Z" fill="url(#parch)"/>
+<path d="M75 370L81 364H125L131 370V402L125 408H81L75 402Z" fill="url(#parch)"/>
+<path d="M130 370L136 364H180L186 370V402L180 408H136L130 402Z" fill="url(#parch)"/>
+<path d="M185 370L191 364H235L241 370V402L235 408H191L185 402Z" fill="url(#parch)"/>
+<path d="M240 370L246 364H274L281 370V402L275 408H246L240 402Z" fill="url(#parch)"/>
+</g>
+<g opacity=".8" stroke="#bd914c" stroke-width="1">
+<path d="M22 387H74M77 387H129M132 387H184M187 387H239M242 387H279"/>
+</g>
+<!-- series footer wreath and crystals -->
+<path d="M20 412H113L122 403H178L187 412H280" fill="none" stroke="url(#metal)" stroke-width="3"/>
+<path d="M126 404H174L180 416H120Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="2"/>
+<g fill="url(#gem)" stroke="#e3ffff" stroke-width=".8">
+ <path d="M14 18l7 11-7 13-7-13Z"/><path d="M286 18l7 11-7 13-7-13Z"/>
+ <path d="M14 392l7 12-7 12-7-12Z"/><path d="M286 392l7 12-7 12-7-12Z"/>
+ <path d="M150 2l6 11-6 13-6-13Z"/><path d="M150 410l5 8-5 6-5-6Z"/>
+</g>
+<g fill="#f5da9b"><path d="M42 20l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" opacity=".5"/><path d="M258 20l3 7 7 3-7 3-3 7-3-7-7-3Z" opacity=".5"/></g>
+</svg>

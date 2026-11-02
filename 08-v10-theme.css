@@ -1,0 +1,70 @@
+/* Mashup V10 — L'Atlas du Multivers : identité fantasy, tout écran. */
+:root{color-scheme:dark;--bg:#071c27;--pane:#112b34;--pane2:#1b3d45;--card:#193742;--stroke:#59706a;--sub:#b3c7be;--text:#fcf3e0;--accent:#efd59a;--coral:#eab58b;--cyan:#8ee2d4;--shadow:0 20px 55px #00141bba;--font:'Trebuchet MS',Inter,system-ui,sans-serif;--display:Georgia,'Palatino Linotype',serif}
+body{background:radial-gradient(ellipse 90vw 48vw at 80% 0%,#2b66715e,transparent 78%),radial-gradient(ellipse 88vw 80vw at 2% 86%,#3860414b,transparent 77%),linear-gradient(155deg,#11313a,#061b27 65%,#19353b);background-attachment:fixed}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(#d9d7a32c 1px,transparent 1px);background-size:45px 45px}
+.sidebar{background:linear-gradient(170deg,#12323b,#081b29);border-color:#9caa8260;box-shadow:3px 0 18px #00101966}
+.brand-mark{background:linear-gradient(125deg,#faebbc,#c69b57);color:#13323a;box-shadow:inset 0 0 0 2px #f8f2cb66}
+.brand-type strong,.hero h2,.page-lead .heading,.small-heading{font-family:var(--display);letter-spacing:-.5px}
+.brand-type strong span{color:#f2ce89}
+.nav-item{color:#d6e2d8;border-radius:13px}
+.nav-item.active{background:linear-gradient(130deg,#315f53,#163946);color:#ffe9b2;border:1px solid #c5b27780}
+.nav-item:hover{background:#26484c;color:#ffefc8}
+.topbar{background:linear-gradient(90deg,#10303ce8,#1a4548df);backdrop-filter:blur(13px);border-color:#b39d6c62}
+.breadcrumb,.breadcrumb strong{color:#f1d9a9}
+.resource{background:#193841;border-color:#bdb08365}
+.resource strong{color:#fff0c2}
+.avatar{background:linear-gradient(145deg,#ffe9ad,#96d3b2);color:#18343b}
+.eyebrow{color:#f0d18d}
+.heading em,.hero h2 em{color:#a9ecc3;text-shadow:0 3px 14px #8fdbb64c}
+.btn{background:linear-gradient(140deg,#23474b,#16313d);border-color:#a1b29066;border-radius:12px;color:#faefdd}
+.btn-primary{background:linear-gradient(130deg,#f7e6ae,#ceaa68);border-color:#ffe7a8;color:#15343d;box-shadow:0 9px 28px #d4b0664b}
+.btn-primary:hover:not(:disabled){background:#fff3cb;color:#163c40}
+.panel,.pack,.games-mini-item,.games-hero-card,.pill,.metric{background:linear-gradient(150deg,#193842f3,#0c2732f3);border:1px solid #7e9f8b5b;box-shadow:inset 0 1px #ffffff14,0 10px 25px #00182255}
+.hero{background:radial-gradient(circle at 82% 26%,#7c9f7b8b,transparent 54%),linear-gradient(140deg,#294e4c,#0e2c39 73%);border-color:#d9c18b75;box-shadow:inset 0 0 65px #9ebaa12d,0 15px 34px #001b2455}
+.hero-tag{color:#ffdfa8}.hero-card-stack .mini-back{border-color:#e3c785}
+.collection-item .tcg-card:hover{transform:translateY(-3px)}
+/* Mobile: vraie barre d'onglets tactile, collection en 2 colonnes et contrôles lisibles */
+@media(max-width:800px){
+ html{scroll-padding-top:70px}
+ .shell{min-height:100dvh}
+ .sidebar{position:fixed;top:auto;bottom:0;left:0;right:0;width:100%;height:calc(70px + env(safe-area-inset-bottom,0px));padding:5px 5px max(5px,env(safe-area-inset-bottom,0px));z-index:30;background:#0a2934f5;backdrop-filter:blur(15px);border-top:1px solid #b9b18777;border-right:none}
+ .navigation{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:4px;height:100%;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .navigation::-webkit-scrollbar{display:none}
+ .nav-item{flex:0 0 73px;min-width:73px;max-width:90px;min-height:56px;height:56px;padding:5px 3px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;font-size:9px;line-height:1.05}
+ .nav-icon{font-size:21px;line-height:1}
+ .nav-chevron,.sidebar-label,.sidebar-fill,.sidebar-bottom{display:none!important}
+ #page{padding:22px clamp(12px,3vw,24px) calc(105px + env(safe-area-inset-bottom,0px))}
+ .topbar{height:60px;min-height:60px;position:sticky;top:0;z-index:15;padding:0 13px;box-shadow:0 5px 22px #00172585}
+ .breadcrumb{font-size:9px;letter-spacing:1px}
+ .topbar-right{gap:5px}.resource{height:32px;padding:0 8px}.resource strong{font-size:12px}
+ .avatar{height:32px;width:32px;margin-left:2px}
+ .page-lead{margin-bottom:22px}.heading{font-size:clamp(30px,7.4vw,45px);letter-spacing:-.5px}
+ .hero{margin-bottom:26px}.hero-copy{padding:22px 20px}.hero h2{font-size:clamp(31px,8vw,45px);letter-spacing:-1px}
+ .pack-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.pack{padding:12px;min-width:0}
+ .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .deck-roster-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .deck-picks{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .btn,button[data-action],button[data-games]{min-height:42px;touch-action:manipulation}
+ .games-mini-grid{grid-template-columns:minmax(0,1fr)}.games-memory-grid{gap:8px}
+}
+@media(max-width:420px){
+ #page{padding-left:10px;padding-right:10px}.pack-grid{grid-template-columns:1fr}
+ .hero h2{font-size:35px}.heading{font-size:31px}
+ .collection-grid{gap:9px}
+ .topbar .resource small{display:none}
+}
+@media(prefers-reduced-motion:reduce){.nav-item,.tcg-card{animation:none!important;transition:none!important}}
+
+/* Memory = l'unique épreuve du Codex : plateau tactile et révélation lisible. */
+.games-mini-grid{grid-template-columns:minmax(0,760px);justify-content:center}
+.games-mini-item{padding:clamp(17px,3vw,27px);border-color:#e0c58e85;background:radial-gradient(ellipse at 95% 2%,#669d8960,transparent 55%),linear-gradient(145deg,#26484a,#0d2b37)}
+.games-mini-item h3{font-family:var(--display);color:#ffebb5}
+.games-memory-grid{max-width:700px;gap:clamp(7px,1.7vw,13px)}
+.games-memory-card{height:clamp(81px,12vw,125px);filter:drop-shadow(0 7px 6px #00131a60)}
+.games-memory-back{background:radial-gradient(circle at 50% 18%,#31696a,#102c3c 80%);border:2px solid #d8bd83;color:#fff1be;font-family:Georgia,serif}
+.games-memory-front{background:linear-gradient(130deg,#e8d7ac,#a4cbb5);border:2px solid #f3dda4;color:#1b3939;text-shadow:none;font-family:Georgia,serif;line-height:1.25}
+.games-memory-card.is-matched .games-memory-front{background:linear-gradient(135deg,#cae3af,#94bea2);border-color:#c9f6a5}
+.games-memory-meters{justify-content:center}
+.games-memory-meters span{border-color:#c5b58377;background:#173b42}
+.games-memory-instruction{color:#f3dbaa}
+@media(max-width:600px){.games-memory-card{height:clamp(67px,20vw,100px)}.games-memory-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.games-memory-front{font-size:clamp(10px,2.8vw,13px)}}
