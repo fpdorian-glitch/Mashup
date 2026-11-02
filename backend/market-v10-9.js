@@ -93,6 +93,8 @@ function tradeRespond(db,u,data){
  for(const c of give){from.state.owned[c.id]-=c.qty;to.state.owned[c.id]=(to.state.owned[c.id]||0)+c.qty;}
  for(const c of take){to.state.owned[c.id]-=c.qty;from.state.owned[c.id]=(from.state.owned[c.id]||0)+c.qty;}
  from.state.coins=nextFrom;to.state.coins=nextTo;
+ // Remove traded-away cards from decks so an opponent cannot enter a duel with missing cards.
+ for(const player of [from,to])for(const key of ['deck','deckDouble'])if(Array.isArray(player.state[key]))player.state[key]=player.state[key].filter(id=>Number(player.state.owned[id])>0);
  t.status='accepted';t.updatedAt=Date.now();
  return {trade:tradeSummary(db,t),changed:true,otherUserId:from.id,state:to.state};
 }
