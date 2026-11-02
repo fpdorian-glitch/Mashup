@@ -1,0 +1,187 @@
+/* MASHUP V10.4 — ORFINESSE / PRÉMONITION / JOURNAL */
+/* Gold collector: slim champagne-metal edge, floating foil, uncluttered art. */
+.tcg-card.v10-tcg.variant-gold{
+  --gold-edge:#ffe6a5;
+  --gold-dark:#69400b;
+  --gold-glint:#fff9d4;
+  --stat-rule:#d9b6757d;
+  background:linear-gradient(152deg,#c18c32,#f4dc9f 12%,#7a4a15 49%,#f7daa0 78%,#a16c2a);
+  box-shadow:0 0 0 1px #fff4ce,0 0 0 2.5px #be8b40,0 11px 28px #000b,0 0 19px #e8b95c66!important;
+}
+.tcg-card.v10-tcg.variant-gold .v101-special-border{
+  position:absolute;z-index:4;pointer-events:none;
+  inset:1.2%;border:1.35px solid #ffeab8;
+  border-radius:4.9%;background:transparent;
+  box-shadow:inset 0 0 0 .65cqw #6b3b108a,inset 0 0 0 1.25cqw #ffe6a33d,0 0 1.6cqw #ffeab363;
+}
+.tcg-card.v10-tcg.variant-gold .v10-special-detail{
+  position:absolute;inset:3.3%;border:1px solid #ffecc3b0;border-radius:4.7%;
+  box-shadow:inset 0 0 0 1px #9a652560,0 0 1.2cqw #ffe3a74f;
+}
+.tcg-card.v10-tcg.variant-gold .v10-picture{
+  top:14.7%;bottom:15%;left:5.9%;right:5.9%;
+  border:1px solid #fce4b39c;border-radius:2.8%;
+  box-shadow:0 0 0 1px #77450b66,inset 0 0 12px #18120840;
+}
+.tcg-card.v10-tcg.variant-gold .v101-art-tint{
+  position:absolute;z-index:2;inset:0;pointer-events:none;
+  background:linear-gradient(165deg,#fff0b626 0%,transparent 25%,transparent 67%,#7c470852 100%);
+}
+.tcg-card.v10-tcg.variant-gold .v10-rarity{
+  color:#fff5d9;text-shadow:0 1px 4px #4f2608,0 0 8px #ffda87;
+  background:linear-gradient(90deg,#7b4615df,#c79646ed,#7b4615df);
+  border-radius:8px;min-height:6%;
+  padding:0 1cqw;
+}
+.tcg-card.v10-tcg.variant-gold .v10-name{
+  color:#fff8e8;background:linear-gradient(90deg,#301905bc,#8b5e25c7,#301905bc);
+  border:1px solid #fff0c14d;border-radius:1.3cqw;
+  text-shadow:0 1px 4px #1e1005,0 0 4px #ffe1a955;
+  top:8%;left:8%;right:8%;
+}
+.tcg-card.v10-tcg.variant-gold .v10-universe{
+  color:#ffecba;text-shadow:0 1px 4px #311c08;
+  top:16%;
+}
+.tcg-card.v10-tcg.variant-gold .v10-stats{
+  top:83.5%;bottom:4.55%;height:auto;left:6.3%;right:6.3%;padding:.5cqw .9cqw;
+  border:1px solid #f9da9bb8;border-radius:1.8cqw;
+  background:linear-gradient(115deg,#e2bf80f1,#fff0c3f6 40%,#d2a45ef0 100%);
+  box-shadow:inset 0 0 .85cqw #bb824870,0 0 1.5cqw #34220c65;
+}
+.tcg-card.v10-tcg.variant-gold .v10-stat-label{
+  color:#805217;text-shadow:none;
+}
+.tcg-card.v10-tcg.variant-gold .v10-stat-number{
+  color:#3d230a;text-shadow:none;
+}
+.tcg-card.v10-tcg.variant-gold .v10-series{color:#fff2c8;text-shadow:0 1px 4px #2e1c07}
+.tcg-card.v10-tcg.variant-gold .v10-foil{
+  opacity:.17;mix-blend-mode:screen;
+  background:linear-gradient(115deg,transparent 34%,#ffffeda1 48%,transparent 62%);
+  animation:v10-gleam 6.5s ease-in-out infinite;
+}
+/* Foil glimmers stay elegant rather than looking like a thick border. */
+.tcg-card.v10-tcg.variant-gold .v101-special-border:before,
+.tcg-card.v10-tcg.variant-gold .v101-special-border:after{
+  content:'✦';position:absolute;z-index:1;
+  color:#fffce0;font-size:7cqw;line-height:1;
+  text-shadow:0 0 1.2cqw #ffda63,0 0 2.8cqw #ffdb80;
+}
+.tcg-card.v10-tcg.variant-gold .v101-special-border:before{top:2.8%;left:2.5%}
+.tcg-card.v10-tcg.variant-gold .v101-special-border:after{bottom:2.8%;right:2.5%;font-size:4.5cqw}
+
+/* Omen: appears ONLY while the current card remains face down.
+ * Scaling the card stack, not the flipping button, preserves the flip animation. */
+.opening-fullscreen.omen-active{
+  --omen-zoom:1.025;--omen-dim:.38;--omen-glow:#c6ad8a8a;
+  --omen-ring:#e6d49f54;
+  background:radial-gradient(ellipse 40% 38% at 50% 48%,#3b374664,transparent 70%),
+             linear-gradient(155deg,#080a15,#020309 85%);
+  transition:background .65s ease;
+}
+.opening-fullscreen.omen-level-1{
+  --omen-zoom:1.026;--omen-dim:.4;--omen-glow:#f7d9a17a;--omen-ring:#edcf8566;
+}
+.opening-fullscreen.omen-level-2{
+  --omen-zoom:1.038;--omen-dim:.55;--omen-glow:#f17c848b;--omen-ring:#c64a6995;
+}
+.opening-fullscreen.omen-level-3{
+  --omen-zoom:1.05;--omen-dim:.67;--omen-glow:#b4e7ffa3;--omen-ring:#99ddff92;
+}
+.opening-fullscreen.omen-level-4{
+  --omen-zoom:1.063;--omen-dim:.76;--omen-glow:#8dffc2d9;--omen-ring:#6bffc2ae;
+}
+.opening-fullscreen.omen-active:after{
+  opacity:1;
+  background:radial-gradient(ellipse 33% 43% at 50% 47%,transparent 0 28%,rgb(0 0 0 / var(--omen-dim)) 100%);
+  pointer-events:none;
+  transition:opacity .55s ease;
+}
+.opening-fullscreen.omen-active:before{
+  opacity:.9;
+  background:radial-gradient(ellipse 36% 44% at 50% 48%,var(--omen-ring),transparent 64%);
+  animation:omen-breath 3s ease-in-out infinite alternate;
+}
+.opening-fullscreen.omen-active .opening-center{position:relative;z-index:2}
+.opening-fullscreen.omen-active .pack-stack-surface{
+  transform:scale(var(--omen-zoom));
+  filter:drop-shadow(0 0 19px var(--omen-glow)) drop-shadow(0 25px 35px #000b);
+  transition:transform .65s cubic-bezier(.2,.72,.26,1),filter .6s ease;
+}
+.opening-fullscreen.omen-active .opening-top-card .flip-front{
+  box-shadow:0 0 0 1px var(--omen-ring),0 0 20px var(--omen-glow),inset 0 0 12px #b1a2c12a;
+}
+.opening-fullscreen.omen-active .opening-tip{
+  color:#fff1d7;text-shadow:0 0 9px var(--omen-glow);
+}
+.opening-fullscreen.omen-active .opening-counter{color:#f0e1ca}
+@keyframes omen-breath{from{opacity:.45;transform:scale(.97)}to{opacity:1;transform:scale(1.035)}}
+
+/* Development journal: stable at the very end of the first home tab. */
+.dev-journal{
+  position:relative;isolation:isolate;
+  margin:36px 0 8px;padding:clamp(17px,3vw,30px);
+  background:radial-gradient(ellipse at 98% 8%,#6f9f7750,transparent 52%),
+             linear-gradient(140deg,#173d41,#0c2834 87%);
+  border:1px solid #b8af807f;border-radius:20px;
+  box-shadow:inset 0 1px #fff4bd27,0 15px 34px #001b2480;
+}
+.dev-journal:before{content:'✦';position:absolute;right:2%;top:0;color:#f2d89611;font:900 180px Georgia,serif;pointer-events:none;z-index:-1}
+.dev-journal-heading{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap}
+.dev-journal-heading h3{font:800 clamp(25px,3.7vw,37px)/1.13 Georgia,serif;letter-spacing:-.02em;margin:10px 0 8px;color:#fff2d1}
+.dev-journal-heading h3 em{font-style:normal;color:#9fe4bf}
+.dev-journal-heading p{font-size:12px;color:#c2d4c8;line-height:1.6;margin:0;max-width:560px}
+.dev-journal-heading .btn{min-height:40px}
+.dev-editor{
+  display:grid;grid-template-columns:minmax(0,1fr);
+  gap:11px;margin:0 0 22px;padding:17px;
+  background:#0e2a34e0;border:1px solid #ccb67f83;border-radius:16px;
+}
+.dev-editor-heading{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;color:#ffdfa1}
+.dev-editor-heading strong{font:800 16px Georgia,serif}
+.dev-editor-heading small{color:#bac9ba;font-size:11px}
+.dev-editor label{display:flex;flex-direction:column;gap:6px;color:#d7e6d7;font-size:11px;font-weight:800}
+.dev-editor input,.dev-editor textarea{
+  width:100%;display:block;min-width:0;
+  border-radius:10px;border:1px solid #79a5a08a;
+  padding:12px 13px;background:#153d45;color:#fff7e1;
+  font-size:14px;font-weight:500;line-height:1.5;
+  outline:0;
+}
+.dev-editor textarea{resize:vertical;min-height:118px;max-height:360px}
+.dev-editor input:focus-visible,.dev-editor textarea:focus-visible{outline:2px solid #f4d28d;outline-offset:1px}
+.dev-editor-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dev-editor-actions .btn{min-height:43px}
+.dev-message-list{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.dev-message{
+  position:relative;padding:19px 19px 17px;
+  border:1px solid #96b7a470;border-left:3px solid #e3c68e;
+  border-radius:13px;background:linear-gradient(135deg,#22434ae8,#14323cf3);
+  overflow-wrap:anywhere;box-shadow:0 7px 20px #001b244a;
+}
+.dev-message-ribbon{display:flex;gap:9px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:10px;line-height:1.4}
+.dev-message-ribbon span{color:#f3d9a4;font-weight:900;letter-spacing:1.5px}
+.dev-message-ribbon time{color:#a7c6bd}
+.dev-message h4{font:800 clamp(16px,2.7vw,21px)/1.22 Georgia,serif;margin:11px 0 9px;color:#fff3d6}
+.dev-message-body{font-size:13px;line-height:1.75;color:#e0ece3;margin:0;white-space:normal}
+.dev-message-actions{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap}
+.dev-message-actions .btn{min-height:38px}
+.dev-empty{display:flex;align-items:center;gap:13px;padding:14px 5px;color:#c6d6c4}
+.dev-empty span{font-size:31px;color:#f6d48c}
+.dev-empty p{font-size:13px;line-height:1.6;margin:0}
+@media(max-width:650px){
+ .dev-journal{padding:16px 13px;margin-top:30px}
+ .dev-journal-heading{gap:12px}
+ .dev-journal-heading h3{font-size:27px}
+ .dev-journal-heading .btn{font-size:11px}
+ .dev-editor{padding:13px}
+ .dev-editor-actions .btn{flex:1 1 130px}
+ .dev-message{padding:15px 13px}
+ .opening-fullscreen.omen-active .pack-stack-surface{transform:scale(min(var(--omen-zoom),1.047))}
+}
+@media(prefers-reduced-motion:reduce){
+ .opening-fullscreen.omen-active:before{animation:none!important}
+ .opening-fullscreen.omen-active .pack-stack-surface{transition:none!important;transform:none!important}
+ .tcg-card.v10-tcg.variant-gold .v10-foil{animation:none!important}
+}
