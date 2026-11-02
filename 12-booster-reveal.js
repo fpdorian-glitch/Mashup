@@ -10,7 +10,7 @@ export function createBoosterRevealFX(){
   const reduceMotion=()=>!!window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
   const mobile=()=>!!window.matchMedia?.('(max-width: 720px)')?.matches;
   const shell=()=>document.querySelector('.opening-fullscreen');
-  const classes=['fx-active','fx-rare','fx-epic','fx-legendary','fx-mythic','fx-ultra','fx-secret','fx-ultra-secret','fx-premium'];
+  const classes=['fx-prelude','fx-unveiled','fx-active','fx-rare','fx-epic','fx-legendary','fx-mythic','fx-ultra','fx-secret','fx-ultra-secret','fx-premium'];
   const tiers=['common','rare','epic','legendary','mythic','ultra'];
   function tierOf(card){
     if(!card)return 'common';
@@ -21,6 +21,9 @@ export function createBoosterRevealFX(){
   function flipMs(){
     return reduceMotion()?20:fast?250:mobile()?580:760;
   }
+  function preludeMs(card){if(isFast())return 0;const t=tierOf(card);return ['common','rare','epic'].includes(t)?0:mobile()?180:240;}
+  function prelude(card){reset();const root=shell();if(root&&preludeMs(card)){root.classList.add('fx-prelude');root.style.setProperty('--fx-intensity',tierOf(card)==='legendary'?'0.46':tierOf(card)==='mythic'?'0.62':tierOf(card)==='ultra-secret'?'0.92':'0.78');}}
+  function unveil(){shell()?.classList.add('fx-unveiled');}
   function putAwayMs(){
     return reduceMotion()?20:fast?150:mobile()?250:410;
   }
@@ -57,6 +60,7 @@ export function createBoosterRevealFX(){
     const root=shell();
     const tier=tierOf(card);
     if(!root||tier==='common'||isFast())return tier;
+    root.classList.remove('fx-prelude');
     root.classList.add('fx-active','fx-'+tier);
     if(card.variant==='gold'||card.variant==='full_art')root.classList.add('fx-premium');
     const badge=root.querySelector('#opening-vfx-label');
@@ -88,5 +92,5 @@ export function createBoosterRevealFX(){
       '<span class="opening-vfx-name" id="opening-vfx-label"></span>'+
       '</div>';
   }
-  return {tierOf,flipMs,putAwayMs,isFast,controls,decorations,sync,toggle,reset,play};
+  return {tierOf,flipMs,preludeMs,prelude,unveil,putAwayMs,isFast,controls,decorations,sync,toggle,reset,play};
 }
