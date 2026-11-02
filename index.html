@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
+  <meta name="mashup-version" content="10.2.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
   <title>Mashup — Le jeux de carte qui regroupe tout les univers</title>
   <style>
@@ -697,7 +700,7 @@
 })();
 </script>
   <link rel="stylesheet" href="./03-games.css?v=9.3">
-  <link rel="stylesheet" href="./07-v10-cards.css?v=10.1">
+  <link rel="stylesheet" href="./07-v10-cards.css?v=10.2">
   <link rel="stylesheet" href="./08-v10-theme.css?v=10.0">
 </head>
 <body>
@@ -724,7 +727,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V7.0 <span>·</span> COMPTES PRIVÉS</div>
+        <div class="tiny-copy">V10.2 <span>·</span> COMPTES PRIVÉS</div>
       </div>
     </aside>
     <div class="content-area">
@@ -733,7 +736,8 @@
         <div class="topbar-right">
           <div class="resource resource-dust" title="Éclats gagnés avec les doublons"><span>✧</span><strong id="dust-balance">0</strong><small>ÉCLATS</small></div>
           <div class="resource resource-coin" title="Crédits pour ouvrir des boosters"><span>◉</span><strong id="coin-balance">0</strong><small>CRÉDITS</small></div>
-          <button class="avatar" title="Compte" id="account-button" style="border:0;cursor:pointer">M</button><button class="btn btn-sm btn-quiet" data-action="logout">Sortir</button>
+          <button class="mashup-update-check" id="mashup-update-check" type="button" aria-label="Vérifier les mises à jour de Mashup" title="Vérifier les mises à jour">⟳</button>
+          <button class="avatar" title="Compte" id="account-button" style="border:0;cursor:pointer">M</button><button class="btn btn-sm btn-quiet" title="Se déconnecter" aria-label="Se déconnecter" data-action="logout">Sortir</button>
         </div>
       </header>
       <main id="page" tabindex="-1"></main>
@@ -741,6 +745,12 @@
     </div>
   </div>
   <div id="modal-root"></div><div id="toast-root" aria-live="polite"></div>
+  <div id="mashup-update-banner" class="mashup-update-banner" role="region" aria-label="Mise à jour de Mashup" hidden>
+    <div class="mashup-update-emblem" aria-hidden="true">✦</div>
+    <div class="mashup-update-copy"><strong id="mashup-update-version">Nouvelle version disponible</strong><p id="mashup-update-note"></p></div>
+    <div class="mashup-update-actions"><button id="mashup-update-apply" type="button" class="btn btn-primary">Mettre à jour</button><button id="mashup-update-later" type="button" class="btn btn-quiet">Plus tard</button></div>
+  </div>
+  <div id="mashup-update-status" class="mashup-update-status" role="status" aria-live="polite" hidden></div>
 <div id="pvp-invitation-root" role="status" aria-live="polite"></div>
 <div id="auth-cover" class="auth-cover"><div class="auth-panel"><div class="auth-logo">✳ <b>MASHUP</b></div><div id="auth-content"><p>Connexion au jeu...</p></div></div></div>
 <style>
@@ -1024,10 +1034,11 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
+<script src="./09-mashup-updates.js?v=10.2.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
-import { renderMashupV10Card } from './06-v10-cards.js?v=10.1';
+import { renderMashupV10Card } from './06-v10-cards.js?v=10.2';
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
