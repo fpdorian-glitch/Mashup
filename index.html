@@ -1250,7 +1250,7 @@ function render(){
   if(view==='collection')renderCollection();
   if(view==='arena')renderArena();
   if(view==='games')gamesUI.mount(document.getElementById('page'));
-  if(view==='missions'){missionsUI.render();missionsUI.refresh();}
+  if(view==='missions'){missionsUI.render();missionsUI.refresh({force:true});}
   if(view==='decks')renderDecks();
   if(view==='creator')renderCreator();
   if(view==='rules')renderRules();
