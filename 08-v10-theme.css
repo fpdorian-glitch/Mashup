@@ -54,3 +54,17 @@ body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;bac
  .topbar .resource small{display:none}
 }
 @media(prefers-reduced-motion:reduce){.nav-item,.tcg-card{animation:none!important;transition:none!important}}
+
+/* Memory = l'unique épreuve du Codex : plateau tactile et révélation lisible. */
+.games-mini-grid{grid-template-columns:minmax(0,760px);justify-content:center}
+.games-mini-item{padding:clamp(17px,3vw,27px);border-color:#e0c58e85;background:radial-gradient(ellipse at 95% 2%,#669d8960,transparent 55%),linear-gradient(145deg,#26484a,#0d2b37)}
+.games-mini-item h3{font-family:var(--display);color:#ffebb5}
+.games-memory-grid{max-width:700px;gap:clamp(7px,1.7vw,13px)}
+.games-memory-card{height:clamp(81px,12vw,125px);filter:drop-shadow(0 7px 6px #00131a60)}
+.games-memory-back{background:radial-gradient(circle at 50% 18%,#31696a,#102c3c 80%);border:2px solid #d8bd83;color:#fff1be;font-family:Georgia,serif}
+.games-memory-front{background:linear-gradient(130deg,#e8d7ac,#a4cbb5);border:2px solid #f3dda4;color:#1b3939;text-shadow:none;font-family:Georgia,serif;line-height:1.25}
+.games-memory-card.is-matched .games-memory-front{background:linear-gradient(135deg,#cae3af,#94bea2);border-color:#c9f6a5}
+.games-memory-meters{justify-content:center}
+.games-memory-meters span{border-color:#c5b58377;background:#173b42}
+.games-memory-instruction{color:#f3dbaa}
+@media(max-width:600px){.games-memory-card{height:clamp(67px,20vw,100px)}.games-memory-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.games-memory-front{font-size:clamp(10px,2.8vw,13px)}}
