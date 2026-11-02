@@ -1,0 +1,137 @@
+/* V10.6 — Les Missions du Multivers: mobile-first, low-overdraw interface. */
+.missions-screen{
+  max-width:1130px;margin:0 auto;padding-bottom:32px;
+  --mission-gold:#efca81;--mission-green:#b9e9bf;--mission-blue:#9fdcf1;
+}
+.missions-lead{
+  position:relative;isolation:isolate;overflow:hidden;
+  border:1px solid #88aca369;border-radius:24px;
+  padding:clamp(22px,4.5vw,47px);
+  margin:0 0 27px;
+  background:
+    radial-gradient(ellipse at 82% 25%,#bf89ef28,transparent 48%),
+    radial-gradient(ellipse at 12% 89%,#a2e4b721,transparent 50%),
+    linear-gradient(125deg,#172d3d,#103e44 90%);
+  box-shadow:inset 0 1px 0 #fff2c723,0 20px 42px #07182077;
+}
+.missions-lead:after{content:'✦';position:absolute;right:2%;bottom:-65px;font:900 290px/1 Georgia,serif;color:#f1dcac0d;pointer-events:none;z-index:-1}
+.missions-lead .eyebrow{font-size:10px;color:#edd295;letter-spacing:2.4px}
+.missions-lead h1{
+  margin:14px 0;max-width:760px;font:800 clamp(31px,5.8vw,62px)/1.05 Georgia,serif;
+  letter-spacing:-.04em;color:#fff4d5;
+}
+.missions-lead h1 em{color:#a7e8c8;font-style:normal}
+.missions-lead p{margin:0;max-width:630px;font-size:14px;line-height:1.7;color:#c7dce1}
+.missions-lead-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:20px}
+.missions-lead-actions span{color:#b6d1ce;font-size:11px}
+.missions-lead-actions .btn{min-height:41px}
+.missions-period{
+  border:1px solid #75959a69;border-radius:21px;
+  padding:clamp(14px,2.6vw,27px);margin-bottom:23px;
+  background:linear-gradient(130deg,#172d36e5,#0e2833ef);
+  box-shadow:0 9px 25px #061d295c;
+}
+.missions-period.is-daily{border-color:#b9a6727d}
+.missions-period.is-weekly{border-color:#77abc27d}
+.missions-period-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:21px}
+.missions-period-head .eyebrow{font-size:9px;letter-spacing:1.8px;color:#c8ad87}
+.missions-period-head h3{font:800 clamp(21px,3vw,29px)/1.2 Georgia,serif;color:#fff1d7;margin:7px 0}
+.missions-period-head p{font-size:11px;color:#afc9c2;margin:0;line-height:1.6}
+.missions-completion{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  border:1px solid #9dbab24d;border-radius:99px;
+  padding:8px 12px;background:#153c43;color:#dbf7e5;
+  font-size:11px;font-weight:800;white-space:nowrap;
+}
+.missions-task-list{display:grid;grid-template-columns:1fr;gap:12px}
+.mission-card{
+  display:grid;grid-template-columns:50px minmax(0,1fr) auto;gap:13px;
+  align-items:center;padding:17px;
+  border:1px solid #67878d75;border-radius:16px;
+  background:#1b3b46cc;
+  overflow:hidden;
+}
+.mission-card.is-ready{border-color:#e8cf8fba;box-shadow:inset 0 0 0 1px #ecddba20,0 0 16px #eec77721}
+.mission-card.is-claimed{border-color:#85c6ac78;background:#183a3d9c}
+.mission-symbol{display:grid;place-items:center;font-size:27px;color:#efd5a1;min-width:44px;min-height:44px;border-radius:12px;background:#305158}
+.mission-card.is-ready .mission-symbol{color:#ffe49e;background:#68522c}
+.mission-card.is-claimed .mission-symbol{color:#b6dfbf;background:#234b42}
+.mission-body{min-width:0}
+.mission-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:7px}
+.mission-heading h4{margin:0;color:#fff2d8;font:750 16px/1.25 Georgia,serif}
+.mission-state{color:#b4c5be;font-size:10px}
+.mission-card.is-ready .mission-state{color:#f3d895}
+.mission-card.is-claimed .mission-state{color:#a7e2be}
+.mission-body p{font-size:11px;color:#becfcb;margin:6px 0 11px;line-height:1.4}
+.mission-body small{font-size:10px;color:#c4d8d0;font-weight:700}
+.mission-progress{overflow:hidden;height:7px;border-radius:99px;background:#0d2833;border:1px solid #709b9375;margin-bottom:7px}
+.mission-progress span{display:block;min-width:0;height:100%;background:linear-gradient(90deg,#80b5a7,#f3d98e);border-radius:99px;transition:width .35s ease}
+.mission-card.is-claimed .mission-progress span{background:linear-gradient(90deg,#73bf9c,#b3ebba)}
+.mission-claim{display:flex;justify-content:flex-end;align-items:center}
+.mission-claim .btn{min-width:110px;min-height:42px;white-space:nowrap;font-size:12px}
+.missions-claimed{font-weight:800;color:#a4e6b5;font-size:12px;text-align:center}
+.missions-pending{color:#dac391;font-weight:750;font-size:13px;white-space:nowrap}
+.missions-bonus{
+  position:relative;overflow:hidden;display:grid;
+  grid-template-columns:44px minmax(0,1fr) auto;gap:14px;
+  margin-top:16px;padding:19px;border-radius:17px;
+  border:1px solid #bda17197;
+  background:linear-gradient(120deg,#54422390,#2c4142ac);
+  align-items:center;
+}
+.missions-bonus.is-unlocked{
+  border-color:#f4d38bbc;background:linear-gradient(135deg,#735a2db0,#2c5049bf);
+  box-shadow:0 0 20px #f3cf6c2a,inset 0 1px #fff7e535;
+}
+.missions-bonus-symbol{font-size:32px;text-align:center;color:#ffe1a1;text-shadow:0 0 14px #f1cb826b}
+.missions-bonus-copy strong{display:block;font:850 18px/1.2 Georgia,serif;color:#ffe2a9;margin-bottom:5px}
+.missions-bonus-copy small{display:block;font-size:11px;color:#e1d4b5;line-height:1.4}
+.missions-bonus-action{min-width:150px;text-align:right}
+.missions-bonus-action .btn{min-height:44px}
+.missions-locked{font-size:10px;line-height:1.5;color:#d2c5b4}
+.missions-footnote{font-size:11px;line-height:1.65;color:#aabfbf;margin:20px 5px 0}
+.missions-notice{color:#d8ddca;font-size:12px;padding:12px}
+.missions-home-teaser{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:16px 18px;margin:19px 0 2px;border-radius:17px;
+  border:1px solid #e9cd9882;
+  background:linear-gradient(115deg,#3d3e37,#183c40 80%);
+  box-shadow:inset 0 1px #fff5e124;
+}
+.missions-home-icon{display:grid;place-items:center;flex:none;width:46px;height:46px;background:#785e32a0;color:#ffdc89;border-radius:13px;font-size:26px}
+.missions-home-teaser div{flex:1;min-width:110px}
+.missions-home-teaser strong{display:block;color:#ffedc3;font:800 17px Georgia,serif;margin-bottom:6px}
+.missions-home-teaser small{display:block;color:#c6d8c9;font-size:11px;line-height:1.4}
+.missions-home-teaser .btn{min-height:42px}
+.missions-admin-panel{margin-top:25px;border-color:#b4bb8b72}
+.missions-admin-panel h3{font:800 25px Georgia,serif;margin:8px 0;color:#ffe4ad}
+.missions-admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:15px}
+.missions-admin-grid label{display:grid;gap:6px;color:#e5eddc;font-size:12px;font-weight:700}
+.missions-admin-field{display:flex;align-items:center;gap:7px}
+.missions-admin-field input{
+  width:100%;min-width:0;max-width:100%;
+  padding:11px 10px;border-radius:10px;
+  border:1px solid #7baba5aa;background:#143a42;
+  color:#fff7de;font:750 16px system-ui,sans-serif
+}
+.missions-admin-field span{color:#f1d48e;font-size:20px}
+#missions-admin-form .btn{min-height:44px;margin-top:14px}
+@media(max-width:750px){
+  .missions-lead{padding:23px 18px}
+  .missions-lead h1{font-size:34px}
+  .missions-period{padding:16px 12px;border-radius:17px}
+  .mission-card{grid-template-columns:38px minmax(0,1fr);gap:10px;padding:12px;border-radius:12px}
+  .mission-symbol{min-width:38px;min-height:38px;font-size:22px}
+  .mission-heading h4{font-size:14px}
+  .mission-claim{grid-column:2;justify-content:flex-start}
+  .mission-claim .btn{min-height:39px;min-width:120px}
+  .missions-bonus{grid-template-columns:35px minmax(0,1fr);gap:10px;padding:14px}
+  .missions-bonus-symbol{font-size:27px}
+  .missions-bonus-copy strong{font-size:16px}
+  .missions-bonus-action{grid-column:1/-1;min-width:0;text-align:left}
+  .missions-bonus-action .btn{width:100%}
+  .missions-home-teaser{gap:10px;padding:13px}
+  .missions-home-icon{width:39px;height:39px;font-size:22px}
+  .missions-home-teaser .btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.mission-progress span{transition:none}}
