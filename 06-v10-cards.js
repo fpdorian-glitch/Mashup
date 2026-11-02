@@ -22,9 +22,10 @@ export function renderMashupV10Card(card,options={},context){
     :'<span class="v10-picture-symbol" aria-hidden="true">'+esc(card.icon||'✦')+'</span>';
   // Une seule lettre par statistique : lisible même en combat sur écran étroit.
   const statLetters=['P','T','D','A','I'];
+  const statExpanded=['Puissance','Taille','Défense','Aura','Intell.'];
   const stats=STAT_FIELDS.map((field,i)=>{
     const number=statValue(card,field.key);
-    return '<div class="v10-stat v10-stat-'+i+'" title="'+esc(field.label)+' : '+esc(number)+'"><span class="v10-stat-label" aria-label="'+esc(field.label)+'">'+statLetters[i]+'</span><strong class="v10-stat-number">'+esc(number)+'</strong></div>';
+    return '<div class="v10-stat v10-stat-'+i+'" title="'+esc(field.label)+' : '+esc(number)+'"><span class="v10-stat-label" aria-label="'+esc(field.label)+'"><span class="v10-stat-initial" aria-hidden="true">'+statLetters[i]+'</span><span class="v10-stat-expanded" aria-hidden="true">'+statExpanded[i]+'</span></span><strong class="v10-stat-number">'+esc(number)+'</strong></div>';
   }).join('');
   const variantName=variant==='full_art'?'FULL ART':variant==='gold'?'GOLD':variant==='secret'?'SECRÈTE':'';
   const className='tcg-card v10-tcg v101-card '+rarity+' variant-'+variant+(special?' v101-special':' v101-standard');
@@ -34,7 +35,7 @@ export function renderMashupV10Card(card,options={},context){
   return '<div class="'+className+'" '+interactive+' style="--art1:'+CSSColor(card.color1,'#486e69')+';--art2:'+CSSColor(card.color2,'#162d38')+'">'+
     '<div class="v10-picture">'+picture+'</div>'+
     (special?'<div class="v101-art-tint" aria-hidden="true"></div><div class="v101-special-border" aria-hidden="true"></div>'+secretArcs:
-      '<img class="v10-frame" src="./assets/v10-1-card-frame.svg" loading="eager" decoding="async" alt="" aria-hidden="true">')+
+      '<img class="v10-frame" src="./assets/v10-3-'+rarity+'-frame.svg" loading="lazy" decoding="async" alt="" aria-hidden="true">')+
     '<div class="v10-rarity">'+esc(rarityName(rarity))+(variantName?' <small>'+variantName+'</small>':'')+'</div>'+
     '<div class="v10-name" title="'+safeName+'">'+safeName+'</div>'+
     '<div class="v10-universe" title="'+family+'">'+family+'</div>'+
