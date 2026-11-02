@@ -17,7 +17,7 @@ export function renderMashupV10Card(card,options={},context){
   const statIcons=['⚔','↕','⬡','✧','◇'];
   const stats=STAT_FIELDS.map((field,i)=>{
     const number=statValue(card,field.key);
-    return '<div class="v10-stat v10-stat-'+i+'"><span class="v10-stat-label" title="'+esc(field.label)+'">'+statIcons[i]+' '+esc(field.label)+'</span><strong class="v10-stat-number">'+esc(number)+'</strong></div>';
+    return '<div class="v10-stat v10-stat-'+i+'"><span class="v10-stat-label" title="'+esc(field.label)+'">'+statIcons[i]+' <span class="v10-stat-long">'+esc(field.label)+'</span><span class="v10-stat-short">'+esc(field.short)+'</span></span><strong class="v10-stat-number">'+esc(number)+'</strong></div>';
   }).join('');
   const image=src
     ?'<img class="v10-picture-img" '+loading+' src="'+esc(src)+'" alt="Illustration de '+safeName+'">'
