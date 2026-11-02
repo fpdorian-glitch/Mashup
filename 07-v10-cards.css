@@ -48,3 +48,12 @@
 @media(max-width:800px){.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.v10-tcg .v10-ability-description{font-size:4.8cqw}.v10-tcg .v10-stat-label{font-size:2.65cqw}}
 @media(max-width:420px){.v10-tcg .v10-rarity small{display:none}.v10-tcg .v10-ability-description{font-size:4.4cqw}}
 @media(prefers-reduced-motion:reduce){.tcg-card.v10-tcg,.v10-tcg .v10-foil{transition:none!important;animation:none!important}}
+
+/* On a 150-200px wide mobile card, use compact three-letter stat labels. */
+.v10-tcg .v10-stat-short{display:none}
+@container (max-width:225px){
+ .v10-tcg .v10-stat-long{display:none}
+ .v10-tcg .v10-stat-short{display:inline}
+ .v10-tcg .v10-stat-label{font-size:3.7cqw}
+ .v10-tcg .v10-stat-number{font-size:7.8cqw}
+}
