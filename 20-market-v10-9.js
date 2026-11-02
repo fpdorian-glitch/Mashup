@@ -92,6 +92,6 @@ export function createMarketUI({api,esc,toast,onAccepted,getOwnCards,getCurrentU
   finally{busy=false;}
   await refresh();
  }
- return {mount:()=>{render();refresh();},refresh,loadTarget:()=>selectPartner(document.getElementById('trade-partner')?.value),send,action,
+ return {mount:()=>{render();refresh();},refresh,selectPartner,loadTarget:()=>selectPartner(document.getElementById('trade-partner')?.value),send,action,
    clearCounter:()=>{counterId='';target=null;partnerCards=[];render();}};
 }
