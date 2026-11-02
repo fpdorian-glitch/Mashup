@@ -83,7 +83,7 @@ export function createBoosterRevealFX(){
       '<span class="opening-vfx-ring"></span>'+
       '<span class="opening-vfx-runes"></span>'+
       '<span class="opening-vfx-particles">'+
-      Array.from({length:12},(_,i)=>'<i style="--p:'+i+'"></i>').join('')+
+      Array.from({length:12},(_,i)=>'<i style="--angle:'+(i*30)+'deg;--delay:'+(i*45)+'ms"></i>').join('')+
       '</span>'+
       '<span class="opening-vfx-name" id="opening-vfx-label"></span>'+
       '</div>';
