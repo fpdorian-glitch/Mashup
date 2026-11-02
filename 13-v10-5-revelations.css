@@ -83,7 +83,7 @@
   width:clamp(3px,.7vw,8px);height:clamp(3px,.7vw,8px);
   border-radius:50%;background:var(--fx-primary);
   box-shadow:0 0 8px var(--fx-primary),0 0 16px var(--fx-primary);
-  transform:translate(-50%,-50%) rotate(calc(var(--p)*30deg))
+  transform:translate(-50%,-50%) rotate(var(--angle))
             translateY(0) scale(.15);
   opacity:0;
 }
@@ -123,7 +123,7 @@
 }
 .opening-fullscreen.fx-active .opening-vfx-particles i{
   animation:v105-particle 1.45s cubic-bezier(.14,.6,.2,1) both;
-  animation-delay:calc(var(--p)*45ms);
+  animation-delay:var(--delay);
 }
 .opening-fullscreen.fx-active .opening-vfx-name{
   animation:v105-label 1.75s ease-out both;
@@ -169,10 +169,10 @@
   100%{opacity:0;transform:translate(-50%,-50%) scale(1.5)}
 }
 @keyframes v105-particle{
-  0%{opacity:0;transform:translate(-50%,-50%) rotate(calc(var(--p)*30deg)) translateY(0) scale(.2)}
+  0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(0) scale(.2)}
   19%{opacity:1}
   75%{opacity:.84}
-  100%{opacity:0;transform:translate(-50%,-50%) rotate(calc(var(--p)*30deg)) translateY(calc(-1 * min(43vw,300px))) scale(1.1)}
+  100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) translateY(max(-43vw,-300px)) scale(1.1)}
 }
 @keyframes v105-label{
   0%{opacity:0;transform:translate(-50%,12px) scale(.8)}
