@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="10.5.0" />
+  <meta name="mashup-version" content="10.6.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -704,6 +704,7 @@
   <link rel="stylesheet" href="./08-v10-theme.css?v=10.0">
 <link rel="stylesheet" href="./11-v10-4.css?v=10.4">
 <link rel="stylesheet" href="./13-v10-5-revelations.css?v=10.5">
+<link rel="stylesheet" href="./16-v10-6-missions.css?v=10.6">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -718,6 +719,7 @@
         <button class="nav-item active" data-view="packs"><span class="nav-icon">◈</span><span>Boosters</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="collection"><span class="nav-icon">▦</span><span>Collection</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="games"><span class="nav-icon">⚔</span><span>Jeux</span><span class="nav-chevron">↗</span></button>
+        <button class="nav-item" data-view="missions"><span class="nav-icon">✦</span><span>Missions</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="decks"><span class="nav-icon">▤</span><span>Decks</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="online"><span class="nav-icon">◎</span><span>Joueurs</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="profile"><span class="nav-icon">◉</span><span>Mon profil</span><span class="nav-chevron">↗</span></button>
@@ -729,7 +731,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V10.5 <span>·</span> COMPTES PRIVÉS</div>
+        <div class="tiny-copy">V10.6 <span>·</span> COMPTES PRIVÉS</div>
       </div>
     </aside>
     <div class="content-area">
@@ -1036,13 +1038,14 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=10.5.0" defer></script>
+<script src="./09-mashup-updates.js?v=10.6.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
 import { renderMashupV10Card } from './06-v10-cards.js?v=10.3';
 import { createDevelopmentJournal } from './10-development-journal.js?v=10.4';
 import { createBoosterRevealFX } from './12-booster-reveal.js?v=10.5';
+import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
@@ -1117,6 +1120,7 @@ let state = loadSave();
 let onlineUser = null;
 const developmentJournal=createDevelopmentJournal({api,getUser:()=>onlineUser,esc,toast});
 const boosterFX=createBoosterRevealFX();
+const missionsUI=createMissionsUI({api,getUser:()=>onlineUser,esc,toast,onState:next=>{state=next;updateBalances();}});
 let editingCardId = null;
 let onlineSaving = false;
 
@@ -1238,7 +1242,7 @@ function cardMarkup(card,options={}){
 function labelIntro(eyebrow,title,sub){return `<div class="page-lead"><div class="eyebrow">${eyebrow}</div><h1 class="heading">${title}</h1><p class="text-sub">${sub}</p></div>`;}
 function render(){
   if(!onlineUser)return;
-  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',profile:'PROFIL'};
+  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',missions:'MISSIONS',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',profile:'PROFIL'};
   document.getElementById('breadcrumb-current').textContent=names[view];
   document.querySelectorAll('.nav-item').forEach(btn=>{btn.classList.toggle('active',btn.dataset.view===view||(view==='arena'&&btn.dataset.view==='games'));btn.setAttribute('aria-current',btn.dataset.view===view?'page':'false');});
   updateBalances();
@@ -1246,6 +1250,7 @@ function render(){
   if(view==='collection')renderCollection();
   if(view==='arena')renderArena();
   if(view==='games')gamesUI.mount(document.getElementById('page'));
+  if(view==='missions'){missionsUI.render();missionsUI.refresh({force:true});}
   if(view==='decks')renderDecks();
   if(view==='creator')renderCreator();
   if(view==='rules')renderRules();
@@ -1253,7 +1258,7 @@ function render(){
   if(view==='profile')renderProfile();
   if(view==='online')renderPlayersDirectory();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','decks','creator','rules','admin','profile','online'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();window.scrollTo({top:0,behavior:'smooth'});}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();window.scrollTo({top:0,behavior:'smooth'});}
 // V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
 const gamesUI = createGamesUI({
   getUser:()=>onlineUser,
@@ -1285,6 +1290,7 @@ function renderPacks(){
     <div class="pack-grid">${PACKS.map((p,i)=>`<article class="pack ${i===PACKS.length-1?'pack-featured':''}"><div class="pack-head"><span class="pack-index">PACK ${String(i+1).padStart(2,'0')}</span><span class="pack-chip">${esc(p.chip||((p.count>=5)?'5 CARTES':'ÉDITION'))}</span></div><div class="pack-visual"><div class="pack-art-gleam" style="--p1:${p.p1}"></div><div class="pack-pouch" style="--p1:${p.p1};--p2:${p.p2}">${GALAXY_MARK}</div></div><h4>${esc(p.name)}</h4><div class="pack-desc">${esc(p.description||`${p.count} cartes`)}</div><div class="pack-bottom"><span class="pack-price">${p.free&&!state.freePackUsed?'GRATUIT':p.price+(p.currency==='dust'?' <small>✧</small>':' <small>◉</small>')}</span><button class="btn btn-sm ${i===PACKS.length-1?'btn-primary':''}" data-action="open-pack" data-pack="${p.id}">Ouvrir <span class="arrow">↗</span></button></div></article>`).join('')}</div></section>
     <div class="divider"></div><div class="section-top"><div><div class="eyebrow">02 / TON PARCOURS</div><h3 class="small-heading">Ton univers en chiffres.</h3></div></div>
     <div class="series-return"><button class="btn btn-sm" data-action="back-series">← Choisir une autre série</button><strong>${esc(SERIES.find(x=>x.number===collectionSeries)?.name||'Série')}</strong></div><div class="mini-metrics"><div class="metric"><span>CARTES NORMALES OBTENUES</span><strong>${ownedCount()}</strong></div><div class="metric"><span>BOOSTERS OUVERTS</span><strong>${state.opened}</strong></div><div class="metric"><span>VICTOIRES EN ARÈNE</span><strong>${state.wins}</strong></div></div>
+    ${missionsUI.homeTeaser()}
     <p class="small-note">Les probabilités sont définies pour chaque booster par l'administrateur. Les raretés sans aucune carte disponible sont redistribuées entre celles qui existent ; la garantie de rareté s'applique ensuite.</p>
     ${developmentJournal.markup()}`;
 }
@@ -2041,7 +2047,7 @@ async function bootOnline(){
   }catch(e){showAuth('login',e.message);}
 }
 async function loadOnlineGame(){
-  const r=await api('/api/bootstrap');onlineUser=r.user;developmentJournal.setPosts(r.devPosts||[]);BASE_CARDS=r.cards;SERIES=r.series||SERIES;SERIES_TOTALS=r.seriesTotals||{};seriesDraft=SERIES.map(x=>({...x}));myPublicProfile=r.profile;state=r.state;state.custom=[];state.artwork={};syncClientPacks(r.packs||PACKS);packRates=r.packRates||structuredClone(PACK_RATE_DEFAULTS);battleRewards=r.battleRewards||battleRewards;battle=r.battle&&!r.battle.finished?r.battle:null;if(battle?.mode)arenaMode=battle.mode;
+  const r=await api('/api/bootstrap');onlineUser=r.user;developmentJournal.setPosts(r.devPosts||[]);missionsUI.setData(r.missions);BASE_CARDS=r.cards;SERIES=r.series||SERIES;SERIES_TOTALS=r.seriesTotals||{};seriesDraft=SERIES.map(x=>({...x}));myPublicProfile=r.profile;state=r.state;state.custom=[];state.artwork={};syncClientPacks(r.packs||PACKS);packRates=r.packRates||structuredClone(PACK_RATE_DEFAULTS);battleRewards=r.battleRewards||battleRewards;battle=r.battle&&!r.battle.finished?r.battle:null;if(battle?.mode)arenaMode=battle.mode;
   document.getElementById('auth-cover').style.display='none';
   document.getElementById('admin-nav').hidden=onlineUser.role!=='admin';
   document.getElementById('creator-nav').hidden=onlineUser.role!=='admin';
@@ -2050,7 +2056,7 @@ async function loadOnlineGame(){
   if(onlineUser.role!=='admin' && (view==='creator'||view==='admin'))view='packs';
   render();if(battle){view='arena';renderCombat();}pollInvitations();
 }
-async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
+async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;missionsUI.setData(null);developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
 async function removeOnlineArt(id){if(onlineUser?.role!=='admin')return;const c=getCard(id);if(!c)return;try{const r=await api('/api/admin/cards',{card:{...c,art:''}});BASE_CARDS=r.cards;showDetail(id);toast('Illustration retirée du catalogue.');}catch(e){toast(e.message,true);}}
 function avatarMarkup(v){const img=safeImage(v);return img?`<img class="profile-avatar" src="${img}" alt="Photo de profil">`:`<div class="profile-avatar">${esc(v||'✦')}</div>`;}
 function captureSeriesDraft(){
@@ -2208,6 +2214,8 @@ async function renderAdmin(){
   renderSeriesEditor();
   renderPackRateEditor();
   renderBattleRewardsEditor();
+  document.getElementById('page')?.insertAdjacentHTML('beforeend',missionsUI.adminMarkup());
+  missionsUI.renderAdminEditor();
 }
 function boosterContentEditor(p,i){
   const families=[...new Set(BASE_CARDS.filter(c=>!c.hidden).map(c=>c.family||'Original'))].sort((a,b)=>a.localeCompare(b,'fr'));
