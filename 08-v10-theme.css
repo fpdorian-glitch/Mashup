@@ -68,3 +68,99 @@ body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;bac
 .games-memory-meters span{border-color:#c5b58377;background:#173b42}
 .games-memory-instruction{color:#f3dbaa}
 @media(max-width:600px){.games-memory-card{height:clamp(67px,20vw,100px)}.games-memory-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.games-memory-front{font-size:clamp(10px,2.8vw,13px)}}
+
+
+/* V10.2 — iPhone Home Screen update controls.
+ * A remote version.json is checked with cache:no-store by 09-mashup-updates.js.
+ * Banner offers an explicit reload, never deletes Supabase session data.
+ */
+.mashup-update-check{
+  position:relative;flex:0 0 auto;display:grid;place-items:center;
+  width:38px;height:38px;min-width:38px;border-radius:13px;
+  border:1px solid #d3bb8191;background:#244a4bd9;color:#ffe2a1;
+  box-shadow:inset 0 1px #ffffff22;
+  font-size:25px;line-height:1;cursor:pointer;
+  touch-action:manipulation;
+}
+.mashup-update-check:hover,.mashup-update-check:focus-visible{
+  border-color:#ffe6ab;background:#315f59;
+}
+.mashup-update-check.has-update:after{
+  content:'';position:absolute;top:-3px;right:-3px;
+  width:10px;height:10px;border-radius:50%;
+  border:2px solid #183840;background:#f4d782;
+}
+.mashup-update-check.checking{opacity:.75}
+.mashup-update-check.checking:not(:focus){animation:mashup-check-pulse 1s ease-in-out infinite alternate}
+@keyframes mashup-check-pulse{to{background:#507773;color:#fff1cc}}
+#mashup-update-banner[hidden],#mashup-update-status[hidden]{display:none!important}
+.mashup-update-banner{
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+  width:min(590px,calc(100vw - 32px));z-index:1100;
+  display:grid;grid-template-columns:auto 1fr;gap:10px 14px;
+  border:1px solid #f3d99da9;border-radius:21px;
+  background:linear-gradient(125deg,#28534df7,#112d3af9);
+  padding:17px 18px;box-shadow:0 22px 70px #001921ed,0 0 26px #c4d5ae2c;
+  color:#fff4d5;backdrop-filter:blur(20px);
+}
+.mashup-update-emblem{
+  display:grid;place-items:center;align-self:start;width:36px;height:36px;
+  background:#e7c881;border-radius:12px;color:#163b3a;font-size:22px;
+}
+.mashup-update-copy{min-width:0}
+.mashup-update-copy strong{display:block;font:800 18px/1.2 Georgia,serif;color:#ffdfa4}
+.mashup-update-copy p{margin:7px 0 0;color:#dbe7dd;font-size:12px;line-height:1.5}
+.mashup-update-actions{
+  grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;
+  justify-content:flex-end
+}
+.mashup-update-actions .btn{min-height:42px;font-size:12px}
+.mashup-update-status{
+  position:fixed;right:20px;bottom:22px;z-index:1101;
+  padding:12px 16px;max-width:min(440px,calc(100vw - 28px));
+  border-radius:13px;border:1px solid #b1d7afac;
+  background:#153a3bf1;color:#f6ecd8;
+  box-shadow:0 10px 30px #0009;font-size:12px;line-height:1.4;
+}
+.mashup-update-status[data-kind="error"]{border-color:#ff9a8d;color:#ffdfdb}
+.mashup-update-status[data-kind="success"]{border-color:#b8e7bc}
+@media(max-width:800px){
+  /* Old styles left the desktop brand in the tiny fixed mobile sidebar. */
+  .sidebar>.brand{display:none!important}
+  .sidebar>.navigation{width:100%;margin:0}
+  .mashup-update-check{height:34px;width:34px;min-width:34px;font-size:23px;border-radius:11px}
+  .mashup-update-banner{
+    bottom:calc(83px + env(safe-area-inset-bottom,0px));
+    max-height:calc(100dvh - 110px);
+    overflow-y:auto;
+    width:calc(100vw - 20px);
+    padding:14px;
+    border-radius:17px;
+  }
+  .mashup-update-copy strong{font-size:16px}
+  .mashup-update-copy p{font-size:11px}
+  .mashup-update-status{
+    bottom:calc(83px + env(safe-area-inset-bottom,0px));
+    left:10px;right:10px;max-width:none;text-align:center
+  }
+}
+@media(max-width:420px){
+  .topbar{padding:0 7px;gap:6px}
+  .topbar .breadcrumb{min-width:0;font-size:0;letter-spacing:0}
+  .topbar .breadcrumb strong{font-size:10px;white-space:nowrap}
+  .topbar .breadcrumb span{display:none}
+  .topbar-right{gap:3px;min-width:0}
+  .topbar .resource{padding:0 5px;height:31px;gap:2px}
+  .topbar .resource>span{font-size:14px}
+  .topbar .resource strong{font-size:11px}
+  .topbar .avatar{margin-left:0}
+  .topbar .btn[data-action="logout"]{
+    width:30px;min-width:30px;height:32px;min-height:32px;
+    padding:0;font-size:0;border-radius:10px;
+  }
+  .topbar .btn[data-action="logout"]:after{
+    content:'⇥';font-size:19px;line-height:1;color:#e5f3da
+  }
+  .mashup-update-check{width:31px;min-width:31px;height:32px}
+}
+@media(prefers-reduced-motion:reduce){.mashup-update-check.checking{animation:none!important}}

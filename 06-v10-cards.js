@@ -20,10 +20,11 @@ export function renderMashupV10Card(card,options={},context){
   const loading=options.lazy?'loading="lazy" fetchpriority="low" decoding="async"':'loading="eager" decoding="async"';
   const picture=imageUrl?'<img class="v10-picture-img" '+loading+' src="'+esc(imageUrl)+'" alt="Illustration de '+safeName+'">'
     :'<span class="v10-picture-symbol" aria-hidden="true">'+esc(card.icon||'✦')+'</span>';
-  const statIcons=['⚔','↕','⬡','✧','◇'];
+  // Une seule lettre par statistique : lisible même en combat sur écran étroit.
+  const statLetters=['P','T','D','A','I'];
   const stats=STAT_FIELDS.map((field,i)=>{
     const number=statValue(card,field.key);
-    return '<div class="v10-stat v10-stat-'+i+'"><span class="v10-stat-label" title="'+esc(field.label)+'">'+statIcons[i]+' <span class="v10-stat-long">'+esc(field.label)+'</span><span class="v10-stat-short">'+esc(field.short)+'</span></span><strong class="v10-stat-number">'+esc(number)+'</strong></div>';
+    return '<div class="v10-stat v10-stat-'+i+'" title="'+esc(field.label)+' : '+esc(number)+'"><span class="v10-stat-label" aria-label="'+esc(field.label)+'">'+statLetters[i]+'</span><strong class="v10-stat-number">'+esc(number)+'</strong></div>';
   }).join('');
   const variantName=variant==='full_art'?'FULL ART':variant==='gold'?'GOLD':variant==='secret'?'SECRÈTE':'';
   const className='tcg-card v10-tcg v101-card '+rarity+' variant-'+variant+(special?' v101-special':' v101-standard');
