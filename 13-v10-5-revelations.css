@@ -268,5 +268,15 @@
   .opening-fullscreen.fx-active .pack-stack-surface{animation:none!important}
   .opening-fullscreen .opening-speed{transition:none!important}
 }
+/* Quick mode also stops the previous release's ambient rarity pulses. */
+.opening-fullscreen.opening-quick:before,
+.opening-fullscreen.opening-quick:after{
+  animation:none!important;
+  opacity:0!important;
+}
+.opening-fullscreen.opening-quick .opening-top-card.revealed{
+  filter:none!important;
+  transform:none!important;
+}
 .opening-fullscreen.opening-quick .opening-vfx{display:none!important}
 .opening-fullscreen.opening-quick.fx-active .pack-stack-surface{animation:none!important}
