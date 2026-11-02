@@ -1124,6 +1124,9 @@ let view = 'packs';
 let collFilter = 'owned';
 let collRarity = 'all';
 let collSearch = '';
+function collectionBatchSize(){return window.matchMedia?.('(max-width: 720px)')?.matches?24:36;}
+let collVisibleLimit=collectionBatchSize();
+function resetCollectionWindow(){collVisibleLimit=collectionBatchSize();}
 let collSort='rarity-desc';
 let collUniverse='all';
 let arenaMode='simple';
@@ -1433,7 +1436,7 @@ function renderCollection(){
         <label class="collection-search-label">Rechercher<input id="collection-search" type="search" placeholder="Nom d'une carte…" value="${esc(collSearch)}"></label>
       </div><div class="filter-footer"><span id="collection-count" class="small-note"></span><button class="btn btn-sm" data-action="clear-collection-filters">Réinitialiser</button></div>
     </div>
-    <div class="collection-grid" id="collection-grid"></div><div class="divider"></div><div class="flex-between" style="align-items:center;flex-wrap:wrap"><p class="small-note">Collection sauvegardée sur ton compte Mashup, accessible à chaque connexion.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm" data-action="export-save">↓ Exporter</button>${onlineUser.role==='admin'?`<label class="btn btn-sm" style="cursor:pointer">↑ Importer ma V4 <input id="import-save" type="file" accept="application/json" style="display:none"></label>`:''}</div></div>`;
+    <div class="collection-grid" id="collection-grid"></div><div id="collection-load-more" class="collection-load-more" hidden></div><div class="divider"></div><div class="flex-between" style="align-items:center;flex-wrap:wrap"><p class="small-note">Collection sauvegardée sur ton compte Mashup, accessible à chaque connexion.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm" data-action="export-save">↓ Exporter</button>${onlineUser.role==='admin'?`<label class="btn btn-sm" style="cursor:pointer">↑ Importer ma V4 <input id="import-save" type="file" accept="application/json" style="display:none"></label>`:''}</div></div>`;
   renderCollectionGrid();
 }
 function renderCollectionGrid(){
@@ -1454,8 +1457,16 @@ function renderCollectionGrid(){
     if(collSort==='owned-desc')return (Number(state.owned[b.id])||0)-(Number(state.owned[a.id])||0)||rankB-rankA||byName;
     return rankB-rankA||byName;
   });
-  const countElement=document.getElementById('collection-count');if(countElement)countElement.textContent='Filtres cumulables';
-  document.getElementById('collection-grid').innerHTML=result.length?result.map(c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin'),lazy:true})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`).join(''):`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">✳</div><h3>Aucune carte trouvée</h3><p>Modifie tes filtres ou ouvre quelques boosters.</p><button class="btn btn-primary" data-view="packs">Découvrir les boosters</button></div>`;
+  const shown=result.slice(0,collVisibleLimit);
+  const countElement=document.getElementById('collection-count');
+  if(countElement)countElement.textContent=result.length?shown.length+' / '+result.length+' cartes affichées':'Aucune carte trouvée';
+  document.getElementById('collection-grid').innerHTML=result.length?shown.map(c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin'),lazy:true})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`).join(''):`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">✳</div><h3>Aucune carte trouvée</h3><p>Modifie tes filtres ou ouvre quelques boosters.</p><button class="btn btn-primary" data-view="packs">Découvrir les boosters</button></div>`;
+  const loadMore=document.getElementById('collection-load-more');
+  if(loadMore){
+    const remaining=result.length-shown.length;
+    loadMore.hidden=remaining<=0;
+    loadMore.innerHTML=remaining>0?'<button class="btn btn-primary" type="button" data-action="load-more-collection">Afficher '+Math.min(collectionBatchSize(),remaining)+' cartes supplémentaires ↗</button><small>'+remaining+' carte'+(remaining>1?'s':'')+' encore disponibles dans les résultats</small>':'';
+  }
 }
 function showDetail(id){
   const c=getCard(id);if(!c||c.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[id]))return;
@@ -1893,8 +1904,8 @@ document.addEventListener('click',event=>{
     case 'favorite':toggleFavorite(button.dataset.id);break;
     case 'deck-toggle':toggleDeck(button.dataset.id);break;
     case 'remove-art':removeOnlineArt(button.dataset.id);break;
-    case 'filter':collFilter=button.dataset.filter;renderCollectionGrid();break;
-    case 'choose-series':collectionSeries=Number(button.dataset.series);collUniverse='all';collRarity='all';collSearch='';renderCollection();break;
+    case 'filter':collFilter=button.dataset.filter;resetCollectionWindow();renderCollectionGrid();break;
+    case 'choose-series':collectionSeries=Number(button.dataset.series);collUniverse='all';collRarity='all';collSearch='';resetCollectionWindow();renderCollection();break;
     case 'back-series':collectionSeries=0;renderCollection();break;
     case 'add-series':addSeriesDraft();break;
     case 'save-series':saveSeriesDraft();break;
@@ -1913,7 +1924,8 @@ document.addEventListener('click',event=>{
     case 'pvp-choose':pvpAction('choose',{stat:button.dataset.stat});break;
     case 'pvp-next':pvpAction('next');break;
     case 'pvp-quit':pvpAction('quit');break;
-    case 'clear-collection-filters':collFilter='owned';collRarity='all';collUniverse='all';collSort='rarity-desc';collSearch='';renderCollection();break;
+    case 'clear-collection-filters':collFilter='owned';collRarity='all';collUniverse='all';collSort='rarity-desc';collSearch='';resetCollectionWindow();renderCollection();break;
+    case 'load-more-collection':collVisibleLimit+=collectionBatchSize();renderCollectionGrid();break;
     case 'start-battle':startBattle();break;
     case 'quit-battle':quitBattle();break;
     case 'challenge-stat':challengeStat(button.dataset.stat,false);break;
@@ -1945,7 +1957,7 @@ document.addEventListener('click',event=>{
 });
 document.addEventListener('input',event=>{
   if(event.target.id==='deck-search'){deckSearch=event.target.value;renderDeckRoster();return;}
-  if(event.target.id==='collection-search'){collSearch=event.target.value;renderCollectionGrid();return;}
+  if(event.target.id==='collection-search'){collSearch=event.target.value;resetCollectionWindow();renderCollectionGrid();return;}
   if(event.target.dataset.contentSearch!==undefined){const i=event.target.dataset.contentSearch,q=event.target.value.toLocaleLowerCase('fr');document.querySelectorAll(`[data-content-card-list="${i}"] label`).forEach(el=>el.hidden=!el.dataset.cardSearch.includes(q));return;}
   if(event.target.id==='admin-card-search'){renderAdminCards(event.target.value);return;}
   if(event.target.dataset.packRate){updateRateTotal(event.target.dataset.packRate);return;}
@@ -1962,11 +1974,11 @@ document.addEventListener('change',async event=>{
   if(t.id==='deck-sort'){deckSort=t.value;renderDeckRoster();return;}
   if(t.id==='deck-ownership'){deckOwnership=t.value;renderDeckRoster();return;}
   if(t.id==='profile-avatar-input'){try{const avatar=await compactAvatar(t.files?.[0]);document.getElementById('profile-avatar-data').value=avatar;document.getElementById('avatar-preview').innerHTML=avatarMarkup(avatar);}catch(e){toast(e.message,true);}return;}
-  if(t.id==='collection-ownership'){collFilter=t.value;renderCollectionGrid();return;}
-  if(t.id==='collection-rarity'){collRarity=t.value;renderCollectionGrid();return;}
-  if(t.id==='collection-sort'){collSort=t.value;renderCollectionGrid();return;}
+  if(t.id==='collection-ownership'){collFilter=t.value;resetCollectionWindow();renderCollectionGrid();return;}
+  if(t.id==='collection-rarity'){collRarity=t.value;resetCollectionWindow();renderCollectionGrid();return;}
+  if(t.id==='collection-sort'){collSort=t.value;resetCollectionWindow();renderCollectionGrid();return;}
   if(t.dataset.contentMode!==undefined){const i=t.dataset.contentMode;for(const mode of ['universes','series','cards']){const panel=document.querySelector(`[data-content-panel="${i}-${mode}"]`);if(panel)panel.hidden=t.value!==mode;}return;}
-  if(t.id==='collection-universe'){collUniverse=t.value;renderCollectionGrid();return;}
+  if(t.id==='collection-universe'){collUniverse=t.value;resetCollectionWindow();renderCollectionGrid();return;}
   if(t.id==='import-save'){await importSave(t.files?.[0]);return;}
   if(t.id==='draft-image'){
     try{await openImageCropper(t.files?.[0]);}catch(e){toast(e.message,true);}t.value='';return;
