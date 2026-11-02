@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 425" preserveAspectRatio="none">
+<defs>
+ <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#645264"/><stop offset=".28" stop-color="#18141e"/><stop offset=".6" stop-color="#46313c"/><stop offset="1" stop-color="#120f16"/></linearGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffe1b3"/><stop offset=".2" stop-color="#df896b"/><stop offset=".46" stop-color="#842638"/><stop offset=".68" stop-color="#ffb78b"/><stop offset="1" stop-color="#a94b50"/></linearGradient>
+ <linearGradient id="parch" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f5dad6"/><stop offset=".5" stop-color="#d6a39e"/><stop offset="1" stop-color="#a46a70"/></linearGradient>
+ <linearGradient id="teal" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#6d2639"/><stop offset=".55" stop-color="#190e21"/><stop offset="1" stop-color="#8e3343"/></linearGradient>
+ <radialGradient id="gem"><stop stop-color="#fff3e4"/><stop offset=".36" stop-color="#ff7b83"/><stop offset="1" stop-color="#9b152c"/></radialGradient>
+ <pattern id="etch" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18L18 0M-5 4L4 -5M14 23L23 14" fill="none" stroke="#f9caad" stroke-width=".35" opacity=".15"/></pattern>
+ <filter id="glow" x="-75%" y="-75%" width="250%" height="250%"><feGaussianBlur stdDeviation="3"/></filter>
+</defs>
+<!-- sculpted head, footer and outer rim; central artwork remains transparent -->
+<path d="M18 3H282Q297 3 297 21V405Q297 422 280 422H20Q3 422 3 405V21Q3 3 18 3Z" fill="none" stroke="#36141e" stroke-width="6"/>
+<path d="M18 5H282Q295 5 295 21V403Q295 419 280 419H20Q5 419 5 403V21Q5 5 18 5Z" fill="none" stroke="url(#metal)" stroke-width="6"/>
+<rect x="10" y="10" width="280" height="405" rx="14" fill="none" stroke="#ffe5cd" stroke-width="1.5" opacity=".85"/>
+<path d="M17 14H283L284 84H16Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="1.5"/>
+<path d="M16 353H284V410H16Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="1.7"/>
+<path d="M16 353H284V410H16Z" fill="url(#etch)" opacity=".85"/>
+<!-- title and rarity medallions -->
+<path d="M91 8H209L220 21L210 33H90L79 21Z" fill="#341921" stroke="url(#metal)" stroke-width="3"/>
+<path d="M30 34H270L281 52L267 70H33L19 52Z" fill="url(#parch)" stroke="url(#metal)" stroke-width="3.5"/>
+<path d="M69 68H231L242 79L230 87H70L58 79Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="2.3"/>
+<!-- art window border: genuinely transparent -->
+<path d="M19 89Q19 83 25 83H275Q281 83 281 89V349Q281 355 273 355H27Q19 355 19 349Z" fill="none" stroke="#783039" stroke-width="6"/>
+<path d="M21 89Q21 85 26 85H274Q279 85 279 89V348Q279 352 273 352H27Q21 352 21 348Z" fill="none" stroke="url(#metal)" stroke-width="2.8"/>
+<path d="M23 87H277M22 350H278" stroke="#ffd9b5" stroke-width="1" opacity=".7"/>
+<!-- hanging ruined stone corner engravings -->
+<g fill="url(#stone)" stroke="#da8d83" stroke-width="1.4">
+<path d="M12 89L35 89L27 108L12 127Z"/>
+<path d="M12 127L27 108L31 129L12 148Z"/>
+<path d="M12 148L31 129L27 155L12 166Z"/>
+<path d="M288 89L266 89L274 108L288 127Z"/>
+<path d="M288 127L274 108L270 129L288 148Z"/>
+<path d="M288 148L270 129L274 155L288 166Z"/>
+</g>
+<!-- leaf etchings under title -->
+<g fill="none" stroke="#97505f" stroke-width="1.1" opacity=".8">
+<path d="M25 87Q55 94 70 121M276 87Q244 98 234 123"/>
+<path d="M36 92q13 1 17 8q-15 3-17-8M44 104q10-2 16 8q-13 0-16-8M263 95q-14 1-18 9q14 4 18-9M252 109q-11-2-15 7q13 2 15-7"/>
+</g>
+<!-- Colored rarity frame. Clean V10.1 design: no story/lore/ability panel, illustration fills the card. -->
+<path d="M20 354H280" fill="none" stroke="url(#metal)" stroke-width="3"/>
+<path d="M31 355L38 349L45 355M269 355L262 349L255 355" fill="none" stroke="#ff8f93" stroke-width="1.5"/>
+<!-- V10.3: exact uniform 5-column 300x425 stat panel. CSS grid x20..280, y363..408. -->
+<rect x="20" y="363" width="260" height="45" rx="4" fill="url(#parch)" stroke="url(#metal)" stroke-width="2.4"/>
+<path d="M72 364V407 M124 364V407 M176 364V407 M228 364V407" fill="none" stroke="#b55c64" stroke-width="1.25" opacity=".85"/>
+<path d="M20 385H280" fill="none" stroke="#b55c64" stroke-width="1.35" opacity=".9"/>
+<path d="M23 366H277 M23 405H277" fill="none" stroke="#ffd9b5" stroke-width=".8" opacity=".6"/>
+<!-- series footer wreath and crystals -->
+<path d="M20 412H113L122 403H178L187 412H280" fill="none" stroke="url(#metal)" stroke-width="3"/>
+<path d="M126 404H174L180 416H120Z" fill="url(#teal)" stroke="url(#metal)" stroke-width="2"/>
+<g fill="url(#gem)" stroke="#fff5db" stroke-width=".8">
+ <path d="M14 18l7 11-7 13-7-13Z"/><path d="M286 18l7 11-7 13-7-13Z"/>
+ <path d="M14 392l7 12-7 12-7-12Z"/><path d="M286 392l7 12-7 12-7-12Z"/>
+ <path d="M150 2l6 11-6 13-6-13Z"/><path d="M150 410l5 8-5 6-5-6Z"/>
+</g>
+<g fill="#ffd2be"><path d="M42 20l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" opacity=".5"/><path d="M258 20l3 7 7 3-7 3-3 7-3-7-7-3Z" opacity=".5"/></g>
+</svg>
