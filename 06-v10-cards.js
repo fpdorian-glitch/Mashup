@@ -39,6 +39,6 @@ export function renderMashupV10Card(card,options={},context){
     '<div class="v10-universe" title="'+family+'">'+family+'</div>'+
     '<div class="v10-stats">'+stats+'</div>'+
     '<div class="v10-series"><span class="v10-serial">'+serial+'</span><span class="v10-series-badge">'+esc(series)+'</span></div>'+
-    '<span class="v10-foil" aria-hidden="true"></span>'+
+    '<span class="v10-special-detail" aria-hidden="true"></span><span class="v10-foil" aria-hidden="true"></span>'+
     '</div>';
 }
