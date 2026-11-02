@@ -57,3 +57,49 @@
  .v10-tcg .v10-stat-label{font-size:3.7cqw}
  .v10-tcg .v10-stat-number{font-size:7.8cqw}
 }
+
+
+/* V10.1 — Collection Épure : moins de texte, trois finitions vraiment distinctes */
+.v10-tcg .v10-ability-title,.v10-tcg .v10-ability-description{display:none!important}
+.v10-tcg .v10-picture{bottom:16.5%;top:18%;left:6%;right:6%}
+.v10-tcg .v10-stats{top:86.2%}
+.v10-tcg .v10-special-detail{position:absolute;inset:0;z-index:4;pointer-events:none}
+.v10-tcg .v10-name{z-index:9}
+.v10-tcg .v10-rarity,.v10-tcg .v10-universe,.v10-tcg .v10-stats,.v10-tcg .v10-series{z-index:9}
+/* FULL ART — the artwork covers the entire card, a slim glass caption and floating stats */
+.tcg-card.v10-tcg.variant-full_art{background:#0d2533;box-shadow:0 0 0 2px #9edbd4,0 9px 32px #000b,0 0 28px #88dfd88a}
+.v10-tcg.variant-full_art .v10-picture{inset:0;border-radius:0}
+.v10-tcg.variant-full_art .v10-picture:after{background:linear-gradient(180deg,#031c31d8,transparent 22%,transparent 55%,#031621f0 93%)}
+.v10-tcg.variant-full_art .v10-frame{display:none}
+.v10-tcg.variant-full_art .v10-rarity{top:2%;left:4%;right:auto;padding:1.2cqw 3cqw;height:auto;background:#0d333bbf;border:1px solid #b5e7d5;border-radius:20px}
+.v10-tcg.variant-full_art .v10-name{top:8%;left:5%;right:5%;justify-content:flex-start;color:#fff9e7;text-shadow:0 2px 8px #000,0 0 12px #071923;font-size:8.3cqw}
+.v10-tcg.variant-full_art .v10-universe{top:16%;left:5%;right:15%;justify-content:flex-start;color:#a8f4e4;text-shadow:0 2px 6px #000}
+.v10-tcg.variant-full_art .v10-stats{top:82.7%;height:11.5%;left:4%;right:4%;padding:1.4cqw;background:#091e2ce8;border:1px solid #a4e1d596;border-radius:8px;backdrop-filter:blur(7px)}
+.v10-tcg.variant-full_art .v10-stat-label{color:#f4e8ca}
+.v10-tcg.variant-full_art .v10-stat-number{color:#f7f6e6}
+.v10-tcg.variant-full_art .v10-series{bottom:1%;left:5%;right:5%;color:#fff8e6}
+.v10-tcg.variant-full_art .v10-special-detail{inset:1.6%;border:1px solid #d9fff69c;border-radius:4.5%}
+/* GOLD — embossed bullion plaque, thick multi-layered metallic frame */
+.tcg-card.v10-tcg.variant-gold{background:linear-gradient(135deg,#6c3d08,#ffde82 21%,#8b5416 48%,#f6cc65 78%,#704112);box-shadow:0 0 0 3px #ffe6a2,0 0 0 7px #a46a22,0 0 0 9px #f7d178,0 13px 34px #000c,0 0 34px #f5c75a91}
+.v10-tcg.variant-gold .v10-picture{top:17%;bottom:17%;left:9%;right:9%;border:3px ridge #ffe2a0;box-shadow:0 0 0 3px #8d5519,inset 0 0 24px #aa7214}
+.v10-tcg.variant-gold .v10-frame{filter:sepia(.6) saturate(1.5) brightness(1.08)}
+.v10-tcg.variant-gold .v10-special-detail{inset:2%;border:2.5cqw double #fff1ae;border-radius:4%;box-shadow:inset 0 0 0 1.4cqw #9b63164d,inset 0 0 12cqw #fff1b04d}
+.v10-tcg.variant-gold .v10-name{color:#3c2205;text-shadow:0 1px #fff2bb,0 0 8px #fff6d5}
+.v10-tcg.variant-gold .v10-stats{background:linear-gradient(90deg,#ad791ec9,#ffdf86dd,#ad791ec9);border:1px solid #fff1b2;border-radius:6px;top:85.4%;height:9.7%}
+.v10-tcg.variant-gold .v10-stat-label{color:#fff7da;text-shadow:0 1px 3px #422200}
+.v10-tcg.variant-gold .v10-stat-number{color:#422605}
+.v10-tcg.variant-gold .v10-foil{opacity:.25;background:linear-gradient(115deg,transparent 29%,#fff8dca1 48%,transparent 64%);animation:v10-gleam 4s ease-in-out infinite}
+/* SECRET — dark emerald, distinct arc-shaped spectral inlays and animated aurora */
+.tcg-card.v10-tcg.variant-secret{background:radial-gradient(circle at 50% 30%,#195e54,#061b27 72%);box-shadow:0 0 0 2px #b0ffda,0 0 0 5px #0e6d60,0 10px 34px #000b,0 0 42px #26edb7c9}
+.v10-tcg.variant-secret .v10-frame{filter:hue-rotate(78deg) saturate(1.4) brightness(.8);opacity:.7}
+.v10-tcg.variant-secret .v10-picture{top:15%;bottom:16%;left:5%;right:5%;border-radius:7%;box-shadow:inset 0 0 30px #20ffd43b}
+.v10-tcg.variant-secret .v10-picture:after{content:'';position:absolute;inset:0;background:linear-gradient(150deg,#00ffb41a,transparent 30%,#00e6ba18 70%,#0b352b8a)}
+.v10-tcg.variant-secret .v10-special-detail{inset:2%;border:1px solid #91ffca;border-radius:42% 8% 42% 8% / 13% 38% 13% 38%;box-shadow:inset 0 0 0 1.2cqw #2ef9b529,0 0 14px #38ffb8a0}
+.v10-tcg.variant-secret .v10-special-detail:before,.v10-tcg.variant-secret .v10-special-detail:after{content:'';position:absolute;inset:7% -21%;border:2px solid #8affd68c;border-radius:50%;transform:rotate(-32deg);box-shadow:0 0 16px #52ffd39c}
+.v10-tcg.variant-secret .v10-special-detail:after{transform:rotate(32deg);border-color:#c4f2c5a1}
+.v10-tcg.variant-secret .v10-rarity{color:#c5ffe1;text-shadow:0 0 9px #2dffc6}
+.v10-tcg.variant-secret .v10-name{color:#e5ffeb;text-shadow:0 1px 6px #00241c,0 0 8px #00b89d;background:#052a2da6;border-radius:8px}
+.v10-tcg.variant-secret .v10-stats{background:#092d2ccf;border:1px solid #83ffcb;border-radius:7px;top:85%;height:10%}
+.v10-tcg.variant-secret .v10-stat-number{color:#c2ffe1;text-shadow:0 0 6px #20f2bd}
+.v10-tcg.variant-secret .v10-series{color:#b9ffe0}
+@media(prefers-reduced-motion:reduce){.v10-tcg.variant-gold .v10-foil,.v10-tcg.variant-secret .v10-foil{animation:none}}
