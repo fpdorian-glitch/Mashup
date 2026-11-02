@@ -103,3 +103,169 @@
 .v10-tcg.variant-secret .v10-stat-number{color:#c2ffe1;text-shadow:0 0 6px #20f2bd}
 .v10-tcg.variant-secret .v10-series{color:#b9ffe0}
 @media(prefers-reduced-motion:reduce){.v10-tcg.variant-gold .v10-foil,.v10-tcg.variant-secret .v10-foil{animation:none}}
+
+
+/* V10.2 — full art rarity pigments and mobile-safe stat tiles.
+   300/425 card ratio; all dimensions scale from the card width (cqw).
+   Never use viewport-sized fonts inside the five-stat row. */
+.tcg-card.v10-tcg{
+  --stat-ink:#352617;
+}
+.tcg-card.v10-tcg .v10-stats{
+  top:84.35%;
+  bottom:4.35%;
+  height:auto;
+  left:6%;
+  right:6%;
+  padding:.6cqw .75cqw;
+  min-width:0;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:.45cqw;
+  align-items:stretch;
+  overflow:hidden;
+}
+.tcg-card.v10-tcg .v10-stat{
+  display:grid;
+  grid-template-rows:minmax(0,42%) minmax(0,58%);
+  place-items:center;
+  align-items:center;
+  justify-content:stretch;
+  gap:0;
+  width:100%;
+  height:100%;
+  min-height:0;
+  min-width:0;
+  overflow:hidden;
+  padding:0;
+}
+.tcg-card.v10-tcg .v10-stat-label{
+  display:block;
+  width:100%;
+  height:auto;
+  min-width:0;
+  margin:0;
+  padding:0;
+  text-align:center;
+  font:900 4.05cqw/1 Georgia,serif;
+  letter-spacing:0;
+  white-space:nowrap;
+}
+.tcg-card.v10-tcg .v10-stat-number{
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  height:auto;
+  padding:0;
+  margin:0;
+  text-align:center;
+  font:900 6.15cqw/.93 Georgia,serif;
+  letter-spacing:-.055em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:clip;
+  color:var(--stat-ink);
+  text-shadow:none;
+}
+.tcg-card.v10-tcg.variant-full_art .v10-stats{
+  top:83.5%;
+  bottom:4.7%;
+  left:4.5%;
+  right:4.5%;
+  padding:.55cqw .9cqw;
+  border-radius:1.8cqw;
+}
+.tcg-card.v10-tcg.variant-gold .v10-stats,
+.tcg-card.v10-tcg.variant-secret .v10-stats{
+  top:84.35%;
+  bottom:4.45%;
+  height:auto;
+  left:6%;
+  right:6%;
+  padding:.5cqw .75cqw;
+}
+.tcg-card.v10-tcg.variant-full_art,
+.tcg-card.v10-tcg.variant-secret{--stat-ink:#f1fff6}
+.tcg-card.v10-tcg.variant-gold{--stat-ink:#4a2e05}
+.tcg-card.v10-tcg.variant-full_art .v10-stat-number,
+.tcg-card.v10-tcg.variant-secret .v10-stat-number,
+.tcg-card.v10-tcg.variant-gold .v10-stat-number{
+  color:var(--stat-ink);
+  font-size:6.05cqw;
+}
+/* Full Art now takes its metallic edge from its actual rarity. */
+.tcg-card.v10-tcg.variant-full_art{
+  --fa-rim:#b9ecf2;
+  --fa-core:#246a7a;
+  --fa-glow:#79dfeb99;
+  --fa-label:#b2e6f0;
+  box-shadow:0 0 0 2px var(--fa-rim),0 0 0 4px var(--fa-core),0 10px 29px #000b,0 0 26px var(--fa-glow);
+}
+.tcg-card.v10-tcg.rare.variant-full_art{
+  --fa-rim:#8de7ff;--fa-core:#1e678a;--fa-glow:#4ccaff9c;--fa-label:#aeeaff;
+}
+.tcg-card.v10-tcg.epic.variant-full_art{
+  --fa-rim:#e7baff;--fa-core:#7130c2;--fa-glow:#b76cffd4;--fa-label:#eccaff;
+}
+.tcg-card.v10-tcg.legendary.variant-full_art{
+  --fa-rim:#ffe69e;--fa-core:#a96912;--fa-glow:#f6c454db;--fa-label:#ffe6a2;
+}
+.tcg-card.v10-tcg.mythic.variant-full_art{
+  --fa-rim:#ffc794;--fa-core:#862a3c;--fa-glow:#e65560cc;--fa-label:#ffd09d;
+}
+.tcg-card.v10-tcg.ultra.variant-full_art{
+  --fa-rim:#faffff;--fa-core:#88a9dc;--fa-glow:#d4efffe0;--fa-label:#ffffff;
+}
+.tcg-card.v10-tcg.variant-full_art .v101-special-border{
+  position:absolute;
+  inset:1.2%;
+  z-index:4;
+  border:2.4cqw solid var(--fa-rim);
+  border-radius:4.8%;
+  box-shadow:inset 0 0 0 .7cqw var(--fa-core),inset 0 0 1.7cqw var(--fa-glow),0 0 2.3cqw var(--fa-glow);
+  pointer-events:none;
+}
+.tcg-card.v10-tcg.variant-full_art .v10-special-detail{
+  border-color:var(--fa-label);
+  box-shadow:inset 0 0 0 1px var(--fa-rim),0 0 1.7cqw var(--fa-glow);
+}
+.tcg-card.v10-tcg.variant-full_art .v10-rarity{
+  color:var(--fa-label);
+  border-color:var(--fa-rim);
+  background:#101724d9;
+  text-shadow:0 1px 4px #000;
+}
+.tcg-card.v10-tcg.variant-full_art .v10-rarity small{
+  color:var(--fa-label);
+}
+.tcg-card.v10-tcg.variant-full_art .v10-universe{
+  color:var(--fa-label);
+}
+.tcg-card.v10-tcg.variant-full_art .v10-stats{
+  border-color:var(--fa-rim);
+  box-shadow:inset 0 0 1.2cqw var(--fa-glow);
+}
+.tcg-card.v10-tcg.legendary.variant-full_art .v10-foil{
+  opacity:.24;
+  background:linear-gradient(120deg,transparent 34%,#fff3c1af 48%,transparent 63%);
+  animation:v10-gleam 5s ease-in-out infinite;
+}
+.tcg-card.v10-tcg.epic.variant-full_art .v10-foil{
+  opacity:.18;
+  background:linear-gradient(116deg,transparent 31%,#efd0ffb1 49%,transparent 65%);
+  animation:v10-gleam 5.5s ease-in-out infinite;
+}
+/* Ensure no alternate card-size context can push stats beyond the frame. */
+@media(max-width:800px){
+  .tcg-card.v10-tcg .v10-stats{gap:0;padding:.4cqw .5cqw}
+  .tcg-card.v10-tcg .v10-stat-number{font-size:5.8cqw}
+  .tcg-card.v10-tcg .v10-stat-label{font-size:3.65cqw}
+  .tcg-card.v10-tcg.variant-full_art .v10-stat-number,
+  .tcg-card.v10-tcg.variant-gold .v10-stat-number,
+  .tcg-card.v10-tcg.variant-secret .v10-stat-number{font-size:5.65cqw}
+}
+@media(prefers-reduced-motion:reduce){
+  .tcg-card.v10-tcg.legendary.variant-full_art .v10-foil,
+  .tcg-card.v10-tcg.epic.variant-full_art .v10-foil{animation:none!important}
+}
