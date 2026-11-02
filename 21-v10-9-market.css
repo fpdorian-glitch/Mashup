@@ -1,0 +1,68 @@
+/* Mashup V10.9 — market, public showcases, responsive collector finishing. */
+.market-compose,.market-list{margin:18px 0;padding:clamp(15px,2.5vw,24px);border-radius:18px}
+.market-partner{display:flex;align-items:end;flex-wrap:wrap;gap:12px;margin:18px 0}
+.market-partner label{flex:1 1 220px;min-width:0}
+.market-compose label{font-size:12px;color:#cfe2da;display:flex;flex-direction:column;gap:7px}
+.market-compose input,.market-compose select,.v109-showcase-editor select,
+.collection-reward-admin input,.collection-reward-admin select{
+  width:100%;min-width:0;min-height:44px;border-radius:10px;border:1px solid #7ba79777;
+  background:#0b2835;color:#f1f9f2;padding:9px 10px;font-size:14px;box-sizing:border-box}
+.market-exchange-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.market-exchange-grid>div{padding:12px;border:1px solid #8ea89a56;border-radius:13px;min-width:0;background:#0c2632ad}
+.market-exchange-grid h4{font:700 18px Georgia,serif;color:#f3e2b4;margin:2px 0 14px}
+.trade-asset-row{display:grid;grid-template-columns:minmax(0,1fr) 69px;gap:6px;margin-bottom:8px}
+.trade-asset-row input{padding:6px 4px;text-align:center}
+.market-trade{padding:15px;border:1px solid #7d9e8c55;border-radius:14px;background:#102e38;margin:12px 0}
+.market-trade-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.market-trade-top strong{color:#ffe4a3}.market-trade-top small{color:#b8d2c7}
+.market-trade-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.market-trade-columns>div{display:flex;flex-direction:column;gap:7px;min-width:0;padding:10px;background:#09253099;border-radius:10px}
+.market-trade-columns>div small{font-weight:800;color:#c9e3d3}
+.market-trade-columns>div span{font-size:12px;overflow-wrap:anywhere;color:#f2eddc}
+.market-trade-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.v109-showcase-editor{margin:18px 0;padding:clamp(16px,2.5vw,24px)}
+.v109-showcase-editor h3{color:#f9e7ad;font:750 24px Georgia,serif;margin:0 0 8px}
+.v109-showcase-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:15px 0}
+.v109-showcase-options label{display:flex;flex-direction:column;gap:6px;min-width:0;color:#d6e7e0;font-size:12px}
+.v109-showcase-view{border:1px solid #8dbaa785;background:linear-gradient(143deg,#1b4342,#092e36);border-radius:18px;padding:16px;margin:18px 0}
+.v109-showcase-view.theme-midnight{background:linear-gradient(135deg,#251d40,#0e1a36);border-color:#ada1dd}
+.v109-showcase-view.theme-gold{background:linear-gradient(135deg,#56411d,#1c2b30);border-color:#f0cf82}
+.v109-showcase-view.theme-cosmic{background:linear-gradient(135deg,#4b2459,#152942);border-color:#aeb9ff}
+.v109-showcase-view h4{font:700 19px Georgia,serif;color:#ffe8b5;margin:3px 0}
+.v109-showcase-view .v109-showcase-title{font-size:11px;font-weight:800;letter-spacing:.08em;color:#d3f5ec}
+.v109-showcase-cards{display:grid;grid-template-columns:repeat(3,minmax(0,150px));gap:12px;margin:13px 0 0;align-items:start}
+.v109-showcase-cards .tcg-card{width:100%;max-width:150px}
+.v109-showcase-cards .tcg-card .v10-foil{animation:none!important}
+.collection-reward-tier .reward-booster-label{font-weight:800;color:#ffe3ae;line-height:1.4}
+.collection-reward-admin{margin-top:17px}
+.collection-reward-admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.collection-reward-admin-grid article{padding:12px;border:1px solid #8eaa915e;border-radius:12px;background:#0b2934}
+.collection-reward-admin-grid article strong{display:block;margin-bottom:10px;color:#ffe3aa}
+.collection-reward-admin-grid label{display:block;font-size:12px;color:#c9dbd0;margin:9px 0}
+.collection-reward-admin-grid input,.collection-reward-admin-grid select{margin-top:6px}
+/* Fully enlarged cards respond to tilt through a stationary glint. No runaway mobile GPU animations. */
+.inspect-front .tcg-card.v10-tcg.variant-gold .v10-foil{
+ opacity:.38!important;animation:none!important;
+ background:radial-gradient(ellipse 18% 52% at var(--shine-x,50%) var(--shine-y,45%),#fffce1c5,transparent 94%),
+ linear-gradient(114deg,transparent 30%,#fffbdd32 50%,transparent 70%);
+ transform:none!important;inset:0;
+}
+.inspect-front .tcg-card.v10-tcg.ultra .v10-foil,
+.inspect-front .tcg-card.v10-tcg.variant-secret .v10-foil{
+ opacity:.42!important;animation:none!important;transform:none!important;inset:0;
+ background:radial-gradient(ellipse 24% 35% at var(--shine-x,50%) var(--shine-y,45%),#ffffffba,transparent 85%),
+ linear-gradient(135deg,#80ffe11c 9%,transparent 26%,#d0acff29 48%,transparent 67%,#7ad8ff24);
+ mix-blend-mode:screen;
+}
+.inspect-front .tcg-card.v10-tcg.ultra.variant-secret .v10-foil{opacity:.55!important}
+.opening-fullscreen.fx-secret .opening-vfx-runes{filter:drop-shadow(0 0 6px #7dffd180)}
+.opening-fullscreen.fx-ultra-secret .opening-vfx-runes{filter:drop-shadow(0 0 10px #b8fff7b0)}
+@media(max-width:700px){
+ .market-exchange-grid,.collection-reward-admin-grid{grid-template-columns:1fr}
+ .v109-showcase-options{grid-template-columns:1fr}
+ .v109-showcase-cards{gap:7px}
+ .market-trade-columns{gap:6px}
+ .market-trade-columns>div{padding:8px}
+ .inspect-front .tcg-card.v10-tcg .v10-foil{animation:none!important}
+}
+@media(prefers-reduced-motion:reduce){.inspect-front .tcg-card.v10-tcg .v10-foil{animation:none!important}}
