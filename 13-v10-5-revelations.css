@@ -227,9 +227,6 @@
 .collection-load-more small{
   color:#a9c6bd;font-size:11px;
 }
-.collection-item .v10-picture-img{
-  content-visibility:auto;
-}
 @media(max-width:720px){
   .opening-fullscreen .opening-topline{
     gap:8px;left:12px;right:12px;
