@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="10.6.0" />
+  <meta name="mashup-version" content="10.7.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -705,6 +705,7 @@
 <link rel="stylesheet" href="./11-v10-4.css?v=10.4">
 <link rel="stylesheet" href="./13-v10-5-revelations.css?v=10.5">
 <link rel="stylesheet" href="./16-v10-6-missions.css?v=10.6">
+<link rel="stylesheet" href="./17-v10-7-reveal.css?v=10.7">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -1038,13 +1039,13 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=10.6.0" defer></script>
+<script src="./09-mashup-updates.js?v=10.7.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
 import { renderMashupV10Card } from './06-v10-cards.js?v=10.3';
 import { createDevelopmentJournal } from './10-development-journal.js?v=10.4';
-import { createBoosterRevealFX } from './12-booster-reveal.js?v=10.5';
+import { createBoosterRevealFX } from './12-booster-reveal.js?v=10.7';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
@@ -1365,17 +1366,27 @@ function revealNextCard(){
   if(!packCardFaceUp){
     // Premier clic : retourner, puis LAISSER la carte révélée opaque sur la pile.
     packFlipBusy=true;button.disabled=true;
-    clearOpeningOmen();
-    boosterFX.reset();
-    button.classList.add('revealed');
+    const upcoming=packResults[i];
+    const prelude=boosterFX.preludeMs(upcoming);
+    boosterFX.prelude(upcoming);
+    if(prelude&&tip)tip.textContent='✦ La carte réagit…';
     packFlipTimer=setTimeout(()=>{
-      if(!button.isConnected){packFlipBusy=false;return;}
-      packCardFaceUp=true;packFlipBusy=false;button.disabled=false;setOpeningTheme(specialRevealType(packResults[i]));boosterFX.play(packResults[i]);
-      button.setAttribute('aria-label',`Mettre de côté ${packResults[i].name} et voir la carte suivante`);
-      const special=specialRevealType(packResults[i]);
-      if(tip)tip.textContent=special==='ultra-secret'?`🌟 ULTRA SECRÈTE ! ${packResults[i].name} · appuie de nouveau pour la ranger`:(special==='secret'?`✨ CARTE SECRÈTE ! ${packResults[i].name} · appuie de nouveau pour la ranger`:(special==='ultra'?`✨ ULTRA ! ${packResults[i].name} · appuie de nouveau pour la ranger`:(special==='mythic'?`🔥 MYTHIQUE ! ${packResults[i].name} · appuie de nouveau pour la ranger`:`${packResults[i].name} · appuie de nouveau sur la carte pour la mettre de côté`)));
-      packFlipTimer=null;
-    },boosterFX.flipMs()+25);
+      if(!button.isConnected){boosterFX.reset();packFlipBusy=false;packFlipTimer=null;return;}
+      clearOpeningOmen();
+      button.classList.add('revealed');
+      // Start effects at the BEGINNING of the flip, rather than after it ends.
+      boosterFX.play(upcoming);
+      packFlipTimer=setTimeout(()=>{
+        if(!button.isConnected){boosterFX.reset();packFlipBusy=false;packFlipTimer=null;return;}
+        boosterFX.unveil();
+        packCardFaceUp=true;packFlipBusy=false;button.disabled=false;
+        setOpeningTheme(specialRevealType(upcoming));
+        button.setAttribute('aria-label',`Mettre de côté ${upcoming.name} et voir la carte suivante`);
+        const special=specialRevealType(upcoming);
+        if(tip)tip.textContent=special==='ultra-secret'?`🌟 ULTRA SECRÈTE ! ${upcoming.name} · appuie de nouveau pour la ranger`:(special==='secret'?`✨ CARTE SECRÈTE ! ${upcoming.name} · appuie de nouveau pour la ranger`:(special==='ultra'?`✨ ULTRA ! ${upcoming.name} · appuie de nouveau pour la ranger`:(special==='mythic'?`🔥 MYTHIQUE ! ${upcoming.name} · appuie de nouveau pour la ranger`:`${upcoming.name} · appuie de nouveau sur la carte pour la mettre de côté`)));
+        packFlipTimer=null;
+      },boosterFX.flipMs()+25);
+    },prelude);
     return;
   }
   // Deuxième clic : seule la carte déjà révélée quitte la pile ; la suivante reste cachée.
