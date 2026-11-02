@@ -21,7 +21,7 @@ export function createRunner(onFinish){
       }).join('');
       return '<div class="games-runner-track-row">'+cells+'</div>';
     }).join('');
-    player.style.setProperty('--lane',String(game.lane));
+    player.style.left=(16.6667+game.lane*33.3333)+'%';
     for(const [key,v] of [['runner-level',Math.floor(game.step/6)+1],['runner-coins',game.coins],['runner-progress',game.step]]){
       const el=root.querySelector('#'+key);if(el)el.textContent=String(v);
     }
