@@ -85,3 +85,27 @@
 .games-memory-card:focus-visible{outline:3px solid #fcdf85;outline-offset:3px}
 @media(max-width:480px){.games-memory-grid{gap:7px}.games-memory-card{height:79px}.games-memory-back,.games-memory-front{padding:5px;border-radius:9px}.games-memory-back{font-size:25px}.games-memory-front{font-size:10px}.games-memory-instruction{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.games-memory-inner{transition:none}}
+
+
+/* Mashup V9.3 — Course arcade trois voies, aucun visuel externe. */
+.games-runner-head{display:flex;justify-content:space-around;flex-wrap:wrap;gap:10px;margin:15px 0;padding:14px;background:#17252b;border:1px solid #38605f;border-radius:14px;font-size:14px}
+.games-runner-head b{color:#e9faa9}
+.games-runner-scene{position:relative;max-width:570px;height:420px;margin:0 auto 15px;overflow:hidden;border:3px solid #647e81;border-radius:23px;background:radial-gradient(ellipse at 50% -10%,#276e81 0,#10283e 42%,#0a111c 90%);box-shadow:inset 0 0 50px #0008,0 18px 45px #0005;touch-action:pan-y;user-select:none}
+.games-runner-sky{position:absolute;top:17px;left:0;right:0;text-align:center;font-weight:1000;letter-spacing:4px;color:#f7eab3;text-shadow:0 0 22px #9be9f9aa}
+.games-runner-scene:before,.games-runner-scene:after{content:'✦';position:absolute;font-size:35px;color:#8cf8ef55;top:32%;z-index:1}
+.games-runner-scene:before{left:4%}.games-runner-scene:after{right:4%}
+.games-runner-road{position:absolute;inset:68px 13% 32px;display:flex;flex-direction:column;border-left:5px solid #74cace;border-right:5px solid #74cace;transform:perspective(760px) rotateX(11deg);transform-origin:center 100%;background:repeating-linear-gradient(0deg,#183340 0 32px,#17333c 32px 65px);box-shadow:0 0 28px #57b7c75b,inset 0 0 25px #000b;overflow:hidden}
+.games-runner-road:before,.games-runner-road:after{content:'';position:absolute;z-index:2;top:0;bottom:0;width:2px;border-left:3px dashed #abefb280;pointer-events:none}
+.games-runner-road:before{left:33.333%}.games-runner-road:after{left:66.666%}
+.games-runner-track-row{flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));min-height:0;border-bottom:1px solid #ffffff15;animation:runner-step-enter .17s ease-out}
+.games-runner-cell{display:flex;align-items:center;justify-content:center;min-width:0;font-size:clamp(24px,4vw,42px);filter:drop-shadow(0 8px 9px #0009)}
+.games-runner-cell.games-runner-danger{background:radial-gradient(ellipse at center,#b35f4544,transparent 65%)}
+.games-runner-player{position:absolute;bottom:25px;left:50%;z-index:5;font-size:clamp(43px,7vw,67px);transform:translateX(-50%);filter:drop-shadow(0 5px 2px #000b) drop-shadow(0 0 15px #b4f6a8);transition:left .13s ease;pointer-events:none}
+.games-runner-controls{display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:15px}
+.games-runner-controls .btn{min-width:116px;min-height:53px;touch-action:manipulation}
+.games-runner-controls span{font-weight:800;text-align:center;color:#d8f9e9}
+.games-runner-controls small{display:block;font-size:10px;color:#9eafb2}
+.games-runner-retry{position:absolute;z-index:7;bottom:30%;left:50%;transform:translateX(-50%);white-space:nowrap}
+@keyframes runner-step-enter{from{transform:translateY(-9px);opacity:.75}to{transform:translateY(0);opacity:1}}
+@media(max-width:600px){.games-runner-scene{height:365px}.games-runner-road{inset:60px 6% 25px}.games-runner-head{font-size:12px}.games-runner-controls{gap:7px}.games-runner-controls .btn{min-width:100px;padding:12px 10px}.games-runner-controls span{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.games-runner-track-row{animation:none}.games-runner-player{transition:none}}
