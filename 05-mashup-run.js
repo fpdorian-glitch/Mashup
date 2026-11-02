@@ -29,12 +29,12 @@ export function createRunner(onFinish){
     if(progress)progress.textContent=game.step+' / '+game.track.length+' sections';
   }
   function schedule(){
-    if(!game||game.finished||finishing||timer||!root?.isConnected)return;
+    if(!game||game.finished||finishing||timer||!root?.isConnected||!root.querySelector('#games-runner-stage'))return;
     timer=setTimeout(step,delay(game.step));
   }
   function step(){
     timer=null;
-    if(!game||game.finished||finishing||!root?.isConnected)return;
+    if(!game||game.finished||finishing||!root?.isConnected||!root.querySelector('#games-runner-stage'))return;
     if(document.hidden){timer=setTimeout(step,400);return;}
     const row=game.track[game.step];if(!row)return;
     const lane=game.lane;game.path.push(lane);game.step++;
@@ -64,7 +64,7 @@ export function createRunner(onFinish){
     }
   }
   function move(direction){
-    if(!game||game.finished||finishing||game.moved||!root?.isConnected)return;
+    if(!game||game.finished||finishing||game.moved||!root?.isConnected||!root.querySelector('#games-runner-stage'))return;
     const lane=Math.min(2,Math.max(0,game.lane+direction));
     if(lane===game.lane)return;
     game.lane=lane;game.moved=true;paint();
