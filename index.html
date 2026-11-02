@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="10.8.0" />
+  <meta name="mashup-version" content="10.9.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -707,6 +707,7 @@
 <link rel="stylesheet" href="./16-v10-6-missions.css?v=10.6">
 <link rel="stylesheet" href="./17-v10-7-reveal.css?v=10.7">
 <link rel="stylesheet" href="./19-v10-8-collector.css?v=10.8">
+<link rel="stylesheet" href="./21-v10-9-market.css?v=10.9">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -724,6 +725,7 @@
         <button class="nav-item" data-view="missions"><span class="nav-icon">✦</span><span>Missions</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="decks"><span class="nav-icon">▤</span><span>Decks</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="online"><span class="nav-icon">◎</span><span>Joueurs</span><span class="nav-chevron">↗</span></button>
+        <button class="nav-item" data-view="market"><span class="nav-icon">⇄</span><span>Marché</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="profile"><span class="nav-icon">◉</span><span>Mon profil</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" id="creator-nav" data-view="creator" hidden><span class="nav-icon">✎</span><span>Atelier</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="admin" id="admin-nav" hidden><span class="nav-icon">♙</span><span>Admin</span><span class="nav-chevron">↗</span></button>
@@ -733,7 +735,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V10.6 <span>·</span> COMPTES PRIVÉS</div>
+        <div class="tiny-copy">V10.9 <span>·</span> COMPTES PRIVÉS</div>
       </div>
     </aside>
     <div class="content-area">
@@ -1040,7 +1042,7 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=10.8.0" defer></script>
+<script src="./09-mashup-updates.js?v=10.9.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
@@ -1048,7 +1050,8 @@ import { renderMashupV10Card } from './06-v10-cards.js?v=10.3';
 import { createDevelopmentJournal } from './10-development-journal.js?v=10.4';
 import { createBoosterRevealFX } from './12-booster-reveal.js?v=10.7';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
-import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.8';
+import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
+import { createMarketUI } from './20-market-v10-9.js?v=10.9';
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
@@ -1124,7 +1127,14 @@ let onlineUser = null;
 const developmentJournal=createDevelopmentJournal({api,getUser:()=>onlineUser,esc,toast});
 const boosterFX=createBoosterRevealFX();
 const missionsUI=createMissionsUI({api,getUser:()=>onlineUser,esc,toast,onState:next=>{state=next;updateBalances();}});
-const collectionRewardsUI=createCollectionRewardsUI({api,esc,toast,onState:next=>{state=next;updateBalances();}});
+const collectionRewardsUI=createCollectionRewardsUI({api,esc,toast,onState:next=>{state=next;updateBalances();},onVouchers:next=>{packVouchers=next||{};}});
+const marketUI=createMarketUI({
+  api,esc,toast,
+  onAccepted:()=>{},
+  getOwnCards:()=>allCards().filter(c=>!c.hidden&&Number(state.owned?.[c.id])>0).map(c=>({...c,qty:Math.min(20,Number(state.owned[c.id])||0)})),
+  getCurrentUser:()=>onlineUser,
+  onFreshAccount:async()=>{await loadOnlineGame();}
+});
 let editingCardId = null;
 let onlineSaving = false;
 
@@ -1146,6 +1156,7 @@ let incomingChallenge=null;let invitationPollBusy=false;
 let battleRewards={simple:{win:150,bonus:55,maxWin:690,winDust:10,bonusDust:3,maxDust:50,draw:40,loss:20},double:{win:150,bonus:55,maxWin:690,winDust:10,bonusDust:3,maxDust:50,draw:40,loss:20}};
 let selectedPack = null;
 let packResults = [];
+let packVouchers={};
 let packRevealed = new Set();
 let packLoading=false,packCancelRequested=false,packPendingId=null,packPendingPackId=null,packFinalizing=false,packCancelPromise=null;
 let betStakeDraft=null;
@@ -1246,7 +1257,7 @@ function cardMarkup(card,options={}){
 function labelIntro(eyebrow,title,sub){return `<div class="page-lead"><div class="eyebrow">${eyebrow}</div><h1 class="heading">${title}</h1><p class="text-sub">${sub}</p></div>`;}
 function render(){
   if(!onlineUser)return;
-  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',missions:'MISSIONS',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',profile:'PROFIL'};
+  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',missions:'MISSIONS',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',market:'MARCHÉ',profile:'PROFIL'};
   document.getElementById('breadcrumb-current').textContent=names[view];
   document.querySelectorAll('.nav-item').forEach(btn=>{btn.classList.toggle('active',btn.dataset.view===view||(view==='arena'&&btn.dataset.view==='games'));btn.setAttribute('aria-current',btn.dataset.view===view?'page':'false');});
   updateBalances();
@@ -1261,8 +1272,9 @@ function render(){
   if(view==='admin'){renderAdmin();gamesUI.mountAdmin(document.getElementById('page'));}
   if(view==='profile')renderProfile();
   if(view==='online')renderPlayersDirectory();
+  if(view==='market')marketUI.mount();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
 // V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
 const gamesUI = createGamesUI({
   getUser:()=>onlineUser,
@@ -1291,7 +1303,7 @@ function renderPacks(){
   document.getElementById('page').innerHTML=`
     <section class="hero"><div class="hero-copy"><div class="hero-tag">✧ BIENVENUE DANS LE MULTIVERS</div><h2>Le jeux de carte qui regroupe <em>tout les univers</em></h2><p>Des héros, des icônes et même des objets du quotidien : ouvre des boosters, complète ta collection et défie tes amis dans l’univers Mashup.</p><div class="hero-actions"><button class="btn btn-primary btn-lg" data-action="open-pack" data-pack="${PACKS.find(p=>p.free)?.id||PACKS[0]?.id||'starter'}">${!state.freePackUsed?'Ouvrir mon booster gratuit':'Ouvrir un booster'} <span class="arrow">↗</span></button><button class="btn btn-quiet btn-lg" data-view="collection">Voir ma collection</button></div></div><div class="hero-art"><div class="hero-orbit"></div><span class="hero-spark a">✦</span><div class="hero-card-stack"><div class="mini-back"></div><div class="mini-back"></div><div class="mini-back"></div></div><span class="hero-spark b">✧</span></div></section>
     <section><div class="section-top"><div><div class="eyebrow">01 / LES INVOCATIONS</div><h3 class="small-heading">Choisis ton booster.</h3><p>Chaque ouverture est une surprise. Les boosters cachent une galaxie, et les doublons rapportent des éclats.</p></div><span class="pill">✦ Des découvertes à chaque ouverture</span></div>
-    <div class="pack-grid">${PACKS.map((p,i)=>`<article class="pack ${i===PACKS.length-1?'pack-featured':''}"><div class="pack-head"><span class="pack-index">PACK ${String(i+1).padStart(2,'0')}</span><span class="pack-chip">${esc(p.chip||((p.count>=5)?'5 CARTES':'ÉDITION'))}</span></div><div class="pack-visual"><div class="pack-art-gleam" style="--p1:${p.p1}"></div><div class="pack-pouch" style="--p1:${p.p1};--p2:${p.p2}">${GALAXY_MARK}</div></div><h4>${esc(p.name)}</h4><div class="pack-desc">${esc(p.description||`${p.count} cartes`)}</div><div class="pack-bottom"><span class="pack-price">${p.free&&!state.freePackUsed?'GRATUIT':p.price+(p.currency==='dust'?' <small>✧</small>':' <small>◉</small>')}</span><button class="btn btn-sm ${i===PACKS.length-1?'btn-primary':''}" data-action="open-pack" data-pack="${p.id}">Ouvrir <span class="arrow">↗</span></button></div></article>`).join('')}</div></section>
+    <div class="pack-grid">${PACKS.map((p,i)=>`<article class="pack ${i===PACKS.length-1?'pack-featured':''}"><div class="pack-head"><span class="pack-index">PACK ${String(i+1).padStart(2,'0')}</span><span class="pack-chip">${esc(p.chip||((p.count>=5)?'5 CARTES':'ÉDITION'))}</span></div><div class="pack-visual"><div class="pack-art-gleam" style="--p1:${p.p1}"></div><div class="pack-pouch" style="--p1:${p.p1};--p2:${p.p2}">${GALAXY_MARK}</div></div><h4>${esc(p.name)}</h4><div class="pack-desc">${esc(p.description||`${p.count} cartes`)}</div><div class="pack-bottom"><span class="pack-price">${p.free&&!state.freePackUsed?'GRATUIT':Number(packVouchers[p.id])>0?'🎟 BON OFFERT ×'+Number(packVouchers[p.id]):p.price+(p.currency==='dust'?' <small>✧</small>':' <small>◉</small>')}</span><button class="btn btn-sm ${i===PACKS.length-1?'btn-primary':''}" data-action="open-pack" data-pack="${p.id}">Ouvrir <span class="arrow">↗</span></button></div></article>`).join('')}</div></section>
     <div class="divider"></div><div class="section-top"><div><div class="eyebrow">02 / TON PARCOURS</div><h3 class="small-heading">Ton univers en chiffres.</h3></div></div>
     <div class="series-return"><button class="btn btn-sm" data-action="back-series">← Choisir une autre série</button><strong>${esc(SERIES.find(x=>x.number===collectionSeries)?.name||'Série')}</strong></div><div class="mini-metrics"><div class="metric"><span>CARTES NORMALES OBTENUES</span><strong>${ownedCount()}</strong></div><div class="metric"><span>BOOSTERS OUVERTS</span><strong>${state.opened}</strong></div><div class="metric"><span>VICTOIRES EN ARÈNE</span><strong>${state.wins}</strong></div></div>
     ${missionsUI.homeTeaser()}
@@ -1310,7 +1322,7 @@ async function openPack(id){
  if(!onlineUser||packLoading||packPendingId||packFinalizing)return;
  if(packCancelPromise){toast('Annulation du booster précédent en cours…',true);return;}
  const p=PACKS.find(x=>x.id===id);if(!p)return;
- if(!(p.free&&!state.freePackUsed)&&state[p.currency==='dust'?'dust':'coins']<p.price){toast('Crédits ou éclats insuffisants.',true);return;}
+ if(!(p.free&&!state.freePackUsed)&&!(Number(packVouchers[p.id])>0)&&state[p.currency==='dust'?'dust':'coins']<p.price){toast('Crédits ou éclats insuffisants.',true);return;}
  packLoading=true;packCancelRequested=false;selectedPack=p;
  const attemptId=globalThis.crypto?.randomUUID?.()||('try-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,13));
  document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Préparation de ton booster"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Préparation de ton booster…</h2><p>Le serveur prépare le tirage. Aucun crédit n'a été débité.</p><button class="btn btn-sm" data-action="cancel-pack-loading" type="button">Annuler</button></section></div>`;
@@ -1412,7 +1424,7 @@ async function finishOpening(){
  const done=document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
  try{
   const r=await api('/api/packs/commit',{id,openingId});
-  state=r.state;
+  state=r.state;packVouchers=r.vouchers||packVouchers;
   // V9.1: le serveur renvoie les cartes sans dupliquer toutes les illustrations.
   if(Array.isArray(r.cards)){
     const artwork=new Map(BASE_CARDS.filter(c=>c&&!c.hidden&&c.art).map(c=>[c.id,c.art]));
@@ -1936,6 +1948,14 @@ document.addEventListener('click',event=>{
     case 'invite-decline':answerInvitation(false);break;
     case 'invite-open':arenaSection='online';setView('arena');break;
     case 'open-online-arena':arenaSection='online';setView('arena');break;
+    case 'market-open-player':setView('market');marketUI.selectPartner(button.dataset.id);break;
+    case 'trade-load-target':marketUI.loadTarget();break;
+    case 'trade-refresh':marketUI.refresh();break;
+    case 'trade-send':marketUI.send();break;
+    case 'trade-clear-counter':marketUI.clearCounter();break;
+    case 'trade-accept':case 'trade-decline':case 'trade-cancel':case 'trade-counter':marketUI.action(action.slice(6),button.dataset.id);break;
+    case 'save-showcase-v109':saveShowcaseV109();break;
+    case 'save-collection-reward-admin':collectionRewardsUI.saveAdmin();break;
     case 'open-series-admin':setView('admin');document.getElementById('admin-series-section')?.scrollIntoView({behavior:'smooth',block:'start'});break;
     case 'arena-section':arenaSection=button.dataset.section==='online'?'online':'campaign';renderArena();break;
     case 'pvp-accept':answerPvp(true);break;
@@ -2062,7 +2082,7 @@ async function bootOnline(){
   }catch(e){showAuth('login',e.message);}
 }
 async function loadOnlineGame(){
-  const r=await api('/api/bootstrap');onlineUser=r.user;developmentJournal.setPosts(r.devPosts||[]);missionsUI.setData(r.missions);collectionRewardsUI.setData(r.collectionRewards);BASE_CARDS=r.cards;SERIES=r.series||SERIES;SERIES_TOTALS=r.seriesTotals||{};seriesDraft=SERIES.map(x=>({...x}));myPublicProfile=r.profile;state=r.state;state.custom=[];state.artwork={};syncClientPacks(r.packs||PACKS);packRates=r.packRates||structuredClone(PACK_RATE_DEFAULTS);battleRewards=r.battleRewards||battleRewards;battle=r.battle&&!r.battle.finished?r.battle:null;if(battle?.mode)arenaMode=battle.mode;
+  const r=await api('/api/bootstrap');onlineUser=r.user;developmentJournal.setPosts(r.devPosts||[]);missionsUI.setData(r.missions);collectionRewardsUI.setData(r.collectionRewards);packVouchers=r.vouchers||{};BASE_CARDS=r.cards;SERIES=r.series||SERIES;SERIES_TOTALS=r.seriesTotals||{};seriesDraft=SERIES.map(x=>({...x}));myPublicProfile=r.profile;state=r.state;state.custom=[];state.artwork={};syncClientPacks(r.packs||PACKS);packRates=r.packRates||structuredClone(PACK_RATE_DEFAULTS);battleRewards=r.battleRewards||battleRewards;battle=r.battle&&!r.battle.finished?r.battle:null;if(battle?.mode)arenaMode=battle.mode;
   document.getElementById('auth-cover').style.display='none';
   document.getElementById('admin-nav').hidden=onlineUser.role!=='admin';
   document.getElementById('creator-nav').hidden=onlineUser.role!=='admin';
@@ -2071,7 +2091,7 @@ async function loadOnlineGame(){
   if(onlineUser.role!=='admin' && (view==='creator'||view==='admin'))view='packs';
   render();if(battle){view='arena';renderCombat();}pollInvitations();
 }
-async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;missionsUI.setData(null);collectionRewardsUI.setData(null);developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
+async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
 async function removeOnlineArt(id){if(onlineUser?.role!=='admin')return;const c=getCard(id);if(!c)return;try{const r=await api('/api/admin/cards',{card:{...c,art:''}});BASE_CARDS=r.cards;showDetail(id);toast('Illustration retirée du catalogue.');}catch(e){toast(e.message,true);}}
 function avatarMarkup(v){const img=safeImage(v);return img?`<img class="profile-avatar" src="${img}" alt="Photo de profil">`:`<div class="profile-avatar">${esc(v||'✦')}</div>`;}
 function captureSeriesDraft(){
@@ -2104,6 +2124,30 @@ async function saveSeriesDraft(){
 async function compactAvatar(file){if(!file||!file.type.startsWith('image/'))throw new Error('Choisis une photo JPG, PNG ou WebP.');if(file.size>6*1024*1024)throw new Error('Photo trop grande.');
  const url=URL.createObjectURL(file);try{const img=new Image();await new Promise((yes,no)=>{img.onload=yes;img.onerror=no;img.src=url;});const can=document.createElement('canvas');can.width=can.height=144;const ctx=can.getContext('2d');const side=Math.min(img.width,img.height);ctx.drawImage(img,(img.width-side)/2,(img.height-side)/2,side,side,0,0,144,144);return can.toDataURL('image/jpeg',.66);}finally{URL.revokeObjectURL(url);}}
 function profileCard(c){return c?`<div class="profile-preview-card">${cardMarkup(c,{revealedOpponent:true})}</div>`:'<p class="small-note">Pas encore sélectionnée</p>';}
+function showcaseV109Markup(p){
+  const theme=['emerald','midnight','gold','cosmic'].includes(p?.showcaseV109?.theme)?p.showcaseV109.theme:'emerald';
+  const featured=(p?.showcaseV109?.cards||[]).slice(0,3);
+  return `<section class="v109-showcase-view theme-${theme}"><div class="v109-showcase-title">✦ ${esc(p?.showcaseV109?.title||'Collectionneur du Multivers')}</div><h4>Les trois trésors du Multivers</h4><div class="v109-showcase-cards">${featured.map(c=>profileCard(c)).join('')||'<p class="small-note">Aucune carte exposée.</p>'}</div></section>`;
+}
+function showcaseV109Editor(p,owned){
+  const current=(p?.showcaseV109?.cards||[]).map(c=>c.id);
+  const single=(i)=>`<label>Carte ${i+1}<select id="v109-highlight-${i}"><option value="">Aucune</option>${owned.map(c=>`<option value="${esc(c.id)}" ${current[i]===c.id?'selected':''}>${esc(c.name)} · ${esc(cardRarityLabel(c))}</option>`).join('')}</select></label>`;
+  const theme=p?.showcaseV109?.theme||'emerald';
+  const master=!!Object.entries(p?.collectionBadges||{}).length||p?.showcaseV109?.title==='Maître de la série';
+  return `<section class="panel v109-showcase-editor"><h3>✦ Ma vitrine de collectionneur</h3><p class="small-note">Choisis trois cartes réellement possédées, ton fond et ton titre. Elles seront visibles depuis la page Joueurs.</p>
+    <div class="v109-showcase-options">${[0,1,2].map(single).join('')}</div>
+    <div class="v109-showcase-options"><label>Ambiance<select id="v109-showcase-theme">${[['emerald','Émeraude'],['midnight','Minuit'],['gold','Or'],['cosmic','Cosmique']].map(([value,label])=>`<option value="${value}" ${theme===value?'selected':''}>${label}</option>`).join('')}</select></label>
+    <label>Titre<select id="v109-showcase-title"><option value="collector">Collectionneur du Multivers</option><option value="master" ${p?.showcaseV109?.title==='Maître de la série'?'selected':''}>Maître de la série (si débloqué)</option></select></label></div>
+    <button class="btn btn-primary" data-action="save-showcase-v109">Enregistrer ma vitrine ↗</button>
+    ${showcaseV109Markup(p)}</section>`;
+}
+async function saveShowcaseV109(){
+  const cards=[0,1,2].map(i=>document.getElementById('v109-highlight-'+i)?.value).filter(Boolean);
+  const theme=document.getElementById('v109-showcase-theme')?.value||'emerald';
+  const title=document.getElementById('v109-showcase-title')?.value||'collector';
+  try{const r=await api('/api/profile/showcase',{cards,theme,title});myPublicProfile=r.profile;toast('Vitrine enregistrée !');renderProfile();}
+  catch(e){toast(e.message,true);}
+}
 function renderProfile(){
  const p=myPublicProfile||{pseudo:onlineUser?.pseudo||'',avatar:'✦',showcase:null};const owned=allCards().filter(c=>!c.hidden&&state.owned[c.id]>0);
  document.getElementById('page').innerHTML=`${labelIntro('MON PROFIL','Mon identité <em>Mashup.</em>','Choisis ton pseudo, ta photo de profil et ta carte de vitrine. Les autres joueurs pourront voir ces informations.')}
@@ -2111,6 +2155,7 @@ function renderProfile(){
  <div class="profile-form"><label>Pseudo public<input id="profile-pseudo" maxlength="24" value="${esc(p.pseudo)}" placeholder="Ton pseudo"></label><label>Photo de profil<input id="profile-avatar-input" type="file" accept="image/jpeg,image/png,image/webp"></label><label>Ou avatar emoji<input id="profile-avatar-data" value="${safeImage(p.avatar)?'✦':esc(p.avatar||'✦')}" maxlength="180000"></label>
  <label>Carte de vitrine<select id="profile-showcase"><option value="">Aucune</option>${owned.map(c=>`<option value="${esc(c.id)}" ${c.id===p.showcase?.id?'selected':''}>${esc(c.name)} · ${esc(cardRarityLabel(c))}</option>`).join('')}</select></label><button class="btn btn-primary" data-action="save-profile">Enregistrer mon profil</button><button class="btn btn-sm" data-action="change-password">Modifier mon mot de passe</button></div></section>
  <section class="panel"><h3>Ma carte de vitrine</h3>${profileCard(p.showcase)}<p class="small-note">La carte choisie doit être dans ta collection.</p></section></div>`;
+ document.getElementById('page').insertAdjacentHTML('beforeend',showcaseV109Editor(p,owned));
  if(safeImage(p.avatar))document.getElementById('profile-avatar-data').value=p.avatar;
 }
 async function saveOwnProfile(){try{const r=await api('/api/profile',{pseudo:document.getElementById('profile-pseudo').value,avatar:document.getElementById('profile-avatar-data').value,showcaseCard:document.getElementById('profile-showcase').value});myPublicProfile=r.profile;onlineUser=r.user;toast('Profil enregistré.');renderProfile();}catch(e){toast(e.message,true);}}
@@ -2166,7 +2211,7 @@ async function renderPlayersDirectory(){
   try{
     const data=await api('/api/pvp');
     if(view!=='online')return;
-    document.getElementById('page').innerHTML=`${labelIntro('COMMUNAUTÉ','Joueurs <em>Mashup.</em>','Consulte les profils et cartes en vitrine. Les défis se lancent et se jouent maintenant depuis l’Arène.')}<div class="arena-main-switch"><button class="btn btn-primary" data-action="open-online-arena">⚔ Accéder aux combats en ligne</button></div><div class="public-player-grid">${data.players.filter(p=>p.id!==onlineUser.id).map(p=>`<section class="public-player"><div class="profile-row">${avatarMarkup(p.avatar)}<div><h3>${esc(p.pseudo)}</h3><p class="small-note">${p.stats.pvpWins} victoires en ligne</p></div></div><strong>Carte de vitrine</strong>${profileCard(p.showcase)}<p class="small-note">Dernière carte : ${esc(p.lastCard?.name||'Non renseignée')}</p><button class="btn btn-sm btn-primary" data-action="open-online-arena">Défier dans l’Arène →</button></section>`).join('')||'<section class="panel"><p>Aucun autre joueur enregistré.</p></section>'}</div>`;
+    document.getElementById('page').innerHTML=`${labelIntro('COMMUNAUTÉ','Joueurs <em>Mashup.</em>','Consulte les profils et cartes en vitrine. Les défis se lancent et se jouent maintenant depuis l’Arène.')}<div class="arena-main-switch"><button class="btn btn-primary" data-action="open-online-arena">⚔ Accéder aux combats en ligne</button></div><div class="public-player-grid">${data.players.filter(p=>p.id!==onlineUser.id).map(p=>`<section class="public-player"><div class="profile-row">${avatarMarkup(p.avatar)}<div><h3>${esc(p.pseudo)}</h3><p class="small-note">${p.stats.pvpWins} victoires en ligne</p></div></div><strong>Carte de vitrine</strong>${profileCard(p.showcase)}${showcaseV109Markup(p)}<p class="small-note">Dernière carte : ${esc(p.lastCard?.name||'Non renseignée')}</p><button class="btn btn-sm" data-action="market-open-player" data-id="${esc(p.id)}">⇄ Proposer un échange</button><button class="btn btn-sm btn-primary" data-action="open-online-arena">Défier dans l’Arène →</button></section>`).join('')||'<section class="panel"><p>Aucun autre joueur enregistré.</p></section>'}</div>`;
   }catch(e){toast(e.message,true);}
 }
 function showInvitationBanner(){
@@ -2231,6 +2276,8 @@ async function renderAdmin(){
   renderBattleRewardsEditor();
   document.getElementById('page')?.insertAdjacentHTML('beforeend',missionsUI.adminMarkup());
   missionsUI.renderAdminEditor();
+  document.getElementById('page')?.insertAdjacentHTML('beforeend',collectionRewardsUI.adminMarkup());
+  collectionRewardsUI.loadAdmin();
 }
 function boosterContentEditor(p,i){
   const families=[...new Set(BASE_CARDS.filter(c=>!c.hidden).map(c=>c.family||'Original'))].sort((a,b)=>a.localeCompare(b,'fr'));
