@@ -269,3 +269,180 @@
   .tcg-card.v10-tcg.legendary.variant-full_art .v10-foil,
   .tcg-card.v10-tcg.epic.variant-full_art .v10-foil{animation:none!important}
 }
+
+
+/* MASHUP V10.3 — six actual rarity-colored frames with a shared 300×425 geometry.
+   The SVG draws EXACTLY x=20..280, y=363..408, line y=385.
+   HTML grid starts at those same coordinates: no more wandering separator. */
+.tcg-card.v10-tcg.variant-standard{
+  --rarity-ink:#433a2c;
+  --rarity-light:#f2e8cc;
+  --rarity-accent:#6c6659;
+}
+.tcg-card.v10-tcg.variant-standard.common{
+  --rarity-ink:#45443f;--rarity-light:#e8e6d9;--rarity-accent:#857a6b;
+  background:#34484a;
+}
+.tcg-card.v10-tcg.variant-standard.rare{
+  --rarity-ink:#123f6a;--rarity-light:#ddf6ff;--rarity-accent:#4bcfff;
+  background:linear-gradient(#155680,#112b51);
+}
+.tcg-card.v10-tcg.variant-standard.epic{
+  --rarity-ink:#54226d;--rarity-light:#f3d9ff;--rarity-accent:#ce8dff;
+  background:linear-gradient(150deg,#7130a5,#221039 72%);
+  box-shadow:0 0 0 2px #d6b2ff,0 7px 27px #000a,0 0 32px #b365ff85;
+}
+.tcg-card.v10-tcg.variant-standard.legendary{
+  --rarity-ink:#74440c;--rarity-light:#fff0c4;--rarity-accent:#ffd47b;
+  background:linear-gradient(145deg,#a3772e,#3a2c17);
+}
+.tcg-card.v10-tcg.variant-standard.mythic{
+  --rarity-ink:#6a263f;--rarity-light:#ffe3cf;--rarity-accent:#ff8e88;
+  background:linear-gradient(135deg,#5c273c,#190f22);
+}
+.tcg-card.v10-tcg.variant-standard.ultra{
+  --rarity-ink:#315c8a;--rarity-light:#f7ffff;--rarity-accent:#b7e5ff;
+  background:linear-gradient(145deg,#d9f3ff,#4c8eb2);
+}
+.tcg-card.v10-tcg.variant-standard .v10-frame{
+  filter:drop-shadow(0 0 .65cqw var(--rarity-accent));
+}
+.tcg-card.v10-tcg.variant-standard .v10-name{
+  color:var(--rarity-ink);text-shadow:0 1px #fff8;
+}
+.tcg-card.v10-tcg.variant-standard .v10-rarity,
+.tcg-card.v10-tcg.variant-standard .v10-universe,
+.tcg-card.v10-tcg.variant-standard .v10-series{
+  color:var(--rarity-light);
+  text-shadow:0 1px 3px #0008;
+}
+.tcg-card.v10-tcg.variant-standard .v10-stat-label,
+.tcg-card.v10-tcg.variant-standard .v10-stat-number{
+  color:var(--rarity-ink);
+  text-shadow:none;
+}
+/* Picture edges are exact SVG window edges. */
+.tcg-card.v10-tcg.variant-standard .v10-picture{
+  top:20.94%;bottom:16.7%;left:7%;right:7%;border-radius:1.4%;
+}
+/* 5 uniform stat tiles x20..280, horizontal separator y385. */
+.tcg-card.v10-tcg.variant-standard .v10-stats{
+  left:6.666667%;right:6.666667%;
+  top:85.411765%;bottom:4%;
+  height:auto;min-height:0;
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  align-items:stretch;
+  padding:0!important;gap:0!important;
+  background:transparent!important;
+  border:0!important;border-radius:0!important;
+  box-shadow:none!important;
+  overflow:hidden;
+}
+.tcg-card.v10-tcg.variant-standard .v10-stat{
+  display:grid;
+  grid-template-rows:49% 51%;
+  place-items:center;
+  width:100%;height:100%;
+  min-width:0;min-height:0;
+  margin:0;padding:0;
+  overflow:hidden;
+}
+.tcg-card.v10-tcg .v10-stat-label{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;min-width:0;
+  font:900 4.1cqw/1 Georgia,serif;
+  text-align:center;white-space:nowrap;
+  overflow:hidden;text-overflow:clip;
+}
+.tcg-card.v10-tcg .v10-stat-number{
+  align-self:center;justify-self:center;
+  font:900 5.65cqw/1 Georgia,serif;
+  text-align:center;white-space:nowrap;
+  letter-spacing:-.03em;
+  overflow:hidden;
+  max-width:100%;
+}
+/* Labels switch from compact (P/T/D/A/I) to nearly full names only in 3D inspection. */
+.tcg-card.v10-tcg .v10-stat-initial{display:inline}
+.tcg-card.v10-tcg .v10-stat-expanded{display:none}
+.inspect-front .tcg-card.v10-tcg .v10-stat-initial{display:none}
+.inspect-front .tcg-card.v10-tcg .v10-stat-expanded{display:inline}
+.inspect-front .tcg-card.v10-tcg .v10-stat-label{
+  font:800 clamp(7px,2.35cqw,10.5px)/1 Georgia,serif;
+  letter-spacing:-.035em;
+}
+.inspect-front .tcg-card.v10-tcg .v10-stat-number{
+  font:900 clamp(12px,5.3cqw,21px)/1 Georgia,serif;
+}
+.inspect-tilter{aspect-ratio:300/425}
+/* Special editions don't have the standard SVG tile lines: draw their OWN perfectly
+   synchronized rule at the same 49%-height position. */
+.tcg-card.v10-tcg.v101-special .v10-stats{
+  top:83.5%;bottom:4.55%;height:auto;
+  padding:.5cqw .9cqw;
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:0;align-items:stretch;
+  overflow:hidden;
+}
+.tcg-card.v10-tcg.v101-special .v10-stats:before{
+  content:'';position:absolute;top:49%;left:0;right:0;
+  border-top:1px solid var(--stat-rule,#c9eac79c);
+  pointer-events:none;
+}
+.tcg-card.v10-tcg.v101-special .v10-stat{grid-template-rows:49% 51%;min-width:0;min-height:0}
+.tcg-card.v10-tcg.v101-special .v10-stat:not(:first-child){
+  border-left:1px solid var(--stat-rule,#c9eac79c);
+}
+.tcg-card.v10-tcg.variant-full_art{
+  --stat-rule:var(--fa-rim,#a9e6e0);
+}
+.tcg-card.v10-tcg.variant-gold{
+  --stat-rule:#fff0acb3;
+}
+.tcg-card.v10-tcg.variant-secret{
+  --stat-rule:#91ffcf90;
+}
+.tcg-card.v10-tcg.variant-gold .v10-stats,
+.tcg-card.v10-tcg.variant-secret .v10-stats{
+  top:83.5%;bottom:4.55%;height:auto;left:6.3%;right:6.3%;
+}
+.tcg-card.v10-tcg.variant-full_art .v10-stats{
+  top:83.5%;bottom:4.55%;height:auto;left:4.5%;right:4.5%;
+}
+/* Epic Full Arts: purple metallic identity *throughout* the labels and footer,
+   not just their outer rim. Illustration content is left untouched. */
+.tcg-card.v10-tcg.variant-full_art.epic{
+  --fa-rim:#ead0ff;
+  --fa-core:#6830ac;
+  --fa-glow:#ba7cffdc;
+  --fa-label:#f0d4ff;
+  --stat-rule:#bc95ecaa;
+  background:#2b164f;
+}
+.tcg-card.v10-tcg.variant-full_art.epic .v101-art-tint{
+  position:absolute;z-index:2;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,#412063bc 0%,transparent 34%,transparent 55%,#351658b5 85%,#2b104fdf 100%);
+}
+.tcg-card.v10-tcg.variant-full_art.epic .v10-name{
+  color:#fcf0ff;text-shadow:0 2px 7px #1a093c,0 0 14px #af66f4;
+}
+.tcg-card.v10-tcg.variant-full_art.epic .v10-rarity{
+  background:#321552dc;border-color:#d2a9ff;
+}
+.tcg-card.v10-tcg.variant-full_art.epic .v10-stats{
+  background:linear-gradient(130deg,#2a124be9,#51337be0,#251246e9);
+  border-color:#ceacff;
+  box-shadow:inset 0 0 14px #bf75ff54;
+}
+.tcg-card.v10-tcg.variant-full_art.epic .v10-series{
+  color:#edd4ff;text-shadow:0 0 7px #a45bdf;
+}
+@media(max-width:800px){
+  .tcg-card.v10-tcg .v10-stat-number{font-size:5.45cqw}
+  .tcg-card.v10-tcg .v10-stat-label{font-size:3.85cqw}
+  .inspect-front .tcg-card.v10-tcg .v10-stat-label{font-size:clamp(7px,2.35cqw,10px)}
+  .inspect-front .tcg-card.v10-tcg .v10-stat-number{font-size:clamp(12px,5.1cqw,20px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .tcg-card.v10-tcg.variant-full_art.epic .v10-foil{animation:none!important}
+}
