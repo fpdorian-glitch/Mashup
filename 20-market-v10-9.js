@@ -9,7 +9,7 @@ export function createMarketUI({api,esc,toast,onAccepted,getOwnCards,getCurrentU
    return '<div class="trade-asset-row"><select aria-label="Carte '+(index+1)+'" id="trade-'+kind+'-'+index+'">'+opts+'</select><input type="number" min="1" max="20" value="1" inputmode="numeric" aria-label="Exemplaires" id="trade-'+kind+'-qty-'+index+'"></div>';
  };
  function render(){
-  const page=document.getElementById('page');if(!page)return;
+  const page=document.getElementById('market-v11-content')||document.getElementById('page');if(!page)return;
   const user=getCurrentUser();
   const pending=trades.filter(t=>t.status==='pending');
   page.innerHTML='<div class="page-lead"><div class="eyebrow">LE MULTIVERS · ÉCHANGES</div><h1 class="heading">Le Marché <em>des cartes.</em></h1><p class="text-sub">Propose des échanges privés, avec des cartes et des crédits. Chaque proposition doit être acceptée par les deux joueurs.</p></div>'+

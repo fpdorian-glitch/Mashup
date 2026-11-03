@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="10.9.0" />
+  <meta name="mashup-version" content="11.0.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -708,6 +708,7 @@
 <link rel="stylesheet" href="./17-v10-7-reveal.css?v=10.7">
 <link rel="stylesheet" href="./19-v10-8-collector.css?v=10.8">
 <link rel="stylesheet" href="./21-v10-9-market.css?v=10.9">
+<link rel="stylesheet" href="./23-v11-market.css?v=11.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -726,6 +727,8 @@
         <button class="nav-item" data-view="decks"><span class="nav-icon">▤</span><span>Decks</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="online"><span class="nav-icon">◎</span><span>Joueurs</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="market"><span class="nav-icon">⇄</span><span>Marché</span><span class="nav-chevron">↗</span></button>
+        <button class="nav-item" data-view="leaderboard"><span class="nav-icon">♛</span><span>Classements</span><span class="nav-chevron">↗</span></button>
+        <button class="nav-item" data-view="achievements"><span class="nav-icon">🏆</span><span>Succès</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="profile"><span class="nav-icon">◉</span><span>Mon profil</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" id="creator-nav" data-view="creator" hidden><span class="nav-icon">✎</span><span>Atelier</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="admin" id="admin-nav" hidden><span class="nav-icon">♙</span><span>Admin</span><span class="nav-chevron">↗</span></button>
@@ -735,7 +738,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V10.9 <span>·</span> COMPTES PRIVÉS</div>
+        <div class="tiny-copy">V11.0 <span>·</span> COMPTES PRIVÉS</div>
       </div>
     </aside>
     <div class="content-area">
@@ -1042,7 +1045,7 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=10.9.0" defer></script>
+<script src="./09-mashup-updates.js?v=11.0.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
@@ -1051,7 +1054,8 @@ import { createDevelopmentJournal } from './10-development-journal.js?v=10.4';
 import { createBoosterRevealFX } from './12-booster-reveal.js?v=10.7';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
-import { createMarketUI } from './20-market-v10-9.js?v=10.9';
+import { createMarketUI } from './20-market-v10-9.js?v=11.0';
+import { createV11UI } from './22-v11-economy-ui.js?v=11.0';
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
@@ -1128,6 +1132,14 @@ const developmentJournal=createDevelopmentJournal({api,getUser:()=>onlineUser,es
 const boosterFX=createBoosterRevealFX();
 const missionsUI=createMissionsUI({api,getUser:()=>onlineUser,esc,toast,onState:next=>{state=next;updateBalances();}});
 const collectionRewardsUI=createCollectionRewardsUI({api,esc,toast,onState:next=>{state=next;updateBalances();},onVouchers:next=>{packVouchers=next||{};}});
+const v11UI=createV11UI({
+ api,esc,toast,
+ getCards:()=>allCards().filter(c=>!c.hidden&&c.variant!=='secret'&&Number(state.owned?.[c.id])>0)
+   .map(c=>({...c,qty:Number(state.owned[c.id])||0})),
+ getUser:()=>onlineUser,getView:()=>view,getMarketMode:()=>marketMode,
+ onState:next=>{state=next;updateBalances();},
+ refreshAccount:async()=>{await loadOnlineGame();}
+});
 const marketUI=createMarketUI({
   api,esc,toast,
   onAccepted:()=>{},
@@ -1139,6 +1151,7 @@ let editingCardId = null;
 let onlineSaving = false;
 
 let view = 'packs';
+let marketMode='sale';
 let collFilter = 'owned';
 let collRarity = 'all';
 let collSearch = '';
@@ -1257,7 +1270,7 @@ function cardMarkup(card,options={}){
 function labelIntro(eyebrow,title,sub){return `<div class="page-lead"><div class="eyebrow">${eyebrow}</div><h1 class="heading">${title}</h1><p class="text-sub">${sub}</p></div>`;}
 function render(){
   if(!onlineUser)return;
-  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',missions:'MISSIONS',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',market:'MARCHÉ',profile:'PROFIL'};
+  const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',missions:'MISSIONS',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',market:'MARCHÉ',leaderboard:'CLASSEMENTS',achievements:'SUCCÈS',profile:'PROFIL'};
   document.getElementById('breadcrumb-current').textContent=names[view];
   document.querySelectorAll('.nav-item').forEach(btn=>{btn.classList.toggle('active',btn.dataset.view===view||(view==='arena'&&btn.dataset.view==='games'));btn.setAttribute('aria-current',btn.dataset.view===view?'page':'false');});
   updateBalances();
@@ -1272,9 +1285,19 @@ function render(){
   if(view==='admin'){renderAdmin();gamesUI.mountAdmin(document.getElementById('page'));}
   if(view==='profile')renderProfile();
   if(view==='online')renderPlayersDirectory();
-  if(view==='market')marketUI.mount();
+  if(view==='market')renderMarketHub();
+  if(view==='leaderboard')v11UI.mountLeaderboards();
+  if(view==='achievements')v11UI.mountAchievements();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
+function renderMarketHub(){
+  document.getElementById('page').innerHTML=
+    labelIntro('COMMUNAUTÉ · ÉCONOMIE','Le Marché <em>du Multivers.</em>','Achète, vends ou échange tes cartes avec tes amis. Tous les transferts sont vérifiés par le serveur.')+
+    '<div class="v11-market-tabs"><button class="btn '+(marketMode==='sale'?'is-current':'')+'" data-action="v11-market-mode" data-mode="sale" type="button">◈ Acheter & vendre</button>'+
+    '<button class="btn '+(marketMode==='trades'?'is-current':'')+'" data-action="v11-market-mode" data-mode="trades" type="button">⇄ Échanges privés</button></div>'+
+    '<div id="market-v11-content"></div>';
+  if(marketMode==='trades')marketUI.mount();else v11UI.mountMarket();
+}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
 // V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
 const gamesUI = createGamesUI({
   getUser:()=>onlineUser,
@@ -1948,7 +1971,14 @@ document.addEventListener('click',event=>{
     case 'invite-decline':answerInvitation(false);break;
     case 'invite-open':arenaSection='online';setView('arena');break;
     case 'open-online-arena':arenaSection='online';setView('arena');break;
-    case 'market-open-player':setView('market');marketUI.selectPartner(button.dataset.id);break;
+    case 'market-open-player':marketMode='trades';setView('market');marketUI.selectPartner(button.dataset.id);break;
+    case 'v11-market-mode':marketMode=button.dataset.mode==='trades'?'trades':'sale';renderMarketHub();break;
+    case 'v11-create-listing':v11UI.sell();break;
+    case 'v11-buy-listing':v11UI.buy(button.dataset.id,Number(button.dataset.price),button.dataset.name||'cette carte');break;
+    case 'v11-cancel-listing':v11UI.cancel(button.dataset.id);break;
+    case 'v11-refresh-market':v11UI.refreshMarket();break;
+    case 'v11-leaderboard-mode':v11UI.changeBoard(button.dataset.mode);break;
+    case 'v11-claim-achievement':v11UI.claimAchievement(button.dataset.id);break;
     case 'trade-load-target':marketUI.loadTarget();break;
     case 'trade-refresh':marketUI.refresh();break;
     case 'trade-send':marketUI.send();break;
@@ -2137,7 +2167,7 @@ function showcaseV109Editor(p,owned){
   return `<section class="panel v109-showcase-editor"><h3>✦ Ma vitrine de collectionneur</h3><p class="small-note">Choisis trois cartes réellement possédées, ton fond et ton titre. Elles seront visibles depuis la page Joueurs.</p>
     <div class="v109-showcase-options">${[0,1,2].map(single).join('')}</div>
     <div class="v109-showcase-options"><label>Ambiance<select id="v109-showcase-theme">${[['emerald','Émeraude'],['midnight','Minuit'],['gold','Or'],['cosmic','Cosmique']].map(([value,label])=>`<option value="${value}" ${theme===value?'selected':''}>${label}</option>`).join('')}</select></label>
-    <label>Titre<select id="v109-showcase-title"><option value="collector">Collectionneur du Multivers</option><option value="master" ${p?.showcaseV109?.title==='Maître de la série'?'selected':''}>Maître de la série (si débloqué)</option></select></label></div>
+    <label>Titre<select id="v109-showcase-title"><option value="collector">Collectionneur du Multivers</option><option value="master" ${p?.showcaseV109?.title==='Maître de la série'?'selected':''}>Maître de la série (si débloqué)</option><option value="merchant" ${p?.showcaseV109?.title==='Maître du commerce'?'selected':''}>Maître du commerce (succès)</option></select></label></div>
     <button class="btn btn-primary" data-action="save-showcase-v109">Enregistrer ma vitrine ↗</button>
     ${showcaseV109Markup(p)}</section>`;
 }
