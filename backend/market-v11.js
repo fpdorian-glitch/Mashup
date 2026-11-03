@@ -21,9 +21,9 @@ function marketV11CardPublic(c){
  return {id:c.id,name:c.name,rarity:c.rarity,variant:c.variant,family:c.family,series:Number(c.editionSeries)||1};
 }
 function marketV11Result(db,l){
- const c=marketV11Card(db,l.cardId);
+ const c=db.cards.find(x=>x.id===l.cardId)||null;
  const seller=db.users.find(u=>u.id===l.seller);
- return {id:l.id,card:c?marketV11CardPublic(c):null,sellerId:l.seller,
+ return {id:l.id,card:c?marketV11CardPublic(c):{id:l.cardId,name:'Carte retirée du catalogue',rarity:'common',variant:'standard',family:'',series:1},sellerId:l.seller,
    sellerName:seller?(seller.pseudo||seller.username?.split('@')[0]||'Joueur'):'Joueur',
    price:l.price,estimate:c?marketV11Estimate(db,c):0,status:l.status,
    createdAt:l.createdAt,updatedAt:l.updatedAt};
