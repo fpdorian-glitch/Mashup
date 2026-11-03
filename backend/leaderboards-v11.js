@@ -15,7 +15,7 @@ function leaderV11Stats(u,db){
  const series=Array.isArray(db.series)?db.series:[];
  const target=series.reduce((n,s)=>n+(s.number===1?158:Math.max(1,Number(s.targetCount)||1)),0);
  const percent=target?Math.min(100,Math.round(100*normalCount/target)):0;
- const rare=owned.filter(c=>['legendary','mythic','ultra'].includes(c.rarity)).length;
+ const rare=owned.filter(c=>['rare','epic','legendary','mythic','ultra'].includes(c.rarity)).length;
  const wins=(Number(u.state?.wins)||0)+(Number(u.state?.doubleWins)||0)+(Number(u.pvpWins)||0);
  return {collection:normalCount,prestige:Math.round(prestige),arena:wins,series:percent,rarity:rare};
 }
