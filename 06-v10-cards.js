@@ -19,7 +19,9 @@ export function renderMashupV10Card(card,options={},context){
   const series='S'+String(Math.max(1,Math.floor(Number(card.editionSeries)||1))).padStart(2,'0');
   const loading=options.lazy?'loading="lazy" fetchpriority="low" decoding="async"':'loading="eager" decoding="async"';
   const frameLoading=options.lazy?'loading="lazy" fetchpriority="low"':'loading="eager"';
+  const localConvergenceArt=/^s2-conv-[a-z0-9-]+$/.test(String(card.id||''))&&!imageUrl;
   const picture=imageUrl?'<img class="v10-picture-img" '+loading+' src="'+esc(imageUrl)+'" alt="Illustration de '+safeName+'">'
+    :localConvergenceArt?'<svg class="v10-convergence-art" viewBox="0 0 240 300" role="img" aria-label="Concept graphique de '+safeName+'"><use href="./assets/convergence-art.svg#'+esc(card.id)+'"></use></svg>'
     :'<span class="v10-picture-symbol" aria-hidden="true">'+esc(card.icon||'✦')+'</span>';
   // Une seule lettre par statistique : lisible même en combat sur écran étroit.
   const statLetters=['P','T','D','A','I'];
