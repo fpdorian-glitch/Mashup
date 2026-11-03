@@ -1,0 +1,25 @@
+/* Mashup — Convergence S02: one local, cacheable sprite for 100 cards.
+   Vector concepts appear only when an admin illustration hasn't been uploaded.
+   Admin-uploaded photos always take precedence through v10-picture-img. */
+.v10-tcg .v10-picture>.v10-convergence-art{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:cover;
+  overflow:hidden;
+  pointer-events:none;
+  filter:drop-shadow(0 3px 8px #0006);
+}
+.tcg-card.v10-tcg:has(.v10-convergence-art) .v10-picture{
+  background:radial-gradient(ellipse at 46% 28%,var(--art1) 0%,var(--art2) 95%);
+}
+@media(max-width:800px){
+  .collection-item .v10-convergence-art{
+    filter:none!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .v10-convergence-art{animation:none!important}
+}
