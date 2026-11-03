@@ -1,0 +1,1102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" aria-hidden="true"><defs>
+<symbol id="s2-conv-obsession-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="96" cy="112" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(0 48% 37%)" stroke="#ffe2a4" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(70 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Bear Bailey</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-003</text></symbol>
+<symbol id="s2-conv-obsession-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="105" cy="124" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(41 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(111 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Nikki Freeman</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-004</text></symbol>
+<symbol id="s2-conv-obsession-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="114" cy="136" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(82 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(152 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">One Wish Willow</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-005</text></symbol>
+<symbol id="s2-conv-obsession-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="123" cy="112" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(123 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(193 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Sarah</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-006</text></symbol>
+<symbol id="s2-conv-obsession-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="132" cy="124" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(164 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(234 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Ian</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-007</text></symbol>
+<symbol id="s2-conv-obsession-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="141" cy="136" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(205 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(275 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Carter Harper</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-008</text></symbol>
+<symbol id="s2-conv-obsession-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="150" cy="112" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(246 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(316 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Viola</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-009</text></symbol>
+<symbol id="s2-conv-obsession-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="159" cy="124" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(287 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(357 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Harry</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-010</text></symbol>
+<symbol id="s2-conv-obsession-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="96" cy="136" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(328 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(398 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Ruthie</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-011</text></symbol>
+<symbol id="s2-conv-obsession-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#201d40"/>
+ <circle cx="105" cy="112" r="117" fill="#7d3b65" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(9 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(79 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M55 69q65-87 136 0" fill="none" stroke="#ffabd0" stroke-width="8"/><path d="M120 45l-36 36 36 42 36-42Z" fill="#ba87ba" opacity=".62"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Reggie</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">OBSESSION</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-012</text></symbol>
+<symbol id="s2-conv-haikyuu-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="114" cy="124" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(50 48% 37%)" stroke="#ffe2a4" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(120 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Shōyō Hinata</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-013</text></symbol>
+<symbol id="s2-conv-haikyuu-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="123" cy="136" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(91 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(161 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Tobio Kageyama</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-014</text></symbol>
+<symbol id="s2-conv-haikyuu-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="132" cy="112" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(132 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(202 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Tōru Oikawa</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-015</text></symbol>
+<symbol id="s2-conv-haikyuu-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="141" cy="124" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(173 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(243 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Kōtarō Bokuto</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-016</text></symbol>
+<symbol id="s2-conv-haikyuu-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="150" cy="136" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(214 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(284 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Kei Tsukishima</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-017</text></symbol>
+<symbol id="s2-conv-haikyuu-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="159" cy="112" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(255 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(325 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Yū Nishinoya</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-018</text></symbol>
+<symbol id="s2-conv-haikyuu-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="96" cy="124" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(296 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(366 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Hajime Iwaizumi</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-019</text></symbol>
+<symbol id="s2-conv-haikyuu-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="105" cy="136" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(337 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(407 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Keiji Akaashi</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-020</text></symbol>
+<symbol id="s2-conv-haikyuu-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="114" cy="112" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(18 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(88 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Tetsurō Kuroo</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-021</text></symbol>
+<symbol id="s2-conv-haikyuu-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#1b3650"/>
+ <circle cx="123" cy="124" r="117" fill="#ea872f" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(59 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(129 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><circle cx="178" cy="73" r="35" fill="#efead9" stroke="#f9e9bb" stroke-width="3"/><path d="M156 46q28 30 21 58m-10-64q-11 28 19 58m-36-16 57-8" fill="none" stroke="#db794a" stroke-width="5"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Kenma Kozume</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HAIKYUU!!</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-022</text></symbol>
+<symbol id="s2-conv-monster-high-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="132" cy="136" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(100 48% 37%)" stroke="#ffe2a4" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(170 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Cleo de Nile</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-023</text></symbol>
+<symbol id="s2-conv-monster-high-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="141" cy="112" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(141 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(211 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Clawdeen Wolf</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-024</text></symbol>
+<symbol id="s2-conv-monster-high-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="150" cy="124" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(182 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(252 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Draculaura</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-025</text></symbol>
+<symbol id="s2-conv-monster-high-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="159" cy="136" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(223 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(293 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Frankie Stein</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-026</text></symbol>
+<symbol id="s2-conv-monster-high-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="96" cy="112" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(264 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(334 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Lagoona Blue</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-027</text></symbol>
+<symbol id="s2-conv-monster-high-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="105" cy="124" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(305 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(375 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Ghoulia Yelps</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-028</text></symbol>
+<symbol id="s2-conv-monster-high-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="114" cy="136" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(346 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(416 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Abbey Bominable</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-029</text></symbol>
+<symbol id="s2-conv-monster-high-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="123" cy="112" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(27 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(97 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Catty Noir</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-030</text></symbol>
+<symbol id="s2-conv-monster-high-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="132" cy="124" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(68 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(138 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Deuce Gorgon</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-031</text></symbol>
+<symbol id="s2-conv-monster-high-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#243c69"/>
+ <circle cx="141" cy="136" r="117" fill="#bf67c2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(109 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(179 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M63 60l10-49 31 43m37-1 32-42 13 49" fill="#9973bc" stroke="#ead5fa" stroke-width="3"/><circle cx="120" cy="92" r="75" fill="none" stroke="#b799d5" stroke-dasharray="5 9" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Clawd Wolf</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">MONSTER HIGH</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-032</text></symbol>
+<symbol id="s2-conv-dr-house-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="150" cy="112" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(150 48% 37%)" stroke="#ffe2a4" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(220 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Gregory House</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-033</text></symbol>
+<symbol id="s2-conv-dr-house-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="159" cy="124" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(191 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(261 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">James Wilson</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-034</text></symbol>
+<symbol id="s2-conv-dr-house-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="96" cy="136" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(232 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(302 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Lisa Cuddy</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-035</text></symbol>
+<symbol id="s2-conv-dr-house-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="105" cy="112" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(273 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(343 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Eric Foreman</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-036</text></symbol>
+<symbol id="s2-conv-dr-house-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="114" cy="124" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(314 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(384 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Robert Chase</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-037</text></symbol>
+<symbol id="s2-conv-dr-house-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="123" cy="136" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(355 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(425 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Allison Cameron</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-038</text></symbol>
+<symbol id="s2-conv-dr-house-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="132" cy="112" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(36 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(106 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Remy Hadley (13)</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-039</text></symbol>
+<symbol id="s2-conv-dr-house-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="141" cy="124" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(77 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(147 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Chris Taub</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-040</text></symbol>
+<symbol id="s2-conv-dr-house-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="150" cy="136" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(118 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(188 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Lawrence Kutner</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-041</text></symbol>
+<symbol id="s2-conv-dr-house-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#203443"/>
+ <circle cx="159" cy="112" r="117" fill="#6ba9a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(159 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(229 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 171h52l17-34 14 64 15-43 11 13h92" stroke="#aefff0" stroke-width="5" fill="none"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Amber Volakis</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DR HOUSE</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-042</text></symbol>
+<symbol id="s2-conv-911-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="96" cy="124" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(200 48% 37%)" stroke="#ffe2a4" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(270 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Athena Grant</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-043</text></symbol>
+<symbol id="s2-conv-911-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="105" cy="136" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(241 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(311 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Evan « Buck » Buck…</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-044</text></symbol>
+<symbol id="s2-conv-911-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="114" cy="112" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(282 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(352 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Bobby Nash</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-045</text></symbol>
+<symbol id="s2-conv-911-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="123" cy="124" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(323 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(393 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Henrietta Wilson</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-046</text></symbol>
+<symbol id="s2-conv-911-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="132" cy="136" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(4 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(74 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Eddie Diaz</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-047</text></symbol>
+<symbol id="s2-conv-911-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="141" cy="112" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(45 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(115 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Howard « Chimney »…</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-048</text></symbol>
+<symbol id="s2-conv-911-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="150" cy="124" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(86 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(156 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Maddie Buckley</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-049</text></symbol>
+<symbol id="s2-conv-911-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="159" cy="136" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(127 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(197 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">May Grant</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-050</text></symbol>
+<symbol id="s2-conv-911-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="96" cy="112" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(168 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(238 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Christopher Diaz</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-051</text></symbol>
+<symbol id="s2-conv-911-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28364a"/>
+ <circle cx="105" cy="124" r="117" fill="#d95748" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(209 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(279 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M20 138v-48h29v-29h29v34h25V53h30v39h20v-20h30v65" fill="#c6e6fb" opacity=".3"/><path d="M38 59h35m67 7h51" stroke="#ffb8a9" stroke-width="6"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Ravi Panikkar</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">9-1-1</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-052</text></symbol>
+<symbol id="s2-conv-power-rangers-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="114" cy="136" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(250 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Tommy Oliver</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-053</text></symbol>
+<symbol id="s2-conv-power-rangers-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="123" cy="112" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(291 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Jason Lee Scott</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-054</text></symbol>
+<symbol id="s2-conv-power-rangers-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="132" cy="124" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(332 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Kimberly Hart</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-055</text></symbol>
+<symbol id="s2-conv-power-rangers-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="141" cy="136" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(13 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Billy Cranston</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-056</text></symbol>
+<symbol id="s2-conv-power-rangers-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="150" cy="112" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(54 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Rita Repulsa</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-057</text></symbol>
+<symbol id="s2-conv-power-rangers-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="159" cy="124" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(95 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Trini Kwan</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-058</text></symbol>
+<symbol id="s2-conv-power-rangers-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="96" cy="136" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(136 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Zack Taylor</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-059</text></symbol>
+<symbol id="s2-conv-power-rangers-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="105" cy="112" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(177 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Lord Zedd</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-060</text></symbol>
+<symbol id="s2-conv-power-rangers-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="114" cy="124" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(218 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Zordon</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-061</text></symbol>
+<symbol id="s2-conv-power-rangers-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#233fa1"/>
+ <circle cx="123" cy="136" r="117" fill="#db574c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M72 101q0-61 48-63 51 1 52 63l-22 55H94Z" fill="hsl(259 70% 41%)" stroke="#ffffffb0" stroke-width="3"/><path d="M78 105q41-39 84 0l-15 29H93Z" fill="#131e33" stroke="#c3f4f8" stroke-width="4"/><path d="M122 20 90 89l28-6-14 70 69-99-44 10 22-44Z" fill="#fff0ae" stroke="#ffcf79" stroke-width="3"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Alpha 5</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">POWER RANGERS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-062</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="132" cy="112" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(300 48% 37%)" stroke="#ffe2a4" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(370 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Killua Zoldyck</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-063</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="141" cy="124" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(341 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(411 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Gon Freecss</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-064</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="150" cy="136" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(22 48% 37%)" stroke="#e2b4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(92 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Hisoka Morow</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-065</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="159" cy="112" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(63 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(133 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Kurapika</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-066</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="96" cy="124" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(104 48% 37%)" stroke="#afd4ff" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(174 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Chrollo Lucilfer</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-067</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="105" cy="136" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(145 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(215 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Leorio Paradinight</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-068</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="114" cy="112" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(186 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="39" ry="46" fill="#e6b9a2" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(256 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Ging Freecss</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-069</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="123" cy="124" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(227 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="40" ry="46" fill="#d19f81" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(297 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Biscuit Krueger</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-070</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="132" cy="136" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(268 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="37" ry="46" fill="#ebc5ac" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(338 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Alluka Zoldyck</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-071</text></symbol>
+<symbol id="s2-conv-hunter-x-hunter-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#24374a"/>
+ <circle cx="141" cy="112" r="117" fill="#70b667" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M49 228q7-69 53-76l18 14 20-14q50 13 54 76" fill="hsl(309 48% 37%)" stroke="#d8e1d8" stroke-width="3"/><ellipse cx="120" cy="106" rx="38" ry="46" fill="#bd846e" stroke="#fae5d180" stroke-width="2"/><path d="M78 99q-11-61 42-58 48-2 46 60-15-37-35-32-34 16-53 30Z" fill="hsl(379 30% 22%)"/><path d="M101 113h9m22 0h10" stroke="#203442" stroke-width="3" stroke-linecap="round"/><path d="M120 16q-66 87-29 117-42 71 28 126 72-40 33-117 49-67-32-126Z" fill="#aeecbc" opacity=".32" stroke="#d3ffd5" stroke-width="4"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Illumi Zoldyck</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">HUNTER × HUNTER</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-072</text></symbol>
+<symbol id="s2-conv-plats-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="150" cy="124" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Bœuf bourguignon</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-073</text></symbol>
+<symbol id="s2-conv-plats-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="159" cy="136" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Sushi</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-074</text></symbol>
+<symbol id="s2-conv-plats-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="96" cy="112" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Pizza napolitaine</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-075</text></symbol>
+<symbol id="s2-conv-plats-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="105" cy="124" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Ramen</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-076</text></symbol>
+<symbol id="s2-conv-plats-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="114" cy="136" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Lasagnes</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-077</text></symbol>
+<symbol id="s2-conv-plats-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="123" cy="112" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Tacos</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-078</text></symbol>
+<symbol id="s2-conv-plats-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="132" cy="124" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Burger</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-079</text></symbol>
+<symbol id="s2-conv-plats-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="141" cy="136" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Pad thaï</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-080</text></symbol>
+<symbol id="s2-conv-plats-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="150" cy="112" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Couscous</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-081</text></symbol>
+<symbol id="s2-conv-plats-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#514034"/>
+ <circle cx="159" cy="124" r="117" fill="#df9b4c" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <ellipse cx="120" cy="149" rx="94" ry="75" fill="#f8eacf" stroke="#fff7ea" stroke-width="5"/><ellipse cx="120" cy="149" rx="70" ry="52" fill="#a76a44"/><path d="M86 135q24-38 53 0t30 32" fill="none" stroke="#edb662" stroke-width="10"/><path d="M93 119q-9 19 10 27m48-13q11 17-5 27" fill="none" stroke="#a4da87" stroke-width="8"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Crêpes</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">PLATS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-082</text></symbol>
+<symbol id="s2-conv-dragons-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="96" cy="136" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Krokmou</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-083</text></symbol>
+<symbol id="s2-conv-dragons-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="105" cy="112" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Furie Éclair</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-084</text></symbol>
+<symbol id="s2-conv-dragons-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="114" cy="124" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Hurlement Mortel</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-085</text></symbol>
+<symbol id="s2-conv-dragons-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="123" cy="136" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Tempête</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-086</text></symbol>
+<symbol id="s2-conv-dragons-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="132" cy="112" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Krochefer</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-087</text></symbol>
+<symbol id="s2-conv-dragons-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="141" cy="124" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Bouledogre</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-088</text></symbol>
+<symbol id="s2-conv-dragons-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="150" cy="136" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Vomi et Prout</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-089</text></symbol>
+<symbol id="s2-conv-dragons-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="159" cy="112" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Skrill</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-090</text></symbol>
+<symbol id="s2-conv-dragons-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="96" cy="124" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Murmure Mortel</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-091</text></symbol>
+<symbol id="s2-conv-dragons-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#28334a"/>
+ <circle cx="105" cy="136" r="117" fill="#579c91" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M125 114Q66 56 14 110l41 15-27 35 76-8m21-38q50-58 99-3l-43 20 32 30-75-8" stroke="#e4f9dc" fill="#80bfa7" stroke-width="3"/><path d="M117 114 94 93l23-35 26 35 20 24-20 70-39-14Z" fill="#244959" stroke="#9ddcc5" stroke-width="3"/><circle cx="143" cy="116" r="6" fill="#ffef8b"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Terreur Terrible</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">DRAGONS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-092</text></symbol>
+<symbol id="s2-conv-trollhunters-01" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="114" cy="112" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#ffe2a4" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#ffe2a4" stroke-width="2" opacity=".74"/>
+ <circle cx="30" cy="66" r="4" fill="#ffe2a4" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#ffe2a4">Jim Lake Jr.</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#ffe2a4">S2-093</text></symbol>
+<symbol id="s2-conv-trollhunters-02" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="123" cy="124" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="47" cy="71" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Gunmar</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-094</text></symbol>
+<symbol id="s2-conv-trollhunters-03" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="132" cy="136" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#e2b4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#e2b4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="64" cy="76" r="4" fill="#e2b4ff" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#e2b4ff">Morgane</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#e2b4ff">S2-095</text></symbol>
+<symbol id="s2-conv-trollhunters-04" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="141" cy="112" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="81" cy="81" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Claire Nuñez</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-096</text></symbol>
+<symbol id="s2-conv-trollhunters-05" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="150" cy="124" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#afd4ff" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#afd4ff" stroke-width="2" opacity=".74"/>
+ <circle cx="98" cy="86" r="4" fill="#afd4ff" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#afd4ff">Angor Rot</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#afd4ff">S2-097</text></symbol>
+<symbol id="s2-conv-trollhunters-06" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="159" cy="136" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="115" cy="91" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Toby Domzalski</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-098</text></symbol>
+<symbol id="s2-conv-trollhunters-07" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="96" cy="112" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="132" cy="96" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Blinky</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-099</text></symbol>
+<symbol id="s2-conv-trollhunters-08" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="105" cy="124" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="149" cy="101" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">AAARRRGGHH!!!</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-100</text></symbol>
+<symbol id="s2-conv-trollhunters-09" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="114" cy="136" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="166" cy="106" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Draal</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-101</text></symbol>
+<symbol id="s2-conv-trollhunters-10" viewBox="0 0 240 300">
+ <rect width="240" height="300" fill="#302a54"/>
+ <circle cx="123" cy="112" r="117" fill="#5ca6a2" opacity=".65"/>
+ <path d="M-10 285 236 18M18 302 252 68" fill="none" stroke="#d8e1d8" stroke-width="22" opacity=".11"/>
+ <path d="M17 26h206M17 277h206" fill="none" stroke="#d8e1d8" stroke-width="2" opacity=".74"/>
+ <circle cx="183" cy="111" r="4" fill="#d8e1d8" opacity=".7"/>
+ <path d="M120 21 93 112l28 29 28-29Z" fill="#8bd5fa" stroke="#edfffe" stroke-width="4"/><path d="M120 101v138m-47-70h95" stroke="#c7edf4" stroke-width="10"/><circle cx="120" cy="136" r="52" fill="none" stroke="#97c3f8" stroke-width="4" stroke-dasharray="5 7"/>
+ <rect x="18" y="225" width="204" height="50" rx="7" fill="#0a1624" opacity=".82"/>
+ <text x="120" y="245" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="900" fill="#d8e1d8">Walter Strickler</text>
+ <text x="120" y="261" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.3" letter-spacing="1.4" font-weight="700" fill="#f2f2ed">CHASSEURS DE TROLLS</text>
+ <text x="211" y="21" text-anchor="end" font-size="11" font-family="system-ui,sans-serif" font-weight="900" fill="#d8e1d8">S2-102</text></symbol>
+</defs></svg>
