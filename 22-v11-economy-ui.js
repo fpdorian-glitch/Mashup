@@ -1,7 +1,7 @@
 /* Mashup V11 — marketplace, leaderboard & permanent achievements.
  * All transactions occur on Supabase. Pages load their own small data on demand.
  */
-export function createV11UI({api,esc,toast,getCards,getUser,onState,refreshAccount}){
+export function createV11UI({api,esc,toast,getCards,getUser,getView,getMarketMode,onState,refreshAccount}){
  let market={listings:[],myListings:[],limits:{maxPrice:250000}},leaderboard=null,boardMode='collection',achievements=[],marketBusy=false,achBusy=false;
  const fmt=n=>Math.max(0,Number(n)||0).toLocaleString('fr-FR');
  const cardEstimate=c=>{
@@ -82,7 +82,7 @@ export function createV11UI({api,esc,toast,getCards,getUser,onState,refreshAccou
    marketBusy=true;try{
      const data=await api('/api/market/listings');
      if(data?.listings)market=data;
-     if(marketRoot()&&document.querySelector('[data-action="market-mode"][data-mode="sale"].is-current'))renderMarket();
+     if(getView()==='market'&&getMarketMode()==='sale'&&marketRoot())renderMarket();
    }catch(e){if(showErrors)toast(e.message||'Marché indisponible.',true);}
    finally{marketBusy=false;}
  }
@@ -91,38 +91,42 @@ export function createV11UI({api,esc,toast,getCards,getUser,onState,refreshAccou
    const id=marketRoot()?.querySelector('#v11-sale-card')?.value||'';
    const price=Number(marketRoot()?.querySelector('#v11-sale-price')?.value);
    if(!id){toast('Choisis une carte à vendre.',true);return;}
-   marketBusy=true;
+   marketBusy=true;let ok=false;
    try{const r=await api('/api/market/list',{cardId:id,price});
+     ok=true;
      if(r.state)onState(r.state);
      toast('Carte mise en vente. Un exemplaire est réservé.');
    }catch(e){toast(e.message,true);}
    finally{marketBusy=false;}
-   await refreshAccount();await refreshMarket();
+   if(ok)await refreshAccount();await refreshMarket();
  }
  async function buy(id,price,name){
    if(marketBusy)return;
    if(!window.confirm('Acheter '+name+' pour '+viewMoney(price)+' ? Cette opération est définitive.'))return;
-   marketBusy=true;
+   marketBusy=true;let ok=false;
    try{
      const r=await api('/api/market/buy',{id});
+     ok=true;
      if(r.state)onState(r.state);
      toast('Carte achetée ! Elle est désormais dans ta collection.');
    }catch(e){toast(e.message||'Achat impossible.',true);}
    finally{marketBusy=false;}
-   await refreshAccount();await refreshMarket();
+   if(ok)await refreshAccount();await refreshMarket();
  }
  async function cancel(id){
    if(marketBusy)return;
-   marketBusy=true;
+   marketBusy=true;let ok=false;
    try{
      const r=await api('/api/market/cancel',{id});
+     ok=true;
      if(r.state)onState(r.state);
      toast('Annonce annulée : ta carte a été rendue.');
    }catch(e){toast(e.message,true);}
    finally{marketBusy=false;}
-   await refreshAccount();await refreshMarket();
+   if(ok)await refreshAccount();await refreshMarket();
  }
  async function mountMarket(){
+   if(!marketRoot())return;
    marketRoot().innerHTML='<div class="panel"><p>Chargement des annonces du Multivers…</p></div>';
    await refreshMarket();
  }
@@ -143,7 +147,7 @@ export function createV11UI({api,esc,toast,getCards,getUser,onState,refreshAccou
  }
  async function mountLeaderboards(){
    leaderboard=null;boardContent();
-   try{leaderboard=await api('/api/leaderboard');if(document.querySelector('[data-view="leaderboard"]'))boardContent();}catch(e){toast(e.message,true);}
+   try{leaderboard=await api('/api/leaderboard');if(getView()==='leaderboard')boardContent();}catch(e){toast(e.message,true);}
  }
  function changeBoard(id){if(!leaderboard?.modes?.some(x=>x.id===id))return;boardMode=id;boardContent();}
  function achievementContent(){
@@ -164,7 +168,7 @@ export function createV11UI({api,esc,toast,getCards,getUser,onState,refreshAccou
  }
  async function mountAchievements(){
    const root=document.getElementById('page');root.innerHTML='<div class="panel"><p>Chargement des succès…</p></div>';
-   try{const data=await api('/api/achievements');achievements=data.achievements||[];if(document.querySelector('[data-view="achievements"]'))achievementContent();}catch(e){toast(e.message,true);}
+   try{const data=await api('/api/achievements');achievements=data.achievements||[];if(getView()==='achievements')achievementContent();}catch(e){toast(e.message,true);}
  }
  async function claimAchievement(id){
    if(achBusy)return;achBusy=true;
