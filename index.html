@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="11.0.0" />
+  <meta name="mashup-version" content="11.0.1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -709,6 +709,7 @@
 <link rel="stylesheet" href="./19-v10-8-collector.css?v=10.8">
 <link rel="stylesheet" href="./21-v10-9-market.css?v=10.9">
 <link rel="stylesheet" href="./23-v11-market.css?v=11.0">
+<link rel="stylesheet" href="./24-v11-0-1-desktop-nav.css?v=11.0.1">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -721,6 +722,8 @@
       <div class="sidebar-label">L'UNIVERS</div>
       <nav class="navigation" aria-label="Navigation principale">
         <button class="nav-item active" data-view="packs"><span class="nav-icon">◈</span><span>Boosters</span><span class="nav-chevron">↗</span></button>
+        <button class="nav-item" data-view="admin" id="admin-nav" hidden><span class="nav-icon">♙</span><span>Admin</span><span class="nav-chevron">↗</span></button>
+        <button class="nav-item" id="creator-nav" data-view="creator" hidden><span class="nav-icon">✎</span><span>Atelier</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="collection"><span class="nav-icon">▦</span><span>Collection</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="games"><span class="nav-icon">⚔</span><span>Jeux</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="missions"><span class="nav-icon">✦</span><span>Missions</span><span class="nav-chevron">↗</span></button>
@@ -730,15 +733,13 @@
         <button class="nav-item" data-view="leaderboard"><span class="nav-icon">♛</span><span>Classements</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="achievements"><span class="nav-icon">🏆</span><span>Succès</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="profile"><span class="nav-icon">◉</span><span>Mon profil</span><span class="nav-chevron">↗</span></button>
-        <button class="nav-item" id="creator-nav" data-view="creator" hidden><span class="nav-icon">✎</span><span>Atelier</span><span class="nav-chevron">↗</span></button>
-        <button class="nav-item" data-view="admin" id="admin-nav" hidden><span class="nav-icon">♙</span><span>Admin</span><span class="nav-chevron">↗</span></button>
         <button class="nav-item" data-view="rules"><span class="nav-icon">☷</span><span>Règles</span><span class="nav-chevron">↗</span></button>
       </nav>
       <div class="sidebar-fill"></div>
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V11.0 <span>·</span> COMPTES PRIVÉS</div>
+        <div class="tiny-copy">V11.0.1 <span>·</span> COMPTES PRIVÉS</div>
       </div>
     </aside>
     <div class="content-area">
@@ -1045,7 +1046,7 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=11.0.0" defer></script>
+<script src="./09-mashup-updates.js?v=11.0.1" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
