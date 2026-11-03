@@ -1,5 +1,5 @@
 {
-  "version": "11.0.0",
+  "version": "11.0.1",
   "publishedAt": "2026-11-03",
-  "notes": "Marché public sécurisé : achat/vente de cartes avec réservation anti-duplication et estimation indicative. Cinq classements, six succès permanents, titre exclusif, nouveaux reflets collector et interface optimisée pour mobile."
+  "notes": "Correctif du menu PC : onglets Admin et Atelier accessibles immédiatement, navigation latérale défilante sur les petits écrans, aucun changement sur les comptes ni les crédits."
 }

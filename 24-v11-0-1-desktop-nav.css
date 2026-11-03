@@ -1,0 +1,94 @@
+/* Mashup V11.0.1 — Desktop accessibility fix.
+   With 13 navigation entries, a fixed 100vh sidebar previously pushed
+   Atelier/Admin below the screen on many laptops.
+   Keep the menu scrollable, keep every item focusable and visible, and
+   preserve the existing horizontal bottom navigation on mobile.
+*/
+@media (min-width:801px){
+  .sidebar{
+    height:100vh;
+    height:100dvh;
+    max-height:100vh;
+    max-height:100dvh;
+    min-height:0;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .sidebar>.brand{
+    flex:0 0 auto;
+    margin-bottom:clamp(14px,3vh,32px);
+  }
+  .sidebar>.sidebar-label{
+    flex:0 0 auto;
+    margin-bottom:10px;
+  }
+  .sidebar>.sidebar-fill{
+    display:none;
+  }
+  .sidebar>.navigation{
+    display:flex;
+    flex:1 1 auto;
+    flex-direction:column;
+    align-items:stretch;
+    justify-content:flex-start;
+    gap:4px;
+    width:100%;
+    min-height:0;
+    max-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior-y:contain;
+    scrollbar-width:thin;
+    scrollbar-color:#8eb6a77a transparent;
+    scrollbar-gutter:stable;
+    padding:2px 4px 14px 0;
+  }
+  .sidebar>.navigation::-webkit-scrollbar{width:5px}
+  .sidebar>.navigation::-webkit-scrollbar-thumb{
+    border-radius:99px;
+    background:#8eb6a77a;
+  }
+  .sidebar>.navigation .nav-item{
+    flex:0 0 auto;
+    min-height:42px;
+    padding:10px 11px;
+    white-space:normal;
+  }
+  .sidebar>.navigation #admin-nav:not([hidden]){
+    background:linear-gradient(100deg,#365c4c,#203b43);
+    color:#ffe4a4;
+    border:1px solid #dec98e8c;
+    font-weight:900;
+  }
+  .sidebar>.navigation #admin-nav:not([hidden]):hover,
+  .sidebar>.navigation #admin-nav:not([hidden]):focus-visible{
+    background:linear-gradient(100deg,#47735b,#294e52);
+    outline:2px solid #ebd49d;
+    outline-offset:1px;
+  }
+  .sidebar>.navigation .nav-item:focus-visible{
+    outline:2px solid #d8d698;
+    outline-offset:1px;
+  }
+  .sidebar>.sidebar-bottom{
+    flex:0 0 auto;
+    margin-top:12px;
+  }
+}
+@media (min-width:801px) and (max-height:820px){
+  .sidebar>.sidebar-bottom{display:none}
+  .sidebar>.brand{margin-bottom:15px}
+}
+@media (min-width:801px) and (max-height:560px){
+  .sidebar{padding-top:10px;padding-bottom:10px}
+  .sidebar>.brand{margin-bottom:8px}
+  .sidebar>.sidebar-label{display:none}
+}
+/* Ensure the V11.0.1 fix never changes the iPhone horizontal nav. */
+@media (max-width:800px){
+  .sidebar>.navigation{
+    overflow-x:auto;
+    overflow-y:hidden;
+  }
+}
