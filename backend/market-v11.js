@@ -60,7 +60,10 @@ function marketV11Create(db,u,input){
  const listing={id:crypto.randomUUID(),seller:u.id,cardId:card.id,price,status:'active',createdAt:now,updatedAt:now};
  db.listingsV11.push(listing);
  // Historical fulfilled listings kept for users; active items are never discarded.
- db.listingsV11=db.listingsV11.filter(l=>l.status==='active'||now-l.updatedAt<45*86400000).slice(-650);
+ const activeListings=db.listingsV11.filter(l=>l.status==='active');
+ const recentHistory=db.listingsV11.filter(l=>l.status!=='active'&&now-l.updatedAt<45*86400000).slice(-500);
+ // Never trim an active escrow: that would permanently strand its reserved card.
+ db.listingsV11=[...activeListings,...recentHistory].sort((a,b)=>a.createdAt-b.createdAt);
  return {listing:marketV11Result(db,listing),state:u.state};
 }
 function marketV11Cancel(db,u,id){
