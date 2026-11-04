@@ -1,0 +1,894 @@
+{
+  "scope": "observed source only; lexical extraction, not an OpenAPI schema; historical unreachable calls may be included",
+  "files": [
+    {
+      "path": "03-games.css",
+      "bytes": 17701,
+      "sha256": "2bbb80e9e0735c1f542ff807e1237d0cd8dfc55073e2e3aee5c9f4e277a35cd1"
+    },
+    {
+      "path": "04-games-ui.js",
+      "bytes": 23683,
+      "sha256": "22bd5e08b489928fa5be4a7e1f46e786b5a352eddc61f33c341331b4bb9a3537"
+    },
+    {
+      "path": "06-v10-cards.js",
+      "bytes": 5339,
+      "sha256": "9c22c283bcfb4f2737a419769b3d9b0e106da466fefc4016c0d67f859bb31534"
+    },
+    {
+      "path": "07-v10-cards.css",
+      "bytes": 23411,
+      "sha256": "5c319f546c9c5671657d80d18ffdf6b2d2a0d59f3c036b64dca78c15f065f8f5"
+    },
+    {
+      "path": "08-v10-theme.css",
+      "bytes": 10568,
+      "sha256": "65548d4417e641cf1e33ecfb0bed01cb959c994804c43d1e2200504ed9e29558"
+    },
+    {
+      "path": "09-mashup-updates.js",
+      "bytes": 6123,
+      "sha256": "12c1a9712b9f8d8a52fce12e0edbef87b0fc383f73e60ab5c3a4f2218ee19006"
+    },
+    {
+      "path": "10-development-journal.js",
+      "bytes": 9876,
+      "sha256": "2af6f4702b83dc65980e6778548681891b1284cd9966a078d8e91a043daca1a3"
+    },
+    {
+      "path": "11-v10-4.css",
+      "bytes": 9125,
+      "sha256": "5f03d43d5ca0888670d708bc203ff25ee9ad0f062eee1846795ef3fac118fb6d"
+    },
+    {
+      "path": "12-booster-reveal.js",
+      "bytes": 4420,
+      "sha256": "64378a519d45d630547db5906f5f97d5b58088f2f057ac76a47c5eca44526c31"
+    },
+    {
+      "path": "13-v10-5-revelations.css",
+      "bytes": 10764,
+      "sha256": "95747126bb4284297d5a65cd31d170270dfbb522df9bd4d683a87ed8d540648c"
+    },
+    {
+      "path": "15-missions-ui.js",
+      "bytes": 10187,
+      "sha256": "4ff5dbc80d4dd0105dba2ea565f3c4920789de7be3383d1dd061ebc42c5b6cf0"
+    },
+    {
+      "path": "16-v10-6-missions.css",
+      "bytes": 7806,
+      "sha256": "3681e8dfb7d97f7dd21db851044b3cd4f1cb622e3269d0953b2615a4fdcf1015"
+    },
+    {
+      "path": "17-v10-7-reveal.css",
+      "bytes": 1566,
+      "sha256": "de36a7402a3037b88c1b56a8dd424b41f7c662657f0526844625a567d7b08930"
+    },
+    {
+      "path": "18-v10-8-collection.js",
+      "bytes": 6023,
+      "sha256": "7669135dc30d6e399713311f2b111fc035773aa7de5cfcfbe3427ef64d7f724f"
+    },
+    {
+      "path": "19-v10-8-collector.css",
+      "bytes": 8660,
+      "sha256": "438d2ee3adc9d040a78d98e5aa8c454cf2d7fad16b4afc79d637ad3f77cadeed"
+    },
+    {
+      "path": "20-market-v10-9.js",
+      "bytes": 7620,
+      "sha256": "05574bc9a168af167dc82de10f2090ddcdda7081e7a49435dcb404d49d63faef"
+    },
+    {
+      "path": "21-v10-9-market.css",
+      "bytes": 5421,
+      "sha256": "ee3a05f7c8a5eddf7990a2c1b3ac1b27546addc3e4e947820668d91f1f9e8ea6"
+    },
+    {
+      "path": "22-v11-economy-ui.js",
+      "bytes": 16071,
+      "sha256": "f86e30c5a0d21d422f42f6da96bd9f4b4a2066b612271f6d7749d8d5109a4858"
+    },
+    {
+      "path": "23-v11-market.css",
+      "bytes": 8585,
+      "sha256": "2f99079a934a04ef08ab14e4a0065835bcf72d0078763a718f42a5eac996b2f6"
+    },
+    {
+      "path": "24-v11-0-1-desktop-nav.css",
+      "bytes": 2498,
+      "sha256": "62a12049817192efd25c46da5a89728e91e1bf52d8b65a9b015dca83dc004fc5"
+    },
+    {
+      "path": "25-convergence-series2.css",
+      "bytes": 790,
+      "sha256": "68b537c35e8b8f6479e08cfb8520ae6300b5361809ace3b85301346ba864cee8"
+    },
+    {
+      "path": "26-v11-2-mobile-booster.css",
+      "bytes": 12481,
+      "sha256": "ad297da2cb483b95179b802c15fb6daaeef445de559f49a92fb4425d7ea7c02f"
+    },
+    {
+      "path": "27-v11-3-image-studio.js",
+      "bytes": 9183,
+      "sha256": "00077fc4505f111da42921f2e94242d9435bba2e2b52971a7dd5c7c8e929b32e"
+    },
+    {
+      "path": "28-v11-3-mobile-identity.css",
+      "bytes": 8601,
+      "sha256": "a0b09324d1ccf69bfe13bebf73acb3ac6f1b88d057575827f2059a70c3389653"
+    },
+    {
+      "path": "29-v11-4-market-picker.js",
+      "bytes": 9574,
+      "sha256": "73ebe5ad2e1f699796acbbc0c28618b8b8e012736acabdb32f77ff047baeb1cb"
+    },
+    {
+      "path": "30-v11-4-market.css",
+      "bytes": 7905,
+      "sha256": "4718c4e7a35ed4441a186be9126b1a9e35bb239df43a3a3ca16444755c91600f"
+    },
+    {
+      "path": "31-v12-polish.css",
+      "bytes": 10716,
+      "sha256": "0d32ba6050e0c6efab5a90d5158a26ef401d4eb9c3c49801348470782caac620"
+    },
+    {
+      "path": "32-v12-performance.js",
+      "bytes": 3563,
+      "sha256": "38f4ac0f86f76df7d633fc06a605cdc0c88f52ac45bc2b50ec88bfabdab88ecc"
+    },
+    {
+      "path": "33-card-concepts.css",
+      "bytes": 12537,
+      "sha256": "7c987c2e9ea444be5857ce2276fc955439acfef9e4197ab6f4c6eff3f89a394e"
+    },
+    {
+      "path": "34-v12-1-admin-cards.css",
+      "bytes": 1106,
+      "sha256": "0a83b03c2f3bcde00e07155602eac688cd5b49a9303fa6147fee3adee0f71065"
+    },
+    {
+      "path": "art-factory/Art-Factory-Hors-Ligne.html",
+      "bytes": 229781,
+      "sha256": "3510b54edefe9ad46ae4604ee1dab69b17d59a1929e422433b2779591ddcabb4"
+    },
+    {
+      "path": "art-factory/README.md",
+      "bytes": 6319,
+      "sha256": "4dfbf6713e069259f59313c115fdaf7c01e201e49b62abf5ab7f6882b07fa885"
+    },
+    {
+      "path": "art-factory/convergence-prompts.csv",
+      "bytes": 185749,
+      "sha256": "635f464aaccfbb5f4ae482d323146e69c8dc2c023dd573a15364813a669d0dec"
+    },
+    {
+      "path": "art-factory/convergence-prompts.json",
+      "bytes": 225078,
+      "sha256": "8c1e90a7a4176cd529023bcde14a1bcb0379c0d9bf902af66676ff4b7d92ff42"
+    },
+    {
+      "path": "art-factory/generator.js",
+      "bytes": 12201,
+      "sha256": "e45177bb55c55e9d1afc1b3e84e4f0f8209058d3ea44b782d1307098396b71c4"
+    },
+    {
+      "path": "art-factory/index.html",
+      "bytes": 18365,
+      "sha256": "25e1f5669fcd25d9191db89aac45c2c137b50be57448c28510b57499be2d8406"
+    },
+    {
+      "path": "art-factory/worker.js",
+      "bytes": 4244,
+      "sha256": "2466cbd750016886cf184598696ffaa1f265abfbd8fee071b26d0cdcd3ff8b52"
+    },
+    {
+      "path": "assets/booster-spiral.svg",
+      "bytes": 9747,
+      "sha256": "957651e6c63f0a074055237ff2295dd6c2f3f73cc3eccaccf87380977e28c47f"
+    },
+    {
+      "path": "assets/convergence-art.svg",
+      "bytes": 142025,
+      "sha256": "8f3094df24fc49e8efac1342dd3ab3c1934088e8d7b8b8a513bab1e88fc5b246"
+    },
+    {
+      "path": "assets/v10-1-card-frame.svg",
+      "bytes": 5073,
+      "sha256": "025b64e84f12a47deb1438cabef7f94743c97ca6acc227c9b66634c7aa94aa56"
+    },
+    {
+      "path": "assets/v10-3-common-frame.svg",
+      "bytes": 4971,
+      "sha256": "1bc056f0f1d5a988d20d95dc06acb5774fe91854a69bcff3a0cb7f3922c8cd16"
+    },
+    {
+      "path": "assets/v10-3-epic-frame.svg",
+      "bytes": 4971,
+      "sha256": "a57c51cf7aa9778cb518761ca0353fc8756a2152101683eded81a8c2035fd325"
+    },
+    {
+      "path": "assets/v10-3-legendary-frame.svg",
+      "bytes": 4971,
+      "sha256": "c519c2210bca86a128824513d245d02e3ccfdefb76b5733e0a1fac35af46ba11"
+    },
+    {
+      "path": "assets/v10-3-mythic-frame.svg",
+      "bytes": 4971,
+      "sha256": "fa22ae64834e9880286aa5818d803cf1261a3297b74cae7c6bf3f96a2cb5e8ee"
+    },
+    {
+      "path": "assets/v10-3-rare-frame.svg",
+      "bytes": 4971,
+      "sha256": "ca1ee590c18a5f5816b7fabbf5256a948af157c1232b4d8ed2100fa0d7856244"
+    },
+    {
+      "path": "assets/v10-3-ultra-frame.svg",
+      "bytes": 4971,
+      "sha256": "7df92302a8b32a1ffc5e8b0018c807f977bd0144f1410f179b3116ee15b7036a"
+    },
+    {
+      "path": "assets/v10-card-frame.svg",
+      "bytes": 5259,
+      "sha256": "16432f08efba988cba717aa065948af46ff65b4831392a7c20dc4e8c77533cad"
+    },
+    {
+      "path": "backend/achievements-v11.js",
+      "bytes": 2735,
+      "sha256": "f0ef3ac2c8291009f9ac1b0bf2c455d0d0418a1cf0fde968f3d2c886717f4c7e"
+    },
+    {
+      "path": "backend/collection-rewards-v10-8.js",
+      "bytes": 2505,
+      "sha256": "617ad43517ac9bdc43d4b487a505089dc1d5f99b588d575cd66695d9cec1e230"
+    },
+    {
+      "path": "backend/collection-rewards-v10-9.js",
+      "bytes": 3816,
+      "sha256": "84dbfe20b6ffbe233fd9924e46cca55a9f6803477d7fb5aec9649a9e73d74ad9"
+    },
+    {
+      "path": "backend/leaderboards-v11.js",
+      "bytes": 2135,
+      "sha256": "06b2a326496f107e502ddfca0aa3d52989652f3e9c4eb95208918b57b97475d1"
+    },
+    {
+      "path": "backend/market-v10-9.js",
+      "bytes": 7918,
+      "sha256": "8453f82b2509d6939437e877d290fdd74a6d01ae0ba91a39fb15c036dfe0e70e"
+    },
+    {
+      "path": "backend/market-v11.js",
+      "bytes": 6373,
+      "sha256": "92599a3a54ae87343ba30dc25ba9ae96e5966a541ec4cd9d8c35aa8abebf7dd9"
+    },
+    {
+      "path": "backend/missions-engine-v10-6.js",
+      "bytes": 6868,
+      "sha256": "6040541170dc3198aca860b1d153fb9811e5f5b75fda0a502d1c10039642bdaf"
+    },
+    {
+      "path": "content/convergence-series2.json",
+      "bytes": 70476,
+      "sha256": "fab1d9fe80581bcbeaedcf34216ee34fb25cdba0253c46ea967f8e52b6b5ebf5"
+    },
+    {
+      "path": "index.html",
+      "bytes": 348310,
+      "sha256": "1f66f673b143bb4ae84c2288a50788f8c62b7290219ae1ba92e0d95153428521"
+    },
+    {
+      "path": "patrons/index.html",
+      "bytes": 12439,
+      "sha256": "211dc73fd6cec1695811bc26a8f1ab4e99809efc06cd12dbf769eeb03867984e"
+    },
+    {
+      "path": "reset.html",
+      "bytes": 6497,
+      "sha256": "11ba1d7c2571669a6df7d584a82b39fef6925ff303b732a5d155b769e1fa8844"
+    },
+    {
+      "path": "version.json",
+      "bytes": 327,
+      "sha256": "ac7c2a469ef0e3b7984f831a187f953d3c97935dff73d00b29973d009745f9d7"
+    }
+  ],
+  "calls": [
+    {
+      "file": "04-games-ui.js",
+      "line": 146,
+      "call": "request",
+      "route": "status",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 149,
+      "call": "request",
+      "route": "status",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 153,
+      "call": "request",
+      "route": "status",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 160,
+      "call": "request",
+      "route": "status",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 161,
+      "call": "request",
+      "route": "status",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 171,
+      "call": "request",
+      "route": "bet",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 173,
+      "call": "request",
+      "route": "start",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 176,
+      "call": "request",
+      "route": "move",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 180,
+      "call": "request",
+      "route": "move",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 182,
+      "call": "request",
+      "route": "abandon",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 183,
+      "call": "request",
+      "route": "daily",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "04-games-ui.js",
+      "line": 186,
+      "call": "api",
+      "route": "admin",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "10-development-journal.js",
+      "line": 84,
+      "call": "api",
+      "route": "/api/dev-posts",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "10-development-journal.js",
+      "line": 118,
+      "call": "api",
+      "route": "/api/admin/dev-posts",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "10-development-journal.js",
+      "line": 128,
+      "call": "api",
+      "route": "/api/admin/dev-posts",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "15-missions-ui.js",
+      "line": 106,
+      "call": "api",
+      "route": "/api/missions",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "15-missions-ui.js",
+      "line": 119,
+      "call": "api",
+      "route": "/api/missions/claim",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "15-missions-ui.js",
+      "line": 161,
+      "call": "api",
+      "route": "/api/admin/missions",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "18-v10-8-collection.js",
+      "line": 28,
+      "call": "api",
+      "route": "/api/collection/rewards",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "18-v10-8-collection.js",
+      "line": 40,
+      "call": "api",
+      "route": "/api/collection/rewards/claim",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "18-v10-8-collection.js",
+      "line": 58,
+      "call": "api",
+      "route": "/api/admin/collection/rewards",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "18-v10-8-collection.js",
+      "line": 74,
+      "call": "api",
+      "route": "/api/admin/collection/rewards",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "20-market-v10-9.js",
+      "line": 36,
+      "call": "api",
+      "route": "/api/trades",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "20-market-v10-9.js",
+      "line": 44,
+      "call": "api",
+      "route": "/api/trades/partner/",
+      "dynamic_suffix": true,
+      "method": "REVIEW"
+    },
+    {
+      "file": "20-market-v10-9.js",
+      "line": 63,
+      "call": "api",
+      "route": "/api/trades/respond",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "20-market-v10-9.js",
+      "line": 64,
+      "call": "api",
+      "route": "/api/trades/create",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "20-market-v10-9.js",
+      "line": 88,
+      "call": "api",
+      "route": "/api/trades/respond",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "22-v11-economy-ui.js",
+      "line": 106,
+      "call": "api",
+      "route": "/api/market/listings",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "22-v11-economy-ui.js",
+      "line": 119,
+      "call": "api",
+      "route": "/api/market/list",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "22-v11-economy-ui.js",
+      "line": 132,
+      "call": "api",
+      "route": "/api/market/buy",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "22-v11-economy-ui.js",
+      "line": 144,
+      "call": "api",
+      "route": "/api/market/cancel",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "22-v11-economy-ui.js",
+      "line": 174,
+      "call": "api",
+      "route": "/api/leaderboard",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "22-v11-economy-ui.js",
+      "line": 195,
+      "call": "api",
+      "route": "/api/achievements",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "22-v11-economy-ui.js",
+      "line": 200,
+      "call": "api",
+      "route": "/api/achievements/claim",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1089,
+      "call": "api",
+      "route": "/api/admin/cards",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1376,
+      "call": "api",
+      "route": "/api/packs/prepare",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1377,
+      "call": "api",
+      "route": "/api/packs/cancel",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1472,
+      "call": "api",
+      "route": "/api/packs/commit",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1759,
+      "call": "api",
+      "route": "/api/battles/start",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1779,
+      "call": "api",
+      "route": "/api/battles/choose",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1820,
+      "call": "api",
+      "route": "/api/battles/choose",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1852,
+      "call": "api",
+      "route": "/api/battles/next",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1859,
+      "call": "api",
+      "route": "/api/battles/abandon",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1885,
+      "call": "api",
+      "route": "/api/admin/cards",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1929,
+      "call": "api",
+      "route": "/api/admin/cards",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 1950,
+      "call": "api",
+      "route": "/api/admin/import",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2145,
+      "call": "api",
+      "route": "/api/preferences",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2170,
+      "call": "api",
+      "route": "/api/status",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2172,
+      "call": "api",
+      "route": "/api/auth/me",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2180,
+      "call": "api",
+      "route": "/api/bootstrap",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2190,
+      "call": "api",
+      "route": "/api/admin/cards",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2216,
+      "call": "api",
+      "route": "/api/admin/series",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2243,
+      "call": "api",
+      "route": "/api/profile/showcase",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2256,
+      "call": "api",
+      "route": "/api/profile",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2259,
+      "call": "api",
+      "route": "/api/pvp",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2307,
+      "call": "api",
+      "route": "/api/pvp",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2320,
+      "call": "api",
+      "route": "/api/pvp/invitations",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2326,
+      "call": "api",
+      "route": "/api/pvp/respond",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2331,
+      "call": "api",
+      "route": "/api/pvp/challenge",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2332,
+      "call": "api",
+      "route": "/api/pvp/respond",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2333,
+      "call": "api",
+      "route": "/api/pvp/",
+      "dynamic_suffix": true,
+      "method": "REVIEW"
+    },
+    {
+      "file": "index.html",
+      "line": 2359,
+      "call": "api",
+      "route": "/api/admin/battle-rewards",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2365,
+      "call": "api",
+      "route": "/api/admin/users",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2518,
+      "call": "api",
+      "route": "/api/admin/packs",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2529,
+      "call": "api",
+      "route": "/api/admin/packs/simulate",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2555,
+      "call": "api",
+      "route": "/api/admin/cards/archived",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2569,
+      "call": "api",
+      "route": "/api/admin/archive-card",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2585,
+      "call": "api",
+      "route": "/api/admin/credits",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2590,
+      "call": "api",
+      "route": "/api/admin/users",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2591,
+      "call": "api",
+      "route": "/api/admin/password-reset",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2592,
+      "call": "api",
+      "route": "/api/admin/disable",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2598,
+      "call": "api",
+      "route": "/api/auth/setup",
+      "dynamic_suffix": false,
+      "method": "POST"
+    },
+    {
+      "file": "index.html",
+      "line": 2599,
+      "call": "api",
+      "route": "/api/auth/me",
+      "dynamic_suffix": false,
+      "method": "GET"
+    },
+    {
+      "file": "index.html",
+      "line": 2600,
+      "call": "api",
+      "route": "/api/auth/password",
+      "dynamic_suffix": false,
+      "method": "POST"
+    }
+  ]
+}
