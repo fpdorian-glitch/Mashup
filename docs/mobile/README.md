@@ -26,7 +26,7 @@ Voir [evidence.txt](evidence.txt).
 - Aucun débordement horizontal sur l'accueil aux largeurs 320,390,768,1440 ; collection vérifiée à 390. Aucune erreur JavaScript durant ces parcours.
 - Captures : [mobile](preview-mobile.png), [desktop](preview-desktop.png), [menu/login](preview-login.png), [inspection](preview-card.png), [booster](preview-booster.png). Données fictives, cartes publiques du catalogue de référence, aucune image de joueur.
 
-Les tests de phase 0 ont évolué explicitement : la vérification d'intégrité conserve les empreintes des fichiers inchangés et vérifie la baseline historique pour les six fichiers applicatifs modifiés ; le test de reproduction R03 est devenu un test d'acceptation du correctif. Les anciens rapports de phase 0 restent un état historique, pas une preuve de ce build.
+Les tests de phase 0 ont évolué explicitement : la vérification d'intégrité conserve les empreintes des fichiers inchangés et vérifie la baseline historique pour les fichiers applicatifs modifiés ; le test de reproduction R03 est devenu un test d'acceptation du correctif. Les anciens rapports de phase 0 restent un état historique, pas une preuve de ce build.
 
 ## Rejouer
 
@@ -45,3 +45,9 @@ Chromium est attendu à /usr/bin/chromium. Le serveur de test écoute uniquement
 Aucune mesure FPS/mémoire sur téléphone physique et aucun test Safari réel. Le navigateur Chromium émule les dimensions/tactile ; il ne valide pas les limitations de WebKit/iOS. Aucun achat, tirage, email ou compte réel utilisé ; auth et économie de production non certifiées. Vérifier préproduction isolée, connexion/récupération réelle de test, marché/PvP et interruptions réseau avant publication. Les garde-fous de phase 0 sur sauvegardes restent applicables.
 
 Tous les fichiers backend et les données de catalogue sont inchangés. Le changement de version 13.0.0 ne sera visible sur le site que si cette branche est fusionnée et publiée. Retour arrière : remettre ensemble HTML, CSS/JS, icônes et manifeste de version au build précédent ; aucune restauration de base nécessaire pour les modifications de ce lot. Ne pas effacer le stockage des sessions ou les données des joueurs.
+
+## Finitions renforcées — suivi brillance
+
+Ajout de deux couches décoratives masquées : irisation prismatique et vernis spéculaire. Intensité progressive de commune à Ultra ; Gold métallique dorée ; Secrètes avec micro-éclats. Le masque atténue les couches devant les zones de texte. Les couches sont purement visuelles, non interactives et aria-hidden ; ni illustration ni donnée de carte ne sont modifiées. En mode économique/animations réduites, la couche prismatique est désactivée et le vernis simplifié.
+
+La capture d’inspection montre maintenant le mode spectaculaire pendant un geste d’inclinaison. Le test navigateur vérifie la présence de la finition et le déplacement de la lumière. Les 22 tests Node et le parcours Chromium simulé passent ; aucune mesure sur appareil physique ni publication.

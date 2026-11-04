@@ -1,0 +1,52 @@
+Finitions cartes — tests hors production
+
+✔ Hero ne révèle que les cartes possédées, visibles et non archivées (1.624991ms)
+✔ Hero vide reste utilisable sans carte ni booster, sans NaN (0.176107ms)
+✔ Réduction des animations prioritaire sur la qualité spectaculaire (0.142836ms)
+✔ Qualité adaptative choisit autonomie pour CPU, mémoire ou économie données (0.163498ms)
+✔ Icônes inconnues utilisent un motif statique sûr (0.198ms)
+✔ API principale : réponse d’un ancien compte rejetée avant application (3.276793ms)
+✔ Version de distribution cohérente entre manifeste de version, HTML et updater (1.634315ms)
+✔ Référence phase 0 : fichiers inchangés et baseline historique des fichiers V13 modifiés (34.160233ms)
+✔ Syntaxe : tous les modules racine sont compilables (466.797292ms)
+✔ Rendu cartes : masquage, possession/admin et échappement du nom (2.227143ms)
+✔ Marché : séquestre puis annulation restitue exactement une copie (2.691586ms)
+✔ Marché : achat unique conserve crédits et cartes, retire dernière copie du deck (1.758313ms)
+✔ Marché : prix invalide et fonds insuffisants sans mutation (1.336404ms)
+✔ Échange : revalidation, transfert unique et conservation (2.244258ms)
+✔ Échange : inventaire insuffisant à acceptation ne transfère rien (1.450476ms)
+✔ Collection : palier unique et bon attribué une seule fois (1.912296ms)
+✔ Succès : récompense unique et refus si non atteint (2.633809ms)
+✔ Missions : calendrier Paris hiver/été et bascules DST (21.731351ms)
+✔ Missions : gain quotidien unique, renouvellement sans perdre hebdomadaire (3.388501ms)
+✔ R03 corrigé : une réponse Jeux tardive ne remplace pas le nouvel écran (2.232531ms)
+✔ Copie fichier synthétique : écriture, relecture et comparaison exacte (pas SQL) (2.634299ms)
+✔ Comparateur : corruption, champ perdu et format non synthétique refusés (4.356908ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 593.949604
+
+Chromium avec API fictive (code 0)
+Home visible; errors: []
+overflow mobile: false
+Menu links: 10
+eco: eco
+Deck cards initial: 24
+Deck cards expanded: 36
+Collection cards: 24
+Collection search and reset: passed
+overflow collection: false
+overflow desktop: false
+Layout 320px: no horizontal overflow
+Layout 390px: no horizontal overflow
+Layout 768px: no horizontal overflow
+Layout 1440px: no horizontal overflow
+Card detail/inspection and 3-card booster reveal/confirmation: passed (mock API only)
+Player menu permissions and logout to login: passed
+Reduced motion, preferences persistence, Escape: passed
+Errors final: []

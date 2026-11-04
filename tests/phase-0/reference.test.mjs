@@ -23,7 +23,7 @@ const money=db=>db.users.reduce((n,u)=>n+u.state.coins,0);
 test('Référence phase 0 : fichiers inchangés et baseline historique des fichiers V13 modifiés',()=>{
  const manifest=JSON.parse(read('docs/phase-0/source-inventory.json'));
  assert.ok(manifest.files.length>40);
- const revised=new Set(['index.html','04-games-ui.js','09-mashup-updates.js','10-development-journal.js','12-booster-reveal.js','version.json']);
+ const revised=new Set(['index.html','06-v10-cards.js','04-games-ui.js','09-mashup-updates.js','10-development-journal.js','12-booster-reveal.js','version.json']);
  for(const f of manifest.files){
   const bytes=revised.has(f.path)?spawnSync('git',['show','d6ed7db3e522d41f4cb1ed91b4ed09aa88539e49:'+f.path],{cwd:root}):null;
   if(bytes)assert.equal(bytes.status,0,'Baseline historique '+f.path);
