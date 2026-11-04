@@ -1,0 +1,13 @@
+/* Mashup V12.1 — Admin: suppression réversible des cartes. */
+.admin-card-row{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.admin-card-row>div:first-child{min-width:0;flex:1}
+.admin-card-row>div:first-child strong,.admin-card-row>div:first-child small{display:block;overflow-wrap:anywhere}
+.admin-card-actions{display:flex;flex:0 0 auto;flex-wrap:wrap;gap:7px;justify-content:flex-end}
+.admin-card-actions .btn{font-size:11px;min-height:34px}
+.admin-card-actions .btn-danger{color:#ffe4e0;border:1px solid #a45e62;background:#552a35}
+.admin-card-actions .btn-danger:hover{background:#743641}
+.admin-trash{border:1px solid #3a5558;background:#10202a;border-radius:15px;padding:15px 18px}
+.admin-trash summary{cursor:pointer;font-weight:850;color:#e2edbb}
+.admin-trash .admin-card-list{margin-top:12px}
+.admin-trash p.small-note{color:#b4c4c2;margin:9px 0}
+@media(max-width:550px){.admin-card-row{align-items:flex-start;gap:8px}.admin-card-actions{display:flex;flex-direction:column;align-items:stretch}.admin-card-actions .btn{font-size:10px;padding:6px 9px;min-height:31px}}
