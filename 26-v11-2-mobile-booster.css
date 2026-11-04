@@ -1,0 +1,186 @@
+/* Mashup V11.2 — Android portrait layout + cinematic booster turn.
+ * Loaded after legacy styles to override the old mobile 2D fallback.
+ * Only transform/opacity are animated on the card itself (GPU-friendly).
+ */
+
+/* Do not allow fixed-width children to expand a narrow Android viewport. */
+html,body,.shell,.content-area,#page{max-width:100%}
+.shell,.content-area,#page,.topbar,.topbar-right,.section-top,
+.pack-grid,.pack,.pack-head,.pack-desc,.pack-bottom{min-width:0}
+img,svg{max-width:100%}
+.pack-grid{align-items:stretch}
+.pack h4,.pack-desc{overflow-wrap:anywhere}
+.pack-bottom .btn{min-width:0}
+.topbar-right{flex-shrink:0}
+.navigation{-webkit-overflow-scrolling:touch}
+@media(max-width:800px){
+  /* A third column was forcing booster titles and prices to be clipped. */
+  .pack-grid{
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
+    gap:15px;
+  }
+  #page{max-width:100%;overflow-x:clip}
+  .topbar{min-width:0}
+  .navigation{justify-content:flex-start;scrollbar-width:none}
+  .navigation::-webkit-scrollbar{display:none}
+  .sidebar{padding-bottom:calc(5px + env(safe-area-inset-bottom,0px));height:calc(64px + env(safe-area-inset-bottom,0px))}
+  .sidebar .nav-item{flex:0 0 auto;min-width:69px;min-height:51px}
+}
+@media(max-width:600px){
+  /* Portrait phone: a full-width card instead of a 140px image beside
+     a 100px text column. This fixes the cropped "Ouvrir"/price buttons. */
+  .pack-grid{grid-template-columns:minmax(0,1fr)!important;gap:15px}
+  .pack{
+    display:flex!important;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:18px!important;
+    width:100%;
+    min-width:0;
+  }
+  .pack-head{display:flex;width:100%;gap:8px;flex-wrap:wrap}
+  .pack-chip{max-width:100%;overflow-wrap:anywhere;text-align:right}
+  .pack-visual{display:grid;width:100%;height:156px;flex:none;grid-column:auto;grid-row:auto;place-items:center}
+  .pack h4{font-size:clamp(19px,5vw,24px);line-height:1.25;margin:7px 0 5px}
+  .pack-desc{font-size:12px;line-height:1.6;min-height:0}
+  .pack-bottom{width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:16px;padding-top:13px}
+  .pack-bottom .btn{width:auto!important;flex:1 1 118px;min-height:44px}
+  .pack-price{flex:0 1 auto;font-size:clamp(20px,5.3vw,26px)}
+  .mini-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .metric{min-width:0;padding:clamp(9px,2vw,15px)}
+  .metric span{overflow-wrap:anywhere;line-height:1.4}
+  .metric strong{font-size:clamp(18px,5vw,25px)}
+  .topbar{padding-inline:clamp(10px,3vw,18px);gap:6px}
+  .topbar-right{gap:5px}
+  .breadcrumb{max-width:32%;overflow-wrap:anywhere}
+  .section-top{flex-wrap:wrap}
+  .section-top>.pill{max-width:100%;white-space:normal}
+  .footer,#page{overflow-wrap:anywhere}
+  .footer{padding-bottom:env(safe-area-inset-bottom,0px)}
+}
+@media(max-width:360px){
+  .topbar .resource{padding:0 6px;gap:3px}
+  .topbar .resource strong{font-size:11px}
+  .topbar .avatar{margin-left:0}
+  .breadcrumb{font-size:8px}
+}
+
+/* Center the same spiral on every layer and during both sides of the flip.
+   Flex centering replaces display:block (which displaced the SVG on Android). */
+.opening-fullscreen .pack-stack-layer,
+.opening-fullscreen .opening-top-card .flip-front{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:0!important;
+}
+.opening-fullscreen .pack-stack-layer .galaxy-svg,
+.opening-fullscreen .opening-top-card .flip-front .galaxy-svg{
+  position:relative;
+  display:block;
+  flex:0 0 auto;
+  width:80%!important;
+  height:auto!important;
+  max-width:80%!important;
+  max-height:80%!important;
+  aspect-ratio:1;
+  margin:auto!important;
+  transform:none!important;
+  transform-origin:50% 50%;
+  animation:none!important; /* stop SVG pulsing independently of the card */
+}
+.opening-fullscreen .opening-top-card .flip-front::before{pointer-events:none}
+.opening-fullscreen .pack-stack-layer{overflow:hidden}
+.opening-fullscreen .opening-top-card{
+  perspective:1450px!important;
+  -webkit-perspective:1450px;
+  transform:none!important;
+  transform-origin:center center;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.opening-fullscreen .opening-top-card .flip-inner{
+  display:block!important;
+  position:relative;
+  width:100%!important;
+  height:100%!important;
+  transform:rotateY(0deg)!important;
+  -webkit-transform:rotateY(0deg)!important;
+  transform-style:preserve-3d!important;
+  -webkit-transform-style:preserve-3d!important;
+  transition:transform var(--mashup-flip-time,1050ms) cubic-bezier(.17,.72,.21,1)!important;
+  will-change:transform;
+}
+.opening-fullscreen .opening-top-card.revealed .flip-inner{
+  transform:rotateY(180deg)!important;
+  -webkit-transform:rotateY(180deg)!important;
+}
+.opening-fullscreen .opening-top-card .flip-front,
+.opening-fullscreen .opening-top-card .flip-back{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  box-sizing:border-box;
+  -webkit-backface-visibility:hidden!important;
+  backface-visibility:hidden!important;
+  transition:none!important;
+  pointer-events:none;
+}
+.opening-fullscreen .opening-top-card .flip-front{
+  z-index:2;
+  transform:rotateY(0deg) translateZ(1px)!important;
+  -webkit-transform:rotateY(0deg) translateZ(1px)!important;
+}
+.opening-fullscreen .opening-top-card .flip-back{
+  z-index:1;
+  transform:rotateY(180deg) translateZ(1px)!important;
+  -webkit-transform:rotateY(180deg) translateZ(1px)!important;
+  overflow:hidden;
+}
+.opening-fullscreen .opening-top-card.revealed .flip-front{
+  opacity:1!important; /* never fade the back out before 90deg */
+  z-index:2;
+}
+.opening-fullscreen .opening-top-card.revealed .flip-back{
+  opacity:1!important;
+  z-index:1;
+}
+/* A gleam only crosses the image once the card is revealed. */
+.opening-fullscreen .opening-top-card .flip-back:after{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  z-index:12;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent 30%,#fff9 48%,transparent 60%);
+  transform:translateX(-130%) rotate(-9deg);
+  opacity:0;
+}
+.opening-fullscreen .opening-top-card.revealed .flip-back:after{
+  animation:v112-reveal-gleam 720ms ease-out 540ms both;
+}
+@keyframes v112-reveal-gleam{
+  0%{transform:translateX(-130%) rotate(-9deg);opacity:0}
+  20%{opacity:.55}
+  100%{transform:translateX(130%) rotate(-9deg);opacity:0}
+}
+.opening-fullscreen .pack-stack-surface{transform-origin:center center}
+.opening-fullscreen .opening-top-card.put-away .flip-inner{will-change:auto}
+@media(max-width:720px){
+  .opening-fullscreen .pack-stack-surface{perspective:1450px}
+  .opening-fullscreen .opening-top-card .flip-back .tcg-card{transform:none!important}
+  .opening-fullscreen .opening-top-card:hover:not(:disabled){transform:none!important;filter:none!important}
+  .opening-fullscreen .opening-top-card .flip-inner{will-change:transform}
+  .opening-fullscreen .opening-top-card .flip-back:after{display:none}
+}
+@media(max-height:560px){
+  .opening-fullscreen .pack-stack-surface{max-height:calc(100dvh - 155px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .opening-fullscreen .opening-top-card .flip-inner{transition:none!important;will-change:auto}
+  .opening-fullscreen .opening-top-card .flip-back:after{animation:none!important}
+}
