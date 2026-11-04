@@ -1,5 +1,5 @@
 {
-  "version": "11.2.3",
+  "version": "11.2.4",
   "publishedAt": "2026-11-04",
-  "notes": "Boosters sécurisés : croix de fermeture retirée pendant l'ouverture, fermeture accidentelle bloquée, retour automatique à l'onglet Boosters après confirmation. Retournement avec relief 3D affiné et spirale encore abaissée. Comptes, cartes et crédits inchangés."
+  "notes": "Animation des boosters plus fluide sur Android : suppression de l'inclinaison 3D saccadée au profit d'un pivot simple et rapide (730 ms sur mobile). Écritures toujours à l'endroit. Croix supprimée, retour à Boosters après validation et centrage du logo conservés. Comptes, tirages et crédits inchangés."
 }
