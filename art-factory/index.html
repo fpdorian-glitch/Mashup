@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#10191f">
-<meta name="description" content="Préparer les 100 illustrations originales de la série Convergence pour Mashup.">
+<meta name="description" content="Préparer et générer les 100 illustrations originales de Convergence pour Mashup.">
 <title>Mashup Art Factory — Convergence</title>
 <style>
 :root{color-scheme:dark;--bg:#0d151c;--panel:#15252d;--ink:#e9f1ec;--muted:#acbdbf;--line:#4b6a65;--accent:#dbefac;--gold:#edd195;--tint:#213d3c;--radius:16px;font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
@@ -73,8 +73,8 @@ footer{padding:16px;text-align:center;color:#96aba6;font-size:11px;max-width:120
 <header>
   <div class="brand">MASHUP / ART FACTORY</div>
   <h1>Convergence <em style="color:#c4e0b0;font-style:normal">Illustrations.</em></h1>
-  <p>100 briefs originaux pour la série 2. Choisis une carte, copie son prompt dans ton outil de génération d’images, puis reviens convertir l’image en JPEG parfaitement nommé pour le Studio Mashup.</p>
-  <div class="meta"><span class="tag">Série 02 · 100 visuels</span><span class="tag">10 univers</span><span class="tag">6:5 · 720 × 600 px</span><span class="tag">Aucune clé API requise</span></div>
+  <p>100 briefs originaux pour la série 2. Utilise les prompts dans ton outil d’images habituel, ou active la génération IA sécurisée dans ce studio. Exporte ensuite les fichiers déjà nommés pour Mashup.</p>
+  <div class="meta"><span class="tag">Série 02 · 100 visuels</span><span class="tag">10 univers</span><span class="tag">6:5 · 720 × 600 px</span><span class="tag">Mode manuel gratuit · IA en option</span></div>
   <div class="header-actions">
     <a class="btn btn-primary" href="./convergence-prompts.csv" download>↓ Exporter les 100 prompts (CSV)</a>
     <a class="btn" href="./convergence-prompts.json" download>↓ Exporter le manifeste JSON</a>
@@ -109,7 +109,7 @@ footer{padding:16px;text-align:center;color:#96aba6;font-size:11px;max-width:120
      <button type="button" class="btn btn-primary" id="download" disabled>↓ Télécharger le JPEG prêt à importer</button>
      <button type="button" class="btn" id="done" disabled>✓ Marquer validée</button>
    </div>
-   <div id="message" class="notice" role="status" aria-live="polite">Aucune génération d’image n’est faite ici : l’outil prépare les prompts et les fichiers. Les images importées restent dans ton navigateur.</div>
+   <div id="message" class="notice" role="status" aria-live="polite">Mode manuel disponible immédiatement. La génération directe nécessite un Worker sécurisé avec une clé API configurée sur le serveur. Les images restent dans ton navigateur après leur réception.</div>
    <p>Dans Mashup : <strong>Atelier → Studio des illustrations → Importer en série</strong> (maximum 6 fichiers à la fois). Le nom du fichier est basé sur l’identifiant exact de la carte.</p>
  </section>
 </main>
@@ -135,7 +135,7 @@ function choose(card){
  $('title').textContent=card.name;$('concept').textContent=card.concept;
  $('prompt').value=card.prompt;$('filename').textContent=card.filename;
  $('copy').disabled=false;$('done').disabled=false;$('done').textContent=status(card.id)==='done'?'✓ Validée · Revenir à « Prête »':'✓ Marquer validée';
- message('1. Copie le prompt. 2. Génère une illustration originale. 3. Charge-la ici. 4. Télécharge le JPEG correctement nommé.');
+ message('Copie le prompt vers ton outil habituel, ou utilise la génération IA sécurisée ci-dessus. Convertis puis télécharge le JPEG correctement nommé.');
  renderItems();
 }
 function filtered(){
@@ -217,5 +217,6 @@ fetch('./convergence-prompts.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw E
 }).catch(e=>{message('Impossible de charger les prompts. Actualise le site : '+e.message);$('count').textContent='Catalogue indisponible'});
 })();
 </script>
+<script src="./generator.js?v=1" defer></script>
 </body>
 </html>
