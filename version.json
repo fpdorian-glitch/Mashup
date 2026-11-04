@@ -1,5 +1,5 @@
 {
-  "version": "11.2.0",
+  "version": "11.2.1",
   "publishedAt": "2026-11-04",
-  "notes": "Boosters cinéma : véritable retournement 3D plus fluide et ralenti, spirale recentrée, effet de révélation. Correction des boosters et boutons coupés sur Android en mode portrait. Comptes et collections conservés."
+  "notes": "Correctif urgent : cartes de booster et textes toujours dans le bon sens sur Android, iPhone et ordinateur. Ouverture cinéma et affichage Android conservés. Aucun changement aux collections ni aux crédits."
 }
