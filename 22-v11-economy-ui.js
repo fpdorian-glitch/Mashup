@@ -1,7 +1,7 @@
 /* Mashup V11 — marketplace, leaderboard & permanent achievements.
  * All transactions occur on Supabase. Pages load their own small data on demand.
  */
-export function createV11UI({api,esc,toast,getCards,getUser,getView,getMarketMode,onState,refreshAccount}){
+export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,renderCard,createSaleCardPicker,getUser,getView,getMarketMode,onState,refreshAccount}){
  let market={listings:[],myListings:[],limits:{maxPrice:250000}},leaderboard=null,boardMode='collection',achievements=[],marketBusy=false,achBusy=false;
  const fmt=n=>Math.max(0,Number(n)||0).toLocaleString('fr-FR');
  const cardEstimate=c=>{
@@ -11,15 +11,38 @@ export function createV11UI({api,esc,toast,getCards,getUser,getView,getMarketMod
  };
  const viewMoney=n=>fmt(n)+' ◉';
  const myCards=()=>getCards().filter(c=>!c.hidden&&c.variant!=='secret'&&c.qty>0).sort((a,b)=>a.name.localeCompare(b.name,'fr'));
+ let selectedSaleCardId='';
+ const picker=createSaleCardPicker({getCards:myCards,getFavorites,esc,renderCard,onPick:applySelectedSaleCard});
+ function applySelectedSaleCard(card){
+   selectedSaleCardId=card.id;
+   const root=marketRoot(),input=root?.querySelector('#v11-sale-card'),preview=root?.querySelector('#v11-sale-selection');
+   if(input)input.value=card.id;
+   if(preview)preview.innerHTML=picker.renderPreview(card);
+   updateEstimatedPrice();
+ }
  function marketRoot(){return document.getElementById('market-v11-content');}
  function listingCard(l,mine=false){
-   const card=l.card;
-   if(!card)return '';
+   const card=l.card;if(!card)return '';
    const self=l.sellerId===getUser()?.id;
    const rarity=String(card.rarity||'common').toLowerCase();
    const mineActions=mine&&l.status==='active'?'<button class="btn btn-sm" data-action="v11-cancel-listing" data-id="'+esc(l.id)+'">Annuler et récupérer la carte</button>':'';
    const buyActions=!self&&l.status==='active'?'<button class="btn btn-sm btn-primary" data-action="v11-buy-listing" data-id="'+esc(l.id)+'" data-price="'+l.price+'" data-name="'+esc(card.name)+'">Acheter</button>':'';
-   return '<article class="v11-market-card v11-rarity-'+rarity+'"><div class="v11-card-icon" aria-hidden="true">✦</div><div class="v11-market-card-body"><div class="v11-card-label">'+esc(rarity.toUpperCase())+(card.variant==='gold'?' · GOLD':card.variant==='full_art'?' · FULL ART':'')+'</div><h4>'+esc(card.name)+'</h4><small>'+esc(card.family||'')+' · Série '+Number(card.series)+'</small><p class="v11-seller">'+esc(l.sellerName)+'</p><strong class="v11-market-price">'+viewMoney(l.price)+'</strong><p class="v11-estimate">Estimation indicative : '+viewMoney(l.estimate)+'</p><div class="v11-market-actions">'+buyActions+mineActions+(mine&&l.status!=='active'?'<small>'+esc(l.status==='sold'?'Vendu':'Annulé')+'</small>':'')+'</div></div></article>';
+   // The marketplace API contains only public card fields. Get current art and
+   // complete TCG frame from the catalogue; escrowed cards stay visible.
+   const artwork=getCardById(card.id)||{...card,editionSeries:card.series,icon:'✦'};
+   const artworkMarkup=renderCard(artwork,{lazy:true,revealedOpponent:true});
+   const label={common:'Commune',rare:'Rare',epic:'Épique',legendary:'Légendaire',mythic:'Mythique',ultra:'Ultra'}[rarity]||rarity;
+   return '<article class="v11-market-card v11-rarity-'+rarity+'">'+
+     '<div class="v114-listing-illustration" aria-label="Carte '+esc(card.name)+'">'+artworkMarkup+'</div>'+
+     '<div class="v11-market-card-body"><div class="v11-card-label">'+esc(label.toUpperCase())+
+       (card.variant==='gold'?' · GOLD':card.variant==='full_art'?' · FULL ART':'')+'</div>'+
+       '<h4>'+esc(card.name)+'</h4><small>'+esc(card.family||'')+' · Série '+(Number(card.series)||1)+'</small>'+
+       '<p class="v11-seller">Vendeur : '+esc(l.sellerName)+'</p>'+
+       '<strong class="v11-market-price">'+viewMoney(l.price)+'</strong>'+
+       '<p class="v11-estimate">Estimation : '+viewMoney(l.estimate)+'</p>'+
+       '<div class="v11-market-actions">'+buyActions+mineActions+
+       (mine&&l.status!=='active'?'<small>'+esc(l.status==='sold'?'Vendu':'Annulé')+'</small>':'')+
+       '</div></div></article>';
  }
  function filteredListings(){
    const root=marketRoot();const rarity=root?.querySelector('#v11-filter-rarity')?.value||'all';
@@ -50,14 +73,14 @@ export function createV11UI({api,esc,toast,getCards,getUser,getView,getMarketMod
  function renderMarket(){
    const root=marketRoot();if(!root)return;
    const mine=myCards();
-   const chosen=marketRoot()?.querySelector('#v11-sale-card')?.value||'';
+   const chosen=mine.some(c=>c.id===selectedSaleCardId)?selectedSaleCardId:'';
+   selectedSaleCardId=chosen;
    const selectedPrice=marketRoot()?.querySelector('#v11-sale-price')?.value||'';
-   const cards=mine.map(c=>'<option value="'+esc(c.id)+'" '+(c.id===chosen?'selected':'')+'>'+esc(c.name)+' · '+esc(c.rarity)+' (×'+fmt(c.qty)+')</option>').join('');
    const rarity=['common','rare','epic','legendary','mythic','ultra'].map(x=>'<option value="'+x+'">'+esc(x)+'</option>').join('');
    const universe=[...new Set((market.listings||[]).map(l=>l.card?.family).filter(Boolean))].sort();
    const series=[...new Set((market.listings||[]).map(l=>l.card?.series).filter(Boolean))].sort((a,b)=>a-b);
    root.innerHTML='<section class="panel v11-listing-creator"><div><span class="eyebrow">✦ ANNONCES PUBLIQUES</span><h3>Mettre une carte en vente</h3><p>Choisis ton prix en crédits. Un exemplaire est réservé jusqu’à la vente ou l’annulation ; jamais de monnaie réelle.</p></div>'+
-     '<div class="v11-sale-form"><label>Carte à vendre<select id="v11-sale-card"><option value="">Sélectionner dans ma collection</option>'+cards+'</select></label>'+
+     '<div class="v11-sale-form"><div class="v114-sale-card-field"><span>Carte à vendre</span><div class="v114-sale-card-choice"><div id="v11-sale-selection">'+picker.renderPreview(mine.find(c=>c.id===chosen))+'</div><button class="btn btn-sm" type="button" data-action="v11-open-sale-picker">✧ Parcourir ma collection ↗</button></div><input id="v11-sale-card" type="hidden" value="'+esc(chosen)+'"></div>'+
      '<label>Prix demandé (10 à 250 000)<input id="v11-sale-price" type="number" min="10" max="250000" step="1" inputmode="numeric" value="'+esc(selectedPrice)+'"></label>'+
      '<div class="v11-sale-controls"><small id="v11-sale-estimate">Estimation indicative selon la rareté.</small><button class="btn btn-primary" data-action="v11-create-listing">Publier une annonce ↗</button></div></div></section>'+
      '<section class="panel v11-sales-panel"><div class="v11-section-head"><div><span class="eyebrow">LE MARCHÉ DU MULTIVERS</span><h3>Cartes en vente</h3></div><button class="btn btn-sm" data-action="v11-refresh-market">↻ Actualiser</button></div>'+
@@ -91,6 +114,7 @@ export function createV11UI({api,esc,toast,getCards,getUser,getView,getMarketMod
    const id=marketRoot()?.querySelector('#v11-sale-card')?.value||'';
    const price=Number(marketRoot()?.querySelector('#v11-sale-price')?.value);
    if(!id){toast('Choisis une carte à vendre.',true);return;}
+   if(!Number.isSafeInteger(price)||price<10||price>250000){toast('Indique un prix entre 10 et 250 000 crédits.',true);return;}
    marketBusy=true;let ok=false;
    try{const r=await api('/api/market/list',{cardId:id,price});
      ok=true;
@@ -98,7 +122,7 @@ export function createV11UI({api,esc,toast,getCards,getUser,getView,getMarketMod
      toast('Carte mise en vente. Un exemplaire est réservé.');
    }catch(e){toast(e.message,true);}
    finally{marketBusy=false;}
-   if(ok)await refreshAccount();await refreshMarket();
+   if(ok){selectedSaleCardId='';await refreshAccount();}await refreshMarket();
  }
  async function buy(id,price,name){
    if(marketBusy)return;
@@ -181,6 +205,6 @@ export function createV11UI({api,esc,toast,getCards,getUser,getView,getMarketMod
    }catch(e){toast(e.message,true);}
    finally{achBusy=false;}
  }
- return {mountMarket,refreshMarket,sell,buy,cancel,mountLeaderboards,changeBoard,
+ return {mountMarket,refreshMarket,sell,buy,cancel,openSalePicker:()=>picker.open(),mountLeaderboards,changeBoard,
    mountAchievements,claimAchievement,cardEstimate};
 }

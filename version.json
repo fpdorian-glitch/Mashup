@@ -1,5 +1,5 @@
 {
-  "version": "11.3.0",
+  "version": "11.4.0",
   "publishedAt": "2026-11-04",
-  "notes": "Nouvel habillage Mashup, navigation et collection optimisées sur mobile. Studio d’illustrations admin : rechercher une carte, ajouter et recadrer son image, ou importer jusqu’à 6 images par lot avec vérification des noms. Cartes, crédits, profils et boosters conservés."
+  "notes": "Marché V11.4 : sélection visuelle de cartes dans une fenêtre avec filtres de collection, doublons et favoris. Les annonces affichent les vraies cartes illustrées et leurs finitions. Optimisation mobile, données et crédits conservés."
 }
