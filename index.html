@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="11.3.0" />
+  <meta name="mashup-version" content="11.4.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -713,6 +713,7 @@
 <link rel="stylesheet" href="./25-convergence-series2.css?v=11.1">
 <link rel="stylesheet" href="./26-v11-2-mobile-booster.css?v=11.2.4">
 <link rel="stylesheet" href="./28-v11-3-mobile-identity.css?v=11.3.0">
+<link rel="stylesheet" href="./30-v11-4-market.css?v=11.4.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -1049,7 +1050,7 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=11.3.0" defer></script>
+<script src="./09-mashup-updates.js?v=11.4.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
@@ -1060,7 +1061,8 @@ import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
 import { createMarketUI } from './20-market-v10-9.js?v=11.0';
-import { createV11UI } from './22-v11-economy-ui.js?v=11.0';
+import { createV11UI } from './22-v11-economy-ui.js?v=11.4.0';
+import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=11.4.0';
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
@@ -1152,6 +1154,8 @@ const v11UI=createV11UI({
  getCards:()=>allCards().filter(c=>!c.hidden&&c.variant!=='secret'&&Number(state.owned?.[c.id])>0)
    .map(c=>({...c,qty:Number(state.owned[c.id])||0})),
  getUser:()=>onlineUser,getView:()=>view,getMarketMode:()=>marketMode,
+ getCardById:id=>getCard(id),renderCard:(card,options)=>cardMarkup(card,options),
+ getFavorites:()=>state.favorites||[],createSaleCardPicker,
  onState:next=>{state=next;updateBalances();},
  refreshAccount:async()=>{await loadOnlineGame();}
 });
@@ -1990,6 +1994,7 @@ document.addEventListener('click',event=>{
     case 'open-online-arena':arenaSection='online';setView('arena');break;
     case 'market-open-player':marketMode='trades';setView('market');marketUI.selectPartner(button.dataset.id);break;
     case 'v11-market-mode':marketMode=button.dataset.mode==='trades'?'trades':'sale';renderMarketHub();break;
+    case 'v11-open-sale-picker':v11UI.openSalePicker();break;
     case 'v11-create-listing':v11UI.sell();break;
     case 'v11-buy-listing':v11UI.buy(button.dataset.id,Number(button.dataset.price),button.dataset.name||'cette carte');break;
     case 'v11-cancel-listing':v11UI.cancel(button.dataset.id);break;
