@@ -146,6 +146,8 @@ img,svg{max-width:100%}
 }
 .opening-fullscreen .opening-top-card.revealed .flip-back{
   animation:v1121-show-face var(--mashup-flip-time,1100ms) step-end both;
+  transform:none!important;
+  -webkit-transform:none!important;
   z-index:3;
 }
 @keyframes v1121-upright-pivot{
