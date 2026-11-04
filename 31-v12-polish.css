@@ -1,0 +1,169 @@
+/* Mashup V12.0 — visual consistency, readable cards and low-cost mobile rendering.
+   Presentation-only: game values, card artwork, rarities and transactions unchanged.
+   Legacy 3D booster flip is intentionally retained; no expensive transforms added. */
+:root{
+  --v12-bg:#0d151d;
+  --v12-surface:#15242c;
+  --v12-line:#57796e88;
+  --v12-cream:#f5eaca;
+  --v12-mint:#dceba3;
+  --v12-teal:#9dcfb8;
+  --v12-text:#e8eeec;
+  --v12-muted:#bbccce;
+  --v12-radius:16px;
+  --v12-focus:#edf4b5;
+}
+body{color:var(--v12-text);background-color:var(--v12-bg);overscroll-behavior-x:none}
+body:not(.v114-picker-open){background-image:radial-gradient(ellipse 72% 48% at 95% -12%,#214c4445,transparent 73%),linear-gradient(180deg,#0e1821,#0d1118 63%);background-attachment:scroll}
+#page,.content-area,.shell,.hero,.section-top,.pack-grid,.collection-grid,.v11-market-grid{min-width:0}
+#page{overflow-wrap:break-word}
+:focus-visible{outline:2px solid var(--v12-focus);outline-offset:3px}
+.btn,.nav-item,.icon-button,.v114-picker-close{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.btn{border-radius:11px;min-height:41px;letter-spacing:.01em;transition:background-color .15s,border-color .15s,box-shadow .15s,transform .15s}
+.btn-primary{background:linear-gradient(125deg,#f1efbb,#bee3ad)!important;border:1px solid #ddecaa!important;color:#182b28!important;box-shadow:inset 0 1px #fff9,0 5px 15px #010e0c26}
+.btn-primary:hover:not(:disabled){background:linear-gradient(125deg,#f6f3cb,#d1edd0)!important}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn:disabled{cursor:not-allowed;opacity:.65}
+.panel,.pack,.market-compose,.market-list,.v11-listing-creator,.v11-sales-panel{border-radius:var(--v12-radius);border-color:var(--v12-line)}
+.panel h3,.small-heading{letter-spacing:-.35px}
+.panel-p,.text-sub,.small-note{line-height:1.6}
+.page-lead{max-width:100%;min-width:0}
+.heading{letter-spacing:-1.1px;line-height:1.08}
+.heading em{color:var(--v12-mint)}
+.sidebar{border-color:#8aa39038}
+.brand{min-width:0}
+.brand-mark{box-shadow:0 0 15px #d2e5a31f}
+.nav-item{min-height:44px;transition:background-color .15s,border-color .15s;color:#d1ded7}
+.nav-item.active{box-shadow:inset 3px 0 #cbe3a3,0 2px 12px #0002}
+.topbar{border-bottom-color:#7da19244}
+.resource{min-width:0}
+.hero{overflow:hidden;border:1px solid #abc58c55!important;box-shadow:0 12px 36px #030b0c42,inset 0 1px #ffffff16!important}
+.hero h2{line-height:1.12}
+.pack{overflow:hidden;min-width:0;transition:border-color .18s,box-shadow .18s}
+.pack:hover{border-color:#c5d9a188!important;box-shadow:0 12px 30px #0005}
+.pack-head{min-width:0}
+.pack-bottom{min-width:0;gap:12px}
+.pack-bottom .btn{flex-shrink:0}
+.pack-desc{color:#c7d6d2;line-height:1.6}
+.collection-filters,.v11-sales-panel{background:linear-gradient(135deg,#172931,#111e28)!important}
+.collection-controls,.v11-market-filters,.v114-picker-filters{align-items:end}
+.collection-controls input,.collection-controls select,.v11-market-filters input,.v11-market-filters select,
+.creator-layout input,.creator-layout select,.creator-layout textarea{
+ color:#f6f6ee;border-color:#728b86;background-color:#11242c;border-radius:10px}
+.collection-grid,.deck-roster-grid,.v11-market-grid{align-items:start}
+.collection-item{min-width:0;isolation:isolate;transform:none}
+.collection-item .tcg-card,.v11-market-card .tcg-card,.v114-card-button .tcg-card{min-height:0!important}
+.collection-item .ownership{font-variant-numeric:tabular-nums}
+.collection-load-more{min-height:52px}
+.v11-market-card{border-color:#7a9d8a7c!important;background:linear-gradient(146deg,#1b343a,#10232d)!important}
+.v11-market-card .v11-market-card-body h4{line-height:1.25}
+.v11-market-card .v11-seller{color:#c2d6d2}
+.v11-market-price{font-variant-numeric:tabular-nums}
+.v114-sale-card-choice{background:linear-gradient(135deg,#1b363c,#101d28)}
+.v114-picker-panel{box-shadow:0 15px 55px #000b}
+.v114-card-button{transition:border-color .12s,background-color .12s}
+.arena-layout,.creator-layout,.profile-layout{min-width:0}
+.arena-layout .tcg-card,.preview-card .tcg-card{min-height:0}
+.modal-box{max-width:min(100%,900px)}
+.modal-backdrop{overscroll-behavior:contain}
+.v10-tcg{--v12-card-ease:cubic-bezier(.2,.75,.25,1)}
+/* Preserve the original frame geometry and numeric stats; refine finishes only. */
+.tcg-card.v10-tcg{backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-style:flat}
+.tcg-card.v10-tcg .v10-picture-img{object-fit:cover;object-position:center}
+.tcg-card.v10-tcg .v10-name{font-weight:900;letter-spacing:-.02em;text-wrap:balance;overflow-wrap:anywhere}
+.tcg-card.v10-tcg .v10-universe{letter-spacing:.025em}
+.tcg-card.v10-tcg .v10-stat-number{font-variant-numeric:tabular-nums}
+.tcg-card.v10-tcg .v10-stat{min-width:0}
+.tcg-card.v10-tcg .v10-rarity{text-wrap:nowrap}
+.tcg-card.v10-tcg.variant-standard.common{--rarity-light:#f0e9d8;--rarity-ink:#353b39}
+.tcg-card.v10-tcg.variant-standard.rare{--rarity-light:#d9f0ef;--rarity-ink:#1b4654}
+.tcg-card.v10-tcg.variant-standard.epic{--rarity-light:#e8d9fc;--rarity-ink:#422264}
+.tcg-card.v10-tcg.variant-standard.legendary{--rarity-light:#f6e2b2;--rarity-ink:#64431e}
+.tcg-card.v10-tcg.variant-standard.mythic{--rarity-light:#f5d8ca;--rarity-ink:#692f39}
+.tcg-card.v10-tcg.variant-standard.ultra{--rarity-light:#f5fcff;--rarity-ink:#28526b}
+/* Not an extra GPU-heavy foil animation: subtle fixed highlights on special finishes. */
+.tcg-card.v10-tcg.variant-gold .v101-special-border{border-color:#ffdfa1!important;box-shadow:inset 0 0 0 .55cqw #c38d3d,inset 0 0 2.1cqw #fff2ba69,0 0 1.8cqw #e1ba6960!important}
+.tcg-card.v10-tcg.variant-full_art .v10-picture{border-radius:2%}
+.tcg-card.v10-tcg.variant-secret .v101-special-border{box-shadow:inset 0 0 0 .7cqw #79d6a6,0 0 1.5cqw #3eecaf6b}
+.tcg-card.v10-tcg.ultra .v10-name{text-shadow:0 1px 2px #051421,0 0 10px #15465c}
+.tcg-card.v10-tcg.mythic .v10-name{text-shadow:0 1px 3px #160b10,0 0 9px #a64336}
+/* Collection, market, deck and picker: no idle foil animation on static grids. */
+.collection-grid .tcg-card.v10-tcg .v10-foil,
+.v11-market-grid .tcg-card.v10-tcg .v10-foil,
+.v114-picker-grid .tcg-card.v10-tcg .v10-foil,
+.deck-roster-grid .tcg-card.v10-tcg .v10-foil,
+.studio-grid .tcg-card.v10-tcg .v10-foil,
+.arena-deck-cards .tcg-card.v10-tcg .v10-foil{animation:none!important;transition:none!important}
+.tcg-card.v12-offscreen .v10-foil,.tcg-card.v12-offscreen .foil-layer{animation:none!important;animation-play-state:paused!important}
+.v12-low-power .tcg-card.v10-tcg .v10-foil,.v12-low-power .tcg-card.v10-tcg .foil-layer{animation:none!important}
+.v12-low-power .ambient,.v12-low-power .hero-orbit,.v12-low-power .pack-art-gleam{animation:none!important}
+.v12-offline-notice{position:fixed;z-index:190;top:calc(66px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);
+ max-width:min(94vw,600px);border:1px solid #f4c879;background:#33281a;color:#ffeccb;
+ padding:10px 18px;border-radius:12px;box-shadow:0 10px 25px #0007;font-size:12px;font-weight:750;line-height:1.45;text-align:center}
+.v12-offline-notice[hidden]{display:none!important}
+/* Changelog in the developer messages board, visible to all connected players. */
+.dev-v12-release{border:1px solid #d2d79591;border-radius:17px;padding:18px 19px;margin:16px 0 18px;
+ background:radial-gradient(circle at 100% 0%,#addb8c1f,transparent 45%),linear-gradient(140deg,#243e3b,#182b31 72%);
+ box-shadow:inset 0 1px #ffffff25}
+.dev-v12-head{display:flex;align-items:start;justify-content:space-between;gap:13px;flex-wrap:wrap}
+.dev-v12-kicker{color:#dceba3;font-size:10px;font-weight:900;letter-spacing:.15em}
+.dev-v12-release h4{color:#fff2c6;font:800 clamp(21px,3vw,27px) Georgia,serif;margin:7px 0}
+.dev-v12-release p{color:#d5e4d7;font-size:12px;line-height:1.7;margin:7px 0 13px}
+.dev-v12-badge{padding:8px 12px;border-radius:999px;border:1px solid #d2edb599;
+ background:#294b40;color:#e7f5c3;font-size:12px;font-weight:900;white-space:nowrap}
+.dev-v12-changes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 12px;margin:10px 0}
+.dev-v12-changes span{display:flex;align-items:start;gap:7px;min-width:0;color:#eef2e5;font-size:12px;line-height:1.5}
+.dev-v12-changes span::before{content:'✓';color:#dceba3;font-weight:900}
+.dev-v12-history{border-top:1px solid #b9cd9c49;padding-top:10px;margin-top:10px}
+.dev-v12-history summary{cursor:pointer;color:#f5e3b0;font-size:12px;font-weight:800}
+.dev-v12-history p{margin:9px 0 2px;color:#bacdc6;font-size:11px}
+/* Every interactive target on small screens should be comfortably tappable. */
+@media(max-width:900px){
+ .sidebar .nav-item{scroll-snap-align:center}
+ .navigation{scroll-padding-inline:10px}
+ .sidebar{border-top:1px solid #9dbda24e}
+ .collection-filters,.market-compose,.v11-listing-creator{overflow:visible}
+}
+@media(max-width:700px){
+ .heading{font-size:clamp(28px,8.5vw,43px)}
+ #page{padding-inline:clamp(11px,3.5vw,19px)!important}
+ .topbar{gap:6px}
+ .topbar-right{gap:5px;max-width:100%;min-width:0}
+ .resource{min-width:0}
+ .pack-grid{gap:12px!important}
+ .pack{padding:16px!important}
+ .pack h4{line-height:1.2}
+ .pack-bottom{align-items:center}
+ .pack-bottom .btn{min-height:44px}
+ .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .collection-item .tcg-card.v10-tcg{min-width:0;max-width:100%}
+ .collection-controls,.v11-market-filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .collection-controls .collection-search-label{grid-column:1/-1}
+ .collection-controls label,.v11-market-filters label{min-width:0;font-size:11px}
+ .collection-controls input,.collection-controls select{font-size:13px;min-height:43px}
+ .v11-market-grid{gap:9px}
+ .v11-market-card .v11-market-card-body{gap:4px}
+ .v11-market-card .v11-market-actions button{min-height:43px}
+ .v114-picker-panel{box-shadow:none}
+ .v114-picker-grid{overscroll-behavior:contain}
+ .arena-layout .panel{min-width:0}
+ .dev-v12-changes{grid-template-columns:1fr}
+ .dev-v12-release{padding:15px 13px}
+ .v12-offline-notice{top:calc(53px + env(safe-area-inset-top,0px))}
+}
+@media(max-width:380px){
+ .topbar-right{gap:2px}
+ .resource{padding-inline:5px!important}
+ .collection-grid,.v11-market-grid{gap:6px}
+ .collection-item .ownership{font-size:10px}
+ .dev-v12-release h4{font-size:20px}
+}
+@media(hover:none){
+ .btn:hover:not(:disabled){transform:none}
+ .pack:hover{box-shadow:none}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important}
+ .pack,.btn,.tcg-card.v10-tcg,.v10-foil,.foil-layer,.hero-orbit,.ambient{animation:none!important;transition:none!important}
+ .opening-fullscreen .opening-vfx-particles,.opening-fullscreen .opening-vfx-ring{display:none!important}
+}
