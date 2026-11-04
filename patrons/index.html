@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0e18">
+<meta name="description" content="Comparer trois patrons de cartes réels pour Mashup : Relique, Nébuleuse et Éclipse.">
+<title>Mashup · Atelier des patrons</title>
+<base href="../">
+<link rel="stylesheet" href="./07-v10-cards.css?v=10.3">
+<link rel="stylesheet" href="./08-v10-theme.css?v=10.0">
+<link rel="stylesheet" href="./11-v10-4.css?v=10.4">
+<link rel="stylesheet" href="./13-v10-5-revelations.css?v=10.5">
+<link rel="stylesheet" href="./17-v10-7-reveal.css?v=10.7">
+<link rel="stylesheet" href="./26-v11-2-mobile-booster.css?v=11.2.4">
+<link rel="stylesheet" href="./28-v11-3-mobile-identity.css?v=11.3.0">
+<link rel="stylesheet" href="./31-v12-polish.css?v=12.0.0">
+<link rel="stylesheet" href="./33-card-concepts.css?v=12.1">
+<style>
+:root{color-scheme:dark;--ink:#ecf5fb;--mute:#91a3b7;--rule:#304053;--accent:#d9f2ad}
+*{box-sizing:border-box}body{background:radial-gradient(circle at 15% 0,#273f4a 0,transparent 36%),radial-gradient(circle at 90% 80%,#28233d 0,transparent 48%),#0b101b;color:var(--ink);margin:0;font:15px/1.5 Inter,system-ui,sans-serif}
+a{color:inherit}button{font:inherit;cursor:pointer}.wrap{max-width:1400px;margin:0 auto;padding:22px clamp(15px,4vw,46px) 70px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--rule);padding-bottom:19px}.logo{font-weight:1000;letter-spacing:.1em;font-size:15px}.logo span{color:#c5e3a2}.back{border:1px solid #586878;border-radius:10px;color:#c4e3df;padding:9px 12px;text-decoration:none;font-size:12px}.kicker{color:#cceca5;font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.lead{padding:42px 0 25px}.lead h1{font-size:clamp(32px,5vw,62px);line-height:1.06;letter-spacing:-.06em;margin:11px 0}.lead h1 em{font-style:normal;color:#f5cc8c}.lead p{max-width:750px;color:#afbdc8;margin:0 0 19px}.badge{display:inline-block;font-size:11px;color:#bfe8c6;background:#1d393a;border:1px solid #507565;padding:6px 11px;border-radius:99px;margin-right:7px;margin-bottom:7px}.choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 23px}.choice{display:block;text-align:left;padding:20px;background:#17222f;border:1px solid #405163;border-radius:16px;color:#f0f7f7}.choice:hover{background:#1f303e}.choice[aria-pressed="true"]{border-color:#d4edb6;background:#233b39;box-shadow:inset 0 0 0 1px #a0d2b8}.choice strong{display:block;font-size:18px;margin-bottom:4px;letter-spacing:-.5px}.choice p{font-size:12px;color:#a9bbc5;margin:0}.choice .circle{width:12px;height:12px;display:inline-block;border-radius:50%;vertical-align:middle;margin-right:7px;box-shadow:0 0 8px currentColor}.choice .gold{background:#d8aa69;color:#d8aa69}.choice .blue{background:#6dd9ff;color:#6dd9ff}.choice .red{background:#f66b85;color:#f66b85}
+.gallery-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:15px;flex-wrap:wrap}.gallery-head h2{font-size:23px;letter-spacing:-.6px;margin:0}.gallery-head small{color:var(--mute)}.gallery-frame{background:#111b28;border:1px solid #344b57;border-radius:20px;padding:26px clamp(10px,3vw,30px) 35px;box-shadow:0 22px 60px #0007}.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:27px 19px;align-items:start;justify-items:center}.sample{width:100%;max-width:238px;min-width:0}.sample .tcg-card{width:100%}.sample-name{font-size:12px;font-weight:800;margin:11px 0 2px;color:#eef5f4}.sample-note{font-size:11px;color:#90abb6}.footer-note{background:#16242f;border-left:3px solid #e9ca83;padding:17px 20px;color:#c5d3d6;margin:23px 0 0;font-size:12px;border-radius:0 10px 10px 0;max-width:1120px}.footer-note b{color:#f2db9f}.notice{font-size:13px;color:#b4c6cd;margin-top:28px}.actions{margin:21px 0 0;display:flex;flex-wrap:wrap;gap:12px}.action{background:#b8edcc;color:#09221c;border:0;border-radius:12px;padding:12px 20px;font-weight:850;text-decoration:none;font-size:13px}.action.alt{background:#213747;color:#e3f6f5;border:1px solid #55757b}.live-note{border:1px solid #3c554e;background:#1a3234;border-radius:12px;padding:11px 15px;color:#cee8db;font-size:12px;margin-top:15px}@media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 13px}}@media(max-width:620px){.choices{grid-template-columns:1fr;gap:9px}.choice{padding:13px 16px}.choice strong{font-size:16px}.choice p{font-size:11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 10px}.sample-name{font-size:11px}.gallery-frame{padding:18px 12px}.lead{padding-top:25px}.top{flex-wrap:wrap}}@media(max-width:390px){.grid{gap:18px 8px}} 
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="logo">✦ MASHUP <span>· PATRONS</span></div><a class="back" href="./">← Retour au jeu</a></header>
+<section class="lead">
+<div class="kicker">Atelier des prototypes · Série 01 & 02</div>
+<h1>Trois signatures.<br><em>Un seul Mashup.</em></h1>
+<p>Les cartes présentées ici sont rendues par le <b>même composant HTML que le jeu</b> et la même feuille de style que celle qui pourra être activée après ton choix. Leurs illustrations sont seulement des exemples : tu pourras fournir les vraies images et les recadrer dans l’Atelier.</p>
+<span class="badge">6 raretés</span><span class="badge">Full Art / Gold / Secrète</span><span class="badge">Statistiques inchangées</span><span class="badge">Aucun changement sur le jeu actuel</span>
+</section>
+<section class="choices" role="group" aria-label="Choisir un patron à prévisualiser">
+ <button class="choice" data-choice="relique" aria-pressed="true" type="button"><strong><span class="circle gold"></span>01 · RELIQUE</strong><p>Orfèvrerie ancienne, laiton ciselé, esprit fantasy de collection.</p></button>
+ <button class="choice" data-choice="nebuleuse" aria-pressed="false" type="button"><strong><span class="circle blue"></span>02 · NÉBULEUSE</strong><p>Chrome, lignes nettes, transparence spatiale et éclats prismatiques.</p></button>
+ <button class="choice" data-choice="eclipse" aria-pressed="false" type="button"><strong><span class="circle red"></span>03 · ÉCLIPSE</strong><p>Noir profond, gravure argentée, halo mystique et énergie cosmique.</p></button>
+</section>
+<section class="gallery-head"><h2 id="selected-title">01 · RELIQUE</h2><small id="selected-sub">Aperçu réel des 9 finitions</small></section>
+<div class="gallery-frame patron-gallery" data-patron="relique">
+ <div class="grid" id="grid" aria-label="Prévisualisation des cartes"></div>
+</div>
+<div class="live-note">✦ La galerie utilise les vrais éléments de Mashup : nom, univers, image séparée, cinq statistiques, numéro de série, finition et cadres CSS. Les patrons ne sont pas encore appliqués aux joueurs.</div>
+<div class="actions"><button class="action" id="copy-choice" type="button">Copier le nom du patron choisi</button><a class="action alt" href="./" target="_blank" rel="noopener noreferrer">Comparer avec le jeu actuel</a></div>
+<p class="footer-note"><b>Étape de validation :</b> choisis « Relique », « Nébuleuse » ou « Éclipse » et indique-moi si tu préfères un seul patron pour toutes les raretés ou un mélange. Je pourrai ensuite activer précisément ce modèle dans Mashup, en conservant ton système d’images et le recadrage individuel.</p>
+<p class="notice">Les illustrations de démonstration proviennent du catalogue de Mashup. Aucune carte réelle, aucun crédit ni aucune collection de joueur n'est modifiée par cette galerie.</p>
+</div>
+<script type="module">
+import {renderMashupV10Card} from './06-v10-cards.js?v=11.1';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rarities={common:'Commune',rare:'Rare',epic:'Épique',legendary:'Légendaire',mythic:'Mythique',ultra:'Ultra'};
+const rarityLabel=r=>rarities[r]||rarities.common;
+const data=[
+ {id:'s2-conv-trollhunters-08',name:'Gardien de pierre',family:'Chasseurs de trolls',rarity:'common',icon:'🪨',power:55,size:88,def:92,aura:71,intelligence:60},
+ {id:'s2-conv-haikyuu-04',name:'L’As du terrain',family:'Haikyuu!!',rarity:'rare',icon:'🏐',power:88,size:63,def:74,aura:86,intelligence:78},
+ {id:'s2-conv-hunter-x-hunter-03',name:'Mage d’illusion',family:'Hunter × Hunter',rarity:'epic',icon:'✧',power:92,size:60,def:72,aura:97,intelligence:89},
+ {id:'s2-conv-dragons-01',name:'Dragon céleste',family:'Dragons',rarity:'legendary',icon:'🐉',power:98,size:93,def:92,aura:98,intelligence:88},
+ {id:'s2-conv-trollhunters-03',name:'Reine des ombres',family:'Chasseurs de trolls',rarity:'mythic',icon:'🌑',power:98,size:73,def:93,aura:99,intelligence:94},
+ {id:'s2-conv-hunter-x-hunter-01',name:'Éclair du Néant',family:'Hunter × Hunter',rarity:'ultra',icon:'⚡',power:99,size:69,def:93,aura:99,intelligence:99},
+ {id:'s2-conv-monster-high-03',name:'Nuit scintillante',family:'Monster High',rarity:'epic',variant:'full_art',icon:'🌙',power:85,size:57,def:82,aura:99,intelligence:85},
+ {id:'s2-conv-plats-01',name:'Festin royal',family:'Plats',rarity:'legendary',variant:'gold',icon:'🍲',power:96,size:84,def:94,aura:91,intelligence:90},
+ {id:'s2-conv-trollhunters-01',name:'Héritier du portail',family:'Chasseurs de trolls',rarity:'legendary',variant:'secret',icon:'⚔️',power:99,size:74,def:98,aura:99,intelligence:97}
+];
+const names=['COMMUNE','RARE','ÉPIQUE','LÉGENDAIRE','MYTHIQUE','ULTRA','FULL ART','GOLD','SECRÈTE'];
+const notes={
+ relique:['Laiton brossé','Aigue-marine ciselée','Améthyste','Or royal','Rubis noir','Argent opalin','Illustration plein cadre','Or massif fin','Arcs émeraude'],
+ nebuleuse:['Acier stellaire','Plasma azur','Prisme violet','Soleil doré','Nébuleuse rouge','Blanc holographique','Plein cadre spatial','Chrome doré','Aurora verte'],
+ eclipse:['Argent patiné','Bleu spectral','Violet nocturne','Couronne solaire','Éclat cramoisi','Cristal lunaire','Illustration intégrale','Or noir','Cercles secrets']
+};
+const context={
+ esc, safeImage:()=>'',CSSColor:(x,f)=>/^#[a-f\d]{6}$/i.test(x||'')?x:f,
+ statValue:(c,k)=>Number(c[k])||0,
+ STAT_FIELDS:[{key:'power',label:'Puissance'},{key:'size',label:'Taille'},{key:'def',label:'Défense'},{key:'aura',label:'Aura'},{key:'intelligence',label:'Intelligence'}],
+ RARITIES:Object.fromEntries(Object.keys(rarities).map(x=>[x,{label:rarities[x]}])),
+ rarityName:rarityLabel,
+ editionText:c=>'N°'+String(c.editionNumber).padStart(3,'0')+'/130 · S02',
+ onlineUser:{role:'admin'},
+ state:{owned:Object.fromEntries(data.map(c=>[c.id,1])),artwork:{}}
+};
+function render(theme){
+ const root=$('grid');root.replaceChildren();
+ for(let i=0;i<data.length;i++){
+  const c={...data[i],editionSeries:2,editionNumber:i+1,editionTotal:130,color1:'#3b8195',color2:'#0f2544',variant:data[i].variant||'standard'};
+  const item=document.createElement('div');item.className='sample';
+  item.innerHTML=renderMashupV10Card(c,{lazy:false},context)+
+   '<div class="sample-name">'+names[i]+'</div><div class="sample-note">'+notes[theme][i]+'</div>';
+  root.append(item);
+ }
+}
+function choose(theme){
+ if(!['relique','nebuleuse','eclipse'].includes(theme))return;
+ document.querySelector('.patron-gallery').dataset.patron=theme;
+ document.querySelectorAll('[data-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.choice===theme)));
+ $('selected-title').textContent=({relique:'01 · RELIQUE',nebuleuse:'02 · NÉBULEUSE',eclipse:'03 · ÉCLIPSE'})[theme];
+ render(theme);history.replaceState(null,'','#'+theme);
+}
+document.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.choice)));
+$('copy-choice').addEventListener('click',async()=>{const selected=document.querySelector('.patron-gallery').dataset.patron;try{await navigator.clipboard.writeText('Je valide le patron Mashup : '+selected.toUpperCase());$('copy-choice').textContent='✓ Nom copié';setTimeout(()=>$('copy-choice').textContent='Copier le nom du patron choisi',2500)}catch{$('copy-choice').textContent='Choix : '+selected.toUpperCase();}});
+choose(location.hash.slice(1)||'relique');
+</script>
+</body>
+</html>
