@@ -81,6 +81,7 @@ body{background:radial-gradient(ellipse 75% 58% at 92% -5%,#18363940,transparent
   .preview-panel{position:static!important}
 }
 @media(max-width:700px){
+  body{background-attachment:scroll!important}
   #page{padding:25px 13px calc(98px + env(safe-area-inset-bottom,0px))!important}
   .topbar{padding-inline:12px!important}
   .section-top,.flex-between{min-width:0}
