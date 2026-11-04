@@ -1,3 +1,4 @@
+import { reflectionForTilt } from './41-v14-runtime.js?v=14.0.1';
 /* Mobile presentation layer. No API, economy, catalogue or account writes. */
 const KEY='mashup-display-v13';
 const PATHS={home:'M3 10 12 3l9 7v11h-6v-7H9v7H3Z',cards:'M5 4h14v17H5ZM9 1h13v16M8 8h8M8 12h8M8 16h5',arena:'m4 3 17 17M3 4l3-1 1 4-4-1Zm17-1L3 20M21 4l-3-1-1 4 4-1ZM2 17l5 5m10 0 5-5',market:'M3 9h18l-2-6H5ZM5 10v11h14V10M9 21v-7h6v7',more:'M4 5h16M4 12h16M4 19h16',arrow:'M5 12h14m-6-6 6 6-6 6',star:'m12 2 3 6 7 1-5 5 1 8-6-4-6 4 1-8-5-5 7-1Z',decks:'M4 7h13v15H4ZM8 3h13v15',missions:'m5 12 4 4 10-10M4 3h10M3 3v18h18V11',profile:'M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM3 22v-3a9 9 0 0 1 18 0v3',settings:'M4 6h16M4 12h16M4 18h16M8 3v6m8 0v6m-6 0v6'};
@@ -40,7 +41,7 @@ export function createMobilePresentation({getUser,getView,onNavigate}){
   const value=resolveQuality(mode,{reduced:reduced.matches,cores:navigator.hardwareConcurrency||0,memory:navigator.deviceMemory||0,saveData:!!navigator.connection?.saveData});
   document.documentElement.dataset.m13Quality=value;return value;
  }
- function resetCard(){if(activeCard){activeCard.classList.remove('m13-card-active');activeCard.style.removeProperty('--m13-x');activeCard.style.removeProperty('--m13-y');activeCard=null;}if(frame)cancelAnimationFrame(frame);frame=0;}
+ function resetCard(){if(activeCard){activeCard.classList.remove('m13-card-active');activeCard.style.removeProperty('--m13-x');activeCard.style.removeProperty('--m13-y');for(const key of ['--v14-sheen-angle','--v14-reflection-strength','--v14-foil-x','--v14-foil-y'])activeCard.style.removeProperty(key);activeCard=null;}if(frame)cancelAnimationFrame(frame);frame=0;}
  function close(){if(sheet.open)sheet.close();document.body.classList.remove('m13-sheet-open');returnFocus?.focus?.();}
  function menu(){
   returnFocus=document.activeElement;
@@ -69,7 +70,7 @@ export function createMobilePresentation({getUser,getView,onNavigate}){
   if(!card||card.classList.contains('locked-card')){resetCard();return;}
   if(activeCard!==card){resetCard();activeCard=card;card.classList.add('m13-card-active');}
   const rect=card.getBoundingClientRect();lastX=Math.min(100,Math.max(0,(e.clientX-rect.left)/rect.width*100));lastY=Math.min(100,Math.max(0,(e.clientY-rect.top)/rect.height*100));
-  if(!frame)frame=requestAnimationFrame(()=>{frame=0;if(activeCard?.isConnected){activeCard.style.setProperty('--m13-x',lastX+'%');activeCard.style.setProperty('--m13-y',lastY+'%');}});
+  if(!frame)frame=requestAnimationFrame(()=>{frame=0;if(activeCard?.isConnected){activeCard.style.setProperty('--m13-x',lastX+'%');activeCard.style.setProperty('--m13-y',lastY+'%');const light=reflectionForTilt((50-lastY)*.28,(lastX-50)*.46);activeCard.style.setProperty('--v14-sheen-angle',light.angle+'deg');activeCard.style.setProperty('--v14-reflection-strength',String(light.strength));activeCard.style.setProperty('--v14-foil-x',light.foilX+'%');activeCard.style.setProperty('--v14-foil-y',light.foilY+'%');}});
  },{passive:true});
  function qualityValue(){return document.documentElement.dataset.m13Quality;}
  document.addEventListener('pointerout',e=>{if(activeCard&&!activeCard.contains(e.relatedTarget))resetCard();},{passive:true});

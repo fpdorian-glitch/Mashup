@@ -1,0 +1,120 @@
+/* V14.0.1 · optical finish. Two painted layers inside the existing art window,
+   driven only by the card currently inspected. No added DOM, idle loop or blur. */
+.tcg-card.v10-tcg.v14-card {
+  --v14-spectrum-a:#b2d9ed; --v14-spectrum-b:#d8c1f6;
+  --v14-spectrum-c:#ffd7b4; --v14-spectrum-d:#b5ebd6;
+  --v14-gloss:#f7fbff; --v14-gloss-tint:#c8ddec;
+  --v14-prism-opacity:.2; --v14-surface-strength:.15;
+  --v14-sheen-angle:123deg;
+  --v14-foil-x:50%; --v14-foil-y:32%;
+}
+.tcg-card.v10-tcg.v14-card.rare { --v14-surface-strength:.2; --v14-prism-opacity:.25; }
+.tcg-card.v10-tcg.v14-card.epic {
+  --v14-spectrum-a:#98d8ff; --v14-spectrum-b:#d6a0ff;
+  --v14-spectrum-c:#f9b4e7; --v14-spectrum-d:#bbc0ff;
+  --v14-prism-opacity:.54; --v14-surface-strength:.27;
+}
+.tcg-card.v10-tcg.v14-card.legendary {
+  --v14-gloss:#fff6d5; --v14-gloss-tint:#f5cb81;
+  --v14-spectrum-a:#f8d994; --v14-spectrum-b:#ffecc0;
+  --v14-spectrum-c:#cda272; --v14-spectrum-d:#f3dcab;
+  --v14-prism-opacity:.36; --v14-surface-strength:.3;
+}
+.tcg-card.v10-tcg.v14-card.mythic {
+  --v14-gloss:#ffe5c6; --v14-gloss-tint:#e8af85;
+  --v14-spectrum-a:#d69b60; --v14-spectrum-b:#e07086;
+  --v14-spectrum-c:#ffdab0; --v14-spectrum-d:#8b6386;
+  --v14-prism-opacity:.5; --v14-surface-strength:.32;
+}
+.tcg-card.v10-tcg.v14-card.ultra {
+  --v14-gloss:#fff; --v14-gloss-tint:#ddf5fa;
+  --v14-prism-opacity:.64; --v14-surface-strength:.34;
+}
+.tcg-card.v10-tcg.v14-card.variant-gold {
+  --v14-gloss:#fff9df; --v14-gloss-tint:#f9d18b;
+  --v14-spectrum-a:#eebd61; --v14-spectrum-b:#fff0b9;
+  --v14-spectrum-c:#cb8d39; --v14-spectrum-d:#f4d98e;
+  --v14-prism-opacity:.49; --v14-surface-strength:.32;
+}
+/* Green enamel and green interference: distinct from a cyan/white foil. */
+.tcg-card.v10-tcg.v14-card.variant-secret {
+  --v14-gloss:#adffb8; --v14-gloss-tint:#3de68b;
+  --v14-spectrum-a:#19a76b; --v14-spectrum-b:#7aefad;
+  --v14-spectrum-c:#d3f6b7; --v14-spectrum-d:#39bd7f;
+  --v14-prism-opacity:.7; --v14-surface-strength:.36;
+}
+.tcg-card.v10-tcg.v14-card.variant-secret:not(.v14-ultra-secret) {
+  --v14-metal:#76bb94; --v14-metal-bright:#d2f4ce;
+}
+.tcg-card.v10-tcg.v14-card.variant-secret .v14-stock {
+  background:linear-gradient(128deg,#264a37,#071b12 34%,#173b28 68%,#06120b);
+}
+.tcg-card.v10-tcg.v14-card.v14-ultra-secret {
+  --v14-gloss:#ddffe3; --v14-gloss-tint:#8cfbb2;
+  --v14-spectrum-a:#64caa0; --v14-spectrum-b:#d7ffe2;
+  --v14-spectrum-c:#d0e9c0; --v14-spectrum-d:#88e1af;
+  --v14-prism-opacity:.76; --v14-surface-strength:.4;
+}
+.tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-stock {
+  background:linear-gradient(126deg,#72988e,#f5f8ea 20%,#91bbae 35%,#eef5e3 48%,#7fac9b 63%,#f6faed 80%,#8fae9c);
+}
+.tcg-card.v10-tcg.v14-card .v14-optics.v10-foil,
+.tcg-card.v10-tcg.v14-card.variant-secret .v14-optics.v10-foil,
+.tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-optics.v10-foil {
+  background:none!important; mix-blend-mode:screen;
+  opacity:var(--v14-surface-strength)!important;
+  mask-image:linear-gradient(180deg,transparent,#000 10%,#000 85%,transparent);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 10%,#000 85%,transparent);
+}
+.tcg-card.v10-tcg.v14-card .v14-optics::before,
+.tcg-card.v10-tcg.v14-card .v14-optics::after {
+  content:'';position:absolute;inset:0;pointer-events:none;
+}
+.tcg-card.v10-tcg.v14-card .v14-optics::before {
+  opacity:var(--v14-prism-opacity);
+  background:repeating-linear-gradient(var(--v14-sheen-angle),
+    transparent 0%,var(--v14-spectrum-a) 10%,var(--v14-spectrum-b) 17%,
+    var(--v14-spectrum-c) 24%,var(--v14-spectrum-d) 32%,transparent 43%);
+  background-size:240% 210%;
+  background-position:var(--v14-foil-x) var(--v14-foil-y);
+}
+.tcg-card.v10-tcg.v14-card .v14-optics::after {
+  opacity:.88;
+  background:
+    radial-gradient(ellipse at var(--m13-x,50%) var(--m13-y,32%),var(--v14-gloss),transparent 49%),
+    linear-gradient(var(--v14-sheen-angle),transparent 31%,var(--v14-gloss-tint) 43%,
+      transparent 46%,var(--v14-gloss) 49%,transparent 52%,var(--v14-gloss-tint) 56%,transparent 68%);
+  background-size:100% 100%,210% 180%;
+  background-position:center,var(--v14-foil-x) var(--v14-foil-y);
+}
+.tcg-card.v10-tcg.v14-card.ultra .v14-optics::before,
+.tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-optics::before {
+  background-image:
+    radial-gradient(circle,#ffffffd9 0 .55px,transparent 1.3px),
+    repeating-linear-gradient(var(--v14-sheen-angle),transparent 0%,var(--v14-spectrum-a) 10%,
+      var(--v14-spectrum-b) 17%,var(--v14-spectrum-c) 24%,var(--v14-spectrum-d) 32%,transparent 43%);
+  background-size:43px 53px,240% 210%;
+  background-position:var(--v14-foil-x) var(--v14-foil-y);
+}
+/* The lamp becomes stronger at grazing angles, rather than a fixed white veil. */
+.inspect-front .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil,
+.tcg-card.v10-tcg.v14-card.m13-card-active .v14-optics.v10-foil {
+  opacity:var(--v14-reflection-strength,.5)!important;
+}
+.inspect-front .tcg-card.v10-tcg.v14-card.variant-secret .v14-optics.v10-foil {
+  opacity:var(--v14-reflection-strength,.57)!important;
+}
+.opening-top-card.revealed .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil {
+  opacity:calc(var(--v14-surface-strength) + .1)!important;
+}
+/* Matte common stays matte; text and numbers are above these layers. */
+.tcg-card.v10-tcg.v14-card.common.variant-standard .v14-optics.v10-foil {
+  display:none!important;
+}
+html[data-m13-quality=eco] .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil,
+.tcg-card.v10-tcg.v14-card.v12-offscreen .v14-optics.v10-foil {
+  display:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil{display:none!important}
+}

@@ -55,13 +55,13 @@ Node24, Chromium à `/usr/bin/chromium` (ou CHROMIUM_PATH), `tar` et l'historiqu
 
 Linux/Chromium headless, GPU désactivé, même viewport390×844, 36 cartes fictives, qualité spectaculaire, 120 intervalles rAF par scène. Aucune validation sur téléphone physique. Les rAF ne mesurent pas tout le pipeline GPU ni le ressenti tactile réel.
 
-| Scène / mesure | main V13.0.1 | V14 |
+| Scène / mesure | main V13.0.1 | V14.0.1 |
 |---|---:|---:|
-| Accueil, nœuds DOM | 600 | 682 |
-| Collection24 cartes, nœuds DOM | 1 405 | 1 646 |
+| Accueil, nœuds DOM | 600 | 683 |
+| Collection24 cartes, nœuds DOM | 1 405 | 1 647 |
 | Collection, images HTML séparées dans cette fixture SVG | 8 | 0 |
-| Collection, intervalle médian / p95 rAF | 16,7 / 16,8 ms | 16,7 / 16,8 ms |
-| Collection, heap JS indicatif | 3 570 721 octets | 3 160 709 octets |
+| Collection, intervalle médian / p95 rAF | 16,7 / 16,8 ms | 16,7 / 16,7 ms |
+| Collection, heap JS indicatif | 3 069 837 octets | 3 118 836 octets |
 | Long tasks observées pendant chaque échantillon | 0 | 0 |
 
 **Aucun gain de FPS démontré.** Les nouveaux cadres augmentent le DOM : environ +11/12 éléments par carte standard/FullArt/Gold et -4 pour une Secrète, selon les mesures du composant. Le coût reste explicite. Les cadres image séparés et les anciens overlays ont été retirés ; les images réelles des joueurs, lorsqu'elles existent, restent évidemment des images à charger. Le gain vérifié de pagination est structurel : les premières cartes ne sont plus recréées ni redécodées lors de l'ajout des suivantes. La pagination progressive ne constitue pas une virtualisation à DOM strictement borné.
@@ -86,3 +86,13 @@ Branche envoyée : `feature/mashup-v14-ultimate`, commit de développement `3b17
 Le titre et la description sont prêts dans [PR.md](PR.md). [Ouvrir la création de PR](https://github.com/fpdorian-glitch/Mashup/pull/new/feature/mashup-v14-ultimate).
 
 Le seul domaine `api.github.com` a été ajouté au brouillon des paramètres de l'environnement cloud, en conservant les domaines existants. Ce brouillon n'est pas appliqué : enregistrer puis publier la configuration de l'environnement dans ses paramètres est nécessaire avant de retenter l'accès automatique. Cette opération est distincte de la publication du jeu. Aucun jeton supplémentaire n'a été demandé ni copié ; les droits API restent à vérifier une fois le domaine accessible.
+
+## V14.0.1 — Brillance et reflets verts
+
+Les finitions optiques réagissent désormais à l'inclinaison : déplacement du point lumineux, orientation du faisceau, intensité selon l'angle et diffraction en sens inverse. Les couleurs dépendent du matériau ; les Secrètes utilisent une gamme émeraude/vert pâle, les Ultra Secrètes un chrome opalin vert. Il s'agit d'une approximation de reflet en CSS, sans rendu 3D lourd ni capteur.
+
+Deux pseudo-éléments sont peints dans la fenêtre d'illustration existante : aucun nœud de carte ajouté, aucune animation autonome. Les noms et les cinq statistiques restent au-dessus des effets. Le mode économique, la réduction des animations et le masquage hors écran désactivent la finition. Les communes classiques conservent leur finition mate.
+
+[Preuves détaillées de brillance](shine/README.md) · [Secrète inclinée](shine/secret-right.png) · [Ultra Secrète](shine/ultra-secret-right.png) · [Reflet en mouvement](shine/secret-motion.webm).
+
+71 tests Node réussis. Le contrôle Chromium ciblé vérifie aussi les gestes souris, clavier et tactiles sur les deux Secrètes, les teintes vertes, la conservation des images/statistiques et les trois modes de protection. Aucune donnée de joueur ni opération de production impliquée.

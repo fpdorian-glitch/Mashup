@@ -22,7 +22,7 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 5 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V14 — Le Sanctuaire des légendes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V14.0.0</span></div>'+
+      '<h4>Mashup V14 — Le Sanctuaire des légendes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V14.0.1</span></div>'+
       '<p>Bienvenue au Sanctuaire : des cartes redessinées comme des objets de collection, une ouverture de booster du sceau au résumé, et une interface pensée pour jouer au doigt. Tes illustrations et les règles du jeu sont préservées.</p>'+
       '<div class="dev-v12-changes">'+
       '<span>Un sanctuaire personnel consacré à tes cartes et à ton prochain défi.</span>'+
@@ -34,7 +34,7 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
       '<span>Recherche indexée et cartes déjà affichées conservées au chargement suivant.</span>'+
       '<span>Inspection tactile et clavier, lumière physique et inclinaison maîtrisée.</span>'+
       '<span>Decks chargés progressivement, par groupes de 24 cartes.</span>'+
-      '<span>Du paquet scellé à la révélation : une nouvelle ouverture et un résumé avant confirmation.</span>'+
+      '<span>Brillance directionnelle renforcée : les Secrètes réfléchissent une lumière émeraude, les Gold un vernis doré.</span>'+
       '</div>'+
       '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+
       '<p><b>V13.0 :</b> nouvel accueil Éclipse, navigation mobile, effets adaptatifs, decks optimisés et réponses réseau fiabilisées.</p>'+

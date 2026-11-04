@@ -50,3 +50,16 @@ export function presentBalance(element, amount, {motion = true} = {}) {
     balanceAnimations.set(element, element.animate([{opacity: .35}, {opacity: 1}], {duration: 340, easing: 'ease-out'}));
   }
 }
+
+/** Reflection approximation for a fixed light and a rotating planar card.
+ * It drives paint only; no sensor permission or continuously running effect. */
+export function reflectionForTilt(rx = 0, ry = 0) {
+  const clamp = (value, low, high) => Math.min(high, Math.max(low, value));
+  const xAngle = clamp(Number(rx) || 0, -35, 35);
+  const yAngle = clamp(Number(ry) || 0, -50, 50);
+  const x = clamp(50 + Math.sin(yAngle * Math.PI / 180) * 112, 6, 94);
+  const y = clamp(40 - Math.sin(xAngle * Math.PI / 180) * 150, 8, 92);
+  const grazing = clamp(Math.hypot(xAngle / 14, yAngle / 23), 0, 1);
+  return {x, y, angle: 123 + yAngle * .85 - xAngle * .3, strength: .46 + grazing * .18,
+    foilX: 100 - x, foilY: 100 - y};
+}
