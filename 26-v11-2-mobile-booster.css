@@ -138,7 +138,7 @@ img,svg{max-width:100%}
 .opening-fullscreen .opening-top-card .flip-front{z-index:2;opacity:1}
 .opening-fullscreen .opening-top-card .flip-back{z-index:1;opacity:0;overflow:hidden}
 .opening-fullscreen .opening-top-card.revealed .flip-inner{
-  animation:v1121-upright-pivot var(--mashup-flip-time,1100ms) cubic-bezier(.25,.65,.24,1) both;
+  animation:v1121-upright-pivot var(--mashup-flip-time,800ms) cubic-bezier(.42,0,.58,1) both;
 }
 .opening-fullscreen .opening-top-card.revealed .flip-front{
   animation:v1121-hide-back var(--mashup-flip-time,1100ms) step-end both;
@@ -150,18 +150,14 @@ img,svg{max-width:100%}
   -webkit-transform:none!important;
   z-index:3;
 }
-/* Animate only a compositable scale, never the whole card's filter.
-   Filters on text-heavy cards forced Android to repaint every frame. */
-/* A modest Y tilt gives the depth of a real card flip without ever
-   turning the artwork backward. Scale/rotate are composited on mobile. */
+/* V11.2.4: avoid individual 3D rotate, which stutters on some Android
+   compositors with a fully detailed card on the back face.
+   One smooth compositor-friendly scale gives a "turned page" effect.
+   The image and writing stay upright throughout the reveal. */
 @keyframes v1121-upright-pivot{
-  0%{scale:1 1;rotate:y 0deg}
-  20%{scale:.80 1;rotate:y -9deg}
-  45%{scale:.055 1;rotate:y -16deg}
-  50%{scale:.045 1;rotate:y 0deg}
-  55%{scale:.055 1;rotate:y 16deg}
-  80%{scale:.80 1;rotate:y 9deg}
-  100%{scale:1 1;rotate:y 0deg}
+  0%{scale:1 1}
+  50%{scale:.035 1}
+  100%{scale:1 1}
 }
 @keyframes v1121-hide-back{
   0%,49.99%{opacity:1}
@@ -246,7 +242,7 @@ img,svg{max-width:100%}
     contain:layout style;
   }
   .opening-fullscreen .opening-top-card.revealed .flip-inner{
-    will-change:scale,rotate!important;
+    will-change:scale!important;
   }
   .opening-fullscreen .opening-top-card .flip-inner{
     filter:none!important;
@@ -298,5 +294,17 @@ img,svg{max-width:100%}
   }
 }
 
-/* V11.2.3: the revealed card keeps its normal upright orientation even at the midpoint. */
+/* V11.2.4: no rotating faces or animated filters on Android. */
 .opening-fullscreen .opening-top-card.revealed .flip-back .tcg-card{rotate:none!important}
+
+/* Keep the effect responsive without making Android re-render foil layers.
+   The no-3D fallback is intentional for stability. */
+@media(max-width:720px){
+  .opening-fullscreen .opening-top-card.revealed .flip-inner{
+    animation-timing-function:cubic-bezier(.42,0,.58,1)!important;
+  }
+  .opening-fullscreen .pack-stack-layer .galaxy-svg.booster-logo-img,
+  .opening-fullscreen .opening-top-card .flip-front .galaxy-svg.booster-logo-img{
+    will-change:auto!important;
+  }
+}
