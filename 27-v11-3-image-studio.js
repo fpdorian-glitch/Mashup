@@ -17,8 +17,8 @@ export function createImageStudio({getCards,getAdmin,escapeHtml,openCropper,save
       '<div class="studio-lead"><div><span class="eyebrow">MASHUP · STUDIO VISUELS</span>'+
       '<h3>Donne vie à tes cartes.</h3><p>Retrouve une carte, ajoute son illustration et ajuste son cadrage sans toucher aux statistiques ni à la rareté.</p></div>'+
       '<span class="studio-lead-mark" aria-hidden="true">✧</span></div>'+
-      '<div class="studio-controls"><label>Retrouver une carte<input type="search" id="studio-query" placeholder="Nom, univers ou numéro…" autocomplete="off"></label>'+
-      '<label>Afficher<select id="studio-visibility"><option value="missing">Cartes sans image</option><option value="all">Toutes les cartes</option></select></label></div>'+
+      '<div class="studio-controls"><label>Retrouver une carte<input type="search" id="studio-query" placeholder="Nom, univers ou numéro…" autocomplete="off" value="'+escapeHtml(query)+'"></label>'+
+      '<label>Afficher<select id="studio-visibility"><option value="missing" '+(missingOnly?'selected':'')+'>Cartes sans image</option><option value="all" '+(!missingOnly?'selected':'')+'>Toutes les cartes</option></select></label></div>'+
       '<div class="studio-grid" id="studio-grid" aria-live="polite"></div><div id="studio-grid-more" class="studio-more"></div>'+
       '<div class="studio-batch"><span class="eyebrow">IMPORTER EN SÉRIE</span><h4>Plusieurs images d’un coup</h4>'+
       '<p>Renomme tes fichiers comme les cartes (ex. <b>Hinata.png</b>) ou utilise leur identifiant exact. Vérifie les correspondances avant publication. Maximum 6 fichiers par lot.</p>'+
