@@ -1,0 +1,135 @@
+{
+  "kind": "synthetic-performance-comparison",
+  "baselineCommit": "b20fb58",
+  "started": "2026-11-04T23:33:20.615Z",
+  "productionRequests": 0,
+  "conditions": {
+    "engine": "Chromium headless Linux",
+    "viewport": "390 × 844 CSS px",
+    "deviceScaleFactor": 1,
+    "framesPerScene": 120,
+    "gpu": "disabled",
+    "data": "36 fictional cards, local API fixtures, no real Supabase",
+    "method": "same fixture, same machine, warm scene, rAF intervals; not measured physical FPS"
+  },
+  "limits": [
+    "Aucune validation Android ou iPhone physique.",
+    "Les intervalles rAF ne mesurent pas le temps GPU complet ni les images perdues par le compositeur.",
+    "Heap Chromium indicatif, dépend du garbage collector ; ne prouve pas une fuite mémoire.",
+    "Long tasks observées pendant l’échantillonnage seulement.",
+    "Aucun seuil marketing de 60/120 fps et aucune amélioration physique déduits."
+  ],
+  "runs": [
+    {
+      "name": "main-b20fb58",
+      "home": {
+        "domNodes": 600,
+        "cards": 3,
+        "images": 1,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3111405,
+        "jsHeapTotalBytes": 4382405,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1405,
+        "cards": 24,
+        "images": 8,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3570721,
+        "jsHeapTotalBytes": 6480405,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "externalRequestsIntercepted": 5,
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "v14",
+      "home": {
+        "domNodes": 682,
+        "cards": 3,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3143277,
+        "jsHeapTotalBytes": 4396133,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1646,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3160709,
+        "jsHeapTotalBytes": 5445621,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "externalRequestsIntercepted": 5,
+      "pageErrors": [],
+      "consoleErrors": []
+    }
+  ],
+  "delta": {
+    "home": {
+      "domNodes": 82,
+      "cards": 0,
+      "p95FrameIntervalMs": 0,
+      "jsHeapUsedBytes": 31872
+    },
+    "collection": {
+      "domNodes": 241,
+      "cards": 0,
+      "p95FrameIntervalMs": 0,
+      "jsHeapUsedBytes": -410012
+    }
+  },
+  "success": true
+}

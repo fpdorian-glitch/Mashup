@@ -1,81 +1,61 @@
-/* Mashup V12.0 — viewport-aware card rendering and network feedback.
- * No gameplay changes, polling, API calls, or mutations to the game save.
- * Leaves the active booster flip and full-screen card inspection untouched.
- */
-export function startMashupV12Performance(){
-  if(typeof window==='undefined'||typeof document==='undefined')return;
-  if(window.__mashupV12PerformanceStarted)return;
-  window.__mashupV12PerformanceStarted=true;
-  document.documentElement.dataset.mashupBuild='12.0.0';
-  const mobile=window.matchMedia?.('(max-width: 760px)').matches;
-  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  const cores=Number(navigator.hardwareConcurrency)||0;
-  if(reduced||(mobile&&cores&&cores<=4))document.documentElement.classList.add('v12-low-power');
-  const selector=[
-    '.collection-grid .tcg-card.v10-tcg',
-    '.v11-market-grid .tcg-card.v10-tcg',
-    '.v114-picker-grid .tcg-card.v10-tcg',
-    '.deck-roster-grid .tcg-card.v10-tcg',
-    '.arena-deck-cards .tcg-card.v10-tcg'
-  ].join(',');
-  const scanned=new WeakSet();
-  const observed=new Set();
-  const viewport=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
-    for(const e of entries)e.target.classList.toggle('v12-offscreen',!e.isIntersecting);
-  },{rootMargin:'160px 0px'}):null;
-  function repairImage(img){
-    if(!img||img.dataset.v12ErrorBound==='1')return;
-    img.dataset.v12ErrorBound='1';
-    img.addEventListener('error',()=>{
-      if(!img.isConnected)return;
-      const fallback=document.createElement('span');
-      fallback.className='v10-picture-symbol';
-      fallback.setAttribute('role','img');
-      fallback.setAttribute('aria-label','Illustration indisponible');
-      fallback.textContent='✧';
-      img.replaceWith(fallback);
-    },{once:true});
-  }
-  function scan(){
-    if(viewport){for(const card of observed){if(!card.isConnected){viewport.unobserve(card);observed.delete(card);}}}
-    for(const card of document.querySelectorAll(selector)){
-      if(scanned.has(card))continue;
-      scanned.add(card);
-      if(viewport){card.classList.add('v12-offscreen');viewport.observe(card);observed.add(card);}
-      for(const img of card.querySelectorAll('img')){
-        // The only priority override is inside large static grids;
-        // visible booster faces and interactive zooms keep eager loading.
-        img.loading='lazy';
-        img.decoding='async';
-        repairImage(img);
-      }
+/* V14: observe only newly inserted grid subtrees; never scan the whole document
+ * after a text change. Existing API/name retained for compatibility. */
+export function startMashupV12Performance() {
+  if (typeof window === 'undefined' || typeof document === 'undefined' || window.__mashupV12PerformanceStarted) return;
+  window.__mashupV12PerformanceStarted = true;
+  document.documentElement.dataset.mashupBuild = '14.0.0';
+  const page = document.getElementById('page');
+  const selector = ['.collection-grid', '.v11-market-grid', '.v114-picker-grid', '.deck-roster-grid', '.arena-deck-cards']
+    .map(grid => grid + ' .tcg-card.v10-tcg').join(',');
+  const scanned = new WeakSet(), observed = new Set(), pending = new Set();
+  const viewport = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    for (const entry of entries) entry.target.classList.toggle('v12-offscreen', !entry.isIntersecting);
+  }, {rootMargin: '160px 0px'}) : null;
+  function bindCard(card) {
+    if (scanned.has(card)) return;
+    scanned.add(card);
+    if (viewport) {card.classList.add('v12-offscreen'); viewport.observe(card); observed.add(card);}
+    for (const img of card.querySelectorAll('img')) {img.loading = 'lazy'; img.decoding = 'async';}
+    // Repair artwork only: replacing a decorative frame with a symbol is wrong.
+    for (const img of card.querySelectorAll('.v10-picture img')) {
+      img.addEventListener('error', () => {
+        if (!img.isConnected) return;
+        const fallback = document.createElement('span');
+        fallback.className = 'v10-picture-symbol'; fallback.setAttribute('role', 'img');
+        fallback.setAttribute('aria-label', 'Illustration indisponible'); fallback.textContent = '✧';
+        img.replaceWith(fallback);
+      }, {once: true});
     }
   }
-  let scheduled=false;
-  function scheduleScan(){
-    if(scheduled)return;
-    scheduled=true;
-    window.requestAnimationFrame(()=>{
-      scheduled=false;
-      if(!document.hidden)scan();
-    });
+  let frame = 0;
+  function scan() {
+    frame = 0;
+    if (document.hidden) return;
+    if (viewport) for (const card of observed) if (!card.isConnected) {viewport.unobserve(card); observed.delete(card);}
+    for (const node of pending) {
+      if (!node.isConnected) continue;
+      if (node.matches?.(selector)) bindCard(node);
+      for (const card of node.querySelectorAll?.(selector) || []) bindCard(card);
+    }
+    pending.clear();
   }
-  const page=document.getElementById('page');
-  if(page&&'MutationObserver' in window){
-    const changes=new MutationObserver(scheduleScan);
-    changes.observe(page,{subtree:true,childList:true});
+  function schedule(node) {
+    if (node?.nodeType === 1) pending.add(node);
+    if (!frame && pending.size && !document.hidden) frame = requestAnimationFrame(scan);
   }
-  scheduleScan();
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden)scheduleScan();});
-  const offline=document.createElement('div');
-  offline.className='v12-offline-notice';
-  offline.setAttribute('role','status');
-  offline.setAttribute('aria-live','polite');
-  offline.hidden=true;
-  offline.textContent='Connexion indisponible : les achats et les sauvegardes nécessitent Internet. Tes données ne sont pas effacées.';
+  if (page && 'MutationObserver' in window) {
+    new MutationObserver(records => {
+      for (const record of records) for (const node of record.addedNodes) schedule(node);
+      // Also prune detached IntersectionObserver targets after removals.
+      if (!frame && records.some(record => [...record.removedNodes].some(node => node.nodeType === 1))) frame = requestAnimationFrame(scan);
+    }).observe(page, {subtree: true, childList: true});
+  }
+  schedule(page);
+  document.addEventListener('visibilitychange', () => {if (!document.hidden) schedule(page);});
+  const offline = document.createElement('div'); offline.className = 'v12-offline-notice';
+  offline.setAttribute('role', 'status'); offline.setAttribute('aria-live', 'polite'); offline.hidden = true;
+  offline.textContent = 'Connexion indisponible : les achats et les sauvegardes nécessitent Internet. Tes données ne sont pas effacées.';
   document.body.appendChild(offline);
-  function updateConnection(){offline.hidden=navigator.onLine!==false;}
-  updateConnection();
-  window.addEventListener('offline',updateConnection);
-  window.addEventListener('online',updateConnection);
+  const updateConnection = () => {offline.hidden = navigator.onLine !== false;};
+  updateConnection(); window.addEventListener('offline', updateConnection); window.addEventListener('online', updateConnection);
 }

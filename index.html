@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090d16" />
-  <meta name="mashup-version" content="13.0.1" />
+  <meta name="mashup-version" content="14.0.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
@@ -720,6 +720,9 @@
   <link rel="apple-touch-icon" href="./assets/mashup-app-180.png">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./36-mobile-premium.css?v=13.0.1">
+  <link rel="stylesheet" href="./37-v14-cards.css?v=14.0.0">
+  <link rel="stylesheet" href="./39-v14-booster.css?v=14.0.0">
+  <link rel="stylesheet" href="./40-v14-interface.css?v=14.0.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -749,7 +752,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V13.0 <span>·</span> ÉCLIPSE</div>
+        <div class="tiny-copy">V14 <span>·</span> LE SANCTUAIRE</div>
       </div>
     </aside>
     <div class="content-area">
@@ -774,7 +777,7 @@
   </div>
   <div id="mashup-update-status" class="mashup-update-status" role="status" aria-live="polite" hidden></div>
 <div id="pvp-invitation-root" role="status" aria-live="polite"></div>
-<div id="auth-cover" class="auth-cover"><div class="auth-panel"><div class="auth-logo">✳ <b>MASHUP</b></div><div id="auth-content"><p>Connexion au jeu...</p></div></div></div>
+<div id="auth-cover" class="auth-cover"><div class="auth-panel"><div class="auth-logo">✳ <b>MASHUP</b></div><div id="auth-content"><p role="status" aria-live="polite">Ouverture du Sanctuaire…</p></div></div></div>
 <style>
 .auth-cover{position:fixed;inset:0;z-index:999;background:radial-gradient(ellipse at 40% 20%,#3b3356 0,transparent 60%),#070a10;display:grid;place-items:center;padding:18px;overflow-y:auto}
 .auth-panel{width:min(100%,430px);border:1px solid #414653;background:#151b25;border-radius:24px;box-shadow:0 30px 80px #000b;padding:32px}
@@ -1056,15 +1059,17 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=13.0.1" defer></script>
+<script src="./09-mashup-updates.js?v=14.0.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
-import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=13.0.0';
+import { sealedPackMarkup, summaryMarkup, mountSealedPack } from './38-v14-booster.js?v=14.0.0';
+import { createCatalogueIndex, cardSearchText, normalizeSearch, renderCardWindow, inspectionLimits, presentBalance } from './41-v14-runtime.js?v=14.0.0';
+import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=14.0.0';
 import { createGamesUI } from './04-games-ui.js?v=13.0.0';
-import { renderMashupV10Card } from './06-v10-cards.js?v=13.0.1';
-import { createDevelopmentJournal } from './10-development-journal.js?v=13.0.1';
-import { startMashupV12Performance } from './32-v12-performance.js?v=12.0.0';
-import { createBoosterRevealFX } from './12-booster-reveal.js?v=13.0.0';
+import { renderMashupV10Card } from './06-v10-cards.js?v=14.0.0';
+import { createDevelopmentJournal } from './10-development-journal.js?v=14.0.0';
+import { startMashupV12Performance } from './32-v12-performance.js?v=14.0.0';
+import { createBoosterRevealFX } from './12-booster-reveal.js?v=14.0.0';
 import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
@@ -1232,12 +1237,14 @@ function loadSave(){
   return clone(DEFAULT_SAVE);
 }
 function save(){updateBalances();if(onlineUser)savePreferences();}
-function allCards(){return [...BASE_CARDS,...state.custom];}
-function getCard(id){return allCards().find(c=>c.id===id);}
+const catalogueIndex=createCatalogueIndex();
+const cardNameCollator=new Intl.Collator('fr');
+function allCards(){return catalogueIndex.all(BASE_CARDS,state.custom);}
+function getCard(id){return catalogueIndex.get(id,BASE_CARDS,state.custom);}
 function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function CSSColor(value,fallback){return /^#[0-9a-fA-F]{6}$/.test(value||'')?value:fallback;}
 function safeImage(uri){return typeof uri==='string'&&(/^(?:data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/=]+)$/.test(uri)||/^https:\/\/lxpgdhwfxeicuofycqup\.supabase\.co\/functions\/v1\/mashup-art\?card=[A-Za-z0-9_-]{1,95}&key=[a-fA-F0-9-]{36}$/.test(uri))?uri:'';}
-function updateBalances(){document.getElementById('coin-balance').textContent=Number(state.coins||0).toLocaleString('fr-FR');document.getElementById('dust-balance').textContent=Number(state.dust||0).toLocaleString('fr-FR');}
+function updateBalances(){const motion=!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.documentElement.dataset.m13Quality!=='eco';presentBalance(document.getElementById('coin-balance'),state.coins,{motion});presentBalance(document.getElementById('dust-balance'),state.dust,{motion});}
 function toast(message,error=false){const root=document.getElementById('toast-root');root.innerHTML=`<div class="toast ${error?'error':''}">${esc(message)}</div>`;clearTimeout(toast.t);toast.t=setTimeout(()=>root.innerHTML='',3300);}
 function newDraft(){return {editionSeries:SERIES.find(x=>x.number!==1)?.number||1,name:'',subtitle:'Une nouvelle légende',family:'Original',rarity:'rare',power:72,size:50,def:66,aura:78,intelligence:76,icon:'✨',color1:'#5c7f8d',color2:'#453d69',ability:'Talent unique',desc:'Une carte imaginée dans ton univers.',art:'',variant:'standard'};}
 function normalCards(){return allCards().filter(c=>!c.hidden&&c.variant!=='secret');}
@@ -1328,7 +1335,7 @@ function renderMarketHub(){
     '<div id="market-v11-content"></div>';
   if(marketMode==='trades')marketUI.mount();else v11UI.mountMarket();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();const page=document.getElementById('page');page.classList.remove('m13-entrance');void page.offsetWidth;page.classList.add('m13-entrance');if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();const page=document.getElementById('page');page.getAnimations?.().forEach(animation=>animation.cancel());if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.documentElement.dataset.m13Quality!=='eco')page.animate?.([{opacity:.5,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'});if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
 // V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
 const gamesUI = createGamesUI({
   getView:()=>view,
@@ -1393,6 +1400,7 @@ async function openPack(id){
 let packFlipBusy=false;
 let packCardFaceUp=false;
 let packFlipTimer=null;
+let sealedPackCleanup=null;
 function renderOpeningStack(){
   const stage=document.getElementById('opening-stack');
   if(!stage)return;
@@ -1404,10 +1412,10 @@ function renderOpeningStack(){
   const done=document.getElementById('opening-done');
   if(left===0){
     clearOpeningOmen();boosterFX.reset();
-    stage.innerHTML='<div class="opening-finished"><span>✦</span><strong>Booster dévoilé !</strong><small>Les cartes seront ajoutées et le paiement validé seulement en confirmant.</small></div>';
+    stage.innerHTML=summaryMarkup(packResults,cardMarkup,esc);
     if(tip)tip.textContent='Confirme pour conserver tes cartes, puis retourne aux boosters.';
     if(progress)progress.textContent=`${packResults.length} / ${packResults.length} cartes découvertes`;
-    if(done){done.textContent='Confirmer et revenir aux boosters ↗';done.hidden=false;}
+    if(done){done.textContent='Confirmer et revenir aux boosters ↗';done.hidden=false;done.focus({preventScroll:true});}
     return;
   }
   const c=packResults[next];
@@ -1422,10 +1430,14 @@ function renderOpeningStack(){
   packCardFaceUp=false;
 }
 function showOpening(){
+  sealedPackCleanup?.();sealedPackCleanup=null;
   packFlipBusy=false;packCardFaceUp=false;clearTimeout(packFlipTimer);packFlipTimer=null;setOpeningTheme('');
   document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Ouverture immersive du booster ${esc(selectedPack?.name||'')}"><div class="opening-fullscreen">${boosterFX.decorations()}<div class="opening-topline"><div class="opening-topline-label"><span class="eyebrow">✧ OUVERTURE DE BOOSTER</span><strong>${esc(selectedPack?.name||'BOOSTER')}</strong></div><div class="opening-topline-actions">${boosterFX.controls()}</div></div><div class="opening-center"><div id="opening-stack"></div><p class="opening-tip" id="opening-instruction" aria-live="polite">Appuie sur la carte pour la retourner.</p><div class="opening-counter" id="opening-progress" aria-live="polite">Carte 1 sur ${packResults.length}</div></div><div class="opening-bottomline"><p class="small-note">Les cartes sont conservées dès la confirmation finale.</p><button class="btn btn-primary" id="opening-done" data-action="finish-opening" hidden type="button">Confirmer et revenir aux boosters ↗</button></div></div></div>`;
   boosterFX.sync();
-  renderOpeningStack();
+  const stage=document.getElementById('opening-stack');
+  stage.innerHTML=sealedPackMarkup({...selectedPack,count:packResults.length},esc);
+  sealedPackCleanup=mountSealedPack({root:stage,onOpen:()=>{sealedPackCleanup?.();sealedPackCleanup=null;renderOpeningStack();stage.querySelector('.opening-top-card')?.focus({preventScroll:true});},fast:()=>boosterFX.isFast()});
+  stage.querySelector('[data-v14-break-seal]')?.focus({preventScroll:true});
 }
 function revealNextCard(){
   if(packFlipBusy||packRevealed.size>=packResults.length)return;
@@ -1494,6 +1506,7 @@ function closeModal(){
  if(packFinalizing){toast('Validation en cours. Ne ferme pas cette ouverture.',true);return;}
  if(packLoading){packCancelRequested=true;const modal=document.getElementById('modal-root');if(modal)modal.innerHTML='<div class="modal-backdrop opening-backdrop"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Annulation en cours…</h2><p>Aucun crédit ne sera débité.</p></section></div>';return;}
  if(packPendingId){toast('Termine ton booster et confirme pour conserver les cartes.',true);return;}
+ sealedPackCleanup?.();sealedPackCleanup=null;
  clearTimeout(packFlipTimer);packFlipTimer=null;packFlipBusy=false;packCardFaceUp=false;clearOpeningOmen();boosterFX.reset();setOpeningTheme('');stopInspectionMotion();inspection=null;
  if(cropEditor){URL.revokeObjectURL(cropEditor.url);cropEditor=null;}
  document.getElementById('modal-root').innerHTML='';if(view==='packs'||view==='collection'||view==='arena')render();
@@ -1526,16 +1539,17 @@ function renderCollection(){
     <div class="collection-grid" id="collection-grid"></div><div id="collection-load-more" class="collection-load-more" hidden></div><div class="divider"></div><div class="flex-between" style="align-items:center;flex-wrap:wrap"><p class="small-note">Collection sauvegardée sur ton compte Mashup, accessible à chaque connexion.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm" data-action="export-save">↓ Exporter</button>${onlineUser.role==='admin'?`<label class="btn btn-sm" style="cursor:pointer">↑ Importer ma V4 <input id="import-save" type="file" accept="application/json" style="display:none"></label>`:''}</div></div>`;
   renderCollectionGrid();
 }
-function renderCollectionGrid(){
+function renderCollectionGrid({append=false}={}){
+  const query=normalizeSearch(collSearch);
   const result=allCards().filter(c=>{
      if(c.variant==='secret' && onlineUser?.role!=='admin' && !(state.owned?.[c.id]>0))return false;
      if((Number(c.editionSeries)||1)!==collectionSeries)return false;
-    const matchesName=`${c.name} ${c.subtitle} ${c.family}`.toLocaleLowerCase('fr').includes(collSearch.toLocaleLowerCase('fr'));
+    const matchesName=cardSearchText(c).includes(query);
     const matchType=collFilter==='all'||(collFilter==='owned'&&state.owned[c.id]>0)||(collFilter==='unowned'&&!state.owned[c.id])||(collFilter==='favorites'&&state.favorites.includes(c.id));
     return matchesName&&matchType&&(collRarity==='all'||c.rarity===collRarity)&&(collUniverse==='all'||c.family===collUniverse);
   }).sort((a,b)=>{
     const rankA=cardVariantRank(a),rankB=cardVariantRank(b);
-    const byName=a.name.localeCompare(b.name,'fr');
+    const byName=cardNameCollator.compare(a.name,b.name);
     if(collSort==='rarity-asc')return rankA-rankB||byName;
     if(collSort==='serial')return (Number(a.editionNumber)||9999)-(Number(b.editionNumber)||9999);
     if(collSort==='name-asc')return byName;
@@ -1547,7 +1561,10 @@ function renderCollectionGrid(){
   const shown=result.slice(0,collVisibleLimit);
   const countElement=document.getElementById('collection-count');
   if(countElement)countElement.textContent=result.length?shown.length+' / '+result.length+' cartes affichées':'Aucune carte trouvée';
-  document.getElementById('collection-grid').innerHTML=result.length?shown.map(c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin'),lazy:true})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`).join(''):`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">✳</div><h3>Aucune carte trouvée</h3><p>Modifie tes filtres ou ouvre quelques boosters.</p><button class="btn btn-primary" data-view="packs">Découvrir les boosters</button></div>`;
+  const grid=document.getElementById('collection-grid');
+  if(!grid)return;
+  if(result.length)renderCardWindow(grid,shown,c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin'),lazy:true})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`,{append,version:JSON.stringify([state.owned,state.favorites])});
+  else grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">✳</div><h3>Aucune carte trouvée</h3><p>Modifie tes filtres ou ouvre quelques boosters.</p><button class="btn btn-primary" data-view="packs">Découvrir les boosters</button></div>`;
   const loadMore=document.getElementById('collection-load-more');
   if(loadMore){
     const remaining=result.length-shown.length;
@@ -1567,6 +1584,7 @@ function inspectSpring(frameTime){
   inspectionFrame = 0;
   if(!inspection)return;
   const s=inspection;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){s.rx=s.ry=s.vrx=s.vry=0;updateInspection();return;}
   const delta=s.lastFrame?Math.min((frameTime-s.lastFrame)/1000,.042):1/60;
   s.lastFrame=frameTime;
   const k=170, damping=18; // ressort + frottement : écart, vitesse, amortissement
@@ -1590,10 +1608,11 @@ function showMagnifiedCard(id){
     <div class="inspect-modal">
       <div class="inspect-header"><div><div class="inspect-kicker">✦ MASHUP / INSPECTION 3D</div><h2 class="inspect-heading">${esc(c.name)}</h2></div>
       <div class="inspect-header-actions"><button class="btn btn-sm btn-quiet" data-action="back-to-detail" data-id="${esc(id)}">← Fiche</button><button class="icon-button" data-action="close-modal" aria-label="Fermer">×</button></div></div>
-      <div class="inspect-stage"><div class="inspect-tilter" tabindex="0" aria-label="Incliner la face avant de ${esc(c.name)} en maintenant le clic droit et en déplaçant la souris"><div class="inspect-flipper"><div class="inspect-face inspect-front">${cardMarkup(c)}</div></div></div></div>
-      <div class="inspect-instructions"><span><kbd>Clic droit</kbd> + déplacement : résistance et reflets ; relâche pour revenir à plat</span><span>Sur mobile : glisse ton doigt · Retour automatique avec inertie</span></div>
+      <div class="inspect-stage"><div class="inspect-tilter" tabindex="0" aria-label="Incliner la face avant de ${esc(c.name)} en glissant avec le pointeur ou les flèches du clavier"><div class="inspect-flipper"><div class="inspect-face inspect-front">${cardMarkup(c)}</div></div></div></div>
+      <div class="inspect-instructions"><span><kbd>Glisser</kbd> ou flèches : inclinaison et reflets · Échap pour fermer</span><span>Sur mobile : glisse ton doigt · Retour automatique avec inertie</span></div>
       <div class="inspect-tools"><button class="btn btn-sm" data-action="inspect-front">↺ Laisser revenir la carte</button></div>
     </div></div>`;
+  document.querySelector('.inspect-tilter')?.focus({preventScroll:true});
   updateInspection();
 }
 function updateInspection(){
@@ -1616,7 +1635,7 @@ function updateInspection(){
 function inspectPointerDown(e){
   if(!inspection)return;
   const surface=e.target.closest('.inspect-tilter');if(!surface)return;
-  if(e.pointerType==='mouse'&&e.button!==2)return;
+  if(e.pointerType==='mouse'&&e.button!==0&&e.button!==2)return;
   if(e.pointerType!=='mouse'&&e.button!==0)return;
   e.preventDefault();
   inspection.dragging=true;inspection.pointerId=e.pointerId;
@@ -1629,8 +1648,9 @@ function inspectPointerMove(e){
   if(!inspection||!inspection.dragging||e.pointerId!==inspection.pointerId)return;
   // Effet « élastique » : plus la souris s'éloigne, plus la carte résiste.
   const resistant=(v,max)=>Math.sign(v)*max*(1-Math.exp(-Math.abs(v)/max));
-  inspection.try=resistant(inspection.startX+(e.clientX-inspection.x)*.65,63);
-  inspection.trx=resistant(inspection.startY-(e.clientY-inspection.y)*.39,34);
+  const limits=inspectionLimits({reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,quality:document.documentElement.dataset.m13Quality});
+  inspection.try=limits.y?resistant(inspection.startX+(e.clientX-inspection.x)*.3,limits.y):0;
+  inspection.trx=limits.x?resistant(inspection.startY-(e.clientY-inspection.y)*.2,limits.x):0;
   startInspectionMotion();
 }
 function inspectPointerUp(e){
@@ -1702,7 +1722,7 @@ function deckVisibleCards(){
  return allCards().filter(c=>!c.hidden&&(Number(state.owned[c.id])||0)>0)
  .filter(c=>(deckRarity==='all'||c.rarity===deckRarity)&&(deckUniverse==='all'||c.family===deckUniverse))
  .filter(c=>(deckOwnership!=='favorites'||state.favorites.includes(c.id))&&`${c.name} ${c.family}`.toLocaleLowerCase('fr').includes(deckSearch.toLocaleLowerCase('fr')))
- .sort((a,b)=>{const name=a.name.localeCompare(b.name,'fr');if(deckSort==='rarity-asc')return cardVariantRank(a)-cardVariantRank(b)||name;if(deckSort==='name-asc')return name;if(deckSort==='name-desc')return -name;if(deckSort==='universe-asc')return a.family.localeCompare(b.family,'fr')||name;if(deckSort==='owned-desc')return (state.owned[b.id]||0)-(state.owned[a.id]||0)||name;return cardVariantRank(b)-cardVariantRank(a)||name;});
+ .sort((a,b)=>{const name=cardNameCollator.compare(a.name,b.name);if(deckSort==='rarity-asc')return cardVariantRank(a)-cardVariantRank(b)||name;if(deckSort==='name-asc')return name;if(deckSort==='name-desc')return -name;if(deckSort==='universe-asc')return a.family.localeCompare(b.family,'fr')||name;if(deckSort==='owned-desc')return (state.owned[b.id]||0)-(state.owned[a.id]||0)||name;return cardVariantRank(b)-cardVariantRank(a)||name;});
 }
 function renderDeckRoster(){
  const root=document.getElementById('deck-roster');if(!root)return;
@@ -1979,6 +1999,7 @@ document.addEventListener('click',event=>{
   const button=event.target.closest('[data-action]');if(!button)return;
   const action=button.dataset.action;
   switch(action){
+    case 'retry-connection':bootOnline();break;
     case 'deck-load-more':deckVisibleLimit+=24;renderDeckRoster();break;
     case 'open-pack':openPack(button.dataset.pack);break;
     case 'arena-mode':arenaMode=button.dataset.mode==='double'?'double':'simple';renderArena();break;
@@ -2035,7 +2056,7 @@ document.addEventListener('click',event=>{
     case 'pvp-next':pvpAction('next');break;
     case 'pvp-quit':pvpAction('quit');break;
     case 'clear-collection-filters':collFilter='owned';collRarity='all';collUniverse='all';collSort='rarity-desc';collSearch='';resetCollectionWindow();renderCollection();break;
-    case 'load-more-collection':collVisibleLimit+=collectionBatchSize();renderCollectionGrid();break;
+    case 'load-more-collection':collVisibleLimit+=collectionBatchSize();renderCollectionGrid({append:true});break;
     case 'start-battle':startBattle();break;
     case 'quit-battle':quitBattle();break;
     case 'challenge-stat':challengeStat(button.dataset.stat,false);break;
@@ -2117,6 +2138,8 @@ document.addEventListener('change',async event=>{
   if(id){if(onlineUser?.role!=='admin')return;try{await openImageCropper(t.files?.[0],id);}catch(e){toast(e.message,true);}t.value='';return;}
 });
 document.addEventListener('keydown',event=>{
+  if(inspection&&event.target.closest?.('.inspect-tilter')&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(event.key)){event.preventDefault();const limits=inspectionLimits({reduced:matchMedia('(prefers-reduced-motion: reduce)').matches,quality:document.documentElement.dataset.m13Quality});if(event.key==='Home'){inspectReset();return;}inspection.try=Math.max(-limits.y,Math.min(limits.y,inspection.try+(event.key==='ArrowRight'?4:event.key==='ArrowLeft'?-4:0)));inspection.trx=Math.max(-limits.x,Math.min(limits.x,inspection.trx+(event.key==='ArrowDown'?3:event.key==='ArrowUp'?-3:0)));startInspectionMotion();return;}
+
   if(event.key==='Escape'&&document.querySelector('.modal-backdrop')){if(packPendingId){event.preventDefault();return;}closeModal();}
   if((event.key==='Enter'||event.key===' ')&&event.target.classList?.contains('tcg-card')&&event.target.dataset.action==='detail'){event.preventDefault();showDetail(event.target.dataset.id);}
 });
@@ -2180,7 +2203,7 @@ window.addEventListener('online',()=>{if(preferenceDirty)flushPreferences();});
 function showAuth(mode='login',error=''){
   const root=document.getElementById('auth-cover');root.style.display='grid';
   const form=document.getElementById('auth-content');
-  const message=`<p class="auth-error" id="auth-error">${esc(error)}</p>`;
+  const message=`<p class="auth-error" id="auth-error" role="status">${esc(error)}</p>${error&&mode==='login'?'<button type="button" class="btn btn-sm" data-action="retry-connection">Réessayer la connexion</button>':''}`;
   if(mode==='setup')form.innerHTML=`<h2>Création du compte admin</h2><p>Première mise en service. Choisis ton identifiant et un mot de passe personnel. La clé SETUP_SECRET est configurée dans l'hébergeur et n'est jamais affichée ici.</p><form id="form-auth" data-mode="setup"><label>Adresse e-mail administrateur</label><input name="username" autocomplete="username" required minlength="3" maxlength="24"><label>Mot de passe (12 caractères minimum)</label><input name="password" type="password" autocomplete="new-password" required minlength="12"><label>Clé de configuration sécurisée</label><input name="setupSecret" type="password" required>${message}<button class="btn btn-primary" type="submit">Activer mon compte admin ↗</button></form>`;
   else if(mode==='password')form.innerHTML=`<h2>Changer mon mot de passe</h2><p>${onlineUser?.mustChange?'Pour protéger ton compte, choisis ton propre mot de passe avant de jouer.':'Tu peux changer ton mot de passe.'}</p><form id="form-auth" data-mode="password"><label>Ancien mot de passe</label><input name="oldPassword" type="password" required><label>Nouveau mot de passe (12 caractères minimum)</label><input name="newPassword" type="password" required minlength="12">${message}<button class="btn btn-primary" type="submit">Enregistrer et continuer</button></form>`;
   else form.innerHTML=`<h2>Bienvenue sur Mashup</h2><p>Ton multivers est privé. Seuls les joueurs invités par l'administrateur peuvent se connecter.</p><form id="form-auth" data-mode="login"><label>Adresse e-mail</label><input name="username" type="email" autocomplete="email" required><label>Mot de passe</label><input name="password" type="password" autocomplete="current-password" required>${message}<button class="btn btn-primary" type="submit">Se connecter ↗</button><p style="text-align:center;margin-top:12px"><a href="reset.html" style="color:#e6ef79;font-weight:600">Mot de passe oublié ?</a></p></form>`;
@@ -2204,7 +2227,7 @@ async function loadOnlineGame(){
   document.getElementById('account-button').textContent=(onlineUser.pseudo||onlineUser.username).slice(0,1).toUpperCase();
   document.getElementById('account-button').title=`${onlineUser.username} — ${onlineUser.role==='admin'?'Administrateur':'Joueur'} (cliquer pour modifier son mot de passe)`;
   if(onlineUser.role!=='admin' && (view==='creator'||view==='admin'))view='packs';
-  render();if(battle){view='arena';renderCombat();}pollInvitations();
+  if(battle){view='arena';arenaSection='campaign';}render();pollInvitations();
 }
 async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;mobilePresentation.sync();missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
 async function removeOnlineArt(id){if(onlineUser?.role!=='admin')return;const c=getCard(id);if(!c)return;try{const r=await api('/api/admin/cards',{card:{...c,art:''}});BASE_CARDS=r.cards;showDetail(id);toast('Illustration retirée du catalogue.');}catch(e){toast(e.message,true);}}
@@ -2626,6 +2649,8 @@ setInterval(()=>{if(view==='arena'&&arenaSection==='online'&&onlineUser)updatePv
 setInterval(()=>{if(!document.hidden&&onlineUser)pollInvitations();},20000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&onlineUser){pollInvitations();if(view==='arena'&&arenaSection==='online')renderOnline(true);}});
 
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',e=>{if(e.matches&&inspection){stopInspectionMotion();inspection.rx=inspection.ry=inspection.trx=inspection.try=inspection.vrx=inspection.vry=0;updateInspection();}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){stopInspectionMotion();if(inspection){inspection.dragging=false;inspection.rx=inspection.ry=inspection.trx=inspection.try=inspection.vrx=inspection.vry=0;updateInspection();}}});
 bootOnline();
 
 </script>

@@ -1,5 +1,5 @@
-/* Mashup V12.0 — lightweight, smooth booster reveal controller.
-   Only animates client-side after the card's face is exposed.
+/* Mashup V14 — lightweight booster anticipation and reveal controller.
+   Rarity anticipation is client-only; labels appear after the face is exposed.
    Never modifies draw odds, Supabase balances, or pack order.
 */
 export function createBoosterRevealFX(){
@@ -21,8 +21,19 @@ export function createBoosterRevealFX(){
   function flipMs(){
     return reduceMotion()?20:isFast()?230:mobile()?680:790;
   }
-  function preludeMs(card){if(isFast())return 0;const t=tierOf(card);return ['common','rare','epic'].includes(t)?0:mobile()?90:165;}
-  function prelude(card){reset();const root=shell();if(root&&preludeMs(card)){root.classList.add('fx-prelude');root.style.setProperty('--fx-intensity',tierOf(card)==='legendary'?'0.46':tierOf(card)==='mythic'?'0.62':tierOf(card)==='ultra-secret'?'0.92':'0.78');}}
+  function preludeMs(card){
+    if(isFast())return 0;
+    const duration={legendary:150,mythic:230,ultra:180,secret:240,'ultra-secret':290}[tierOf(card)]||0;
+    return mobile()?Math.round(duration*.8):duration;
+  }
+  function prelude(card){
+    reset();
+    const root=shell(),tier=tierOf(card);
+    if(root&&preludeMs(card)){
+      root.classList.add('fx-prelude','fx-'+tier);
+      root.style.setProperty('--fx-intensity',tier==='legendary'?'0.46':tier==='mythic'?'0.62':tier==='ultra-secret'?'0.92':'0.78');
+    }
+  }
   function unveil(){shell()?.classList.add('fx-unveiled');}
   function putAwayMs(){
     return reduceMotion()?20:isFast()?145:mobile()?230:300;
