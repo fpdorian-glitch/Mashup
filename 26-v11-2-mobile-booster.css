@@ -152,11 +152,16 @@ img,svg{max-width:100%}
 }
 /* Animate only a compositable scale, never the whole card's filter.
    Filters on text-heavy cards forced Android to repaint every frame. */
+/* A modest Y tilt gives the depth of a real card flip without ever
+   turning the artwork backward. Scale/rotate are composited on mobile. */
 @keyframes v1121-upright-pivot{
-  0%{scale:1 1}
-  45%{scale:.055 1}
-  55%{scale:.055 1}
-  100%{scale:1 1}
+  0%{scale:1 1;rotate:y 0deg}
+  20%{scale:.80 1;rotate:y -9deg}
+  45%{scale:.055 1;rotate:y -16deg}
+  50%{scale:.045 1;rotate:y 0deg}
+  55%{scale:.055 1;rotate:y 16deg}
+  80%{scale:.80 1;rotate:y 9deg}
+  100%{scale:1 1;rotate:y 0deg}
 }
 @keyframes v1121-hide-back{
   0%,49.99%{opacity:1}
@@ -210,8 +215,8 @@ img,svg{max-width:100%}
    Move the spiral itself down, not the card or its flip center. */
 .opening-fullscreen .pack-stack-layer .galaxy-svg.booster-logo-img,
 .opening-fullscreen .opening-top-card .flip-front .galaxy-svg.booster-logo-img{
-  transform:translate3d(0,13%,0)!important;
-  -webkit-transform:translate3d(0,13%,0)!important;
+  transform:translate3d(0,25%,0)!important;
+  -webkit-transform:translate3d(0,25%,0)!important;
   object-fit:contain;
   filter:none!important; /* SVG asset already includes its own glow */
   animation:none!important;
@@ -241,7 +246,7 @@ img,svg{max-width:100%}
     contain:layout style;
   }
   .opening-fullscreen .opening-top-card.revealed .flip-inner{
-    will-change:scale!important;
+    will-change:scale,rotate!important;
   }
   .opening-fullscreen .opening-top-card .flip-inner{
     filter:none!important;
@@ -292,3 +297,6 @@ img,svg{max-width:100%}
     animation:none!important;
   }
 }
+
+/* V11.2.3: the revealed card keeps its normal upright orientation even at the midpoint. */
+.opening-fullscreen .opening-top-card.revealed .flip-back .tcg-card{rotate:none!important}
