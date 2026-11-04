@@ -126,12 +126,25 @@ async function zipFiles(files){
 async function single(){
  if(working)return;
  const card=current();if(!card.prompt||!card.filename.endsWith('.jpg')){status('Sélectionne une carte valide.',true);return;}
+ try{endpoint();if(!$ai('ai-token').value.trim())throw Error('Code d’accès privé manquant.');}
+ catch(e){status(e.message,true);return;}
+ if(!confirm('Générer une illustration pour '+card.name+' via l’API payante ?'))return;
  busy(true);ctrl=new AbortController();
  try{
   status('Création de '+card.name+' en cours…');
   const image=await apiGenerate(card.prompt,ctrl.signal);
-  await setPreviewUpload(image,card.filename);
-  status('Illustration générée pour '+card.name+'. Vérifie le cadrage puis clique « Télécharger le JPEG ».');
+  if(current().filename!==card.filename){
+   const jpeg=await toMashupJpeg(image);download(jpeg,card.filename);
+   status('La sélection a changé : le JPEG '+card.filename+' a été téléchargé pour éviter toute association incorrecte.');
+  }else{
+   try{
+    await setPreviewUpload(image,card.filename);
+    status('Illustration générée pour '+card.name+'. Vérifie le cadrage puis clique « Télécharger le JPEG ».');
+   }catch(e){
+    const jpeg=await toMashupJpeg(image);download(jpeg,card.filename);
+    status('Import automatique impossible. Le JPEG '+card.filename+' a été téléchargé sans être associé à une autre carte.');
+   }
+  }
  }catch(e){status(e.name==='AbortError'?'Requête annulée. Une génération commencée peut rester facturée.':e.message,true);}
  finally{busy(false);ctrl=null;}
 }
