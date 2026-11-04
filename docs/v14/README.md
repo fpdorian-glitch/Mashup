@@ -78,3 +78,11 @@ Pas de flou, de filtre SVG, d'animation permanente ou de promotion GPU par carte
 6. Capacitor, notifications natives/haptique et distribution signée restent de futurs lots. Cette V14 reste un jeu web ; aucune app native ou disponibilité hors ligne n'est revendiquée.
 
 Retour arrière frontend : rétablir ensemble les fichiers et versions de b20fb58. Aucune migration DB à inverser. Ne pas restaurer un ancien snapshot de données par-dessus des transactions légitimes.
+
+## Livraison GitHub
+
+Branche envoyée : `feature/mashup-v14-ultimate`, commit de développement `3b172a0`. La commande de création de pull request a été exécutée, mais l'accès à `https://api.github.com/graphql` est refusé par le réseau (`Forbidden`). Aucune pull request créée, aucune fusion et aucun déploiement.
+
+Le titre et la description sont prêts dans [PR.md](PR.md). [Ouvrir la création de PR](https://github.com/fpdorian-glitch/Mashup/pull/new/feature/mashup-v14-ultimate).
+
+Le seul domaine `api.github.com` a été ajouté au brouillon des paramètres de l'environnement cloud, en conservant les domaines existants. Ce brouillon n'est pas appliqué : enregistrer puis publier la configuration de l'environnement dans ses paramètres est nécessaire avant de retenter l'accès automatique. Cette opération est distincte de la publication du jeu. Aucun jeton supplémentaire n'a été demandé ni copié ; les droits API restent à vérifier une fois le domaine accessible.
