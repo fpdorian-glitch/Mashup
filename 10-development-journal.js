@@ -22,19 +22,22 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 4 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V13 — Éclipse, ton multivers en poche</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V13.0.0</span></div>'+
-      '<p>Éclipse repense ton expérience : un accueil consacré à ta collection, une navigation mobile directe et des finitions lumineuses qui s’adaptent à ton appareil. Tes cartes, tes illustrations et tes règles restent les tiennes.</p>'+
+      '<h4>Mashup V13.0.1 — Reflets prismatiques</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V13.0.1</span></div>'+
+      '<p>Cette mise à jour améliore les finitions des cartes avec des reflets prismatiques selon la rareté, un vernis métallique sur les Gold, des micro-éclats sur les Ultra et Secrètes, et des réglages adaptés aux appareils mobiles. Aucun changement de compte ou d’économie.</p>'+
       '<div class="dev-v12-changes">'+
       '<span>Un nouvel accueil avec tes découvertes les plus rares et tes statistiques.</span>'+
       '<span>Accueil, Collection, Arène, Marché : quatre accès directs et toutes les autres fonctions dans le menu Plus.</span>'+
       '<span>Illustrations et cadrages individuels existants conservés sans modification.</span>'+
-      '<span>Des reflets holographiques pilotés au pointeur, sans boucle d’animation permanente.</span>'+
+      '<span>Couche de lumière prismatique selon la rareté, avec vernis métallique pour les Gold.</span>'+ 
+      '<span>Micro-éclats sur les Ultra et Secrètes, reflets réactifs lors de l’inspection.</span>'+ 
+      '<span>Modes économie d’énergie et animations réduites préservés.</span>'+
       '<span>Cartes hors écran optimisées et images chargées progressivement.</span>'+
       '<span>Modes adaptatif, spectaculaire et fluidité ; respect des animations réduites.</span>'+
       '<span>Decks chargés progressivement, par groupes de 24 cartes.</span>'+
       '<span>Les réponses tardives des mini-jeux ne remplacent plus ton nouvel écran.</span>'+
       '</div>'+
-      '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+
+      '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+ 
+      '<p><b>V13.0 :</b> nouvel accueil Éclipse, navigation mobile, effets adaptatifs, decks optimisés et réponses réseau fiabilisées.</p>'+
       '<p><b>V12.1 :</b> galerie de patrons et archivage réversible des cartes dans l’administration.</p>'+
       '<p><b>V12.0 :</b> harmonisation mobile, finitions de cartes affinées, boosters plus fluides et fiabilisation de la collection.</p>'+
       '<p><b>V11.4 :</b> nouveau Marché illustré, choix des cartes dans une collection filtrable, fiches complètes dans les annonces.</p>'+
