@@ -93,7 +93,7 @@ function choose(theme){
  document.querySelector('.patron-gallery').dataset.patron=theme;
  document.querySelectorAll('[data-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.choice===theme)));
  $('selected-title').textContent=({relique:'01 · RELIQUE',nebuleuse:'02 · NÉBULEUSE',eclipse:'03 · ÉCLIPSE'})[theme];
- render(theme);history.replaceState(null,'','#'+theme);
+ render(theme);history.replaceState(null,'',location.pathname+location.search+'#'+theme);
 }
 document.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.choice)));
 $('copy-choice').addEventListener('click',async()=>{const selected=document.querySelector('.patron-gallery').dataset.patron;try{await navigator.clipboard.writeText('Je valide le patron Mashup : '+selected.toUpperCase());$('copy-choice').textContent='✓ Nom copié';setTimeout(()=>$('copy-choice').textContent='Copier le nom du patron choisi',2500)}catch{$('copy-choice').textContent='Choix : '+selected.toUpperCase();}});
