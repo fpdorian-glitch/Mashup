@@ -17,6 +17,28 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
     catch{return 'Annonce de l’équipe';}
   }
   const escapeNewlines=value=>esc(value).replace(/\r\n?/g,'\n').replace(/\n/g,'<br>');
+  // Pinned changelog is shipped with the client so every player sees the
+  // current version even when developer-post history cannot be retrieved.
+  function releaseMarkup(){
+    return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
+      '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 4 NOVEMBRE 2026</div>'+
+      '<h4>Mashup V12 — Édition Perfectionnement</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V12.0.0</span></div>'+
+      '<p>Cette version privilégie la qualité du jeu existant : une présentation plus cohérente, des cartes valorisées, une interface mobile mieux lisible et des effets moins coûteux.</p>'+
+      '<div class="dev-v12-changes">'+
+      '<span>Interface mobile harmonisée et commandes plus confortables.</span>'+
+      '<span>Cartes TCG affinées : noms, chiffres, finitions Gold, Ultra et Secrète.</span>'+
+      '<span>Cartes hors écran optimisées et images chargées progressivement.</span>'+
+      '<span>Ouverture de boosters plus réactive, sans rotation inversée.</span>'+
+      '<span>Collection, Atelier, Arène et Marché : espacements et lisibilité améliorés.</span>'+
+      '<span>Signalement hors ligne et sauvegarde des préférences fiabilisée.</span>'+
+      '</div>'+
+      '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+
+      '<p><b>V11.4 :</b> nouveau Marché illustré, choix des cartes dans une collection filtrable, fiches complètes dans les annonces.</p>'+
+      '<p><b>V11.3 :</b> refonte de l’identité visuelle mobile et Studio illustrations dans l’Atelier : cadrage individuel, import en série et prise en charge des cartes secrètes.</p>'+
+      '<p><b>V11.2.4 :</b> retournement de booster plus léger sur Android, texte et images lisibles, effets mieux synchronisés.</p>'+
+      '<p><b>V11.2.3 :</b> fermeture accidentelle d’un booster empêchée, retour vers l’onglet boosters après validation.</p>'+
+      '</details></article>';
+  }
   function markup(){
     const editable=isAdmin();
     const list=posts.length?posts.map((p,i)=>`
@@ -35,6 +57,7 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
     return `<section id="development-journal" class="dev-journal" aria-label="Journal du développement">
       <div class="dev-journal-heading"><div><div class="eyebrow">✦ LES COULISSES DE MASHUP</div><h3>Journal du <em>développement.</em></h3><p>Nouvelles versions, projets et messages de l’équipe, au même endroit.</p></div>
         <button type="button" class="btn btn-sm dev-refresh" data-dev-action="refresh" aria-label="Actualiser les annonces">↻ Actualiser</button></div>
+      ${releaseMarkup()}
       ${editor}
       <div class="dev-message-list">${list}</div>
     </section>`;
