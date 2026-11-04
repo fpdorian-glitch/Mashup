@@ -1,5 +1,5 @@
 {
-  "version": "11.2.2",
+  "version": "11.2.3",
   "publishedAt": "2026-11-04",
-  "notes": "Ouverture de boosters plus fluide sur Android : spirale visuellement recentrée vers le bas, logo SVG partagé et mis en cache, effets GPU simplifiés et moins de cartes superposées. Cartes et textes restent à l'endroit. Aucun changement aux comptes, crédits ou collections."
+  "notes": "Boosters sécurisés : croix de fermeture retirée pendant l'ouverture, fermeture accidentelle bloquée, retour automatique à l'onglet Boosters après confirmation. Retournement avec relief 3D affiné et spirale encore abaissée. Comptes, cartes et crédits inchangés."
 }
