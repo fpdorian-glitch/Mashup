@@ -1,5 +1,5 @@
 {
-  "version": "11.2.4",
+  "version": "11.3.0",
   "publishedAt": "2026-11-04",
-  "notes": "Animation des boosters plus fluide sur Android : suppression de l'inclinaison 3D saccadée au profit d'un pivot simple et rapide (730 ms sur mobile). Écritures toujours à l'endroit. Croix supprimée, retour à Boosters après validation et centrage du logo conservés. Comptes, tirages et crédits inchangés."
+  "notes": "Nouvel habillage Mashup, navigation et collection optimisées sur mobile. Studio d’illustrations admin : rechercher une carte, ajouter et recadrer son image, ou importer jusqu’à 6 images par lot avec vérification des noms. Cartes, crédits, profils et boosters conservés."
 }
