@@ -1,4 +1,4 @@
-/* Mashup V11.2.4 — lightweight, smooth booster reveal controller.
+/* Mashup V12.0 — lightweight, smooth booster reveal controller.
    Only animates client-side after the card's face is exposed.
    Never modifies draw odds, Supabase balances, or pack order.
 */
@@ -19,13 +19,13 @@ export function createBoosterRevealFX(){
   }
   function isFast(){return fast||reduceMotion();}
   function flipMs(){
-    return reduceMotion()?20:fast?230:mobile()?730:850;
+    return reduceMotion()?20:fast?230:mobile()?680:790;
   }
-  function preludeMs(card){if(isFast())return 0;const t=tierOf(card);return ['common','rare','epic'].includes(t)?0:mobile()?125:200;}
+  function preludeMs(card){if(isFast())return 0;const t=tierOf(card);return ['common','rare','epic'].includes(t)?0:mobile()?90:165;}
   function prelude(card){reset();const root=shell();if(root&&preludeMs(card)){root.classList.add('fx-prelude');root.style.setProperty('--fx-intensity',tierOf(card)==='legendary'?'0.46':tierOf(card)==='mythic'?'0.62':tierOf(card)==='ultra-secret'?'0.92':'0.78');}}
   function unveil(){shell()?.classList.add('fx-unveiled');}
   function putAwayMs(){
-    return reduceMotion()?20:fast?150:mobile()?260:340;
+    return reduceMotion()?20:fast?145:mobile()?230:300;
   }
   function controls(){
     return '<button id="opening-speed" data-action="toggle-opening-speed" class="opening-speed" type="button" aria-label="Changer la vitesse des animations de boosters" aria-pressed="'+String(fast)+'">'+(fast?'⚡ Mode rapide':'✦ Mode cinéma')+'</button>';
@@ -87,7 +87,7 @@ export function createBoosterRevealFX(){
       '<span class="opening-vfx-ring"></span>'+
       '<span class="opening-vfx-runes"></span>'+
       '<span class="opening-vfx-particles">'+
-      Array.from({length:12},(_,i)=>'<i style="--angle:'+(i*30)+'deg;--delay:'+(i*45)+'ms"></i>').join('')+
+      Array.from({length:mobile()?8:12},(_,i)=>'<i style="--angle:'+(i*(mobile()?45:30))+'deg;--delay:'+(i*45)+'ms"></i>').join('')+
       '</span>'+
       '<span class="opening-vfx-name" id="opening-vfx-label"></span>'+
       '</div>';

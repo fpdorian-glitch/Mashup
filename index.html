@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="11.4.0" />
+  <meta name="mashup-version" content="12.0.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -714,6 +714,7 @@
 <link rel="stylesheet" href="./26-v11-2-mobile-booster.css?v=11.2.4">
 <link rel="stylesheet" href="./28-v11-3-mobile-identity.css?v=11.3.0">
 <link rel="stylesheet" href="./30-v11-4-market.css?v=11.4.0">
+<link rel="stylesheet" href="./31-v12-polish.css?v=12.0.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -1050,19 +1051,21 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=11.4.0" defer></script>
+<script src="./09-mashup-updates.js?v=12.0.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
 import { renderMashupV10Card } from './06-v10-cards.js?v=11.1';
-import { createDevelopmentJournal } from './10-development-journal.js?v=10.4';
-import { createBoosterRevealFX } from './12-booster-reveal.js?v=11.2.4';
+import { createDevelopmentJournal } from './10-development-journal.js?v=12.0.0';
+import { startMashupV12Performance } from './32-v12-performance.js?v=12.0.0';
+import { createBoosterRevealFX } from './12-booster-reveal.js?v=12.0.0';
 import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
 import { createMarketUI } from './20-market-v10-9.js?v=11.0';
 import { createV11UI } from './22-v11-economy-ui.js?v=11.4.0';
 import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=11.4.0';
+startMashupV12Performance();
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
@@ -1343,7 +1346,7 @@ const gamesUI = createGamesUI({
 
 function renderPacks(){
   document.getElementById('page').innerHTML=`
-    <section class="hero"><div class="hero-copy"><div class="hero-tag">✧ BIENVENUE DANS LE MULTIVERS</div><h2>Le jeux de carte qui regroupe <em>tout les univers</em></h2><p>Des héros, des icônes et même des objets du quotidien : ouvre des boosters, complète ta collection et défie tes amis dans l’univers Mashup.</p><div class="hero-actions"><button class="btn btn-primary btn-lg" data-action="open-pack" data-pack="${PACKS.find(p=>p.free)?.id||PACKS[0]?.id||'starter'}">${!state.freePackUsed?'Ouvrir mon booster gratuit':'Ouvrir un booster'} <span class="arrow">↗</span></button><button class="btn btn-quiet btn-lg" data-view="collection">Voir ma collection</button></div></div><div class="hero-art"><div class="hero-orbit"></div><span class="hero-spark a">✦</span><div class="hero-card-stack"><div class="mini-back"></div><div class="mini-back"></div><div class="mini-back"></div></div><span class="hero-spark b">✧</span></div></section>
+    <section class="hero"><div class="hero-copy"><div class="hero-tag">✧ BIENVENUE DANS LE MULTIVERS</div><h2>Le jeu de cartes qui regroupe <em>tous les univers</em></h2><p>Des héros, des icônes et même des objets du quotidien : ouvre des boosters, complète ta collection et défie tes amis dans l’univers Mashup.</p><div class="hero-actions"><button class="btn btn-primary btn-lg" data-action="open-pack" data-pack="${PACKS.find(p=>p.free)?.id||PACKS[0]?.id||'starter'}">${!state.freePackUsed?'Ouvrir mon booster gratuit':'Ouvrir un booster'} <span class="arrow">↗</span></button><button class="btn btn-quiet btn-lg" data-view="collection">Voir ma collection</button></div></div><div class="hero-art"><div class="hero-orbit"></div><span class="hero-spark a">✦</span><div class="hero-card-stack"><div class="mini-back"></div><div class="mini-back"></div><div class="mini-back"></div></div><span class="hero-spark b">✧</span></div></section>
     <section><div class="section-top"><div><div class="eyebrow">01 / LES INVOCATIONS</div><h3 class="small-heading">Choisis ton booster.</h3><p>Chaque ouverture est une surprise. Les boosters cachent une galaxie, et les doublons rapportent des éclats.</p></div><span class="pill">✦ Des découvertes à chaque ouverture</span></div>
     <div class="pack-grid">${PACKS.map((p,i)=>`<article class="pack ${i===PACKS.length-1?'pack-featured':''}"><div class="pack-head"><span class="pack-index">PACK ${String(i+1).padStart(2,'0')}</span><span class="pack-chip">${esc(p.chip||((p.count>=5)?'5 CARTES':'ÉDITION'))}</span></div><div class="pack-visual"><div class="pack-art-gleam" style="--p1:${p.p1}"></div><div class="pack-pouch" style="--p1:${p.p1};--p2:${p.p2}">${GALAXY_MARK}</div></div><h4>${esc(p.name)}</h4><div class="pack-desc">${esc(p.description||`${p.count} cartes`)}</div><div class="pack-bottom"><span class="pack-price">${p.free&&!state.freePackUsed?'GRATUIT':Number(packVouchers[p.id])>0?'🎟 BON OFFERT ×'+Number(packVouchers[p.id]):p.price+(p.currency==='dust'?' <small>✧</small>':' <small>◉</small>')}</span><button class="btn btn-sm ${i===PACKS.length-1?'btn-primary':''}" data-action="open-pack" data-pack="${p.id}">Ouvrir <span class="arrow">↗</span></button></div></article>`).join('')}</div></section>
     <div class="divider"></div><div class="section-top"><div><div class="eyebrow">02 / TON PARCOURS</div><h3 class="small-heading">Ton univers en chiffres.</h3></div></div>
@@ -2119,14 +2122,38 @@ async function api(path,data){
   if(!response.ok)throw new Error(result.error||'Erreur du serveur');
   return result;
 }
-let preferenceTimer=null;
+// V12: serialize deck/favorite saves. A slower response must never overwrite
+// newer edits made on another screen while the first request was in flight.
+let preferenceTimer=null,preferenceSaving=false,preferenceDirty=false;
 function savePreferences(){
+  preferenceDirty=true;
   clearTimeout(preferenceTimer);
-  preferenceTimer=setTimeout(async()=>{
-    if(!onlineUser)return;
-    try{const r=await api('/api/preferences',{deck:state.deck,deckDouble:state.deckDouble||[],favorites:state.favorites});state.deck=r.state.deck;state.deckDouble=r.state.deckDouble||[];state.favorites=r.state.favorites;}catch(e){toast(e.message,true);}
-  },180);
+  preferenceTimer=setTimeout(flushPreferences,240);
 }
+async function flushPreferences(){
+  if(preferenceSaving||!onlineUser)return;
+  preferenceSaving=true;
+  try{
+    while(preferenceDirty&&onlineUser){
+      preferenceDirty=false;
+      const accountId=onlineUser.id;
+      const snapshot={deck:[...(state.deck||[])],deckDouble:[...(state.deckDouble||[])],favorites:[...(state.favorites||[])]};
+      try{
+        const result=await api('/api/preferences',snapshot);
+        if(onlineUser?.id!==accountId)break;
+        if(!preferenceDirty&&result?.state){
+          state.deck=result.state.deck||[];
+          state.deckDouble=result.state.deckDouble||[];
+          state.favorites=result.state.favorites||[];
+        }
+      }catch(error){
+        if(onlineUser?.id===accountId){preferenceDirty=true;toast(error.message||'Sauvegarde momentanément indisponible.',true);}
+        break;
+      }
+    }
+  }finally{preferenceSaving=false;}
+}
+window.addEventListener('online',()=>{if(preferenceDirty)flushPreferences();});
 function showAuth(mode='login',error=''){
   const root=document.getElementById('auth-cover');root.style.display='grid';
   const form=document.getElementById('auth-content');

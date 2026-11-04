@@ -1,5 +1,5 @@
 {
-  "version": "11.4.0",
+  "version": "12.0.0",
   "publishedAt": "2026-11-04",
-  "notes": "Marché V11.4 : sélection visuelle de cartes dans une fenêtre avec filtres de collection, doublons et favoris. Les annonces affichent les vraies cartes illustrées et leurs finitions. Optimisation mobile, données et crédits conservés."
+  "notes": "V12 Perfectionnement : interface et identité visuelle harmonisées, cartes TCG affinées, affichage mobile optimisé, boosters plus réactifs, illustrations chargées progressivement, sauvegarde des decks et favoris fiabilisée, journal des nouveautés actualisé. Comptes, cartes et crédits conservés."
 }
