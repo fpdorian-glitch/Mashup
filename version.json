@@ -1,5 +1,5 @@
 {
-  "version": "12.1.0",
+  "version": "13.0.0",
   "publishedAt": "2026-11-04",
-  "notes": "V12.1 : galerie de trois patrons de cartes prévisualisables (Relique, Nébuleuse, Éclipse), sans changer le style actif ; suppression réversible et restauration des cartes depuis l’administration. Images, cadrage, collections et crédits préservés."
+  "notes": "Éclipse : nouvel accueil, navigation mobile, finitions holographiques, effets adaptatifs et decks plus légers."
 }

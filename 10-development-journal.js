@@ -22,20 +22,21 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 4 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V12.1 — Atelier des patrons et gestion des cartes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V12.1.0</span></div>'+
-      '<p>V12.1 ajoute un atelier séparé de comparaison des cadres de cartes et la suppression réversible des cartes par l’administrateur. Aucun patron nouveau n’est appliqué sans validation.</p>'+
+      '<h4>Mashup V13 — Éclipse, ton multivers en poche</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V13.0.0</span></div>'+
+      '<p>Éclipse repense ton expérience : un accueil consacré à ta collection, une navigation mobile directe et des finitions lumineuses qui s’adaptent à ton appareil. Tes cartes, tes illustrations et tes règles restent les tiennes.</p>'+
       '<div class="dev-v12-changes">'+
-      '<span>Nouvelle galerie de patrons : Relique, Nébuleuse et Éclipse, avec les six raretés et trois finitions spéciales.</span>'+ 
-      '<span>Administration : supprimer une carte après confirmation et la restaurer plus tard.</span>'+ 
-      '<span>Illustrations et cadrages individuels existants conservés sans modification.</span>'+ 
-      '<span>Cartes TCG affinées : noms, chiffres, finitions Gold, Ultra et Secrète.</span>'+
+      '<span>Un nouvel accueil avec tes découvertes les plus rares et tes statistiques.</span>'+
+      '<span>Accueil, Collection, Arène, Marché : quatre accès directs et toutes les autres fonctions dans le menu Plus.</span>'+
+      '<span>Illustrations et cadrages individuels existants conservés sans modification.</span>'+
+      '<span>Des reflets holographiques pilotés au pointeur, sans boucle d’animation permanente.</span>'+
       '<span>Cartes hors écran optimisées et images chargées progressivement.</span>'+
-      '<span>Ouverture de boosters plus réactive, sans rotation inversée.</span>'+
-      '<span>Collection, Atelier, Arène et Marché : espacements et lisibilité améliorés.</span>'+
-      '<span>Signalement hors ligne et sauvegarde des préférences fiabilisée.</span>'+
+      '<span>Modes adaptatif, spectaculaire et fluidité ; respect des animations réduites.</span>'+
+      '<span>Decks chargés progressivement, par groupes de 24 cartes.</span>'+
+      '<span>Les réponses tardives des mini-jeux ne remplacent plus ton nouvel écran.</span>'+
       '</div>'+
       '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+
-      '<p><b>V12.0 :</b> harmonisation mobile, finitions de cartes affinées, boosters plus fluides et fiabilisation de la collection.</p>'+ 
+      '<p><b>V12.1 :</b> galerie de patrons et archivage réversible des cartes dans l’administration.</p>'+
+      '<p><b>V12.0 :</b> harmonisation mobile, finitions de cartes affinées, boosters plus fluides et fiabilisation de la collection.</p>'+
       '<p><b>V11.4 :</b> nouveau Marché illustré, choix des cartes dans une collection filtrable, fiches complètes dans les annonces.</p>'+
       '<p><b>V11.3 :</b> refonte de l’identité visuelle mobile et Studio illustrations dans l’Atelier : cadrage individuel, import en série et prise en charge des cartes secrètes.</p>'+
       '<p><b>V11.2.4 :</b> retournement de booster plus léger sur Android, texte et images lisibles, effets mieux synchronisés.</p>'+

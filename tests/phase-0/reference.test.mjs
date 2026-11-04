@@ -20,10 +20,15 @@ function fixture(){
 }
 const count=(db,id)=>db.users.reduce((n,u)=>n+(u.state.owned[id]||0),0)+(db.listingsV11||[]).filter(l=>l.status==='active'&&l.cardId===id).length;
 const money=db=>db.users.reduce((n,u)=>n+u.state.coins,0);
-test('Référence : toutes les empreintes des fichiers applicatifs restent identiques',()=>{
+test('Référence phase 0 : fichiers inchangés et baseline historique des fichiers V13 modifiés',()=>{
  const manifest=JSON.parse(read('docs/phase-0/source-inventory.json'));
  assert.ok(manifest.files.length>40);
- for(const f of manifest.files)assert.equal(createHash('sha256').update(fs.readFileSync(path.join(root,f.path))).digest('hex'),f.sha256,f.path);
+ const revised=new Set(['index.html','04-games-ui.js','09-mashup-updates.js','10-development-journal.js','12-booster-reveal.js','version.json']);
+ for(const f of manifest.files){
+  const bytes=revised.has(f.path)?spawnSync('git',['show','d6ed7db3e522d41f4cb1ed91b4ed09aa88539e49:'+f.path],{cwd:root}):null;
+  if(bytes)assert.equal(bytes.status,0,'Baseline historique '+f.path);
+  assert.equal(createHash('sha256').update(bytes?bytes.stdout:fs.readFileSync(path.join(root,f.path))).digest('hex'),f.sha256,f.path);
+ }
  assert.ok(manifest.calls.some(c=>c.route==='/api/packs/commit'));
 });
 test('Syntaxe : tous les modules racine sont compilables',()=>{
@@ -32,7 +37,7 @@ test('Syntaxe : tous les modules racine sont compilables',()=>{
   const result=spawnSync(process.execPath,['--check',path.join(root,file)],{encoding:'utf8'});
   assert.equal(result.status,0,file+': '+result.stderr);
  }
- assert.equal(files.length,12);
+ assert.equal(files.length,13);
 });
 test('Rendu cartes : masquage, possession/admin et échappement du nom',async()=>{
  const {renderMashupV10Card:render}=await import(path.join(root,'06-v10-cards.js'));
@@ -102,12 +107,12 @@ test('Missions : gain quotidien unique, renouvellement sans perdre hebdomadaire'
  assert.throws(()=>c.missionClaimReward(a,db,'daily','booster',date),{status:409});
  c.missionRollover(a,new Date('2026-11-05T12:00:00Z'));assert.equal(a.missionsV106.daily.packs,0);assert.equal(a.missionsV106.weekly.packs,1);
 });
-test('R03 connu : une réponse Jeux tardive écrase le nouvel écran (reproduction, pas acceptation)',async()=>{
+test('R03 corrigé : une réponse Jeux tardive ne remplace pas le nouvel écran',async()=>{
  const ctx=vm.createContext({Date,Number,String,Math,Set,console,document:{addEventListener(){},getElementById(){return null;},querySelector(){return null;},hidden:false},setInterval:()=>1,setTimeout:()=>1,clearTimeout(){}});
  vm.runInContext(read('04-games-ui.js').replace('export function createGamesUI','function createGamesUI'),ctx);
- let resolve;const api=()=>new Promise(r=>resolve=r);const ui=ctx.createGamesUI({api,toast(){},getUser:()=>({id:'fiction'}),showArena(){}});
- const element={isConnected:true,innerHTML:''};const pending=ui.mount(element);element.innerHTML='COLLECTION_TEST';resolve({now:Date.now()});await pending;
- assert.notEqual(element.innerHTML,'COLLECTION_TEST');
+ let currentView='games';let resolve;const api=()=>new Promise(r=>resolve=r);const ui=ctx.createGamesUI({api,getView:()=>currentView,toast(){},getUser:()=>({id:'fiction'}),showArena(){}});
+ const element={isConnected:true,innerHTML:''};const pending=ui.mount(element);element.innerHTML='COLLECTION_TEST';currentView='collection';resolve({now:Date.now()});await pending;
+ assert.equal(element.innerHTML,'COLLECTION_TEST');
 });
 
 test('Copie fichier synthétique : écriture, relecture et comparaison exacte (pas SQL)',()=>{
