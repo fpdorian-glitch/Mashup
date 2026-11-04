@@ -1,0 +1,137 @@
+{
+  "kind": "fictional-frontend-journeys",
+  "productionRequests": 0,
+  "started": "2026-11-04T23:32:50.246Z",
+  "checks": [
+    "Carte de l’accueil → fiche → inspection",
+    "Campagne : interface chargée sans débordement",
+    "Combat révélé : interface chargée sans débordement",
+    "Campagne simulée : 4 manches, choix joueur/IA, masquage puis révélation adverse, retour arène",
+    "Défis en ligne vides : interface chargée sans débordement",
+    "Marché : interface chargée sans débordement",
+    "Échanges privés : interface chargée sans débordement",
+    "Profil : interface chargée sans débordement",
+    "Jeux : interface chargée sans débordement",
+    "Memory : interface chargée sans débordement",
+    "Classements : interface chargée sans débordement",
+    "Succès : interface chargée sans débordement",
+    "Atelier : interface chargée sans débordement",
+    "Administration : interface chargée sans débordement"
+  ],
+  "screenshots": [
+    "arena-mobile.png",
+    "battle-mobile.png",
+    "market-mobile.png",
+    "trades-mobile.png",
+    "profile-mobile.png",
+    "memory-mobile.png",
+    "studio-mobile.png",
+    "admin-mobile.png"
+  ],
+  "limits": "Parcours client simulés. Ne vérifie ni les calculs serveur, ni transferts, ni permissions Supabase réelles, ni les transactions concurrentes.",
+  "pageErrors": [],
+  "consoleErrors": [],
+  "apiCalls": [
+    {
+      "route": "/api/status",
+      "method": "GET"
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET"
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET"
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET"
+    },
+    {
+      "route": "/api/battles/start",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/choose",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/next",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/choose",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/next",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/choose",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/next",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/choose",
+      "method": "POST"
+    },
+    {
+      "route": "/api/battles/abandon",
+      "method": "POST"
+    },
+    {
+      "route": "/api/pvp",
+      "method": "GET"
+    },
+    {
+      "route": "/api/market/listings",
+      "method": "GET"
+    },
+    {
+      "route": "/api/trades",
+      "method": "GET"
+    },
+    {
+      "route": "/api/trades/partner/fiction-friend",
+      "method": "GET"
+    },
+    {
+      "route": "status",
+      "method": "GET"
+    },
+    {
+      "route": "status",
+      "method": "GET"
+    },
+    {
+      "route": "/api/leaderboard",
+      "method": "GET"
+    },
+    {
+      "route": "/api/achievements",
+      "method": "GET"
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET"
+    },
+    {
+      "route": "status",
+      "method": "GET"
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET"
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET"
+    }
+  ],
+  "success": true
+}

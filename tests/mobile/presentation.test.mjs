@@ -29,7 +29,7 @@ test('API principale : réponse d’un ancien compte rejetée avant application'
 
 test('Version de distribution cohérente entre manifeste de version, HTML et updater',async()=>{
  const {default:fs}=await import('node:fs');const read=p=>fs.readFileSync(new URL('../../'+p,import.meta.url),'utf8');
- const version=JSON.parse(read('version.json')).version;assert.equal(version,'13.0.1');
+ const version=JSON.parse(read('version.json')).version;assert.equal(version,'14.0.0');
  assert.ok(read('index.html').includes(`name="mashup-version" content="${version}"`));assert.ok(read('09-mashup-updates.js').includes(`CURRENT_VERSION='${version}'`));
  const manifest=JSON.parse(read('manifest.webmanifest'));assert.equal(manifest.scope,'./');assert.equal(manifest.start_url,'./');
  for(const icon of manifest.icons)assert.ok(fs.existsSync(new URL('../../'+icon.src,import.meta.url)));

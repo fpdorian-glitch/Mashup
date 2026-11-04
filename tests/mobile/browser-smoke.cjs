@@ -89,6 +89,7 @@ const http=require('http');
  await page.screenshot({path:'/tmp/mashup-mobile-first-screen.png'});await page.screenshot({path:root+'/docs/mobile/preview-mobile.png'});
 
  await page.locator('.m13-hero [data-action="open-pack"]').click();
+ if(await page.locator('[data-v14-break-seal]').count())await page.locator('[data-v14-break-seal]').click();
  for(let i=0;i<3;i++){
   await page.locator('.opening-top-card:not([disabled])').click();
   await page.waitForFunction(()=>{const b=document.querySelector('.opening-top-card');return b?.classList.contains('revealed')&&!b.disabled;});
