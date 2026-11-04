@@ -29,3 +29,13 @@ test('Solde : affichage serveur immédiat, pulse uniquement sur augmentation et 
  presentBalance(element,100);assert.equal(calls,0);presentBalance(element,120);assert.equal(calls,1);assert.equal(element.textContent,'120');presentBalance(element,120);assert.equal(calls,1);
  presentBalance(element,130,{motion:false});assert.equal(calls,1);assert.equal(cancels,1);presentBalance(element,90);assert.equal(calls,1);assert.equal(element.textContent,'90');
 });
+test('Reflet : coordonnées, angle et intensité suivent la rotation sans dépasser la carte',async()=>{
+ const {reflectionForTilt}=await import('../../41-v14-runtime.js');
+ const flat=reflectionForTilt(0,0),left=reflectionForTilt(8,-20),right=reflectionForTilt(-8,20);
+ assert.ok(left.x<flat.x&&right.x>flat.x);assert.ok(left.y<right.y);
+ assert.notEqual(left.angle,right.angle);assert.ok(left.strength>flat.strength);
+ assert.equal(left.foilX,100-left.x);
+ for(const value of [reflectionForTilt(-1000,1000),reflectionForTilt(NaN,Infinity)]){
+  assert.ok(Number.isFinite(value.x)&&Number.isFinite(value.angle));assert.ok(value.x>=6&&value.x<=94);assert.ok(value.y>=8&&value.y<=92);assert.ok(value.strength<=.64);
+ }
+});

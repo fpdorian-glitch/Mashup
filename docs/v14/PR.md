@@ -4,8 +4,10 @@ Mashup V13.0.1 affiche désormais des cartes SVG/CSS reconstruites autour de six
 
 Le frontend conserve les contrats API et les corps transactionnels de préparation/confirmation des boosters. Aucun backend, catalogue, illustration de joueur, prix, taux ou donnée réelle n'est modifié. Branche créée depuis main b20fb58 ; aucun déploiement inclus.
 
-Validation : 70 tests Node réussis ; Chromium avec API fictives aux largeurs320/390/768/1440 ; galerie24 finitions ; inspection souris/clavier/reduced ; campagne fictive4 manches ; landings marché/échanges/profil/jeux/atelier/admin ; booster avec un prepare/un commit ; zéro erreur console relevée. Captures, WebM et résultats reproductibles : docs/v14/README.md.
+Validation : 71 tests Node réussis ; Chromium avec API fictives aux largeurs320/390/768/1440 ; galerie24 finitions ; inspection souris/clavier/reduced ; campagne fictive4 manches ; landings marché/échanges/profil/jeux/atelier/admin ; booster avec un prepare/un commit ; zéro erreur console relevée. Captures, WebM et résultats reproductibles : docs/v14/README.md.
 
-Performance mesurée uniquement en Chromium headless Linux sans GPU : collection24 cartes, médiane/p95 rAF16,7/16,8ms identiques à main ; DOM1405→1646, heap indicatif variable selon le garbage collector. Aucun gain de FPS ni validation téléphone physique revendiqués. La pagination conserve les nœuds déjà affichés et les nouveaux cadres n'ont aucune animation autonome.
+Performance mesurée uniquement en Chromium headless Linux sans GPU : collection24 cartes, médiane rAF16,7ms et p95 proche de main (16,7–16,8ms) ; DOM1405→1647, heap indicatif variable selon le garbage collector. Aucun gain de FPS ni validation téléphone physique revendiqués. La pagination conserve les nœuds déjà affichés et les nouveaux cadres n'ont aucune animation autonome.
 
 Avant déploiement : préproduction indépendante, tests Safari/Android physiques et validation des opérations réelles concurrentes. Les garanties backend et la restauration Supabase ne sont pas certifiées par les tests fictifs.
+
+Finitions V14.0.1 : point lumineux, faisceau et irisation pilotés par l’inclinaison, reflets émeraude des Secrètes et opalins verts des Ultra Secrètes. Contrôle Chromium ciblé souris/clavier/tactile et protections éco/réduit/hors écran ; captures et WebM dans docs/v14/shine.
