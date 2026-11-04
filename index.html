@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="11.2.2" />
+  <meta name="mashup-version" content="11.2.3" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
@@ -711,7 +711,7 @@
 <link rel="stylesheet" href="./23-v11-market.css?v=11.0">
 <link rel="stylesheet" href="./24-v11-0-1-desktop-nav.css?v=11.0.1">
 <link rel="stylesheet" href="./25-convergence-series2.css?v=11.1">
-<link rel="stylesheet" href="./26-v11-2-mobile-booster.css?v=11.2.2">
+<link rel="stylesheet" href="./26-v11-2-mobile-booster.css?v=11.2.3">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -741,7 +741,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V11.2.2 <span>·</span> BOOSTERS FLUIDES</div>
+        <div class="tiny-copy">V11.2.3 <span>·</span> BOOSTERS SÉCURISÉS</div>
       </div>
     </aside>
     <div class="content-area">
@@ -1048,7 +1048,7 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=11.2.2" defer></script>
+<script src="./09-mashup-updates.js?v=11.2.3" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { createGamesUI } from './04-games-ui.js?v=10.0';
@@ -1378,9 +1378,9 @@ function renderOpeningStack(){
   if(left===0){
     clearOpeningOmen();boosterFX.reset();
     stage.innerHTML='<div class="opening-finished"><span>✦</span><strong>Booster dévoilé !</strong><small>Les cartes seront ajoutées et le paiement validé seulement en confirmant.</small></div>';
-    if(tip)tip.textContent='Confirme pour payer et conserver tes cartes, ou quitte pour tout annuler.';
+    if(tip)tip.textContent='Confirme pour conserver tes cartes, puis retourne aux boosters.';
     if(progress)progress.textContent=`${packResults.length} / ${packResults.length} cartes découvertes`;
-    if(done){done.textContent='Confirmer le booster et obtenir mes cartes ↗';done.hidden=false;}
+    if(done){done.textContent='Confirmer et revenir aux boosters ↗';done.hidden=false;}
     return;
   }
   const c=packResults[next];
@@ -1396,7 +1396,7 @@ function renderOpeningStack(){
 }
 function showOpening(){
   packFlipBusy=false;packCardFaceUp=false;clearTimeout(packFlipTimer);packFlipTimer=null;setOpeningTheme('');
-  document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Ouverture immersive du booster ${esc(selectedPack?.name||'')}"><div class="opening-fullscreen">${boosterFX.decorations()}<div class="opening-topline"><div class="opening-topline-label"><span class="eyebrow">✧ OUVERTURE DE BOOSTER</span><strong>${esc(selectedPack?.name||'BOOSTER')}</strong></div><div class="opening-topline-actions">${boosterFX.controls()}<button class="opening-exit" aria-label="Annuler l'ouverture" title="Quitter : aucun débit, aucune carte" data-action="close-modal" type="button">×</button></div></div><div class="opening-center"><div id="opening-stack"></div><p class="opening-tip" id="opening-instruction" aria-live="polite">Appuie sur la carte pour la retourner.</p><div class="opening-counter" id="opening-progress" aria-live="polite">Carte 1 sur ${packResults.length}</div></div><div class="opening-bottomline"><p class="small-note">Aucun crédit retiré avant confirmation. Quitter annule le booster sans conserver les cartes.</p><button class="btn btn-primary" id="opening-done" data-action="finish-opening" hidden type="button">Voir ma collection ↗</button></div></div></div>`;
+  document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Ouverture immersive du booster ${esc(selectedPack?.name||'')}"><div class="opening-fullscreen">${boosterFX.decorations()}<div class="opening-topline"><div class="opening-topline-label"><span class="eyebrow">✧ OUVERTURE DE BOOSTER</span><strong>${esc(selectedPack?.name||'BOOSTER')}</strong></div><div class="opening-topline-actions">${boosterFX.controls()}</div></div><div class="opening-center"><div id="opening-stack"></div><p class="opening-tip" id="opening-instruction" aria-live="polite">Appuie sur la carte pour la retourner.</p><div class="opening-counter" id="opening-progress" aria-live="polite">Carte 1 sur ${packResults.length}</div></div><div class="opening-bottomline"><p class="small-note">Les cartes sont conservées dès la confirmation finale.</p><button class="btn btn-primary" id="opening-done" data-action="finish-opening" hidden type="button">Confirmer et revenir aux boosters ↗</button></div></div></div>`;
   boosterFX.sync();
   renderOpeningStack();
 }
@@ -1460,13 +1460,13 @@ async function finishOpening(){
     BASE_CARDS=r.cards.map(c=>({...c,art:c.art||artwork.get(c.id)||''}));
   }
   packPendingId=null;packPendingPackId=null;updateBalances();packFinalizing=false;
-  closeModal();if(view!=='collection')setView('collection');collectionRewardsUI.refresh({force:true});toast('Booster confirmé : tes cartes sont dans ta collection.');
+  closeModal();if(view!=='packs')setView('packs');collectionRewardsUI.refresh({force:true});toast('Booster confirmé : cartes ajoutées à ta collection !');
  }catch(e){packFinalizing=false;if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}toast(e.message+' Tu peux réessayer sans payer deux fois.',true);}
 }
 function closeModal(){
  if(packFinalizing){toast('Validation en cours. Ne ferme pas cette ouverture.',true);return;}
  if(packLoading){packCancelRequested=true;const modal=document.getElementById('modal-root');if(modal)modal.innerHTML='<div class="modal-backdrop opening-backdrop"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Annulation en cours…</h2><p>Aucun crédit ne sera débité.</p></section></div>';return;}
- if(packPendingId){const id=packPendingPackId,openingId=packPendingId;packPendingId=null;packPendingPackId=null;packCancelPromise=api('/api/packs/cancel',{id,openingId}).catch(()=>{}).finally(()=>{packCancelPromise=null;});toast('Ouverture annulée : aucun crédit débité, aucune carte attribuée.');}
+ if(packPendingId){toast('Termine ton booster et confirme pour conserver les cartes.',true);return;}
  clearTimeout(packFlipTimer);packFlipTimer=null;packFlipBusy=false;packCardFaceUp=false;clearOpeningOmen();boosterFX.reset();setOpeningTheme('');stopInspectionMotion();inspection=null;
  if(cropEditor){URL.revokeObjectURL(cropEditor.url);cropEditor=null;}
  document.getElementById('modal-root').innerHTML='';if(view==='packs'||view==='collection'||view==='arena')render();
@@ -2063,7 +2063,7 @@ document.addEventListener('change',async event=>{
   if(id){if(onlineUser?.role!=='admin')return;try{await openImageCropper(t.files?.[0],id);}catch(e){toast(e.message,true);}t.value='';return;}
 });
 document.addEventListener('keydown',event=>{
-  if(event.key==='Escape'&&document.querySelector('.modal-backdrop'))closeModal();
+  if(event.key==='Escape'&&document.querySelector('.modal-backdrop')){if(packPendingId){event.preventDefault();return;}closeModal();}
   if((event.key==='Enter'||event.key===' ')&&event.target.classList?.contains('tcg-card')&&event.target.dataset.action==='detail'){event.preventDefault();showDetail(event.target.dataset.id);}
 });
 document.getElementById('modal-root').addEventListener('click',event=>{if(event.target.classList.contains('modal-backdrop')&&!event.target.classList.contains('opening-backdrop'))closeModal();});
