@@ -1080,7 +1080,7 @@ const imageStudio=createImageStudio({
   getAdmin:()=>onlineUser?.role==='admin',
   escapeHtml:esc,
   openCropper:(file,id)=>openImageCropper(file,id),
-  saveCard:async(card,art)=>{const r=await api('/api/admin/cards',{card:{...card,art}});BASE_CARDS=r.cards;return r;},
+  saveCard:async(card,art)=>{const previous=new Map(BASE_CARDS.filter(c=>c.art).map(c=>[c.id,c.art]));const r=await api('/api/admin/cards',{card:{...card,art}});BASE_CARDS=(r.cards||BASE_CARDS).map(c=>({...c,art:c.art||(c.id===card.id?art:previous.get(c.id)||'')}));return r;},
   notify:(message,error=false)=>toast(message,error)
 });
 let BASE_CARDS = [
@@ -1866,7 +1866,7 @@ function renderCreator(){
     <div class="divider"></div><div class="eyebrow">STATISTIQUES</div>${STAT_FIELDS.map(f=>[f.key,f.label.toUpperCase()]).map(([key,label])=>`<div class="slider-field"><div class="slider-label"><span>${label}</span><b id="draft-val-${key}">${draft[key]}</b></div><input type="range" min="20" max="100" value="${draft[key]}" data-draft="${key}" aria-label="${label}"></div>`).join('')}
     <div class="divider"></div><div class="eyebrow">ILLUSTRATION PERSONNALISÉE</div><p class="panel-p">Choisis un emblème pour commencer, ou ajoute directement ton dessin / ta photo.</p><div class="symbol-choices">${['✨','🐉','🦊','🧙','⚔️','🌙','🔥','💎','🌊','🌸','🤖','👑'].map(icon=>`<button class="symbol-choice ${draft.icon===icon?'active':''}" data-action="symbol" data-symbol="${icon}" aria-label="Emblème ${icon}">${icon}</button>`).join('')}</div><label class="upload-zone">📁 ${draft.art?'Illustration chargée — changer l’image':'Importer un dessin ou une photo'}<input id="draft-image" type="file" accept="image/png,image/jpeg,image/webp"></label><p class="small-note">Déplace, zoome et recadre ton image avant de l’enregistrer. Le recadrage sera visible pour tous.</p><div class="divider"></div><button class="btn btn-primary btn-lg" data-action="create-card">${editingCardId?'✎ Enregistrer les modifications':'✳ Publier la carte pour tous'}</button><button class="btn btn-quiet" data-action="reset-draft">Recommencer</button></div>
     <aside class="panel preview-panel"><div class="eyebrow">APERÇU EN DIRECT</div><p class="preview-label">Ta future carte, dans le patron officiel Mashup.</p><div class="preview-card" id="creator-preview"></div><p class="small-note">Les cadres changent selon la rareté : papier, azur, violet, or et noir chrome mythique. Le visuel reste libre.</p></aside></div>`;
-  document.getElementById('page').insertAdjacentHTML('beforeend',imageStudio.markup());
+  document.getElementById('page').firstElementChild?.insertAdjacentHTML('afterend',imageStudio.markup());
   imageStudio.refresh();
   document.getElementById('page').insertAdjacentHTML('beforeend',`<section class="panel" style="margin-top:18px"><div class="eyebrow">GESTION DES SÉRIES</div><h3>Une série pour chaque extension</h3><p class="panel-p">Crée et personnalise tes séries depuis le panneau Admin, puis reviens ici pour attribuer les nouvelles cartes à la série choisie.</p><button class="btn btn-primary" data-action="open-series-admin">Gérer mes séries dans Admin →</button></section>`);
   renderCreatorPreview();
@@ -2024,7 +2024,7 @@ document.addEventListener('click',event=>{
     case 'studio-batch-confirm':imageStudio.confirmBatch();break;
     case 'studio-jump':{
       const card=button.dataset.id?getCard(button.dataset.id):null;
-      setView('creator');
+      closeModal();setView('creator');
       if(card){const input=document.getElementById('studio-query'),select=document.getElementById('studio-visibility');if(input)input.value=card.name;if(select)select.value='all';imageStudio.visibility('all');imageStudio.search(card.name);}
       document.getElementById('image-studio')?.scrollIntoView({behavior:'smooth',block:'start'});
       break;
