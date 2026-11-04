@@ -1,0 +1,125 @@
+/* MASHUP V11.3 — visual identity and mobile-first layout.
+   Uses existing rarity frames; no changes to card statistics or game logic. */
+:root{
+  --accent:#e4ed9b;
+  --accent-soft:#e4ed9b20;
+  --mashup-ink:#09131c;
+  --mashup-sea:#163640;
+  --mashup-gold:#dfc584;
+}
+html{overflow-x:clip}
+body{background:radial-gradient(ellipse 75% 58% at 92% -5%,#18363940,transparent 75%),linear-gradient(180deg,#0b1218,#0b0e13 58%);background-attachment:fixed}
+.brand-type strong{letter-spacing:-1.5px}
+.brand-mark{background:linear-gradient(140deg,#f0f3af,#93d1b7);box-shadow:0 0 24px #d0eab330}
+.nav-item.active{background:linear-gradient(105deg,#273b36,#1c2934)!important;border-color:#839e6b70!important}
+.nav-item.active .nav-icon{color:#e5f3bb}
+.sidebar{background:linear-gradient(180deg,#101d24,#11141c 75%)}
+.topbar{background:#101720c9;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#page{min-width:0}
+.hero{background:radial-gradient(circle at 90% 10%,#a7c48d29,transparent 45%),radial-gradient(ellipse at 12% 95%,#4ea2ad20,transparent 55%),linear-gradient(115deg,#1a2f30,#15242d 80%)!important;border-color:#7f9c7859!important;box-shadow:inset 0 1px 0 #ffffff10,0 14px 45px #0003}
+.hero-copy .hero-tag,.hero-copy .eyebrow{color:#e4f1af}
+.hero h2 em,.heading em{color:#e2edaa}
+.panel{border-color:#46565b85;background:linear-gradient(153deg,#19242de8,#121b25ed)}
+.pack{border-color:#52645b75!important;box-shadow:0 8px 23px #0004}
+.pack h4{letter-spacing:-.55px}
+.pack-visual .pack-pouch{filter:drop-shadow(0 8px 10px #0006)}
+.btn-primary{background:linear-gradient(135deg,#e9f0ac,#c3df9e);border-color:#e4ed9b;color:#1b2b25}
+.btn-primary:hover:not(:disabled){background:#f2f7c4}
+.collection-filters{overflow:hidden}
+.collection-item .tcg-card{isolation:isolate}
+.tcg-card .card-head-name strong{letter-spacing:-.15px}
+.eyebrow{letter-spacing:2px}
+.studio-shell{margin:22px 0;overflow:hidden;position:relative;border:1px solid #879c8682!important;
+  background:radial-gradient(circle at 94% 0%,#80d9ce20,transparent 40%),linear-gradient(145deg,#192e33,#151d29)!important}
+.studio-shell::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,#a8dabf,#f0da96,#9dbeef)}
+.studio-lead{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.studio-lead h3{font:800 clamp(23px,3vw,34px)/1.1 var(--display);letter-spacing:-1px;margin:9px 0}
+.studio-lead p{max-width:640px;color:#b8c9cd;font-size:12px;line-height:1.7;margin:0}
+.studio-lead-mark{font-size:83px;line-height:1;color:#d1e9adab;filter:drop-shadow(0 0 16px #d6e9b47b)}
+.studio-controls{display:grid;grid-template-columns:minmax(0,2fr) minmax(135px,1fr);gap:12px;margin:23px 0 18px}
+.studio-controls label{display:flex;flex-direction:column;gap:8px;color:#e0e7db;font-weight:800;font-size:11px}
+.studio-controls input,.studio-controls select{min-width:0;width:100%;height:45px;border:1px solid #60777d;border-radius:11px;padding:0 12px;color:#edf4f3;background:#0d1922;font-size:14px}
+.studio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:13px}
+.studio-card{min-width:0;overflow:hidden;border:1px solid #627c755b;border-radius:14px;background:linear-gradient(155deg,#15242d,#101820);display:flex;flex-direction:column;box-shadow:0 9px 23px #0003}
+.studio-art{height:135px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 30%,#304a56,#141e27 85%);overflow:hidden;position:relative}
+.studio-art::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,#0f1b28ad);pointer-events:none}
+.studio-art img{width:100%;height:100%;object-fit:cover;display:block}
+.studio-placeholder{font-size:54px;color:#d6e8b5;filter:drop-shadow(0 5px 15px #0007)}
+.studio-card-copy{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.studio-card-copy strong{font-size:13px;overflow-wrap:anywhere;line-height:1.3}
+.studio-card-copy small{color:#a5b5ba;font-size:10px;line-height:1.4}
+.studio-status{color:#dfbb94;font-weight:800;font-size:10px;letter-spacing:.3px}
+.studio-status.is-ready{color:#a7e2b8}
+.studio-upload-btn{cursor:pointer;display:flex;align-items:center;justify-content:center;text-align:center;border:1px solid #8cae8e7f;background:#293d3c;color:#e6f4dd;border-radius:10px;font-size:11px;font-weight:800;margin-top:auto;padding:10px 8px;min-height:44px}
+.studio-upload-btn:hover{background:#37564b;border-color:#afd2aa}
+.studio-upload-btn input,.studio-batch-file input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.studio-upload-btn:focus-within,.studio-batch-file:focus-within{outline:2px solid #e4ed9b;outline-offset:2px}
+.studio-more{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin:18px 0 0}
+.studio-more small{font-size:11px;color:#aabcc4}
+.studio-no-results{grid-column:1/-1;border:1px dashed #6f8285;border-radius:12px;padding:24px;text-align:center;color:#b9c8ca;font-size:12px}
+.studio-batch{border-top:1px solid #54756c77;margin-top:24px;padding-top:24px}
+.studio-batch h4{font:800 20px var(--display);margin:8px 0}
+.studio-batch p{max-width:680px;color:#b6c4c5;font-size:12px;line-height:1.75}
+.studio-batch-file{position:relative;cursor:pointer;display:inline-flex;margin:6px 0 13px;min-height:44px}
+.studio-review{font-size:12px;color:#e1e9de;min-height:17px}
+.studio-review>.btn{margin-top:13px}
+.studio-review>small{display:block;font-size:11px;color:#b2c7bf;margin-top:9px}
+.studio-match-list{display:grid;gap:7px;margin:12px 0 4px}
+.studio-match{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:10px;border:1px solid #47626770;border-radius:9px;background:#101d26;padding:9px 12px}
+.studio-match b,.studio-match span{overflow-wrap:anywhere}
+.studio-match span{color:#bdd5cb}
+.studio-errors{color:#ffb9a4!important}
+.crop-window{width:min(95vw,740px)}
+.crop-stage{width:100%;touch-action:none}
+@media(max-width:900px){
+  .navigation{overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .nav-item{scroll-snap-align:start;flex-shrink:0}
+  .topbar{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .panel{min-width:0}
+  .collection-controls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .creator-layout{grid-template-columns:minmax(0,1fr)!important}
+  .preview-panel{position:static!important}
+}
+@media(max-width:700px){
+  #page{padding:25px 13px calc(98px + env(safe-area-inset-bottom,0px))!important}
+  .topbar{padding-inline:12px!important}
+  .section-top,.flex-between{min-width:0}
+  .panel{padding:17px 13px}
+  .heading{font-size:clamp(30px,9vw,44px);letter-spacing:-1.5px;overflow-wrap:anywhere}
+  .hero-copy{padding:24px}
+  .hero h2{font-size:clamp(31px,9vw,44px)}
+  .collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .collection-item .tcg-card{min-width:0;min-height:0}
+  .collection-item .tcg-card .card-head-name strong{font-size:clamp(10px,3vw,12px)}
+  .collection-filters{padding:13px}
+  .collection-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .collection-search-label{grid-column:1/-1}
+  .collection-controls input,.collection-controls select{min-width:0;max-width:100%;height:44px;font-size:13px}
+  .field-row{grid-template-columns:minmax(0,1fr)!important}
+  .sidebar{padding-inline:7px!important;justify-content:stretch}
+  .navigation{justify-content:flex-start!important;gap:5px!important}
+  .nav-item{font-size:10px!important;min-width:72px!important;padding:7px!important}
+  .nav-item .nav-icon{font-size:20px}
+  .studio-shell{margin-top:20px}
+  .studio-lead-mark{font-size:58px}
+  .studio-controls{grid-template-columns:minmax(0,1fr)}
+  .studio-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .studio-art{height:110px}
+  .studio-card-copy{padding:10px 8px;gap:5px}
+  .studio-upload-btn{font-size:10px;padding:9px 5px}
+  .studio-status{font-size:9px}
+  .studio-match{grid-template-columns:1fr;gap:5px}
+  .modal-box{max-width:calc(100vw - 16px)}
+  .crop-window{padding:16px}
+  .crop-stage{max-width:100%;aspect-ratio:6/5}
+  .crop-controls input{min-height:32px}
+  .opening-fullscreen .opening-top-card .flip-back .tcg-card .foil-layer{animation:none!important}
+}
+@media(max-width:380px){
+  .studio-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .studio-lead-mark{display:none}
+  .resource{padding-inline:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  .studio-card,.hero,.pack{transition:none!important}
+}
