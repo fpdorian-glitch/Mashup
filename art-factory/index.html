@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10191f">
+<meta name="description" content="Préparer les 100 illustrations originales de la série Convergence pour Mashup.">
+<title>Mashup Art Factory — Convergence</title>
+<style>
+:root{color-scheme:dark;--bg:#0d151c;--panel:#15252d;--ink:#e9f1ec;--muted:#acbdbf;--line:#4b6a65;--accent:#dbefac;--gold:#edd195;--tint:#213d3c;--radius:16px;font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top right,#28564c48,transparent 48%),linear-gradient(#101a22,#0a1016);color:var(--ink);min-height:100dvh}
+button,input,select{font:inherit}
+button,a{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+a{color:var(--accent)}
+button{cursor:pointer}
+header{max-width:1400px;margin:auto;padding:29px clamp(15px,3vw,34px) 15px}
+.brand{font-weight:950;letter-spacing:.16em;color:var(--accent);font-size:11px}
+h1{font:850 clamp(29px,4.8vw,55px)/1.08 Georgia,serif;letter-spacing:-.02em;margin:10px 0;color:#fff2c6}
+header p{max-width:780px;color:#bdd0cb;margin:12px 0}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.tag{padding:7px 11px;border:1px solid #6482768c;border-radius:50px;background:#1a3231;font-size:11px;color:#e8f5de}
+.header-actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{border-radius:11px;border:1px solid #668980;background:#223a3c;color:#f5f7ee;min-height:42px;padding:9px 14px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.btn:hover{background:#2a4b48}
+.btn-primary{background:linear-gradient(110deg,#edf1b1,#bfdda0);color:#172921;border-color:#d9eca6}
+.btn-primary:hover{background:linear-gradient(110deg,#f8f7d4,#d6efbb)}
+.btn:disabled{opacity:.5;cursor:default}
+.layout{max-width:1400px;margin:auto;padding:15px clamp(15px,3vw,34px) 50px;display:grid;grid-template-columns:minmax(0,1.13fr) minmax(340px,.87fr);gap:18px;align-items:start}
+.panel{background:linear-gradient(135deg,#1a2c34,#111d26);border:1px solid #57756e9c;border-radius:var(--radius);padding:17px;min-width:0;box-shadow:0 12px 28px #0002}
+.toolbar{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(110px,1fr));gap:9px;margin-bottom:15px}
+.filter{display:flex;flex-direction:column;gap:6px;color:#c2d8ce;font-size:11px;min-width:0}
+.filter input,.filter select{background:#0c242d;border:1px solid #5f8279;border-radius:10px;color:#f1f6f1;padding:10px;width:100%;min-width:0;min-height:42px;font-size:13px}
+.browse-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:11px;flex-wrap:wrap}
+.browse-head strong{color:var(--gold)}
+.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:61vh;overflow-y:auto;overscroll-behavior:contain;padding:2px 3px 2px 1px}
+.item{border:1px solid #5f7d7488;border-radius:12px;background:linear-gradient(145deg,#19363b,#122731);padding:12px;text-align:left;color:#f4f1e5;min-height:103px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.item:hover,.item.active{border-color:#dee8a8;background:linear-gradient(145deg,#284a47,#1d3234)}
+.item-title{display:flex;justify-content:space-between;gap:6px;align-items:start}
+.item-title strong{font-size:13px;line-height:1.25;overflow-wrap:anywhere}
+.item-num{font-size:10px;color:var(--gold);flex:0 0 auto}
+.item-info{font-size:11px;color:#b6cebf;overflow-wrap:anywhere}
+.item-state{font-size:10px;color:#ecdcaa;margin-top:auto}
+.empty{grid-column:1/-1;padding:40px 14px;color:#c2d8ca;text-align:center}
+.detail{position:sticky;top:14px}
+.detail-kicker{font-size:10px;color:var(--accent);letter-spacing:.12em;font-weight:850}
+.detail h2{font:750 clamp(23px,3.3vw,31px) Georgia,serif;color:var(--gold);margin:7px 0}
+.detail p{font-size:12px;color:#bcd1c8;line-height:1.7}
+.preview{aspect-ratio:6/5;border:1px dashed #7c9b90;border-radius:14px;background:radial-gradient(circle at 50% 36%,#355052,#14252c 72%);overflow:hidden;display:grid;place-items:center;position:relative;margin:15px 0}
+.preview img{width:100%;height:100%;object-fit:cover;display:block}
+.preview-empty{font:700 15px Georgia,serif;text-align:center;color:#a9cbbd;padding:22px}
+.label{display:block;color:#c4dbcf;font-weight:850;font-size:11px;letter-spacing:.03em;margin:15px 0 6px}
+.prompt{width:100%;min-height:175px;max-height:31vh;resize:vertical;border:1px solid #647d76;border-radius:11px;background:#0a1e25;color:#ecf5ea;padding:12px;font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+#upload{position:absolute;width:1px;height:1px;opacity:0}
+.upload-btn{cursor:pointer;white-space:normal}
+.upload-btn:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.file-name{font:11px/1.5 ui-monospace,monospace;overflow-wrap:anywhere;color:#f7e1ae;border:1px solid #8e9f7777;padding:11px;border-radius:10px;background:#1b3030}
+.notice{font-size:11px;color:#c7d7ce;background:#142e31;padding:12px;border:1px solid #759b8570;border-radius:10px}
+.progress-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.progress{flex:1 1 120px;height:9px;border-radius:18px;background:#08171c;overflow:hidden}
+.bar{width:0;height:100%;background:linear-gradient(90deg,#94c7a3,#e1e59b);transition:width .15s}
+.status{font-size:12px;font-weight:800;color:#dbe8bb}
+footer{padding:16px;text-align:center;color:#96aba6;font-size:11px;max-width:1200px;margin:auto;line-height:1.7}
+[hidden]{display:none!important}
+@media(max-width:950px){.layout{grid-template-columns:minmax(0,1fr)}.detail{position:static}.items{max-height:380px}.panel{padding:14px}}
+@media(max-width:580px){header{padding-top:17px}.toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.toolbar .filter:first-child{grid-column:1/-1}.items{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.item{padding:9px;min-height:96px}.item-title strong{font-size:12px}.layout{padding-top:7px}.btn{padding:9px 11px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">MASHUP / ART FACTORY</div>
+  <h1>Convergence <em style="color:#c4e0b0;font-style:normal">Illustrations.</em></h1>
+  <p>100 briefs originaux pour la série 2. Choisis une carte, copie son prompt dans ton outil de génération d’images, puis reviens convertir l’image en JPEG parfaitement nommé pour le Studio Mashup.</p>
+  <div class="meta"><span class="tag">Série 02 · 100 visuels</span><span class="tag">10 univers</span><span class="tag">6:5 · 720 × 600 px</span><span class="tag">Aucune clé API requise</span></div>
+  <div class="header-actions">
+    <a class="btn btn-primary" href="./convergence-prompts.csv" download>↓ Exporter les 100 prompts (CSV)</a>
+    <a class="btn" href="./convergence-prompts.json" download>↓ Exporter le manifeste JSON</a>
+    <a class="btn" href="../" target="_blank" rel="noreferrer">Ouvrir Mashup</a>
+  </div>
+</header>
+<main class="layout">
+ <section class="panel" aria-label="Catalogue des briefs">
+  <div class="toolbar">
+    <label class="filter">Chercher une carte<input id="search" type="search" placeholder="Nom, numéro ou univers…"></label>
+    <label class="filter">Univers<select id="universe"><option value="">Tous les univers</option></select></label>
+    <label class="filter">Statut<select id="status-filter"><option value="">Tous</option><option value="todo">À générer</option><option value="ready">Prête</option><option value="done">Validée</option></select></label>
+    <label class="filter">Rareté<select id="rarity"><option value="">Toutes</option><option value="legendary">Légendaire</option><option value="epic">Épique</option><option value="rare">Rare</option><option value="common">Commune</option></select></label>
+  </div>
+  <div class="browse-head"><strong id="count">Chargement…</strong><div class="progress-wrap"><span class="status" id="progress-label">0 / 100 validées</span><div class="progress" aria-hidden="true"><div class="bar" id="progress-bar"></div></div></div></div>
+  <div class="items" id="items" aria-label="Cartes de Convergence"></div>
+ </section>
+ <section class="panel detail" aria-label="Brief sélectionné">
+   <div class="detail-kicker" id="kicker">SÉRIE 02 · BRIEF</div>
+   <h2 id="title">Choisis une carte</h2>
+   <p id="concept">Toutes les images sont préparées comme des illustrations indépendantes, sans reproduction de personnages sous licence.</p>
+   <div class="preview" id="preview"><span class="preview-empty">Aperçu de l’image importée<br>720 × 600 px</span></div>
+   <label class="label" for="prompt">PROMPT PERSONNALISÉ · À COPIER DANS TON OUTIL IA</label>
+   <textarea class="prompt" id="prompt" readonly spellcheck="false"></textarea>
+   <div class="actions">
+     <button type="button" class="btn btn-primary" id="copy" disabled>Copier le prompt</button>
+     <label class="btn upload-btn" for="upload">＋ Charger une image<input id="upload" type="file" accept="image/png,image/jpeg,image/webp"></label>
+   </div>
+   <span class="label">NOM EXACT REQUIS PAR MASHUP</span>
+   <div class="file-name" id="filename">Aucune carte sélectionnée</div>
+   <div class="actions">
+     <button type="button" class="btn btn-primary" id="download" disabled>↓ Télécharger le JPEG prêt à importer</button>
+     <button type="button" class="btn" id="done" disabled>✓ Marquer validée</button>
+   </div>
+   <div id="message" class="notice" role="status" aria-live="polite">Aucune génération d’image n’est faite ici : l’outil prépare les prompts et les fichiers. Les images importées restent dans ton navigateur.</div>
+   <p>Dans Mashup : <strong>Atelier → Studio des illustrations → Importer en série</strong> (maximum 6 fichiers à la fois). Le nom du fichier est basé sur l’identifiant exact de la carte.</p>
+ </section>
+</main>
+<footer>Les visuels générés doivent rester originaux. Le nom des licences dans le catalogue ne donne pas automatiquement de droits d’exploitation ; évite les ressemblances directes avec des personnages ou acteurs connus. Le suivi des cartes est stocké uniquement dans ce navigateur, sans synchronisation avec Mashup.</footer>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const state={cards:[],selected:null,converted:null,objectUrl:null,progress:{}};
+const KEY='mashup-art-factory-convergence-progress-v1';
+const label={legendary:'Légendaire',epic:'Épique',rare:'Rare',common:'Commune'};
+const normalize=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+try{state.progress=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch{state.progress={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state.progress))}catch{}}
+function message(str){$('message').textContent=str}
+function status(id){return state.progress[id]||'todo'}
+function mark(id,value){if(!id)return;state.progress[id]=value;save();updateProgress();renderItems();}
+function updateProgress(){const done=state.cards.filter(c=>status(c.id)==='done').length;$('progress-label').textContent=done+' / '+state.cards.length+' validées';$('progress-bar').style.width=(state.cards.length?done/state.cards.length*100:0)+'%'}
+function clearPreview(){if(state.objectUrl){URL.revokeObjectURL(state.objectUrl);state.objectUrl=null}state.converted=null;$('download').disabled=true;$('preview').replaceChildren();const span=document.createElement('span');span.className='preview-empty';span.textContent='Importe une image pour voir le rendu au format Mashup.';$('preview').append(span)}
+function choose(card){
+ if(!card)return;state.selected=card;clearPreview();$('upload').value='';
+ $('kicker').textContent='SÉRIE 02 · CARTE Nº '+String(card.number).padStart(3,'0')+' · '+(label[card.rarity]||card.rarity);
+ $('title').textContent=card.name;$('concept').textContent=card.concept;
+ $('prompt').value=card.prompt;$('filename').textContent=card.filename;
+ $('copy').disabled=false;$('done').disabled=false;$('done').textContent=status(card.id)==='done'?'✓ Validée · Revenir à « Prête »':'✓ Marquer validée';
+ message('1. Copie le prompt. 2. Génère une illustration originale. 3. Charge-la ici. 4. Télécharge le JPEG correctement nommé.');
+ renderItems();
+}
+function filtered(){
+ const query=normalize($('search').value),universe=$('universe').value,rarity=$('rarity').value,s=$('status-filter').value;
+ return state.cards.filter(c=>(!query||normalize([c.name,c.id,c.universe,c.number].join(' ')).includes(query))&&(!universe||c.universe===universe)&&(!rarity||c.rarity===rarity)&&(!s||status(c.id)===s));
+}
+function renderItems(){
+ const cards=filtered();$('count').textContent=cards.length+' / '+state.cards.length+' cartes';
+ const nodes=cards.map(card=>{
+  const el=document.createElement('button');el.type='button';el.className='item'+(state.selected?.id===card.id?' active':'');
+  el.setAttribute('aria-pressed',String(state.selected?.id===card.id));el.setAttribute('aria-label',card.name+' — '+card.universe);
+  const top=document.createElement('span');top.className='item-title';
+  const title=document.createElement('strong');title.textContent=card.name;
+  const num=document.createElement('span');num.className='item-num';num.textContent='#'+String(card.number).padStart(3,'0');top.append(title,num);
+  const info=document.createElement('span');info.className='item-info';info.textContent=card.universe+' · '+(label[card.rarity]||card.rarity);
+  const st=document.createElement('span');st.className='item-state';st.textContent={todo:'○ À générer',ready:'◐ Prête',done:'✓ Validée'}[status(card.id)];
+  el.append(top,info,st);el.addEventListener('click',()=>choose(card));return el;
+ });
+ if(!nodes.length){const el=document.createElement('div');el.className='empty';el.textContent='Aucun résultat. Change les filtres.';nodes.push(el)}
+ $('items').replaceChildren(...nodes);
+}
+async function fileToJpeg(file){
+ if(!/^image\/(png|jpeg|webp)$/.test(file.type))throw Error('Format non pris en charge (PNG, JPG, WebP uniquement).');
+ if(file.size>15*1024*1024)throw Error('Image de plus de 15 Mo : réduis-la avant de l’importer.');
+ const temp=URL.createObjectURL(file);
+ try{
+  const img=new Image();
+  await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(Error('Fichier image invalide.'));img.src=temp});
+  const canvas=document.createElement('canvas');canvas.width=720;canvas.height=600;
+  const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas non disponible sur ce navigateur.');
+  ctx.fillStyle='#15242d';ctx.fillRect(0,0,720,600);
+  // Crop center to fill a 6:5 frame; no stretching or deformation.
+  const scale=Math.max(720/img.naturalWidth,600/img.naturalHeight);
+  const w=img.naturalWidth*scale,h=img.naturalHeight*scale;
+  ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+  ctx.drawImage(img,(720-w)/2,(600-h)/2,w,h);
+  let quality=.85,blob=null;
+  for(let i=0;i<5;i++){blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',quality));if(!blob)throw Error('Encodage JPEG impossible.');if(blob.size<650000)break;quality-=.12}
+  return blob;
+ }finally{URL.revokeObjectURL(temp)}
+}
+$('copy').addEventListener('click',async()=>{
+ if(!state.selected)return;
+ try{await navigator.clipboard.writeText(state.selected.prompt);message('Prompt copié pour '+state.selected.name+'. Colle-le dans ton générateur d’images.')}
+ catch{$('prompt').select();document.execCommand('copy');message('Prompt sélectionné : copie-le si nécessaire.')}
+});
+$('upload').addEventListener('change',async event=>{
+ const file=event.target.files?.[0];if(!file||!state.selected)return;
+ const id=state.selected.id;const button=$('download');button.disabled=true;
+ message('Conversion au format 720 × 600 en cours…');
+ try{
+  const converted=await fileToJpeg(file);
+  if(state.selected?.id!==id)return;
+  clearPreview();state.converted=converted;state.objectUrl=URL.createObjectURL(converted);
+  const preview=document.createElement('img');preview.alt='Aperçu de l’illustration recadrée';preview.src=state.objectUrl;
+  $('preview').replaceChildren(preview);button.disabled=false;
+  mark(id,'ready');$('done').textContent='✓ Marquer validée';
+  message('Image prête : '+Math.round(converted.size/1024)+' Ko. Vérifie le cadrage puis télécharge le JPEG.');
+ }catch(err){message('Erreur : '+err.message)}
+});
+$('download').addEventListener('click',()=>{
+ if(!state.converted||!state.selected)return;
+ const link=document.createElement('a');link.href=state.objectUrl;link.download=state.selected.filename;
+ document.body.appendChild(link);link.click();link.remove();
+ message('Fichier '+state.selected.filename+' préparé. Après import dans Mashup, marque la carte validée.');
+});
+$('done').addEventListener('click',()=>{
+ if(!state.selected)return;const id=state.selected.id;
+ mark(id,status(id)==='done'?'ready':'done');
+ $('done').textContent=status(id)==='done'?'✓ Validée · Revenir à « Prête »':'✓ Marquer validée';
+});
+['search','universe','rarity','status-filter'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',renderItems));
+fetch('./convergence-prompts.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{
+ if(!Array.isArray(data.cards)||data.cards.length!==100)throw Error('Catalogue incomplet.');
+ state.cards=data.cards.sort((a,b)=>a.number-b.number);
+ const universes=[...new Set(state.cards.map(c=>c.universe))].sort((a,b)=>a.localeCompare(b,'fr'));
+ universes.forEach(universe=>{const opt=document.createElement('option');opt.value=universe;opt.textContent=universe;$('universe').append(opt)});
+ updateProgress();renderItems();choose(state.cards[0]);
+}).catch(e=>{message('Impossible de charger les prompts. Actualise le site : '+e.message);$('count').textContent='Catalogue indisponible'});
+})();
+</script>
+</body>
+</html>
