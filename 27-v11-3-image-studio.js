@@ -31,7 +31,7 @@ export function createImageStudio({getCards,getAdmin,escapeHtml,openCropper,save
     if(!getAdmin())return;
     const grid=$('studio-grid'),more=$('studio-grid-more');
     if(!grid||!more)return;
-    const cards=getCards().filter(c=>c&&!c.hidden);
+    const cards=getCards().filter(c=>c&&c.id);
     const q=key(query);
     const matches=cards.filter(c=>(!missingOnly||!hasArt(c))&&(!q||key(c.name+' '+c.family+' '+(c.editionNumber||'')).includes(q)||key(c.id).includes(q)))
       .sort((a,b)=>Number(hasArt(a))-Number(hasArt(b))||String(a.name||'').localeCompare(String(b.name||''),'fr'));
@@ -72,7 +72,7 @@ export function createImageStudio({getCards,getAdmin,escapeHtml,openCropper,save
     for(const file of selected){
       const stem=String(file.name||'').replace(/\.(png|jpe?g|webp)$/i,'');
       const k=key(stem);
-      const matches=getCards().filter(c=>c&&!c.hidden&&(key(c.id)===k||key(c.name)===k));
+      const matches=getCards().filter(c=>c&&c.id&&(key(c.id)===k||key(c.name)===k));
       let status='';
       if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>15*1024*1024)status='Format invalide ou image de plus de 15 Mo';
       else if(matches.length===0)status='Aucune correspondance : renomme le fichier';
