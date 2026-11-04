@@ -1,5 +1,5 @@
 {
-  "version": "12.0.0",
+  "version": "12.1.0",
   "publishedAt": "2026-11-04",
-  "notes": "V12 Perfectionnement : interface et identité visuelle harmonisées, cartes TCG affinées, affichage mobile optimisé, boosters plus réactifs, illustrations chargées progressivement, sauvegarde des decks et favoris fiabilisée, journal des nouveautés actualisé. Comptes, cartes et crédits conservés."
+  "notes": "V12.1 : galerie de trois patrons de cartes prévisualisables (Relique, Nébuleuse, Éclipse), sans changer le style actif ; suppression réversible et restauration des cartes depuis l’administration. Images, cadrage, collections et crédits préservés."
 }
