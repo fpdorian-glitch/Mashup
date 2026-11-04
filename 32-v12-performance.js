@@ -19,6 +19,7 @@ export function startMashupV12Performance(){
     '.arena-deck-cards .tcg-card.v10-tcg'
   ].join(',');
   const scanned=new WeakSet();
+  const observed=new Set();
   const viewport=('IntersectionObserver' in window)?new IntersectionObserver(entries=>{
     for(const e of entries)e.target.classList.toggle('v12-offscreen',!e.isIntersecting);
   },{rootMargin:'160px 0px'}):null;
@@ -36,10 +37,11 @@ export function startMashupV12Performance(){
     },{once:true});
   }
   function scan(){
+    if(viewport){for(const card of observed){if(!card.isConnected){viewport.unobserve(card);observed.delete(card);}}}
     for(const card of document.querySelectorAll(selector)){
       if(scanned.has(card))continue;
       scanned.add(card);
-      if(viewport){card.classList.add('v12-offscreen');viewport.observe(card);}
+      if(viewport){card.classList.add('v12-offscreen');viewport.observe(card);observed.add(card);}
       for(const img of card.querySelectorAll('img')){
         // The only priority override is inside large static grids;
         // visible booster faces and interactive zooms keep eager loading.
