@@ -150,11 +150,13 @@ img,svg{max-width:100%}
   -webkit-transform:none!important;
   z-index:3;
 }
+/* Animate only a compositable scale, never the whole card's filter.
+   Filters on text-heavy cards forced Android to repaint every frame. */
 @keyframes v1121-upright-pivot{
-  0%{scale:1 1;filter:brightness(1)}
-  46%{scale:.08 1;filter:brightness(.62)}
-  54%{scale:.08 1;filter:brightness(.62)}
-  100%{scale:1 1;filter:brightness(1)}
+  0%{scale:1 1}
+  45%{scale:.055 1}
+  55%{scale:.055 1}
+  100%{scale:1 1}
 }
 @keyframes v1121-hide-back{
   0%,49.99%{opacity:1}
@@ -201,4 +203,92 @@ img,svg{max-width:100%}
   .opening-fullscreen .opening-top-card.revealed .flip-front{animation:none!important;opacity:0!important}
   .opening-fullscreen .opening-top-card.revealed .flip-back{animation:none!important;opacity:1!important}
   .opening-fullscreen .opening-top-card .flip-back:after{animation:none!important}
+}
+
+/* V11.2.2: true visual centering. The artwork is centered inside a 160x160
+   square, but the initial face of the taller card looked too high.
+   Move the spiral itself down, not the card or its flip center. */
+.opening-fullscreen .pack-stack-layer .galaxy-svg.booster-logo-img,
+.opening-fullscreen .opening-top-card .flip-front .galaxy-svg.booster-logo-img{
+  transform:translate3d(0,13%,0)!important;
+  -webkit-transform:translate3d(0,13%,0)!important;
+  object-fit:contain;
+  filter:none!important; /* SVG asset already includes its own glow */
+  animation:none!important;
+}
+
+/* Android/low-power phones: composite a single light-weight, upright pivot.
+   No fullscreen backdrop blur, CSS brightness animation, or dozens of
+   simultaneous particle/foil paint operations during a reveal. */
+@media(max-width:720px){
+  .opening-backdrop{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+  .opening-fullscreen .pack-stack-surface{
+    filter:none!important;
+    -webkit-filter:none!important;
+    perspective:none!important;
+    -webkit-perspective:none!important;
+  }
+  .opening-fullscreen .pack-stack-layer{
+    box-shadow:0 6px 16px #0006!important;
+    filter:none!important;
+  }
+  .opening-fullscreen .opening-top-card{
+    perspective:none!important;
+    -webkit-perspective:none!important;
+    contain:layout style;
+  }
+  .opening-fullscreen .opening-top-card.revealed .flip-inner{
+    will-change:scale!important;
+  }
+  .opening-fullscreen .opening-top-card .flip-inner{
+    filter:none!important;
+    -webkit-filter:none!important;
+  }
+  .opening-fullscreen .opening-top-card .flip-front .galaxy-svg.booster-logo-img,
+  .opening-fullscreen .pack-stack-layer .galaxy-svg.booster-logo-img{
+    width:76%!important;
+    max-width:76%!important;
+  }
+  .opening-fullscreen .opening-top-card .flip-back .tcg-card .v10-foil,
+  .opening-fullscreen .opening-top-card .flip-back .tcg-card .foil-layer,
+  .opening-fullscreen .opening-top-card .flip-back .tcg-card .ultra-stars,
+  .opening-fullscreen .opening-top-card .flip-back .tcg-card .mythic-stars{
+    animation:none!important;
+  }
+  .opening-fullscreen .opening-vfx-particles,
+  .opening-fullscreen .opening-vfx-runes,
+  .opening-fullscreen .opening-vfx-halo{
+    display:none!important;
+  }
+  .opening-fullscreen.fx-active .pack-stack-surface,
+  .opening-fullscreen.fx-prelude .pack-stack-surface{
+    animation:none!important;
+    filter:none!important;
+  }
+  .opening-fullscreen.reveal-secret .opening-top-card.revealed,
+  .opening-fullscreen.reveal-ultra .opening-top-card.revealed,
+  .opening-fullscreen.reveal-mythic .opening-top-card.revealed,
+  .opening-fullscreen.reveal-ultra-secret .opening-top-card.revealed{
+    filter:none!important;
+    transform:none!important;
+  }
+  .opening-fullscreen.omen-active:before,
+  .opening-fullscreen.reveal-secret:before,
+  .opening-fullscreen.reveal-ultra:before,
+  .opening-fullscreen.reveal-mythic:before,
+  .opening-fullscreen.reveal-ultra-secret:before{
+    animation:none!important;
+  }
+  .opening-fullscreen .opening-vfx-ring{
+    box-shadow:none!important; /* simple rarity ring instead of 2 blurred passes */
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .opening-fullscreen .pack-stack-layer .galaxy-svg.booster-logo-img,
+  .opening-fullscreen .opening-top-card .flip-front .galaxy-svg.booster-logo-img{
+    animation:none!important;
+  }
 }

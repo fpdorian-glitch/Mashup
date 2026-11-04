@@ -1,5 +1,5 @@
 {
-  "version": "11.2.1",
+  "version": "11.2.2",
   "publishedAt": "2026-11-04",
-  "notes": "Correctif urgent : cartes de booster et textes toujours dans le bon sens sur Android, iPhone et ordinateur. Ouverture cinéma et affichage Android conservés. Aucun changement aux collections ni aux crédits."
+  "notes": "Ouverture de boosters plus fluide sur Android : spirale visuellement recentrée vers le bas, logo SVG partagé et mis en cache, effets GPU simplifiés et moins de cartes superposées. Cartes et textes restent à l'endroit. Aucun changement aux comptes, crédits ou collections."
 }
