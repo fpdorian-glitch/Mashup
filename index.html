@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090d16" />
-  <meta name="mashup-version" content="14.0.0" />
+  <meta name="mashup-version" content="14.0.1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
@@ -721,6 +721,7 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./36-mobile-premium.css?v=13.0.1">
   <link rel="stylesheet" href="./37-v14-cards.css?v=14.0.0">
+  <link rel="stylesheet" href="./42-v14-finishes.css?v=14.0.1">
   <link rel="stylesheet" href="./39-v14-booster.css?v=14.0.0">
   <link rel="stylesheet" href="./40-v14-interface.css?v=14.0.0">
 </head>
@@ -1059,15 +1060,15 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=14.0.0" defer></script>
+<script src="./09-mashup-updates.js?v=14.0.1" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { sealedPackMarkup, summaryMarkup, mountSealedPack } from './38-v14-booster.js?v=14.0.0';
-import { createCatalogueIndex, cardSearchText, normalizeSearch, renderCardWindow, inspectionLimits, presentBalance } from './41-v14-runtime.js?v=14.0.0';
-import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=14.0.0';
+import { createCatalogueIndex, cardSearchText, normalizeSearch, renderCardWindow, inspectionLimits, presentBalance, reflectionForTilt } from './41-v14-runtime.js?v=14.0.1';
+import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=14.0.1';
 import { createGamesUI } from './04-games-ui.js?v=13.0.0';
 import { renderMashupV10Card } from './06-v10-cards.js?v=14.0.0';
-import { createDevelopmentJournal } from './10-development-journal.js?v=14.0.0';
+import { createDevelopmentJournal } from './10-development-journal.js?v=14.0.1';
 import { startMashupV12Performance } from './32-v12-performance.js?v=14.0.0';
 import { createBoosterRevealFX } from './12-booster-reveal.js?v=14.0.0';
 import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
@@ -1623,10 +1624,14 @@ function updateInspection(){
   el.classList.toggle('dragging',inspection.dragging);
   const card=el.querySelector('.tcg-card');
   if(card){
-    const lightX=Math.max(0,Math.min(100,50+Math.sin(inspection.ry*Math.PI/180)*43));
-    const lightY=Math.max(0,Math.min(100,45-Math.sin(inspection.rx*Math.PI/180)*50));
+    const reflection=reflectionForTilt(inspection.rx,inspection.ry);
+    const lightX=reflection.x,lightY=reflection.y;
     card.style.setProperty('--m13-x',`${lightX}%`);
     card.style.setProperty('--m13-y',`${lightY}%`);
+    card.style.setProperty('--v14-sheen-angle',`${reflection.angle}deg`);
+    card.style.setProperty('--v14-reflection-strength',String(reflection.strength));
+    card.style.setProperty('--v14-foil-x',`${reflection.foilX}%`);
+    card.style.setProperty('--v14-foil-y',`${reflection.foilY}%`);
     card.style.setProperty('--shine-x',`${lightX}%`);
     card.style.setProperty('--shine-y',`${lightY}%`);
     card.style.setProperty('--foil-angle',`${125+inspection.ry*.6}deg`);

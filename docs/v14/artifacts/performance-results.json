@@ -1,7 +1,7 @@
 {
   "kind": "synthetic-performance-comparison",
   "baselineCommit": "b20fb58",
-  "started": "2026-11-04T23:33:20.615Z",
+  "started": "2026-11-04T23:49:05.663Z",
   "productionRequests": 0,
   "conditions": {
     "engine": "Chromium headless Linux",
@@ -33,7 +33,7 @@
           "maxMs": 16.8,
           "over33ms": 0
         },
-        "jsHeapUsedBytes": 3111405,
+        "jsHeapUsedBytes": 3111609,
         "jsHeapTotalBytes": 4382405,
         "longTasks": [],
         "overflow": false,
@@ -54,8 +54,8 @@
           "maxMs": 16.8,
           "over33ms": 0
         },
-        "jsHeapUsedBytes": 3570721,
-        "jsHeapTotalBytes": 6480405,
+        "jsHeapUsedBytes": 3069837,
+        "jsHeapTotalBytes": 7004693,
         "longTasks": [],
         "overflow": false,
         "viewport": {
@@ -71,7 +71,7 @@
     {
       "name": "v14",
       "home": {
-        "domNodes": 682,
+        "domNodes": 683,
         "cards": 3,
         "images": 0,
         "frameIntervals": {
@@ -81,8 +81,8 @@
           "maxMs": 16.8,
           "over33ms": 0
         },
-        "jsHeapUsedBytes": 3143277,
-        "jsHeapTotalBytes": 4396133,
+        "jsHeapUsedBytes": 3146396,
+        "jsHeapTotalBytes": 4397668,
         "longTasks": [],
         "overflow": false,
         "viewport": {
@@ -92,18 +92,18 @@
         "quality": "high"
       },
       "collection": {
-        "domNodes": 1646,
+        "domNodes": 1647,
         "cards": 24,
         "images": 0,
         "frameIntervals": {
           "samples": 120,
           "p50ms": 16.7,
-          "p95ms": 16.8,
+          "p95ms": 16.7,
           "maxMs": 16.8,
           "over33ms": 0
         },
-        "jsHeapUsedBytes": 3160709,
-        "jsHeapTotalBytes": 5445621,
+        "jsHeapUsedBytes": 3118836,
+        "jsHeapTotalBytes": 6233580,
         "longTasks": [],
         "overflow": false,
         "viewport": {
@@ -119,16 +119,16 @@
   ],
   "delta": {
     "home": {
-      "domNodes": 82,
+      "domNodes": 83,
       "cards": 0,
       "p95FrameIntervalMs": 0,
-      "jsHeapUsedBytes": 31872
+      "jsHeapUsedBytes": 34787
     },
     "collection": {
-      "domNodes": 241,
+      "domNodes": 242,
       "cards": 0,
-      "p95FrameIntervalMs": 0,
-      "jsHeapUsedBytes": -410012
+      "p95FrameIntervalMs": -0.1,
+      "jsHeapUsedBytes": 48999
     }
   },
   "success": true

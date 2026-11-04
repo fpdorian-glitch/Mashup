@@ -1,0 +1,563 @@
+{
+  "kind": "V14.0.1 optical browser regression",
+  "started": "2026-11-04T23:48:20.875Z",
+  "fixture": "36 fictional cards; fictional account and balances; every remote request locally intercepted",
+  "productionRequests": 0,
+  "checks": [
+    "Secrète et Ultra Secrète : teintes vertes calculées; lampe et diffraction changent avec souris, clavier et vrai événement tactile Chromium.",
+    "Sources des illustrations et cinq statistiques visibles identiques avant/après chaque geste.",
+    "Reflet masqué en qualité éco via réglage du jeu, en mouvement réduit et avec le marqueur hors écran.",
+    "Mouvement réduit : inclinaison maintenue à zéro.",
+    "Captures réelles du navigateur et deux WebM issus de trames Chromium horodatées."
+  ],
+  "screenshots": [
+    "secret-neutral.png",
+    "secret-right.png",
+    "secret-left.png",
+    "ultra-secret-neutral.png",
+    "ultra-secret-right.png",
+    "ultra-secret-left.png"
+  ],
+  "cards": [
+    {
+      "name": "secret",
+      "neutral": {
+        "classes": "tcg-card v10-tcg v101-card v14-card mythic variant-secret v101-special",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-03"
+          }
+        ],
+        "stats": [
+          {
+            "text": "94",
+            "visible": true
+          },
+          {
+            "text": "65",
+            "visible": true
+          },
+          {
+            "text": "89",
+            "visible": true
+          },
+          {
+            "text": "85",
+            "visible": true
+          },
+          {
+            "text": "96",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "50%",
+          "--m13-y": "40%",
+          "--v14-foil-x": "50%",
+          "--v14-foil-y": "60%",
+          "--v14-sheen-angle": "123deg",
+          "--v14-reflection-strength": "0.46",
+          "--v14-gloss-tint": "#3de68b",
+          "--v14-spectrum-a": "#19a76b"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.46",
+          "position": "50% 60%",
+          "lamp": "radial-gradient(at 50% 40%, rgb(173, 255, 184), rgba(0, 0, 0, 0) 49%), linear-gradient(123deg, rgba(0, 0, 0, 0) 31%, rgb(61, 230, 139) 43%, rgba(0, 0, 0, 0) 46%, rgb(173, 255, 184) 49%, rgba(0, 0, 0, 0) 52%, rgb(61, 230, 139) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "repeating-linear-gradient(123deg, rgba(0, 0, 0, 0) 0%, rgb(25, 167, 107) 10%, rgb(122, 239, 173) 17%, rgb(211, 246, 183) 24%, rgb(57, 189, 127) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "mouseRight": {
+        "classes": "tcg-card v10-tcg v101-card v14-card mythic variant-secret v101-special",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-03"
+          }
+        ],
+        "stats": [
+          {
+            "text": "94",
+            "visible": true
+          },
+          {
+            "text": "65",
+            "visible": true
+          },
+          {
+            "text": "89",
+            "visible": true
+          },
+          {
+            "text": "85",
+            "visible": true
+          },
+          {
+            "text": "96",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "81.95926576603986%",
+          "--m13-y": "12.887541344673174%",
+          "--v14-foil-x": "18.040734233960137%",
+          "--v14-foil-y": "87.11245865532683%",
+          "--v14-sheen-angle": "133.96880545217175deg",
+          "--v14-reflection-strength": "0.64",
+          "--v14-gloss-tint": "#3de68b",
+          "--v14-spectrum-a": "#19a76b"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.64",
+          "position": "18.0407% 87.1125%",
+          "lamp": "radial-gradient(at 81.9593% 12.8875%, rgb(173, 255, 184), rgba(0, 0, 0, 0) 49%), linear-gradient(133.969deg, rgba(0, 0, 0, 0) 31%, rgb(61, 230, 139) 43%, rgba(0, 0, 0, 0) 46%, rgb(173, 255, 184) 49%, rgba(0, 0, 0, 0) 52%, rgb(61, 230, 139) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "repeating-linear-gradient(133.969deg, rgba(0, 0, 0, 0) 0%, rgb(25, 167, 107) 10%, rgb(122, 239, 173) 17%, rgb(211, 246, 183) 24%, rgb(57, 189, 127) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "mouseLeft": {
+        "classes": "tcg-card v10-tcg v101-card v14-card mythic variant-secret v101-special",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-03"
+          }
+        ],
+        "stats": [
+          {
+            "text": "94",
+            "visible": true
+          },
+          {
+            "text": "65",
+            "visible": true
+          },
+          {
+            "text": "89",
+            "visible": true
+          },
+          {
+            "text": "85",
+            "visible": true
+          },
+          {
+            "text": "96",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "18.13320968395465%",
+          "--m13-y": "67.03332985262436%",
+          "--v14-foil-x": "81.86679031604535%",
+          "--v14-foil-y": "32.96667014737564%",
+          "--v14-sheen-angle": "112.06392614800394deg",
+          "--v14-reflection-strength": "0.64",
+          "--v14-gloss-tint": "#3de68b",
+          "--v14-spectrum-a": "#19a76b"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.64",
+          "position": "81.8668% 32.9667%",
+          "lamp": "radial-gradient(at 18.1332% 67.0333%, rgb(173, 255, 184), rgba(0, 0, 0, 0) 49%), linear-gradient(112.064deg, rgba(0, 0, 0, 0) 31%, rgb(61, 230, 139) 43%, rgba(0, 0, 0, 0) 46%, rgb(173, 255, 184) 49%, rgba(0, 0, 0, 0) 52%, rgb(61, 230, 139) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "repeating-linear-gradient(112.064deg, rgba(0, 0, 0, 0) 0%, rgb(25, 167, 107) 10%, rgb(122, 239, 173) 17%, rgb(211, 246, 183) 24%, rgb(57, 189, 127) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "keyboard": {
+        "classes": "tcg-card v10-tcg v101-card v14-card mythic variant-secret v101-special",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-03"
+          }
+        ],
+        "stats": [
+          {
+            "text": "94",
+            "visible": true
+          },
+          {
+            "text": "65",
+            "visible": true
+          },
+          {
+            "text": "89",
+            "visible": true
+          },
+          {
+            "text": "85",
+            "visible": true
+          },
+          {
+            "text": "96",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "57.97531092084232%",
+          "--m13-y": "48.01342349004555%",
+          "--v14-foil-x": "42.02468907915768%",
+          "--v14-foil-y": "51.98657650995445%",
+          "--v14-sheen-angle": "127.3895821785871deg",
+          "--v14-reflection-strength": "0.5107098838121936",
+          "--v14-gloss-tint": "#3de68b",
+          "--v14-spectrum-a": "#19a76b"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.51071",
+          "position": "42.0247% 51.9866%",
+          "lamp": "radial-gradient(at 57.9753% 48.0134%, rgb(173, 255, 184), rgba(0, 0, 0, 0) 49%), linear-gradient(127.39deg, rgba(0, 0, 0, 0) 31%, rgb(61, 230, 139) 43%, rgba(0, 0, 0, 0) 46%, rgb(173, 255, 184) 49%, rgba(0, 0, 0, 0) 52%, rgb(61, 230, 139) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "repeating-linear-gradient(127.39deg, rgba(0, 0, 0, 0) 0%, rgb(25, 167, 107) 10%, rgb(122, 239, 173) 17%, rgb(211, 246, 183) 24%, rgb(57, 189, 127) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "touch": {
+        "classes": "tcg-card v10-tcg v101-card v14-card mythic variant-secret v101-special",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-03"
+          }
+        ],
+        "stats": [
+          {
+            "text": "94",
+            "visible": true
+          },
+          {
+            "text": "65",
+            "visible": true
+          },
+          {
+            "text": "89",
+            "visible": true
+          },
+          {
+            "text": "85",
+            "visible": true
+          },
+          {
+            "text": "96",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "80.78076910237687%",
+          "--m13-y": "14.18177852014016%",
+          "--v14-foil-x": "19.219230897623135%",
+          "--v14-foil-y": "85.81822147985984%",
+          "--v14-sheen-angle": "133.58565792444207deg",
+          "--v14-reflection-strength": "0.6383909479406817",
+          "--v14-gloss-tint": "#3de68b",
+          "--v14-spectrum-a": "#19a76b"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.638391",
+          "position": "19.2192% 85.8182%",
+          "lamp": "radial-gradient(at 80.7808% 14.1818%, rgb(173, 255, 184), rgba(0, 0, 0, 0) 49%), linear-gradient(133.586deg, rgba(0, 0, 0, 0) 31%, rgb(61, 230, 139) 43%, rgba(0, 0, 0, 0) 46%, rgb(173, 255, 184) 49%, rgba(0, 0, 0, 0) 52%, rgb(61, 230, 139) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "repeating-linear-gradient(133.586deg, rgba(0, 0, 0, 0) 0%, rgb(25, 167, 107) 10%, rgb(122, 239, 173) 17%, rgb(211, 246, 183) 24%, rgb(57, 189, 127) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "video": {
+        "available": true,
+        "name": "../shine/secret-motion.webm",
+        "frames": 269,
+        "durationSeconds": 4.93,
+        "source": "Real Chromium screencast frames with browser timestamps"
+      }
+    },
+    {
+      "name": "ultra-secret",
+      "neutral": {
+        "classes": "tcg-card v10-tcg v101-card v14-card ultra variant-secret v101-special v14-ultra-secret",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-04"
+          }
+        ],
+        "stats": [
+          {
+            "text": "95",
+            "visible": true
+          },
+          {
+            "text": "66",
+            "visible": true
+          },
+          {
+            "text": "90",
+            "visible": true
+          },
+          {
+            "text": "86",
+            "visible": true
+          },
+          {
+            "text": "97",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "50%",
+          "--m13-y": "40%",
+          "--v14-foil-x": "50%",
+          "--v14-foil-y": "60%",
+          "--v14-sheen-angle": "123deg",
+          "--v14-reflection-strength": "0.46",
+          "--v14-gloss-tint": "#8cfbb2",
+          "--v14-spectrum-a": "#64caa0"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.46",
+          "position": "50% 60%, 50% 60%",
+          "lamp": "radial-gradient(at 50% 40%, rgb(221, 255, 227), rgba(0, 0, 0, 0) 49%), linear-gradient(123deg, rgba(0, 0, 0, 0) 31%, rgb(140, 251, 178) 43%, rgba(0, 0, 0, 0) 46%, rgb(221, 255, 227) 49%, rgba(0, 0, 0, 0) 52%, rgb(140, 251, 178) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "radial-gradient(circle, rgba(255, 255, 255, 0.85) 0px, rgba(255, 255, 255, 0.85) 0.55px, rgba(0, 0, 0, 0) 1.3px), repeating-linear-gradient(123deg, rgba(0, 0, 0, 0) 0%, rgb(100, 202, 160) 10%, rgb(215, 255, 226) 17%, rgb(208, 233, 192) 24%, rgb(136, 225, 175) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "mouseRight": {
+        "classes": "tcg-card v10-tcg v101-card v14-card ultra variant-secret v101-special v14-ultra-secret",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-04"
+          }
+        ],
+        "stats": [
+          {
+            "text": "95",
+            "visible": true
+          },
+          {
+            "text": "66",
+            "visible": true
+          },
+          {
+            "text": "90",
+            "visible": true
+          },
+          {
+            "text": "86",
+            "visible": true
+          },
+          {
+            "text": "97",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "81.82610948274018%",
+          "--m13-y": "13.00069590270493%",
+          "--v14-foil-x": "18.17389051725982%",
+          "--v14-foil-y": "86.99930409729507%",
+          "--v14-sheen-angle": "133.92158671615252deg",
+          "--v14-reflection-strength": "0.64",
+          "--v14-gloss-tint": "#8cfbb2",
+          "--v14-spectrum-a": "#64caa0"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.64",
+          "position": "18.1739% 86.9993%, 18.1739% 86.9993%",
+          "lamp": "radial-gradient(at 81.8261% 13.0007%, rgb(221, 255, 227), rgba(0, 0, 0, 0) 49%), linear-gradient(133.922deg, rgba(0, 0, 0, 0) 31%, rgb(140, 251, 178) 43%, rgba(0, 0, 0, 0) 46%, rgb(221, 255, 227) 49%, rgba(0, 0, 0, 0) 52%, rgb(140, 251, 178) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "radial-gradient(circle, rgba(255, 255, 255, 0.85) 0px, rgba(255, 255, 255, 0.85) 0.55px, rgba(0, 0, 0, 0) 1.3px), repeating-linear-gradient(133.922deg, rgba(0, 0, 0, 0) 0%, rgb(100, 202, 160) 10%, rgb(215, 255, 226) 17%, rgb(208, 233, 192) 24%, rgb(136, 225, 175) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "mouseLeft": {
+        "classes": "tcg-card v10-tcg v101-card v14-card ultra variant-secret v101-special v14-ultra-secret",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-04"
+          }
+        ],
+        "stats": [
+          {
+            "text": "95",
+            "visible": true
+          },
+          {
+            "text": "66",
+            "visible": true
+          },
+          {
+            "text": "90",
+            "visible": true
+          },
+          {
+            "text": "86",
+            "visible": true
+          },
+          {
+            "text": "97",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "18.231207811774983%",
+          "--m13-y": "66.95091342740221%",
+          "--v14-foil-x": "81.76879218822502%",
+          "--v14-foil-y": "33.04908657259779%",
+          "--v14-sheen-angle": "112.09876928972726deg",
+          "--v14-reflection-strength": "0.64",
+          "--v14-gloss-tint": "#8cfbb2",
+          "--v14-spectrum-a": "#64caa0"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.64",
+          "position": "81.7688% 33.0491%, 81.7688% 33.0491%",
+          "lamp": "radial-gradient(at 18.2312% 66.9509%, rgb(221, 255, 227), rgba(0, 0, 0, 0) 49%), linear-gradient(112.099deg, rgba(0, 0, 0, 0) 31%, rgb(140, 251, 178) 43%, rgba(0, 0, 0, 0) 46%, rgb(221, 255, 227) 49%, rgba(0, 0, 0, 0) 52%, rgb(140, 251, 178) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "radial-gradient(circle, rgba(255, 255, 255, 0.85) 0px, rgba(255, 255, 255, 0.85) 0.55px, rgba(0, 0, 0, 0) 1.3px), repeating-linear-gradient(112.099deg, rgba(0, 0, 0, 0) 0%, rgb(100, 202, 160) 10%, rgb(215, 255, 226) 17%, rgb(208, 233, 192) 24%, rgb(136, 225, 175) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "keyboard": {
+        "classes": "tcg-card v10-tcg v101-card v14-card ultra variant-secret v101-special v14-ultra-secret",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-04"
+          }
+        ],
+        "stats": [
+          {
+            "text": "95",
+            "visible": true
+          },
+          {
+            "text": "66",
+            "visible": true
+          },
+          {
+            "text": "90",
+            "visible": true
+          },
+          {
+            "text": "86",
+            "visible": true
+          },
+          {
+            "text": "97",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "57.97724120523234%",
+          "--m13-y": "48.015263737543904%",
+          "--v14-foil-x": "42.02275879476766%",
+          "--v14-foil-y": "51.984736262456096%",
+          "--v14-sheen-angle": "127.39063484707246deg",
+          "--v14-reflection-strength": "0.5107217935413669",
+          "--v14-gloss-tint": "#8cfbb2",
+          "--v14-spectrum-a": "#64caa0"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.510722",
+          "position": "42.0228% 51.9847%, 42.0228% 51.9847%",
+          "lamp": "radial-gradient(at 57.9772% 48.0153%, rgb(221, 255, 227), rgba(0, 0, 0, 0) 49%), linear-gradient(127.391deg, rgba(0, 0, 0, 0) 31%, rgb(140, 251, 178) 43%, rgba(0, 0, 0, 0) 46%, rgb(221, 255, 227) 49%, rgba(0, 0, 0, 0) 52%, rgb(140, 251, 178) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "radial-gradient(circle, rgba(255, 255, 255, 0.85) 0px, rgba(255, 255, 255, 0.85) 0.55px, rgba(0, 0, 0, 0) 1.3px), repeating-linear-gradient(127.391deg, rgba(0, 0, 0, 0) 0%, rgb(100, 202, 160) 10%, rgb(215, 255, 226) 17%, rgb(208, 233, 192) 24%, rgb(136, 225, 175) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "touch": {
+        "classes": "tcg-card v10-tcg v101-card v14-card ultra variant-secret v101-special v14-ultra-secret",
+        "source": [
+          {
+            "tag": "use",
+            "src": "./assets/convergence-art.svg#s2-conv-monster-high-04"
+          }
+        ],
+        "stats": [
+          {
+            "text": "95",
+            "visible": true
+          },
+          {
+            "text": "66",
+            "visible": true
+          },
+          {
+            "text": "90",
+            "visible": true
+          },
+          {
+            "text": "86",
+            "visible": true
+          },
+          {
+            "text": "97",
+            "visible": true
+          }
+        ],
+        "variables": {
+          "--m13-x": "80.72703543702238%",
+          "--m13-y": "14.184657818169164%",
+          "--v14-foil-x": "19.27296456297762%",
+          "--v14-foil-y": "85.81534218183083%",
+          "--v14-sheen-angle": "133.56169362087064deg",
+          "--v14-reflection-strength": "0.6382241901913664",
+          "--v14-gloss-tint": "#8cfbb2",
+          "--v14-spectrum-a": "#64caa0"
+        },
+        "foil": {
+          "display": "block",
+          "opacity": "0.638224",
+          "position": "19.273% 85.8153%, 19.273% 85.8153%",
+          "lamp": "radial-gradient(at 80.727% 14.1847%, rgb(221, 255, 227), rgba(0, 0, 0, 0) 49%), linear-gradient(133.562deg, rgba(0, 0, 0, 0) 31%, rgb(140, 251, 178) 43%, rgba(0, 0, 0, 0) 46%, rgb(221, 255, 227) 49%, rgba(0, 0, 0, 0) 52%, rgb(140, 251, 178) 56%, rgba(0, 0, 0, 0) 68%)",
+          "spectrum": "radial-gradient(circle, rgba(255, 255, 255, 0.85) 0px, rgba(255, 255, 255, 0.85) 0.55px, rgba(0, 0, 0, 0) 1.3px), repeating-linear-gradient(133.562deg, rgba(0, 0, 0, 0) 0%, rgb(100, 202, 160) 10%, rgb(215, 255, 226) 17%, rgb(208, 233, 192) 24%, rgb(136, 225, 175) 32%, rgba(0, 0, 0, 0) 43%)",
+          "animation": "none"
+        }
+      },
+      "video": {
+        "available": true,
+        "name": "../shine/ultra-secret-motion.webm",
+        "frames": 271,
+        "durationSeconds": 5.1,
+        "source": "Real Chromium screencast frames with browser timestamps"
+      }
+    }
+  ],
+  "limits": "Headless Chromium/Linux at 390×844. Physical Android/iPhone, Safari, production backend and real player data are outside this local optical test.",
+  "eco": {
+    "display": "none"
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "apiCalls": [
+    {
+      "route": "/api/status",
+      "method": "GET"
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET"
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET"
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET"
+    }
+  ],
+  "mockedExternalHosts": [
+    "cdn.jsdelivr.net",
+    "lxpgdhwfxeicuofycqup.supabase.co"
+  ],
+  "status": "passed",
+  "completed": "2026-11-04T23:48:37.054Z"
+}
