@@ -1,5 +1,5 @@
 /* Mashup V10 — Memory, seul mini-jeu ; le Casino et la Ligue restent inchangés. */
-export function createGamesUI({api,toast,getUser,showArena}){
+export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'}){
   const TYPES=['memory'];
   const LABELS={memory:'Memory · Le Codex des paires'};
   const HELP={memory:'Retrouve les six paires de mondes. Premier échec gratuit, trois erreurs consécutives ensuite et tu perds.'};
@@ -11,12 +11,13 @@ export function createGamesUI({api,toast,getUser,showArena}){
   const serverNow=()=>Date.now()-delta;
   const profile=f=>h(f?.name||'IA inconnue');
   const sideName=(c,i)=>(c?.sides?.[i]||[]).map(f=>f.name).join(' + ')||'Équipe '+(i?'B':'A');
-  const available=()=>root?.isConnected;
+  const available=()=>root?.isConnected&&getView()==='games';
   async function request(route='status',body){
     if(loading)return null;loading=true;
     try{
       const oldAmount=$('games-amount')?.value,oldSide=document.querySelector('input[name="games-side"]:checked')?.value;
-      const data=await api(route,body);snapshot=data;delta=Date.now()-Number(data.now||Date.now());
+      const actor=getUser()?.id;
+      const data=await api(route,body);if(getUser()?.id!==actor)return null;snapshot=data;delta=Date.now()-Number(data.now||Date.now());
       // Le serveur commande désormais l'affichage temporaire des cartes : pas d'état local ambigu.
       if(route==='start')lockedUntil=0;
       if(available()){
@@ -140,7 +141,7 @@ export function createGamesUI({api,toast,getUser,showArena}){
     const nearFight=closeIn>0&&closeIn<=30000;
     const watching=available()&&section==='casino';
     const hasBet=!!snapshot?.bet;
-    const allowed=!!getUser()&&(watching||hasBet)&&(!document.hidden||hasBet);
+    const allowed=!!getUser()&&(watching||hasBet)&&!document.hidden;
     const pace=snapshot?.live?.live||(nearFight&&(watching||hasBet))?3000:watching?15000:hasBet?20000:Infinity;
     if(allowed&&!loading&&now-lastPoll>=pace){
       lastPoll=now;request('status');

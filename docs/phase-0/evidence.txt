@@ -1,0 +1,111 @@
+Phase 0 — preuves hors ligne
+Date UTC : 2026-11-04T20:58:28.381641+00:00
+Référence applicative : d6ed7db3e522d41f4cb1ed91b4ed09aa88539e49
+Commande : node --test --test-isolation=none --test-reporter=tap tests/phase-0/reference.test.mjs
+Node : v24.22.1
+Sortie commande : code 0
+Réseau : aucun appel API/SQL dans les tests ; fetch bloqué.
+Note runner : sans --test-isolation=none ce runtime affichait un seul test fichier ; les 15 cas sont détaillés ci-dessous.
+Note R03 : reproduction attendue du défaut, pas validation du comportement voulu.
+Restauration Supabase : NON EXÉCUTÉE.
+
+TAP version 13
+# Subtest: Référence : toutes les empreintes des fichiers applicatifs restent identiques
+ok 1 - Référence : toutes les empreintes des fichiers applicatifs restent identiques
+  ---
+  duration_ms: 5.120933
+  type: 'test'
+  ...
+# Subtest: Syntaxe : tous les modules racine sont compilables
+ok 2 - Syntaxe : tous les modules racine sont compilables
+  ---
+  duration_ms: 362.172106
+  type: 'test'
+  ...
+# Subtest: Rendu cartes : masquage, possession/admin et échappement du nom
+ok 3 - Rendu cartes : masquage, possession/admin et échappement du nom
+  ---
+  duration_ms: 2.502568
+  type: 'test'
+  ...
+# Subtest: Marché : séquestre puis annulation restitue exactement une copie
+ok 4 - Marché : séquestre puis annulation restitue exactement une copie
+  ---
+  duration_ms: 2.978048
+  type: 'test'
+  ...
+# Subtest: Marché : achat unique conserve crédits et cartes, retire dernière copie du deck
+ok 5 - Marché : achat unique conserve crédits et cartes, retire dernière copie du deck
+  ---
+  duration_ms: 1.284965
+  type: 'test'
+  ...
+# Subtest: Marché : prix invalide et fonds insuffisants sans mutation
+ok 6 - Marché : prix invalide et fonds insuffisants sans mutation
+  ---
+  duration_ms: 3.198542
+  type: 'test'
+  ...
+# Subtest: Échange : revalidation, transfert unique et conservation
+ok 7 - Échange : revalidation, transfert unique et conservation
+  ---
+  duration_ms: 1.718552
+  type: 'test'
+  ...
+# Subtest: Échange : inventaire insuffisant à acceptation ne transfère rien
+ok 8 - Échange : inventaire insuffisant à acceptation ne transfère rien
+  ---
+  duration_ms: 1.110732
+  type: 'test'
+  ...
+# Subtest: Collection : palier unique et bon attribué une seule fois
+ok 9 - Collection : palier unique et bon attribué une seule fois
+  ---
+  duration_ms: 1.542545
+  type: 'test'
+  ...
+# Subtest: Succès : récompense unique et refus si non atteint
+ok 10 - Succès : récompense unique et refus si non atteint
+  ---
+  duration_ms: 1.679062
+  type: 'test'
+  ...
+# Subtest: Missions : calendrier Paris hiver/été et bascules DST
+ok 11 - Missions : calendrier Paris hiver/été et bascules DST
+  ---
+  duration_ms: 14.341922
+  type: 'test'
+  ...
+# Subtest: Missions : gain quotidien unique, renouvellement sans perdre hebdomadaire
+ok 12 - Missions : gain quotidien unique, renouvellement sans perdre hebdomadaire
+  ---
+  duration_ms: 2.934763
+  type: 'test'
+  ...
+# Subtest: R03 connu : une réponse Jeux tardive écrase le nouvel écran (reproduction, pas acceptation)
+ok 13 - R03 connu : une réponse Jeux tardive écrase le nouvel écran (reproduction, pas acceptation)
+  ---
+  duration_ms: 1.950513
+  type: 'test'
+  ...
+# Subtest: Copie fichier synthétique : écriture, relecture et comparaison exacte (pas SQL)
+ok 14 - Copie fichier synthétique : écriture, relecture et comparaison exacte (pas SQL)
+  ---
+  duration_ms: 2.770725
+  type: 'test'
+  ...
+# Subtest: Comparateur : corruption, champ perdu et format non synthétique refusés
+ok 15 - Comparateur : corruption, champ perdu et format non synthétique refusés
+  ---
+  duration_ms: 3.206995
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 435.945934

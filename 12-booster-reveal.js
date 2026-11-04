@@ -17,15 +17,15 @@ export function createBoosterRevealFX(){
     if(card.variant==='secret')return card.rarity==='ultra'?'ultra-secret':'secret';
     return tiers.includes(card.rarity)?card.rarity:'common';
   }
-  function isFast(){return fast||reduceMotion();}
+  function isFast(){return fast||reduceMotion()||document.documentElement?.dataset.m13Quality==='eco';}
   function flipMs(){
-    return reduceMotion()?20:fast?230:mobile()?680:790;
+    return reduceMotion()?20:isFast()?230:mobile()?680:790;
   }
   function preludeMs(card){if(isFast())return 0;const t=tierOf(card);return ['common','rare','epic'].includes(t)?0:mobile()?90:165;}
   function prelude(card){reset();const root=shell();if(root&&preludeMs(card)){root.classList.add('fx-prelude');root.style.setProperty('--fx-intensity',tierOf(card)==='legendary'?'0.46':tierOf(card)==='mythic'?'0.62':tierOf(card)==='ultra-secret'?'0.92':'0.78');}}
   function unveil(){shell()?.classList.add('fx-unveiled');}
   function putAwayMs(){
-    return reduceMotion()?20:fast?145:mobile()?230:300;
+    return reduceMotion()?20:isFast()?145:mobile()?230:300;
   }
   function controls(){
     return '<button id="opening-speed" data-action="toggle-opening-speed" class="opening-speed" type="button" aria-label="Changer la vitesse des animations de boosters" aria-pressed="'+String(fast)+'">'+(fast?'⚡ Mode rapide':'✦ Mode cinéma')+'</button>';

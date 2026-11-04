@@ -1,0 +1,57 @@
+Mashup V13 Éclipse — validation locale avec fixtures
+Node 24.22.1 / playwright-core 1.64.1 / Chromium système
+Aucun accès Supabase réel ; tous les appels interceptés.
+
+Commande Node (code 0)
+✔ Hero ne révèle que les cartes possédées, visibles et non archivées (4.30752ms)
+✔ Hero vide reste utilisable sans carte ni booster, sans NaN (0.215576ms)
+✔ Réduction des animations prioritaire sur la qualité spectaculaire (0.14571ms)
+✔ Qualité adaptative choisit autonomie pour CPU, mémoire ou économie données (0.282257ms)
+✔ Icônes inconnues utilisent un motif statique sûr (0.233203ms)
+✔ API principale : réponse d’un ancien compte rejetée avant application (5.742772ms)
+✔ Version de distribution cohérente entre manifeste de version, HTML et updater (1.909415ms)
+✔ Référence phase 0 : fichiers inchangés et baseline historique des fichiers V13 modifiés (38.251403ms)
+✔ Syntaxe : tous les modules racine sont compilables (388.363161ms)
+✔ Rendu cartes : masquage, possession/admin et échappement du nom (2.839878ms)
+✔ Marché : séquestre puis annulation restitue exactement une copie (3.458976ms)
+✔ Marché : achat unique conserve crédits et cartes, retire dernière copie du deck (1.381922ms)
+✔ Marché : prix invalide et fonds insuffisants sans mutation (1.133295ms)
+✔ Échange : revalidation, transfert unique et conservation (2.008651ms)
+✔ Échange : inventaire insuffisant à acceptation ne transfère rien (1.133235ms)
+✔ Collection : palier unique et bon attribué une seule fois (1.755757ms)
+✔ Succès : récompense unique et refus si non atteint (1.682968ms)
+✔ Missions : calendrier Paris hiver/été et bascules DST (18.143362ms)
+✔ Missions : gain quotidien unique, renouvellement sans perdre hebdomadaire (2.728059ms)
+✔ R03 corrigé : une réponse Jeux tardive ne remplace pas le nouvel écran (2.545783ms)
+✔ Copie fichier synthétique : écriture, relecture et comparaison exacte (pas SQL) (1.864542ms)
+✔ Comparateur : corruption, champ perdu et format non synthétique refusés (3.090518ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 513.034974
+
+Commande Chromium (code 0)
+Home visible; errors: []
+overflow mobile: false
+Menu links: 10
+eco: eco
+Deck cards initial: 24
+Deck cards expanded: 36
+Collection cards: 24
+Collection search and reset: passed
+overflow collection: false
+overflow desktop: false
+Layout 320px: no horizontal overflow
+Layout 390px: no horizontal overflow
+Layout 768px: no horizontal overflow
+Layout 1440px: no horizontal overflow
+Card detail/inspection and 3-card booster reveal/confirmation: passed (mock API only)
+Player menu permissions and logout to login: passed
+Reduced motion, preferences persistence, Escape: passed
+Errors final: []
+
+Aucun test sur téléphone physique/Safari ; aucun résultat de restauration Supabase.

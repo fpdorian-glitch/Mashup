@@ -2,13 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#092935" />
-  <meta name="mashup-version" content="12.1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090d16" />
+  <meta name="mashup-version" content="13.0.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
-  <meta name="description" content="Mashup — Le jeux de carte qui regroupe tout les univers." />
-  <title>Mashup — Le jeux de carte qui regroupe tout les univers</title>
+  <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
+  <title>Mashup — Le jeu de cartes de tous tes univers</title>
   <style>
 :root{color-scheme:dark;--bg:#0b0e13;--pane:#121720;--pane2:#171c25;--card:#1b212b;--stroke:#2b323e;--sub:#919ba9;--text:#f5f1e9;--accent:#e6ef79;--coral:#f4a38b;--cyan:#74d8e0;--shadow:0 26px 60px #0007;--font:'DM Sans',Inter,system-ui,sans-serif;--display:'Space Grotesk',Inter,system-ui,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:var(--font);color:var(--text);min-width:320px;line-height:1.45}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:3px}a{color:inherit}::selection{background:#dbeb79;color:#141812}::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-thumb{background:#414956;border-radius:20px}::-webkit-scrollbar-track{background:transparent}
@@ -716,6 +716,10 @@
 <link rel="stylesheet" href="./30-v11-4-market.css?v=11.4.0">
 <link rel="stylesheet" href="./31-v12-polish.css?v=12.0.0">
 <link rel="stylesheet" href="./34-v12-1-admin-cards.css?v=12.1.0">
+  <link rel="icon" href="./assets/mashup-app.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./assets/mashup-app-180.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./36-mobile-premium.css?v=13.0.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -745,7 +749,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V11.3 <span>·</span> NOUVEL HORIZON</div>
+        <div class="tiny-copy">V13.0 <span>·</span> ÉCLIPSE</div>
       </div>
     </aside>
     <div class="content-area">
@@ -1052,14 +1056,15 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=12.1.0" defer></script>
+<script src="./09-mashup-updates.js?v=13.0.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
-import { createGamesUI } from './04-games-ui.js?v=10.0';
+import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=13.0.0';
+import { createGamesUI } from './04-games-ui.js?v=13.0.0';
 import { renderMashupV10Card } from './06-v10-cards.js?v=11.1';
-import { createDevelopmentJournal } from './10-development-journal.js?v=12.1.0';
+import { createDevelopmentJournal } from './10-development-journal.js?v=13.0.0';
 import { startMashupV12Performance } from './32-v12-performance.js?v=12.0.0';
-import { createBoosterRevealFX } from './12-booster-reveal.js?v=12.0.0';
+import { createBoosterRevealFX } from './12-booster-reveal.js?v=13.0.0';
 import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
@@ -1174,6 +1179,7 @@ let editingCardId = null, archivedAdminCards = [];
 let onlineSaving = false;
 
 let view = 'packs';
+const mobilePresentation=createMobilePresentation({getUser:()=>onlineUser,getView:()=>view,onNavigate:name=>setView(name)});
 let marketMode='sale';
 let collFilter = 'owned';
 let collRarity = 'all';
@@ -1185,6 +1191,7 @@ let collSort='rarity-desc';
 let collUniverse='all';
 let arenaMode='simple';
 let arenaSection='campaign'; // campagne IA ou combats joueurs, tous deux dans l'onglet Arène
+let deckVisibleLimit=24;
 let deckSelectionMode='simple',deckRarity='all',deckUniverse='all',deckSort='rarity-desc',deckSearch='',deckOwnership='owned';
 let SERIES=[{number:1,name:'Série 01 · Originelle',description:'158 cartes',color:'#c5db90',cover:'✦',targetCount:158}],SERIES_TOTALS={},collectionSeries=0,seriesDraft=[];
 let myPublicProfile=null,onlineLobbyData=null,onlineBusy=false;
@@ -1293,6 +1300,7 @@ function cardMarkup(card,options={}){
 function labelIntro(eyebrow,title,sub){return `<div class="page-lead"><div class="eyebrow">${eyebrow}</div><h1 class="heading">${title}</h1><p class="text-sub">${sub}</p></div>`;}
 function render(){
   if(!onlineUser)return;
+  mobilePresentation.sync();
   const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',missions:'MISSIONS',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',market:'MARCHÉ',leaderboard:'CLASSEMENTS',achievements:'SUCCÈS',profile:'PROFIL'};
   document.getElementById('breadcrumb-current').textContent=names[view];
   document.querySelectorAll('.nav-item').forEach(btn=>{btn.classList.toggle('active',btn.dataset.view===view||(view==='arena'&&btn.dataset.view==='games'));btn.setAttribute('aria-current',btn.dataset.view===view?'page':'false');});
@@ -1320,13 +1328,15 @@ function renderMarketHub(){
     '<div id="market-v11-content"></div>';
   if(marketMode==='trades')marketUI.mount();else v11UI.mountMarket();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();const page=document.getElementById('page');page.classList.remove('m13-entrance');void page.offsetWidth;page.classList.add('m13-entrance');if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
 // V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
 const gamesUI = createGamesUI({
+  getView:()=>view,
   getUser:()=>onlineUser,
   showArena:()=>setView('arena'),
   toast:(message,error)=>toast(message,error),
   api:async (route,body)=>{
+    const accountId=onlineUser?.id;
     const session=(await mashupAuth.auth.getSession()).data.session;
     if(!session?.access_token)throw new Error('Reconnecte-toi pour jouer.');
     const endpoint='https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-games?route='+encodeURIComponent(route);
@@ -1340,6 +1350,7 @@ const gamesUI = createGamesUI({
     const reply=await fetch(endpoint,options);
     const output=await reply.json().catch(()=>({error:'Réponse serveur invalide.'}));
     if(!reply.ok)throw new Error(output.error||'Le Casino ne répond pas.');
+    if(onlineUser?.id!==accountId)throw new Error('La session a changé. Reconnecte-toi aux jeux.');
     if(Number.isFinite(output.credits)){state.coins=output.credits;updateBalances();}
     return output;
   }
@@ -1347,11 +1358,9 @@ const gamesUI = createGamesUI({
 
 function renderPacks(){
   document.getElementById('page').innerHTML=`
-    <section class="hero"><div class="hero-copy"><div class="hero-tag">✧ BIENVENUE DANS LE MULTIVERS</div><h2>Le jeu de cartes qui regroupe <em>tous les univers</em></h2><p>Des héros, des icônes et même des objets du quotidien : ouvre des boosters, complète ta collection et défie tes amis dans l’univers Mashup.</p><div class="hero-actions"><button class="btn btn-primary btn-lg" data-action="open-pack" data-pack="${PACKS.find(p=>p.free)?.id||PACKS[0]?.id||'starter'}">${!state.freePackUsed?'Ouvrir mon booster gratuit':'Ouvrir un booster'} <span class="arrow">↗</span></button><button class="btn btn-quiet btn-lg" data-view="collection">Voir ma collection</button></div></div><div class="hero-art"><div class="hero-orbit"></div><span class="hero-spark a">✦</span><div class="hero-card-stack"><div class="mini-back"></div><div class="mini-back"></div><div class="mini-back"></div></div><span class="hero-spark b">✧</span></div></section>
+    ${homeMarkup({esc,cards:allCards(),renderCard:cardMarkup,packs:PACKS,state,user:onlineUser,owned:ownedCount(),total:normalCards().length})}
     <section><div class="section-top"><div><div class="eyebrow">01 / LES INVOCATIONS</div><h3 class="small-heading">Choisis ton booster.</h3><p>Chaque ouverture est une surprise. Les boosters cachent une galaxie, et les doublons rapportent des éclats.</p></div><span class="pill">✦ Des découvertes à chaque ouverture</span></div>
     <div class="pack-grid">${PACKS.map((p,i)=>`<article class="pack ${i===PACKS.length-1?'pack-featured':''}"><div class="pack-head"><span class="pack-index">PACK ${String(i+1).padStart(2,'0')}</span><span class="pack-chip">${esc(p.chip||((p.count>=5)?'5 CARTES':'ÉDITION'))}</span></div><div class="pack-visual"><div class="pack-art-gleam" style="--p1:${p.p1}"></div><div class="pack-pouch" style="--p1:${p.p1};--p2:${p.p2}">${GALAXY_MARK}</div></div><h4>${esc(p.name)}</h4><div class="pack-desc">${esc(p.description||`${p.count} cartes`)}</div><div class="pack-bottom"><span class="pack-price">${p.free&&!state.freePackUsed?'GRATUIT':Number(packVouchers[p.id])>0?'🎟 BON OFFERT ×'+Number(packVouchers[p.id]):p.price+(p.currency==='dust'?' <small>✧</small>':' <small>◉</small>')}</span><button class="btn btn-sm ${i===PACKS.length-1?'btn-primary':''}" data-action="open-pack" data-pack="${p.id}">Ouvrir <span class="arrow">↗</span></button></div></article>`).join('')}</div></section>
-    <div class="divider"></div><div class="section-top"><div><div class="eyebrow">02 / TON PARCOURS</div><h3 class="small-heading">Ton univers en chiffres.</h3></div></div>
-    <div class="series-return"><button class="btn btn-sm" data-action="back-series">← Choisir une autre série</button><strong>${esc(SERIES.find(x=>x.number===collectionSeries)?.name||'Série')}</strong></div><div class="mini-metrics"><div class="metric"><span>CARTES NORMALES OBTENUES</span><strong>${ownedCount()}</strong></div><div class="metric"><span>BOOSTERS OUVERTS</span><strong>${state.opened}</strong></div><div class="metric"><span>VICTOIRES EN ARÈNE</span><strong>${state.wins}</strong></div></div>
     ${missionsUI.homeTeaser()}
     <p class="small-note">Les probabilités sont définies pour chaque booster par l'administrateur. Les raretés sans aucune carte disponible sont redistribuées entre celles qui existent ; la garantie de rareté s'applique ensuite.</p>
     ${developmentJournal.markup()}`;
@@ -1597,6 +1606,8 @@ function updateInspection(){
   if(card){
     const lightX=Math.max(0,Math.min(100,50+Math.sin(inspection.ry*Math.PI/180)*43));
     const lightY=Math.max(0,Math.min(100,45-Math.sin(inspection.rx*Math.PI/180)*50));
+    card.style.setProperty('--m13-x',`${lightX}%`);
+    card.style.setProperty('--m13-y',`${lightY}%`);
     card.style.setProperty('--shine-x',`${lightX}%`);
     card.style.setProperty('--shine-y',`${lightY}%`);
     card.style.setProperty('--foil-angle',`${125+inspection.ry*.6}deg`);
@@ -1696,7 +1707,8 @@ function deckVisibleCards(){
 function renderDeckRoster(){
  const root=document.getElementById('deck-roster');if(!root)return;
  const list=deckVisibleCards();const key=deckSelectionMode==='double'?'deckDouble':'deck';const selected=state[key]||[];const max=deckSelectionMode==='double'?6:3;
- root.innerHTML=list.length?list.map(c=>`<button class="deck-visual-choice ${selected.includes(c.id)?'selected':''}" data-action="deck-add" data-id="${esc(c.id)}" aria-label="${selected.includes(c.id)?'Retirer':'Ajouter'} ${esc(c.name)} du deck ${deckSelectionMode}" title="${esc(c.name)}">${cardMarkup(c,{lazy:true})}<strong>${esc(c.name)} ${selected.includes(c.id)?'✓':''}</strong><small>${esc(cardRarityLabel(c))} · ×${state.owned[c.id]}</small></button>`).join(''):'<div class="empty-state">Aucune carte pour ces filtres.</div>';
+ root.innerHTML=list.length?list.slice(0,deckVisibleLimit).map(c=>`<button class="deck-visual-choice ${selected.includes(c.id)?'selected':''}" data-action="deck-add" data-id="${esc(c.id)}" aria-label="${selected.includes(c.id)?'Retirer':'Ajouter'} ${esc(c.name)} du deck ${deckSelectionMode}" title="${esc(c.name)}">${cardMarkup(c,{lazy:true})}<strong>${esc(c.name)} ${selected.includes(c.id)?'✓':''}</strong><small>${esc(cardRarityLabel(c))} · ×${state.owned[c.id]}</small></button>`).join(''):'<div class="empty-state">Aucune carte pour ces filtres.</div>';
+ if(list.length>deckVisibleLimit)root.insertAdjacentHTML('beforeend','<button class="btn m13-deck-more" data-action="deck-load-more">Afficher '+Math.min(24,list.length-deckVisibleLimit)+' autres cartes</button>');
  const counter=document.getElementById('deck-result-count');if(counter)counter.textContent=`${list.length} cartes trouvées · ${selected.length}/${max} dans le deck ${deckSelectionMode==='double'?'Double':'Classique'}`;
 }
 function renderDecks(){
@@ -1967,6 +1979,7 @@ document.addEventListener('click',event=>{
   const button=event.target.closest('[data-action]');if(!button)return;
   const action=button.dataset.action;
   switch(action){
+    case 'deck-load-more':deckVisibleLimit+=24;renderDeckRoster();break;
     case 'open-pack':openPack(button.dataset.pack);break;
     case 'arena-mode':arenaMode=button.dataset.mode==='double'?'double':'simple';renderArena();break;
     case 'deck-add':editDeckCard(button.dataset.id,deckSelectionMode);break;
@@ -2063,9 +2076,14 @@ document.addEventListener('click',event=>{
     case 'export-save':exportSave();break;
   }
 });
+let gridSearchTimer=null;
+function scheduleGridSearch(renderGrid){
+  clearTimeout(gridSearchTimer);const requestedView=view;
+  gridSearchTimer=setTimeout(()=>{if(view===requestedView)renderGrid();},110);
+}
 document.addEventListener('input',event=>{
-  if(event.target.id==='deck-search'){deckSearch=event.target.value;renderDeckRoster();return;}
-  if(event.target.id==='collection-search'){collSearch=event.target.value;resetCollectionWindow();renderCollectionGrid();return;}
+  if(event.target.id==='deck-search'){deckSearch=event.target.value;deckVisibleLimit=24;scheduleGridSearch(renderDeckRoster);return;}
+  if(event.target.id==='collection-search'){collSearch=event.target.value;resetCollectionWindow();scheduleGridSearch(renderCollectionGrid);return;}
   if(event.target.dataset.contentSearch!==undefined){const i=event.target.dataset.contentSearch,q=event.target.value.toLocaleLowerCase('fr');document.querySelectorAll(`[data-content-card-list="${i}"] label`).forEach(el=>el.hidden=!el.dataset.cardSearch.includes(q));return;}
   if(event.target.id==='studio-query'){imageStudio.search(event.target.value);return;}
   if(event.target.id==='admin-card-search'){renderAdminCards(event.target.value);renderArchivedCards(event.target.value);return;}
@@ -2113,6 +2131,7 @@ document.getElementById('modal-root').addEventListener('pointercancel',inspectPo
 // Couche serveur : authentification et économie contrôlées côté serveur.
 // Static GitHub Pages -> Supabase Edge Functions. Auth session lives in the browser.
 async function api(path,data){
+  const accountId=onlineUser?.id||null;
   const {data:authData}=await mashupAuth.auth.getSession();
   const access=authData?.session?.access_token;
   const headers={'apikey': 'sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG', 'X-Mashup-Request':'1'};
@@ -2123,6 +2142,7 @@ async function api(path,data){
   const response=await fetch(url,options);let result;
   try{result=await response.json();}catch{throw new Error('Le serveur Supabase ne répond pas correctement.');}
   if(!response.ok)throw new Error(result.error||'Erreur du serveur');
+  if((onlineUser?.id||null)!==accountId)throw new Error('La session a changé. Relance cette action depuis ton compte.');
   return result;
 }
 // V12: serialize deck/favorite saves. A slower response must never overwrite
@@ -2186,7 +2206,7 @@ async function loadOnlineGame(){
   if(onlineUser.role!=='admin' && (view==='creator'||view==='admin'))view='packs';
   render();if(battle){view='arena';renderCombat();}pollInvitations();
 }
-async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
+async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;mobilePresentation.sync();missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
 async function removeOnlineArt(id){if(onlineUser?.role!=='admin')return;const c=getCard(id);if(!c)return;try{const r=await api('/api/admin/cards',{card:{...c,art:''}});BASE_CARDS=r.cards;showDetail(id);toast('Illustration retirée du catalogue.');}catch(e){toast(e.message,true);}}
 function avatarMarkup(v){const img=safeImage(v);return img?`<img class="profile-avatar" src="${img}" alt="Photo de profil">`:`<div class="profile-avatar">${esc(v||'✦')}</div>`;}
 function captureSeriesDraft(){
