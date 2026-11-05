@@ -1,5 +1,7 @@
 # Mashup V15.1 — Arena Reborn & échanges visuels
 
+La publication a ensuite été autorisée par l’utilisateur : voir le [contrôle de publication](PUBLICATION.md). Les indications de non-fusion ci-dessous décrivent la livraison initiale pour revue.
+
 Commit des fonctionnalités : **e6c6f95**.
 
 Travail basé sur la version publiée **main `19375ce` — V15**, dans **`feature/mashup-v15-1-arena-reborn`**. La V15 et ses illustrations sont conservées. Aucun déploiement sur main, aucune opération sur des données réelles et aucune Edge Function modifiée.
