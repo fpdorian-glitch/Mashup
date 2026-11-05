@@ -1,5 +1,5 @@
 {
-  "version": "15.3.0",
+  "version": "15.3.1",
   "publishedAt": "2026-11-05",
-  "notes": "Sélection visuelle des cartes de vitrine et illustrations des annonces du marché, y compris Secrètes explicitement mises en vente."
+  "notes": "Correction des compteurs de collection sur le total réel des cartes normales, et synchronisation des succès et récompenses. Les Secrètes restent hors progression."
 }
