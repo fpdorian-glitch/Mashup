@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict'),path=require('node:path');
+const {laboratory,fixtureContext,openHome,navigate,recordScene,ARTIFACTS,saveJson}=require('./harness.cjs');
+(async()=>{
+ const lab=await laboratory(),report={productionRequests:0};
+ try{
+  const f=await fixtureContext(lab),page=await f.context.newPage();await page.addInitScript(()=>localStorage.setItem('mashup-display-v13','high'));await openHome(page,lab.url);
+  await navigate(page,'arena');await page.locator('[data-action="start-battle"]').click();await page.locator('#rb-quality').selectOption('fluid');assert.equal(await page.locator('.v15-card-object').first().evaluate(n=>parseFloat(getComputedStyle(n).getPropertyValue('--v15-card-depth'))),0);report.fluidFlattened=true;await page.locator('#rb-quality').selectOption('spectacular');await page.locator('[data-action="challenge-stat"][data-stat="power"]').click();await page.locator('.m13-dock [data-m13-menu]').click();await page.locator('#m13-quality').selectOption('eco');await page.keyboard.press('Escape');await page.waitForFunction(()=>document.querySelector('.rb-arena')?.dataset.rbQuality==='fluid');assert.equal(await page.locator('.rb-arena').evaluate(n=>n.getAnimations({subtree:true}).length),0);report.liveGlobalEconomyCancels=true;await page.locator('.m13-dock [data-m13-menu]').click();await page.locator('#m13-quality').selectOption('high');await page.keyboard.press('Escape');
+  await navigate(page,'market');await page.locator('[data-action="v11-market-mode"][data-mode="trades"]').click();await page.locator('#trade-partner option[value="fiction-friend"]').waitFor({state:'attached'});await page.locator('#trade-partner').selectOption('fiction-friend');await page.locator('[data-action="trade-load-target"]').click();await page.locator('[data-side="offer"].v151-trade-card').first().waitFor();
+  await page.locator('[data-side="offer"].v151-trade-card').first().click();await page.locator('[data-trade-qty="offer"]').fill('2');await page.locator('[data-side="offer"].v151-trade-card').first().scrollIntoViewIfNeeded();
+  const stop=await recordScene(page,'trades-preview.webm');await page.waitForTimeout(850);
+  await page.locator('[data-trade-tab="request"]').click();await page.locator('[data-side="request"].v151-trade-card').first().click();await page.waitForTimeout(1250);
+  await page.screenshot({path:path.join(ARTIFACTS,'trades-mobile-request.png')});
+  await page.locator('[data-trade-tab="offer"]').click();await page.locator('[data-side="offer"].v151-trade-card').nth(1).click();await page.waitForTimeout(1100);
+  await page.screenshot({path:path.join(ARTIFACTS,'trades-mobile-offer.png')});
+  await page.locator('[data-trade-tab="request"]').click();await page.waitForTimeout(950);await page.locator('.v151-trade-review').scrollIntoViewIfNeeded();await page.waitForTimeout(900);report.video=await stop();
+  for(const width of [320,360]){await page.setViewportSize({width,height:640});await page.locator('[data-trade-tab="offer"]').click();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:path.join(ARTIFACTS,'trades-'+width+'.png')});}
+  await page.setViewportSize({width:1440,height:1100});await page.locator('.v151-trade-collections').screenshot({path:path.join(ARTIFACTS,'trades-desktop-collections.png')});
+  assert.equal(await page.locator('[data-trade-side="offer"]').isVisible(),true);assert.equal(await page.locator('[data-trade-side="request"]').isVisible(),true);
+  await page.setViewportSize({width:390,height:844});await navigate(page,'arena');page.on('dialog',d=>d.accept());await page.locator('.rb-top-actions [data-action="quit-battle"]').click();await page.locator('[data-action="arena-mode"][data-mode="double"]').click();await page.locator('[data-action="start-battle"]').click();
+  report.doubleStage=[];for(const size of [{width:390,height:844},{width:320,height:568},{width:360,height:640}]){await page.setViewportSize(size);await page.waitForTimeout(60);const geometry=await page.evaluate(()=>({stage:document.querySelector('.rb-stage').getBoundingClientRect().bottom,dock:document.querySelector('[data-rb-stat-dock]').getBoundingClientRect().top}));assert.ok(geometry.stage<=geometry.dock+1,'La scène ne doit pas passer sous les choix');report.doubleStage.push({...size,...geometry});await page.locator('.rb-stage').evaluate(n=>{n.scrollTop=n.scrollHeight;});}
+  await page.setViewportSize({width:390,height:844});await page.screenshot({path:path.join(ARTIFACTS,'arena-double-scrolled.png')});
+  assert.deepEqual(f.errors,[]);assert.deepEqual(f.consoleErrors,[]);report.success=true;saveJson('demos-results.json',report);await f.context.close();console.log(JSON.stringify(report));
+ }finally{await lab.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

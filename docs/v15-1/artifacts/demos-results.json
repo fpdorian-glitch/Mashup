@@ -1,0 +1,33 @@
+{
+  "productionRequests": 0,
+  "fluidFlattened": true,
+  "liveGlobalEconomyCancels": true,
+  "video": {
+    "available": true,
+    "name": "trades-preview.webm",
+    "frames": 31,
+    "durationSeconds": 4.84,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "doubleStage": [
+    {
+      "width": 390,
+      "height": 844,
+      "stage": 621.015625,
+      "dock": 650.859375
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": 336.25,
+      "dock": 374.859375
+    },
+    {
+      "width": 360,
+      "height": 640,
+      "stage": 397.5625,
+      "dock": 446.859375
+    }
+  ],
+  "success": true
+}

@@ -1,0 +1,482 @@
+{
+  "baseline": "19375ce",
+  "candidateCommit": "e6c6f952a78e0d3ac81418f2e54d4d8f7266fe5a",
+  "started": "2026-11-05T11:50:03.567Z",
+  "productionRequests": 0,
+  "repeats": 3,
+  "conditions": {
+    "engine": "155.0.8059.79",
+    "platform": "linux x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "viewport": "390×844 CSS px",
+    "gpu": "disabled",
+    "quality": "Global high; V15.1 arena spectacular",
+    "frames": 120,
+    "method": "Fresh browser context per version/repetition, baseline then candidate, sequential. Same fictional cards and APIs. Reveal sample includes the click, rendering and confrontation animation; no concurrent screencast."
+  },
+  "runs": [
+    {
+      "version": "v15",
+      "repetition": 0,
+      "choose": {
+        "domNodes": 372,
+        "cards": 1,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3264339,
+        "jsHeapTotalBytes": 4623567,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "confrontation": {
+        "domNodes": 377,
+        "cards": 2,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 33.3,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2672902,
+        "jsHeapTotalBytes": 4097330,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "trades": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3029138,
+        "jsHeapTotalBytes": 5674246,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      }
+    },
+    {
+      "version": "v151",
+      "repetition": 0,
+      "choose": {
+        "domNodes": 395,
+        "cards": 1,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3338885,
+        "jsHeapTotalBytes": 4912017,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "confrontation": {
+        "domNodes": 428,
+        "cards": 2,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2740133,
+        "jsHeapTotalBytes": 4385941,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "trades": {
+        "domNodes": 1712,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2913436,
+        "jsHeapTotalBytes": 4648872,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      }
+    },
+    {
+      "version": "v15",
+      "repetition": 1,
+      "choose": {
+        "domNodes": 372,
+        "cards": 1,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3264755,
+        "jsHeapTotalBytes": 4623567,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "confrontation": {
+        "domNodes": 377,
+        "cards": 2,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2648493,
+        "jsHeapTotalBytes": 4097277,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "trades": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2991349,
+        "jsHeapTotalBytes": 5674193,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      }
+    },
+    {
+      "version": "v151",
+      "repetition": 1,
+      "choose": {
+        "domNodes": 395,
+        "cards": 1,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3338737,
+        "jsHeapTotalBytes": 4912017,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "confrontation": {
+        "domNodes": 428,
+        "cards": 2,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 33.3,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2952700,
+        "jsHeapTotalBytes": 5172320,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "trades": {
+        "domNodes": 1712,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 33.3,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2891815,
+        "jsHeapTotalBytes": 4648819,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      }
+    },
+    {
+      "version": "v15",
+      "repetition": 2,
+      "choose": {
+        "domNodes": 372,
+        "cards": 1,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3263975,
+        "jsHeapTotalBytes": 4623567,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "confrontation": {
+        "domNodes": 377,
+        "cards": 2,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 33.3,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2648405,
+        "jsHeapTotalBytes": 4097277,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "trades": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3006549,
+        "jsHeapTotalBytes": 5412049,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      }
+    },
+    {
+      "version": "v151",
+      "repetition": 2,
+      "choose": {
+        "domNodes": 395,
+        "cards": 1,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3339161,
+        "jsHeapTotalBytes": 4912017,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "confrontation": {
+        "domNodes": 428,
+        "cards": 2,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 2719180,
+        "jsHeapTotalBytes": 4385888,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "trades": {
+        "domNodes": 1712,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 120,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3025139,
+        "jsHeapTotalBytes": 4390227,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      }
+    }
+  ],
+  "medians": {
+    "v15": {
+      "choose": {
+        "domNodes": 372,
+        "cards": 1,
+        "p95FrameMs": 16.7,
+        "maxFrameMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTasks": 0,
+        "heapUsedBytes": 3264339
+      },
+      "confrontation": {
+        "domNodes": 377,
+        "cards": 2,
+        "p95FrameMs": 16.8,
+        "maxFrameMs": 33.3,
+        "intervalsOver33ms": 0,
+        "longTasks": 0,
+        "heapUsedBytes": 2648493
+      },
+      "trades": {
+        "domNodes": 439,
+        "cards": 0,
+        "p95FrameMs": 16.7,
+        "maxFrameMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTasks": 0,
+        "heapUsedBytes": 3006549
+      }
+    },
+    "v151": {
+      "choose": {
+        "domNodes": 395,
+        "cards": 1,
+        "p95FrameMs": 16.8,
+        "maxFrameMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTasks": 0,
+        "heapUsedBytes": 3338885
+      },
+      "confrontation": {
+        "domNodes": 428,
+        "cards": 2,
+        "p95FrameMs": 16.8,
+        "maxFrameMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTasks": 0,
+        "heapUsedBytes": 2740133
+      },
+      "trades": {
+        "domNodes": 1712,
+        "cards": 24,
+        "p95FrameMs": 16.8,
+        "maxFrameMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTasks": 0,
+        "heapUsedBytes": 2913436
+      }
+    }
+  },
+  "success": true
+}
