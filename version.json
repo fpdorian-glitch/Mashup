@@ -1,5 +1,5 @@
 {
-  "version": "15.5.0",
+  "version": "15.5.1",
   "publishedAt": "2026-11-05",
-  "notes": "Carrousel des boosters filtrable par série, Mashup Match à l’honneur et optimisation Supabase : illustrations originales chargées et cachées séparément du catalogue, sondages moins fréquents."
+  "notes": "Élimination des sondages d’invitations en double et optimisation Supabase des notifications sans altérer les cartes, les crédits et les récompenses."
 }
