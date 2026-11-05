@@ -1100,6 +1100,7 @@ const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_pub
 'use strict';
 const pendingPackStore=createPendingPackStorage({getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v),removeItem:k=>localStorage.removeItem(k)});
 let pendingPackRecoveryBusy=false;
+let pendingRecoveryTicket=null;
 
 /* Cinq statistiques de comparaison : scores de 0 à 100.
    Taille = gabarit physique (pas la taille de la personnalité). */
@@ -1451,7 +1452,6 @@ function weightedCard(minRarity){
   for(let i=0;i<range.length;i++){x-=weights[i];if(x<=0)return range[i];}return range[range.length-1];
 }
 function rollCard(){const options=allCards().filter(c=>RARITIES[c.rarity]);return options[Math.floor(Math.random()*options.length)];}
-function confirmPackOnServer(id,openingId){return api('/api/packs/commit',{id,openingId});}
 async function openPack(id){
  if(onlineUser&&pendingPackStore.read(onlineUser.id)){toast('Confirme ou abandonne ton booster en attente avant d’en ouvrir un autre.',true);return;}
  if(!onlineUser||packLoading||packPendingId||packFinalizing)return;
@@ -1567,18 +1567,11 @@ function revealNextCard(){
 async function recoverPendingPack(){
  const ticket=pendingPackStore.read(onlineUser?.id);
  if(!ticket||pendingPackRecoveryBusy||packLoading||packFinalizing)return;
- pendingPackRecoveryBusy=true;
+ pendingPackRecoveryBusy=true;pendingRecoveryTicket=ticket;
  const btn=document.querySelector('[data-action="recover-pending-pack"]');
  if(btn){btn.disabled=true;btn.textContent='Vérification du tirage…';}
- try{
-   await confirmPackOnServer(ticket.packId,ticket.openingId);
-   pendingPackStore.forget(ticket.userId,ticket.openingId);
-   await loadOnlineGame();
-   toast('Booster confirmé : les cartes sont dans ta collection.');
- }catch(e){
-   toast('Confirmation impossible : '+e.message+' Réessaie sans ouvrir un autre booster.',true);
-   if(view==='packs')renderPacks();
- }finally{pendingPackRecoveryBusy=false;}
+ try{await finishOpening();}
+ finally{pendingRecoveryTicket=null;pendingPackRecoveryBusy=false;}
 }
 async function abandonPendingPack(){
  const ticket=pendingPackStore.read(onlineUser?.id);
@@ -1595,12 +1588,21 @@ async function abandonPendingPack(){
  finally{pendingPackRecoveryBusy=false;}
 }
 async function finishOpening(){
- if(packFlipBusy||packFinalizing||packLoading||!packPendingId||packRevealed.size<packResults.length)return;
+ const recovering=Boolean(pendingRecoveryTicket);
+ if(!recovering&&(packFlipBusy||packFinalizing||packLoading||!packPendingId||packRevealed.size<packResults.length))return;
+ if(recovering&&(packFinalizing||packLoading))return;
  const attemptEpoch=sessionEpoch;
- packFinalizing=true;const id=packPendingPackId,openingId=packPendingId;
- const done=document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
+ packFinalizing=true;const id=recovering?pendingRecoveryTicket.packId:packPendingPackId,openingId=recovering?pendingRecoveryTicket.openingId:packPendingId;
+ const done=recovering?document.querySelector('[data-action="recover-pending-pack"]'):document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
  try{
-  const r=await confirmPackOnServer(id,openingId);
+  const r=await api('/api/packs/commit',{id,openingId});
+  if(recovering){
+   pendingPackStore.forget(onlineUser?.id,openingId);
+   packFinalizing=false;
+   await loadOnlineGame();
+   toast('Booster confirmé : les cartes sont dans ta collection.');
+   return;
+  }
   state=r.state;packVouchers=r.vouchers||packVouchers;
   // V9.1: le serveur renvoie les cartes sans dupliquer toutes les illustrations.
   if(Array.isArray(r.cards)){
@@ -1611,7 +1613,17 @@ async function finishOpening(){
   pendingPackStore.forget(onlineUser?.id,openingId);
   packPendingId=null;packPendingPackId=null;updateBalances();packFinalizing=false;
   closeModal();if(view!=='packs')setView('packs');collectionRewardsUI.refresh({force:true});toast('Booster confirmé : cartes ajoutées à ta collection !');
- }catch(e){if(attemptEpoch!==sessionEpoch)return;packFinalizing=false;if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}toast(e.message+' Tu peux réessayer sans payer deux fois.',true);}
+ }catch(e){
+  if(attemptEpoch!==sessionEpoch)return;
+  packFinalizing=false;
+  if(recovering){
+   toast('Confirmation impossible : '+e.message+' Réessaie sans ouvrir un autre booster.',true);
+   if(view==='packs')renderPacks();
+   return;
+  }
+  if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}
+  toast(e.message+' Tu peux réessayer sans payer deux fois.',true);
+ }
 }
 function closeModal(){
  if(packFinalizing){toast('Validation en cours. Ne ferme pas cette ouverture.',true);return;}
