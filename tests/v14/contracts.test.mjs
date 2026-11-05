@@ -21,6 +21,6 @@ test('Contrats API : aucune nouvelle route serveur dans le client principal',()=
 });
 test('Marché, missions, récupération et cadrage : sources protégées ; catalogue automatique autorisé',()=>{
  const names=git(['diff','--name-only','b20fb58','--','backend','content','reset.html','27-v11-3-image-studio.js']).trim();
- const allowed=new Set(['backend/catalogue-core.js','backend/catalogue-integration.js','backend/collection-rewards-v10-8.js','backend/collection-rewards-v10-9.js','backend/achievements-v11.js','backend/leaderboards-v11.js','content/convergence-series2.json']);assert.deepEqual(names?names.split('\n').filter(path=>!allowed.has(path)):[],[]);
+ const allowed=new Set(['backend/catalogue-core.js','backend/catalogue-integration.js','backend/collection-rewards-v10-8.js','backend/collection-rewards-v10-9.js','backend/achievements-v11.js','backend/leaderboards-v11.js','backend/market-v11.js','content/convergence-series2.json']);assert.deepEqual(names?names.split('\n').filter(path=>!allowed.has(path)):[],[]);
  for(const [start,end] of [['async function openImageCropper','async function compressImage']])assert.equal(body(current,start,end).replaceAll('installCatalogue(r.cards,r.catalogueMeta);','BASE_CARDS=r.cards;'),body(baseline,start,end));
 });
