@@ -1,3 +1,10 @@
+## Mashup V15.5 — Galerie des mondes
+
+- Boosters : carrousel tactile compact, navigation flèches/clavier et filtres par série. Les prix, probabilités et tirages ne changent pas.
+- Mashup Match : raccourci à l’accueil, première place du hub Jeux, accès direct depuis la navigation mobile.
+- Egress : retrait des images base64 du flux catalogue et chargement par URL immutable avec cache navigateur, sans dégrader les fichiers image (migration sécurisée en production). Allongement des interrogations d’invitations en arrière-plan.
+- Vérifications : les images inconnues et Secrètes ne sont pas exposées par les filtres du booster.
+
 ## Mashup V15.4.0 — Le Nexus des mondes (préparée le 5 novembre 2026)
 
 - Arène Nexus, matières des cartes, scellés tactiles, horloge serveur du Casino et actualisation protégée.
