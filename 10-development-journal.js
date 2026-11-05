@@ -22,7 +22,7 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 5 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V15.2 — Catalogue automatique</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.2.0</span></div>'+
+      '<h4>Mashup V15.2 — Catalogue automatique</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.3.0</span></div>'+
       '<p>Les totaux et numéros du Codex suivent les cartes normales actives. Les Secrètes restent hors progression, les archives conservent leurs références et les illustrations originales.</p>'+
       '<div class="dev-v12-changes">'+
       '<span>Plus grand ou plus faible : la règle et les choix restent visibles sur les petits écrans.</span>'+

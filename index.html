@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090d16" />
-  <meta name="mashup-version" content="15.2.0" />
+  <meta name="mashup-version" content="15.3.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
@@ -729,6 +729,7 @@
   <link rel="stylesheet" href="./47-v15-booster.css?v=15.0.0">
   <link rel="stylesheet" href="./51-v15-arena.css?v=15.0.0">
   <link rel="stylesheet" href="./52-v15-shell.css?v=15.0.0">
+  <link rel="stylesheet" href="./60-v15-3-showcase-market.css?v=15.3.0">
   <link rel="stylesheet" href="./54-v15-1-arena.css?v=15.1.0">
   <link rel="stylesheet" href="./55-v15-1-trades.css?v=15.1.0">
 </head>
@@ -1067,7 +1068,7 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=15.2.0" defer></script>
+<script src="./09-mashup-updates.js?v=15.3.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { albumMarkup } from './43-v15-album.js?v=15.2.0';
@@ -1089,7 +1090,8 @@ import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=15.2.0';
 import { createMarketUI } from './20-market-v10-9.js?v=15.1.0';
 import { createV11UI } from './22-v11-economy-ui.js?v=11.4.0';
-import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=11.4.0';
+import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=15.3.0';
+import { createShowcasePicker } from './59-v15-3-showcase-picker.js?v=15.3.0';
 startMashupV12Performance();
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
@@ -1190,11 +1192,12 @@ async function withArenaRequest(action){
 
 const developmentJournal=createDevelopmentJournal({api,getUser:()=>onlineUser,esc,toast});
 const boosterFX=createBoosterRevealFX();
+const showcasePicker=createShowcasePicker({getCards:()=>allCards().filter(c=>!c.hidden&&!c.archived&&Number(state.owned?.[c.id])>0).map(c=>({...c,qty:Number(state.owned[c.id])})),renderCard:(c,o)=>cardMarkup(c,o),esc,onPick:applyShowcaseCard});
 const missionsUI=createMissionsUI({api,getUser:()=>onlineUser,esc,toast,onState:next=>{state=next;updateBalances();}});
 const collectionRewardsUI=createCollectionRewardsUI({api,esc,toast,getMetrics:number=>currentCatalogue().metrics(number,state.owned),onState:next=>{state=next;updateBalances();},onVouchers:next=>{packVouchers=next||{};}});
 const v11UI=createV11UI({
  api,esc,toast,
- getCards:()=>allCards().filter(c=>!c.hidden&&c.variant!=='secret'&&Number(state.owned?.[c.id])>0)
+ getCards:()=>allCards().filter(c=>!c.hidden&&Number(state.owned?.[c.id])>0)
    .map(c=>({...c,qty:Number(state.owned[c.id])||0})),
  getUser:()=>onlineUser,getView:()=>view,getMarketMode:()=>marketMode,
  getCardById:id=>getCard(id),renderCard:(card,options)=>cardMarkup(card,options),
@@ -2120,6 +2123,7 @@ document.addEventListener('click',event=>{
     case 'trade-clear-counter':marketUI.clearCounter();break;
     case 'trade-accept':case 'trade-decline':case 'trade-cancel':case 'trade-counter':marketUI.action(action.slice(6),button.dataset.id);break;
     case 'save-showcase-v109':saveShowcaseV109();break;
+    case 'v153-open-showcase':showcasePicker.open(button.dataset.slot||'primary');break;
     case 'save-collection-reward-admin':collectionRewardsUI.saveAdmin();break;
     case 'open-series-admin':setView('admin');document.getElementById('admin-series-section')?.scrollIntoView({behavior:'smooth',block:'start'});break;
     case 'arena-section':arenaPresentation.clear();arenaSnapshot=null;arenaSection=button.dataset.section==='online'?'online':'campaign';renderArena();break;
@@ -2359,7 +2363,7 @@ function showcaseV109Markup(p){
 }
 function showcaseV109Editor(p,owned){
   const current=(p?.showcaseV109?.cards||[]).map(c=>c.id);
-  const single=(i)=>`<label>Carte ${i+1}<select id="v109-highlight-${i}"><option value="">Aucune</option>${owned.map(c=>`<option value="${esc(c.id)}" ${current[i]===c.id?'selected':''}>${esc(c.name)} · ${esc(cardRarityLabel(c))}</option>`).join('')}</select></label>`;
+  const single=(i)=>`<div class="v153-slot"><label>Carte ${i+1}</label><input type="hidden" id="v109-highlight-${i}" value="${esc(current[i]||'')}"><div class="v153-slot-preview" id="v153-highlight-preview-${i}">${profileCard(owned.find(c=>c.id===current[i]))}</div><button type="button" class="btn btn-sm" data-action="v153-open-showcase" data-slot="${i}">✦ Choisir dans ma collection</button></div>`;
   const theme=p?.showcaseV109?.theme||'emerald';
   const master=!!Object.entries(p?.collectionBadges||{}).length||p?.showcaseV109?.title==='Maître de la série';
   return `<section class="panel v109-showcase-editor"><h3>✦ Ma vitrine de collectionneur</h3><p class="small-note">Choisis trois cartes réellement possédées, ton fond et ton titre. Elles seront visibles depuis la page Joueurs.</p>
@@ -2376,12 +2380,24 @@ async function saveShowcaseV109(){
   try{const r=await api('/api/profile/showcase',{cards,theme,title});myPublicProfile=r.profile;toast('Vitrine enregistrée !');renderProfile();}
   catch(e){toast(e.message,true);}
 }
+function applyShowcaseCard(slot,card){
+ const id=slot==='primary'?'profile-showcase':'v109-highlight-'+slot;
+ const field=document.getElementById(id);if(!field)return false;
+ if(slot!=='primary'&&card){
+  const others=[0,1,2].filter(i=>String(i)!==String(slot)).map(i=>document.getElementById('v109-highlight-'+i)?.value).filter(Boolean);
+  if(others.includes(card.id)){toast('Cette carte est déjà dans ta vitrine.',true);return false;}
+ }
+ field.value=card?.id||'';
+ const preview=document.getElementById(slot==='primary'?'v153-profile-preview':'v153-highlight-preview-'+slot);
+ if(preview)preview.innerHTML=profileCard(card);
+ return true;
+}
 function renderProfile(){
  const p=myPublicProfile||{pseudo:onlineUser?.pseudo||'',avatar:'✦',showcase:null};const owned=allCards().filter(c=>!c.hidden&&state.owned[c.id]>0);
  document.getElementById('page').innerHTML=`${labelIntro('MON PROFIL','Mon identité <em>Mashup.</em>','Choisis ton pseudo, ta photo de profil et ta carte de vitrine. Les autres joueurs pourront voir ces informations.')}
  <div class="profile-layout"><section class="panel"><div class="profile-row"><div id="avatar-preview">${avatarMarkup(p.avatar)}</div><div><h3>${esc(p.pseudo)}</h3><p class="small-note">Statistiques publiques • ${owned.filter(c=>c.variant!=='secret').length} cartes normales obtenues</p></div></div><div class="divider"></div>
  <div class="profile-form"><label>Pseudo public<input id="profile-pseudo" maxlength="24" value="${esc(p.pseudo)}" placeholder="Ton pseudo"></label><label>Photo de profil<input id="profile-avatar-input" type="file" accept="image/jpeg,image/png,image/webp"></label><label>Ou avatar emoji<input id="profile-avatar-data" value="${safeImage(p.avatar)?'✦':esc(p.avatar||'✦')}" maxlength="180000"></label>
- <label>Carte de vitrine<select id="profile-showcase"><option value="">Aucune</option>${owned.map(c=>`<option value="${esc(c.id)}" ${c.id===p.showcase?.id?'selected':''}>${esc(c.name)} · ${esc(cardRarityLabel(c))}</option>`).join('')}</select></label><button class="btn btn-primary" data-action="save-profile">Enregistrer mon profil</button><button class="btn btn-sm" data-action="change-password">Modifier mon mot de passe</button></div></section>
+ <div class="v153-slot"><label>Carte principale de vitrine</label><input type="hidden" id="profile-showcase" value="${esc(p.showcase?.id||'')}"><div class="v153-slot-preview" id="v153-profile-preview">${profileCard(p.showcase)}</div><button class="btn btn-sm" type="button" data-action="v153-open-showcase" data-slot="primary">✦ Choisir dans ma collection</button></div><button class="btn btn-primary" data-action="save-profile">Enregistrer mon profil</button><button class="btn btn-sm" data-action="change-password">Modifier mon mot de passe</button></div></section>
  <section class="panel"><h3>Ma carte de vitrine</h3>${profileCard(p.showcase)}<p class="small-note">La carte choisie doit être dans ta collection.</p></section></div>`;
  document.getElementById('page').insertAdjacentHTML('beforeend',showcaseV109Editor(p,owned));
  if(safeImage(p.avatar))document.getElementById('profile-avatar-data').value=p.avatar;
