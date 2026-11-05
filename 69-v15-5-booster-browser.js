@@ -22,7 +22,7 @@ export function packsInFilter(packs=[],selection='all'){
   if(selection==='all')return packs;
   if(selection==='other')return packs.filter(p=>p?.filterMode!=='series'||!(p.allowedSeries||[]).length);
   const id=/^series-(\d{1,3})$/.exec(String(selection))?.[1];
-  if(!id)return packs;
+  if(!id)return [];
   return packs.filter(p=>p?.filterMode==='series'&&(p.allowedSeries||[]).some(n=>Number(n)===Number(id)));
 }
 export function safePackSelection(packs,series,requested){
