@@ -1,3 +1,9 @@
+## Mashup V15.5.1 — Invitations plus légères
+
+- Les appels d’invitations sont exclusifs : 20 secondes dans les écrans PvP, 45 secondes ailleurs, sans interrogations supplémentaires superposées.
+- Optimisation dédiée côté serveur : consultation SQL ciblée sans recharger le catalogue ni réécrire l’état du joueur ; jetons JWT vérifiés cryptographiquement pour les notifications. Les mutations restent authentifiées par le serveur Supabase.
+- Les illustrations, boosters, tirages, cartes secrètes, crédits et récompenses sont inchangés.
+
 ## Mashup V15.5 — Galerie des mondes
 
 - Boosters : carrousel tactile compact, navigation flèches/clavier et filtres par série. Les prix, probabilités et tirages ne changent pas.
