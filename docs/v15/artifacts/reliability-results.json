@@ -1,0 +1,626 @@
+{
+  "kind": "fictional-frontend-reliability",
+  "started": "2026-11-05T10:11:56.596Z",
+  "productionRequests": 0,
+  "checks": [
+    "Préparation différée puis annulée : un cancel, aucun commit",
+    "Confirmation réessayable après réponse perdue, même openingId",
+    "Accélération disponible pendant un retournement Ultra",
+    "Callbacks d’animation sans effet après retrait du modal",
+    "Réponse PvP retardée après navigation ignorée",
+    "Réponse d’une ancienne session rejetée après reconnexion à un autre compte",
+    "Réponse d’une ancienne session rejetée après reconnexion au même compte",
+    "Album : Secrètes non obtenues exclues des feuillets et compteurs",
+    "Campagne : quatre manches et règles serveur préservées",
+    "PvP : choix, résultat et attente sans modification de valeurs",
+    "Parcours conservés : marché, échanges, profil, jeux, classement, atelier"
+  ],
+  "scenarios": [
+    {
+      "name": "Préparation différée puis annulée : un cancel, aucun commit",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "68acc8ab-f4a6-4f61-be16-433d2bf59100"
+          }
+        },
+        {
+          "route": "/api/packs/cancel",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Confirmation réessayable après réponse perdue, même openingId",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "8833603f-c779-4bcb-8dd3-07446aa154a6"
+          }
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpacks%2Fcommit]"
+      ]
+    },
+    {
+      "name": "Accélération disponible pendant un retournement Ultra",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "5b9b1e18-7f93-48d1-bf4f-4a621f030951"
+          }
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Callbacks d’animation sans effet après retrait du modal",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "e7869783-e030-45e4-8b56-f980456fbf50"
+          }
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Réponse PvP retardée après navigation ignorée",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Réponse d’une ancienne session rejetée après reconnexion à un autre compte",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Réponse d’une ancienne session rejetée après reconnexion au même compte",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Album : Secrètes non obtenues exclues des feuillets et compteurs",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Campagne : quatre manches et règles serveur préservées",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "PvP : choix, résultat et attente sans modification de valeurs",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/choose",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-pvp",
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/next",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-pvp"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "name": "Parcours conservés : marché, échanges, profil, jeux, classement, atelier",
+      "success": true,
+      "calls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/partner/fiction-friend",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/leaderboard",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/achievements",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/admin/users",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/admin/cards/archived",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/admin/collection/rewards",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "pageErrors": [],
+      "consoleErrors": []
+    }
+  ],
+  "limits": [
+    "Aucun serveur ni compte réel contacté.",
+    "L’idempotence serveur est simulée : ces tests ne prouvent pas sa mise en œuvre dans les Edge Functions non disponibles.",
+    "Le changement de session et le retrait de DOM sont provoqués dans le navigateur de test."
+  ],
+  "retrySimulation": {
+    "requests": 2,
+    "simulatedDebits": 1,
+    "openingIds": [
+      "fiction-opening",
+      "fiction-opening"
+    ],
+    "backendValidated": false
+  },
+  "speedWhileFlipping": {
+    "remainingMs": 173
+  },
+  "albumPrivacy": {
+    "catalogue": 36,
+    "undiscoveredSecrets": 6,
+    "visibleSlots": 30,
+    "adminTested": true
+  },
+  "success": true
+}

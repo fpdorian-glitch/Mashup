@@ -1,0 +1,727 @@
+{
+  "kind": "synthetic-browser-regression",
+  "productionRequests": 0,
+  "started": "2026-11-05T10:11:39.492Z",
+  "checks": [
+    "Accueil et compte fictif chargés",
+    "Menu administrateur et pagination decks 24 → 36",
+    "Pagination collection 24 → 36 garde le premier nœud DOM",
+    "Recherche collection et remise à zéro",
+    "Album paginé, retour classique, filtre réinitialise la page, cinq largeurs sans débordement",
+    "Détail, inspection tactile/souris/clavier, mode éco et mouvement réduit",
+    "Booster scellé : geste explicite avant révélation",
+    "Booster : 3 révélations, récapitulatif, 1 prepare et 1 commit seulement",
+    "Échap ferme le menu ; qualité persistée après rechargement",
+    "Permissions du menu joueur et déconnexion",
+    "Galerie : 6 raretés × 4 variantes, images identiques entre variantes, 5 statistiques visibles sans collision de titre, carte inconnue sans métadonnées ni image",
+    "Aucune exception JavaScript ni erreur console"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "homeNoOverflow": true,
+      "heroActionVisible": true,
+      "collectionNoOverflow": true,
+      "albumNoOverflow": true
+    },
+    {
+      "width": 360,
+      "homeNoOverflow": true,
+      "heroActionVisible": true,
+      "collectionNoOverflow": true,
+      "albumNoOverflow": true
+    },
+    {
+      "width": 390,
+      "homeNoOverflow": true,
+      "heroActionVisible": true,
+      "collectionNoOverflow": true,
+      "albumNoOverflow": true
+    },
+    {
+      "width": 768,
+      "homeNoOverflow": true,
+      "heroActionVisible": true,
+      "collectionNoOverflow": true,
+      "albumNoOverflow": true
+    },
+    {
+      "width": 1440,
+      "homeNoOverflow": true,
+      "heroActionVisible": true,
+      "collectionNoOverflow": true,
+      "albumNoOverflow": true
+    }
+  ],
+  "screenshots": [
+    "home-mobile.png",
+    "home-desktop.png",
+    "menu-mobile.png",
+    "collection-mobile.png",
+    "album-mobile.png",
+    "card-inspection.png",
+    "card-back.png",
+    "booster-01-sealed.png",
+    "booster-02-reveal.png",
+    "booster-03-reveal.png",
+    "booster-04-reveal.png",
+    "booster-05-summary.png",
+    "booster-landscape-summary.png",
+    "login-mobile.png",
+    "cards-24-finishes.png",
+    "cards-mobile.png"
+  ],
+  "limits": "Chromium headless sous Linux, fixtures locales. Ne valide ni iPhone/Android physique, ni sécurité backend, ni restauration Supabase.",
+  "album": {
+    "initialSlots": 6,
+    "renderedSlots": 6,
+    "fullCards": 6
+  },
+  "collectionLegibility": [
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    },
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 10.0595
+    }
+  ],
+  "collection": {
+    "domNodes": 1734,
+    "cards": 24,
+    "images": 0,
+    "frameIntervals": {
+      "samples": 120,
+      "p50ms": 16.7,
+      "p95ms": 16.8,
+      "maxMs": 16.8,
+      "over33ms": 0
+    },
+    "jsHeapUsedBytes": 3995968,
+    "jsHeapTotalBytes": 7314020,
+    "longTasks": [],
+    "overflow": false,
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "quality": "high"
+  },
+  "inspectionObject": {
+    "depth": "4.4px",
+    "material": "ultra-secret"
+  },
+  "physicalLighting": {
+    "before": "146.321deg",
+    "after": "147.827deg",
+    "computedGradientChanged": true
+  },
+  "inspectionLegibility": [
+    {
+      "stats": 5,
+      "visible": true,
+      "titleCollision": false,
+      "minNumberFontPx": 17.7175
+    }
+  ],
+  "inspectionVideo": {
+    "available": true,
+    "name": "inspection-preview.webm",
+    "frames": 199,
+    "durationSeconds": 4.73,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "ecoInspection": {
+    "depth": 0,
+    "quality": "eco",
+    "edgesHidden": true
+  },
+  "boosterTimings": [
+    {
+      "index": 0,
+      "actionAndRevealElapsedMs": 1031,
+      "elapsedMs": 198
+    },
+    {
+      "index": 1,
+      "actionAndRevealElapsedMs": 1031,
+      "elapsedMs": 951
+    },
+    {
+      "index": 2,
+      "actionAndRevealElapsedMs": 1420,
+      "elapsedMs": 1320
+    }
+  ],
+  "boosterVideo": {
+    "available": true,
+    "name": "booster-preview.webm",
+    "frames": 347,
+    "durationSeconds": 6.82,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "matrix": {
+    "cards": 24,
+    "stats": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "imagesPreserved": true,
+    "privacy": true,
+    "overflow": false,
+    "legibilityDesktop": [
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5497
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 13.5506
+      }
+    ],
+    "legibilityMobile": [
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      },
+      {
+        "stats": 5,
+        "visible": true,
+        "titleCollision": false,
+        "minNumberFontPx": 10.03
+      }
+    ]
+  },
+  "apiCalls": [
+    {
+      "route": "/api/status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/packs/prepare",
+      "method": "POST",
+      "payload": {
+        "id": "starter",
+        "attemptId": "714cbc3f-e725-4862-a4e4-9b40d263f75a"
+      }
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/packs/commit",
+      "method": "POST",
+      "payload": {
+        "id": "starter",
+        "openingId": "fiction-opening"
+      }
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    }
+  ],
+  "externalRequestsIntercepted": 19,
+  "externalHosts": [
+    "cdn.jsdelivr.net",
+    "lxpgdhwfxeicuofycqup.supabase.co"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "success": true,
+  "visualDemoChecks": {
+    "backTiltChangesComputedTransform": true,
+    "albumMissingSlots": 3,
+    "albumCapture": "Actual component at 390 CSS px width; taller viewport for a clean full leaf, no image retouching",
+    "pageErrors": [],
+    "consoleErrors": []
+  }
+}
