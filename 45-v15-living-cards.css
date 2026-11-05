@@ -1,0 +1,88 @@
+/* V15 — collector objects, active in the inspection scene only.
+   The existing crop, five statistics and V14 rarity optics remain intact.
+   Four real side planes + a neutral reverse; no grid compositor promotions. */
+.inspect-stage:has(.v15-card-object){perspective:1450px}
+.inspect-tilter:has(.v15-card-object){filter:none;aspect-ratio:300/425}
+.inspect-tilter:has(.v15-card-object)::after{
+  content:"";position:absolute;inset:9% 6% -2%;z-index:-1;
+  border-radius:8%;box-shadow:0 28px 30px #0007;pointer-events:none;
+}
+.v15-card-object{
+  --v15-card-depth:1.4px;--v15-relief:.85px;
+  --v15-shell-bright:#e6e7d6;--v15-shell-mid:#959b91;--v15-shell-dark:#303d38;
+  --v15-core:#d7d2b9;
+  position:absolute;inset:0;transform-style:preserve-3d;border-radius:4.2%;
+  pointer-events:none;
+}
+.v15-card-object[data-v15-material^="rare-"]{--v15-shell-bright:#e6f6ff;--v15-shell-mid:#8ca9c0;--v15-shell-dark:#1e3a51;--v15-core:#94a8ba}
+.v15-card-object[data-v15-material^="epic-"]{--v15-shell-bright:#f0dcff;--v15-shell-mid:#b592ca;--v15-shell-dark:#452f62;--v15-core:#ae97bd}
+.v15-card-object[data-v15-material^="legendary-"]{--v15-shell-bright:#fff2bf;--v15-shell-mid:#c29c51;--v15-shell-dark:#65491b;--v15-core:#d3b078}
+.v15-card-object[data-v15-material^="mythic-"]{--v15-shell-bright:#ffe5bd;--v15-shell-mid:#bb8177;--v15-shell-dark:#4d2030;--v15-core:#c79983}
+.v15-card-object[data-v15-material^="ultra-"]{--v15-shell-bright:#f6ffff;--v15-shell-mid:#b0c9dd;--v15-shell-dark:#43566e;--v15-core:#c5d9e2}
+.v15-card-object[data-v15-material$="-gold"]{--v15-shell-bright:#fff5cb;--v15-shell-mid:#dcad5e;--v15-shell-dark:#77501e;--v15-core:#dbc48f}
+.v15-card-object[data-v15-material$="-secret"]{--v15-shell-bright:#e4ffde;--v15-shell-mid:#7fc6a4;--v15-shell-dark:#1d5742;--v15-core:#b9dbc6}
+.v15-card-object>.inspect-front{
+  transform:translateZ(calc(var(--v15-card-depth)/2));
+  overflow:visible;border-radius:4.2%;backface-visibility:hidden;
+}
+.v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card{
+  transform-style:preserve-3d;isolation:auto;overflow:visible;
+  transform:none;transition:none;box-shadow:none!important;
+}
+.v15-card-object>.inspect-front .v14-stock,.v15-card-object>.inspect-front .v14-caption-shade{border-radius:inherit}
+.v15-card-object>.inspect-front .v10-picture{transform:translateZ(.35px)}
+.v15-card-object>.inspect-front .v14-caption-shade{transform:translateZ(.5px)}
+.v15-card-object>.inspect-front .v14-engraving{transform:translateZ(var(--v15-relief))}
+.v15-card-object>.inspect-front .v14-edge{transform:translateZ(calc(var(--v15-relief) + .15px))}
+/* The entire printed information plane stays together; no animated digits,
+   individual stat transforms, glare, reflection or blend on the type. */
+.v15-card-object>.inspect-front .v10-rarity,
+.v15-card-object>.inspect-front .v10-name,
+.v15-card-object>.inspect-front .v10-universe,
+.v15-card-object>.inspect-front .v14-edition-mark,
+.v15-card-object>.inspect-front .v10-stats,
+.v15-card-object>.inspect-front .v10-series{transform:translateZ(1.4px);backface-visibility:hidden}
+.v15-object-bevel{
+  position:absolute;inset:-.4px;border-radius:inherit;padding:1.25px;
+  transform:translateZ(calc(var(--v15-card-depth)/2 + var(--v15-relief) + .25px));
+  background:linear-gradient(var(--v15-light-angle,145deg),var(--v15-shell-dark) 3%,var(--v15-shell-mid) 20%,var(--v15-shell-bright) 39%,#fff 43%,var(--v15-shell-mid) 47%,var(--v15-shell-dark) 67%,var(--v15-shell-bright) 89%,var(--v15-shell-mid));
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+  opacity:var(--v15-rim-strength,.78);pointer-events:none;backface-visibility:hidden;
+}
+.v15-object-edge{
+  position:absolute;display:block;backface-visibility:hidden;pointer-events:none;
+  background:linear-gradient(90deg,var(--v15-shell-bright),var(--v15-shell-mid) 16%,var(--v15-core) 25%,var(--v15-shell-dark) 43% 57%,var(--v15-core) 70%,var(--v15-shell-mid) 86%,var(--v15-shell-bright));
+}
+.v15-object-edge--right,.v15-object-edge--left{width:var(--v15-card-depth);height:95.4%;top:2.3%;transform-origin:0 50%}
+.v15-object-edge--right{left:100%;transform:translateZ(calc(var(--v15-card-depth)/2)) rotateY(90deg)}
+.v15-object-edge--left{left:0;transform:translateZ(calc(var(--v15-card-depth)/-2)) rotateY(-90deg)}
+.v15-object-edge--top,.v15-object-edge--bottom{
+  height:var(--v15-card-depth);width:95.4%;left:2.3%;transform-origin:50% 0;
+  background:linear-gradient(0deg,var(--v15-shell-bright),var(--v15-shell-mid) 16%,var(--v15-core) 25%,var(--v15-shell-dark) 43% 57%,var(--v15-core) 70%,var(--v15-shell-mid) 86%,var(--v15-shell-bright));
+}
+.v15-object-edge--top{top:0;transform:translateZ(calc(var(--v15-card-depth)/-2)) rotateX(90deg)}
+.v15-object-edge--bottom{top:100%;transform:translateZ(calc(var(--v15-card-depth)/2)) rotateX(-90deg)}
+.v15-card-object>.v15-object-back{
+  transform:translateZ(calc(var(--v15-card-depth)/-2)) rotateY(180deg);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  color:#c2b68b;background:repeating-linear-gradient(45deg,#bdc7b108 0 1px,transparent 1px 5px),radial-gradient(ellipse at 50% 35%,#293d3c,#0c191e 74%);
+  border-radius:4.2%;border:1px solid #d9d1ab7a;overflow:hidden;
+}
+.v15-back-border{position:absolute;inset:3%;border:1px solid #c4bf9c69;border-radius:3%}
+.v15-back-border::before{content:"";position:absolute;inset:1.8%;border:1px solid #c4bf9c30;border-radius:3%}
+.v15-back-seal{width:63%;height:auto;opacity:.85}
+.v15-back-title{margin-top:3%;font:700 clamp(17px,6vw,30px)/1.2 Georgia,serif;letter-spacing:.22em;padding-left:.22em}
+.v15-back-subtitle{margin-top:3%;font:500 8px/1.2 system-ui,sans-serif;letter-spacing:.4em;padding-left:.4em}
+/* Low-power and reduced-motion paths retain the same artwork and information
+   with one flat front surface; no spare side planes or optical layers. */
+html[data-m13-quality=eco] .v15-card-object{--v15-card-depth:0px!important;--v15-relief:0px!important;transform-style:flat}
+html[data-m13-quality=eco] .v15-object-edge,html[data-m13-quality=eco] .v15-object-back,html[data-m13-quality=eco] .v15-object-bevel{display:none}
+html[data-m13-quality=eco] .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card{transform-style:flat;overflow:hidden;isolation:isolate}
+html[data-m13-quality=eco] .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card>*{transform:none!important}
+@media(prefers-reduced-motion:reduce){
+  .v15-card-object{--v15-card-depth:0px!important;--v15-relief:0px!important;transform-style:flat}
+  .v15-object-edge,.v15-object-back,.v15-object-bevel{display:none}
+  .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card{transform-style:flat;overflow:hidden;isolation:isolate}
+  .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card>*{transform:none!important}
+}

@@ -1,0 +1,56 @@
+/* V15 collection album: paged pockets, low-cost materials, original card art. */
+.v15-collection-layout{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:20px 0 12px}
+.v15-collection-layout>.btn{min-height:44px;font-size:11px;touch-action:manipulation}
+.v15-collection-layout>span{margin-left:auto;padding-left:8px;color:#a7b3bb;font-size:10px}
+.v15-collection-layout>.btn:focus-visible{outline:2px solid #f0dbac;outline-offset:3px}
+.v15-album-host{display:block;min-width:0}
+.v15-album{--album-gold:#d9bd83;--album-ink:#f4ecdc;--album-muted:#a7b3bb;min-width:0;color:var(--album-ink);margin:22px 0 12px}
+.v15-album-cover{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:24px 26px;border:1px solid #d9bd8330;border-radius:14px 14px 0 0;background:linear-gradient(115deg,#19242d,#101a22 72%);box-shadow:inset 0 1px #fff1}
+.v15-album-eyebrow{display:block;color:var(--album-gold);font-size:9px;font-weight:800;letter-spacing:2px}
+.v15-album-cover h3{margin:7px 0 6px;color:var(--album-ink);font:400 clamp(21px,3.2vw,33px)/1.15 Georgia,serif;letter-spacing:-.3px}
+.v15-album-cover p{margin:0;color:var(--album-muted);font-size:12px;line-height:1.5}
+.v15-album-progress{text-align:right;flex-shrink:0}
+.v15-album-progress strong{display:block;color:var(--album-gold);font:400 29px/1.1 Georgia,serif;font-variant-numeric:tabular-nums}
+.v15-album-progress>span{display:block;margin-top:5px;color:var(--album-muted);font-size:10px}
+.v15-album-progressbar{height:3px;background:#ffffff0b;overflow:hidden}
+.v15-album-progressbar>span{display:block;height:100%;background:linear-gradient(90deg,#736140,var(--album-gold),#f0dbac)}
+.v15-album-completion{display:flex;align-items:center;gap:8px;flex-shrink:0;padding:10px 14px;border:1px solid #d9bd835e;border-radius:5px;color:#f0dbac;font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;background:#d9bd830c}
+.v15-album-completion>span{font-size:21px}
+.v15-album-navigation{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 4px}
+.v15-album-page-count{color:var(--album-muted);font-size:11px;font-variant-numeric:tabular-nums;text-align:center}
+.v15-album-turn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:42px;touch-action:manipulation}
+.v15-album-turn:disabled{opacity:.3;cursor:default;pointer-events:none}
+.v15-album-turn:focus-visible{outline:2px solid #f0dbac;outline-offset:4px}
+.v15-album-book{position:relative;isolation:isolate;padding:19px 22px;border:1px solid #d9bd8338;border-radius:6px 12px 12px 6px;background:linear-gradient(90deg,#0c141b,#17232c 1.8%,#121c25 48.8%,#0b1218 50%,#17232c 51.2%,#121c25 98%,#0a1219);box-shadow:2px 4px #0a1018,3px 5px #d9bd8330,4px 7px #0a1018,5px 8px #d9bd8320,0 18px 32px #0004}
+.v15-album-book::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 50%;width:1px;background:#d9bd8326;box-shadow:-3px 0 5px #0007}
+.v15-album-leaf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 20px;list-style:none;padding:0;margin:0}
+.v15-album-slot{position:relative;min-width:0;padding:9px 8px 7px;border:1px solid #c9d9e222;border-radius:5px;background:linear-gradient(137deg,#d0e6ff08 0%,#d0e6ff02 44%,#d0e6ff0b 45%,#d0e6ff02 46%,#d0e6ff04);box-shadow:inset 0 1px #eff8ff10,0 3px 8px #0002}
+.v15-album-pocket{position:relative;min-width:0;aspect-ratio:300/425;border-radius:5px}
+.v15-album-pocket>.tcg-card{width:100%;margin:0!important;max-width:none!important}
+.v15-album-pocket>.tcg-card[role=button]:focus-visible{outline:2px solid #f0dbac!important;outline-offset:4px}
+.v15-album-slot-note{display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:25px;padding-top:6px;color:#9caab3;font-size:9px;font-weight:650;letter-spacing:.6px;font-variant-numeric:tabular-nums}
+.v15-album-copies{padding:2px 5px;border:1px solid #d9bd8330;border-radius:3px;color:#e1c995;font-size:10px;letter-spacing:0;background:#0a131b}
+.v15-album-finish{min-height:13px;color:#a7b3bb;font-size:8px;line-height:1.5;letter-spacing:.25px}
+.v15-album-slot-exception{border-color:#d9bd8366;box-shadow:inset 0 1px #f0dbac22,0 3px 9px #0003}
+.v15-album-seal{color:#e0c590}
+.v15-album-back{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;overflow:hidden;border:1px solid #d9bd8329;border-radius:5px;background:radial-gradient(ellipse at 50% 44%,#1c2a34,#111b24 70%);box-shadow:inset 0 0 0 4px #0d161f,inset 0 0 0 5px #d9bd831a}
+.v15-album-back::before,.v15-album-back::after{content:"";position:absolute;width:56%;aspect-ratio:1;border:1px solid #d9bd831c;transform:rotate(45deg)}
+.v15-album-back::after{width:68%;border-color:#d9bd830e}
+.v15-album-back-emblem{position:relative;z-index:1;color:#b29b713f;font:400 clamp(34px,5vw,68px)/1 Georgia,serif}
+.v15-album-back-rule{width:22%;height:1px;background:#d9bd8333}
+.v15-album-back-text{position:relative;color:#afbec075;font-size:7px;font-weight:700;letter-spacing:1.3px}
+.v15-album-slot-missing{background:#d0e6ff02;box-shadow:inset 0 1px #eff8ff08}
+.v15-album-missing-note{font-size:8px;font-weight:400;letter-spacing:0;color:#81919c}
+.v15-album-empty{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:270px;text-align:center;padding:24px}
+.v15-album-empty>span{font:400 40px/1 Georgia,serif;color:#d9bd8370}
+.v15-album-empty h3{margin:16px 0 10px;color:var(--album-ink);font:400 23px/1.25 Georgia,serif}
+.v15-album-empty p{max-width:340px;margin:0;color:var(--album-muted);font-size:12px;line-height:1.7}
+.v15-album-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:19px;padding:0 4px;color:#98a7b1;font-size:10px;line-height:1.65}
+.v15-album-complete .v15-album-cover{border-color:#d9bd8360;background:linear-gradient(115deg,#262820,#17212a 72%)}
+@media(min-width:1050px){.v15-album-book{padding:24px 30px}.v15-album-leaf{gap:26px 30px}.v15-album-slot{padding:12px 11px 9px}.v15-album-slot-note{font-size:10px}.v15-album-finish{font-size:9px}}
+@media(max-width:700px){.v15-album{margin-top:16px}.v15-album-cover{padding:18px 16px;gap:12px}.v15-album-cover p{max-width:190px;font-size:10px}.v15-album-eyebrow{font-size:7px;letter-spacing:1.3px}.v15-album-progress strong{font-size:25px}.v15-album-progress>span{font-size:8px}.v15-album-completion{gap:5px;max-width:110px;padding:7px 9px;font-size:8px;line-height:1.5;letter-spacing:.4px}.v15-album-completion>span{font-size:18px}.v15-album-navigation{padding:13px 0;gap:8px}.v15-album-page-count{font-size:10px}.v15-album-turn{gap:6px;min-height:44px;padding-left:11px;padding-right:11px;font-size:10px}.v15-album-book{padding:14px 12px;border-radius:5px 9px 9px 5px}.v15-album-leaf{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 15px}.v15-album-slot{padding:7px 6px 5px}.v15-album-slot-note{font-size:8px}.v15-album-finish{font-size:7px}.v15-album-back{gap:12px}.v15-album-back-text{font-size:6px;letter-spacing:1px}.v15-album-footer{align-items:flex-start;font-size:9px;gap:4px;margin-top:16px}.v15-album-footer>span:last-child{max-width:230px;text-align:right}}
+@media(max-width:360px){.v15-album-cover{padding:15px 12px}.v15-album-cover h3{font-size:20px}.v15-album-book{padding:10px 8px}.v15-album-leaf{gap:13px 11px}.v15-album-slot{padding:5px 4px 4px}.v15-album-back-text{font-size:5px;letter-spacing:.7px}.v15-album-slot-note{font-size:7px}.v15-album-finish{font-size:6px}.v15-album-footer>span:last-child{max-width:185px}}
+@media(max-width:480px){.v15-collection-layout>span{width:100%;margin-left:0;padding-left:0;font-size:9px}.v15-collection-layout>.btn{flex:1}}
+@media(prefers-reduced-motion:reduce){.v15-album *{scroll-behavior:auto!important}}
+html[data-m13-quality=eco] .v15-album-book{box-shadow:2px 4px #0a1018,3px 5px #d9bd8330}
+html[data-m13-quality=eco] .v15-album-slot{box-shadow:none}

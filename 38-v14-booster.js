@@ -42,7 +42,8 @@ export function summaryMarkup(results=[],renderCard=()=>'',esc=escapeHTML){
     <div class="v14-summary-heading"><span class="v14-opening-kicker">OUVERTURE TERMINÉE</span><h2 id="v14-summary-title">Ton tirage.</h2><p>${esc(description)}</p></div>
     <ol class="v14-summary-cards" aria-label="Cartes dévoilées, dans l’ordre du tirage">${cards.map((card,index)=>{
       const rarity=card?.variant==='secret'?(card.rarity==='ultra'?'Ultra secrète':'Secrète'):(rarityNames[card?.rarity]||'Carte');
-      return `<li class="v14-summary-item"><div class="v14-summary-card">${renderCard(card,{revealedOpponent:true,lazy:true})}</div><span class="v14-summary-card-label"><span>${esc(card?.name||`Carte ${index+1}`)}</span><small>${esc(rarity)}${card?.isNew?' · NOUVELLE':''}</small></span></li>`;
+      const tier=card?.variant==='secret'?'secret':Object.hasOwn(rarityNames,card?.rarity)?card.rarity:'common';
+      return `<li class="v14-summary-item" data-reveal-tier="${tier}" style="--v15-summary-index:${Math.min(index,6)}"><div class="v14-summary-card">${renderCard(card,{revealedOpponent:true,lazy:true})}</div><span class="v14-summary-card-label"><span>${esc(card?.name||`Carte ${index+1}`)}</span><small>${esc(rarity)}${card?.isNew?' · NOUVELLE':''}</small></span></li>`;
     }).join('')}</ol>
     <p class="v14-summary-pending"><span aria-hidden="true">◇</span> Confirme ci-dessous pour ajouter ces cartes à ta collection et valider le paiement.</p>
   </section>`;
@@ -61,6 +62,14 @@ export function mountSealedPack({root=globalThis.document?.getElementById('openi
     root.removeEventListener('click',onClick);
     root.classList?.remove('v14-is-opening');
   };
+  const openNow=()=>{
+    if(disposed||!started)return;
+    const connected=root.isConnected!==false;
+    cleanup();
+    if(connected)onOpen();
+  };
+  // The cleanup remains callable; the speed switch can also finish a tear.
+  cleanup.accelerate=openNow;
   const onClick=event=>{
     const button=event.target?.closest?.('[data-v14-break-seal]');
     if(started||disposed||!button||!root.contains(button))return;
@@ -73,10 +82,7 @@ export function mountSealedPack({root=globalThis.document?.getElementById('openi
     // One short tear; never force the player to watch a long opening again.
     timer=setTimeout(()=>{
       timer=null;
-      if(disposed)return;
-      const connected=root.isConnected!==false;
-      cleanup();
-      if(connected)onOpen();
+      openNow();
     },quick?0:310);
   };
   root.addEventListener('click',onClick);

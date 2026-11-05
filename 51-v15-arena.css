@@ -1,0 +1,92 @@
+/* MASHUP V15 · A quiet physical arena. No repeating battle animations. */
+.v15-arena-scene{
+ --arena-blue:#a9c7d7;--arena-gold:#e2c995;--arena-line:#bdcfda29;
+ position:relative;isolation:isolate;overflow:clip;
+ background:radial-gradient(ellipse at 20% 38%,#829eae12,transparent 48%),radial-gradient(ellipse at 80% 38%,#c9aa7412,transparent 48%),linear-gradient(145deg,#14212c,#0b141e 70%)!important;
+ border:1px solid var(--arena-line)!important;border-radius:20px;box-shadow:inset 0 0 0 5px #07111a88,inset 0 0 0 6px #c1d0db0b,0 18px 40px #0002;
+}
+.v15-arena-scene::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(105deg,transparent 49.85%,#c8d4df0b 50%,transparent 50.15%)}
+.v15-arena-scene .combat-sticky-rule,.v15-arena-scene .pvp-turn-banner{background:#0a131eea;border:1px solid var(--arena-line);border-radius:8px;color:#d9e1df;box-shadow:none;letter-spacing:.9px;font-size:10px;line-height:1.5;text-wrap:balance}
+.v15-arena-scene .combat-top{margin-top:16px;gap:10px}
+.v15-arena-scene .turn-owner{font-size:9px;letter-spacing:1px;border:1px solid var(--arena-line);background:#d9d7bb09;border-radius:5px;padding:6px 8px}
+.v15-arena-scene[data-v15-turn="player"] .turn-human{color:var(--arena-gold);border-color:#e2c99566}
+.v15-arena-scene .duel-score{gap:30px;padding:10px 15px 14px;margin-bottom:14px}
+.v15-arena-scene .duel-score>div{flex-direction:column;gap:5px;min-width:76px}
+.v15-arena-scene .duel-score small{font-size:8px;letter-spacing:2px;color:#a1b1bb}
+.v15-arena-scene .duel-score strong{font-family:var(--m14-display,Georgia,serif);font-size:40px;line-height:1;color:#f4ecdc;font-variant-numeric:tabular-nums}
+.v15-arena-scene .duel-score>span{font-size:17px;color:#61717c}
+.v15-arena-scene .comparison-rule{border:1px solid var(--arena-line);background:#c2d6e505;max-width:540px;border-radius:10px;padding:11px 14px;color:#d7e1e3}
+.v15-arena-scene .comparison-rule .comparison-arrow{color:var(--arena-gold);font-size:28px}
+.v15-arena-scene .comparison-rule strong{font:550 13px/1.35 var(--m14-ui,system-ui)}
+.v15-arena-scene .combat-duel,.v15-arena-scene .pvp-duel-grid{position:relative;padding:18px 8px 22px;align-items:center;gap:12px}
+.v15-arena-scene .combat-team,.v15-arena-scene .pvp-side{position:relative;min-width:0}
+.v15-arena-scene .combat-team{display:flex;gap:9px;justify-content:center;align-items:flex-start}
+.v15-arena-scene .duel-card-wrap{flex:1;min-width:0}
+.v15-arena-scene .duel-label,.v15-arena-scene .pvp-side>.eyebrow{color:#a6bac8;font-size:8px;letter-spacing:2px}
+.v15-arena-scene [data-v15-side="enemy"] .duel-label,.v15-arena-scene [data-v15-side="enemy"]>.eyebrow{color:#c7b993}
+.v15-arena-scene .duel-card-name{font:500 11px/1.4 var(--m14-ui,system-ui);color:#c2ccd2;margin-top:12px;text-wrap:balance}
+.v15-arena-scene .tcg-card{box-shadow:0 9px 0 -6px #0009,0 17px 24px #0006;}
+.v15-arena-scene .vs{position:relative;color:#c5c2ad;font:italic 400 22px var(--m14-display,Georgia,serif);letter-spacing:-1px;text-shadow:none;animation:none!important}
+.v15-arena-scene .vs::before{content:'';position:absolute;width:1px;height:42px;left:50%;top:-52px;background:linear-gradient(transparent,#c6d3dc45);pointer-events:none;animation:none!important}
+.v15-arena-scene .vs::after{content:'';position:absolute;width:1px;height:42px;left:50%;top:35px;background:linear-gradient(#c6d3dc45,transparent);pointer-events:none;animation:none!important}
+.v15-arena-scene .mystery-card,.v15-arena-scene .pvp-hidden{border:2px solid #b6c7d14a;background:repeating-linear-gradient(135deg,#122230 0 12px,#152634 12px 13px);border-radius:12px;box-shadow:inset 0 0 0 5px #0b1724,inset 0 0 0 6px #d8c69729,0 15px 24px #0005;color:#a6bbcc}
+.v15-arena-scene .mystery-card b{font:400 17px var(--m14-display,Georgia,serif);color:#dfcfad;letter-spacing:2px}
+.v15-arena-scene .mystery-card small{font-size:7px;letter-spacing:1.4px;color:#94a7b6}
+.v15-arena-scene .v15-stat-selected{position:relative;background:linear-gradient(145deg,#ebd9aa,#c1a46d)!important;border-color:#f8e8bc!important;color:#18222b!important;box-shadow:inset 0 0 0 1px #fff5,0 0 0 2px #edddaf55!important}
+.v15-arena-scene .v15-stat-selected .v10-stat-number,.v15-arena-scene .v15-stat-selected .v10-stat-label{color:#17232b!important;text-shadow:none!important;opacity:1!important}
+.v15-arena-scene .challenge-choice{margin-top:15px;padding-top:20px;border-top:1px solid var(--arena-line)}
+.v15-arena-scene .stat-choice,.v15-arena-scene .pvp-stats button{min-height:64px;border-radius:10px;border:1px solid #b5c9d330;background:linear-gradient(140deg,#20313e,#15232e);color:#e7e9e3;touch-action:manipulation}
+.v15-arena-scene .stat-choice:focus-visible,.v15-arena-scene .pvp-stats button:focus-visible{outline:2px solid var(--arena-gold);outline-offset:3px}
+.v15-arena-scene .stat-choice-title{font-weight:500;font-size:10px}
+.v15-arena-scene .stat-choice-icon,.v15-arena-scene .stat-choice-cta{color:#d5c49c}
+.v15-arena-scene .stat-choice strong{font-family:var(--m14-ui,system-ui);font-size:22px}
+.v15-arena-scene .challenge-result{border:1px solid #acbdad55;background:linear-gradient(120deg,#a2c6ab13,#b6c3bb05);padding:20px 16px;box-shadow:inset 3px 0 #9cbc9b;max-width:660px;border-radius:12px}
+.v15-arena-scene[data-v15-winner="enemy"] .challenge-result{background:linear-gradient(120deg,#c9969110,#c9b2ad05);border-color:#bf9d9940;box-shadow:inset 3px 0 #b48e85}
+.v15-arena-scene[data-v15-winner="draw"] .challenge-result{background:#c3cbd508;border-color:#c3cbd535;box-shadow:inset 3px 0 #a7b2c0}
+.v15-arena-scene .challenge-result-title{font:600 12px/1.5 var(--m14-ui,system-ui);letter-spacing:2px;color:#d8e4cc}
+.v15-arena-scene[data-v15-winner="enemy"] .challenge-result-title{color:#e1c0b8}
+.v15-arena-scene .comparison-numbers{margin-top:14px;font-variant-numeric:tabular-nums}
+.v15-arena-scene .comparison-numbers b{font:400 clamp(27px,4vw,42px)/1.1 var(--m14-display,Georgia,serif);color:#f4ecdc}
+.v15-arena-scene .comparison-middle span{color:#e5d2a8;font-size:10px;letter-spacing:1px}
+.v15-arena-scene .comparison-numbers small{color:#adbbc3}
+.pvp-field.v15-arena-scene>.flex-between h3{font:550 13px/1.5 var(--m14-ui,system-ui);color:#e0dac9;font-variant-numeric:tabular-nums}
+.pvp-field.v15-arena-scene[data-v15-stage="reveal"]>h3{margin:20px 0 0;padding-top:20px;border-top:1px solid var(--arena-line);text-align:center;font:600 11px/1.5 var(--m14-ui,system-ui);color:#dfd8be;letter-spacing:1.5px}
+.pvp-field.v15-arena-scene>.comparison-numbers{margin:13px auto 18px;padding:22px 14px;border:1px solid #acbdad44;border-radius:12px;background:linear-gradient(120deg,#a2c6ab0e,#b6c3bb03);text-align:center;max-width:650px}
+.pvp-field.v15-arena-scene>.comparison-numbers>strong{font:600 10px/1.5 var(--m14-ui,system-ui);text-transform:uppercase;letter-spacing:1.1px;color:#dfcda6}
+.pvp-field.v15-arena-scene[data-v15-winner="enemy"]>.comparison-numbers{border-color:#bf9d9940;background:linear-gradient(120deg,#c996910e,#c9b2ad03)}
+.pvp-field.v15-arena-scene .pvp-next-button{display:block;width:min(100%,420px);margin:18px auto 0;min-height:48px}
+.v15-arena-scene .battle-end{background:linear-gradient(135deg,#e0c89512,#b9cad906);border:1px solid #dcc79545;border-radius:12px;padding:25px 18px;margin-top:22px}
+.v15-arena-scene .battle-end h2{font:400 clamp(25px,4vw,35px)/1.2 var(--m14-display,Georgia,serif);color:#ecdbb7;text-wrap:balance}
+.v15-arena-scene .battle-end p{font-size:12px;color:#bdcad1;line-height:1.7}
+.v15-arena-scene .battle-end .btn{margin-top:10px}
+.v15-arena-scene .ai-turn-panel,.v15-arena-scene .pvp-waiting{background:#bbcbd407;border-color:var(--arena-line);box-shadow:none;color:#c3d0d8;border-radius:10px}
+.v15-arena-scene .battle-log{background:#08111a66;border-color:#bdd0db1c;border-radius:10px;padding:16px}
+.v15-arena-scene .battle-log p{font-size:10px;color:#a3b2bf}
+/* Replace the old infinite clash loop; waiting never repeatedly moves the cards. */
+.v15-arena-scene .waiting-clash .pvp-card-pair,.v15-arena-scene .waiting-clash .pvp-side{animation:none!important}
+.v15-arena-scene.v15-arena-quiet .wait-spinner{animation:none!important;border-color:#b3c7d85c;border-top-color:#d9e6e9}
+@media(hover:hover){.v15-arena-scene .stat-choice:hover,.v15-arena-scene .pvp-stats button:hover{border-color:#e3d0a280;background:#263945;transform:translateY(-2px)}}
+@media(max-width:720px){
+ .v15-arena-scene{border-radius:14px;padding:15px 10px!important}
+ .v15-arena-scene .combat-duel{grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:5px;padding:14px 0 17px}
+ .v15-arena-scene .combat-team{gap:5px}
+ .v15-arena-scene .duel-score{gap:19px;margin-bottom:3px;padding-block:7px 11px}
+ .v15-arena-scene .duel-score strong{font-size:34px}
+ .v15-arena-scene .combat-top{margin-top:11px;margin-bottom:12px}
+ .v15-arena-scene .combat-top>span{font-size:9px;line-height:2}
+ .v15-arena-scene .turn-owner{font-size:8px;padding:4px 6px}
+ .v15-arena-scene .vs{font-size:16px}
+ .v15-arena-scene .vs::before,.v15-arena-scene .vs::after{height:27px}
+ .v15-arena-scene .vs::before{top:-36px}.v15-arena-scene .vs::after{top:27px}
+ .v15-arena-scene .duel-label{font-size:7px;letter-spacing:1px}
+ .v15-arena-scene .duel-card-name{font-size:9px;margin-top:8px}
+ .v15-arena-scene .stat-choice{min-height:76px;padding:12px 7px;gap:6px}
+ .v15-arena-scene .pvp-duel-grid{padding:13px 0;gap:16px}
+ .v15-arena-scene .pvp-duel-grid .vs::before,.v15-arena-scene .pvp-duel-grid .vs::after{height:1px;width:45px;top:50%;left:auto;background:#c1d0db28}
+ .v15-arena-scene .pvp-duel-grid .vs::before{right:calc(50% + 20px)}.v15-arena-scene .pvp-duel-grid .vs::after{left:calc(50% + 20px)}
+ .v15-arena-scene .challenge-result{padding:17px 10px}
+ .v15-arena-scene .challenge-result-title{font-size:10px}
+ .v15-arena-scene .comparison-numbers{gap:5px}
+ .v15-arena-scene .comparison-numbers small{font-size:8px;line-height:1.5}
+}
+@media(prefers-reduced-motion:reduce){.v15-arena-scene .wait-spinner{animation:none!important}.v15-arena-scene .stat-choice,.v15-arena-scene .pvp-stats button{transition:none!important}}

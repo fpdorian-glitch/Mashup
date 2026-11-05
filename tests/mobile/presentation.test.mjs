@@ -20,7 +20,7 @@ test('API principale : réponse d’un ancien compte rejetée avant application'
  const source=fs.readFileSync(new URL('../../index.html',import.meta.url),'utf8');
  const start=source.indexOf('async function api(path,data){'),end=source.indexOf('// V12: serialize',start);
  let resolve;const response=new Promise(r=>resolve=r);
- const ctx=vm.createContext({onlineUser:{id:'fiction-a'},mashupAuth:{auth:{getSession:async()=>({data:{session:{access_token:'fiction-only'}}})}},fetch:()=>response});
+ const ctx=vm.createContext({onlineUser:{id:'fiction-a'},sessionEpoch:0,mashupAuth:{auth:{getSession:async()=>({data:{session:{access_token:'fiction-only'}}})}},fetch:()=>response});
  vm.runInContext(source.slice(start,end),ctx);
  const request=ctx.api('/api/bootstrap');await Promise.resolve();ctx.onlineUser={id:'fiction-b'};
  resolve({ok:true,json:async()=>({state:{coins:999}})});
@@ -29,7 +29,7 @@ test('API principale : réponse d’un ancien compte rejetée avant application'
 
 test('Version de distribution cohérente entre manifeste de version, HTML et updater',async()=>{
  const {default:fs}=await import('node:fs');const read=p=>fs.readFileSync(new URL('../../'+p,import.meta.url),'utf8');
- const version=JSON.parse(read('version.json')).version;assert.equal(version,'14.0.2');
+ const version=JSON.parse(read('version.json')).version;assert.equal(version,'15.0.0');
  assert.ok(read('index.html').includes(`name="mashup-version" content="${version}"`));assert.ok(read('09-mashup-updates.js').includes(`CURRENT_VERSION='${version}'`));
  const manifest=JSON.parse(read('manifest.webmanifest'));assert.equal(manifest.scope,'./');assert.equal(manifest.start_url,'./');
  for(const icon of manifest.icons)assert.ok(fs.existsSync(new URL('../../'+icon.src,import.meta.url)));

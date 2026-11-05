@@ -1,0 +1,24 @@
+name: Frontend regression tests
+
+on:
+  pull_request:
+  push:
+    branches: [feature/mashup-v15-immersion]
+
+permissions:
+  contents: read
+
+jobs:
+  reference-and-presentation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check syntax, protected contracts and presentation behavior
+        run: node --test --test-isolation=none tests/phase-0/reference.test.mjs tests/mobile/presentation.test.mjs tests/v14/*.test.mjs tests/v15/*.test.mjs
