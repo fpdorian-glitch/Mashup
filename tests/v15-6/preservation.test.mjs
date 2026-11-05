@@ -8,9 +8,9 @@ test('V15.6 retains V15.5.1 rules, campaign, wallets, catalogue, illustrations a
  assert.equal(execFileSync('git',['diff','--name-only','15968dc','--',...guarded],{cwd:root,encoding:'utf8'}),'');
  assert.equal(fs.existsSync(new URL('backend/match-social-service.mjs',root)),false);
 });
-test('Development metadata and all new browser resources match V15.6 without a release deployment',()=>{
+test('Published metadata and all new browser resources match V15.6',()=>{
  const read=file=>fs.readFileSync(new URL(file,root),'utf8'),html=read('index.html'),version=JSON.parse(read('version.json'));
- assert.equal(version.version,'15.6.0');assert.equal(version.status,'development');assert.equal(version.publishedAt,undefined);
+ assert.equal(version.version,'15.6.0');assert.equal(version.status,undefined);assert.equal(version.publishedAt,'2026-11-06');
  assert.equal(JSON.parse(read('manifest.webmanifest')).version,version.version);
  for(const file of ['72-v15-6-match-motion.css','74-v15-6-match-social.css','76-v15-6-match-presentation.css'])assert.ok(html.includes('./'+file+'?v=15.6.0'));
  const ui=read('64-v15-4-match-ui.js');for(const file of ['71-v15-6-match-gesture.js','73-v15-6-match-social.js','75-v15-6-match-presentation.js'])assert.ok(ui.includes('./'+file+'?v=15.6.0'));
