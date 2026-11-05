@@ -1451,6 +1451,8 @@ function weightedCard(minRarity){
   for(let i=0;i<range.length;i++){x-=weights[i];if(x<=0)return range[i];}return range[range.length-1];
 }
 function rollCard(){const options=allCards().filter(c=>RARITIES[c.rarity]);return options[Math.floor(Math.random()*options.length)];}
+function confirmPackOnServer(id,openingId){return api('/api/packs/commit',{id,openingId});}
+function cancelPackOnServer(id,openingId){return api('/api/packs/cancel',{id,openingId});}
 async function openPack(id){
  if(onlineUser&&pendingPackStore.read(onlineUser.id)){toast('Confirme ou abandonne ton booster en attente avant d’en ouvrir un autre.',true);return;}
  if(!onlineUser||packLoading||packPendingId||packFinalizing)return;
@@ -1463,7 +1465,7 @@ async function openPack(id){
  document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Préparation de ton booster"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Préparation de ton booster…</h2><p>Le serveur prépare le tirage. Aucun crédit n'a été débité.</p><button class="btn btn-sm" data-action="cancel-pack-loading" type="button">Annuler</button></section></div>`;
  try{
   const r=await api('/api/packs/prepare',{id,attemptId});
-  if(packCancelRequested){packCancelPromise=api('/api/packs/cancel',{id,openingId:r.openingId}).catch(()=>{});try{await packCancelPromise;}finally{if(attemptEpoch===sessionEpoch)packCancelPromise=null;}if(attemptEpoch===sessionEpoch)document.getElementById('modal-root').innerHTML='';return;}
+  if(packCancelRequested){packCancelPromise=cancelPackOnServer(id,r.openingId).catch(()=>{});try{await packCancelPromise;}finally{if(attemptEpoch===sessionEpoch)packCancelPromise=null;}if(attemptEpoch===sessionEpoch)document.getElementById('modal-root').innerHTML='';return;}
   packPendingId=r.openingId;packPendingPackId=id;
   pendingPackStore.remember(onlineUser?.id,id,r.openingId);
   packResults=r.results;packRevealed=new Set();showOpening();
@@ -1570,7 +1572,7 @@ async function recoverPendingPack(){
  const btn=document.querySelector('[data-action="recover-pending-pack"]');
  if(btn){btn.disabled=true;btn.textContent='Vérification du tirage…';}
  try{
-   await api('/api/packs/commit',{id:ticket.packId,openingId:ticket.openingId});
+   await confirmPackOnServer(ticket.packId,ticket.openingId);
    pendingPackStore.forget(ticket.userId,ticket.openingId);
    await loadOnlineGame();
    toast('Booster confirmé : les cartes sont dans ta collection.');
@@ -1585,7 +1587,7 @@ async function abandonPendingPack(){
  if(!confirm('Abandonner ce tirage non terminé ? Les cartes non confirmées ne seront pas obtenues.'))return;
  pendingPackRecoveryBusy=true;
  try{
-   await api('/api/packs/cancel',{id:ticket.packId,openingId:ticket.openingId});
+   await cancelPackOnServer(ticket.packId,ticket.openingId);
    pendingPackStore.forget(ticket.userId,ticket.openingId);
    await loadOnlineGame();
    toast('Tirage abandonné. Aucun nouveau débit effectué.');
@@ -1598,7 +1600,7 @@ async function finishOpening(){
  packFinalizing=true;const id=packPendingPackId,openingId=packPendingId;
  const done=document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
  try{
-  const r=await api('/api/packs/commit',{id,openingId});
+  const r=await confirmPackOnServer(id,openingId);
   state=r.state;packVouchers=r.vouchers||packVouchers;
   // V9.1: le serveur renvoie les cartes sans dupliquer toutes les illustrations.
   if(Array.isArray(r.cards)){
