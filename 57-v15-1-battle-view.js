@@ -1,4 +1,5 @@
 import { inspectionObjectMarkup } from "./46-v15-living-cards.js?v=15.0.0";
+import { catalogueIsActive } from "./58-catalogue.js";
 
 export function ruleBannerMarkup(direction, esc = String) {
   const high = direction === "higher",
@@ -44,6 +45,8 @@ export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
       );
     if (!c)
       return '<div class="duel-card-wrap"><div class="rb-card-hidden" aria-label="Carte indisponible"><b>INDISPONIBLE</b></div></div>';
+    if (!catalogueIsActive(c))
+      return '<div class="duel-card-wrap"><div class="rb-card-hidden" aria-label="Carte archivée"><b>CARTE ARCHIVÉE</b><small>Référence historique conservée</small></div></div>';
     return (
       '<div class="duel-card-wrap"><span class="duel-label">' +
       (enemy ? "ADVERSAIRE" : "TON ÉQUIPE") +

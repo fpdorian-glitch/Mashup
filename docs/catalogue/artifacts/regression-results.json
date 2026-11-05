@@ -1,0 +1,2698 @@
+{
+  "baseline": "e8461cb",
+  "started": "2026-11-05T15:19:13.094Z",
+  "productionRequests": 0,
+  "checks": [
+    {
+      "name": "Campagne simple complète, règle permanente 320×568",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Campagne double complète, règle permanente 320×568",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "double"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Campagne simple complète, règle permanente 360×640",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Campagne double complète, règle permanente 360×640",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "double"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Campagne simple complète, règle permanente 390×844",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Campagne double complète, règle permanente 390×844",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "double"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "PvP simple côté hôte, confidentialité et reprise",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/choose",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel",
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/next",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpvp]"
+      ]
+    },
+    {
+      "name": "PvP double côté hôte, confidentialité et reprise",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/choose",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel",
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/next",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpvp]"
+      ]
+    },
+    {
+      "name": "PvP simple côté invité, confidentialité et reprise",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/choose",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel",
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/next",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpvp]"
+      ]
+    },
+    {
+      "name": "PvP double côté invité, confidentialité et reprise",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/choose",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel",
+            "stat": "size"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/next",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-duel"
+          }
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpvp]"
+      ]
+    },
+    {
+      "name": "Qualités, mouvement réduit, navigation pendant réponse et déconnexion",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          }
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/next",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/battles/choose",
+          "method": "POST",
+          "payload": {
+            "stat": "power"
+          }
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Échanges : collections, filtres, quantités, proposition et contre-offre",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/partner/fiction-friend",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/create",
+          "method": "POST",
+          "payload": {
+            "to": "fiction-friend",
+            "offer": [
+              {
+                "id": "s2-conv-obsession-06",
+                "qty": 2
+              }
+            ],
+            "request": [
+              {
+                "id": "s2-conv-haikyuu-02",
+                "qty": 1
+              }
+            ],
+            "offerCredits": 25,
+            "requestCredits": 5
+          }
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/partner/fiction-friend",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/respond",
+          "method": "POST",
+          "payload": {
+            "to": "fiction-friend",
+            "offer": [
+              {
+                "id": "s2-conv-obsession-01",
+                "qty": 1
+              }
+            ],
+            "request": [
+              {
+                "id": "s2-conv-obsession-07",
+                "qty": 2
+              }
+            ],
+            "offerCredits": 9,
+            "requestCredits": 70,
+            "id": "incoming",
+            "action": "counter"
+          }
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/respond",
+          "method": "POST",
+          "payload": {
+            "id": "to-accept",
+            "action": "accept"
+          }
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Échanges : réponses de partenaires désordonnées et page retirée",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/partner/a",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/partner/b",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/trades/partner/a",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Fins de combat : victoire, défaite et égalité fournies par le serveur",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    },
+    {
+      "name": "Autres onglets préservés",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/missions",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/leaderboard",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/achievements",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/admin/users",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/admin/cards/archived",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/admin/collection/rewards",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedInjectedConsoleErrors": []
+    }
+  ],
+  "screenshots": [
+    "arena-simple-320-higher.png",
+    "arena-simple-320-final.png",
+    "arena-double-320-higher.png",
+    "arena-double-320-final.png",
+    "arena-simple-360-higher.png",
+    "arena-simple-360-final.png",
+    "arena-double-360-higher.png",
+    "arena-double-360-final.png",
+    "arena-simple-390-higher.png",
+    "arena-simple-impact.png",
+    "arena-simple-lower.png",
+    "arena-simple-390-final.png",
+    "arena-double-390-higher.png",
+    "arena-double-impact.png",
+    "arena-double-lower.png",
+    "arena-double-390-final.png",
+    "pvp-double-guest.png",
+    "trades-collections-mobile.png",
+    "outcome-player.png",
+    "outcome-enemy.png",
+    "outcome-draw.png"
+  ],
+  "limits": "Chromium Linux, tactile simulé. Aucun téléphone physique ni vrai backend testé.",
+  "ruleGeometry": [
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "simple",
+      "round": 0,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 383.859375,
+          "bottom": 414.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 12,
+            "right": 67.1875,
+            "width": 55.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 72.1875,
+            "right": 127.390625,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 132.390625,
+            "right": 187.59375,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 192.59375,
+            "right": 247.796875,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 252.796875,
+            "right": 308,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "simple",
+      "round": 1,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 388.859375,
+          "bottom": 419.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "simple",
+      "round": 2,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 383.859375,
+          "bottom": 414.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 12,
+            "right": 67.1875,
+            "width": 55.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 72.1875,
+            "right": 127.390625,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 132.390625,
+            "right": 187.59375,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 192.59375,
+            "right": 247.796875,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 252.796875,
+            "right": 308,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "simple",
+      "round": 3,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 388.859375,
+          "bottom": 419.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "double",
+      "round": 0,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 383.859375,
+          "bottom": 414.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 12,
+            "right": 67.1875,
+            "width": 55.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 72.1875,
+            "right": 127.390625,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 132.390625,
+            "right": 187.59375,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 192.59375,
+            "right": 247.796875,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 252.796875,
+            "right": 308,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "double",
+      "round": 1,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 388.859375,
+          "bottom": 419.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "double",
+      "round": 2,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 383.859375,
+          "bottom": 414.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 12,
+            "right": 67.1875,
+            "width": 55.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 72.1875,
+            "right": 127.390625,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 132.390625,
+            "right": 187.59375,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 192.59375,
+            "right": 247.796875,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 420.859375,
+            "bottom": 476.859375,
+            "left": 252.796875,
+            "right": 308,
+            "width": 55.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "mode": "double",
+      "round": 3,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 388.859375,
+          "bottom": 419.859375,
+          "left": 12,
+          "right": 308,
+          "width": 296,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 499.953125,
+        "bottom": 568,
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 320,
+        "h": 568
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "simple",
+      "round": 0,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 455.859375,
+          "bottom": 486.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 12,
+            "right": 75.1875,
+            "width": 63.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 80.1875,
+            "right": 143.390625,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 148.390625,
+            "right": 211.59375,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 216.59375,
+            "right": 279.796875,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 284.796875,
+            "right": 348,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "simple",
+      "round": 1,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 460.859375,
+          "bottom": 491.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "simple",
+      "round": 2,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 455.859375,
+          "bottom": 486.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 12,
+            "right": 75.1875,
+            "width": 63.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 80.1875,
+            "right": 143.390625,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 148.390625,
+            "right": 211.59375,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 216.59375,
+            "right": 279.796875,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 284.796875,
+            "right": 348,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "simple",
+      "round": 3,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 460.859375,
+          "bottom": 491.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "double",
+      "round": 0,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 455.859375,
+          "bottom": 486.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 12,
+            "right": 75.1875,
+            "width": 63.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 80.1875,
+            "right": 143.390625,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 148.390625,
+            "right": 211.59375,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 216.59375,
+            "right": 279.796875,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 284.796875,
+            "right": 348,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "double",
+      "round": 1,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 460.859375,
+          "bottom": 491.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "double",
+      "round": 2,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 455.859375,
+          "bottom": 486.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 12,
+            "right": 75.1875,
+            "width": 63.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 80.1875,
+            "right": 143.390625,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 148.390625,
+            "right": 211.59375,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 216.59375,
+            "right": 279.796875,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 492.859375,
+            "bottom": 548.859375,
+            "left": 284.796875,
+            "right": 348,
+            "width": 63.203125,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 360,
+        "height": 640
+      },
+      "mode": "double",
+      "round": 3,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 460.859375,
+          "bottom": 491.859375,
+          "left": 12,
+          "right": 348,
+          "width": 336,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 571.953125,
+        "bottom": 640,
+        "left": 0,
+        "right": 360,
+        "width": 360,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 360,
+        "h": 640
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "simple",
+      "round": 0,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 659.859375,
+          "bottom": 690.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 12,
+            "right": 81.1875,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 86.1875,
+            "right": 155.390625,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 160.390625,
+            "right": 229.59375,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 234.59375,
+            "right": 303.796875,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 308.796875,
+            "right": 377.984375,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "simple",
+      "round": 1,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 664.859375,
+          "bottom": 695.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "simple",
+      "round": 2,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 659.859375,
+          "bottom": 690.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 12,
+            "right": 81.1875,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 86.1875,
+            "right": 155.390625,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 160.390625,
+            "right": 229.59375,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 234.59375,
+            "right": 303.796875,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 308.796875,
+            "right": 377.984375,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "simple",
+      "round": 3,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 664.859375,
+          "bottom": 695.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "double",
+      "round": 0,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 659.859375,
+          "bottom": 690.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 12,
+            "right": 81.1875,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 86.1875,
+            "right": 155.390625,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 160.390625,
+            "right": 229.59375,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 234.59375,
+            "right": 303.796875,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 308.796875,
+            "right": 377.984375,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "double",
+      "round": 1,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 664.859375,
+          "bottom": 695.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "double",
+      "round": 2,
+      "direction": "lower",
+      "rule": {
+        "r": {
+          "top": 659.859375,
+          "bottom": 690.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 12,
+            "right": 81.1875,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 86.1875,
+            "right": 155.390625,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 160.390625,
+            "right": 229.59375,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 234.59375,
+            "right": 303.796875,
+            "width": 69.203125,
+            "height": 56
+          },
+          "hit": true
+        },
+        {
+          "r": {
+            "top": 696.859375,
+            "bottom": 752.859375,
+            "left": 308.796875,
+            "right": 377.984375,
+            "width": 69.1875,
+            "height": 56
+          },
+          "hit": true
+        }
+      ],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    },
+    {
+      "size": {
+        "width": 390,
+        "height": 844
+      },
+      "mode": "double",
+      "round": 3,
+      "direction": "higher",
+      "rule": {
+        "r": {
+          "top": 664.859375,
+          "bottom": 695.859375,
+          "left": 12,
+          "right": 378,
+          "width": 366,
+          "height": 31
+        },
+        "hit": true
+      },
+      "buttons": [],
+      "nav": {
+        "top": 775.953125,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "height": 68.046875
+      },
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "overflow": false
+    }
+  ],
+  "combatVideo": {
+    "available": true,
+    "name": "combat-preview.webm",
+    "frames": 285,
+    "durationSeconds": 6.85,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "tradesVideo": {
+    "available": true,
+    "name": "trades-preview.webm",
+    "frames": 7,
+    "durationSeconds": 0.55,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "success": true
+}

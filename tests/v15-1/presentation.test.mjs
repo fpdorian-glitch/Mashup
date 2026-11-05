@@ -311,17 +311,7 @@ test("Contrats serveur protégés, mêmes requêtes de combat et mêmes fonction
     };
     assert.equal(body(after), body(before));
   }
-  assert.equal(
-    git(
-      "diff",
-      "19375ce",
-      "--",
-      "backend",
-      "content",
-      "06-v10-cards.js",
-      "27-v11-3-image-studio.js",
-      "reset.html",
-    ),
-    "",
-  );
+  const changed=git('diff','--name-only','19375ce','--','backend','content','06-v10-cards.js','27-v11-3-image-studio.js','reset.html').trim();
+  const allowed=new Set(['backend/catalogue-core.js','backend/catalogue-integration.js','backend/collection-rewards-v10-8.js','backend/collection-rewards-v10-9.js','backend/achievements-v11.js','backend/leaderboards-v11.js','content/convergence-series2.json']);
+  assert.deepEqual(changed?changed.split('\n').filter(path=>!allowed.has(path)):[],[]);
 });

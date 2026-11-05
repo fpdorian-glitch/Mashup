@@ -36,9 +36,9 @@ test('Hidden and archived cards are excluded before identity/content reads, even
 test('A missing normal card exposes only a neutral numbered slot, never name/rarity/art/id', () => {
   const missing = forbidContent({id: 'PRIVATE_ID_SENTINEL', editionNumber: 42, variant: 'standard'}, ['name', 'family', 'rarity', 'art', 'power', 'desc']);
   const result = paginateAlbum({cards: [missing]});
-  assert.deepEqual(result.slots, [{owned: false, quantity: 0, number: 42}]);
+  assert.deepEqual(result.slots, [{owned: false, quantity: 0, number: 1}]);
   const output = html({cards: [missing], renderCard() { throw new Error('Missing card rendered'); }});
-  assert.match(output, /N° 042/);
+  assert.match(output, /N° 001/);
   assert.match(output, /v15-album-slot-missing/);
   for (const forbidden of ['PRIVATE_ID_SENTINEL', 'data-id=', '<img', 'variant-standard']) assert.ok(!output.includes(forbidden));
 });
@@ -93,12 +93,12 @@ test('Progress uses the unfiltered catalogue, never the active owned-only/search
   assert.ok(!output.includes('Série complète'));
 });
 
-test('A configured series target prevents premature completion with an incomplete local catalogue', () => {
+test('Obsolete manual targets never override the actual active catalogue', () => {
   const result = albumProgress({catalogue: cards(2), owned: {'fiction-1': 1, 'fiction-2': 1}, series: {targetCount: 130}});
   assert.equal(result.obtained, 2);
-  assert.equal(result.total, 130);
-  assert.equal(result.complete, false);
-  assert.equal(result.percent, 1);
+  assert.equal(result.total, 2);
+  assert.equal(result.complete, true);
+  assert.equal(result.percent, 100);
 });
 
 test('Completed series receive a visible trophy without counting secrets or duplicate copies', () => {

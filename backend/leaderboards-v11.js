@@ -1,4 +1,6 @@
-/* Mashup V11 — lightweight, private player ranking. No card artwork sent. */
+/* Mashup V11 — lightweight, private player ranking. No card artwork sent.
+ * Requires catalogue-core.js, loaded before this fragment.
+ */
 const V11_RARITY_PRESTIGE={common:1,rare:4,epic:12,legendary:35,mythic:95,ultra:250};
 const V11_LEADERBOARD_MODES=[
  {id:'collection',label:'Collectionneur suprême',unit:'cartes distinctes'},
@@ -8,13 +10,11 @@ const V11_LEADERBOARD_MODES=[
  {id:'rarity',label:'Chasseur de raretés',unit:'cartes rares'}
 ];
 function leaderV11Stats(u,db){
- const owned=db.cards.filter(c=>!c.archived&&c.variant!=='secret'&&(Number(u.state?.owned?.[c.id])||0)>0);
+ const owned=catalogueNormalCards(db.cards).filter(c=>catalogueOwnedCopies(u.state?.owned,c.id)>0);
  const normalCount=owned.length;
  const prestige=owned.reduce((sum,c)=>sum+(V11_RARITY_PRESTIGE[c.rarity]||1)*
    (c.variant==='gold'?1.5:c.variant==='full_art'?1.25:1),0);
- const series=Array.isArray(db.series)?db.series:[];
- const target=series.reduce((n,s)=>n+(s.number===1?158:Math.max(1,Number(s.targetCount)||1)),0);
- const percent=target?Math.min(100,Math.round(100*normalCount/target)):0;
+ const percent=catalogueSeriesMetrics(db.cards,undefined,u.state?.owned||{}).percent;
  const rare=owned.filter(c=>['rare','epic','legendary','mythic','ultra'].includes(c.rarity)).length;
  const wins=(Number(u.state?.wins)||0)+(Number(u.state?.doubleWins)||0)+(Number(u.pvpWins)||0);
  return {collection:normalCount,prestige:Math.round(prestige),arena:wins,series:percent,rarity:rare};

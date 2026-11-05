@@ -1,0 +1,258 @@
+{
+  "format": "mashup-repository-power-rangers-archive-manifest-v1",
+  "datasetScope": "repository-seed-not-production",
+  "series": 2,
+  "universe": "Power Rangers",
+  "source": "content/convergence-series2.json",
+  "sourceSha256Before": "fab1d9fe80581bcbeaedcf34216ee34fb25cdba0253c46ea967f8e52b6b5ebf5",
+  "sourceSha256After": "9ac4fe89aff961977ac106e1e3ae50d471a2bcf07979e2d7f6062d482936246d",
+  "normalization": {
+    "removedRootTargetCount": 102,
+    "removedEditionTotalFields": 100,
+    "idsPreserved": true,
+    "recordOrderPreserved": true,
+    "historicalEditionNumbersPreserved": true
+  },
+  "before": {
+    "records": 100,
+    "uniqueCards": 100,
+    "normalActive": 100,
+    "secretActive": 0,
+    "archived": 0,
+    "inactiveOther": 0,
+    "unclassifiedActive": 0,
+    "duplicateRows": 0,
+    "invalidRows": 0
+  },
+  "after": {
+    "records": 100,
+    "uniqueCards": 100,
+    "normalActive": 90,
+    "secretActive": 0,
+    "archived": 10,
+    "inactiveOther": 0,
+    "unclassifiedActive": 0,
+    "duplicateRows": 0,
+    "invalidRows": 0
+  },
+  "matchedCards": 10,
+  "cards": [
+    {
+      "id": "s2-conv-power-rangers-01",
+      "name": "Tommy Oliver",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "legendary",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 53,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-02",
+      "name": "Jason Lee Scott",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "epic",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 54,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-03",
+      "name": "Kimberly Hart",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "epic",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 55,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-04",
+      "name": "Billy Cranston",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "rare",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 56,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-05",
+      "name": "Rita Repulsa",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "rare",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 57,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-06",
+      "name": "Trini Kwan",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 58,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-07",
+      "name": "Zack Taylor",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 59,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-08",
+      "name": "Lord Zedd",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 60,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-09",
+      "name": "Zordon",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 61,
+      "alreadyArchived": false
+    },
+    {
+      "id": "s2-conv-power-rangers-10",
+      "name": "Alpha 5",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 62,
+      "alreadyArchived": false
+    }
+  ],
+  "archiveReceipt": {
+    "format": "mashup-offline-universe-archive-receipt-v1",
+    "scope": "offline-copy-only",
+    "beforeCatalogueHash": "89434e84bff2b1ac0c27757358e116f9399d490b5a049eff1fd11017553845bb",
+    "afterCatalogueHash": "32ac54daea88cfa08e4e50951ecc479c85413625370be926ad7cd21fb92bc1f2",
+    "changes": [
+      {
+        "id": "s2-conv-power-rangers-01",
+        "index": 50,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-02",
+        "index": 51,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-03",
+        "index": 52,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-04",
+        "index": 53,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-05",
+        "index": 54,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-06",
+        "index": 55,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-07",
+        "index": 56,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-08",
+        "index": 57,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-09",
+        "index": 58,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      },
+      {
+        "id": "s2-conv-power-rangers-10",
+        "index": 59,
+        "beforeArchived": {
+          "present": false
+        },
+        "afterArchived": true
+      }
+    ]
+  },
+  "archiveFlagRoundTripExact": true,
+  "productionOperationExecuted": false,
+  "productionCountsVerified": false,
+  "notes": [
+    "Exactly ten repository cards are archived; no record or illustration is deleted.",
+    "Terre, Halloween and Margot are metadata-only protected names in this file, not additional records to count.",
+    "The deployed catalogue comes from Supabase bootstrap and has not been inspected.",
+    "Restore the recorded archive flags only; manual totals intentionally stay removed."
+  ]
+}

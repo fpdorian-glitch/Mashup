@@ -12,6 +12,7 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 globalThis.fetch=()=>{throw Error('Network prohibited in phase 0 tests');};
 function fragment(file){
  const ctx=vm.createContext({crypto:{randomUUID},fail:(status,message)=>{throw Object.assign(new Error(message),{status});},getPackMap:()=>({starter:{name:'Test booster'}})});
+ vm.runInContext(read('backend/catalogue-core.js'),ctx,{filename:'backend/catalogue-core.js',timeout:1000});
  vm.runInContext(read(file),ctx,{filename:file,timeout:1000});return ctx;
 }
 function fixture(){
@@ -23,7 +24,7 @@ const money=db=>db.users.reduce((n,u)=>n+u.state.coins,0);
 test('Référence phase 0 : fichiers inchangés et baseline historique des fichiers V13 modifiés',()=>{
  const manifest=JSON.parse(read('docs/phase-0/source-inventory.json'));
  assert.ok(manifest.files.length>40);
- const revised=new Set(['index.html','06-v10-cards.js','04-games-ui.js','09-mashup-updates.js','10-development-journal.js','12-booster-reveal.js','20-market-v10-9.js','32-v12-performance.js','version.json']);
+ const revised=new Set(['index.html','06-v10-cards.js','04-games-ui.js','09-mashup-updates.js','10-development-journal.js','12-booster-reveal.js','20-market-v10-9.js','18-v10-8-collection.js','patrons/index.html','content/convergence-series2.json','backend/collection-rewards-v10-8.js','backend/collection-rewards-v10-9.js','backend/achievements-v11.js','backend/leaderboards-v11.js','32-v12-performance.js','version.json']);
  for(const f of manifest.files){
   const bytes=revised.has(f.path)?spawnSync('git',['show','d6ed7db3e522d41f4cb1ed91b4ed09aa88539e49:'+f.path],{cwd:root}):null;
   if(bytes)assert.equal(bytes.status,0,'Baseline historique '+f.path);

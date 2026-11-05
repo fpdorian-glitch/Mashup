@@ -1,5 +1,6 @@
 /* Mashup V11 — permanent, one-time, server-validated achievements.
  * Player progress is based on the authoritative catalog and game state.
+ * Requires catalogue-core.js, loaded before this fragment.
  */
 const V11_ACHIEVEMENT_DEFS=[
  {id:'first_legend',title:'Premier contact',hint:'Obtenir une carte légendaire ou supérieure',goal:1,reward:150},
@@ -10,11 +11,14 @@ const V11_ACHIEVEMENT_DEFS=[
  {id:'encyclopedia',title:'L’Encyclopédie',hint:'Compléter une série normale entière',goal:1,reward:1400}
 ];
 function achievementV11Progress(u,db){
- const owned=db.cards.filter(c=>!c.archived&&(Number(u.state?.owned?.[c.id])||0)>0);
+ const owned=catalogueActiveCards(db.cards).filter(c=>catalogueOwnedCopies(u.state?.owned,c.id)>0);
+ const seenSeries=new Set();
  const completedSeries=(Array.isArray(db.series)?db.series:[]).filter(ser=>{
-   const total=ser.number===1?158:(Number(ser.targetCount)||1);
-   const got=owned.filter(c=>c.variant!=='secret'&&(Number(c.editionSeries)||1)===Number(ser.number)).length;
-   return got>=total;
+   const number=Number(ser?.number);
+   if(!Number.isSafeInteger(number)||number<1||seenSeries.has(number))return false;
+   seenSeries.add(number);
+   const {total,owned:got}=catalogueSeriesMetrics(db.cards,number,u.state?.owned||{});
+   return total>0&&got>=total;
  }).length;
  return {first_legend:owned.filter(c=>['legendary','mythic','ultra'].includes(c.rarity)).length,
    myth_hunter:owned.filter(c=>c.rarity==='mythic').length,

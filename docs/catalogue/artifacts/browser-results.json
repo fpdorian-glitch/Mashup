@@ -1,0 +1,467 @@
+{
+  "baseline": "e8461cb",
+  "productionRequests": 0,
+  "checks": [
+    "Compte automatique initial 45/90=50%, doublons et anciens totaux158/130/999 ignorés",
+    "Album et filtres utilisent le catalogue entier, sans renumérotation après filtre",
+    "Création normale ->total 91 automatiquement, ID conservé et attribution client existante",
+    "Univers Power Rangers absent des choix actifs; dix archives administrateur restaurables, booster 91 normales",
+    "Archivage hors catalogue actif, propriété et références decks inchangées, nouveau combat bloqué",
+    "Restauration ->91, numéros visibles recalculés, numéros historiques stockés inchangés",
+    "Ajout et archivage Secrète hors total normal, numéro historique préservé",
+    "Nouvelle série vide 0/0, total non éditable et aucun trophée vide",
+    "Rechargement et changement de format de snapshot cohérents, métadonnée publique facultative",
+    "Autre compte: même total 91, progression propre 45, Secrètes inconnues sans emplacement ni métadonnées",
+    "Payload partiel :91 emplacements normaux canoniques, pochettes neutres et progression45/91"
+  ],
+  "screenshots": [
+    "collection-auto-45-90.png",
+    "album-auto.png",
+    "admin-series-auto.png"
+  ],
+  "limits": "API/Auth intercepted; no physical phone, live database or deployed Edge Function tested.",
+  "success": true,
+  "nodeErrors": [],
+  "consoleErrors": [],
+  "apiCalls": [
+    {
+      "route": "/api/status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards",
+      "method": "POST",
+      "payload": {
+        "card": {
+          "editionSeries": "2",
+          "name": "Nouvelle normale fictive",
+          "subtitle": "Une nouvelle légende",
+          "family": "Original",
+          "rarity": "rare",
+          "power": 72,
+          "size": 50,
+          "def": 66,
+          "aura": 78,
+          "intelligence": 76,
+          "icon": "✨",
+          "color1": "#5c7f8d",
+          "color2": "#453d69",
+          "ability": "Talent unique",
+          "desc": "Une carte imaginée dans ton univers.",
+          "art": "",
+          "variant": "standard"
+        }
+      }
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/archive-card",
+      "method": "POST",
+      "payload": {
+        "id": "s2-conv-obsession-01",
+        "archived": true
+      }
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/archive-card",
+      "method": "POST",
+      "payload": {
+        "id": "s2-conv-obsession-01",
+        "archived": false
+      }
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards",
+      "method": "POST",
+      "payload": {
+        "card": {
+          "editionSeries": "2",
+          "name": "Secrète de test",
+          "subtitle": "Une nouvelle légende",
+          "family": "Original",
+          "rarity": "rare",
+          "power": 72,
+          "size": 50,
+          "def": 66,
+          "aura": 78,
+          "intelligence": 76,
+          "icon": "✨",
+          "color1": "#5c7f8d",
+          "color2": "#453d69",
+          "ability": "Talent unique",
+          "desc": "Une carte imaginée dans ton univers.",
+          "art": "",
+          "variant": "secret"
+        }
+      }
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/archive-card",
+      "method": "POST",
+      "payload": {
+        "id": "fiction-created-108",
+        "archived": true
+      }
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/series",
+      "method": "POST",
+      "payload": {
+        "series": [
+          {
+            "number": 1,
+            "name": "Origine fictive",
+            "targetCount": 0,
+            "description": "",
+            "color": "#8fbab2",
+            "cover": "✦"
+          },
+          {
+            "number": 2,
+            "name": "Convergence",
+            "targetCount": 91,
+            "description": "",
+            "color": "#a6ccc3",
+            "cover": "✦"
+          },
+          {
+            "number": 3,
+            "name": "Série vide",
+            "targetCount": 0,
+            "description": "",
+            "color": "#8fbab2",
+            "cover": "✦"
+          },
+          {
+            "number": 4,
+            "name": "Série 04",
+            "description": "Une nouvelle collection",
+            "color": "#8fbab2",
+            "cover": "✦",
+            "targetCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "route": "/api/admin/users",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/cards/archived",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/admin/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/status",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET",
+      "payload": null
+    },
+    {
+      "route": "/api/collection/rewards",
+      "method": "GET",
+      "payload": null
+    }
+  ]
+}

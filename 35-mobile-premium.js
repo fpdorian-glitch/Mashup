@@ -14,7 +14,7 @@ export function homeMarkup({esc,cards,renderCard,packs,state,user,owned,total}){
  const featured=cards.filter(c=>!c.hidden&&!c.archived&&Number(state.owned?.[c.id])>0).sort((a,b)=>(rank[b.rarity]||0)-(rank[a.rarity]||0)).slice(0,3);
  const pack=packs.find(p=>p.free&&!state.freePackUsed)||packs[0];
  const discoveries=Math.max(0,Number(owned)||0),catalogue=Math.max(0,Number(total)||0);
- const percent=catalogue?Math.min(100,Math.round(discoveries/catalogue*100)):0;
+ const percent=catalogue?Math.min(100,Math.floor(discoveries/catalogue*100)):0;
  const first=String(user?.pseudo||'Collectionneur').split(' ')[0];
  const openings=Math.max(0,Number(state.opened)||0),victories=Math.max(0,(Number(state.wins)||0)+(Number(state.doubleWins)||0));
  return `<section class="m13-home m14-sanctuary"><header class="m13-greeting"><div><span class="m13-eyebrow">MASHUP · LE MULTIVERS À COLLECTIONNER</span><h1>${first==='Collectionneur'?'Ton sanctuaire':'Bienvenue, '+esc(first)}<span>.</span></h1></div><button class="m13-profile" data-view="profile" aria-label="Mon profil">${icon('profile')}</button></header>

@@ -1,10 +1,10 @@
 {
-  "version": "15.1.0",
+  "version": "15.2.0",
   "publishedAt": "2026-11-05",
   "notes": [
-    "Arena Reborn : scène de duel physique et séquence interruptible.",
-    "Règle Plus grand / Plus faible toujours proche des cinq choix.",
-    "Échanges visuels entre vos collections, filtres et quantités.",
-    "Modes Spectaculaire, Équilibré et Fluidité."
+    "Totaux des séries et progressions calculés depuis le catalogue actif.",
+    "Numéros normaux compacts ; numéros historiques des Secrètes conservés hors série.",
+    "Archivage réversible préparé pour les Power Rangers de Convergence.",
+    "Aucune opération sur les données de production sans validation."
   ]
 }
