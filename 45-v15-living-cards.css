@@ -26,6 +26,7 @@
   overflow:visible;border-radius:4.2%;backface-visibility:hidden;
 }
 .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card{
+  --v154-lobe-width:inherit;
   transform-style:preserve-3d;isolation:auto;overflow:visible;
   transform:none;transition:none;box-shadow:none!important;
 }
@@ -86,3 +87,77 @@ html[data-m13-quality=eco] .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14
   .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card{transform-style:flat;overflow:hidden;isolation:isolate}
   .v15-card-object>.inspect-front .tcg-card.v10-tcg.v14-card>*{transform:none!important}
 }
+
+/* V15.4 — the same printed card, with a material-specific reflection model.
+   Reuse the existing stock and art coating: no extra full-card optical layers.
+   Grids have a fixed studio light; only direct inspection input moves it. */
+.tcg-card.v10-tcg.v14-card{
+  --v154-film-a:#dce7df;--v154-film-b:#f5f1dc;--v154-film-opacity:.045;
+  --v154-lobe-width:55%;--v154-frame-angle:var(--v15-light-angle,128deg);
+}
+.tcg-card.v10-tcg.v14-card.rare{--v154-film-a:#7eb9d7;--v154-film-b:#d7ecff;--v154-film-opacity:.14;--v154-lobe-width:46%}
+.tcg-card.v10-tcg.v14-card.epic{--v154-film-a:#b86cf0;--v154-film-b:#7867df;--v154-film-opacity:.21;--v154-lobe-width:39%}
+.tcg-card.v10-tcg.v14-card.legendary{--v154-film-a:#edba50;--v154-film-b:#fff1bc;--v154-film-opacity:.24;--v154-lobe-width:31%}
+.tcg-card.v10-tcg.v14-card.mythic{--v154-film-a:#d83952;--v154-film-b:#e5b466;--v154-film-opacity:.28;--v154-lobe-width:29%}
+.tcg-card.v10-tcg.v14-card.ultra{--v154-film-a:#b5dbea;--v154-film-b:#fff;--v154-film-opacity:.3;--v154-lobe-width:26%}
+.tcg-card.v10-tcg.v14-card.variant-full_art{--v154-film-opacity:.13;--v154-lobe-width:55%}
+.tcg-card.v10-tcg.v14-card.variant-gold{--v154-film-a:#e4a83e;--v154-film-b:#fff5cb;--v154-film-opacity:.23;--v154-lobe-width:27%}
+.tcg-card.v10-tcg.v14-card.variant-secret{--v154-film-a:#55c99b;--v154-film-b:#d3ef9b;--v154-film-opacity:.31;--v154-lobe-width:26%}
+.tcg-card.v10-tcg.v14-card.v14-ultra-secret{--v154-film-a:#99f6ce;--v154-film-b:#fff8dd;--v154-film-opacity:.34;--v154-lobe-width:25%}
+/* The printed substrate is fixed to the object. Only the coating and bevel
+   track the light; rotating every stock gradient repaints the whole card. */
+.tcg-card.v10-tcg.v14-card .v14-stock{--v154-frame-angle:128deg}
+
+.tcg-card.v10-tcg.v14-card .v14-optics.v10-foil{
+  background:
+    radial-gradient(ellipse var(--v154-lobe-width,40%) 54% at var(--v154-light-x,var(--m13-x,50%)) var(--v154-light-y,var(--m13-y,28%)),#fff8,transparent 76%),
+    linear-gradient(var(--v154-frame-angle),transparent 15%,color-mix(in srgb,var(--v154-film-a) 48%,transparent) 34%,#fff9 42%,color-mix(in srgb,var(--v154-film-b) 52%,transparent) 47%,transparent 64%)!important;
+  opacity:var(--v154-film-opacity)!important;
+  mask-image:linear-gradient(180deg,transparent,#000 13%,#000 72%,transparent 87%);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 13%,#000 72%,transparent 87%);
+}
+.inspect-front .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil{
+  opacity:calc(var(--v154-film-opacity) + var(--v154-grazing,.04))!important;
+}
+/* Grain belongs to the frame substrate and never crosses the printed type. */
+.tcg-card.v10-tcg.v14-card.rare .v14-stock{
+  background:repeating-linear-gradient(0deg,#ffffff04 0 1px,transparent 1px 4px),linear-gradient(var(--v154-frame-angle),#142c3a,#2f4b59 36%,#a0b6bd45 42%,#1d3847 46%,#0e202c 82%);
+}
+.tcg-card.v10-tcg.v14-card.epic .v14-stock{
+  background:linear-gradient(var(--v154-frame-angle),#1a102d 9%,#4d2f63 38%,#ba8ad13b 41%,#3b214d 45%,#1e132e 70%,#6a42831f),#23142f;
+}
+.tcg-card.v10-tcg.v14-card.legendary .v14-stock{
+  background:linear-gradient(var(--v154-frame-angle),#21190f 8%,#745020 29%,#d4ad6952 36%,#fff1c333 38%,#7b571c 41%,#312310 58%,#b4925033 83%,#332411);
+}
+.tcg-card.v10-tcg.v14-card.mythic .v14-stock{
+  background:linear-gradient(var(--v154-frame-angle),#0b090d 8%,#30141d 31%,#9a26363b 39%,#edc47c45 41%,#160d13 44%,#08090c 66%,#a36a3a38 89%,#110c10);
+}
+.tcg-card.v10-tcg.v14-card.mythic .v14-corner-inlays{color:#b1424f}
+.tcg-card.v10-tcg.v14-card.ultra .v14-stock{
+  background:linear-gradient(var(--v154-frame-angle),#b0bec8 1%,#f9fcfd 20%,#fff 30%,#90a5b2 38%,#ecf4f6 43%,#fff 66%,#abc2ca 82%,#f7fcfd 91%);
+}
+.tcg-card.v10-tcg.v14-card.variant-gold .v14-stock{
+  background:repeating-linear-gradient(95deg,#f8db9104 0 1px,transparent 1px 5px),linear-gradient(var(--v154-frame-angle),#a16f2b 4%,#efcf84 20%,#fff1b7 29%,#b38135 39%,#f0d58f 45%,#f8e2a2 66%,#b28031 83%,#e9cb83 96%);
+}
+.tcg-card.v10-tcg.v14-card.variant-secret .v14-stock{
+  background:linear-gradient(var(--v154-frame-angle),#06130f 5%,#173e2f 28%,#6bba8840 38%,#cde1a13d 40%,#08291d 43%,#04140e 67%,#63a77438 87%,#0d291c);
+}
+.tcg-card.v10-tcg.v14-card.variant-secret .v14-secret-line{
+  stroke:#b0e1b2;stroke-width:.7;opacity:.84;
+}
+.tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-stock{
+  background:linear-gradient(var(--v154-frame-angle),#82958d,#e5f1dc 17%,#9dc8b8 28%,#fefae4 40%,#7cb4a5 44%,#d8eee5 62%,#eaf4e2 79%,#759c8b 89%,#ebeed8);
+}
+/* The secret's guilloché becomes a green interference arc, not a second glow. */
+.tcg-card.v10-tcg.v14-card.variant-secret .v14-optics.v10-foil{
+  background:
+    radial-gradient(ellipse 76% 36% at var(--v154-light-x,var(--m13-x,50%)) var(--v154-light-y,var(--m13-y,28%)),transparent 36%,#d0f3c470 39%,#5cce9d4d 42%,transparent 46%),
+    linear-gradient(var(--v154-frame-angle),transparent 15%,#5ee2b13d 35%,#efffd7a3 41%,#abec9a57 45%,transparent 59%)!important;
+}
+.v15-card-object>.v15-object-bevel{
+  box-shadow:inset .35px .35px #ffffffe0;
+  opacity:calc(var(--v15-rim-strength,.78) * (.8 + var(--v154-metallic,.5)*.2));
+}
+html[data-m13-quality=eco] .tcg-card.v10-tcg.v14-card .v14-stock{background:var(--v14-body)}
+html[data-m13-quality=eco] .tcg-card.v10-tcg.v14-card.variant-gold .v14-stock{background:#d3b16c}
+html[data-m13-quality=eco] .tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-stock{background:#d6e3d9}

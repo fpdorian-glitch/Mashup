@@ -1,0 +1,35 @@
+{
+  "baseline": "d486c86",
+  "engine": "155.0.8059.79",
+  "productionRequests": 0,
+  "checks": [
+    "Échange invalide annulé, plateau et budget inchangés; partie protégée contre actualisation PWA",
+    "Victoire validée après réponse perdue et retry du même identifiant : une seule récompense de20crédits et solde immédiat",
+    "Rejouer un niveau terminé ne réattribue pas sa première récompense",
+    "Actualisation et second navigateur retrouvent progression/étoiles serveur; autre compte indépendant et accès admin masqué",
+    "Admin : tranches, gain individuel, replays plafonnés, prévisualisation100gains; configuration commune et gain73appliqué au niveau2",
+    "Replay : gain réduit3crédits puis plafond journalier par niveau, sans réattribution de première victoire",
+    "Pause des gains commune : annonce claire, victoire sans crédit et droit conservé; réactivation attribue la première récompense une seule fois",
+    "Navigation pendant réponse admin : aucun panneau tardif ajouté à la nouvelle page",
+    "Ancien backend200{} détecté : entraînement complet distinct, progression locale après reload, zérocrédit; 320/390/1024px sans débordement et mouvement réduit"
+  ],
+  "screenshots": [
+    "match-campaign.png",
+    "match-board-level-1.png",
+    "match-first-victory.png",
+    "match-admin-economy.png",
+    "match-training-mobile.png"
+  ],
+  "limits": "Chromium Linux, tactile et dimensions simulés. API/auth interceptées; service privé local transactionnel en mémoire. Aucun téléphone physique, SQL Supabase ou backend déployé testé.",
+  "matchVideo": {
+    "available": true,
+    "name": "match-preview.webm",
+    "frames": 30,
+    "durationSeconds": 1.62,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "expectedNetworkErrors": [
+    "Failed to load resource: net::ERR_FAILED [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-games?route=match%2Fmove]"
+  ],
+  "success": true
+}

@@ -22,9 +22,15 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 5 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V15.3.1 — Compteurs du Codex corrigés</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.3.1</span></div>'+
-      '<p>Choisis les cartes de ta vitrine depuis une véritable galerie. Sur le Marché, toutes les cartes proposées à la vente affichent leurs illustrations, même les Secrètes non découvertes par l’acheteur.</p>'+
+      '<h4>Mashup V15.4 — Le Nexus des mondes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.4.0</span></div>'+
+      '<p>Entre dans le Nexus : une arène plus vivante, des cartes aux matières affinées et un nouveau défi. Mashup Match propose 100 niveaux, dix mondes, des bonus et des cascades. Le mode entraînement reste disponible sur cet appareil ; les crédits et la progression en ligne nécessitent le service de campagne activé.</p>'+
       '<div class="dev-v12-changes">'+
+      '<span>Arène Nexus : plateau immersif, rail des quatre manches, confrontation et résultats détaillés.</span>'+
+      '<span>La direction MAX/MIN, la statistique et la manche restent réunies près des commandes.</span>'+
+      '<span>Booster tactile, confirmation automatique, bilan conservé et récupération d’une ouverture interrompue.</span>'+
+      '<span>Casino : prochain combat IA visible en tête, heure serveur et reprise après veille.</span>'+
+      '<span>Mashup Match : alignements, bonus directionnels, prismes, zones, obstacles et dix mondes.</span>'+
+      '<span>Actualisation différée pendant les boosters, combats, mini-jeux et sauvegardes.</span>'+
       '<span>Collections : total réel des cartes normales actives, indépendamment des cartes déjà découvertes.</span>'+
       '<span>Succès et récompenses de collection : mêmes calculs serveur, aucune carte Secrète exigée.</span>'+
       '<span>Vitrine : sélection des trois cartes et de la carte principale depuis la collection filtrable.</span>'+
@@ -42,6 +48,7 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
       '<span>Un objet en relief : tranches métalliques et plusieurs plans en inspection tactile.</span>'+
       '</div>'+
       '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+
+      '<p><b>V15.3.2 :</b> confirmations automatiques des boosters et reprise des tirages interrompus, sans double débit.</p>'+
       '<p><b>V13.0 :</b> nouvel accueil Éclipse, navigation mobile, effets adaptatifs, decks optimisés et réponses réseau fiabilisées.</p>'+
       '<p><b>V12.1 :</b> galerie de patrons et archivage réversible des cartes dans l’administration.</p>'+
       '<p><b>V12.0 :</b> harmonisation mobile, finitions de cartes affinées, boosters plus fluides et fiabilisation de la collection.</p>'+

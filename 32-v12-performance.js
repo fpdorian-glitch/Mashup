@@ -3,9 +3,9 @@
 export function startMashupV12Performance() {
   if (typeof window === 'undefined' || typeof document === 'undefined' || window.__mashupV12PerformanceStarted) return;
   window.__mashupV12PerformanceStarted = true;
-  document.documentElement.dataset.mashupBuild = '14.0.0';
+  document.documentElement.dataset.mashupBuild = '15.4.0';
   const page = document.getElementById('page');
-  const selector = ['.collection-grid', '.v11-market-grid', '.v114-picker-grid', '.deck-roster-grid', '.arena-deck-cards']
+  const selector = ['.collection-grid', '.v11-market-grid', '.v114-picker-grid', '.v151-trade-grid', '.v15-album-leaf', '.deck-roster-grid', '.arena-deck-cards']
     .map(grid => grid + ' .tcg-card.v10-tcg').join(',');
   const scanned = new WeakSet(), observed = new Set(), pending = new Set();
   const viewport = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {

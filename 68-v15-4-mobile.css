@@ -1,0 +1,32 @@
+/* V15.4: bounded list paint, generous touch targets, no changes to card faces. */
+/* Inspection owns its scene. Avoid filtering an entire illustrated collection
+   behind a moving card; keep that page's layout/scroll position for dismissal. */
+.modal-backdrop.inspect-backdrop {
+  background: radial-gradient(ellipse at 50% 30%, #16302f, #08121c 72%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  overscroll-behavior: contain;
+}
+body:has(#modal-root .inspect-backdrop) #page { visibility: hidden; }
+@supports (content-visibility: auto) {
+  #admin-card-list .admin-card-row,
+  #admin-archived-list .admin-card-row {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 76px;
+  }
+  .games-leaderboard .games-leader-games,
+  .games-bet-table .games-row {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 48px;
+  }
+}
+@media (max-width: 700px) {
+  .btn, .icon-button, .stat-choice { min-height: 44px; }
+  .icon-button { min-width: 44px; }
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+  select { min-height: 44px; font-size: 16px; }
+  .admin-credit-actions { flex-wrap: wrap; }
+  .admin-credit-actions input { min-width: 90px; max-width: 100%; }
+  #series-editor, .games-layout, .collection-controls, .v151-trade-grid { min-width: 0; }
+  .mashup-update-banner { max-width: calc(100vw - 24px); }
+}

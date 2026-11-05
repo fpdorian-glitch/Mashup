@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "productionRequests": 0,
+  "renderedCards": 24,
+  "stats": 120,
+  "distinctSubstrates": 6,
+  "swipeCancel": true,
+  "swipeOpen": true,
+  "reducedMotion": true,
+  "mobileWidth": 320,
+  "physicalPhone": false,
+  "limits": "Chromium Linux. Fictional presentation data; network intercepted. No physical phone, deployed backend or live account tested.",
+  "screenshots": [
+    "v154-card-materials.png",
+    "v154-seal-gesture.png",
+    "v154-booster-review.png"
+  ]
+}

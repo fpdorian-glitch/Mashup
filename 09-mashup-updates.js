@@ -4,7 +4,11 @@
  */
 (()=>{
   'use strict';
-  const CURRENT_VERSION='15.3.2';
+  const CURRENT_VERSION='15.4.0';
+  // A cached HTML document can load a newer updater asset. The visible client
+  // version belongs to the HTML snapshot, not to this individual script.
+  const htmlVersion=document.querySelector?.('meta[name="mashup-version"]')?.content;
+  const CLIENT_VERSION=/^\d+\.\d+\.\d+$/.test(String(htmlVersion||''))?htmlVersion:CURRENT_VERSION;
   const CHECK_EVERY_MS=4*60*1000;
   const REFRESH_GUARD_MS=45000;
   const $=id=>document.getElementById(id);
@@ -13,6 +17,16 @@
   let available=null;
   let dismissedVersion='';
   let messageTimer=0;
+  function reloadAllowed(){
+    try{
+      const state=window.MASHUP_UPDATE_SAFETY?.();
+      if(state?.safe===false){notify(state.reason||'Une action est en cours. Termine-la avant de mettre à jour.');return false;}
+      if(!state&&document.querySelector?.('.opening-fullscreen,.opening-loading,.rb-arena,.games-mini-playing,.mm-play,[aria-busy="true"]')){
+        notify('Termine ton action et reviens à l’accueil avant de mettre à jour.');return false;
+      }
+      return true;
+    }catch{notify('Le jeu est en cours de chargement. Réessaie dans quelques instants.');return false;}
+  }
   const versionParts=v=>String(v||'').split('.').map(Number);
   function newer(a,b){
     if(!/^\d+(?:\.\d+){0,2}$/.test(String(a||''))||!/^\d+(?:\.\d+){0,2}$/.test(String(b||'')))return false;
@@ -62,7 +76,7 @@
         if(!response.ok)throw Error('HTTP '+response.status);
         const info=await response.json();
         if(!info || typeof info.version!=='string'||!/^\d+(?:\.\d+){0,2}$/.test(info.version))throw Error('Version incorrecte');
-        if(newer(info.version,CURRENT_VERSION)){
+        if(newer(info.version,CLIENT_VERSION)){
           available={version:info.version,notes:info.notes};
           // A manual check reopens a banner previously dismissed with "Plus tard".
           if(manual)dismissedVersion='';
@@ -71,7 +85,7 @@
         }else{
           available=null;
           hideRelease();
-          if(manual)notify('Mashup est à jour : V'+CURRENT_VERSION,'success');
+          if(manual)notify('Mashup est à jour : V'+CLIENT_VERSION,'success');
         }
       }catch(error){
         if(manual)notify('Impossible de vérifier les mises à jour. Vérifie ta connexion.','error');
@@ -83,6 +97,7 @@
   }
   async function applyUpdate(){
     if(!available)return;
+    if(!reloadAllowed())return;
     const target=available.version;
     const button=$('mashup-update-apply');
     if(button){button.disabled=true;button.textContent='Vérification…';}
@@ -97,6 +112,11 @@
       const markup=await result.text();
       const published=markup.match(/<meta\s+name=["']mashup-version["']\s+content=["']([0-9.]+)["']/i);
       if(!published||newer(target,published[1]))throw Error('Version pas encore diffusée');
+      // A purchase or a game may have started while the HTML probe was pending.
+      if(!reloadAllowed()){
+        if(button){button.disabled=false;button.textContent='Mettre à jour';}
+        return;
+      }
       // iOS standalone apps retain their URL and Supabase local auth.
       // A fresh query string bypasses old HTML cache without clearing data.
       const destination=new URL(window.location.href);
@@ -111,7 +131,7 @@
   function initialize(){
     const badge=$('mashup-update-check');
     if(badge){
-      badge.title='V'+CURRENT_VERSION+' — rechercher une mise à jour';
+      badge.title='V'+CLIENT_VERSION+' — rechercher une mise à jour';
       badge.addEventListener('click',()=>checkUpdates(true));
     }
     $('mashup-update-apply')?.addEventListener('click',applyUpdate);
@@ -129,5 +149,5 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initialize,{once:true});
   else initialize();
   // Exposed read-only for the settings display and manual diagnostics.
-  Object.defineProperty(window,'MASHUP_VERSION',{value:CURRENT_VERSION,configurable:false});
+  Object.defineProperty(window,'MASHUP_VERSION',{value:CLIENT_VERSION,configurable:false});
 })();

@@ -1,0 +1,66 @@
+{
+  "scope": "synthetic-browser-inspection-only-not-physical-phone",
+  "baselineCommit": "f82a8cd",
+  "before": {
+    "quality": "high",
+    "repeats": 3,
+    "baselineMedianP95Ms": 16.8,
+    "draftMedianP95Ms": 33.3,
+    "draftSamples": [
+      {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.3,
+        "maxMs": 33.4,
+        "over33ms": 2
+      },
+      {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.3,
+        "maxMs": 33.4,
+        "over33ms": 2
+      },
+      {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 100,
+        "over33ms": 1
+      }
+    ]
+  },
+  "after": {
+    "quality": "high",
+    "repeats": 3,
+    "baselineMedianP95Ms": 33.3,
+    "finalMedianP95Ms": 16.7,
+    "finalSamples": [
+      {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 16.8,
+        "over33ms": 0
+      },
+      {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.7,
+        "maxMs": 16.8,
+        "over33ms": 0
+      },
+      {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.7,
+        "maxMs": 16.8,
+        "over33ms": 0
+      }
+    ]
+  },
+  "change": "Dedicated opaque inspection scene; background page visibility preserves layout while avoiding backdrop-filter repaint; printed stock is static while coating/bevel still respond to light.",
+  "productionRequests": 0,
+  "beforeBaselineCommit": "f82a8cd",
+  "afterBaselineCommit": "d486c86"
+}
