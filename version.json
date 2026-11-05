@@ -1,5 +1,5 @@
 {
-  "version": "15.3.1",
+  "version": "15.3.2",
   "publishedAt": "2026-11-05",
-  "notes": "Correction des compteurs de collection sur le total réel des cartes normales, et synchronisation des succès et récompenses. Les Secrètes restent hors progression."
+  "notes": "Sécurisation des boosters : confirmation automatique après la dernière révélation, récupération d'une ouverture interrompue, protection contre les doubles débits."
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090d16" />
-  <meta name="mashup-version" content="15.3.1" />
+  <meta name="mashup-version" content="15.3.2" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
@@ -729,7 +729,7 @@
   <link rel="stylesheet" href="./47-v15-booster.css?v=15.0.0">
   <link rel="stylesheet" href="./51-v15-arena.css?v=15.0.0">
   <link rel="stylesheet" href="./52-v15-shell.css?v=15.0.0">
-  <link rel="stylesheet" href="./60-v15-3-showcase-market.css?v=15.3.1">
+  <link rel="stylesheet" href="./60-v15-3-showcase-market.css?v=15.3.2">
   <link rel="stylesheet" href="./54-v15-1-arena.css?v=15.1.0">
   <link rel="stylesheet" href="./55-v15-1-trades.css?v=15.1.0">
 </head>
@@ -1068,7 +1068,7 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=15.3.1" defer></script>
+<script src="./09-mashup-updates.js?v=15.3.2" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { albumMarkup } from './43-v15-album.js?v=15.2.0';
@@ -1089,14 +1089,18 @@ import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=15.2.0';
 import { createMarketUI } from './20-market-v10-9.js?v=15.1.0';
-import { createV11UI } from './22-v11-economy-ui.js?v=15.3.1';
-import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=15.3.1';
-import { createShowcasePicker } from './59-v15-3-showcase-picker.js?v=15.3.1';
+import { createV11UI } from './22-v11-economy-ui.js?v=15.3.2';
+import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=15.3.2';
+import { createShowcasePicker } from './59-v15-3-showcase-picker.js?v=15.3.2';
+import { createPendingPackStorage, shouldConfirmRevealedPack } from './62-pack-recovery.js?v=15.3.2';
 startMashupV12Performance();
 const mashupAuth=createClient('https://lxpgdhwfxeicuofycqup.supabase.co','sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 /* MASHUP en ligne — interface du jeu connectée au serveur privé. */
 'use strict';
+const pendingPackStore=createPendingPackStorage({getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v),removeItem:k=>localStorage.removeItem(k)});
+let pendingPackRecoveryBusy=false;
+let pendingRecoveryTicket=null;
 
 /* Cinq statistiques de comparaison : scores de 0 à 100.
    Taille = gabarit physique (pas la taille de la personnalité). */
@@ -1417,8 +1421,22 @@ const gamesUI = createGamesUI({
   }
 });
 
+function pendingPackMarkup(){
+ const ticket=pendingPackStore.read(onlineUser?.id);
+ if(!ticket)return '';
+ const pack=PACKS.find(p=>p.id===ticket.packId);
+ return `<section class="panel" role="status" aria-label="Booster à confirmer" style="margin:16px 0;border-color:#b9a368">
+   <div class="eyebrow">✦ OUVERTURE NON TERMINÉE</div><h3>Un booster attend sa confirmation</h3>
+   <p>Ton booster ${esc(pack?.name||'précédent')} a été préparé, mais sa confirmation doit être vérifiée. Si le serveur l’a déjà enregistré, tu ne paieras pas une seconde fois.</p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap">
+     <button class="btn btn-primary btn-sm" data-action="recover-pending-pack" type="button">Valider et récupérer mes cartes</button>
+     <button class="btn btn-sm" data-action="abandon-pending-pack" type="button">Abandonner ce tirage</button>
+   </div>
+ </section>`;
+}
 function renderPacks(){
   document.getElementById('page').innerHTML=`
+    ${pendingPackMarkup()}
     ${homeMarkup({esc,cards:allCards(),renderCard:cardMarkup,packs:PACKS,state,user:onlineUser,owned:ownedCount(),total:currentCatalogue().metrics().total})}
     <section><div class="section-top"><div><div class="eyebrow">01 / LES INVOCATIONS</div><h3 class="small-heading">Choisis ton booster.</h3><p>Chaque ouverture est une surprise. Les boosters cachent une galaxie, et les doublons rapportent des éclats.</p></div><span class="pill">✦ Des découvertes à chaque ouverture</span></div>
     <div class="pack-grid">${PACKS.map((p,i)=>`<article class="pack ${i===PACKS.length-1?'pack-featured':''}"><div class="pack-head"><span class="pack-index">PACK ${String(i+1).padStart(2,'0')}</span><span class="pack-chip">${esc(p.chip||((p.count>=5)?'5 CARTES':'ÉDITION'))}</span></div><div class="pack-visual"><div class="pack-art-gleam" style="--p1:${p.p1}"></div><div class="pack-pouch" style="--p1:${p.p1};--p2:${p.p2}">${GALAXY_MARK}</div></div><h4>${esc(p.name)}</h4><div class="pack-desc">${esc(p.description||`${p.count} cartes`)}</div><div class="pack-bottom"><span class="pack-price">${p.free&&!state.freePackUsed?'GRATUIT':Number(packVouchers[p.id])>0?'🎟 BON OFFERT ×'+Number(packVouchers[p.id]):p.price+(p.currency==='dust'?' <small>✧</small>':' <small>◉</small>')}</span><button class="btn btn-sm ${i===PACKS.length-1?'btn-primary':''}" data-action="open-pack" data-pack="${p.id}">Ouvrir <span class="arrow">↗</span></button></div></article>`).join('')}</div></section>
@@ -1435,6 +1453,7 @@ function weightedCard(minRarity){
 }
 function rollCard(){const options=allCards().filter(c=>RARITIES[c.rarity]);return options[Math.floor(Math.random()*options.length)];}
 async function openPack(id){
+ if(onlineUser&&pendingPackStore.read(onlineUser.id)){toast('Confirme ou abandonne ton booster en attente avant d’en ouvrir un autre.',true);return;}
  if(!onlineUser||packLoading||packPendingId||packFinalizing)return;
  if(packCancelPromise){toast('Annulation du booster précédent en cours…',true);return;}
  const attemptEpoch=sessionEpoch;
@@ -1447,6 +1466,7 @@ async function openPack(id){
   const r=await api('/api/packs/prepare',{id,attemptId});
   if(packCancelRequested){packCancelPromise=api('/api/packs/cancel',{id,openingId:r.openingId}).catch(()=>{});try{await packCancelPromise;}finally{if(attemptEpoch===sessionEpoch)packCancelPromise=null;}if(attemptEpoch===sessionEpoch)document.getElementById('modal-root').innerHTML='';return;}
   packPendingId=r.openingId;packPendingPackId=id;
+  pendingPackStore.remember(onlineUser?.id,id,r.openingId);
   packResults=r.results;packRevealed=new Set();showOpening();
  }catch(e){if(attemptEpoch===sessionEpoch&&!packCancelRequested){toast(e.message,true);document.getElementById('modal-root').innerHTML='';}}
  finally{if(attemptEpoch===sessionEpoch){packLoading=false;packCancelRequested=false;}}
@@ -1469,9 +1489,12 @@ function renderOpeningStack(){
   if(left===0){
     clearOpeningOmen();boosterFX.reset();
     stage.innerHTML=summaryMarkup(packResults,cardMarkup,esc);
-    if(tip)tip.textContent='Confirme pour conserver tes cartes, puis retourne aux boosters.';
+    if(tip)tip.textContent='Enregistrement sécurisé du booster en cours…';
     if(progress)progress.textContent=`${packResults.length} / ${packResults.length} cartes découvertes`;
     if(done){done.textContent='Confirmer et revenir aux boosters ↗';done.hidden=false;done.focus({preventScroll:true});}
+    if(shouldConfirmRevealedPack({revealed:packRevealed.size,total:packResults.length,pendingId:packPendingId,busy:packFlipBusy,loading:packLoading,finalizing:packFinalizing})){
+      queueMicrotask(()=>{if(shouldConfirmRevealedPack({revealed:packRevealed.size,total:packResults.length,pendingId:packPendingId,busy:packFlipBusy,loading:packLoading,finalizing:packFinalizing}))void finishOpening();});
+    }
     return;
   }
   const c=packResults[next];
@@ -1541,13 +1564,45 @@ function revealNextCard(){
   };
   packFlipTimer=setTimeout(completePutAway,boosterFX.putAwayMs());
 }
+async function recoverPendingPack(){
+ const ticket=pendingPackStore.read(onlineUser?.id);
+ if(!ticket||pendingPackRecoveryBusy||packLoading||packFinalizing)return;
+ pendingPackRecoveryBusy=true;pendingRecoveryTicket=ticket;
+ const btn=document.querySelector('[data-action="recover-pending-pack"]');
+ if(btn){btn.disabled=true;btn.textContent='Vérification du tirage…';}
+ try{await finishOpening();}
+ finally{pendingRecoveryTicket=null;pendingPackRecoveryBusy=false;}
+}
+async function abandonPendingPack(){
+ const ticket=pendingPackStore.read(onlineUser?.id);
+ if(!ticket||pendingPackRecoveryBusy)return;
+ if(!confirm('Abandonner ce tirage non terminé ? Les cartes non confirmées ne seront pas obtenues.'))return;
+ pendingPackRecoveryBusy=true;
+ try{
+   // A prepared pack is not charged; an abandoned receipt can be replaced by the next attempt.
+   // Do not create a second network path for cancellation.
+   pendingPackStore.forget(ticket.userId,ticket.openingId);
+   await loadOnlineGame();
+   toast('Tirage abandonné. Aucun nouveau débit effectué.');
+ }catch(e){toast('Annulation impossible : '+e.message,true);}
+ finally{pendingPackRecoveryBusy=false;}
+}
 async function finishOpening(){
- if(packFlipBusy||packFinalizing||packLoading||!packPendingId||packRevealed.size<packResults.length)return;
+ const recovering=Boolean(pendingRecoveryTicket);
+ if(!recovering&&(packFlipBusy||packFinalizing||packLoading||!packPendingId||packRevealed.size<packResults.length))return;
+ if(recovering&&(packFinalizing||packLoading))return;
  const attemptEpoch=sessionEpoch;
- packFinalizing=true;const id=packPendingPackId,openingId=packPendingId;
- const done=document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
+ packFinalizing=true;const id=recovering?pendingRecoveryTicket.packId:packPendingPackId,openingId=recovering?pendingRecoveryTicket.openingId:packPendingId;
+ const done=recovering?document.querySelector('[data-action="recover-pending-pack"]'):document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
  try{
   const r=await api('/api/packs/commit',{id,openingId});
+  if(recovering){
+   pendingPackStore.forget(onlineUser?.id,openingId);
+   packFinalizing=false;
+   await loadOnlineGame();
+   toast('Booster confirmé : les cartes sont dans ta collection.');
+   return;
+  }
   state=r.state;packVouchers=r.vouchers||packVouchers;
   // V9.1: le serveur renvoie les cartes sans dupliquer toutes les illustrations.
   if(Array.isArray(r.cards)){
@@ -1555,9 +1610,20 @@ async function finishOpening(){
     for(const drawn of r.results||[])if(drawn?.id&&drawn.art)artwork.set(drawn.id,drawn.art);
     installCatalogue(r.cards.map(c=>({...c,art:c.art||artwork.get(c.id)||''})),r.catalogueMeta);
   }
+  pendingPackStore.forget(onlineUser?.id,openingId);
   packPendingId=null;packPendingPackId=null;updateBalances();packFinalizing=false;
   closeModal();if(view!=='packs')setView('packs');collectionRewardsUI.refresh({force:true});toast('Booster confirmé : cartes ajoutées à ta collection !');
- }catch(e){if(attemptEpoch!==sessionEpoch)return;packFinalizing=false;if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}toast(e.message+' Tu peux réessayer sans payer deux fois.',true);}
+ }catch(e){
+  if(attemptEpoch!==sessionEpoch)return;
+  packFinalizing=false;
+  if(recovering){
+   toast('Confirmation impossible : '+e.message+' Réessaie sans ouvrir un autre booster.',true);
+   if(view==='packs')renderPacks();
+   return;
+  }
+  if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}
+  toast(e.message+' Tu peux réessayer sans payer deux fois.',true);
+ }
 }
 function closeModal(){
  if(packFinalizing){toast('Validation en cours. Ne ferme pas cette ouverture.',true);return;}
@@ -2088,6 +2154,8 @@ document.addEventListener('click',event=>{
       toast(boosterFX.isFast()?'Animations rapides activées.':'Animations cinéma activées.');break;
     }
     case 'finish-opening':finishOpening();break;
+    case 'recover-pending-pack':recoverPendingPack();break;
+    case 'abandon-pending-pack':abandonPendingPack();break;
     case 'detail':showDetail(button.dataset.id);break;
     case 'zoom-card':showMagnifiedCard(button.dataset.id);break;
     case 'back-to-detail':stopInspectionMotion();inspection=null;showDetail(button.dataset.id);break;
