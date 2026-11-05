@@ -11,3 +11,5 @@ Performance mesurée uniquement en Chromium headless Linux sans GPU : collection
 Avant déploiement : préproduction indépendante, tests Safari/Android physiques et validation des opérations réelles concurrentes. Les garanties backend et la restauration Supabase ne sont pas certifiées par les tests fictifs.
 
 Finitions V14.0.1 : point lumineux, faisceau et irisation pilotés par l’inclinaison, reflets émeraude des Secrètes et opalins verts des Ultra Secrètes. Contrôle Chromium ciblé souris/clavier/tactile et protections éco/réduit/hors écran ; captures et WebM dans docs/v14/shine.
+
+V14.0.2 : six recettes optiques et intensités strictement croissantes par rareté (satin, argent brossé, améthyste, rubans or, chrome noir, facettes cristallines), y compris sous variantes Gold/Secrète. Matrice24 cas, gestes et garde-fous validés dans Chromium ; preuves dans docs/v14/rarity-shine.

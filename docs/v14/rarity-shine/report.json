@@ -1,0 +1,1092 @@
+{
+  "kind": "Rarity optical regression",
+  "started": "2026-11-05T09:33:07.751Z",
+  "productionRequests": 0,
+  "fixture": "Local files; original procedural illustration; 36 fictional cards, account and balances; all remote requests intercepted.",
+  "checks": [
+    "24 cartes : même illustration originale, cinq statistiques visibles inchangées.",
+    "Pour chacune des 4 finitions, 6 intensités strictement croissantes et 6 signatures de brillance distinctes ; contrôle en inspection et au survol actif.",
+    "Énergies .16/.42/.64/.88/1.08/1.28 × éclairage .46/.64 vérifiées par les styles réellement calculés.",
+    "Commune légèrement brillante et Secret/Ultra Secret verts.",
+    "Reflets désactivés en éco, mouvement réduit et hors écran ; Rare et Ultra Secret manipulés à la souris, au clavier et au toucher Chromium.",
+    "Planche, quatre comparaisons et vidéo issues du navigateur, sans retouche."
+  ],
+  "screenshots": [
+    "rarity-matrix.png",
+    "standard-same-light.png",
+    "full_art-same-light.png",
+    "gold-same-light.png",
+    "secret-same-light.png"
+  ],
+  "limits": "Chromium headless/Linux. Device thermals, real Android/iPhone/Safari and production backend are not validated. Offscreen protection is tested by the real CSS marker, not by scrolling IntersectionObserver.",
+  "matrix": {
+    "cards": 24,
+    "oneOriginalImage": true,
+    "overflow": false
+  },
+  "materials": [
+    {
+      "rarity": "common",
+      "variant": "standard",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".16",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#d4dedc",
+        "--v14-spectrum-a": "#c5d9df",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.1024,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), linear-gradient(115deg, rgba(0, 0, 0, 0) 35%, rgb(227, 229, 227) 51%, rgba(0, 0, 0, 0) 68%)",
+        "after": "radial-gradient(at 74% 24%, rgb(243, 244, 237), rgba(0, 0, 0, 0) 68%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(212, 222, 220) 50%, rgba(0, 0, 0, 0) 74%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "rare",
+      "variant": "standard",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".42",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#b6dbe9",
+        "--v14-spectrum-a": "#c5d9df",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.2688,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-linear-gradient(112deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 3.8%, rgb(197, 217, 223) 4%, rgba(0, 0, 0, 0) 4.3%, rgba(0, 0, 0, 0) 8%)",
+        "after": "radial-gradient(at 74% 24%, rgb(244, 252, 255), rgba(0, 0, 0, 0) 52%), linear-gradient(138deg, rgba(0, 0, 0, 0) 31%, rgb(182, 219, 233) 43%, rgb(244, 252, 255) 48%, rgba(0, 0, 0, 0) 57%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "epic",
+      "variant": "standard",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".64",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#c99af5",
+        "--v14-spectrum-a": "#86d7ff",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.4096,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-conic-gradient(from 138deg at 45% 62%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(134, 215, 255) 25deg, rgb(198, 149, 255) 39deg, rgb(247, 172, 219) 51deg, rgba(0, 0, 0, 0) 66deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(244, 221, 255), rgba(0, 0, 0, 0) 44%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(201, 154, 245) 41%, rgba(0, 0, 0, 0) 46%, rgb(244, 221, 255) 49%, rgba(0, 0, 0, 0) 55%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "legendary",
+      "variant": "standard",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".88",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#efc36d",
+        "--v14-spectrum-a": "#bb883e",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.5632,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-linear-gradient(138deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 15%, rgb(187, 136, 62) 20%, rgb(255, 240, 179) 24%, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0) 31%, rgb(246, 221, 165) 33%, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0) 59%)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 203), rgba(0, 0, 0, 0) 36%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(239, 195, 109) 39%, rgb(255, 245, 203) 43%, rgba(0, 0, 0, 0) 47%, rgba(0, 0, 0, 0) 51%, rgb(255, 245, 203) 53%, rgba(0, 0, 0, 0) 60%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "mythic",
+      "variant": "standard",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.08",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#dc8996",
+        "--v14-spectrum-a": "#a93950",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.6912,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), conic-gradient(from 138deg at 74% 24%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(169, 57, 80) 27deg, rgba(0, 0, 0, 0) 34deg, rgba(0, 0, 0, 0) 158deg, rgb(237, 184, 117) 165deg, rgb(255, 217, 161) 171deg, rgba(0, 0, 0, 0) 178deg, rgba(0, 0, 0, 0) 310deg, rgb(157, 91, 120) 321deg, rgba(0, 0, 0, 0) 332deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 228, 186), rgba(0, 0, 0, 0) 31%), linear-gradient(138deg, rgba(0, 0, 0, 0) 25%, rgb(220, 137, 150) 38%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0) 48%, rgb(255, 228, 186) 50%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0) 62%, rgb(220, 137, 150) 67%, rgba(0, 0, 0, 0) 73%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "ultra",
+      "variant": "standard",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.28",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#d6f6ff",
+        "--v14-spectrum-a": "#8adfff",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.8192,
+        "before": "radial-gradient(circle, rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0.55px, rgba(0, 0, 0, 0) 1.35px), repeating-conic-gradient(from 138deg at 55% 44%, rgba(0, 0, 0, 0) 0deg, rgb(138, 223, 255) 13deg, rgb(204, 166, 255) 29deg, rgb(255, 194, 223) 43deg, rgb(168, 241, 214) 57deg, rgba(0, 0, 0, 0) 73deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 255, 255), rgba(0, 0, 0, 0) 27%), linear-gradient(138deg, rgba(0, 0, 0, 0) 27%, rgb(214, 246, 255) 38%, rgba(0, 0, 0, 0) 43%, rgb(255, 255, 255) 49%, rgba(0, 0, 0, 0) 51%, rgb(214, 246, 255) 55%, rgba(0, 0, 0, 0) 63%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "common",
+      "variant": "full_art",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".16",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#d4dedc",
+        "--v14-spectrum-a": "#c5d9df",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.1024,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), linear-gradient(115deg, rgba(0, 0, 0, 0) 35%, rgb(227, 229, 227) 51%, rgba(0, 0, 0, 0) 68%)",
+        "after": "radial-gradient(at 74% 24%, rgb(243, 244, 237), rgba(0, 0, 0, 0) 68%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(212, 222, 220) 50%, rgba(0, 0, 0, 0) 74%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "rare",
+      "variant": "full_art",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".42",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#b6dbe9",
+        "--v14-spectrum-a": "#c5d9df",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.2688,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-linear-gradient(112deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 3.8%, rgb(197, 217, 223) 4%, rgba(0, 0, 0, 0) 4.3%, rgba(0, 0, 0, 0) 8%)",
+        "after": "radial-gradient(at 74% 24%, rgb(244, 252, 255), rgba(0, 0, 0, 0) 52%), linear-gradient(138deg, rgba(0, 0, 0, 0) 31%, rgb(182, 219, 233) 43%, rgb(244, 252, 255) 48%, rgba(0, 0, 0, 0) 57%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "epic",
+      "variant": "full_art",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".64",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#c99af5",
+        "--v14-spectrum-a": "#86d7ff",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.4096,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-conic-gradient(from 138deg at 45% 62%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(134, 215, 255) 25deg, rgb(198, 149, 255) 39deg, rgb(247, 172, 219) 51deg, rgba(0, 0, 0, 0) 66deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(244, 221, 255), rgba(0, 0, 0, 0) 44%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(201, 154, 245) 41%, rgba(0, 0, 0, 0) 46%, rgb(244, 221, 255) 49%, rgba(0, 0, 0, 0) 55%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "legendary",
+      "variant": "full_art",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".88",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#efc36d",
+        "--v14-spectrum-a": "#bb883e",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.5632,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-linear-gradient(138deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 15%, rgb(187, 136, 62) 20%, rgb(255, 240, 179) 24%, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0) 31%, rgb(246, 221, 165) 33%, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0) 59%)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 203), rgba(0, 0, 0, 0) 36%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(239, 195, 109) 39%, rgb(255, 245, 203) 43%, rgba(0, 0, 0, 0) 47%, rgba(0, 0, 0, 0) 51%, rgb(255, 245, 203) 53%, rgba(0, 0, 0, 0) 60%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "mythic",
+      "variant": "full_art",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.08",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#dc8996",
+        "--v14-spectrum-a": "#a93950",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.6912,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), conic-gradient(from 138deg at 74% 24%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(169, 57, 80) 27deg, rgba(0, 0, 0, 0) 34deg, rgba(0, 0, 0, 0) 158deg, rgb(237, 184, 117) 165deg, rgb(255, 217, 161) 171deg, rgba(0, 0, 0, 0) 178deg, rgba(0, 0, 0, 0) 310deg, rgb(157, 91, 120) 321deg, rgba(0, 0, 0, 0) 332deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 228, 186), rgba(0, 0, 0, 0) 31%), linear-gradient(138deg, rgba(0, 0, 0, 0) 25%, rgb(220, 137, 150) 38%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0) 48%, rgb(255, 228, 186) 50%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0) 62%, rgb(220, 137, 150) 67%, rgba(0, 0, 0, 0) 73%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "ultra",
+      "variant": "full_art",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.28",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#d6f6ff",
+        "--v14-spectrum-a": "#8adfff",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.8192,
+        "before": "radial-gradient(circle, rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0.55px, rgba(0, 0, 0, 0) 1.35px), repeating-conic-gradient(from 138deg at 55% 44%, rgba(0, 0, 0, 0) 0deg, rgb(138, 223, 255) 13deg, rgb(204, 166, 255) 29deg, rgb(255, 194, 223) 43deg, rgb(168, 241, 214) 57deg, rgba(0, 0, 0, 0) 73deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 255, 255), rgba(0, 0, 0, 0) 27%), linear-gradient(138deg, rgba(0, 0, 0, 0) 27%, rgb(214, 246, 255) 38%, rgba(0, 0, 0, 0) 43%, rgb(255, 255, 255) 49%, rgba(0, 0, 0, 0) 51%, rgb(214, 246, 255) 55%, rgba(0, 0, 0, 0) 63%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "common",
+      "variant": "gold",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".16",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#edc570",
+        "--v14-spectrum-a": "#d2993f",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.1024,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), linear-gradient(115deg, rgba(0, 0, 0, 0) 35%, rgb(255, 241, 181) 51%, rgba(0, 0, 0, 0) 68%)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 208), rgba(0, 0, 0, 0) 68%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(237, 197, 112) 50%, rgba(0, 0, 0, 0) 74%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "rare",
+      "variant": "gold",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".42",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#edc570",
+        "--v14-spectrum-a": "#d2993f",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.2688,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-linear-gradient(112deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 3.8%, rgb(210, 153, 63) 4%, rgba(0, 0, 0, 0) 4.3%, rgba(0, 0, 0, 0) 8%)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 208), rgba(0, 0, 0, 0) 52%), linear-gradient(138deg, rgba(0, 0, 0, 0) 31%, rgb(237, 197, 112) 43%, rgb(255, 245, 208) 48%, rgba(0, 0, 0, 0) 57%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "epic",
+      "variant": "gold",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".64",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#edc570",
+        "--v14-spectrum-a": "#d2993f",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.4096,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-conic-gradient(from 138deg at 45% 62%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(210, 153, 63) 25deg, rgb(255, 241, 181) 39deg, rgb(217, 172, 89) 51deg, rgba(0, 0, 0, 0) 66deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 208), rgba(0, 0, 0, 0) 44%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(237, 197, 112) 41%, rgba(0, 0, 0, 0) 46%, rgb(255, 245, 208) 49%, rgba(0, 0, 0, 0) 55%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "legendary",
+      "variant": "gold",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".88",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#edc570",
+        "--v14-spectrum-a": "#d2993f",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.5632,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), repeating-linear-gradient(138deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 15%, rgb(210, 153, 63) 20%, rgb(255, 241, 181) 24%, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0) 31%, rgb(247, 215, 154) 33%, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0) 59%)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 208), rgba(0, 0, 0, 0) 36%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(237, 197, 112) 39%, rgb(255, 245, 208) 43%, rgba(0, 0, 0, 0) 47%, rgba(0, 0, 0, 0) 51%, rgb(255, 245, 208) 53%, rgba(0, 0, 0, 0) 60%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "mythic",
+      "variant": "gold",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.08",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#edc570",
+        "--v14-spectrum-a": "#d2993f",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.6912,
+        "before": "linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), conic-gradient(from 138deg at 74% 24%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(210, 153, 63) 27deg, rgba(0, 0, 0, 0) 34deg, rgba(0, 0, 0, 0) 158deg, rgb(255, 241, 181) 165deg, rgb(217, 172, 89) 171deg, rgba(0, 0, 0, 0) 178deg, rgba(0, 0, 0, 0) 310deg, rgb(247, 215, 154) 321deg, rgba(0, 0, 0, 0) 332deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 208), rgba(0, 0, 0, 0) 31%), linear-gradient(138deg, rgba(0, 0, 0, 0) 25%, rgb(237, 197, 112) 38%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0) 48%, rgb(255, 245, 208) 50%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0) 62%, rgb(237, 197, 112) 67%, rgba(0, 0, 0, 0) 73%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "ultra",
+      "variant": "gold",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.28",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#edc570",
+        "--v14-spectrum-a": "#d2993f",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.8192,
+        "before": "radial-gradient(circle, rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0.55px, rgba(0, 0, 0, 0) 1.35px), repeating-conic-gradient(from 138deg at 55% 44%, rgba(0, 0, 0, 0) 0deg, rgb(210, 153, 63) 13deg, rgb(255, 241, 181) 29deg, rgb(217, 172, 89) 43deg, rgb(247, 215, 154) 57deg, rgba(0, 0, 0, 0) 73deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(255, 245, 208), rgba(0, 0, 0, 0) 27%), linear-gradient(138deg, rgba(0, 0, 0, 0) 27%, rgb(237, 197, 112) 38%, rgba(0, 0, 0, 0) 43%, rgb(255, 245, 208) 49%, rgba(0, 0, 0, 0) 51%, rgb(237, 197, 112) 55%, rgba(0, 0, 0, 0) 63%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "common",
+      "variant": "secret",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".16",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#3de68b",
+        "--v14-spectrum-a": "#199c64",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.1024,
+        "before": "repeating-radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 16%, rgba(155, 231, 166, 0.286) 16.2%, rgba(0, 0, 0, 0) 16.8%, rgba(0, 0, 0, 0) 26%), linear-gradient(115deg, rgba(0, 0, 0, 0) 35%, rgb(100, 233, 154) 51%, rgba(0, 0, 0, 0) 68%)",
+        "after": "radial-gradient(at 74% 24%, rgb(184, 255, 196), rgba(0, 0, 0, 0) 68%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(61, 230, 139) 50%, rgba(0, 0, 0, 0) 74%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "rare",
+      "variant": "secret",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".42",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#3de68b",
+        "--v14-spectrum-a": "#199c64",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.2688,
+        "before": "repeating-radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 16%, rgba(155, 231, 166, 0.286) 16.2%, rgba(0, 0, 0, 0) 16.8%, rgba(0, 0, 0, 0) 26%), repeating-linear-gradient(112deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 3.8%, rgb(25, 156, 100) 4%, rgba(0, 0, 0, 0) 4.3%, rgba(0, 0, 0, 0) 8%)",
+        "after": "radial-gradient(at 74% 24%, rgb(184, 255, 196), rgba(0, 0, 0, 0) 52%), linear-gradient(138deg, rgba(0, 0, 0, 0) 31%, rgb(61, 230, 139) 43%, rgb(184, 255, 196) 48%, rgba(0, 0, 0, 0) 57%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "epic",
+      "variant": "secret",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".64",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#3de68b",
+        "--v14-spectrum-a": "#199c64",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.4096,
+        "before": "repeating-radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 16%, rgba(155, 231, 166, 0.286) 16.2%, rgba(0, 0, 0, 0) 16.8%, rgba(0, 0, 0, 0) 26%), repeating-conic-gradient(from 138deg at 45% 62%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(25, 156, 100) 25deg, rgb(100, 233, 154) 39deg, rgb(208, 249, 177) 51deg, rgba(0, 0, 0, 0) 66deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(184, 255, 196), rgba(0, 0, 0, 0) 44%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(61, 230, 139) 41%, rgba(0, 0, 0, 0) 46%, rgb(184, 255, 196) 49%, rgba(0, 0, 0, 0) 55%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "legendary",
+      "variant": "secret",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": ".88",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#3de68b",
+        "--v14-spectrum-a": "#199c64",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.5632,
+        "before": "repeating-radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 16%, rgba(155, 231, 166, 0.286) 16.2%, rgba(0, 0, 0, 0) 16.8%, rgba(0, 0, 0, 0) 26%), repeating-linear-gradient(138deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 15%, rgb(25, 156, 100) 20%, rgb(100, 233, 154) 24%, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0) 31%, rgb(57, 189, 127) 33%, rgba(0, 0, 0, 0) 38%, rgba(0, 0, 0, 0) 59%)",
+        "after": "radial-gradient(at 74% 24%, rgb(184, 255, 196), rgba(0, 0, 0, 0) 36%), linear-gradient(138deg, rgba(0, 0, 0, 0) 29%, rgb(61, 230, 139) 39%, rgb(184, 255, 196) 43%, rgba(0, 0, 0, 0) 47%, rgba(0, 0, 0, 0) 51%, rgb(184, 255, 196) 53%, rgba(0, 0, 0, 0) 60%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "mythic",
+      "variant": "secret",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.08",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#3de68b",
+        "--v14-spectrum-a": "#199c64",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.6912,
+        "before": "repeating-radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 16%, rgba(155, 231, 166, 0.286) 16.2%, rgba(0, 0, 0, 0) 16.8%, rgba(0, 0, 0, 0) 26%), conic-gradient(from 138deg at 74% 24%, rgba(0, 0, 0, 0) 0deg, rgba(0, 0, 0, 0) 19deg, rgb(25, 156, 100) 27deg, rgba(0, 0, 0, 0) 34deg, rgba(0, 0, 0, 0) 158deg, rgb(100, 233, 154) 165deg, rgb(208, 249, 177) 171deg, rgba(0, 0, 0, 0) 178deg, rgba(0, 0, 0, 0) 310deg, rgb(57, 189, 127) 321deg, rgba(0, 0, 0, 0) 332deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(184, 255, 196), rgba(0, 0, 0, 0) 31%), linear-gradient(138deg, rgba(0, 0, 0, 0) 25%, rgb(61, 230, 139) 38%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0) 48%, rgb(184, 255, 196) 50%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0) 62%, rgb(61, 230, 139) 67%, rgba(0, 0, 0, 0) 73%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    },
+    {
+      "rarity": "ultra",
+      "variant": "secret",
+      "stats": [
+        {
+          "text": "91",
+          "visible": true
+        },
+        {
+          "text": "67",
+          "visible": true
+        },
+        {
+          "text": "84",
+          "visible": true
+        },
+        {
+          "text": "98",
+          "visible": true
+        },
+        {
+          "text": "93",
+          "visible": true
+        }
+      ],
+      "variables": {
+        "--v14-rarity-energy": "1.28",
+        "--v14-reflection-strength": "0.64",
+        "--v14-gloss-tint": "#8cfbb2",
+        "--v14-spectrum-a": "#6ccba4",
+        "--m13-x": "74%",
+        "--m13-y": "24%"
+      },
+      "foil": {
+        "display": "block",
+        "opacity": 0.8192,
+        "before": "radial-gradient(circle, rgb(223, 255, 233) 0px, rgb(223, 255, 233) 0.6px, rgba(0, 0, 0, 0) 1.4px), repeating-conic-gradient(from 138deg at 55% 44%, rgba(0, 0, 0, 0) 0deg, rgb(108, 203, 164) 13deg, rgb(219, 255, 226) 29deg, rgb(214, 235, 192) 43deg, rgb(128, 225, 168) 57deg, rgba(0, 0, 0, 0) 73deg)",
+        "after": "radial-gradient(at 74% 24%, rgb(227, 255, 229), rgba(0, 0, 0, 0) 27%), linear-gradient(138deg, rgba(0, 0, 0, 0) 27%, rgb(140, 251, 178) 38%, rgba(0, 0, 0, 0) 43%, rgb(227, 255, 229) 49%, rgba(0, 0, 0, 0) 51%, rgb(140, 251, 178) 55%, rgba(0, 0, 0, 0) 63%)",
+        "position": "26% 76%, 26% 76%"
+      },
+      "imageOriginal": true
+    }
+  ],
+  "video": {
+    "available": true,
+    "name": "six-rarities-motion.webm",
+    "frames": 48,
+    "durationSeconds": 2.62,
+    "source": "1536 px real Chromium screencast, original browser timestamps"
+  },
+  "gestures": [
+    {
+      "rarity": "rare",
+      "variant": "standard",
+      "gestures": [
+        "mouse",
+        "keyboard",
+        "touch"
+      ],
+      "reducedMotionStopsTilt": true
+    },
+    {
+      "rarity": "ultra",
+      "variant": "secret",
+      "gestures": [
+        "mouse",
+        "keyboard",
+        "touch"
+      ],
+      "reducedMotionStopsTilt": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "apiCalls": [
+    {
+      "route": "/api/status",
+      "method": "GET"
+    },
+    {
+      "route": "/api/auth/me",
+      "method": "GET"
+    },
+    {
+      "route": "/api/bootstrap",
+      "method": "GET"
+    },
+    {
+      "route": "/api/pvp/invitations",
+      "method": "GET"
+    }
+  ],
+  "mockedExternalHosts": [
+    "cdn.jsdelivr.net",
+    "lxpgdhwfxeicuofycqup.supabase.co"
+  ],
+  "status": "passed",
+  "completed": "2026-11-05T09:33:25.467Z"
+}

@@ -1,47 +1,76 @@
-/* V14.0.1 · optical finish. Two painted layers inside the existing art window,
-   driven only by the card currently inspected. No added DOM, idle loop or blur. */
+/* V14.0.2 — six optical signatures, one ascending energy scale.
+   Painted inside the existing illustration: no new card DOM, idle animation,
+   sensor, image filter or layer promotion. Only the inspected card moves. */
 .tcg-card.v10-tcg.v14-card {
-  --v14-spectrum-a:#b2d9ed; --v14-spectrum-b:#d8c1f6;
-  --v14-spectrum-c:#ffd7b4; --v14-spectrum-d:#b5ebd6;
-  --v14-gloss:#f7fbff; --v14-gloss-tint:#c8ddec;
-  --v14-prism-opacity:.2; --v14-surface-strength:.15;
-  --v14-sheen-angle:123deg;
-  --v14-foil-x:50%; --v14-foil-y:32%;
+  --v14-spectrum-a:#c5d9df; --v14-spectrum-b:#e3e5e3;
+  --v14-spectrum-c:#e7decd; --v14-spectrum-d:#b8d2c9;
+  --v14-gloss:#f3f4ed; --v14-gloss-tint:#d4dedc;
+  --v14-rarity-energy:.16; --v14-surface-strength:.035;
+  --v14-prism-opacity:.25; --v14-light-radius:68%;
+  --v14-sheen-angle:123deg; --v14-foil-x:50%; --v14-foil-y:32%;
+  --v14-pattern-size:180% 160%; --v14-variant-size:100% 100%;
+  --v14-variant-pattern:linear-gradient(transparent,transparent);
+  /* Common: a broad satin reflection, no rainbow or sparkle. */
+  --v14-interference:linear-gradient(115deg,transparent 35%,var(--v14-spectrum-b) 51%,transparent 68%);
+  --v14-specular:linear-gradient(var(--v14-sheen-angle),transparent 29%,var(--v14-gloss-tint) 50%,transparent 74%);
 }
-.tcg-card.v10-tcg.v14-card.rare { --v14-surface-strength:.2; --v14-prism-opacity:.25; }
+/* Rare: fine silver brushing and one clean elongated metallic highlight. */
+.tcg-card.v10-tcg.v14-card.rare {
+  --v14-rarity-energy:.42; --v14-surface-strength:.10; --v14-prism-opacity:.36;
+  --v14-light-radius:52%; --v14-gloss:#f4fcff; --v14-gloss-tint:#b6dbe9;
+  --v14-interference:repeating-linear-gradient(112deg,transparent 0% 3.8%,var(--v14-spectrum-a) 4%,transparent 4.3% 8%);
+  --v14-specular:linear-gradient(var(--v14-sheen-angle),transparent 31%,var(--v14-gloss-tint) 43%,var(--v14-gloss) 48%,transparent 57%);
+}
+/* Epic: amethyst fan diffraction, visibly chromatic rather than silver. */
 .tcg-card.v10-tcg.v14-card.epic {
-  --v14-spectrum-a:#98d8ff; --v14-spectrum-b:#d6a0ff;
-  --v14-spectrum-c:#f9b4e7; --v14-spectrum-d:#bbc0ff;
-  --v14-prism-opacity:.54; --v14-surface-strength:.27;
+  --v14-rarity-energy:.64; --v14-surface-strength:.17; --v14-prism-opacity:.6;
+  --v14-light-radius:44%; --v14-gloss:#f4ddff; --v14-gloss-tint:#c99af5;
+  --v14-spectrum-a:#86d7ff; --v14-spectrum-b:#c695ff;
+  --v14-spectrum-c:#f7acdb; --v14-spectrum-d:#a3adff;
+  --v14-interference:repeating-conic-gradient(from var(--v14-sheen-angle) at 45% 62%,transparent 0deg 19deg,var(--v14-spectrum-a) 25deg,var(--v14-spectrum-b) 39deg,var(--v14-spectrum-c) 51deg,transparent 66deg);
+  --v14-specular:linear-gradient(var(--v14-sheen-angle),transparent 29%,var(--v14-gloss-tint) 41%,transparent 46%,var(--v14-gloss) 49%,transparent 55%);
 }
+/* Legendary: broad polished bullion with a paired gold/ivory ribbon. */
 .tcg-card.v10-tcg.v14-card.legendary {
-  --v14-gloss:#fff6d5; --v14-gloss-tint:#f5cb81;
-  --v14-spectrum-a:#f8d994; --v14-spectrum-b:#ffecc0;
-  --v14-spectrum-c:#cda272; --v14-spectrum-d:#f3dcab;
-  --v14-prism-opacity:.36; --v14-surface-strength:.3;
+  --v14-rarity-energy:.88; --v14-surface-strength:.24; --v14-prism-opacity:.62;
+  --v14-light-radius:36%; --v14-gloss:#fff5cb; --v14-gloss-tint:#efc36d;
+  --v14-spectrum-a:#bb883e; --v14-spectrum-b:#fff0b3;
+  --v14-spectrum-c:#e7b664; --v14-spectrum-d:#f6dda5;
+  --v14-interference:repeating-linear-gradient(var(--v14-sheen-angle),transparent 0% 15%,var(--v14-spectrum-a) 20%,var(--v14-spectrum-b) 24%,transparent 27% 31%,var(--v14-spectrum-d) 33%,transparent 38% 59%);
+  --v14-specular:linear-gradient(var(--v14-sheen-angle),transparent 29%,var(--v14-gloss-tint) 39%,var(--v14-gloss) 43%,transparent 47% 51%,var(--v14-gloss) 53%,transparent 60%);
 }
+/* Mythic: fractured black-chrome reflections, ember red against warm gold. */
 .tcg-card.v10-tcg.v14-card.mythic {
-  --v14-gloss:#ffe5c6; --v14-gloss-tint:#e8af85;
-  --v14-spectrum-a:#d69b60; --v14-spectrum-b:#e07086;
-  --v14-spectrum-c:#ffdab0; --v14-spectrum-d:#8b6386;
-  --v14-prism-opacity:.5; --v14-surface-strength:.32;
+  --v14-rarity-energy:1.08; --v14-surface-strength:.31; --v14-prism-opacity:.7;
+  --v14-light-radius:31%; --v14-gloss:#ffe4ba; --v14-gloss-tint:#dc8996;
+  --v14-spectrum-a:#a93950; --v14-spectrum-b:#edb875;
+  --v14-spectrum-c:#ffd9a1; --v14-spectrum-d:#9d5b78;
+  --v14-interference:conic-gradient(from var(--v14-sheen-angle) at var(--m13-x,50%) var(--m13-y,32%),transparent 0deg 19deg,var(--v14-spectrum-a) 27deg,transparent 34deg 158deg,var(--v14-spectrum-b) 165deg,var(--v14-spectrum-c) 171deg,transparent 178deg 310deg,var(--v14-spectrum-d) 321deg,transparent 332deg);
+  --v14-specular:linear-gradient(var(--v14-sheen-angle),transparent 25%,var(--v14-gloss-tint) 38%,transparent 42% 48%,var(--v14-gloss) 50%,transparent 52% 62%,var(--v14-gloss-tint) 67%,transparent 73%);
 }
+/* Ultra: crystalline spectral facets and fine points of reflected light. */
 .tcg-card.v10-tcg.v14-card.ultra {
-  --v14-gloss:#fff; --v14-gloss-tint:#ddf5fa;
-  --v14-prism-opacity:.64; --v14-surface-strength:.34;
+  --v14-rarity-energy:1.28; --v14-surface-strength:.38; --v14-prism-opacity:.8;
+  --v14-light-radius:27%; --v14-gloss:#fff; --v14-gloss-tint:#d6f6ff;
+  --v14-spectrum-a:#8adfff; --v14-spectrum-b:#cca6ff;
+  --v14-spectrum-c:#ffc2df; --v14-spectrum-d:#a8f1d6;
+  --v14-interference:repeating-conic-gradient(from var(--v14-sheen-angle) at 55% 44%,transparent 0deg,var(--v14-spectrum-a) 13deg,var(--v14-spectrum-b) 29deg,var(--v14-spectrum-c) 43deg,var(--v14-spectrum-d) 57deg,transparent 73deg);
+  --v14-specular:linear-gradient(var(--v14-sheen-angle),transparent 27%,var(--v14-gloss-tint) 38%,transparent 43%,var(--v14-gloss) 49%,transparent 51%,var(--v14-gloss-tint) 55%,transparent 63%);
+  --v14-variant-pattern:radial-gradient(circle,#fff 0 .55px,transparent 1.35px);
+  --v14-variant-size:43px 53px;
 }
+/* Finishes change the material palette, never flatten the rarity energy scale. */
 .tcg-card.v10-tcg.v14-card.variant-gold {
-  --v14-gloss:#fff9df; --v14-gloss-tint:#f9d18b;
-  --v14-spectrum-a:#eebd61; --v14-spectrum-b:#fff0b9;
-  --v14-spectrum-c:#cb8d39; --v14-spectrum-d:#f4d98e;
-  --v14-prism-opacity:.49; --v14-surface-strength:.32;
+  --v14-gloss:#fff5d0; --v14-gloss-tint:#edc570;
+  --v14-spectrum-a:#d2993f; --v14-spectrum-b:#fff1b5;
+  --v14-spectrum-c:#d9ac59; --v14-spectrum-d:#f7d79a;
 }
-/* Green enamel and green interference: distinct from a cyan/white foil. */
 .tcg-card.v10-tcg.v14-card.variant-secret {
-  --v14-gloss:#adffb8; --v14-gloss-tint:#3de68b;
-  --v14-spectrum-a:#19a76b; --v14-spectrum-b:#7aefad;
-  --v14-spectrum-c:#d3f6b7; --v14-spectrum-d:#39bd7f;
-  --v14-prism-opacity:.7; --v14-surface-strength:.36;
+  --v14-gloss:#b8ffc4; --v14-gloss-tint:#3de68b;
+  --v14-spectrum-a:#199c64; --v14-spectrum-b:#64e99a;
+  --v14-spectrum-c:#d0f9b1; --v14-spectrum-d:#39bd7f;
+  --v14-variant-pattern:repeating-radial-gradient(ellipse at 50% 50%,transparent 0% 16%,#9be7a649 16.2%,transparent 16.8% 26%);
+  --v14-variant-size:180% 160%;
 }
 .tcg-card.v10-tcg.v14-card.variant-secret:not(.v14-ultra-secret) {
   --v14-metal:#76bb94; --v14-metal-bright:#d2f4ce;
@@ -50,18 +79,20 @@
   background:linear-gradient(128deg,#264a37,#071b12 34%,#173b28 68%,#06120b);
 }
 .tcg-card.v10-tcg.v14-card.v14-ultra-secret {
-  --v14-gloss:#ddffe3; --v14-gloss-tint:#8cfbb2;
-  --v14-spectrum-a:#64caa0; --v14-spectrum-b:#d7ffe2;
-  --v14-spectrum-c:#d0e9c0; --v14-spectrum-d:#88e1af;
-  --v14-prism-opacity:.76; --v14-surface-strength:.4;
+  --v14-gloss:#e3ffe5; --v14-gloss-tint:#8cfbb2;
+  --v14-spectrum-a:#6ccba4; --v14-spectrum-b:#dbffe2;
+  --v14-spectrum-c:#d6ebc0; --v14-spectrum-d:#80e1a8;
+  --v14-variant-pattern:radial-gradient(circle,#dfffe9 0 .6px,transparent 1.4px);
+  --v14-variant-size:31px 47px;
 }
 .tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-stock {
   background:linear-gradient(126deg,#72988e,#f5f8ea 20%,#91bbae 35%,#eef5e3 48%,#7fac9b 63%,#f6faed 80%,#8fae9c);
 }
+/* Optical paint is confined to the art; labels and statistics remain above it. */
 .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil,
 .tcg-card.v10-tcg.v14-card.variant-secret .v14-optics.v10-foil,
 .tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-optics.v10-foil {
-  background:none!important; mix-blend-mode:screen;
+  display:block; background:none!important; mix-blend-mode:screen;
   opacity:var(--v14-surface-strength)!important;
   mask-image:linear-gradient(180deg,transparent,#000 10%,#000 85%,transparent);
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 10%,#000 85%,transparent);
@@ -72,45 +103,26 @@
 }
 .tcg-card.v10-tcg.v14-card .v14-optics::before {
   opacity:var(--v14-prism-opacity);
-  background:repeating-linear-gradient(var(--v14-sheen-angle),
-    transparent 0%,var(--v14-spectrum-a) 10%,var(--v14-spectrum-b) 17%,
-    var(--v14-spectrum-c) 24%,var(--v14-spectrum-d) 32%,transparent 43%);
-  background-size:240% 210%;
+  background-image:var(--v14-variant-pattern),var(--v14-interference);
+  background-size:var(--v14-variant-size),var(--v14-pattern-size);
   background-position:var(--v14-foil-x) var(--v14-foil-y);
 }
 .tcg-card.v10-tcg.v14-card .v14-optics::after {
-  opacity:.88;
-  background:
-    radial-gradient(ellipse at var(--m13-x,50%) var(--m13-y,32%),var(--v14-gloss),transparent 49%),
-    linear-gradient(var(--v14-sheen-angle),transparent 31%,var(--v14-gloss-tint) 43%,
-      transparent 46%,var(--v14-gloss) 49%,transparent 52%,var(--v14-gloss-tint) 56%,transparent 68%);
+  opacity:.86;
+  background-image:radial-gradient(ellipse at var(--m13-x,50%) var(--m13-y,32%),var(--v14-gloss),transparent var(--v14-light-radius)),var(--v14-specular);
   background-size:100% 100%,210% 180%;
   background-position:center,var(--v14-foil-x) var(--v14-foil-y);
 }
-.tcg-card.v10-tcg.v14-card.ultra .v14-optics::before,
-.tcg-card.v10-tcg.v14-card.v14-ultra-secret .v14-optics::before {
-  background-image:
-    radial-gradient(circle,#ffffffd9 0 .55px,transparent 1.3px),
-    repeating-linear-gradient(var(--v14-sheen-angle),transparent 0%,var(--v14-spectrum-a) 10%,
-      var(--v14-spectrum-b) 17%,var(--v14-spectrum-c) 24%,var(--v14-spectrum-d) 32%,transparent 43%);
-  background-size:43px 53px,240% 210%;
-  background-position:var(--v14-foil-x) var(--v14-foil-y);
-}
-/* The lamp becomes stronger at grazing angles, rather than a fixed white veil. */
+/* Dynamic lamp energy is multiplied by rarity, including Gold and Secrets. */
 .inspect-front .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil,
+.inspect-front .tcg-card.v10-tcg.v14-card.variant-secret .v14-optics.v10-foil,
 .tcg-card.v10-tcg.v14-card.m13-card-active .v14-optics.v10-foil {
-  opacity:var(--v14-reflection-strength,.5)!important;
-}
-.inspect-front .tcg-card.v10-tcg.v14-card.variant-secret .v14-optics.v10-foil {
-  opacity:var(--v14-reflection-strength,.57)!important;
+  opacity:calc(var(--v14-rarity-energy) * var(--v14-reflection-strength,.46))!important;
 }
 .opening-top-card.revealed .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil {
-  opacity:calc(var(--v14-surface-strength) + .1)!important;
+  opacity:calc(var(--v14-surface-strength) * 1.25)!important;
 }
-/* Matte common stays matte; text and numbers are above these layers. */
-.tcg-card.v10-tcg.v14-card.common.variant-standard .v14-optics.v10-foil {
-  display:none!important;
-}
+/* No permanent animation; offscreen, eco and reduced-motion still opt out. */
 html[data-m13-quality=eco] .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil,
 .tcg-card.v10-tcg.v14-card.v12-offscreen .v14-optics.v10-foil {
   display:none!important;
