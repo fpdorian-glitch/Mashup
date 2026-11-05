@@ -1,6 +1,7 @@
-/* Mashup V11 — marketplace, leaderboard & permanent achievements.
+/* Mashup V15.3 — marketplace, leaderboard & permanent achievements.
  * All transactions occur on Supabase. Pages load their own small data on demand.
  */
+import {createMarketArtPreviews} from './61-v15-3-market-art.js?v=15.3.0';
 export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,renderCard,createSaleCardPicker,getUser,getView,getMarketMode,onState,refreshAccount}){
  let market={listings:[],myListings:[],limits:{maxPrice:250000}},leaderboard=null,boardMode='collection',achievements=[],marketBusy=false,achBusy=false;
  const fmt=n=>Math.max(0,Number(n)||0).toLocaleString('fr-FR');
@@ -10,7 +11,7 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
    return Math.round(base*mult*1.2/10)*10;
  };
  const viewMoney=n=>fmt(n)+' ◉';
- const myCards=()=>getCards().filter(c=>!c.hidden&&c.variant!=='secret'&&c.qty>0).sort((a,b)=>a.name.localeCompare(b.name,'fr'));
+ const myCards=()=>getCards().filter(c=>!c.hidden&&c.qty>0).sort((a,b)=>a.name.localeCompare(b.name,'fr'));
  let selectedSaleCardId='';
  const picker=createSaleCardPicker({getCards:myCards,getFavorites,esc,renderCard,onPick:applySelectedSaleCard});
  function applySelectedSaleCard(card){
@@ -21,6 +22,7 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
    updateEstimatedPrice();
  }
  function marketRoot(){return document.getElementById('market-v11-content');}
+ const marketArt=createMarketArtPreviews({api,renderCard,getCardById,getRoot:marketRoot,getView,getMode:getMarketMode});
  function listingCard(l,mine=false){
    const card=l.card;if(!card)return '';
    const self=l.sellerId===getUser()?.id;
@@ -29,13 +31,12 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
    const buyActions=!self&&l.status==='active'?'<button class="btn btn-sm btn-primary" data-action="v11-buy-listing" data-id="'+esc(l.id)+'" data-price="'+l.price+'" data-name="'+esc(card.name)+'">Acheter</button>':'';
    // The marketplace API contains only public card fields. Get current art and
    // complete TCG frame from the catalogue; escrowed cards stay visible.
-   const artwork=getCardById(card.id)||{...card,editionSeries:card.series,icon:'✦'};
-   const artworkMarkup=renderCard(artwork,{lazy:true,revealedOpponent:true});
+   const artworkMarkup=marketArt.render(l);
    const label={common:'Commune',rare:'Rare',epic:'Épique',legendary:'Légendaire',mythic:'Mythique',ultra:'Ultra'}[rarity]||rarity;
    return '<article class="v11-market-card v11-rarity-'+rarity+'">'+
-     '<div class="v114-listing-illustration" aria-label="Carte '+esc(card.name)+'">'+artworkMarkup+'</div>'+
+     '<div class="v114-listing-illustration" data-v153-listing="'+esc(l.id)+'" aria-label="Carte '+esc(card.name)+'">'+artworkMarkup+'</div>'+
      '<div class="v11-market-card-body"><div class="v11-card-label">'+esc(label.toUpperCase())+
-       (card.variant==='gold'?' · GOLD':card.variant==='full_art'?' · FULL ART':'')+'</div>'+
+       (card.variant==='gold'?' · GOLD':card.variant==='full_art'?' · FULL ART':card.variant==='secret'?' · SECRÈTE':'')+'</div>'+
        '<h4>'+esc(card.name)+'</h4><small>'+esc(card.family||'')+' · Série '+(Number(card.series)||1)+'</small>'+
        '<p class="v11-seller">Vendeur : '+esc(l.sellerName)+'</p>'+
        '<strong class="v11-market-price">'+viewMoney(l.price)+'</strong>'+
@@ -61,6 +62,7 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
    const found=filteredListings();
    list.innerHTML=found.length?found.map(l=>listingCard(l)).join(''):'<div class="empty-state"><p>Aucune annonce correspondant aux filtres.</p></div>';
    const count=root.querySelector('#v11-market-count');if(count)count.textContent=fmt(found.length)+' annonce(s)';
+   marketArt.observe(market.listings,market.myListings);
  }
  function updateEstimatedPrice(){
    const root=marketRoot(),selector=root?.querySelector('#v11-sale-card');
@@ -99,6 +101,7 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
      if(e.target.matches('#v11-filter-rarity,#v11-filter-series,#v11-filter-universe'))updateResults();
      if(e.target.matches('#v11-sale-card'))updateEstimatedPrice();
    });}
+   marketArt.observe(market.listings,market.myListings);
  }
  async function refreshMarket({showErrors=true}={}){
    if(marketBusy)return;
