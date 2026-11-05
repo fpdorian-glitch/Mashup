@@ -22,9 +22,12 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 5 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V15.4 — Le Nexus des mondes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.4.0</span></div>'+
-      '<p>Entre dans le Nexus : une arène plus vivante, des cartes aux matières affinées et un nouveau défi. Mashup Match propose 100 niveaux, dix mondes, des bonus et des cascades. Le mode entraînement reste disponible sur cet appareil ; les crédits et la progression en ligne nécessitent le service de campagne activé.</p>'+
+      '<h4>Mashup V15.5 — La Galerie des mondes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.5.0</span></div>'+
+      '<p>V15.5 : galerie de boosters déroulante avec filtres par série, Mashup Match à portée de clic et forte réduction du volume des données d’illustration transmises par Supabase. Les images originales et leurs effets restent intacts ; la campagne en ligne et les récompenses restent actives.</p>'+
       '<div class="dev-v12-changes">'+
+      '<span>Boosters : carrousel tactile compact, navigation au clavier et filtres par séries disponibles.</span>'+
+      '<span>Jeux : Mashup Match mis en avant sur l’accueil, le menu mobile et le hub Jeux.</span>'+
+      '<span>Économie de données : illustrations séparées du catalogue, cache navigateur et vérifications automatiques moins fréquentes.</span>'+
       '<span>Arène Nexus : plateau immersif, rail des quatre manches, confrontation et résultats détaillés.</span>'+
       '<span>La direction MAX/MIN, la statistique et la manche restent réunies près des commandes.</span>'+
       '<span>Booster tactile, confirmation automatique, bilan conservé et récupération d’une ouverture interrompue.</span>'+

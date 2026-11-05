@@ -1,5 +1,5 @@
 {
-  "version": "15.4.0",
+  "version": "15.5.0",
   "publishedAt": "2026-11-05",
-  "notes": "Arène Nexus, finitions métalliques affinées, boosters tactiles, horloge du Casino synchronisée et Mashup Match : 100 niveaux avec bonus, obstacles et cascades. Actualisation protégée pendant les parties et transactions."
+  "notes": "Carrousel des boosters filtrable par série, Mashup Match à l’honneur et optimisation Supabase : illustrations originales chargées et cachées séparément du catalogue, sondages moins fréquents."
 }

@@ -19,7 +19,8 @@ test('Une application encore en initialisation interdit une actualisation préma
  const gate=createUpdateSafety({readState(){throw Error('not ready');}});assert.equal(gate.status().safe,false);
 });
 
-function updater({safe=true,probeVersion='15.5.0',deferProbe=false,htmlVersion,releaseVersion='15.5.0',legacyBusy=false,legacy=false}={}) {
+const releaseVersionNext=(()=>{const [major,minor]=JSON.parse(fs.readFileSync(new URL('../../version.json',import.meta.url),'utf8')).version.split('.').map(Number);return [major,minor+1,0].join('.');})();
+function updater({safe=true,probeVersion=releaseVersionNext,deferProbe=false,htmlVersion,releaseVersion=releaseVersionNext,legacyBusy=false,legacy=false}={}) {
  const nodes=new Map(),listeners={},destinations=[],requests=[];
  for(const id of ['mashup-update-status','mashup-update-banner','mashup-update-version','mashup-update-note','mashup-update-apply','mashup-update-check','mashup-update-later'])
   nodes.set(id,{hidden:true,textContent:'',disabled:false,dataset:{},classList:{add(){},remove(){}},addEventListener(type,handler){this[type]=handler;}});
@@ -48,7 +49,7 @@ test('Updater : une action commencée pendant la vérification bloque également
 test('Updater : version diffusée et jeu au repos conservent URL et stockage de connexion',async()=>{
  const env=updater();await setImmediate();await env.nodes.get('mashup-update-apply').click();
  assert.equal(env.destinations.length,1);const target=new URL(env.destinations[0]);
- assert.equal(target.searchParams.get('keep'),'yes');assert.equal(target.hash,'#collection');assert.equal(target.searchParams.get('mashup_build'),'15.5.0');
+ assert.equal(target.searchParams.get('keep'),'yes');assert.equal(target.hash,'#collection');assert.equal(target.searchParams.get('mashup_build'),releaseVersionNext);
 });
 test('Updater : un manifeste plus récent que le HTML ne publie pas une fausse mise à jour',async()=>{
  const env=updater({probeVersion:'15.4.0'});await setImmediate();await env.nodes.get('mashup-update-apply').click();

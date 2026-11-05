@@ -1,4 +1,4 @@
-/* Mashup V15.4 — existing Memory/league transactions, server-synchronised clock. */
+/* Mashup V15.5 — existing Memory/league transactions, server-synchronised clock. */
 import {createCasinoClock} from './66-v15-4-casino-clock.js?v=15.4.0';
 
 export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getView=()=>'games',getSessionKey=()=>getUser()?.id}){
@@ -72,15 +72,16 @@ export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getV
     <button class="btn" data-games="arena">⚔ Arène</button>
     <button class="btn ${section==='casino'?'btn-primary':''}" data-games="casino">🎲 Ligue IA</button>
     <button class="btn ${section==='mini'?'btn-primary':''}" data-games="mini">🧩 Memory</button>
-    <button class="btn games-match-link" data-games="match">✦ Mashup Match</button></nav>`;
+    <button class="btn btn-primary games-match-link" data-games="match">✦ Mashup Match</button></nav>`;
   const intro=(name,sub)=>`<div class="page-lead"><div class="eyebrow">MASHUP · SAISON ${snapshot?.league?.season||1}</div><h1 class="heading">${name}</h1><p class="text-sub">${sub}</p></div>`;
   const loadingBox=()=>`<section class="panel"><p>${networkError?'Connexion à la ligue indisponible. Réessaie dans un instant.':'Connexion à la ligue…'}</p><button class="btn" data-games="refresh">Actualiser</button></section>`;
   function hub(){return intro('Tous les <em>jeux.</em>','Arène, Ligue IA, Memory et Mashup Match : choisis ton prochain défi. Les combats IA sont partagés par tous les joueurs.')+tabs()+
     `<div class="games-layout">
+    <div class="games-hero-card games-match-card"><span class="games-symbol">✦</span><span class="eyebrow">À LA UNE · CAMPAGNE ET CRÉDITS</span><h3>Mashup Match</h3><p>Aligne les éclats, combine les pouvoirs et découvre une campagne de 100 niveaux.</p><button class="btn btn-primary" data-games="match">Jouer à Mashup Match</button></div>
     <div class="games-hero-card"><span class="games-symbol">⚔</span><h3>Arène</h3><p>Affronte les IA ou défie les autres joueurs.</p><button class="btn btn-primary" data-games="arena">Entrer dans l’arène</button></div>
     <div class="games-hero-card"><span class="games-symbol">🏆</span><h3>Casino · Ligue IA</h3><p>20 IA, classement en direct, cotes variables et un duel toutes les 10 minutes.</p><button class="btn btn-primary" data-games="casino">Voir la ligue</button></div>
     <div class="games-hero-card"><span class="games-symbol">🧩</span><h3>Memory · Le Codex</h3><p>Retrouve les paires, gagne des crédits et accomplis ton défi quotidien.</p><button class="btn btn-primary" data-games="mini">Jouer au Memory</button></div>
-    <div class="games-hero-card games-match-card"><span class="games-symbol">✦</span><span class="eyebrow">NOUVEAU · 10 MONDES</span><h3>Mashup Match</h3><p>Aligne les éclats, combine les pouvoirs et découvre une campagne de 100 niveaux.</p><button class="btn btn-primary" data-games="match">Découvrir Mashup Match</button></div></div>`;}
+</div>`;}
   function fighterCard(f){return `<div class="games-fighter"><div class="games-fighter-avatar">${profile(f).slice(0,1)}</div><div><strong>${profile(f)}</strong><small>Puissance ${n(f.power)} · Elo ${n(f.elo)}</small><small>${n(f.wins)} V · ${n(f.losses)} D</small></div></div>`;}
   function team(c,side){return `<article class="games-team-v9"><div class="games-team-head"><small>ÉQUIPE ${side===0?'A':'B'}</small><strong>${sideName(c,side).split(' + ').map(h).join(' + ')}</strong></div>${(c?.sides?.[side]||[]).map(fighterCard).join('')}
     <div class="games-odd"><span>Cote</span><strong>×${n(c?.odds?.[side]||1)}</strong><small>Chance estimée : ${Math.round((c?.probabilities?.[side]||.5)*100)} %</small></div></article>`;}
