@@ -1,0 +1,690 @@
+{
+  "kind": "sequential-synthetic-browser-comparison",
+  "baselineCommit": "15968dc",
+  "started": "2026-11-05T23:23:31.019Z",
+  "productionRequests": 0,
+  "runs": [
+    {
+      "version": "v15.5.1",
+      "suffix": "/baseline/",
+      "quality": "high",
+      "repetition": 0,
+      "scenes": {
+        "match": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4883250,
+          "jsHeapTotalBytes": 9883434,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5167242,
+          "jsHeapTotalBytes": 9883862,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 0,
+            "pointerFrames": 92,
+            "sourceClass": false
+          }
+        },
+        "booster": {
+          "domNodes": 909,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 50,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 6026250,
+          "jsHeapTotalBytes": 9887350,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "high",
+      "repetition": 0,
+      "scenes": {
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5015484,
+          "jsHeapTotalBytes": 9930200,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5432603,
+          "jsHeapTotalBytes": 9930767,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 33.3,
+            "maxMs": 50,
+            "over33ms": 4
+          },
+          "jsHeapUsedBytes": 6230976,
+          "jsHeapTotalBytes": 9934440,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.5.1",
+      "suffix": "/baseline/",
+      "quality": "high",
+      "repetition": 1,
+      "scenes": {
+        "match": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4848120,
+          "jsHeapTotalBytes": 9883392,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5039391,
+          "jsHeapTotalBytes": 9883703,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 0,
+            "pointerFrames": 92,
+            "sourceClass": false
+          }
+        },
+        "booster": {
+          "domNodes": 909,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 50,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 5904385,
+          "jsHeapTotalBytes": 10149345,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "high",
+      "repetition": 1,
+      "scenes": {
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 6408366,
+          "jsHeapTotalBytes": 10298810,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4842137,
+          "jsHeapTotalBytes": 10174505,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 33.4,
+            "maxMs": 66.7,
+            "over33ms": 5
+          },
+          "jsHeapUsedBytes": 4729368,
+          "jsHeapTotalBytes": 7554072,
+          "longTasks": [
+            {
+              "start": 10525,
+              "duration": 55
+            }
+          ],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.5.1",
+      "suffix": "/baseline/",
+      "quality": "high",
+      "repetition": 2,
+      "scenes": {
+        "match": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 6278901,
+          "jsHeapTotalBytes": 9996069,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4609345,
+          "jsHeapTotalBytes": 10387769,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 0,
+            "pointerFrames": 92,
+            "sourceClass": false
+          }
+        },
+        "booster": {
+          "domNodes": 909,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 50,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4585686,
+          "jsHeapTotalBytes": 6718722,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "high",
+      "repetition": 2,
+      "scenes": {
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5179321,
+          "jsHeapTotalBytes": 10456485,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5375635,
+          "jsHeapTotalBytes": 10456935,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 33.3,
+            "maxMs": 50.1,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 6169378,
+          "jsHeapTotalBytes": 10460602,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "eco",
+      "repetition": 0,
+      "scenes": {
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4772854,
+          "jsHeapTotalBytes": 9651830,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5106609,
+          "jsHeapTotalBytes": 9652281,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5748867,
+          "jsHeapTotalBytes": 9655923,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    }
+  ],
+  "screenshots": [
+    "v15-5-1-match.png",
+    "v15-5-1-booster.png",
+    "v15-6-match.png",
+    "v15-6-booster.png"
+  ],
+  "conditions": {
+    "browser": "155.0.8059.79",
+    "platform": "linux x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "deviceScaleFactor": 1,
+    "gpu": "disabled",
+    "framesPerScene": 90,
+    "repeats": 3,
+    "fixture": "36 fictional cards; local assets; intercepted Auth/API; service workers blocked",
+    "method": "Fresh contexts, V15.5.1/V15.6 sequential; same fixture/high quality; one extra V15.6 eco run. No simultaneous browser suite or screencast."
+  },
+  "limits": [
+    "Chromium Linux, tactile et dimensions simulés; aucun téléphone physique ni Safari iOS.",
+    "rAF mesure l’ordonnancement et ne représente pas tout le coût GPU/compositeur.",
+    "Aucune latence Supabase ni téléchargement d’illustrations réelles mesuré.",
+    "Les heaps varient avec le GC et ne prouvent pas une absence de fuite.",
+    "Tâches longues recueillies uniquement pendant chaque fenêtre mesurée."
+  ],
+  "selectedScenes": [
+    "match",
+    "matchContinuousDrag",
+    "booster"
+  ],
+  "medians": {
+    "v15.5.1-high": {
+      "match": {
+        "domNodes": 610,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4883250
+      },
+      "matchContinuousDrag": {
+        "domNodes": 610,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5039391
+      },
+      "booster": {
+        "domNodes": 909,
+        "cards": 4,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 1,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5904385
+      }
+    },
+    "v15.6-high": {
+      "match": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5179321
+      },
+      "matchContinuousDrag": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5375635
+      },
+      "booster": {
+        "domNodes": 858,
+        "cards": 4,
+        "p95FrameIntervalMs": 33.3,
+        "intervalsOver33ms": 4,
+        "longTaskCount": 0,
+        "heapUsedBytes": 6169378
+      }
+    },
+    "v15.6-eco": {
+      "match": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4772854
+      },
+      "matchContinuousDrag": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5106609
+      },
+      "booster": {
+        "domNodes": 858,
+        "cards": 4,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5748867
+      }
+    }
+  },
+  "delta": {
+    "match": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0,
+      "longTaskCount": 0
+    },
+    "matchContinuousDrag": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0,
+      "longTaskCount": 0
+    },
+    "booster": {
+      "domNodes": -51,
+      "p95FrameIntervalMs": 16.6,
+      "longTaskCount": 0
+    }
+  },
+  "success": true
+}

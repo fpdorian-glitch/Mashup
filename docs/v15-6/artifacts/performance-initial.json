@@ -1,0 +1,2293 @@
+{
+  "kind": "sequential-synthetic-browser-comparison",
+  "baselineCommit": "15968dc",
+  "started": "2026-11-05T23:14:30.713Z",
+  "productionRequests": 0,
+  "runs": [
+    {
+      "version": "v15.5.1",
+      "suffix": "/baseline/",
+      "quality": "high",
+      "repetition": 0,
+      "scenes": {
+        "home": {
+          "domNodes": 725,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3834452,
+          "jsHeapTotalBytes": 7452952,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "packGallery": {
+          "domNodes": 725,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3993011,
+          "jsHeapTotalBytes": 8046987,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "collection": {
+          "domNodes": 1663,
+          "cards": 24,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5098061,
+          "jsHeapTotalBytes": 8310401,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "inspection": {
+          "domNodes": 1754,
+          "cards": 25,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5741682,
+          "jsHeapTotalBytes": 8680722,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "arena": {
+          "domNodes": 551,
+          "cards": 2,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4569774,
+          "jsHeapTotalBytes": 6718690,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "market": {
+          "domNodes": 441,
+          "cards": 1,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4357964,
+          "jsHeapTotalBytes": 6721464,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "casino": {
+          "domNodes": 563,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4760208,
+          "jsHeapTotalBytes": 7252460,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "memory": {
+          "domNodes": 385,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5019101,
+          "jsHeapTotalBytes": 7257061,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "admin": {
+          "domNodes": 1632,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 66.7,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 5165526,
+          "jsHeapTotalBytes": 6869114,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "match": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4513241,
+          "jsHeapTotalBytes": 8028201,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4774048,
+          "jsHeapTotalBytes": 8028644,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 0,
+            "pointerFrames": 92,
+            "sourceClass": false
+          }
+        },
+        "booster": {
+          "domNodes": 909,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 66.6,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4686014,
+          "jsHeapTotalBytes": 6718970,
+          "longTasks": [
+            {
+              "start": 24546,
+              "duration": 51
+            }
+          ],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "high",
+      "repetition": 0,
+      "scenes": {
+        "home": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3783472,
+          "jsHeapTotalBytes": 6190312,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "packGallery": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4431492,
+          "jsHeapTotalBytes": 6522264,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "collection": {
+          "domNodes": 1666,
+          "cards": 24,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5187352,
+          "jsHeapTotalBytes": 7310088,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "inspection": {
+          "domNodes": 1757,
+          "cards": 25,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 33.3,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5771794,
+          "jsHeapTotalBytes": 7573878,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "arena": {
+          "domNodes": 554,
+          "cards": 2,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4961197,
+          "jsHeapTotalBytes": 8077521,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "market": {
+          "domNodes": 444,
+          "cards": 1,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4480999,
+          "jsHeapTotalBytes": 7293863,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "casino": {
+          "domNodes": 566,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 50,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4822247,
+          "jsHeapTotalBytes": 7300571,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "memory": {
+          "domNodes": 388,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5081072,
+          "jsHeapTotalBytes": 7305172,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "admin": {
+          "domNodes": 1635,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5254622,
+          "jsHeapTotalBytes": 7813610,
+          "longTasks": [
+            {
+              "start": 17437,
+              "duration": 57
+            }
+          ],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4993978,
+          "jsHeapTotalBytes": 8079018,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5377069,
+          "jsHeapTotalBytes": 8341677,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 33.4,
+            "maxMs": 66.6,
+            "over33ms": 5
+          },
+          "jsHeapUsedBytes": 5418334,
+          "jsHeapTotalBytes": 7821062,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.5.1",
+      "suffix": "/baseline/",
+      "quality": "high",
+      "repetition": 1,
+      "scenes": {
+        "home": {
+          "domNodes": 725,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3738128,
+          "jsHeapTotalBytes": 6928664,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "packGallery": {
+          "domNodes": 725,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4374827,
+          "jsHeapTotalBytes": 7260555,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "collection": {
+          "domNodes": 1663,
+          "cards": 24,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4935097,
+          "jsHeapTotalBytes": 7261729,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "inspection": {
+          "domNodes": 1754,
+          "cards": 25,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5585679,
+          "jsHeapTotalBytes": 7787699,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "arena": {
+          "domNodes": 551,
+          "cards": 2,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4581165,
+          "jsHeapTotalBytes": 6980809,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "market": {
+          "domNodes": 441,
+          "cards": 1,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 33.3,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4354511,
+          "jsHeapTotalBytes": 6197151,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "casino": {
+          "domNodes": 563,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4725431,
+          "jsHeapTotalBytes": 6203859,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "memory": {
+          "domNodes": 385,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5023872,
+          "jsHeapTotalBytes": 6208460,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "admin": {
+          "domNodes": 1632,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 50,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4421374,
+          "jsHeapTotalBytes": 7241170,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "match": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4965843,
+          "jsHeapTotalBytes": 8293015,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4965059,
+          "jsHeapTotalBytes": 8293327,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 0,
+            "pointerFrames": 92,
+            "sourceClass": false
+          }
+        },
+        "booster": {
+          "domNodes": 909,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 50.1,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4830528,
+          "jsHeapTotalBytes": 6456584,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "high",
+      "repetition": 1,
+      "scenes": {
+        "home": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3781860,
+          "jsHeapTotalBytes": 7238888,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "packGallery": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4429956,
+          "jsHeapTotalBytes": 7570840,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "collection": {
+          "domNodes": 1666,
+          "cards": 24,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5067400,
+          "jsHeapTotalBytes": 7572088,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "inspection": {
+          "domNodes": 1757,
+          "cards": 25,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5695187,
+          "jsHeapTotalBytes": 8098039,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "arena": {
+          "domNodes": 554,
+          "cards": 2,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4660693,
+          "jsHeapTotalBytes": 7553165,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "market": {
+          "domNodes": 444,
+          "cards": 1,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4404895,
+          "jsHeapTotalBytes": 6769507,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "casino": {
+          "domNodes": 566,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 50,
+            "over33ms": 2
+          },
+          "jsHeapUsedBytes": 4749427,
+          "jsHeapTotalBytes": 6776215,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "memory": {
+          "domNodes": 388,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5010256,
+          "jsHeapTotalBytes": 6780816,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "admin": {
+          "domNodes": 1635,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 49.9,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4492704,
+          "jsHeapTotalBytes": 7027076,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5291656,
+          "jsHeapTotalBytes": 8078920,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5197783,
+          "jsHeapTotalBytes": 8079371,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 33.3,
+            "maxMs": 66.7,
+            "over33ms": 4
+          },
+          "jsHeapUsedBytes": 4747126,
+          "jsHeapTotalBytes": 6242666,
+          "longTasks": [
+            {
+              "start": 23435,
+              "duration": 57
+            }
+          ],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.5.1",
+      "suffix": "/baseline/",
+      "quality": "high",
+      "repetition": 2,
+      "scenes": {
+        "home": {
+          "domNodes": 725,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3832252,
+          "jsHeapTotalBytes": 7452952,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "packGallery": {
+          "domNodes": 725,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4018767,
+          "jsHeapTotalBytes": 7784843,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "collection": {
+          "domNodes": 1663,
+          "cards": 24,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4975793,
+          "jsHeapTotalBytes": 8048161,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "inspection": {
+          "domNodes": 1754,
+          "cards": 25,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5625842,
+          "jsHeapTotalBytes": 8311986,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "arena": {
+          "domNodes": 551,
+          "cards": 2,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 33.27,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4642152,
+          "jsHeapTotalBytes": 7242912,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "market": {
+          "domNodes": 441,
+          "cards": 1,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4197142,
+          "jsHeapTotalBytes": 6721398,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "casino": {
+          "domNodes": 563,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 33.3,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4543174,
+          "jsHeapTotalBytes": 6728106,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "memory": {
+          "domNodes": 385,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4841715,
+          "jsHeapTotalBytes": 6732707,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "admin": {
+          "domNodes": 1632,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 66.7,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4413508,
+          "jsHeapTotalBytes": 7765444,
+          "longTasks": [
+            {
+              "start": 15866,
+              "duration": 52
+            }
+          ],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "match": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4797731,
+          "jsHeapTotalBytes": 8293003,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 610,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4978743,
+          "jsHeapTotalBytes": 8555459,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 0,
+            "pointerFrames": 92,
+            "sourceClass": false
+          }
+        },
+        "booster": {
+          "domNodes": 909,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 50,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4606504,
+          "jsHeapTotalBytes": 5932296,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "high",
+      "repetition": 2,
+      "scenes": {
+        "home": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3811420,
+          "jsHeapTotalBytes": 7501032,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "packGallery": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4459320,
+          "jsHeapTotalBytes": 7832984,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "collection": {
+          "domNodes": 1666,
+          "cards": 24,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5061192,
+          "jsHeapTotalBytes": 7834232,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "inspection": {
+          "domNodes": 1757,
+          "cards": 25,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5666525,
+          "jsHeapTotalBytes": 8360185,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "arena": {
+          "domNodes": 554,
+          "cards": 2,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 33.3,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5119183,
+          "jsHeapTotalBytes": 8863851,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "market": {
+          "domNodes": 444,
+          "cards": 1,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4454841,
+          "jsHeapTotalBytes": 9128769,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "casino": {
+          "domNodes": 566,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 50,
+            "over33ms": 1
+          },
+          "jsHeapUsedBytes": 4799105,
+          "jsHeapTotalBytes": 9135477,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "memory": {
+          "domNodes": 388,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5097838,
+          "jsHeapTotalBytes": 9140078,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "admin": {
+          "domNodes": 1635,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4501388,
+          "jsHeapTotalBytes": 9124228,
+          "longTasks": [
+            {
+              "start": 15804,
+              "duration": 82
+            }
+          ],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5005428,
+          "jsHeapTotalBytes": 9913928,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5218467,
+          "jsHeapTotalBytes": 9914379,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 33.3,
+            "maxMs": 33.4,
+            "over33ms": 3
+          },
+          "jsHeapUsedBytes": 5267303,
+          "jsHeapTotalBytes": 7029287,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "high"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "version": "v15.6",
+      "suffix": "/",
+      "quality": "eco",
+      "repetition": 0,
+      "scenes": {
+        "home": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 3814338,
+          "jsHeapTotalBytes": 6714598,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "packGallery": {
+          "domNodes": 674,
+          "cards": 3,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4463230,
+          "jsHeapTotalBytes": 7046550,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "collection": {
+          "domNodes": 1666,
+          "cards": 24,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4995748,
+          "jsHeapTotalBytes": 7834012,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "inspection": {
+          "domNodes": 1757,
+          "cards": 25,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5647123,
+          "jsHeapTotalBytes": 8359939,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "arena": {
+          "domNodes": 554,
+          "cards": 2,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4735730,
+          "jsHeapTotalBytes": 8076726,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "market": {
+          "domNodes": 444,
+          "cards": 1,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4283265,
+          "jsHeapTotalBytes": 8603785,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "casino": {
+          "domNodes": 566,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4648785,
+          "jsHeapTotalBytes": 8610493,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "memory": {
+          "domNodes": 388,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4909382,
+          "jsHeapTotalBytes": 8615094,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "admin": {
+          "domNodes": 1635,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4471016,
+          "jsHeapTotalBytes": 7550756,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "match": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.7,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4877712,
+          "jsHeapTotalBytes": 8340432,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        },
+        "matchContinuousDrag": {
+          "domNodes": 613,
+          "cards": 0,
+          "images": 0,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 5203919,
+          "jsHeapTotalBytes": 8340883,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco",
+          "visual": {
+            "centerDisplacementPx": 25.77,
+            "pointerFrames": 92,
+            "sourceClass": true
+          }
+        },
+        "booster": {
+          "domNodes": 858,
+          "cards": 4,
+          "images": 3,
+          "frameIntervals": {
+            "samples": 90,
+            "p50ms": 16.7,
+            "p95ms": 16.8,
+            "maxMs": 16.8,
+            "over33ms": 0
+          },
+          "jsHeapUsedBytes": 4993965,
+          "jsHeapTotalBytes": 7292949,
+          "longTasks": [],
+          "overflow": false,
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "quality": "eco"
+        }
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    }
+  ],
+  "screenshots": [
+    "v15-5-1-packGallery.png",
+    "v15-5-1-inspection.png",
+    "v15-5-1-match.png",
+    "v15-5-1-booster.png",
+    "v15-6-packGallery.png",
+    "v15-6-inspection.png",
+    "v15-6-match.png",
+    "v15-6-booster.png"
+  ],
+  "conditions": {
+    "browser": "155.0.8059.79",
+    "platform": "linux x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "deviceScaleFactor": 1,
+    "gpu": "disabled",
+    "framesPerScene": 90,
+    "repeats": 3,
+    "fixture": "36 fictional cards; local assets; intercepted Auth/API; service workers blocked",
+    "method": "Fresh contexts, V15.5.1/V15.6 sequential; same fixture/high quality; one extra V15.6 eco run. No simultaneous browser suite or screencast."
+  },
+  "limits": [
+    "Chromium Linux, tactile et dimensions simulés; aucun téléphone physique ni Safari iOS.",
+    "rAF mesure l’ordonnancement et ne représente pas tout le coût GPU/compositeur.",
+    "Aucune latence Supabase ni téléchargement d’illustrations réelles mesuré.",
+    "Les heaps varient avec le GC et ne prouvent pas une absence de fuite.",
+    "Tâches longues recueillies uniquement pendant chaque fenêtre mesurée."
+  ],
+  "medians": {
+    "v15.5.1-high": {
+      "home": {
+        "domNodes": 725,
+        "cards": 3,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 3832252
+      },
+      "packGallery": {
+        "domNodes": 725,
+        "cards": 3,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4018767
+      },
+      "collection": {
+        "domNodes": 1663,
+        "cards": 24,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4975793
+      },
+      "inspection": {
+        "domNodes": 1754,
+        "cards": 25,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5625842
+      },
+      "arena": {
+        "domNodes": 551,
+        "cards": 2,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4581165
+      },
+      "market": {
+        "domNodes": 441,
+        "cards": 1,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4354511
+      },
+      "casino": {
+        "domNodes": 563,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4725431
+      },
+      "memory": {
+        "domNodes": 385,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5019101
+      },
+      "admin": {
+        "domNodes": 1632,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 1,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4421374
+      },
+      "match": {
+        "domNodes": 610,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4797731
+      },
+      "matchContinuousDrag": {
+        "domNodes": 610,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4965059
+      },
+      "booster": {
+        "domNodes": 909,
+        "cards": 4,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 1,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4686014
+      }
+    },
+    "v15.6-high": {
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 3783472
+      },
+      "packGallery": {
+        "domNodes": 674,
+        "cards": 3,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4431492
+      },
+      "collection": {
+        "domNodes": 1666,
+        "cards": 24,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5067400
+      },
+      "inspection": {
+        "domNodes": 1757,
+        "cards": 25,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5695187
+      },
+      "arena": {
+        "domNodes": 554,
+        "cards": 2,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4961197
+      },
+      "market": {
+        "domNodes": 444,
+        "cards": 1,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4454841
+      },
+      "casino": {
+        "domNodes": 566,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 1,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4799105
+      },
+      "memory": {
+        "domNodes": 388,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5081072
+      },
+      "admin": {
+        "domNodes": 1635,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 1,
+        "heapUsedBytes": 4501388
+      },
+      "match": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5005428
+      },
+      "matchContinuousDrag": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5218467
+      },
+      "booster": {
+        "domNodes": 858,
+        "cards": 4,
+        "p95FrameIntervalMs": 33.3,
+        "intervalsOver33ms": 4,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5267303
+      }
+    },
+    "v15.6-eco": {
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 3814338
+      },
+      "packGallery": {
+        "domNodes": 674,
+        "cards": 3,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4463230
+      },
+      "collection": {
+        "domNodes": 1666,
+        "cards": 24,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4995748
+      },
+      "inspection": {
+        "domNodes": 1757,
+        "cards": 25,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5647123
+      },
+      "arena": {
+        "domNodes": 554,
+        "cards": 2,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4735730
+      },
+      "market": {
+        "domNodes": 444,
+        "cards": 1,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4283265
+      },
+      "casino": {
+        "domNodes": 566,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4648785
+      },
+      "memory": {
+        "domNodes": 388,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4909382
+      },
+      "admin": {
+        "domNodes": 1635,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4471016
+      },
+      "match": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.7,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4877712
+      },
+      "matchContinuousDrag": {
+        "domNodes": 613,
+        "cards": 0,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 5203919
+      },
+      "booster": {
+        "domNodes": 858,
+        "cards": 4,
+        "p95FrameIntervalMs": 16.8,
+        "intervalsOver33ms": 0,
+        "longTaskCount": 0,
+        "heapUsedBytes": 4993965
+      }
+    }
+  },
+  "delta": {
+    "home": {
+      "domNodes": -51,
+      "p95FrameIntervalMs": 0.1,
+      "longTaskCount": 0
+    },
+    "packGallery": {
+      "domNodes": -51,
+      "p95FrameIntervalMs": 0,
+      "longTaskCount": 0
+    },
+    "collection": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0,
+      "longTaskCount": 0
+    },
+    "inspection": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0.1,
+      "longTaskCount": 0
+    },
+    "arena": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": -0.1,
+      "longTaskCount": 0
+    },
+    "market": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0.1,
+      "longTaskCount": 0
+    },
+    "casino": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0.1,
+      "longTaskCount": 0
+    },
+    "memory": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0.1,
+      "longTaskCount": 0
+    },
+    "admin": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0,
+      "longTaskCount": 1
+    },
+    "match": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0.1,
+      "longTaskCount": 0
+    },
+    "matchContinuousDrag": {
+      "domNodes": 3,
+      "p95FrameIntervalMs": 0.1,
+      "longTaskCount": 0
+    },
+    "booster": {
+      "domNodes": -51,
+      "p95FrameIntervalMs": 16.5,
+      "longTaskCount": 0
+    }
+  },
+  "success": true
+}

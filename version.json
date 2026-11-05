@@ -1,5 +1,5 @@
 {
-  "version": "15.5.1",
-  "publishedAt": "2026-11-05",
-  "notes": "Élimination des sondages d’invitations en double et optimisation Supabase des notifications sans altérer les cartes, les crédits et les récompenses."
+  "version": "15.6.0",
+  "publishedAt": "2026-11-06",
+  "notes": "Boosters 3D manipulables, ouverture physique et Mashup Match tactile plus fluide. Le classement public reste désactivé tant que son raccordement Supabase réel n’est pas validé."
 }

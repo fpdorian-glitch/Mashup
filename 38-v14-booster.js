@@ -41,10 +41,16 @@ function sealEmblem(){
 export function sealedPackMarkup(pack={},esc=escapeHTML){
   const count=Number(pack.count);
   const amount=Number.isSafeInteger(count)&&count>0?`${count} carte${count>1?'s':''}`:'Cartes à découvrir';
+  const backCount=Number.isSafeInteger(count)&&count>0?Math.min(3,count):3;
+  const genericBacks=Array.from({length:backCount},(_,index)=>'<i>'+(index===backCount-1?'<b>✦</b><span>MASHUP</span>':'')+'</i>').join('');
   return `<section class="v14-sealed-scene" aria-label="Booster scellé">
     <p class="v14-opening-kicker">UN NOUVEAU CHAPITRE</p>
     <button class="v14-seal-trigger" type="button" data-v14-break-seal aria-label="Ouvrir le booster ${esc(pack.name||'Mashup')}" aria-describedby="v14-seal-hint">
       <span class="v14-sealed-pack" aria-hidden="true">
+        <span class="v156-seal-back"><span>MASHUP</span><i>UN MONDE DANS CHAQUE CARTE</i><b>COLLECTION · ORIGINAL</b></span>
+        <span class="v156-seal-side v156-seal-side-left"></span><span class="v156-seal-side v156-seal-side-right"></span>
+        <span class="v156-seal-bottom-face"></span>
+        <span class="v156-seal-card-stack">${genericBacks}</span>
         <span class="v14-seal-cap"><span>DÉCHIRER LE SCEAU <b>${arrow}</b></span></span>
         <span class="v14-seal-body">
           <span class="v14-seal-edition">MASHUP <i>COLLECTION</i></span>
@@ -54,6 +60,7 @@ export function sealedPackMarkup(pack={},esc=escapeHTML){
           <span class="v14-seal-bottom">CHAQUE CARTE A SON HISTOIRE</span>
         </span>
         <span class="v14-seal-glint"></span>
+        <span class="v156-seal-crease v156-seal-crease-left"></span><span class="v156-seal-crease v156-seal-crease-right"></span>
       </span>
       <span class="v14-seal-cta">Briser le sceau <span aria-hidden="true">${arrow}</span></span>
     </button>
@@ -87,9 +94,12 @@ export function summaryMarkup(results=[],renderCard=()=>'',esc=escapeHTML){
 export function mountSealedPack({root=globalThis.document?.getElementById('opening-stack'),onOpen=()=>{},fast=false}={}){
   if(!root?.addEventListener)return ()=>{};
   let timer=null,started=false,disposed=false,gesture=null,suppressClickUntil=0;
+  const doc=root.ownerDocument||globalThis.document;
+  const view=doc?.defaultView||globalThis.window;
   function resetGesture(){
-    if(gesture?.captured){try{gesture.button.releasePointerCapture?.(gesture.id);}catch{}}
+    const previous=gesture;
     gesture=null;
+    if(previous?.captured){try{previous.button.releasePointerCapture?.(previous.id);}catch{}}
     root.classList?.remove('v154-is-tearing');
     root.style?.removeProperty?.('--v154-tear-progress');
   }
@@ -101,6 +111,12 @@ export function mountSealedPack({root=globalThis.document?.getElementById('openi
     root.removeEventListener('pointermove',onPointerMove);
     root.removeEventListener('pointerup',onPointerUp);
     root.removeEventListener('pointercancel',onPointerCancel);
+    root.removeEventListener('lostpointercapture',onPointerCancel);
+    root.removeEventListener('keydown',onKeydown);
+    view?.removeEventListener?.('blur',onInterruption);
+    view?.removeEventListener?.('resize',onInterruption);
+    view?.removeEventListener?.('orientationchange',onInterruption);
+    doc?.removeEventListener?.('visibilitychange',onVisibility);
     resetGesture();
     root.classList?.remove('v14-is-opening');
   };
@@ -119,7 +135,6 @@ export function mountSealedPack({root=globalThis.document?.getElementById('openi
     button.disabled=true;
     button.setAttribute('aria-label','Ouverture du booster');
     root.classList?.add('v14-is-opening');
-    const doc=root.ownerDocument||globalThis.document;
     const quick=(typeof fast==='function'?fast():fast)||doc?.documentElement?.dataset?.m13Quality==='eco'||!!doc?.defaultView?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
     // One short tear; never force the player to watch a long opening again.
     timer=setTimeout(()=>{
@@ -163,13 +178,25 @@ export function mountSealedPack({root=globalThis.document?.getElementById('openi
     if(current.ratio>=.55)startOpening(current.button);
   }
   function onPointerCancel(event){if(gesture?.id===event.pointerId){suppressClickUntil=Date.now()+400;resetGesture();}}
+  function onInterruption(){
+    // An interrupted preview never opens a packet or sends a transaction.
+    if(gesture){suppressClickUntil=Date.now()+400;resetGesture();}
+  }
+  function onVisibility(){if(doc?.hidden)onInterruption();}
+  function onKeydown(event){if(event.key==='Escape')onInterruption();}
   root.addEventListener('click',onClick);
-  const view=root.ownerDocument?.defaultView||globalThis.window;
   if(typeof view?.PointerEvent==='function'){
+    // Escape only cancels a pointer preview; native Enter/Space keep their click.
+    root.addEventListener('keydown',onKeydown);
     root.addEventListener('pointerdown',onPointerDown);
     root.addEventListener('pointermove',onPointerMove,{passive:false});
     root.addEventListener('pointerup',onPointerUp);
     root.addEventListener('pointercancel',onPointerCancel);
+    root.addEventListener('lostpointercapture',onPointerCancel);
+    view?.addEventListener?.('blur',onInterruption);
+    view?.addEventListener?.('resize',onInterruption);
+    view?.addEventListener?.('orientationchange',onInterruption);
+    doc?.addEventListener?.('visibilitychange',onVisibility);
   }
   return cleanup;
 }

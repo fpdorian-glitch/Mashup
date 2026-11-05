@@ -1,0 +1,42 @@
+{
+  "scope": "isolated-private-social-service-with-in-memory-read-adapter",
+  "protocol": 1,
+  "privateTests": {
+    "historicalMatch": 26,
+    "social": 17,
+    "total": 43,
+    "passed": 43,
+    "failed": 0,
+    "skipped": 0
+  },
+  "measuredFixture": {
+    "players": 1001,
+    "firstPagePlayers": 25,
+    "firstPageJsonBytes": 3565,
+    "secondPageJsonBytes": 3545,
+    "tenWorldDetailJsonBytes": 577,
+    "reads": 3,
+    "indexBuilds": 1,
+    "storageCommits": 0
+  },
+  "coverage": [
+    "server-validated-completion-projection-only",
+    "no-training-or-browser-progress-input",
+    "authenticated-actor-and-blocked-account-checks",
+    "get-only-no-body",
+    "minimal-public-field-allowlist",
+    "stable-keyset-pagination-and-ranking",
+    "ten-world-detail-consistency",
+    "bounded-page-and-cursor",
+    "cache-ttl-commit-invalidation-and-concurrent-read-coalescing",
+    "read-rate-limit",
+    "no-wallet-or-save-mutation",
+    "authoritative-win-visible-without-second-reward"
+  ],
+  "productionRequests": 0,
+  "deployedSourcesDownloaded": false,
+  "migrationsApplied": false,
+  "edgeFunctionsDeployed": false,
+  "realSupabaseEgressMeasured": false,
+  "limits": "All identities, progress and balances were fictional. No deployed router, JWT/RLS, SQL view/index or Supabase database was tested. Payload byte counts are uncompressed local JSON only; they exclude HTTP/TLS overhead and do not establish production egress."
+}

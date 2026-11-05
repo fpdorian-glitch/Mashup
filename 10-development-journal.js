@@ -20,45 +20,25 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   // Pinned changelog is shipped with the client so every player sees the
   // current version even when developer-post history cannot be retrieved.
   function releaseMarkup(){
-    return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
-      '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 5 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V15.5 — La Galerie des mondes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.5.0</span></div>'+
-      '<p>V15.5 : galerie de boosters déroulante avec filtres par série, Mashup Match à portée de clic et forte réduction du volume des données d’illustration transmises par Supabase. Les images originales et leurs effets restent intacts ; la campagne en ligne et les récompenses restent actives.</p>'+
+    return '<article class="dev-v12-release" aria-label="Version de Mashup">'+
+      '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 6 NOVEMBRE 2026</div>'+
+      '<h4>Mashup V15.6 — Entre tes mains</h4></div><span class="dev-v12-badge">V15.6.0</span></div>'+
+      '<p>Des paquets à manipuler, des symboles qui suivent ton doigt et une expérience Mashup plus immersive. Cette version conserve les règles, les niveaux et les récompenses existants.</p>'+
       '<div class="dev-v12-changes">'+
-      '<span>Boosters : carrousel tactile compact, navigation au clavier et filtres par séries disponibles.</span>'+
-      '<span>Jeux : Mashup Match mis en avant sur l’accueil, le menu mobile et le hub Jeux.</span>'+
-      '<span>Économie de données : illustrations séparées du catalogue, cache navigateur et vérifications automatiques moins fréquentes.</span>'+
-      '<span>Arène Nexus : plateau immersif, rail des quatre manches, confrontation et résultats détaillés.</span>'+
-      '<span>La direction MAX/MIN, la statistique et la manche restent réunies près des commandes.</span>'+
-      '<span>Booster tactile, confirmation automatique, bilan conservé et récupération d’une ouverture interrompue.</span>'+
-      '<span>Casino : prochain combat IA visible en tête, heure serveur et reprise après veille.</span>'+
-      '<span>Mashup Match : alignements, bonus directionnels, prismes, zones, obstacles et dix mondes.</span>'+
-      '<span>Actualisation différée pendant les boosters, combats, mini-jeux et sauvegardes.</span>'+
-      '<span>Collections : total réel des cartes normales actives, indépendamment des cartes déjà découvertes.</span>'+
-      '<span>Succès et récompenses de collection : mêmes calculs serveur, aucune carte Secrète exigée.</span>'+
-      '<span>Vitrine : sélection des trois cartes et de la carte principale depuis la collection filtrable.</span>'+
-      '<span>Marché : illustrations visibles pour les annonces actives, y compris les Secrètes explicitement mises en vente.</span>'+
-      '<span>Les Secrètes non découvertes restent invisibles dans l’album et le catalogue classique.</span>'+
-      '<span>Plus grand ou plus faible : la règle et les choix restent visibles sur les petits écrans.</span>'+
-      '<span>Arène : révélation, comparaison, impact et résultat ; les effets peuvent être passés immédiatement.</span>'+
-      '<span>Échanges : deux collections visuelles avec recherche, quantités et contre-offres.</span>'+
-      '<span>Six matériaux : papier mat, métal, irisation violette, or noble, chrome noir et chrome blanc.</span>'+
-      '<span>Full Art, Gold, Secrète et Ultra Secrète : chaque finition possède sa propre composition.</span>'+
-      '<span>Modes économie d’énergie et animations réduites préservés.</span>'+
-      '<span>Recherche indexée et cartes déjà affichées conservées au chargement suivant.</span>'+
-      '<span>Inspection tactile et clavier, lumière physique et inclinaison maîtrisée.</span>'+
-      '<span>Un album paginé à compléter, avec la grille classique toujours disponible.</span>'+
-      '<span>Un objet en relief : tranches métalliques et plusieurs plans en inspection tactile.</span>'+
-      '</div>'+
-      '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+
-      '<p><b>V15.3.2 :</b> confirmations automatiques des boosters et reprise des tirages interrompus, sans double débit.</p>'+
-      '<p><b>V13.0 :</b> nouvel accueil Éclipse, navigation mobile, effets adaptatifs, decks optimisés et réponses réseau fiabilisées.</p>'+
-      '<p><b>V12.1 :</b> galerie de patrons et archivage réversible des cartes dans l’administration.</p>'+
-      '<p><b>V12.0 :</b> harmonisation mobile, finitions de cartes affinées, boosters plus fluides et fiabilisation de la collection.</p>'+
-      '<p><b>V11.4 :</b> nouveau Marché illustré, choix des cartes dans une collection filtrable, fiches complètes dans les annonces.</p>'+
-      '<p><b>V11.3 :</b> refonte de l’identité visuelle mobile et Studio illustrations dans l’Atelier : cadrage individuel, import en série et prise en charge des cartes secrètes.</p>'+
-      '<p><b>V11.2.4 :</b> retournement de booster plus léger sur Android, texte et images lisibles, effets mieux synchronisés.</p>'+
-      '<p><b>V11.2.3 :</b> fermeture accidentelle d’un booster empêchée, retour vers l’onglet boosters après validation.</p>'+
+      '<span>Galerie : paquets en relief, épaisseur, plis métalliques, défilement magnétique et sélection centrale.</span>'+
+      '<span>Ouverture : scellé tactile, déchirure en profondeur et émergence des cartes, avec mode rapide.</span>'+
+      '<span>La face de chaque carte apparaît seulement au moment où tu choisis de la révéler.</span>'+
+      '<span>Match : les symboles suivent ton doigt en continu et prévisualisent leur échange avant le relâchement.</span>'+
+      '<span>Chutes, atterrissages et cascades continus ; une nouvelle interaction peut passer les effets.</span>'+
+      '<span>Classement public préparé mais non activé tant que son raccordement Supabase réel n’est pas validé.</span>'+
+      '<span>Les progressions d’entraînement restent distinctes des parcours en ligne.</span>'+
+      '<span>Navigation au clavier, deux touches, récupération des boosters et modes d’animations réduites conservés.</span>'+
+      '</div><details class="dev-v12-history"><summary>Les versions précédentes</summary>'+
+      '<p><b>V15.5.1 :</b> invitations sans sondages en double et transferts de données allégés.</p>'+
+      '<p><b>V15.5 :</b> galerie filtrée par série, accès Match et illustrations séparées du catalogue.</p>'+
+      '<p><b>V15.4 :</b> arène Nexus, matières des cartes, compteur Casino et campagne Match de cent niveaux.</p>'+
+      '<p><b>V15.3.2 :</b> confirmation automatique des boosters et reprise des ouvertures interrompues.</p>'+
+      '<p><b>V15.3.1 :</b> catalogue automatique, succès cohérents, vitrine et marché illustré.</p>'+
       '</details></article>';
   }
   function markup(){

@@ -76,3 +76,54 @@
 html[data-m13-quality=eco] .v14-is-opening .v14-seal-cap,html[data-m13-quality=eco] .v14-is-opening .v14-seal-body{animation:none!important}
 html[data-m13-quality=eco] .v14-summary-card .tcg-card *{animation:none!important}
 @media(prefers-reduced-motion:reduce){.v14-is-opening .v14-seal-cap,.v14-is-opening .v14-seal-body,.opening-fullscreen.fx-prelude .opening-vfx-ring{animation:none!important}.v14-seal-trigger .v14-sealed-pack{transition:none!important}.v14-summary-card .tcg-card *{animation:none!important}}
+
+/* V15.6 · six foil planes form one small physical object. The three emerging
+   cards are identical generic backs: they never depend on prepared results. */
+.v14-seal-trigger{perspective:950px;perspective-origin:50% 36%}
+.v14-seal-trigger .v14-sealed-pack{--v156-pack-depth:10px;isolation:auto;transform-style:preserve-3d;transform:rotateX(3deg) rotateY(-13deg) rotateZ(-3deg);animation:v156-pack-arrive .28s cubic-bezier(.2,.7,.2,1) backwards}
+.v14-seal-trigger .v14-sealed-pack:before{inset:auto 5% -5%;height:6%;background:radial-gradient(ellipse,#0009,transparent 68%);transform:translateZ(-8px);opacity:.8}
+.v14-seal-cap,.v14-seal-body{backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(5px)}
+.v14-seal-trigger .v14-seal-cap{height:10%;border-radius:2px 2px 0 0;background:repeating-linear-gradient(90deg,#f6dfaa19 0 1px,transparent 1px 4px),linear-gradient(105deg,#8e7650,#d8bf86 6%,#403c43 14%,#302a35 64%,#a69575 98%);transform-origin:0 66%}
+.v14-seal-trigger .v14-seal-body{box-shadow:inset 2px 0 2px #f6dda055,inset -3px 0 4px #000b;background:linear-gradient(98deg,#76634f 0%,#b4a083 1.2%,#302a37 5%,#201e2b 13%,#38313e 45%,#1e1e29 68%,#75654e 97.5%,#b4a083 99%,#241f2c);border-color:#9e8d6b}
+.v156-seal-back,.v156-seal-side,.v156-seal-bottom-face{position:absolute;display:block;pointer-events:none;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.v156-seal-back{inset:0;transform:rotateY(180deg) translateZ(5px);border:1px solid #a18c63;border-radius:3px;background:repeating-linear-gradient(90deg,#e4c18310 0 1px,transparent 1px 5px),linear-gradient(110deg,#3e3641,#1c1d29 25%,#3b3440 60%,#21202e);color:#d8c69b;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:11px}
+.v156-seal-back>span{font:500 20px/1 Georgia,serif;letter-spacing:.18em}
+.v156-seal-back>i{font:500 6px/1.5 var(--font,sans-serif);letter-spacing:.15em;font-style:normal}
+.v156-seal-back>b{position:absolute;bottom:8%;font:500 5px/1 var(--font,sans-serif);letter-spacing:.2em}
+.v156-seal-back:after{content:'';position:absolute;top:2%;bottom:2%;left:48%;width:4%;border-inline:1px solid #a08a614c;background:repeating-linear-gradient(0deg,#e5c69430 0 1px,transparent 1px 3px)}
+.v156-seal-side{top:2%;bottom:0;width:var(--v156-pack-depth);background:repeating-linear-gradient(0deg,#d5b88612 0 1px,transparent 1px 5px),linear-gradient(90deg,#332b31,#b3a180 30%,#d5c39e 46%,#796a55 70%,#332b31)}
+.v156-seal-side-left{left:0;transform:translateX(-50%) rotateY(-90deg)}
+.v156-seal-side-right{right:0;transform:translateX(50%) rotateY(90deg)}
+.v156-seal-bottom-face{left:0;right:0;bottom:0;height:var(--v156-pack-depth);transform:translateY(50%) rotateX(-90deg);background:repeating-linear-gradient(90deg,#c3ae7d 0 1px,#5a4d3c 1px 3px);border:1px solid #897657}
+.v156-seal-crease{position:absolute;inset:11% auto 4%;width:3%;pointer-events:none;background:linear-gradient(90deg,#05070b66,#e7cd9228,transparent);transform:translateZ(5.2px);opacity:.7}
+.v156-seal-crease-left{left:5%;clip-path:polygon(55% 0,100% 7%,45% 32%,95% 65%,35% 80%,50% 100%,0 82%,35% 60%,0 37%)}
+.v156-seal-crease-right{right:4%;transform:translateZ(5.2px) rotate(180deg);clip-path:polygon(50% 0,100% 8%,30% 39%,95% 72%,50% 100%,0 82%,40% 59%,0 27%)}
+.v14-seal-trigger .v14-seal-glint{inset:2% 0 2%;transform:translateZ(5.5px);background:linear-gradient(112deg,transparent 12%,#fff4cd05 27%,#fff2cc24 32%,#f1f6ff0b 38%,transparent 51%,#fff2d00d 72%,transparent 80%);opacity:.9}
+.v156-seal-card-stack{position:absolute;inset:11% 7% 6%;transform:translateZ(1px);opacity:0;pointer-events:none}
+.v156-seal-card-stack>i{position:absolute;inset:0;border:1px solid #b1b6ca;border-radius:7px;background:linear-gradient(145deg,#292d4b,#101629 65%,#2d334d);box-shadow:1px 2px 0 #ede9d4;font-style:normal}
+.v156-seal-card-stack>i:nth-child(1){transform:translate(4px,5px) rotate(2deg)}
+.v156-seal-card-stack>i:nth-child(2){transform:translate(2px,2px) rotate(-1deg)}
+.v156-seal-card-stack>i:last-child{inset:0;transform:none;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;background:radial-gradient(ellipse,#66618b33,transparent 70%),linear-gradient(145deg,#292d4b,#101629 65%,#2d334d)}
+.v156-seal-card-stack b{font:500 66px/1 Georgia,serif;color:#cebd88}
+.v156-seal-card-stack span{font:500 10px/1 Georgia,serif;letter-spacing:.24em;color:#d3c7aa}
+.v14-seal-trigger:hover:not(:disabled) .v14-sealed-pack{transform:rotateX(3deg) rotateY(-10deg) rotateZ(-2deg)}
+.v14-is-opening .v14-sealed-pack{animation:none;transform:rotateX(2deg) rotateY(-6deg) rotateZ(-2deg) translateZ(24px)}
+.v14-is-opening .v14-seal-cap{animation:v156-seal-tear .3s cubic-bezier(.2,.7,.2,1) both}
+.v14-is-opening .v14-seal-body{animation:v156-wrapper-away .31s cubic-bezier(.35,0,.65,.2) both}
+.v14-is-opening .v156-seal-back,.v14-is-opening .v156-seal-side,.v14-is-opening .v156-seal-bottom-face{animation:v156-wrapper-back-away .31s ease-in both}
+.v14-is-opening .v156-seal-crease{animation:v156-wrapper-away .31s ease-in both}
+.v14-is-opening .v156-seal-card-stack{animation:v156-backs-emerge .31s cubic-bezier(.2,.7,.2,1) both}
+@keyframes v156-pack-arrive{from{opacity:.35;transform:rotateX(8deg) rotateY(-23deg) rotateZ(-6deg) translate3d(0,14px,-45px)}to{opacity:1;transform:rotateX(3deg) rotateY(-13deg) rotateZ(-3deg)}}
+@keyframes v156-seal-tear{from{transform:translateZ(5px)}to{transform:translate3d(30%,-80%,15px) rotateZ(22deg) rotateX(-38deg);opacity:0}}
+@keyframes v156-wrapper-away{0%,18%{transform:translateZ(5px);opacity:1}to{transform:translate3d(0,48px,10px) rotateX(-8deg) scale(.98);opacity:0}}
+@keyframes v156-wrapper-back-away{0%,18%{opacity:1}to{translate:0 48px;opacity:0}}
+@keyframes v156-backs-emerge{0%,12%{opacity:0;transform:translate3d(0,0,1px)}28%{opacity:1}to{opacity:1;transform:translate3d(0,-16%,15px)}}
+html[data-m13-quality=eco] .v14-seal-trigger .v14-sealed-pack{animation:none;transform:rotateZ(-3deg);transform-style:flat}
+html[data-m13-quality=eco] :is(.v156-seal-back,.v156-seal-side,.v156-seal-bottom-face,.v156-seal-crease,.v156-seal-card-stack){display:none}
+html[data-m13-quality=eco] .v14-is-opening .v14-seal-cap,html[data-m13-quality=eco] .v14-is-opening .v14-seal-body{animation:none!important}
+@media(prefers-reduced-motion:reduce){
+ .v14-seal-trigger .v14-sealed-pack{animation:none;transform:rotateZ(-3deg);transform-style:flat}
+ .v14-seal-trigger:hover:not(:disabled) .v14-sealed-pack{transform:rotateZ(-3deg)}
+ .v156-seal-back,.v156-seal-side,.v156-seal-bottom-face,.v156-seal-crease,.v156-seal-card-stack{display:none}
+ .v14-is-opening .v14-seal-cap,.v14-is-opening .v14-seal-body{animation:none!important}
+}

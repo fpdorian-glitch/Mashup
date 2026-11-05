@@ -4,6 +4,9 @@
  */
 import {createMatch, applyMove, progressFor} from './62-v15-4-match-engine.js';
 import {MATCH_LEVELS, MATCH_WORLDS, getMatchLevel} from './63-v15-4-match-levels.js';
+import {createMatchGesture} from './71-v15-6-match-gesture.js?v=15.6.0';
+import {createMatchSocial} from './73-v15-6-match-social.js?v=15.6.0';
+import {createMatchPresentation} from './75-v15-6-match-presentation.js?v=15.6.0';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const SYMBOL_NAMES = ['Soleil', 'Cristal', 'Lune', 'Flamme', 'Orbite', 'Feuille'];
@@ -90,6 +93,7 @@ function starsMarkup(stars,label='Étoiles') {
 }
 function worldFor(level) { return MATCH_WORLDS.find(world=>Number(world.id)===Number(level?.worldId??level?.world))||MATCH_WORLDS[Math.floor((clampLevel(level?.id)-1)/10)]||{}; }
 function safeColor(color) {return /^#[0-9a-f]{6}$/i.test(String(color))?color:'#7dd8be';}
+function matchSocialEntry(){return '<button class="mm156-social-entry" data-mm-action="social" type="button"><span aria-hidden="true">♧</span><span><b>Progression des joueurs</b><small>Les étoiles et les mondes validés de tes amis</small></span><i aria-hidden="true">↗</i></button>';}
 function knownReward(rewards,id) {const value=own(rewards,String(id));return Number.isSafeInteger(value)&&value>=0?value:null;}
 
 export function matchCampaignMarkup({progress={},training=false,rewards={},available=true,rewardsEnabled=true,active=null,quality='auto'}={}) {
@@ -102,7 +106,7 @@ export function matchCampaignMarkup({progress={},training=false,rewards={},avail
     '<button class="mm-primary" data-mm-action="'+(resume?'resume':'level')+'" data-mm-level="'+next+'">'+(resume?'Reprendre le niveau '+active.levelId:completed===MATCH_LEVELS.length?'Rejouer le dernier niveau':'Continuer · Niveau '+next)+'<span aria-hidden="true">↗</span></button></div>'+
     (training?'<aside class="mm-training-note" role="note"><b>ENTRAÎNEMENT · AUCUN CRÉDIT</b><span>Étoiles et parcours conservés sur cet appareil pour ton compte. Cet entraînement ne change pas ta campagne en ligne.</span></aside>':'<p class="mm-server-note">'+(rewardsEnabled?'Progression et premières récompenses validées par le serveur.':'Récompenses temporairement désactivées · tes étoiles et ta progression restent sauvegardées.')+'</p>')+
     '<div class="mm-campaign-metrics"><div><strong>'+completed+'<small> / '+MATCH_LEVELS.length+'</small></strong><span>Niveaux terminés</span></div><div><strong>'+totalStars+'<small> / '+MATCH_LEVELS.length*3+'</small></strong><span>Étoiles réunies</span></div><div><strong>'+Math.min(10,Math.floor(completed/10))+'<small> / 10</small></strong><span>Mondes traversés</span></div></div>'+
-    '<div class="mm-worlds">'+MATCH_WORLDS.map(world=>{
+    matchSocialEntry()+(training?'<button class="mm-quiet mm156-online-entry" data-mm-action="online">Vérifier la campagne en ligne</button>':'')+'<div class="mm-worlds">'+MATCH_WORLDS.map(world=>{
       const levels=MATCH_LEVELS.filter(level=>Number(level.worldId??level.world)===Number(world.id)),done=levels.filter(level=>p.levels[level.id]?.completed).length,current=levels.some(level=>level.id===next),first=levels[0]?.id||1;
       return '<details class="mm-world '+(done===levels.length?'is-complete':'')+'" style="--mm-world:'+safeColor(world.color)+'" '+(current?'open':'')+'><summary><span class="mm-world-icon" aria-hidden="true">'+escapeHTML(world.icon||'✦')+'</span><span><small>MONDE '+String(world.id).padStart(2,'0')+' · '+done+'/'+levels.length+'</small><strong>'+escapeHTML(world.name||'Monde '+world.id)+'</strong><em>'+escapeHTML(world.subtitle||'Une nouvelle traversée du multivers')+'</em></span><b aria-hidden="true">'+(done===levels.length?'✓':first>p.unlocked?'◇':'+')+'</b></summary><ol class="mm-levels" start="'+first+'">'+levels.map(level=>{
         const saved=p.levels[level.id],locked=level.id>p.unlocked&&!saved?.completed,reward=training?null:knownReward(rewards,level.id),claimed=saved?.rewardClaimed;
@@ -180,23 +184,24 @@ function adminFormMarkup(config,revision) {
 function overrideMarkup(id='',value='') {return '<div class="mm-override"><label>Niveau<input type="number" min="1" max="100" data-mm-override-id value="'+escapeHTML(id)+'" required></label><label>Crédits<input type="number" min="0" max="5000" data-mm-override-value value="'+escapeHTML(value)+'" required></label><button class="mm-quiet" type="button" data-mm-admin="remove-override" aria-label="Retirer ce gain individuel">×</button></div>';}
 
 export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',onState=()=>{},toast=()=>{},getView=()=>'games',onExit=()=>{}}) {
-  let root=null,active=null,trainingActive=null,progress=normalizeMatchProgress(),trainingProgress=normalizeMatchProgress(),publicRewards={},rewardsEnabled=true,mode='loading',screen='campaign',busy=false,epoch=0,sequence=0,pending=null,selected=null,focusIndex=0,reward=null,error='',quality='auto',animations=[],listeners=[],poll=null,pointer=null,suppressClick=0,adminBusy=false,storageWarned=false;
+  let root=null,active=null,trainingActive=null,progress=normalizeMatchProgress(),trainingProgress=normalizeMatchProgress(),publicRewards={},rewardsEnabled=true,mode='loading',screen='campaign',busy=false,epoch=0,sequence=0,pending=null,selected=null,focusIndex=0,reward=null,error='',quality='auto',listeners=[],poll=null,gesture=null,presentation=null,adminBusy=false,storageWarned=false;
   let adminRoot=null,adminConfig=null,adminRevision=null,adminEpoch=0;
   const actor=()=>String(getUser()?.id||'')+'@'+String(getSessionKey());
   const mounted=()=>!!root?.isConnected&&['games','match'].includes(getView());
+  const social=createMatchSocial({api,getUser,getSessionKey,getView:()=>screen==='social'&&mounted()?'social':'inactive',onExit:()=>{social.unmount();screen='campaign';draw();}});
   const storage=()=>{try{return globalThis.localStorage;}catch{return null;}};
   const requestId=()=>globalThis.crypto?.randomUUID?.()||'match-'+Date.now().toString(36)+'-'+(++sequence).toString(36);
   const listen=(target,type,handler,options)=>{if(!target?.addEventListener)return;target.addEventListener(type,handler,options);listeners.push(()=>target.removeEventListener(type,handler,options));};
   const animationMode=()=>matchAnimationQuality(quality,{reduced:globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches,eco:globalThis.document?.documentElement?.dataset.m13Quality==='eco',cores:globalThis.navigator?.hardwareConcurrency||8,saveData:globalThis.navigator?.connection?.saveData});
-  function stopEffects(){for(const animation of animations)animation.cancel?.();animations=[];root?.querySelectorAll?.('.mm-effects')?.forEach(node=>node.remove());}
-  function unbind(){for(const cleanup of listeners)cleanup();listeners=[];if(poll)clearInterval(poll);poll=null;stopEffects();}
-  function unmount(){epoch++;unbind();root=null;busy=false;pending=null;pointer=null;}
-  function clearSession(){unmount();active=null;trainingActive=null;progress=normalizeMatchProgress();trainingProgress=normalizeMatchProgress();publicRewards={};rewardsEnabled=true;mode='loading';reward=null;error='';selected=null;adminEpoch++;adminRoot=null;adminConfig=null;adminBusy=false;storageWarned=false;}
+  function stopEffects(){presentation?.cancel();}
+  function unbind(){gesture?.destroy();gesture=null;presentation?.destroy();presentation=null;social.unmount();for(const cleanup of listeners)cleanup();listeners=[];if(poll)clearInterval(poll);poll=null;stopEffects();}
+  function unmount(){epoch++;unbind();root=null;busy=false;pending=null;}
+  function clearSession(){unmount();social.clearSession();active=null;trainingActive=null;progress=normalizeMatchProgress();trainingProgress=normalizeMatchProgress();publicRewards={};rewardsEnabled=true;mode='loading';reward=null;error='';selected=null;adminEpoch++;adminRoot=null;adminConfig=null;adminBusy=false;storageWarned=false;}
   function currentProgress(){return mode==='training'?trainingProgress:progress;}
   function draw(){
-    if(!mounted())return;stopEffects();
+    if(!mounted()||screen==='social')return;gesture?.cancel('repaint');stopEffects();
     if(mode==='loading')root.innerHTML='<section class="mm-app mm-loading" role="status"><span class="mm-brand">MASHUP<span>MATCH</span></span><span class="mm-loading-orbit" aria-hidden="true">✦</span><p>Ouverture du multivers…</p></section>';
-    else if(mode==='unavailable')root.innerHTML='<section class="mm-app mm-unavailable"><button class="mm-back" data-mm-action="exit" data-games="hub">← Jeux</button><span class="mm-brand">MASHUP<span>MATCH</span></span><span class="mm-orbit-mark" aria-hidden="true">✦</span><h1>Les mondes t’attendent.</h1><p>La campagne en ligne est momentanément indisponible. Tu peux parcourir les 100 niveaux en entraînement.</p><aside class="mm-training-note"><b>SUR CET APPAREIL · AUCUN CRÉDIT</b><span>Ce parcours est distinct de la campagne en ligne. Sa progression est conservée uniquement sur cet appareil pour ton compte.</span></aside><button class="mm-primary" data-mm-action="training">'+(Object.keys(trainingProgress.levels).length?'Reprendre l’entraînement':'Commencer l’entraînement')+'</button><button class="mm-quiet" data-mm-action="refresh">Réessayer la connexion</button></section>';
+    else if(mode==='unavailable')root.innerHTML='<section class="mm-app mm-unavailable"><button class="mm-back" data-mm-action="exit" data-games="hub">← Jeux</button><span class="mm-brand">MASHUP<span>MATCH</span></span><span class="mm-orbit-mark" aria-hidden="true">✦</span><h1>Les mondes t’attendent.</h1><p>La campagne en ligne est momentanément indisponible. Tu peux parcourir les 100 niveaux en entraînement.</p><aside class="mm-training-note"><b>SUR CET APPAREIL · AUCUN CRÉDIT</b><span>Ce parcours est distinct de la campagne en ligne. Sa progression est conservée uniquement sur cet appareil pour ton compte.</span></aside><button class="mm-primary" data-mm-action="training">'+(Object.keys(trainingProgress.levels).length?'Reprendre l’entraînement':'Commencer l’entraînement')+'</button><button class="mm-quiet" data-mm-action="refresh">Réessayer la connexion</button>'+matchSocialEntry()+'</section>';
     else if(screen==='play'&&active){
       root.innerHTML=matchBoardMarkup(active,{selected,focusIndex,busy,training:mode==='training'});
       const outcome=root.querySelector('[data-mm-outcome]');if(outcome)outcome.innerHTML=outcomeMarkup(active,{training:mode==='training',reward});
@@ -218,7 +223,13 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
     if(busy&&!retry)return null;
     const token=epoch,who=actor(),order=++sequence;busy=true;error='';
     const operation=retry&&pending?pending:{route,body};
-    pending=operation;draw();
+    pending=operation;
+    if(operation.route==='move'&&root.querySelector('[data-mm-board]')){
+      root.querySelector('[data-mm-board]').setAttribute('aria-busy','true');
+      root.querySelectorAll('[data-mm-cell]').forEach(cell=>{cell.disabled=true;});
+      root.querySelectorAll('.mm-network').forEach(node=>node.remove());
+      const message=root.querySelector('[data-mm-announcement]');if(message)message.textContent='Enregistrement du coup…';
+    }else draw();
     try{
       const data=await api(operation.route,operation.body);
       if(token!==epoch||who!==actor()||order!==sequence||!mounted())return null;
@@ -226,7 +237,7 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
       if(['start','move'].includes(operation.route)&&!validateMatchSnapshot(data?.active))throw Error('La partie n’a pas pu être confirmée. Synchronise la campagne.');
       if(operation.route==='abandon'&&data?.active!==null)throw Error('L’abandon n’a pas pu être confirmé.');
       acceptReply(data);pending=null;busy=false;error='';mode='online';
-      if(operation.route==='start'||operation.route==='move')screen=active?'play':'campaign';
+      if(operation.route==='start'||operation.route==='move'&&screen==='play')screen=active?'play':'campaign';
       draw();return data;
     }catch(problem){
       if(token!==epoch||who!==actor()||order!==sequence||!mounted())return null;
@@ -250,25 +261,12 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
     }
     await call('start',{levelId:id,requestId:requestId()});
   }
-  function animate(node,keyframes,options){if(!node?.animate)return;const animation=node.animate(keyframes,options);animations.push(animation);animation.finished?.then(()=>{animations=animations.filter(value=>value!==animation);},()=>{});}
   function presentMove(events,before,valid=true){
-    if(!mounted()||!active||screen!=='play'||animationMode()==='off')return;
-    const simple=animationMode()==='simple',cells=root.querySelectorAll('[data-mm-cell]'),index=new Map(Array.from(cells,node=>[Number(node.dataset.mmCell),node]));
-    if(!valid){for(const cell of [before.from,before.to])animate(index.get(cell),[{transform:'translateX(0)'},{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:160,easing:'ease-out'});return;}
+    if(!mounted()||!active||screen!=='play')return;
     const clears=(events||[]).filter(event=>event.type==='clear'),cascade=Math.max(0,...clears.map(event=>positiveInteger(event.cascade)));
-    const message=root.querySelector('[data-mm-announcement]');if(message)message.textContent=cascade>1?'Cascade ×'+cascade+' · '+positiveInteger(active.state.score).toLocaleString('fr-FR')+' points':clears.length?'Alignement réussi · '+positiveInteger(active.state.score).toLocaleString('fr-FR')+' points':'Bonus déclenché.';
-    let budget=simple?8:32;
-    for(const event of events||[]){
-      if(event.type==='fall')for(const move of event.moves||[]){if(budget--<=0)break;const distance=Math.max(1,Math.floor((move.to-move.from)/active.state.width));animate(index.get(move.to),[{transform:'translateY(-'+Math.min(100,distance*22)+'%)',opacity:.4},{transform:'translateY(0)',opacity:1}],{duration:simple?130:230,easing:'cubic-bezier(.2,.8,.3,1)'});}
-      if(event.type==='clear')for(const created of event.created||[])animate(index.get(created.index),[{transform:'scale(.7)',opacity:.4},{transform:'scale(1.13)',opacity:1},{transform:'scale(1)'}],{duration:simple?160:300,easing:'ease-out'});
-    }
-    if(!simple&&clears.length){
-      const board=root.querySelector('[data-mm-board]'),layer=globalThis.document?.createElement('div');if(!layer||!board)return;
-      layer.className='mm-effects';layer.setAttribute('aria-hidden','true');layer.style.setProperty('--mm-columns',String(before.state.width));layer.style.setProperty('--mm-rows',String(before.state.height));
-      const unique=[...new Set(clears.flatMap(event=>event.cells||[]))].slice(0,16);
-      for(const i of unique){const tile=before.state.board[i];if(!tile)continue;const ghost=document.createElement('span');ghost.className='mm-ghost';ghost.style.gridColumn=String(i%before.state.width+1);ghost.style.gridRow=String(Math.floor(i/before.state.width)+1);ghost.innerHTML=matchSymbolMarkup(tile.kind,tile.special);layer.append(ghost);animate(ghost,[{opacity:.9,transform:'scale(1)'},{opacity:0,transform:'scale(1.45) rotate(12deg)'}],{duration:190,easing:'ease-out',fill:'forwards'});}
-      board.append(layer);const finish=animations.at(-1);finish?.finished?.then(()=>layer.remove(),()=>layer.remove());
-    }
+    const message=root.querySelector('[data-mm-announcement]');
+    if(message)message.textContent=!valid?'Cet échange ne forme pas d’alignement. Aucun mouvement consommé.':cascade>1?'Cascade ×'+cascade+' · '+positiveInteger(active.state.score).toLocaleString('fr-FR')+' points':clears.length?'Alignement réussi · '+positiveInteger(active.state.score).toLocaleString('fr-FR')+' points':'Bonus déclenché.';
+    presentation?.play({events,before:before.state,from:before.from,to:before.to,valid});
   }
   async function move(from,to){
     if(busy||!active||active.state.status!=='playing'||pending)return;
@@ -285,13 +283,20 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
     if(data)presentMove(data.events||[],before,data.valid!==false);
   }
   function paintSelection(){root?.querySelectorAll('[data-mm-cell]')?.forEach(node=>{const chosen=Number(node.dataset.mmCell)===selected;node.classList.toggle('is-selected',chosen);node.setAttribute('aria-selected',String(chosen));node.tabIndex=Number(node.dataset.mmCell)===focusIndex?0:-1;});}
-  function choose(index){if(busy||!active||active.state.status!=='playing')return;focusIndex=index;if(selected===null){selected=index;paintSelection();return;}if(selected===index){selected=null;paintSelection();return;}const from=selected,w=active.state.width;if(Math.abs(from%w-index%w)+Math.abs(Math.floor(from/w)-Math.floor(index/w))===1)return move(from,index);else{selected=index;paintSelection();}}
+  function choose(index){if(busy||pending||!active||active.state.status!=='playing')return;stopEffects();focusIndex=index;if(selected===null){selected=index;paintSelection();return;}if(selected===index){selected=null;paintSelection();return;}const from=selected,w=active.state.width;if(Math.abs(from%w-index%w)+Math.abs(Math.floor(from/w)-Math.floor(index/w))===1)return move(from,index);else{selected=index;paintSelection();}}
   async function click(event){
-    const tile=event.target.closest?.('[data-mm-cell]');if(tile){if(Date.now()>suppressClick)return choose(Number(tile.dataset.mmCell));return;}
+    const tile=event.target.closest?.('[data-mm-cell]');if(tile){if(!gesture?.shouldSuppressClick(event))return choose(Number(tile.dataset.mmCell));return;}
     const button=event.target.closest?.('[data-mm-action]');if(!button)return;
     const action=button.dataset.mmAction;
     if(action==='exit'){onExit();return;}
     if(action==='training'){training();return;}
+    if(action==='social'){
+      if(busy||pending)return;gesture?.cancel('social');stopEffects();screen='social';
+      root.innerHTML='<div data-mm-social-root></div>';await social.mount(root.querySelector('[data-mm-social-root]'));return;
+    }
+    if(action==='online'){
+      if(busy||pending)return;if(mode==='training')persistTraining();active=null;screen='campaign';mode='loading';await refresh();return;
+    }
     if(action==='level'){await start(Number(button.dataset.mmLevel));return;}
     if(action==='campaign'){screen='campaign';selected=null;draw();return;}
     if(action==='resume'){screen='play';draw();return;}
@@ -308,6 +313,7 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
   }
   function keydown(event){
     const tile=event.target.closest?.('[data-mm-cell]');if(!tile||!active)return;
+    stopEffects();
     if(event.key==='Escape'){selected=null;paintSelection();return;}
     const offsets={ArrowLeft:-1,ArrowRight:1,ArrowUp:-active.state.width,ArrowDown:active.state.width};if(!Object.hasOwn(offsets,event.key))return;
     event.preventDefault();const from=Number(tile.dataset.mmCell),to=from+offsets[event.key],w=active.state.width;
@@ -315,18 +321,15 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
     const target=root.querySelector('[data-mm-cell="'+to+'"]');if(!target||target.disabled)return;
     if(selected!==null){const origin=selected;selected=null;move(origin,to);}else{focusIndex=to;paintSelection();target.focus();}
   }
-  function pointerDown(event){const tile=event.target.closest?.('[data-mm-cell]');if(!tile||busy||event.button>0)return;pointer={id:event.pointerId,index:Number(tile.dataset.mmCell),x:event.clientX,y:event.clientY};tile.setPointerCapture?.(event.pointerId);}
-  function pointerUp(event){
-    if(!pointer||pointer.id!==event.pointerId||!active)return;const start=pointer;pointer=null;
-    const dx=event.clientX-start.x,dy=event.clientY-start.y;if(Math.max(Math.abs(dx),Math.abs(dy))<20)return;
-    suppressClick=Date.now()+350;const offset=Math.abs(dx)>Math.abs(dy)?(dx>0?1:-1):(dy>0?active.state.width:-active.state.width);move(start.index,start.index+offset);
-  }
   async function mount(element){
     unmount();root=element;mode='loading';screen='campaign';error='';selected=null;reward=null;active=null;progress=normalizeMatchProgress();trainingProgress=readTrainingProgress(storage(),getUser()?.id);trainingActive=readTrainingActive(storage(),getUser()?.id);
     try{const saved=storage()?.getItem('mashup-match-animation-v154');if(['auto','full','simple','off'].includes(saved))quality=saved;}catch{}
-    listen(root,'click',click);listen(root,'keydown',keydown);listen(root,'pointerdown',pointerDown);listen(root,'pointerup',pointerUp);listen(root,'pointercancel',()=>{pointer=null;});listen(root,'focusin',event=>{const tile=event.target.closest?.('[data-mm-cell]');if(tile){focusIndex=Number(tile.dataset.mmCell);paintSelection();}});
+    listen(root,'click',click);listen(root,'keydown',keydown);listen(root,'focusin',event=>{const tile=event.target.closest?.('[data-mm-cell]');if(tile){focusIndex=Number(tile.dataset.mmCell);paintSelection();}});
     listen(root,'change',event=>{if(!event.target.matches?.('[data-mm-quality]'))return;quality=event.target.value;try{storage()?.setItem('mashup-match-animation-v154',quality);}catch{}stopEffects();});
-    const resume=()=>{if(mounted()&&mode==='online'&&!busy&&!globalThis.document?.hidden)refresh();};listen(globalThis.window,'online',resume);listen(globalThis.document,'visibilitychange',resume);listen(globalThis.window,'pageshow',resume);
+    presentation=createMatchPresentation({root,renderSymbol:matchSymbolMarkup,getMotion:animationMode});
+    gesture=createMatchGesture({root,getState:()=>active?.state,canInteract:()=>mounted()&&screen==='play'&&!busy&&!pending&&active?.state?.status==='playing',onStart:stopEffects,onCommit:move,getMotion:animationMode});
+    listen(globalThis.window,'blur',stopEffects);listen(globalThis.window,'resize',stopEffects);listen(globalThis.window,'orientationchange',stopEffects);listen(globalThis.document,'visibilitychange',()=>{if(globalThis.document?.hidden)stopEffects();});
+    const resume=()=>{if(mounted()&&screen!=='social'&&mode==='online'&&!busy&&!gesture?.isDragging()&&!pending&&!globalThis.document?.hidden)refresh();};listen(globalThis.window,'online',resume);listen(globalThis.document,'visibilitychange',resume);listen(globalThis.window,'pageshow',resume);
     poll=setInterval(()=>{if(active?.state.status==='playing')resume();},15000);draw();await refresh();
   }
   function collectAdminConfig(){
