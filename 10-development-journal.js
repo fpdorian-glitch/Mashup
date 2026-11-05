@@ -20,17 +20,17 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   // Pinned changelog is shipped with the client so every player sees the
   // current version even when developer-post history cannot be retrieved.
   function releaseMarkup(){
-    return '<article class="dev-v12-release" aria-label="Version de développement de Mashup">'+
+    return '<article class="dev-v12-release" aria-label="Version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 6 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V15.6 — Entre tes mains</h4></div><span class="dev-v12-badge">DÉVELOPPEMENT · V15.6.0</span></div>'+
-      '<p>Des paquets à manipuler, des symboles qui suivent ton doigt et les voyages de tes amis à découvrir. Cette version de développement conserve les règles, les niveaux et les récompenses existants.</p>'+
+      '<h4>Mashup V15.6 — Entre tes mains</h4></div><span class="dev-v12-badge">V15.6.0</span></div>'+
+      '<p>Des paquets à manipuler, des symboles qui suivent ton doigt et une expérience Mashup plus immersive. Cette version conserve les règles, les niveaux et les récompenses existants.</p>'+
       '<div class="dev-v12-changes">'+
       '<span>Galerie : paquets en relief, épaisseur, plis métalliques, défilement magnétique et sélection centrale.</span>'+
       '<span>Ouverture : scellé tactile, déchirure en profondeur et émergence des cartes, avec mode rapide.</span>'+
       '<span>La face de chaque carte apparaît seulement au moment où tu choisis de la révéler.</span>'+
       '<span>Match : les symboles suivent ton doigt en continu et prévisualisent leur échange avant le relâchement.</span>'+
       '<span>Chutes, atterrissages et cascades continus ; une nouvelle interaction peut passer les effets.</span>'+
-      '<span>Progression des joueurs : étoiles, niveaux et mondes validés en ligne, selon disponibilité du service.</span>'+
+      '<span>Classement public préparé mais non activé tant que son raccordement Supabase réel n’est pas validé.</span>'+
       '<span>Les progressions d’entraînement restent distinctes des parcours en ligne.</span>'+
       '<span>Navigation au clavier, deux touches, récupération des boosters et modes d’animations réduites conservés.</span>'+
       '</div><details class="dev-v12-history"><summary>Les versions précédentes</summary>'+
