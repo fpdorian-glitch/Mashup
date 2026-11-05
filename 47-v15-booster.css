@@ -1,0 +1,72 @@
+/* V15 · staged light, a tactile packet, and a deliberately quiet common reveal.
+   Every animated scene is finite. Only opacity and transforms change per frame. */
+.opening-fullscreen{--v15-reveal-time:700ms;--v15-prelude-time:180ms;--v15-light:#d2e7fa}
+.opening-fullscreen.fx-rare{--v15-light:#9edbfa}
+.opening-fullscreen.fx-epic{--v15-light:#ccb0f6}
+.opening-fullscreen.fx-legendary{--v15-light:#f5d99a}
+.opening-fullscreen.fx-mythic{--v15-light:#ffb6ba}
+.opening-fullscreen.fx-ultra{--v15-light:#d8f4ff}
+.opening-fullscreen.fx-secret{--v15-light:#b8efd4}
+.opening-fullscreen.fx-ultra-secret{--v15-light:#e0ccff}
+.opening-fullscreen .opening-speed{min-height:44px;min-width:44px;touch-action:manipulation}
+.opening-fullscreen .opening-speed:focus-visible{outline:2px solid #e6d4a8;outline-offset:3px}
+.opening-fullscreen::before,.opening-fullscreen::after{animation:none!important}
+.opening-fullscreen .opening-vfx::before{content:none!important}
+.opening-fullscreen .opening-vfx-runes,.opening-fullscreen .opening-vfx-particles{display:none!important}
+.opening-fullscreen .opening-vfx-halo{background:radial-gradient(ellipse at 50% 47%,color-mix(in srgb,var(--v15-light) 15%,transparent),transparent 58%);filter:none!important}
+.opening-fullscreen.fx-active .opening-vfx-halo{animation:v15-reveal-bloom var(--v15-reveal-time) ease-out both}
+.opening-fullscreen.fx-prelude .pack-stack-surface,.opening-fullscreen.fx-active .pack-stack-surface{animation:none!important;filter:none!important}
+.opening-fullscreen .opening-vfx-ring{width:min(84vw,470px);height:auto;aspect-ratio:1;border:1px solid var(--v15-light)!important;border-radius:50%;box-shadow:none!important;background:none;filter:none!important}
+.opening-fullscreen .opening-vfx-ring::before,.opening-fullscreen .opening-vfx-ring::after{inset:8%;border:1px solid var(--v15-light)!important;border-radius:inherit;opacity:.32;transform:scaleX(.88) rotate(23deg);box-shadow:none!important}
+.opening-fullscreen .opening-vfx-ring::after{inset:-6%;transform:scaleX(.8) rotate(-23deg);opacity:.2}
+.opening-fullscreen.fx-prelude .opening-vfx-ring{animation:v15-light-gather var(--v15-prelude-time) cubic-bezier(.15,.65,.3,1) both}
+.opening-fullscreen.fx-active .opening-vfx-ring{animation:v15-light-release var(--v15-reveal-time) cubic-bezier(.17,.65,.26,1) both}
+.opening-fullscreen.fx-rare .opening-vfx-ring{width:min(66vw,350px);border-color:transparent!important;border-left-color:var(--v15-light)!important;border-right-color:var(--v15-light)!important}
+.opening-fullscreen.fx-rare .opening-vfx-ring::before,.opening-fullscreen.fx-rare .opening-vfx-ring::after{display:none}
+.opening-fullscreen.fx-epic .opening-vfx-ring{border-radius:31% 69% 69% 31% / 50% 50% 50% 50%}
+.opening-fullscreen.fx-legendary .opening-vfx-ring{border-width:2px;border-style:double}
+.opening-fullscreen.fx-legendary .opening-vfx-ring::before{inset:5%;transform:none;opacity:.45}
+.opening-fullscreen.fx-mythic .opening-vfx-ring{border-radius:22%;aspect-ratio:1;rotate:45deg;width:min(72vw,390px)}
+.opening-fullscreen.fx-mythic .opening-vfx-ring::before{transform:scale(.9);inset:4%}
+.opening-fullscreen.fx-ultra .opening-vfx-ring{border-width:3px;border-style:double}
+.opening-fullscreen.fx-ultra .opening-vfx-ring::after{inset:-10%;opacity:.35}
+.opening-fullscreen.fx-secret .opening-vfx-ring{border-radius:45% 55% 45% 55%;border-left-color:transparent!important;border-right-color:transparent!important}
+.opening-fullscreen.fx-secret .opening-vfx-ring::before{border-radius:50%;inset:4%;transform:rotate(60deg) scaleX(.72);opacity:.65}
+.opening-fullscreen.fx-ultra-secret .opening-vfx-ring{border-width:2px;border-radius:28%;rotate:45deg;width:min(75vw,420px)}
+.opening-fullscreen.fx-ultra-secret .opening-vfx-ring::before{border-radius:50%;inset:-9%;transform:none;opacity:.5}
+.opening-fullscreen.fx-ultra-secret .opening-vfx-ring::after{border-radius:50%;inset:8%;transform:none;opacity:.6}
+.opening-fullscreen .opening-vfx-name{font:600 clamp(10px,2.8vw,14px)/1.4 var(--font,sans-serif);letter-spacing:.3em;color:var(--v15-light);text-shadow:none;bottom:max(17%,95px)}
+.opening-fullscreen.fx-active.fx-unveiled .opening-vfx-name{animation:v15-rarity-caption .7s ease-out both}
+.opening-fullscreen.fx-common .opening-vfx,.opening-fullscreen.fx-rare .opening-vfx-name{display:none!important}
+.opening-fullscreen .opening-top-card.revealed .flip-back::after{animation:none!important;display:none!important}
+.opening-fullscreen .opening-top-card.put-away{transform:none!important;animation:v15-card-away .15s ease-in both}
+.opening-fullscreen.opening-quick .opening-top-card.put-away{animation-duration:.1s}
+
+/* The seal is a single deliberate gesture. Its existing button works by touch,
+   keyboard and mouse; its controller can be accelerated while it is tearing. */
+.v14-sealed-pack{box-shadow:1px 0 0 #e6d1a02e,-1px 0 0 #0009;filter:none}
+.v14-seal-glint{background:linear-gradient(111deg,transparent 24%,#fff4d006 34%,#fff4d040 39%,#fff4d011 43%,transparent 57%)}
+.v14-seal-trigger:active:not(:disabled) .v14-sealed-pack{transform:rotate(-2deg) scale(.98)}
+.v14-is-opening .v14-seal-cap,.v14-is-opening .v14-seal-body{will-change:transform,opacity}
+.v14-summary-item{animation:v15-summary-arrive .22s ease-out both;animation-delay:calc(var(--v15-summary-index,0)*25ms)}
+.v14-summary-card{border-radius:10px}
+.v14-summary-item:is([data-reveal-tier=legendary],[data-reveal-tier=mythic],[data-reveal-tier=ultra],[data-reveal-tier=secret]) .v14-summary-card{box-shadow:0 0 0 1px #e4c98b66,0 5px 14px #0005}
+.v14-summary-item[data-reveal-tier=secret] .v14-summary-card{box-shadow:0 0 0 1px #b0e9cb80,0 5px 14px #0005}
+.v14-summary-item[data-reveal-tier=ultra] .v14-summary-card{box-shadow:0 0 0 1px #d2eaff99,0 5px 14px #0005}
+.v14-summary-item[data-reveal-tier=secret] .v14-summary-card-label small{color:#b9ddcb}
+.v14-summary-item[data-reveal-tier=ultra] .v14-summary-card-label small{color:#c9dce9}
+
+@keyframes v15-light-gather{from{opacity:0;transform:translate(-50%,-50%) scale(1.2)}to{opacity:.5;transform:translate(-50%,-50%) scale(.88)}}
+@keyframes v15-light-release{0%{opacity:.1;transform:translate(-50%,-50%) scale(.78)}28%{opacity:.6}100%{opacity:0;transform:translate(-50%,-50%) scale(1.16)}}
+@keyframes v15-reveal-bloom{0%{opacity:0;transform:scale(.85)}35%{opacity:.6}100%{opacity:0;transform:scale(1.1)}}
+@keyframes v15-rarity-caption{0%{opacity:0;transform:translate(-50%,8px)}25%,65%{opacity:.85;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,-3px)}}
+@keyframes v15-card-away{from{opacity:1;translate:0 0}to{opacity:0;translate:0 -18px}}
+@keyframes v15-summary-arrive{from{opacity:0;transform:translate3d(0,8px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+html[data-m13-quality=eco] .opening-fullscreen .opening-vfx,html[data-m13-quality=eco] .v14-summary-item{animation:none!important}
+html[data-m13-quality=eco] .opening-fullscreen .opening-vfx{display:none!important}
+html[data-m13-quality=eco] .v14-summary-item{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .opening-fullscreen .opening-vfx{display:none!important}
+  .opening-fullscreen .opening-top-card.put-away,.v14-summary-item{animation:none!important;transform:none;translate:none;opacity:1}
+  .v14-seal-trigger:active:not(:disabled) .v14-sealed-pack{transform:rotate(-4deg)}
+}

@@ -1,0 +1,21 @@
+/* V15: quiet physical surfaces around playable objects. No autonomous motion. */
+.v15-collection-layout{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:20px 0 16px;padding:11px 13px;border:1px solid #d9bd8326;border-radius:10px;background:#111d24}
+.v15-collection-layout>span{margin-left:auto;font-size:10px;color:#a7b3bb}
+.v15-collection-layout .btn,.v15-album-turn{min-height:44px}
+.m13-showcase{transform-style:preserve-3d}
+.m13-show-card::before{content:'';position:absolute;inset:0;border-radius:4.2%;background:linear-gradient(95deg,#1c2425,#b6aa8b 3%,#1b2428 5%,#0a1016 98%);transform:translate(3px,4px);box-shadow:1px 2px 0 #d9bd8350;pointer-events:none}
+.m13-show-card>.tcg-card{position:relative}
+.v15-album-host:focus{outline:none}
+.v15-album-host:focus-visible{outline:2px solid #d9bd83;outline-offset:7px}
+.v15-album-cover h3{font-family:Georgia,serif}
+@media(max-width:700px){.v15-collection-layout>span{flex-basis:100%;margin:2px 0 0}.v15-collection-layout .btn{flex:1}.v15-album{margin-inline:-3px}.m13-show-card::before{transform:translate(2px,3px)}}
+@media(prefers-reduced-motion:reduce){.m13-show-card::before{transform:none}.v15-album-host{scroll-behavior:auto}}
+html[data-m13-quality=eco] .m13-show-card::before{display:none}
+/* Neutral reverse is a real surface; economy mode swaps the faces without 3D. */
+.inspect-flipper.v15-is-back{transform:rotateX(var(--rx)) rotateY(calc(180deg + var(--ry)))}
+.inspect-tools{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+.inspect-tools [data-action=inspect-back][aria-pressed=true]{border-color:#d9bd8380;color:#f0dbac}
+html[data-m13-quality=eco] .inspect-flipper.v15-is-back{transform:none}
+html[data-m13-quality=eco] .v15-is-back .inspect-front{visibility:hidden}
+html[data-m13-quality=eco] .v15-is-back .v15-object-back{display:flex;transform:none}
+@media(prefers-reduced-motion:reduce){.inspect-flipper{transition:none!important}.inspect-flipper.v15-is-back{transform:none}.v15-is-back .inspect-front{visibility:hidden}.v15-is-back .v15-object-back{display:flex;transform:none}}

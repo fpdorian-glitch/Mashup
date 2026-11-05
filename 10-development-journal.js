@@ -22,19 +22,19 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Dernière version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 5 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V14 — Le Sanctuaire des légendes</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V14.0.2</span></div>'+
-      '<p>Bienvenue au Sanctuaire : des cartes redessinées comme des objets de collection, une ouverture de booster du sceau au résumé, et une interface pensée pour jouer au doigt. Tes illustrations et les règles du jeu sont préservées.</p>'+
+      '<h4>Mashup V15 — Cartes vivantes & immersion</h4></div><span class="dev-v12-badge">DERNIÈRE VERSION · V15.0.0</span></div>'+
+      '<p>Prends tes cartes en main : tranches et relief en inspection, album à compléter et confrontations plus immersives. Les révélations suivent la rareté et peuvent être accélérées. Tes illustrations et les règles du jeu sont préservées.</p>'+
       '<div class="dev-v12-changes">'+
       '<span>Un sanctuaire personnel consacré à tes cartes et à ton prochain défi.</span>'+
-      '<span>Accueil, Collection, Arène, Marché : quatre accès directs et toutes les autres fonctions dans le menu Plus.</span>'+
+      '<span>Arène : confrontations, statistiques sélectionnées et résultats animés sans bloquer tes actions.</span>'+
       '<span>Illustrations et cadrages individuels existants conservés sans modification.</span>'+
       '<span>Six matériaux : papier mat, métal, irisation violette, or noble, chrome noir et chrome blanc.</span>'+
       '<span>Full Art, Gold, Secrète et Ultra Secrète : chaque finition possède sa propre composition.</span>'+
       '<span>Modes économie d’énergie et animations réduites préservés.</span>'+
       '<span>Recherche indexée et cartes déjà affichées conservées au chargement suivant.</span>'+
       '<span>Inspection tactile et clavier, lumière physique et inclinaison maîtrisée.</span>'+
-      '<span>Decks chargés progressivement, par groupes de 24 cartes.</span>'+
-      '<span>Six signatures de brillance : satin, argent brossé, prisme améthyste, ruban doré, chrome noir et cristal spectral. Intensité croissante de Commune à Ultra.</span>'+
+      '<span>Un album paginé à compléter, avec la grille classique toujours disponible.</span>'+
+      '<span>Un objet en relief : tranches métalliques et plusieurs plans en inspection tactile.</span>'+
       '</div>'+
       '<details class="dev-v12-history"><summary>Voir les améliorations des versions précédentes</summary>'+
       '<p><b>V13.0 :</b> nouvel accueil Éclipse, navigation mobile, effets adaptatifs, decks optimisés et réponses réseau fiabilisées.</p>'+

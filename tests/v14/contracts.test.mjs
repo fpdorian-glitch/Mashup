@@ -7,9 +7,13 @@ const root=new URL('../../',import.meta.url);
 const current=fs.readFileSync(new URL('index.html',root),'utf8');
 const baseline=git(['show','b20fb58:index.html']);
 function body(source,start,end){return source.slice(source.indexOf(start),source.indexOf(end,source.indexOf(start)));}
-test('Booster prepare/commit : corps transactionnels identiques à main V13.0.1',()=>{
- assert.equal(body(current,'async function openPack(id){','let packFlipBusy='),body(baseline,'async function openPack(id){','let packFlipBusy='));
- assert.equal(body(current,'async function finishOpening(){','function closeModal(){'),body(baseline,'async function finishOpening(){','function closeModal(){'));
+test('Booster prepare/commit : mêmes routes, identifiants et données transactionnelles',()=>{
+ const calls=source=>source.match(/api\('\/api\/packs\/[^']+',\{[^}]+\}\)/g)||[];
+ for(const [start,end] of [['async function openPack(id){','let packFlipBusy='],['async function finishOpening(){','function closeModal(){']]){
+  assert.deepEqual(calls(body(current,start,end)),calls(body(baseline,start,end)));
+ }
+ assert.ok(body(current,'async function openPack(id){','let packFlipBusy=').includes("state[p.currency==='dust'?'dust':'coins']<p.price"));
+ assert.ok(body(current,'async function finishOpening(){','function closeModal(){').includes('packRevealed.size<packResults.length'));
 });
 test('Contrats API : aucune nouvelle route serveur dans le client principal',()=>{
  const routes=s=>[...new Set([...s.matchAll(/api\(['"]([^'"]+)/g)].map(m=>m[1]))].sort();

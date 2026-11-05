@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090d16" />
-  <meta name="mashup-version" content="14.0.2" />
+  <meta name="mashup-version" content="15.0.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
@@ -724,6 +724,11 @@
   <link rel="stylesheet" href="./42-v14-finishes.css?v=14.0.2">
   <link rel="stylesheet" href="./39-v14-booster.css?v=14.0.0">
   <link rel="stylesheet" href="./40-v14-interface.css?v=14.0.0">
+  <link rel="stylesheet" href="./44-v15-album.css?v=15.0.0">
+  <link rel="stylesheet" href="./45-v15-living-cards.css?v=15.0.0">
+  <link rel="stylesheet" href="./47-v15-booster.css?v=15.0.0">
+  <link rel="stylesheet" href="./51-v15-arena.css?v=15.0.0">
+  <link rel="stylesheet" href="./52-v15-shell.css?v=15.0.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -753,7 +758,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tiny-icon">✦</div>
         <p>UN MONDE. <br />DES POSSIBILITÉS <em>INFINIES.</em></p>
-        <div class="tiny-copy">V14 <span>·</span> LE SANCTUAIRE</div>
+        <div class="tiny-copy">V15 <span>·</span> CARTES VIVANTES</div>
       </div>
     </aside>
     <div class="content-area">
@@ -1060,17 +1065,21 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=14.0.2" defer></script>
+<script src="./09-mashup-updates.js?v=15.0.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
-import { sealedPackMarkup, summaryMarkup, mountSealedPack } from './38-v14-booster.js?v=14.0.0';
+import { albumMarkup } from './43-v15-album.js?v=15.0.0';
+import { inspectionObjectMarkup, physicalLightingForTilt } from './46-v15-living-cards.js?v=15.0.0';
+import { createRevealTimeline } from './49-v15-reveal-timeline.js?v=15.0.0';
+import { createArenaPresentation } from './50-v15-arena.js?v=15.0.0';
+import { sealedPackMarkup, summaryMarkup, mountSealedPack } from './38-v14-booster.js?v=15.0.0';
 import { createCatalogueIndex, cardSearchText, normalizeSearch, renderCardWindow, inspectionLimits, presentBalance, reflectionForTilt } from './41-v14-runtime.js?v=14.0.1';
-import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=14.0.1';
+import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=15.0.0';
 import { createGamesUI } from './04-games-ui.js?v=13.0.0';
-import { renderMashupV10Card } from './06-v10-cards.js?v=14.0.0';
-import { createDevelopmentJournal } from './10-development-journal.js?v=14.0.2';
+import { renderMashupV10Card } from './06-v10-cards.js?v=15.0.0';
+import { createDevelopmentJournal } from './10-development-journal.js?v=15.0.0';
 import { startMashupV12Performance } from './32-v12-performance.js?v=14.0.0';
-import { createBoosterRevealFX } from './12-booster-reveal.js?v=14.0.0';
+import { createBoosterRevealFX } from './12-booster-reveal.js?v=15.0.0';
 import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
@@ -1160,6 +1169,8 @@ const DEFAULT_SAVE = {coins:650,dust:0,owned:{willy:1,water:1,coca:1},deck:['wil
 const clone = obj => JSON.parse(JSON.stringify(obj));
 let state = loadSave();
 let onlineUser = null;
+let sessionEpoch=0;
+const arenaPresentation=createArenaPresentation({getQuality:()=>document.documentElement.dataset.m13Quality,isReducedMotion:()=>matchMedia('(prefers-reduced-motion: reduce)').matches});
 const developmentJournal=createDevelopmentJournal({api,getUser:()=>onlineUser,esc,toast});
 const boosterFX=createBoosterRevealFX();
 const missionsUI=createMissionsUI({api,getUser:()=>onlineUser,esc,toast,onState:next=>{state=next;updateBalances();}});
@@ -1190,9 +1201,11 @@ let marketMode='sale';
 let collFilter = 'owned';
 let collRarity = 'all';
 let collSearch = '';
+let collectionDisplay='classic',albumPage=0,classicCollFilter='owned';
+try{if(localStorage.getItem('mashup-collection-layout-v15')==='album'){collectionDisplay='album';collFilter='all';}}catch{}
 function collectionBatchSize(){return window.matchMedia?.('(max-width: 720px)')?.matches?24:36;}
 let collVisibleLimit=collectionBatchSize();
-function resetCollectionWindow(){collVisibleLimit=collectionBatchSize();}
+function resetCollectionWindow(){collVisibleLimit=collectionBatchSize();albumPage=0;}
 let collSort='rarity-desc';
 let collUniverse='all';
 let arenaMode='simple';
@@ -1336,7 +1349,7 @@ function renderMarketHub(){
     '<div id="market-v11-content"></div>';
   if(marketMode==='trades')marketUI.mount();else v11UI.mountMarket();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;view=name;render();const page=document.getElementById('page');page.getAnimations?.().forEach(animation=>animation.cancel());if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.documentElement.dataset.m13Quality!=='eco')page.animate?.([{opacity:.5,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'});if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;if(name!==view)arenaPresentation.clear();view=name;render();const page=document.getElementById('page');page.getAnimations?.().forEach(animation=>animation.cancel());if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.documentElement.dataset.m13Quality!=='eco')page.animate?.([{opacity:.5,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'});if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
 // V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
 const gamesUI = createGamesUI({
   getView:()=>view,
@@ -1344,7 +1357,7 @@ const gamesUI = createGamesUI({
   showArena:()=>setView('arena'),
   toast:(message,error)=>toast(message,error),
   api:async (route,body)=>{
-    const accountId=onlineUser?.id;
+    const accountId=onlineUser?.id,requestEpoch=sessionEpoch;
     const session=(await mashupAuth.auth.getSession()).data.session;
     if(!session?.access_token)throw new Error('Reconnecte-toi pour jouer.');
     const endpoint='https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-games?route='+encodeURIComponent(route);
@@ -1358,7 +1371,7 @@ const gamesUI = createGamesUI({
     const reply=await fetch(endpoint,options);
     const output=await reply.json().catch(()=>({error:'Réponse serveur invalide.'}));
     if(!reply.ok)throw new Error(output.error||'Le Casino ne répond pas.');
-    if(onlineUser?.id!==accountId)throw new Error('La session a changé. Reconnecte-toi aux jeux.');
+    if(sessionEpoch!==requestEpoch||onlineUser?.id!==accountId)throw new Error('La session a changé. Reconnecte-toi aux jeux.');
     if(Number.isFinite(output.credits)){state.coins=output.credits;updateBalances();}
     return output;
   }
@@ -1384,6 +1397,7 @@ function rollCard(){const options=allCards().filter(c=>RARITIES[c.rarity]);retur
 async function openPack(id){
  if(!onlineUser||packLoading||packPendingId||packFinalizing)return;
  if(packCancelPromise){toast('Annulation du booster précédent en cours…',true);return;}
+ const attemptEpoch=sessionEpoch;
  const p=PACKS.find(x=>x.id===id);if(!p)return;
  if(!(p.free&&!state.freePackUsed)&&!(Number(packVouchers[p.id])>0)&&state[p.currency==='dust'?'dust':'coins']<p.price){toast('Crédits ou éclats insuffisants.',true);return;}
  packLoading=true;packCancelRequested=false;selectedPack=p;
@@ -1391,17 +1405,18 @@ async function openPack(id){
  document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Préparation de ton booster"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Préparation de ton booster…</h2><p>Le serveur prépare le tirage. Aucun crédit n'a été débité.</p><button class="btn btn-sm" data-action="cancel-pack-loading" type="button">Annuler</button></section></div>`;
  try{
   const r=await api('/api/packs/prepare',{id,attemptId});
-  if(packCancelRequested){packCancelPromise=api('/api/packs/cancel',{id,openingId:r.openingId}).catch(()=>{});try{await packCancelPromise;}finally{packCancelPromise=null;}document.getElementById('modal-root').innerHTML='';return;}
+  if(packCancelRequested){packCancelPromise=api('/api/packs/cancel',{id,openingId:r.openingId}).catch(()=>{});try{await packCancelPromise;}finally{if(attemptEpoch===sessionEpoch)packCancelPromise=null;}if(attemptEpoch===sessionEpoch)document.getElementById('modal-root').innerHTML='';return;}
   packPendingId=r.openingId;packPendingPackId=id;
   packResults=r.results;packRevealed=new Set();showOpening();
- }catch(e){if(!packCancelRequested){toast(e.message,true);document.getElementById('modal-root').innerHTML='';}}
- finally{packLoading=false;packCancelRequested=false;}
+ }catch(e){if(attemptEpoch===sessionEpoch&&!packCancelRequested){toast(e.message,true);document.getElementById('modal-root').innerHTML='';}}
+ finally{if(attemptEpoch===sessionEpoch){packLoading=false;packCancelRequested=false;}}
 }
 
 let packFlipBusy=false;
 let packCardFaceUp=false;
 let packFlipTimer=null;
 let sealedPackCleanup=null;
+let revealTimeline=null,completePutAway=null;
 function renderOpeningStack(){
   const stage=document.getElementById('opening-stack');
   if(!stage)return;
@@ -1431,6 +1446,7 @@ function renderOpeningStack(){
   packCardFaceUp=false;
 }
 function showOpening(){
+  revealTimeline?.cancel();revealTimeline=null;completePutAway=null;
   sealedPackCleanup?.();sealedPackCleanup=null;
   packFlipBusy=false;packCardFaceUp=false;clearTimeout(packFlipTimer);packFlipTimer=null;setOpeningTheme('');
   document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Ouverture immersive du booster ${esc(selectedPack?.name||'')}"><div class="opening-fullscreen">${boosterFX.decorations()}<div class="opening-topline"><div class="opening-topline-label"><span class="eyebrow">✧ OUVERTURE DE BOOSTER</span><strong>${esc(selectedPack?.name||'BOOSTER')}</strong></div><div class="opening-topline-actions">${boosterFX.controls()}</div></div><div class="opening-center"><div id="opening-stack"></div><p class="opening-tip" id="opening-instruction" aria-live="polite">Appuie sur la carte pour la retourner.</p><div class="opening-counter" id="opening-progress" aria-live="polite">Carte 1 sur ${packResults.length}</div></div><div class="opening-bottomline"><p class="small-note">Les cartes sont conservées dès la confirmation finale.</p><button class="btn btn-primary" id="opening-done" data-action="finish-opening" hidden type="button">Confirmer et revenir aux boosters ↗</button></div></div></div>`;
@@ -1450,26 +1466,24 @@ function revealNextCard(){
     // Premier clic : retourner, puis LAISSER la carte révélée opaque sur la pile.
     packFlipBusy=true;button.disabled=true;
     const upcoming=packResults[i];
+    const attemptEpoch=sessionEpoch;
     const prelude=boosterFX.preludeMs(upcoming);
     boosterFX.prelude(upcoming);
     if(prelude&&tip)tip.textContent='✦ La carte réagit…';
-    packFlipTimer=setTimeout(()=>{
-      if(!button.isConnected){boosterFX.reset();packFlipBusy=false;packFlipTimer=null;return;}
-      clearOpeningOmen();
-      button.classList.add('revealed');
-      // Start effects at the BEGINNING of the flip, rather than after it ends.
-      boosterFX.play(upcoming);
-      packFlipTimer=setTimeout(()=>{
-        if(!button.isConnected){boosterFX.reset();packFlipBusy=false;packFlipTimer=null;return;}
-        boosterFX.unveil();
-        packCardFaceUp=true;packFlipBusy=false;button.disabled=false;
+    revealTimeline?.cancel();
+    revealTimeline=createRevealTimeline({
+      getTimings:()=>boosterFX.timingsFor(upcoming),
+      isAlive:()=>button.isConnected&&attemptEpoch===sessionEpoch,
+      onReveal:()=>{clearOpeningOmen();button.classList.add('revealed');boosterFX.play(upcoming);},
+      onReady:()=>{
+        boosterFX.unveil();packCardFaceUp=true;packFlipBusy=false;button.disabled=false;
         setOpeningTheme(specialRevealType(upcoming));
         button.setAttribute('aria-label',`Mettre de côté ${upcoming.name} et voir la carte suivante`);
-        const special=specialRevealType(upcoming);
-        if(tip)tip.textContent=special==='ultra-secret'?`🌟 ULTRA SECRÈTE ! ${upcoming.name} · appuie de nouveau pour la ranger`:(special==='secret'?`✨ CARTE SECRÈTE ! ${upcoming.name} · appuie de nouveau pour la ranger`:(special==='ultra'?`✨ ULTRA ! ${upcoming.name} · appuie de nouveau pour la ranger`:(special==='mythic'?`🔥 MYTHIQUE ! ${upcoming.name} · appuie de nouveau pour la ranger`:`${upcoming.name} · appuie de nouveau sur la carte pour la mettre de côté`)));
-        packFlipTimer=null;
-      },boosterFX.flipMs()+25);
-    },prelude);
+        if(tip)tip.textContent=`${upcoming.variant==='secret'?'✦ SECRÈTE · ':''}${upcoming.name} · touche de nouveau la carte pour la ranger`;
+      },
+      onCancel:()=>{if(attemptEpoch===sessionEpoch){boosterFX.reset();packFlipBusy=false;}}
+    });
+    revealTimeline.start();
     return;
   }
   // Deuxième clic : seule la carte déjà révélée quitte la pile ; la suivante reste cachée.
@@ -1477,17 +1491,19 @@ function revealNextCard(){
   boosterFX.reset();
   button.classList.add('put-away');
   if(tip)tip.textContent='Carte mise de côté…';
-  packFlipTimer=setTimeout(()=>{
+  const attemptEpoch=sessionEpoch;let placed=false;
+  completePutAway=()=>{
+    if(placed||attemptEpoch!==sessionEpoch)return;placed=true;
+    clearTimeout(packFlipTimer);packFlipTimer=null;completePutAway=null;
     if(!document.getElementById('opening-stack')){packFlipBusy=false;return;}
-    setOpeningTheme('');
-    packRevealed.add(i);
-    packFlipBusy=false;packCardFaceUp=false;packFlipTimer=null;
-    renderOpeningStack();
-    document.querySelector('.opening-top-card')?.focus({preventScroll:true});
-  },boosterFX.putAwayMs());
+    setOpeningTheme('');packRevealed.add(i);packFlipBusy=false;packCardFaceUp=false;
+    renderOpeningStack();document.querySelector('.opening-top-card')?.focus({preventScroll:true});
+  };
+  packFlipTimer=setTimeout(completePutAway,boosterFX.putAwayMs());
 }
 async function finishOpening(){
  if(packFlipBusy||packFinalizing||packLoading||!packPendingId||packRevealed.size<packResults.length)return;
+ const attemptEpoch=sessionEpoch;
  packFinalizing=true;const id=packPendingPackId,openingId=packPendingId;
  const done=document.getElementById('opening-done');if(done){done.disabled=true;done.innerHTML='<span class="wait-spinner" aria-hidden="true"></span> Validation en cours…';}
  try{
@@ -1501,12 +1517,13 @@ async function finishOpening(){
   }
   packPendingId=null;packPendingPackId=null;updateBalances();packFinalizing=false;
   closeModal();if(view!=='packs')setView('packs');collectionRewardsUI.refresh({force:true});toast('Booster confirmé : cartes ajoutées à ta collection !');
- }catch(e){packFinalizing=false;if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}toast(e.message+' Tu peux réessayer sans payer deux fois.',true);}
+ }catch(e){if(attemptEpoch!==sessionEpoch)return;packFinalizing=false;if(done){done.disabled=false;done.textContent='Réessayer la confirmation';}toast(e.message+' Tu peux réessayer sans payer deux fois.',true);}
 }
 function closeModal(){
  if(packFinalizing){toast('Validation en cours. Ne ferme pas cette ouverture.',true);return;}
  if(packLoading){packCancelRequested=true;const modal=document.getElementById('modal-root');if(modal)modal.innerHTML='<div class="modal-backdrop opening-backdrop"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Annulation en cours…</h2><p>Aucun crédit ne sera débité.</p></section></div>';return;}
  if(packPendingId){toast('Termine ton booster et confirme pour conserver les cartes.',true);return;}
+ revealTimeline?.cancel();revealTimeline=null;completePutAway=null;
  sealedPackCleanup?.();sealedPackCleanup=null;
  clearTimeout(packFlipTimer);packFlipTimer=null;packFlipBusy=false;packCardFaceUp=false;clearOpeningOmen();boosterFX.reset();setOpeningTheme('');stopInspectionMotion();inspection=null;
  if(cropEditor){URL.revokeObjectURL(cropEditor.url);cropEditor=null;}
@@ -1523,6 +1540,13 @@ function seriesProgressMarkup(number){
  const rares=Object.entries(RARITIES).map(([k,v])=>{const count=unlocked.filter(c=>c.rarity===k).length;const available=Number(SERIES_TOTALS[number]?.byRarity?.[k])||0;return `<div><small>${esc(v.label)}</small><b>${count} obtenue${count>1?'s':''}</b></div>`;}).join('');
  return `<div class="series-progress"><div class="flex-between"><strong>Progression · ${unlocked.length} carte${unlocked.length>1?'s':''} obtenue${unlocked.length>1?'s':''}</strong><strong>${rate} %</strong></div><div class="series-meter"><div class="series-meter-fill" style="width:${rate}%"></div></div><div class="series-progress-grid">${rares}<div><small>Variantes FA</small><b>${unlocked.filter(c=>c.variant==='full_art').length}</b></div><div><small>Variantes Gold</small><b>${unlocked.filter(c=>c.variant==='gold').length}</b></div>${secrets.length?`<div><small>✦ Cartes secrètes découvertes</small><b>${secrets.length}</b></div>`:''}</div>${secrets.length?`<div class="secret-discovery">✦ Surprise ! ${secrets.length} carte${secrets.length>1?'s':''} secrète${secrets.length>1?'s':''} dévoilée${secrets.length>1?'s':''} en dehors de la collection habituelle.</div>`:''}${state.latestCardId&&visible.some(c=>c.id===state.latestCardId&&(state.owned?.[c.id]||0)>0)?`<p class="small-note">Dernière découverte : <strong>${esc(visible.find(c=>c.id===state.latestCardId)?.name||'')}</strong></p>`:''}</div>`;
 }
+function setCollectionDisplay(mode){
+ const next=mode==='album'?'album':'classic';
+ if(next!==collectionDisplay){if(next==='album'){classicCollFilter=collFilter;collFilter='all';}else collFilter=classicCollFilter;}
+ collectionDisplay=next;resetCollectionWindow();
+ try{localStorage.setItem('mashup-collection-layout-v15',next);}catch{}
+ renderCollection();
+}
 function renderCollection(){
   if(!collectionSeries){document.getElementById('page').innerHTML=`${labelIntro('02 / LE CODEX','Choisis ta <em>série.</em>','Chaque série possède sa propre collection et sa numérotation.')}<div class="series-choice-grid">${SERIES.map(x=>`<button class="series-choice" data-action="choose-series" data-series="${x.number}" style="--series-color:${CSSColor(x.color,'#364a62')}"><span>✦ S${String(x.number).padStart(2,'0')}</span><strong>${esc(x.name)}</strong><small>${esc(x.description||'Explore cette collection')}</small></button>`).join('')}</div>`;return;}
   document.getElementById('page').innerHTML=`${labelIntro('02 / LE CODEX','Ta collection<em>.</em>','Explore tes découvertes : clique sur une carte pour voir sa fiche, puis sur la carte de la fiche pour l’admirer en grand et l’incliner.')}
@@ -1537,7 +1561,8 @@ function renderCollection(){
         <label class="collection-search-label">Rechercher<input id="collection-search" type="search" placeholder="Nom d'une carte…" value="${esc(collSearch)}"></label>
       </div><div class="filter-footer"><span id="collection-count" class="small-note"></span><button class="btn btn-sm" data-action="clear-collection-filters">Réinitialiser</button></div>
     </div>
-    <div class="collection-grid" id="collection-grid"></div><div id="collection-load-more" class="collection-load-more" hidden></div><div class="divider"></div><div class="flex-between" style="align-items:center;flex-wrap:wrap"><p class="small-note">Collection sauvegardée sur ton compte Mashup, accessible à chaque connexion.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm" data-action="export-save">↓ Exporter</button>${onlineUser.role==='admin'?`<label class="btn btn-sm" style="cursor:pointer">↑ Importer ma V4 <input id="import-save" type="file" accept="application/json" style="display:none"></label>`:''}</div></div>`;
+    <div class="v15-collection-layout" role="group" aria-label="Affichage de la collection"><button class="btn ${collectionDisplay==='classic'?'btn-primary':''}" data-action="collection-display" data-mode="classic" aria-pressed="${collectionDisplay==='classic'}">Grille classique</button><button class="btn ${collectionDisplay==='album'?'btn-primary':''}" data-action="collection-display" data-mode="album" aria-pressed="${collectionDisplay==='album'}">Mon album</button><span>Ta collection, carte après carte.</span></div>
+    <div class="${collectionDisplay==='album'?'v15-album-host':'collection-grid'}" id="collection-grid"></div><div id="collection-load-more" class="collection-load-more" hidden></div><div class="divider"></div><div class="flex-between" style="align-items:center;flex-wrap:wrap"><p class="small-note">Collection sauvegardée sur ton compte Mashup, accessible à chaque connexion.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm" data-action="export-save">↓ Exporter</button>${onlineUser.role==='admin'?`<label class="btn btn-sm" style="cursor:pointer">↑ Importer ma V4 <input id="import-save" type="file" accept="application/json" style="display:none"></label>`:''}</div></div>`;
   renderCollectionGrid();
 }
 function renderCollectionGrid({append=false}={}){
@@ -1559,6 +1584,14 @@ function renderCollectionGrid({append=false}={}){
     if(collSort==='owned-desc')return (Number(state.owned[b.id])||0)-(Number(state.owned[a.id])||0)||rankB-rankA||byName;
     return rankB-rankA||byName;
   });
+  if(collectionDisplay==='album'){
+    const grid=document.getElementById('collection-grid');if(!grid)return;
+    grid.className='v15-album-host';
+    grid.innerHTML=albumMarkup({cards:result,catalogue:allCards().filter(c=>(Number(c.editionSeries)||1)===collectionSeries),owned:state.owned,series:SERIES.find(x=>x.number===collectionSeries),renderCard:cardMarkup,esc,page:albumPage,pageSize:matchMedia('(max-width: 700px)').matches?6:12});
+    const more=document.getElementById('collection-load-more');if(more)more.hidden=true;
+    const counter=document.getElementById('collection-count');if(counter)counter.textContent='Album · recherche et filtres actifs';
+    return;
+  }
   const shown=result.slice(0,collVisibleLimit);
   const countElement=document.getElementById('collection-count');
   if(countElement)countElement.textContent=result.length?shown.length+' / '+result.length+' cartes affichées':'Aucune carte trouvée';
@@ -1604,14 +1637,14 @@ function stopInspectionMotion(){if(inspectionFrame)cancelAnimationFrame(inspecti
 function showMagnifiedCard(id){
   const c=getCard(id);if(!c||c.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[id]))return;
   stopInspectionMotion();
-  inspection={id,rx:0,ry:0,trx:0,try:0,vrx:0,vry:0,dragging:false,pointerId:null,x:0,y:0,startX:0,startY:0,lastFrame:0};
+  inspection={id,back:false,rx:0,ry:0,trx:0,try:0,vrx:0,vry:0,dragging:false,pointerId:null,x:0,y:0,startX:0,startY:0,lastFrame:0};
   document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop inspect-backdrop" role="dialog" aria-modal="true" aria-label="Carte grand format ${esc(c.name)}">
     <div class="inspect-modal">
       <div class="inspect-header"><div><div class="inspect-kicker">✦ MASHUP / INSPECTION 3D</div><h2 class="inspect-heading">${esc(c.name)}</h2></div>
       <div class="inspect-header-actions"><button class="btn btn-sm btn-quiet" data-action="back-to-detail" data-id="${esc(id)}">← Fiche</button><button class="icon-button" data-action="close-modal" aria-label="Fermer">×</button></div></div>
-      <div class="inspect-stage"><div class="inspect-tilter" tabindex="0" aria-label="Incliner la face avant de ${esc(c.name)} en glissant avec le pointeur ou les flèches du clavier"><div class="inspect-flipper"><div class="inspect-face inspect-front">${cardMarkup(c)}</div></div></div></div>
+      <div class="inspect-stage"><div class="inspect-tilter" tabindex="0" aria-label="Incliner la face avant de ${esc(c.name)} en glissant avec le pointeur ou les flèches du clavier"><div class="inspect-flipper">${inspectionObjectMarkup(cardMarkup(c),{rarity:c.rarity,variant:c.variant})}</div></div></div>
       <div class="inspect-instructions"><span><kbd>Glisser</kbd> ou flèches : inclinaison et reflets · Échap pour fermer</span><span>Sur mobile : glisse ton doigt · Retour automatique avec inertie</span></div>
-      <div class="inspect-tools"><button class="btn btn-sm" data-action="inspect-front">↺ Laisser revenir la carte</button></div>
+      <div class="inspect-tools"><button class="btn btn-sm" data-action="inspect-back" aria-pressed="false">Voir le dos</button><button class="btn btn-sm" data-action="inspect-front">↺ Laisser revenir la carte</button></div>
     </div></div>`;
   document.querySelector('.inspect-tilter')?.focus({preventScroll:true});
   updateInspection();
@@ -1622,6 +1655,8 @@ function updateInspection(){
   el.style.setProperty('--rx',`${inspection.rx}deg`);
   el.style.setProperty('--ry',`${inspection.ry}deg`);
   el.classList.toggle('dragging',inspection.dragging);
+  const physical=physicalLightingForTilt(inspection.rx,inspection.ry);
+  for(const [name,value] of Object.entries(physical))el.style.setProperty(name,String(value));
   const card=el.querySelector('.tcg-card');
   if(card){
     const reflection=reflectionForTilt(inspection.rx,inspection.ry);
@@ -1851,6 +1886,7 @@ function renderCombat(){
       ${end?`<div class="battle-end ${battle.result==='loss'?'battle-end-loss':''}"><h2>${battle.result==='win'?'✦ Victoire, la série continue !':battle.result==='draw'?'Match nul : série conservée':'Défaite : retour à zéro'}</h2><p>+${battle.reward.coins} crédits ◉${battle.reward.dust?` · +${battle.reward.dust} éclats ✧`:''}</p><p class="arena-wallet-confirm">✓ Gains enregistrés · Nouveau solde : <strong>${Number(state.coins||0).toLocaleString('fr-FR')} ◉</strong></p><p class="small-note">Score : ${battle.playerScore} – ${battle.enemyScore}${battle.ties?` · ${battle.ties} égalité${battle.ties>1?'s':''}`:''} · Écart cumulé : ${points>0?'+':''}${points} · Série actuelle : ${state.streak}</p>${battle.result==='win'?`<div class="end-bonus">La prochaine victoire rapportera <b>${nextWinReward(state.streak).coins} crédits</b>.</div>`:''}<button class="btn btn-primary btn-lg" data-action="quit-battle">Revenir au chemin des victoires ↗</button></div>`:revealed?`<div class="battle-next"><button class="btn btn-primary btn-lg" data-action="next-round">Manche suivante →</button></div>`:''}
       ${battle.history.length?`<div class="battle-log"><div class="eyebrow">HISTORIQUE DES MANCHES</div>${battle.history.map((h,i)=>`<p>${i+1}. ${esc(h.name)} · ${esc(h.key)} (${h.actor==='ai'?'IA':'toi'}) : ${h.pValue} contre ${h.eValue} · ${h.winner==='player'?'Point pour toi':h.winner==='enemy'?'Point adverse':'Égalité'} · ${h.margin>0?'+':''}${h.margin} d’écart</p>`).join('')}</div>`:''}
     </div>`;
+  arenaPresentation.update({root:document.getElementById('page'),matchId:battle.id||'campaign',round:battle.round,stage:battle.stage,stat:battle.last?.key,winner:battle.finished?(battle.result==='win'?'player':battle.result==='loss'?'enemy':'draw'):battle.last?.winner,finished:battle.finished,playerScore:battle.playerScore,enemyScore:battle.enemyScore,turn:isAITurn()?'enemy':'player'});
 }
 async function challengeStat(key,fromAI=false){
   if(!battle||battle.finished||battle.stage!=='choose'||isAITurn()!==fromAI)return;
@@ -2005,6 +2041,8 @@ document.addEventListener('click',event=>{
   const action=button.dataset.action;
   switch(action){
     case 'retry-connection':bootOnline();break;
+    case 'collection-display':setCollectionDisplay(button.dataset.mode);break;
+    case 'album-page':albumPage=Math.max(0,Number(button.dataset.page)||0);renderCollectionGrid();document.querySelector('.v15-album-host')?.scrollIntoView({block:'nearest',behavior:'auto'});break;
     case 'deck-load-more':deckVisibleLimit+=24;renderDeckRoster();break;
     case 'open-pack':openPack(button.dataset.pack);break;
     case 'arena-mode':arenaMode=button.dataset.mode==='double'?'double':'simple';renderArena();break;
@@ -2014,12 +2052,19 @@ document.addEventListener('click',event=>{
     case 'close-modal':closeModal();break;
     case 'cancel-pack-loading':closeModal();break;
     case 'flip-next':revealNextCard();break;
-    case 'toggle-opening-speed':if(!packFlipBusy){boosterFX.toggle();toast(boosterFX.isFast()?'Animations rapides activées.':'Animations cinéma activées.');}break;
+    case 'toggle-opening-speed':{
+      const current=packResults[packRevealed.size],runningFlipMs=boosterFX.flipMs(current);
+      boosterFX.toggle();boosterFX.sync(current);
+      if(boosterFX.isFast()){sealedPackCleanup?.accelerate?.();revealTimeline?.accelerate();completePutAway?.();}
+      else if(packFlipBusy)document.querySelector('.opening-fullscreen')?.style.setProperty('--mashup-flip-time',runningFlipMs+'ms');
+      toast(boosterFX.isFast()?'Animations rapides activées.':'Animations cinéma activées.');break;
+    }
     case 'finish-opening':finishOpening();break;
     case 'detail':showDetail(button.dataset.id);break;
     case 'zoom-card':showMagnifiedCard(button.dataset.id);break;
     case 'back-to-detail':stopInspectionMotion();inspection=null;showDetail(button.dataset.id);break;
     case 'inspect-front':inspectReset();break;
+    case 'inspect-back':if(inspection){inspection.back=!inspection.back;document.querySelector('.inspect-flipper')?.classList.toggle('v15-is-back',inspection.back);button.textContent=inspection.back?'Revenir à la face':'Voir le dos';button.setAttribute('aria-pressed',String(inspection.back));inspectReset();}break;
     case 'favorite':toggleFavorite(button.dataset.id);break;
     case 'deck-toggle':toggleDeck(button.dataset.id);break;
     case 'remove-art':removeOnlineArt(button.dataset.id);break;
@@ -2159,7 +2204,7 @@ document.getElementById('modal-root').addEventListener('pointercancel',inspectPo
 // Couche serveur : authentification et économie contrôlées côté serveur.
 // Static GitHub Pages -> Supabase Edge Functions. Auth session lives in the browser.
 async function api(path,data){
-  const accountId=onlineUser?.id||null;
+  const accountId=onlineUser?.id||null,requestEpoch=sessionEpoch;
   const {data:authData}=await mashupAuth.auth.getSession();
   const access=authData?.session?.access_token;
   const headers={'apikey': 'sb_publishable_2hnHVrn2t-JCQ-KwMZRPkQ_ANXyc0dG', 'X-Mashup-Request':'1'};
@@ -2170,7 +2215,7 @@ async function api(path,data){
   const response=await fetch(url,options);let result;
   try{result=await response.json();}catch{throw new Error('Le serveur Supabase ne répond pas correctement.');}
   if(!response.ok)throw new Error(result.error||'Erreur du serveur');
-  if((onlineUser?.id||null)!==accountId)throw new Error('La session a changé. Relance cette action depuis ton compte.');
+  if(sessionEpoch!==requestEpoch||(onlineUser?.id||null)!==accountId)throw new Error('La session a changé. Relance cette action depuis ton compte.');
   return result;
 }
 // V12: serialize deck/favorite saves. A slower response must never overwrite
@@ -2183,26 +2228,26 @@ function savePreferences(){
 }
 async function flushPreferences(){
   if(preferenceSaving||!onlineUser)return;
-  preferenceSaving=true;
+  preferenceSaving=true;const attemptEpoch=sessionEpoch;
   try{
-    while(preferenceDirty&&onlineUser){
+    while(preferenceDirty&&onlineUser&&attemptEpoch===sessionEpoch){
       preferenceDirty=false;
       const accountId=onlineUser.id;
       const snapshot={deck:[...(state.deck||[])],deckDouble:[...(state.deckDouble||[])],favorites:[...(state.favorites||[])]};
       try{
         const result=await api('/api/preferences',snapshot);
-        if(onlineUser?.id!==accountId)break;
+        if(attemptEpoch!==sessionEpoch||onlineUser?.id!==accountId)break;
         if(!preferenceDirty&&result?.state){
           state.deck=result.state.deck||[];
           state.deckDouble=result.state.deckDouble||[];
           state.favorites=result.state.favorites||[];
         }
       }catch(error){
-        if(onlineUser?.id===accountId){preferenceDirty=true;toast(error.message||'Sauvegarde momentanément indisponible.',true);}
+        if(attemptEpoch===sessionEpoch&&onlineUser?.id===accountId){preferenceDirty=true;toast(error.message||'Sauvegarde momentanément indisponible.',true);}
         break;
       }
     }
-  }finally{preferenceSaving=false;}
+  }finally{if(attemptEpoch===sessionEpoch)preferenceSaving=false;}
 }
 window.addEventListener('online',()=>{if(preferenceDirty)flushPreferences();});
 function showAuth(mode='login',error=''){
@@ -2232,9 +2277,23 @@ async function loadOnlineGame(){
   document.getElementById('account-button').textContent=(onlineUser.pseudo||onlineUser.username).slice(0,1).toUpperCase();
   document.getElementById('account-button').title=`${onlineUser.username} — ${onlineUser.role==='admin'?'Administrateur':'Joueur'} (cliquer pour modifier son mot de passe)`;
   if(onlineUser.role!=='admin' && (view==='creator'||view==='admin'))view='packs';
-  if(battle){view='arena';arenaSection='campaign';}render();pollInvitations();
+  albumPage=0;if(battle){view='arena';arenaSection='campaign';}render();pollInvitations();
 }
-async function logoutOnline(){try{await mashupAuth.auth.signOut();}catch{}onlineUser=null;mobilePresentation.sync();missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;showInvitationBanner();showAuth('login');}
+async function logoutOnline(){
+ sessionEpoch++;onlineUser=null;arenaPresentation.clear();
+ clearTimeout(preferenceTimer);preferenceTimer=null;preferenceDirty=false;preferenceSaving=false;
+ onlineBusy=false;invitationPollBusy=false;onlineLobbyData=null;myPublicProfile=null;betStakeDraft=null;renderOnline.fingerprint='';renderOnline.lastMatchId=null;
+ revealTimeline?.cancel();revealTimeline=null;completePutAway=null;sealedPackCleanup?.();sealedPackCleanup=null;
+ clearTimeout(packFlipTimer);packFlipTimer=null;boosterFX.reset();clearOpeningOmen();stopInspectionMotion();inspection=null;
+ packLoading=false;packFinalizing=false;packPendingId=null;packPendingPackId=null;packCancelPromise=null;packResults=[];packRevealed=new Set();
+ if(cropEditor){URL.revokeObjectURL(cropEditor.url);cropEditor=null;}
+ document.getElementById('modal-root').innerHTML='';
+ missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);
+ state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;albumPage=0;showInvitationBanner();mobilePresentation.sync();
+ document.getElementById('auth-cover').style.display='grid';document.getElementById('auth-content').textContent='Déconnexion en cours…';
+ try{await mashupAuth.auth.signOut();}catch{}showAuth('login');
+}
+
 async function removeOnlineArt(id){if(onlineUser?.role!=='admin')return;const c=getCard(id);if(!c)return;try{const r=await api('/api/admin/cards',{card:{...c,art:''}});BASE_CARDS=r.cards;showDetail(id);toast('Illustration retirée du catalogue.');}catch(e){toast(e.message,true);}}
 function avatarMarkup(v){const img=safeImage(v);return img?`<img class="profile-avatar" src="${img}" alt="Photo de profil">`:`<div class="profile-avatar">${esc(v||'✦')}</div>`;}
 function captureSeriesDraft(){
@@ -2303,7 +2362,7 @@ function renderProfile(){
 }
 async function saveOwnProfile(){try{const r=await api('/api/profile',{pseudo:document.getElementById('profile-pseudo').value,avatar:document.getElementById('profile-avatar-data').value,showcaseCard:document.getElementById('profile-showcase').value});myPublicProfile=r.profile;onlineUser=r.user;toast('Profil enregistré.');renderProfile();}catch(e){toast(e.message,true);}}
 async function renderOnline(silent=false){
- if(view!=='arena'||arenaSection!=='online'||onlineBusy)return;onlineBusy=true;
+ if(view!=='arena'||arenaSection!=='online'||onlineBusy)return;onlineBusy=true;const attemptEpoch=sessionEpoch;
  try{const data=await api('/api/pvp');if(view!=='arena'||arenaSection!=='online')return;
  if(Number.isSafeInteger(data.balance)){state.coins=data.balance;updateBalances();}
  // On évite de reconstruire l'écran si les données n'ont pas changé, pour ne pas gêner le défilement mobile.
@@ -2331,15 +2390,22 @@ async function renderOnline(silent=false){
   <div class="pvp-duel-grid ${m.mode==='double'?'pvp-double':'pvp-single'} ${m.status==='active'&&m.stage==='choose'&&!myTurn?'waiting-clash':''}"><div class="pvp-side"><div class="eyebrow">TES CARTES</div><div class="pvp-card-pair">${m.ownCards.map(c=>cardMarkup(c,{revealedOpponent:true})).join('')}</div></div><div class="vs">VS</div><div class="pvp-side"><div class="eyebrow">ADVERSAIRE</div><div class="pvp-card-pair">${m.stage==='reveal'||m.status==='finished'?m.enemyCards.map(c=>cardMarkup(c,{revealedOpponent:true})).join(''):Array.from({length:m.mode==='double'?2:1},()=>'<div class="pvp-hidden">?</div>').join('')}</div></div></div>
   ${m.status==='active'&&m.stage==='choose'&&myTurn?`<div class="divider"></div><h3>Choisis la statistique</h3><div class="pvp-stats">${STAT_FIELDS.map(f=>`<button data-action="pvp-choose" data-stat="${f.key}">${esc(f.label)} · ${m.ownCards.reduce((a,c)=>a+statValue(c,f.key),0)}</button>`).join('')}</div>`:''}
   ${m.status==='active'&&m.stage==='choose'&&!myTurn?'<div class="pvp-waiting"><span class="wait-spinner" aria-hidden="true"></span><div><strong>L’adversaire réfléchit…</strong><small>Il choisit sa statistique. Le résultat apparaîtra automatiquement.</small></div></div>':''}
-  ${m.stage==='reveal'?`<h3>Résultat : ${esc(m.history[m.history.length-1]?.winner||'Égalité')}</h3><div class="comparison-numbers"><b>${m.history[m.history.length-1]?.h||0}</b><strong>${esc(m.history[m.history.length-1]?.key||'')}</strong><b>${m.history[m.history.length-1]?.g||0}</b></div>${m.status==='active'?m.meReady?'<div class="pvp-waiting"><span class="wait-spinner" aria-hidden="true"></span><div><strong>En attente de l’adversaire…</strong><small>La manche suivante commence lorsque vous avez tous les deux validé.</small></div></div>':'<button class="btn btn-primary pvp-next-button" data-action="pvp-next">Prêt pour la manche suivante →</button>':''}`:''}
+  ${m.stage==='reveal'?`<h3>Résultat : ${esc(m.history.at(-1)?.winner===mine?'Manche gagnée':m.history.at(-1)?.winner===(mine==='host'?'guest':'host')?'Manche perdue':m.history.at(-1)?.winner||'Égalité')}</h3><div class="comparison-numbers"><b>${(mine==='host'?m.history.at(-1)?.h:m.history.at(-1)?.g)||0}</b><strong>${esc(STAT_FIELDS.find(f=>f.key===m.history.at(-1)?.key)?.label||m.history.at(-1)?.key||'')}</strong><b>${(mine==='host'?m.history.at(-1)?.g:m.history.at(-1)?.h)||0}</b></div>${m.status==='active'?m.meReady?'<div class="pvp-waiting"><span class="wait-spinner" aria-hidden="true"></span><div><strong>En attente de l’adversaire…</strong><small>La manche suivante commence lorsque vous avez tous les deux validé.</small></div></div>':'<button class="btn btn-primary pvp-next-button" data-action="pvp-next">Prêt pour la manche suivante →</button>':''}`:''}
   ${['finished','forfeit'].includes(m.status)?`<div class="battle-end"><h2>${m.result==='draw'?'Égalité':m.result===mine?'Victoire !':'Défaite'}</h2><p>${m.bet?.locked?(m.result==='draw'?'Égalité : chaque joueur récupère sa mise.':m.result===mine?`Tu as remporté ${m.bet.stake*2} crédits (mise comprise) !`:`Tu as perdu ta mise de ${m.bet.stake} crédits.`):'Les victoires en ligne apparaissent sur ton profil. Aucun crédit n’est distribué dans ce mode.'}</p></div>`:''}
   <details><summary>Historique des manches</summary>${m.history.map((h,i)=>`<p>Manche ${i+1} : ${esc(h.key)} · ${h.h} contre ${h.g} (${h.winner})</p>`).join('')}</details></section>`;
  }
  const standings=`<section class="panel" style="margin-top:14px"><div class="eyebrow">CLASSEMENT MULTIJOUEUR</div><h3>Meilleurs joueurs</h3><div class="pvp-ranking">${(data.leaderboard||[]).slice(0,10).map((x,i)=>`<div class="pvp-rank-row"><strong>${i+1}</strong><span>${esc(x.pseudo)}</span><strong>${x.wins} V · ${x.losses} D</strong></div>`).join('')||'<p class="small-note">Aucun classement disponible.</p>'}</div></section>`;
  if(m&&m.status==='active')body=`<div class="pvp-resume">${m.bet?'PARIMATCH · '+m.bet.stake+' crédits misés · ':'Partie active · '}${m.mode==='double'?'Double':'Classique'} · Manche ${m.round+1}/4. Tu peux quitter la page et revenir ici pour reprendre le même duel.</div>`+body;
  const root=document.getElementById('pvp-arena-root');if(root)root.innerHTML=body+standings;
+ if(root&&m){
+  const mine=m.host===onlineUser.id?'host':'guest',other=mine==='host'?'guest':'host';
+  const last=m.history?.at(-1),finished=['finished','forfeit'].includes(m.status);
+  const rawWinner=finished?m.result:last?.winner;
+  const winner=rawWinner===mine||rawWinner===onlineUser.id?'player':rawWinner===other||rawWinner===(mine==='host'?m.guest:m.host)?'enemy':['draw','tie','Égalité'].includes(rawWinner)?'draw':'';
+  arenaPresentation.update({root,matchId:m.id,round:m.round,stage:m.stage,stat:STAT_FIELDS.find(f=>f.key===last?.key||f.label===last?.key)?.key,winner,finished,playerScore:mine==='host'?m.hostScore:m.guestScore,enemyScore:mine==='host'?m.guestScore:m.hostScore,turn:m.actor===onlineUser.id?'player':'enemy'});
+ }
  updatePvpClock();
- }catch(e){if(!silent)toast(e.message,true);}finally{onlineBusy=false;}
+ }catch(e){if(attemptEpoch===sessionEpoch&&!silent)toast(e.message,true);}finally{if(attemptEpoch===sessionEpoch)onlineBusy=false;}
 }
 function updatePvpClock(){
  const betClock=document.getElementById('bet-clock');if(betClock&&onlineLobbyData?.match?.bet?.matchedAt){betClock.textContent=Math.max(0,Math.ceil((onlineLobbyData.match.bet.matchedAt+3000-Date.now())/1000));}
@@ -2364,10 +2430,10 @@ function showInvitationBanner(){
  root.innerHTML=`<div class="pvp-invite-notice"><div class="pvp-invite-title">⚔ Défi reçu !</div><p><strong>${esc(item.pseudo)}</strong> te défie en mode ${item.mode==='parimatch'?'Parimatch (pari de crédits)':item.mode==='double'?'Double':'Classique'}.</p><div class="pvp-invite-actions"><button class="btn btn-primary btn-sm" data-action="invite-accept" type="button">Accepter</button><button class="btn btn-sm" data-action="invite-decline" type="button">Refuser</button><button class="btn btn-sm btn-quiet" data-action="invite-open" type="button">Voir le défi</button></div></div>`;
 }
 async function pollInvitations(){
- if(!onlineUser||invitationPollBusy)return;invitationPollBusy=true;
+ if(!onlineUser||invitationPollBusy)return;invitationPollBusy=true;const attemptEpoch=sessionEpoch;
  try{const r=await api('/api/pvp/invitations');
  incomingChallenge=r.invitation||null;showInvitationBanner();
- }catch(_e){}finally{invitationPollBusy=false;}
+ }catch(_e){}finally{if(attemptEpoch===sessionEpoch)invitationPollBusy=false;}
 }
 async function answerInvitation(accept){
  const id=incomingChallenge?.id;if(!id)return;
