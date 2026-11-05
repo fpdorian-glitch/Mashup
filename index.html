@@ -1231,7 +1231,7 @@ let editingCardId = null, archivedAdminCards = [];
 let onlineSaving = false;
 
 let view = 'packs';
-const mobilePresentation=createMobilePresentation({getUser:()=>onlineUser,getView:()=>view,onNavigate:name=>setView(name)});
+const mobilePresentation=createMobilePresentation({getUser:()=>onlineUser,getView:()=>view,onNavigate:name=>{if(name==='match'){gamesMode='match';setView('games');}else setView(name);}});
 let marketMode='sale';
 let collFilter = 'owned';
 let collRarity = 'all';
