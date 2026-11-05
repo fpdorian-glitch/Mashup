@@ -1,3 +1,11 @@
+## Mashup V15.3.2 — Ouvertures fiabilisées (5 novembre 2026)
+
+- Confirmation automatiquement déclenchée dès que la dernière carte d'un booster est mise de côté. Le serveur reste seul responsable de l'attribution et du débit.
+- Enregistrement local, propre à chaque compte, de l'identifiant d'une ouverture préparée pour reprendre sa confirmation après une interruption.
+- Alerte dans Boosters avec actions explicites de récupération ou d'abandon ; aucune ouverture suivante avant résolution du tirage en attente.
+- Aucun changement de la base de données ni des rares cartes / taux de tirage.
+- Les tirages anciens non confirmés sans reçu conservé ne peuvent pas être réattribués automatiquement.
+
 # Publier une mise à jour de Mashup (à partir de V10.2)
 
 Mashup est hébergé sur GitHub Pages. Les comptes, collections et crédits sont dans Supabase et ne dépendent pas du cache de l'écran d'accueil.
