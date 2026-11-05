@@ -46,7 +46,6 @@
   mask-image:linear-gradient(180deg,transparent,#000 14%,#000 83%,transparent);
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 14%,#000 83%,transparent);
 }
-.tcg-card.v10-tcg.v14-card.common.variant-standard .v14-optics{display:none}
 .tcg-card.v10-tcg.v14-card .v10-rarity,.tcg-card.v10-tcg.v14-card .v10-name,.tcg-card.v10-tcg.v14-card .v10-universe,.tcg-card.v10-tcg.v14-card .v10-stats,.tcg-card.v10-tcg.v14-card .v10-series{position:absolute;z-index:8;pointer-events:none;text-shadow:none;box-sizing:border-box}
 .tcg-card.v10-tcg.v14-card .v10-rarity{
   top:4.3%;left:10%;right:10%;height:3%;display:flex;justify-content:center;align-items:center;gap:1.8cqw;
@@ -172,7 +171,6 @@
 .inspect-front .tcg-card.v10-tcg.v14-card .v10-stat-label{font:650 clamp(6px,2.35cqw,10px)/1 system-ui,sans-serif;letter-spacing:-.04em}
 .inspect-front .tcg-card.v10-tcg.v14-card .v10-stat-number{font:750 5.9cqw/1 system-ui,sans-serif}
 .inspect-front .tcg-card.v10-tcg.v14-card .v14-optics.v10-foil{opacity:calc(var(--v14-foil) + .12)!important}
-.inspect-front .tcg-card.v10-tcg.v14-card.common.variant-standard .v14-optics{display:none}
 .tcg-card.v10-tcg.v14-card:focus-visible{outline:2px solid var(--v14-metal-bright);outline-offset:3px}
 /* Undiscovered cards carry no identity, attributes, rarity or illustration. */
 .tcg-card.locked-card.v14-unknown{container-type:inline-size;aspect-ratio:300/425;position:relative;overflow:hidden;border:0!important;border-radius:4.2%;background:linear-gradient(145deg,#252d35,#11171f);color:#a3a799;box-shadow:0 1px 0 #fff3,0 5px 13px #0006}

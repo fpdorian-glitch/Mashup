@@ -91,8 +91,27 @@ Le seul domaine `api.github.com` a été ajouté au brouillon des paramètres de
 
 Les finitions optiques réagissent désormais à l'inclinaison : déplacement du point lumineux, orientation du faisceau, intensité selon l'angle et diffraction en sens inverse. Les couleurs dépendent du matériau ; les Secrètes utilisent une gamme émeraude/vert pâle, les Ultra Secrètes un chrome opalin vert. Il s'agit d'une approximation de reflet en CSS, sans rendu 3D lourd ni capteur.
 
-Deux pseudo-éléments sont peints dans la fenêtre d'illustration existante : aucun nœud de carte ajouté, aucune animation autonome. Les noms et les cinq statistiques restent au-dessus des effets. Le mode économique, la réduction des animations et le masquage hors écran désactivent la finition. Les communes classiques conservent leur finition mate.
+Deux pseudo-éléments sont peints dans la fenêtre d'illustration existante : aucun nœud de carte ajouté, aucune animation autonome. Les noms et les cinq statistiques restent au-dessus des effets. Le mode économique, la réduction des animations et le masquage hors écran désactivent la finition. Les communes classiques conservent ici leur finition mate ; la V14.0.2 ajoute ensuite un léger vernis satiné, décrit ci-dessous.
 
 [Preuves détaillées de brillance](shine/README.md) · [Secrète inclinée](shine/secret-right.png) · [Ultra Secrète](shine/ultra-secret-right.png) · [Reflet en mouvement](shine/secret-motion.webm).
 
 71 tests Node réussis. Le contrôle Chromium ciblé vérifie aussi les gestes souris, clavier et tactiles sur les deux Secrètes, les teintes vertes, la conservation des images/statistiques et les trois modes de protection. Aucune donnée de joueur ni opération de production impliquée.
+
+## V14.0.2 — Six signatures de brillance, intensité croissante
+
+[Comparaison des six raretés sous le même éclairage](rarity-shine/standard-same-light.png) · [Les 24 combinaisons](rarity-shine/rarity-matrix.png) · [Voir les reflets en mouvement](rarity-shine/six-rarities-motion.webm) · [Preuves et limites](rarity-shine/README.md).
+
+La géométrie du reflet change avec la rareté, au-delà de la couleur :
+
+| Rareté | Signature | Intensité au même angle fort |
+|---|---|---:|
+| Commune | Vernis satiné large et discret | 0,1024 |
+| Rare | Argent brossé, reflet allongé | 0,2688 |
+| Épique | Diffraction en éventail améthyste | 0,4096 |
+| Légendaire | Rubans doubles or/ivoire | 0,5632 |
+| Mythique | Chrome noir, éclats fracturés rouge/or | 0,6912 |
+| Ultra | Facettes spectrales et micro-points cristallins | 0,8192 |
+
+Les intensités sont les opacités réellement calculées par Chromium à une énergie lumineuse de 0,64, et non une promesse de luminance absolue indépendante de l'illustration. La progression est strictement croissante pour chacune des quatre variantes. Gold et Secrète modifient la palette et les motifs secondaires sans effacer l'échelle de rareté ; les Secrètes restent vertes, l'Ultra Secrète opaline verte.
+
+Les cartes utilisent toujours les deux pseudo-éléments existants, sans nouveau nœud par carte, animation autonome ou filtre d'image. Illustrations, noms et cinq statistiques sont préservés ; le reflet s'éteint en mode économique, mouvement réduit ou hors écran. Le test ciblé vérifie les 24 cas et les gestes souris/clavier/tactile. 71 tests Node passent également. Aucun accès Supabase réel, ni déploiement, ni validation sur téléphone physique. Les mesures comparatives du tableau précédent concernent la V14.0.1 ; elles ne constituent pas une mesure du coût GPU de ces nouveaux motifs.
