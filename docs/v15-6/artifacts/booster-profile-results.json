@@ -1,0 +1,331 @@
+{
+  "kind": "local-rendering-hypothesis-isolation",
+  "started": "2026-11-05T23:29:52.153Z",
+  "productionRequests": 0,
+  "repeats": 3,
+  "framesPerRun": 90,
+  "measurementWindow": "rAF and long-task windows start BEFORE the reveal click; HTML setter and input-to-next-rAF instrumented equally in every variant.",
+  "browser": "155.0.8059.79",
+  "runs": [
+    {
+      "variant": "current",
+      "repetition": 0,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.4,
+        "maxMs": 50.1,
+        "over33ms": 5
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 21.19999999552965,
+        "handlerMicrotaskMs": 0.09999999403953552,
+        "hydrationMs": [
+          1
+        ],
+        "intentToRevealClassMs": 293.79999999701977
+      }
+    },
+    {
+      "variant": "hydrate-at-intent",
+      "repetition": 0,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 33.4,
+        "over33ms": 1
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 25.600000001490116,
+        "handlerMicrotaskMs": 0,
+        "hydrationMs": [
+          1.2000000029802322
+        ],
+        "intentToRevealClassMs": 293.8999999985099
+      }
+    },
+    {
+      "variant": "without-new-paper-edges",
+      "repetition": 0,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.3,
+        "maxMs": 33.4,
+        "over33ms": 4
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 19.600000001490116,
+        "handlerMicrotaskMs": 0.10000000149011612,
+        "hydrationMs": [
+          1.1000000014901161
+        ],
+        "intentToRevealClassMs": 294.29999999701977
+      }
+    },
+    {
+      "variant": "current",
+      "repetition": 1,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.4,
+        "maxMs": 66.6,
+        "over33ms": 5
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 20.899999998509884,
+        "handlerMicrotaskMs": 0.10000000149011612,
+        "hydrationMs": [
+          0.8999999985098839
+        ],
+        "intentToRevealClassMs": 293.1000000014901
+      }
+    },
+    {
+      "variant": "hydrate-at-intent",
+      "repetition": 1,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 49.9,
+        "over33ms": 1
+      },
+      "longTasks": [
+        {
+          "start": 2410,
+          "duration": 52
+        }
+      ],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 23.600000001490116,
+        "handlerMicrotaskMs": 0.10000000149011612,
+        "hydrationMs": [
+          1.1000000014901161
+        ],
+        "intentToRevealClassMs": 293.29999999701977
+      }
+    },
+    {
+      "variant": "without-new-paper-edges",
+      "repetition": 1,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.3,
+        "maxMs": 50,
+        "over33ms": 3
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 24.5,
+        "handlerMicrotaskMs": 0.10000000149011612,
+        "hydrationMs": [
+          0.8999999985098839
+        ],
+        "intentToRevealClassMs": 293.20000000298023
+      }
+    },
+    {
+      "variant": "current",
+      "repetition": 2,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.4,
+        "maxMs": 66.7,
+        "over33ms": 5
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 23.19999999552965,
+        "handlerMicrotaskMs": 0,
+        "hydrationMs": [
+          1.0999999940395355
+        ],
+        "intentToRevealClassMs": 293.79999999701977
+      }
+    },
+    {
+      "variant": "hydrate-at-intent",
+      "repetition": 2,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 50.1,
+        "over33ms": 2
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 23.69999999552965,
+        "handlerMicrotaskMs": 0.09999999403953552,
+        "hydrationMs": [
+          1.5999999940395355
+        ],
+        "intentToRevealClassMs": 295
+      }
+    },
+    {
+      "variant": "without-new-paper-edges",
+      "repetition": 2,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 33.3,
+        "maxMs": 50,
+        "over33ms": 2
+      },
+      "longTasks": [],
+      "input": {
+        "measurementStartedBeforeIntent": true,
+        "firstRafAfterIntentMs": 37,
+        "handlerMicrotaskMs": 0.10000000149011612,
+        "hydrationMs": [
+          0.8999999985098839
+        ],
+        "intentToRevealClassMs": 294.1000000014901
+      }
+    }
+  ],
+  "limits": "Chromium Linux390×844, GPU disabled, all data/Auth/API fictional and intercepted. HTML/CSS diagnostic variants only; repository game sources unchanged.",
+  "medians": {
+    "current": {
+      "p95FrameIntervalMs": 33.4,
+      "intervalsOver33ms": 5,
+      "longTaskCount": 0,
+      "rawLongTasks": [
+        [],
+        [],
+        []
+      ],
+      "input": [
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 21.19999999552965,
+          "handlerMicrotaskMs": 0.09999999403953552,
+          "hydrationMs": [
+            1
+          ],
+          "intentToRevealClassMs": 293.79999999701977
+        },
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 20.899999998509884,
+          "handlerMicrotaskMs": 0.10000000149011612,
+          "hydrationMs": [
+            0.8999999985098839
+          ],
+          "intentToRevealClassMs": 293.1000000014901
+        },
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 23.19999999552965,
+          "handlerMicrotaskMs": 0,
+          "hydrationMs": [
+            1.0999999940395355
+          ],
+          "intentToRevealClassMs": 293.79999999701977
+        }
+      ]
+    },
+    "hydrate-at-intent": {
+      "p95FrameIntervalMs": 16.8,
+      "intervalsOver33ms": 1,
+      "longTaskCount": 0,
+      "rawLongTasks": [
+        [],
+        [
+          {
+            "start": 2410,
+            "duration": 52
+          }
+        ],
+        []
+      ],
+      "input": [
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 25.600000001490116,
+          "handlerMicrotaskMs": 0,
+          "hydrationMs": [
+            1.2000000029802322
+          ],
+          "intentToRevealClassMs": 293.8999999985099
+        },
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 23.600000001490116,
+          "handlerMicrotaskMs": 0.10000000149011612,
+          "hydrationMs": [
+            1.1000000014901161
+          ],
+          "intentToRevealClassMs": 293.29999999701977
+        },
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 23.69999999552965,
+          "handlerMicrotaskMs": 0.09999999403953552,
+          "hydrationMs": [
+            1.5999999940395355
+          ],
+          "intentToRevealClassMs": 295
+        }
+      ]
+    },
+    "without-new-paper-edges": {
+      "p95FrameIntervalMs": 33.3,
+      "intervalsOver33ms": 3,
+      "longTaskCount": 0,
+      "rawLongTasks": [
+        [],
+        [],
+        []
+      ],
+      "input": [
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 19.600000001490116,
+          "handlerMicrotaskMs": 0.10000000149011612,
+          "hydrationMs": [
+            1.1000000014901161
+          ],
+          "intentToRevealClassMs": 294.29999999701977
+        },
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 24.5,
+          "handlerMicrotaskMs": 0.10000000149011612,
+          "hydrationMs": [
+            0.8999999985098839
+          ],
+          "intentToRevealClassMs": 293.20000000298023
+        },
+        {
+          "measurementStartedBeforeIntent": true,
+          "firstRafAfterIntentMs": 37,
+          "handlerMicrotaskMs": 0.10000000149011612,
+          "hydrationMs": [
+            0.8999999985098839
+          ],
+          "intentToRevealClassMs": 294.1000000014901
+        }
+      ]
+    }
+  },
+  "success": true
+}

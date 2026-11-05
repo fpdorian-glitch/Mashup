@@ -3,7 +3,7 @@ name: Frontend regression tests
 on:
   pull_request:
   push:
-    branches: [feature/mashup-v15-immersion, feature/mashup-v15-1-arena-reborn, feature/mashup-auto-series-catalog, feature/mashup-v15-4-grand-update]
+    branches: [feature/mashup-v15-immersion, feature/mashup-v15-1-arena-reborn, feature/mashup-auto-series-catalog, feature/mashup-v15-4-grand-update, feature/mashup-v15-6-immersion-match-2]
 
 permissions:
   contents: read
@@ -21,4 +21,4 @@ jobs:
         with:
           node-version: '24'
       - name: Check syntax, protected contracts and presentation behavior
-        run: node --test --test-isolation=none tests/phase-0/reference.test.mjs tests/mobile/presentation.test.mjs tests/v14/*.test.mjs tests/v15/*.test.mjs tests/v15-1/*.test.mjs tests/catalogue/*.test.mjs tests/v15-3/*.test.mjs tests/v15-4/*.test.mjs tests/v15-5/*.test.mjs
+        run: node --test --test-isolation=none tests/phase-0/reference.test.mjs tests/mobile/presentation.test.mjs tests/v14/*.test.mjs tests/v15/*.test.mjs tests/v15-1/*.test.mjs tests/catalogue/*.test.mjs tests/v15-3/*.test.mjs tests/v15-4/*.test.mjs tests/v15-5/*.test.mjs tests/v15-6/*.test.mjs

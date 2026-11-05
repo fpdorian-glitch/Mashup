@@ -1,0 +1,206 @@
+{
+  "baseline": "15968dc",
+  "productionRequests": 0,
+  "browser": "155.0.8059.79",
+  "physicalPhone": false,
+  "checks": [
+    "Clock immediately visible above dock at390×844 and320×568; no horizontal overflow",
+    "Two distinct fictional accounts with local clocks−2minutes/+4hours share the same server countdown within1second",
+    "Reload preserves the shared absolute deadline rather than starting a new countdown",
+    "Resume via visibilitychange fetches server status and displays the20second visual alert",
+    "Server deadline closure disables betting for both accounts",
+    "Server live/result states and a confirmed next schedule replace the previous phase without local fight creation",
+    "All casino actions in this scenario are status reads; no fight creation, bet, or payout request"
+  ],
+  "screenshots": [
+    "casino-clock-390.png",
+    "casino-clock-320.png"
+  ],
+  "limits": "Chromium Linux with touch and mobile viewport simulation. API/Auth are intercepted; no real server schedule, wallet or physical phone was tested.",
+  "geometry": [
+    {
+      "top": 298.515625,
+      "bottom": 348.90625,
+      "width": 116.984375,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dockTop": 775.953125,
+      "overflow": false
+    },
+    {
+      "top": 316.34375,
+      "bottom": 366.734375,
+      "width": 116.984375,
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "dockTop": 499.953125,
+      "overflow": false
+    }
+  ],
+  "twoPlayerCountdowns": [
+    "07:39",
+    "07:38"
+  ],
+  "afterReload": "07:37",
+  "success": true,
+  "apiCalls": [
+    [
+      {
+        "route": "/api/status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/auth/me",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/bootstrap",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/pvp/invitations",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/auth/me",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/bootstrap",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/pvp/invitations",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/pvp/invitations",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      }
+    ],
+    [
+      {
+        "route": "/api/status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/auth/me",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/bootstrap",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/pvp/invitations",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "/api/pvp/invitations",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      },
+      {
+        "route": "status",
+        "method": "GET",
+        "payload": null
+      }
+    ]
+  ]
+}

@@ -1,5 +1,6 @@
 {
-  "version": "15.5.1",
-  "publishedAt": "2026-11-05",
-  "notes": "Élimination des sondages d’invitations en double et optimisation Supabase des notifications sans altérer les cartes, les crédits et les récompenses."
+  "version": "15.6.0",
+  "status": "development",
+  "preparedAt": "2026-11-06",
+  "notes": "Immersion 3D des boosters, glissement continu Mashup Match et progression publique des joueurs avec service compatible."
 }

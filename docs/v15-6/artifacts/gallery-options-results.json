@@ -1,0 +1,17 @@
+{
+  "productionRequests": 0,
+  "checks": [
+    {
+      "name": "Changer la qualité depuis le menu met immédiatement à jour la galerie montée, sans navigation",
+      "success": true
+    },
+    {
+      "name": "Ouverture depuis la galerie : fond masqué sans perte de disposition, confirmation unique et retour à la même position",
+      "success": true,
+      "scrollBefore": 1837,
+      "scrollAfter": 1837
+    }
+  ],
+  "limits": "Chromium Linux390×844; mobile viewport/touch simulation, intercepted Auth/API, no physical phone or deployed backend tested.",
+  "success": true
+}

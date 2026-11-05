@@ -1,0 +1,73 @@
+{
+  "kind": "final-unmodified-client-current-only-follow-up",
+  "browser": "155.0.8059.79",
+  "started": "2026-11-05T23:33:14.071Z",
+  "productionRequests": 0,
+  "runs": [
+    {
+      "repetition": 0,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 33.4,
+        "over33ms": 2
+      },
+      "longTasks": [],
+      "input": {
+        "windowStartedBeforeIntent": true,
+        "nextFrameAfterIntentMs": 19.600000001490116
+      }
+    },
+    {
+      "repetition": 1,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 50,
+        "over33ms": 1
+      },
+      "longTasks": [],
+      "input": {
+        "windowStartedBeforeIntent": true,
+        "nextFrameAfterIntentMs": 57.5
+      }
+    },
+    {
+      "repetition": 2,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 49.9,
+        "over33ms": 1
+      },
+      "longTasks": [],
+      "input": {
+        "windowStartedBeforeIntent": true,
+        "nextFrameAfterIntentMs": 18.600000001490116
+      }
+    }
+  ],
+  "conditions": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "gpu": "disabled",
+    "quality": "high",
+    "framesPerRun": 90,
+    "repeats": 3,
+    "window": "Starts before the user reveal click, includes initial rendering and long tasks. No HTML/CSS/source transformation or setter override.",
+    "reference": "Baseline measurements remain in performance-results.json and performance-follow-up.json; baseline was not rerun in this final current-only check."
+  },
+  "limits": "Chromium Linux and fictional Auth/API; no physical phone, Safari iOS, real network, player or backend tested.",
+  "median": {
+    "p95FrameIntervalMs": 16.8,
+    "intervalsOver33ms": 1,
+    "longTaskCount": 0,
+    "nextFrameAfterIntentMs": 19.600000001490116
+  },
+  "success": true
+}

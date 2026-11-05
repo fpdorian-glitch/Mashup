@@ -1,0 +1,8 @@
+/* At most two transient input layers. No idle animation or illustration loss. */
+.mm-board.mm-is-dragging{cursor:grabbing}
+.mm-cell.mm-drag-source{z-index:6;cursor:grabbing;will-change:transform;transform:translate3d(var(--mm-drag-x,0px),var(--mm-drag-y,0px),0) scale(var(--mm-drag-scale,1.055));transition:none;box-shadow:inset 0 1px 0 #edfff744,0 9px 15px #0006;outline:1px solid #b8ebd388;outline-offset:0}
+.mm-cell.mm-drag-source.mm-drag-ready{outline-color:#e3f8ba;background:linear-gradient(145deg,#3e6057,#1a343c)}
+.mm-cell.mm-drag-neighbor{z-index:4;will-change:transform;transform:translate3d(var(--mm-drag-neighbor-x,0px),var(--mm-drag-neighbor-y,0px),0);transition:none}
+.mm-cell.mm-drag-settling{pointer-events:none}
+html[data-m13-quality="eco"] .mm-cell.mm-drag-source{box-shadow:inset 0 1px 0 #edfff722,0 4px 5px #0005}
+@media(prefers-reduced-motion:reduce){.mm-cell.mm-drag-source{--mm-drag-scale:1;box-shadow:inset 0 1px 0 #edfff722,0 3px 5px #0004}}

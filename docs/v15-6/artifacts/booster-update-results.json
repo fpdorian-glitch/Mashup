@@ -1,0 +1,488 @@
+{
+  "productionRequests": 0,
+  "checks": [
+    {
+      "name": "Normal/exceptional opening, no mirrored face, loss-safe confirmation and Boosters return",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "9bb1a9a3-b15b-4c8d-af4d-90e680830f22"
+          }
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpacks%2Fcommit]"
+      ]
+    },
+    {
+      "name": "Cancelled pending preparation sends one cancel and no commit",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "97f8a242-83a4-43f1-9a0e-dc22469eb15e"
+          }
+        },
+        {
+          "route": "/api/packs/cancel",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "V15.3.2 interrupted opening survives reload and recovers without preparing a second pack",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "1cf87d71-8198-40ee-be31-67eaf8eea66b"
+          }
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "Memory keeps its existing move contract, server win/loss and confirmed credits",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "start",
+          "method": "POST",
+          "payload": {
+            "type": "memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 0,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 6,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 1,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 7,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 2,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 8,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 3,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 9,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 4,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 10,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 5,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 11,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "start",
+          "method": "POST",
+          "payload": {
+            "type": "memory"
+          }
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "Update banner defers reload during battle and pending purchase, then preserves auth storage",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          }
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/buy",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-listing"
+          }
+        },
+        {
+          "route": "/api/market/preview/fiction-listing",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedErrors": []
+    }
+  ],
+  "limits": "Chromium Linux. Real frontend; local API/auth fixtures. Pack debit/idempotence are simulated, not a verification of the deployed Supabase pack service.",
+  "faceMatrices": [
+    {
+      "m11": 0.989647,
+      "finite": true,
+      "stats": 5
+    },
+    {
+      "m11": 0.9843492628799999,
+      "finite": true,
+      "stats": 5
+    },
+    {
+      "m11": 0.986664,
+      "finite": true,
+      "stats": 5
+    }
+  ],
+  "boosterVideo": {
+    "available": true,
+    "name": "booster-interruptions-preview.webm",
+    "frames": 113,
+    "durationSeconds": 3.29,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "success": true
+}
