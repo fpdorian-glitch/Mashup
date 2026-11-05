@@ -1,5 +1,10 @@
 {
-  "version": "15.0.0",
+  "version": "15.1.0",
   "publishedAt": "2026-11-05",
-  "notes": "Cartes vivantes en relief, album à compléter, révélations accélérables selon la rareté et nouvelle mise en scène des combats."
+  "notes": [
+    "Arena Reborn : scène de duel physique et séquence interruptible.",
+    "Règle Plus grand / Plus faible toujours proche des cinq choix.",
+    "Échanges visuels entre vos collections, filtres et quantités.",
+    "Modes Spectaculaire, Équilibré et Fluidité."
+  ]
 }

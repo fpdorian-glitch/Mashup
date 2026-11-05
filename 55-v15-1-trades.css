@@ -1,0 +1,361 @@
+.v151-trade-collections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 18px 0;
+}
+.v151-trade-collection {
+  min-width: 0;
+  border: 1px solid #bed7d130;
+  border-radius: 15px;
+  padding: 14px;
+  background: linear-gradient(145deg, #1b3038, #101c26);
+}
+.v151-trade-collection[data-trade-side="request"] {
+  background: linear-gradient(145deg, #302d28, #111d26);
+  border-color: #d2b38038;
+}
+.v151-trade-collection > header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: baseline;
+  padding: 3px 0 14px;
+  border-bottom: 1px solid #c4d6d320;
+  margin-bottom: 14px;
+}
+.v151-trade-collection > header small {
+  width: 100%;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #a7d0d3;
+}
+.v151-trade-collection[data-trade-side="request"] > header small {
+  color: #d8bf91;
+}
+.v151-trade-collection > header h4 {
+  margin: 0;
+  font:
+    400 24px Georgia,
+    serif;
+  color: #e5dbc5;
+}
+.v151-trade-collection > header > span {
+  margin-left: auto;
+  font-size: 9px;
+  color: #a2b8bd;
+}
+.v151-trade-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-bottom: 14px;
+}
+.v151-trade-filters label,
+.v151-trade-credits {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  color: #b4c4c8;
+  font-size: 10px;
+}
+.v151-search {
+  grid-column: 1/-1;
+}
+.v151-trade-filters input,
+.v151-trade-filters select,
+.v151-trade-credits input {
+  min-width: 0;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #a9bfc930;
+  border-radius: 8px;
+  background: #0c1a22;
+  color: #e4e9e4;
+  padding: 8px 9px;
+  font-size: 12px;
+}
+.v151-trade-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-height: 650px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 5px 4px 12px;
+}
+.v151-trade-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  border: 1px solid #c1d3d22b;
+  background: #0a1820;
+  border-radius: 8px;
+  padding: 7px;
+  color: #e2e7df;
+  text-align: left;
+  touch-action: manipulation;
+}
+.v151-trade-card .tcg-card {
+  width: 100%;
+  min-height: 0 !important;
+  aspect-ratio: 300/425;
+  margin: 0 !important;
+  box-shadow: 0 4px 9px #0004 !important;
+  pointer-events: none;
+}
+.v151-trade-card.is-selected {
+  border-color: #e9d39a;
+  background: #e9d39a12;
+  box-shadow: 0 0 0 2px #e9d39a55;
+}
+.v151-trade-card:focus-visible {
+  outline: 2px solid #ecd8a8;
+  outline-offset: 3px;
+}
+.v151-trade-card-label {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  font-size: 8px;
+  color: #a3b9bd;
+}
+.v151-trade-card-label strong {
+  font-size: 9px;
+  font-weight: 500;
+  color: #e0e5df;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.v151-trade-card.is-selected .v151-trade-card-label > span {
+  color: #e9d39a;
+}
+.v151-trade-pages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 10px 0;
+  font-size: 9px;
+  color: #afc0c5;
+}
+.v151-trade-pages button {
+  min-height: 44px;
+  min-width: 44px;
+  background: #a7c4c50b;
+  color: #d3dfda;
+  border: 1px solid #b4cbc830;
+  border-radius: 8px;
+}
+.v151-trade-selected {
+  border-top: 1px solid #c2d7d020;
+  margin-top: 8px;
+  padding-top: 9px;
+  min-height: 47px;
+}
+.v151-trade-selected > p {
+  font-size: 10px;
+  color: #829da8;
+}
+.v151-trade-selected-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 60px 44px;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  padding: 5px 0;
+}
+.v151-trade-selected-line > span {
+  overflow-wrap: anywhere;
+}
+.v151-trade-selected-line input {
+  width: 60px;
+  min-height: 44px;
+  padding: 6px;
+  background: #0b1b24;
+  color: #e9e7d5;
+  border: 1px solid #b2c6bf40;
+  border-radius: 7px;
+}
+.v151-trade-selected-line > button {
+  min-height: 44px;
+  background: transparent;
+  border: 1px solid #c1c9c126;
+  color: #cfbba4;
+  border-radius: 7px;
+  font-size: 19px;
+}
+.v151-trade-credits {
+  margin: 10px 0 0;
+}
+.v151-trade-review {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid #d4c39544;
+  border-radius: 12px;
+  background: #d4c39508;
+}
+.v151-trade-review > div {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+.v151-trade-review b {
+  color: #dcd0af;
+  font-size: 11px;
+}
+.v151-trade-review span {
+  color: #afc3c5;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+.v151-trade-review small {
+  font-size: 10px;
+  color: #d4dbcc;
+}
+.v151-trade-submit {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 28px;
+  flex-wrap: wrap;
+}
+.v151-trade-submit .btn {
+  min-height: 48px;
+}
+.v151-trade-empty {
+  grid-column: 1/-1;
+  text-align: center;
+  font-size: 11px;
+  color: #99adb4;
+  padding: 35px 10px;
+}
+.v151-trade-unavailable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 300/425;
+  border: 1px solid #c9d2c638;
+  border-radius: 7px;
+  background: repeating-linear-gradient(
+    45deg,
+    #19303a 0 10px,
+    #1c343e 10px 11px
+  );
+  padding: 12px;
+  text-align: center;
+  gap: 15px;
+  color: #d8d8bd;
+  font:
+    400 15px Georgia,
+    serif;
+}
+.v151-trade-unavailable small {
+  font: 9px system-ui;
+  color: #9db8bc;
+}
+@media (max-width: 1100px) {
+  .v151-trade-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .v151-trade-collections {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .v151-trade-collection {
+    padding: 11px;
+  }
+  .v151-trade-collection > header h4 {
+    font-size: 23px;
+  }
+  .v151-trade-filters {
+    gap: 7px;
+  }
+  .v151-trade-filters select {
+    font-size: 11px;
+    padding-inline: 6px;
+  }
+  .v151-trade-grid {
+    gap: 10px;
+    max-height: 570px;
+  }
+  .v151-trade-card {
+    padding: 6px;
+  }
+  .v151-trade-review {
+    grid-template-columns: 1fr;
+    padding: 14px;
+    gap: 15px;
+  }
+  .v151-trade-review > div + div {
+    border-top: 1px solid #c4ceb126;
+    padding-top: 12px;
+  }
+  .v151-trade-submit .btn {
+    flex: 1;
+  }
+  .market-compose .market-partner {
+    flex-wrap: wrap;
+  }
+  .market-compose .market-partner label {
+    flex: 1;
+    min-width: 160px;
+  }
+  .market-compose .market-partner select {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
+
+.v151-trade-tabs {
+  display: none;
+}
+@media (max-width: 700px) {
+  .market-compose {
+    overflow: visible !important;
+  }
+  .v151-trade-tabs {
+    display: flex;
+    position: sticky;
+    top: calc(65px + env(safe-area-inset-top));
+    z-index: 21;
+    gap: 7px;
+    padding: 8px 0;
+    background: #111e26;
+  }
+  .v151-trade-tabs button {
+    flex: 1;
+    min-height: 44px;
+    border: 1px solid #b7cfc533;
+    border-radius: 8px;
+    background: #0e1b24;
+    color: #afc3c7;
+    font-size: 11px;
+  }
+  .v151-trade-tabs button[aria-pressed="true"] {
+    background: #ddc595;
+    color: #14212a;
+    border-color: #ddc595;
+  }
+  .v151-trade-collections[data-active="offer"] > [data-trade-side="request"],
+  .v151-trade-collections[data-active="request"] > [data-trade-side="offer"] {
+    display: none;
+  }
+  .v151-trade-grid:before {
+    content: "Fais défiler les cartes · touche pour choisir";
+    grid-column: 1/-1;
+    color: #8fa9b2;
+    font-size: 9px;
+    padding: 0 0 4px;
+  }
+}
+
+@media(max-width:700px){.v151-trade-filters input,.v151-trade-selected-line input,.v151-trade-credits input{font-size:16px}}

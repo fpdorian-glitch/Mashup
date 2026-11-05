@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090d16" />
-  <meta name="mashup-version" content="15.0.0" />
+  <meta name="mashup-version" content="15.1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
@@ -729,6 +729,8 @@
   <link rel="stylesheet" href="./47-v15-booster.css?v=15.0.0">
   <link rel="stylesheet" href="./51-v15-arena.css?v=15.0.0">
   <link rel="stylesheet" href="./52-v15-shell.css?v=15.0.0">
+  <link rel="stylesheet" href="./54-v15-1-arena.css?v=15.1.0">
+  <link rel="stylesheet" href="./55-v15-1-trades.css?v=15.1.0">
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
@@ -1065,25 +1067,26 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=15.0.0" defer></script>
+<script src="./09-mashup-updates.js?v=15.1.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
 import { albumMarkup } from './43-v15-album.js?v=15.0.0';
 import { inspectionObjectMarkup, physicalLightingForTilt } from './46-v15-living-cards.js?v=15.0.0';
 import { createRevealTimeline } from './49-v15-reveal-timeline.js?v=15.0.0';
-import { createArenaPresentation } from './50-v15-arena.js?v=15.0.0';
+import { createArenaRebornPresentation } from './53-v15-1-arena.js?v=15.1.0';
+import { arenaBattleMarkup } from './57-v15-1-battle-view.js?v=15.1.0';
 import { sealedPackMarkup, summaryMarkup, mountSealedPack } from './38-v14-booster.js?v=15.0.0';
 import { createCatalogueIndex, cardSearchText, normalizeSearch, renderCardWindow, inspectionLimits, presentBalance, reflectionForTilt } from './41-v14-runtime.js?v=14.0.1';
 import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=15.0.0';
 import { createGamesUI } from './04-games-ui.js?v=13.0.0';
 import { renderMashupV10Card } from './06-v10-cards.js?v=15.0.0';
-import { createDevelopmentJournal } from './10-development-journal.js?v=15.0.0';
+import { createDevelopmentJournal } from './10-development-journal.js?v=15.1.0';
 import { startMashupV12Performance } from './32-v12-performance.js?v=14.0.0';
 import { createBoosterRevealFX } from './12-booster-reveal.js?v=15.0.0';
 import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
 import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
-import { createMarketUI } from './20-market-v10-9.js?v=11.0';
+import { createMarketUI } from './20-market-v10-9.js?v=15.1.0';
 import { createV11UI } from './22-v11-economy-ui.js?v=11.4.0';
 import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=11.4.0';
 startMashupV12Performance();
@@ -1170,7 +1173,20 @@ const clone = obj => JSON.parse(JSON.stringify(obj));
 let state = loadSave();
 let onlineUser = null;
 let sessionEpoch=0;
-const arenaPresentation=createArenaPresentation({getQuality:()=>document.documentElement.dataset.m13Quality,isReducedMotion:()=>matchMedia('(prefers-reduced-motion: reduce)').matches});
+let arenaQuality='balanced',arenaSnapshot=null,arenaActionBusy=false;
+try{const saved=localStorage.getItem('mashup-arena-quality-v151');if(['spectacular','balanced','fluid'].includes(saved))arenaQuality=saved;}catch{}
+const effectiveArenaQuality=()=>document.documentElement.dataset.m13Quality==='eco'?'fluid':arenaQuality;
+const arenaPresentation=createArenaRebornPresentation({getQuality:effectiveArenaQuality,isReducedMotion:()=>matchMedia('(prefers-reduced-motion: reduce)').matches});
+function presentArena(snapshot){arenaSnapshot=snapshot;arenaPresentation.update({...snapshot,quality:effectiveArenaQuality()});}
+function setArenaLayout(active){const page=document.getElementById('page'),was=page.classList.contains('rb-battle-page');page.classList.toggle('rb-battle-page',active);if(active){page.getAnimations?.().forEach(a=>a.cancel());if(!was)window.scrollTo({top:0,behavior:'instant'});}}
+function arenaNetwork(message=''){const field=document.querySelector('.rb-arena');if(!field)return;const box=field.querySelector('.rb-network');if(box){box.textContent=message;box.hidden=!message;}}
+async function withArenaRequest(action){
+ if(arenaActionBusy)return;const epoch=sessionEpoch;arenaActionBusy=true;arenaPresentation.skip();
+ const field=document.querySelector('.rb-arena');field?.classList.add('rb-loading');const controls=Array.from(field?.querySelectorAll('[data-action=challenge-stat],[data-action=ai-turn],[data-action=next-round],[data-action=pvp-choose],[data-action=pvp-next]')||[]);controls.forEach(b=>b.disabled=true);
+ try{await action();}finally{if(epoch===sessionEpoch){arenaActionBusy=false;field?.classList.remove('rb-loading');controls.forEach(b=>{if(b.isConnected)b.disabled=false;});}}
+}
+
+
 const developmentJournal=createDevelopmentJournal({api,getUser:()=>onlineUser,esc,toast});
 const boosterFX=createBoosterRevealFX();
 const missionsUI=createMissionsUI({api,getUser:()=>onlineUser,esc,toast,onState:next=>{state=next;updateBalances();}});
@@ -1187,9 +1203,11 @@ const v11UI=createV11UI({
 });
 const marketUI=createMarketUI({
   api,esc,toast,
-  onAccepted:()=>{},
+  onAccepted:()=>{},onState:next=>{state=next;render();},
   getOwnCards:()=>allCards().filter(c=>!c.hidden&&Number(state.owned?.[c.id])>0).map(c=>({...c,qty:Math.min(20,Number(state.owned[c.id])||0)})),
   getCurrentUser:()=>onlineUser,
+  resolveCard:card=>{const known=getCard(card.id);return known&&!known.hidden?{...known,...card}:card;},
+  renderCard:(card,options)=>{const known=getCard(card.id);return known&&!known.hidden?cardMarkup({...known,...card},options):'<div class="v151-trade-unavailable">'+esc(card.name)+'<small>Visuel non disponible dans ton catalogue</small></div>';},getView:()=>view,getMarketMode:()=>marketMode,getSessionKey:()=>sessionEpoch,
   onFreshAccount:async()=>{await loadOnlineGame();}
 });
 let editingCardId = null, archivedAdminCards = [];
@@ -1321,7 +1339,7 @@ function cardMarkup(card,options={}){
 function labelIntro(eyebrow,title,sub){return `<div class="page-lead"><div class="eyebrow">${eyebrow}</div><h1 class="heading">${title}</h1><p class="text-sub">${sub}</p></div>`;}
 function render(){
   if(!onlineUser)return;
-  mobilePresentation.sync();
+  setArenaLayout(false);mobilePresentation.sync();
   const names={packs:'BOOSTERS',collection:'COLLECTION',arena:'ARÈNE',games:'JEUX',missions:'MISSIONS',decks:'DECKS',creator:'ATELIER',rules:'RÈGLES',admin:'ADMIN',online:'JOUEURS',market:'MARCHÉ',leaderboard:'CLASSEMENTS',achievements:'SUCCÈS',profile:'PROFIL'};
   document.getElementById('breadcrumb-current').textContent=names[view];
   document.querySelectorAll('.nav-item').forEach(btn=>{btn.classList.toggle('active',btn.dataset.view===view||(view==='arena'&&btn.dataset.view==='games'));btn.setAttribute('aria-current',btn.dataset.view===view?'page':'false');});
@@ -1349,7 +1367,7 @@ function renderMarketHub(){
     '<div id="market-v11-content"></div>';
   if(marketMode==='trades')marketUI.mount();else v11UI.mountMarket();
 }
-function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;if(name!==view)arenaPresentation.clear();view=name;render();const page=document.getElementById('page');page.getAnimations?.().forEach(animation=>animation.cancel());if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.documentElement.dataset.m13Quality!=='eco')page.animate?.([{opacity:.5,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'});if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
+function setView(name){if(!onlineUser)return;if(!['packs','collection','arena','games','missions','decks','creator','rules','admin','profile','online','market','leaderboard','achievements'].includes(name))return;if((name==='creator'||name==='admin')&&onlineUser.role!=='admin')return;if(name==='collection'&&view!=='collection')collectionSeries=0;if(name!==view){arenaPresentation.clear();arenaSnapshot=null;if(view==='market')marketUI.unmount();}view=name;render();const page=document.getElementById('page');page.getAnimations?.().forEach(animation=>animation.cancel());if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.documentElement.dataset.m13Quality!=='eco'&&!page.classList.contains('rb-battle-page'))page.animate?.([{opacity:.5,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'});if(name==='collection')collectionRewardsUI.refresh();window.scrollTo({top:0,behavior:'smooth'});}
 // V8 — Casino + mini-jeux. Toutes les transactions de crédits sont côté serveur.
 const gamesUI = createGamesUI({
   getView:()=>view,
@@ -1731,7 +1749,7 @@ function renderLadder(){
   </section>`;
 }
 function renderArena(){
-  updateBalances();
+  setArenaLayout(false);arenaPresentation.clear();arenaSnapshot=null;updateBalances();
   if(arenaSection==='online'){
     document.getElementById('page').innerHTML=`${labelIntro('03 / L’ARÈNE','Défis <em>en ligne.</em>','Affronte les autres joueurs de Mashup, en Classique ou en Double.')}<div class="arena-main-switch"><button class="btn" data-action="arena-section" data-section="campaign">⚔ Campagne contre l’IA</button><button class="btn btn-primary" data-action="arena-section" data-section="online">◎ Combats en ligne</button></div><div id="pvp-arena-root" aria-live="polite"><section class="panel"><p>Chargement des défis…</p></section></div>`;
     renderOnline.fingerprint='';
@@ -1828,14 +1846,14 @@ function chooseOpponents(streak,count){
   return picked;
 }
 async function startBattle(){
-  try{const r=await api('/api/battles/start',{mode:arenaMode});battle=r.battle;state=r.state;updateBalances();renderCombat();}catch(e){toast(e.message,true);}return;
+  try{const r=await api('/api/battles/start',{mode:arenaMode});battle=r.battle;state=r.state;updateBalances();if(view==='arena'&&arenaSection==='campaign')renderCombat();}catch(e){toast(e.message,true);}return;
 
   if(state.deck.length!==3||!state.deck.every(id=>getCard(id)&&state.owned[id]>0)||new Set(state.deck).size!==3){toast('Sélectionne trois cartes différentes que tu possèdes.',true);return;}
   const player=shuffled(state.deck);
   player.push(player[Math.floor(Math.random()*player.length)]);
   const opponents=chooseOpponents(Math.max(0,Number(state.streak)||0),4);
   battle={player,enemy:opponents.map(c=>c.id),round:0,stage:'choose',direction:Math.random()<.5?'higher':'lower',playerScore:0,enemyScore:0,ties:0,margin:0,history:[],last:null,finished:false,result:null,reward:null,startingStreak:Math.max(0,Number(state.streak)||0)};
-  renderCombat();
+  if(view==='arena'&&arenaSection==='campaign')renderCombat();
 }
 function isAITurn(){return !!battle&&battle.round%2===1;}
 function pickAIStat(){
@@ -1848,49 +1866,31 @@ function pickAIStat(){
 }
 async function playAITurn(){
   if(!battle||battle.finished||battle.stage!=='choose'||!isAITurn())return;
-  try{const r=await api('/api/battles/choose',{});battle=r.battle;state=r.state;updateBalances();if(battle?.finished)toast('Combat terminé : +'+Number(battle.reward?.coins||0)+' crédits crédités !');renderCombat();}catch(e){toast(e.message,true);}return;
+  try{const r=await api('/api/battles/choose',{});battle=r.battle;state=r.state;updateBalances();if(battle?.finished)toast('Combat terminé : +'+Number(battle.reward?.coins||0)+' crédits crédités !');if(view==='arena'&&arenaSection==='campaign')renderCombat();}catch(e){arenaNetwork('Action non confirmée. Vérifie ta connexion avant de réessayer.');toast(e.message,true);}return;
 
   if(!battle||battle.stage!=='choose'||battle.finished||!isAITurn())return;
   challengeStat(pickAIStat(),true);
 }
-function arenaCardView(card,enemy,hidden){
-  return `<div class="duel-card-wrap"><span class="duel-label">${enemy?'ADVERSAIRE':'TA CARTE'}</span>${hidden?`<div class="mystery-card" aria-label="Carte adverse cachée">${GALAXY_MARK}<b>MASHUP</b><small>CARTE MYSTÈRE</small></div>`:cardMarkup(card,{revealedOpponent:enemy})}<div class="duel-card-name">${hidden?'???':esc(card?.name||'Carte inconnue')}</div></div>`;
-}
 function renderCombat(){
-  updateBalances();
-  if(!battle)return renderArena();
-  const playerIds=Array.isArray(battle.player[battle.round])?battle.player[battle.round]:[battle.player[battle.round]];
-  const enemyIds=Array.isArray(battle.enemy[battle.round])?battle.enemy[battle.round]:[battle.enemy[battle.round]];
-  const pcs=playerIds.map(getCard).filter(Boolean),ecs=enemyIds.map((id,i)=>getCard(id)||battle.revealedCards?.[i]||battle.revealedCard).filter(Boolean);
-  const pc=pcs[0],ec=ecs[0],double=battle.mode==='double';
-  const revealed=battle.stage!=='choose',aiTurn=isAITurn();
-  const chosen=battle.last&&STAT_FIELDS.find(f=>f.key===battle.last.key);
-  const resultWord=battle.last?.winner==='player'?'MANCHE GAGNÉE':battle.last?.winner==='enemy'?'MANCHE PERDUE':'ÉGALITÉ';
-  const resultMessage=battle.last?.winner==='player'?'Ta carte remporte ce point !':battle.last?.winner==='enemy'?'L’adversaire remporte ce point.':'Même valeur : aucun point attribué.';
-  const playerNames=pcs.map(c=>c.name).join(' + '),enemyNames=ecs.map(c=>c.name).join(' + ');
-  const score=`<div class="duel-score"><div><small>TOI</small><strong>${battle.playerScore}</strong></div><span>—</span><div><small>ADVERSAIRE</small><strong>${battle.enemyScore}</strong></div></div>`;
-  const isHigher=battle.direction==='higher';
-  const end=battle.finished;
-  const points=battle.margin;
-  document.getElementById('page').innerHTML=`
-    <div class="page-lead"><div class="eyebrow">03 / L’ARÈNE · SÉRIE ${battle.startingStreak}</div><h1 class="heading">${double?'Duel <em>Double.</em>':'Défi <em>Mashup.</em>'}</h1><p class="text-sub">${aiTurn?'Cette fois, l’IA choisit la caractéristique.':'C’est à toi de choisir la caractéristique.'} ${double?'Les deux valeurs sont additionnées dans chaque équipe.':'La carte adverse se révèle au moment de la comparaison.'}</p></div>
-    <div class="arena-main-switch"><button class="btn btn-primary" data-action="arena-section" data-section="campaign">⚔ Campagne contre l’IA</button><button class="btn" data-action="arena-section" data-section="online">◎ Combats en ligne</button></div>
-    <div class="combat-field challenge-field"><div class="combat-sticky-rule">${isHigher?'↑ PLUS GRAND GAGNE':'↓ PLUS PETIT GAGNE'} · Manche ${battle.round+1}/4</div>
-      <div class="combat-top"><span>✦ MANCHE ${battle.round+1} / 4 <span class="turn-owner ${aiTurn?'turn-ai':'turn-human'}">${aiTurn?'◆ CHOIX DE L’IA':'✦ TON CHOIX'}</span></span><button class="btn btn-sm btn-quiet" data-action="quit-battle">${end?'Terminer':'Abandonner'}</button></div>
-      ${score}
-      <div class="comparison-rule ${isHigher?'rule-high':'rule-low'}"><div class="comparison-arrow">${isHigher?'↑':'↓'}</div><div><span>RÈGLE DE CETTE MANCHE</span><strong>${isHigher?'La valeur la plus GRANDE gagne':'La valeur la plus PETITE gagne'}</strong></div></div>
-      <div class="combat-duel challenge-duel"><div class="combat-team">${pcs.map(c=>arenaCardView(c,false,false)).join('')}</div><div class="vs">VS</div><div class="combat-team">${double?[0,1].map(i=>arenaCardView(ecs[i],true,!revealed)).join(''):arenaCardView(ec,true,!revealed)}</div></div>
-      ${!revealed&&!aiTurn?`<div class="challenge-choice"><div class="eyebrow">À TOI · CHOISIS UNE CARACTÉRISTIQUE</div><div class="challenge-stat-grid">${STAT_FIELDS.map(f=>`<button class="stat-choice" data-action="challenge-stat" data-stat="${f.key}"><span class="stat-choice-icon">${f.emoji}</span><span class="stat-choice-title">${f.label}</span><strong>${pcs.reduce((s,c)=>s+statValue(c,f.key),0)} <small>/ ${double?200:100}</small></strong><span class="stat-choice-cta">Comparer ↗</span></button>`).join('')}</div></div>`:''}
-      ${!revealed&&aiTurn?`<div class="ai-turn-panel"><div class="ai-turn-symbol">◆</div><div><div class="eyebrow">L’IA PREND LA MAIN</div><h3>${arenaDifficulty(battle.startingStreak).name} choisit sa caractéristique</h3><p>Plus la série est longue, mieux l’IA sait exploiter ses propres statistiques. Elle ne voit pas les valeurs de ta carte.</p><button class="btn btn-primary" data-action="ai-turn">Découvrir le choix de l’IA ↗</button></div></div>`:''}
-      ${revealed?`<div class="challenge-result ${battle.last.winner}"><div class="challenge-result-title">${battle.last.winner==='player'?'✦ ':''}${resultWord}</div><p>${resultMessage}</p><div class="comparison-numbers"><div><small>${esc(playerNames)}</small><b>${battle.last.pValue}</b></div><div class="comparison-middle"><span>${chosen.label.toUpperCase()}</span><strong>${isHigher?'↑ MAX':'↓ MIN'}</strong><small>${aiTurn?'Choix de l’IA':'Ton choix'}</small></div><div><small>${esc(enemyNames)}</small><b>${battle.last.eValue}</b></div></div></div>`:''}
-      ${end?`<div class="battle-end ${battle.result==='loss'?'battle-end-loss':''}"><h2>${battle.result==='win'?'✦ Victoire, la série continue !':battle.result==='draw'?'Match nul : série conservée':'Défaite : retour à zéro'}</h2><p>+${battle.reward.coins} crédits ◉${battle.reward.dust?` · +${battle.reward.dust} éclats ✧`:''}</p><p class="arena-wallet-confirm">✓ Gains enregistrés · Nouveau solde : <strong>${Number(state.coins||0).toLocaleString('fr-FR')} ◉</strong></p><p class="small-note">Score : ${battle.playerScore} – ${battle.enemyScore}${battle.ties?` · ${battle.ties} égalité${battle.ties>1?'s':''}`:''} · Écart cumulé : ${points>0?'+':''}${points} · Série actuelle : ${state.streak}</p>${battle.result==='win'?`<div class="end-bonus">La prochaine victoire rapportera <b>${nextWinReward(state.streak).coins} crédits</b>.</div>`:''}<button class="btn btn-primary btn-lg" data-action="quit-battle">Revenir au chemin des victoires ↗</button></div>`:revealed?`<div class="battle-next"><button class="btn btn-primary btn-lg" data-action="next-round">Manche suivante →</button></div>`:''}
-      ${battle.history.length?`<div class="battle-log"><div class="eyebrow">HISTORIQUE DES MANCHES</div>${battle.history.map((h,i)=>`<p>${i+1}. ${esc(h.name)} · ${esc(h.key)} (${h.actor==='ai'?'IA':'toi'}) : ${h.pValue} contre ${h.eValue} · ${h.winner==='player'?'Point pour toi':h.winner==='enemy'?'Point adverse':'Égalité'} · ${h.margin>0?'+':''}${h.margin} d’écart</p>`).join('')}</div>`:''}
-    </div>`;
-  arenaPresentation.update({root:document.getElementById('page'),matchId:battle.id||'campaign',round:battle.round,stage:battle.stage,stat:battle.last?.key,winner:battle.finished?(battle.result==='win'?'player':battle.result==='loss'?'enemy':'draw'):battle.last?.winner,finished:battle.finished,playerScore:battle.playerScore,enemyScore:battle.enemyScore,turn:isAITurn()?'enemy':'player'});
+ updateBalances();if(!battle)return renderArena();
+ const round=battle.round,ids=value=>Array.isArray(value)?value:[value];
+ const pcs=ids(battle.player[round]).map(getCard).filter(Boolean);
+ const revealed=battle.stage==='reveal'||battle.finished;
+ const ecs=revealed?ids(battle.enemy[round]).map((id,i)=>getCard(id)||battle.revealedCards?.[i]||battle.revealedCard).filter(Boolean):[];
+ const last=battle.last,finished=!!battle.finished;
+ const snapshot={source:'campaign',matchId:battle.id||'campaign',mode:battle.mode,round,stage:battle.stage,direction:battle.direction,
+  turn:isAITurn()?'enemy':'player',playerCards:pcs,enemyCards:ecs,playerScore:battle.playerScore,enemyScore:battle.enemyScore,
+  winner:finished?(battle.result==='win'?'player':battle.result==='loss'?'enemy':'draw'):last?.winner==='tie'?'draw':last?.winner,
+  stat:last?.key,pValue:last?.pValue,eValue:last?.eValue,finished,reward:battle.reward,balance:finished?state.coins:undefined,
+  endNote:finished?(battle.result==='win'?'La série continue.':battle.result==='draw'?'Ta série est conservée.':'Une nouvelle série t’attend.'):'',
+  stats:STAT_FIELDS,values:Object.fromEntries(STAT_FIELDS.map(f=>[f.key,pcs.reduce((sum,c)=>sum+statValue(c,f.key),0)])),quality:arenaQuality,
+  historyHTML:(battle.history||[]).map((h,i)=>'<p>'+(i+1)+'. '+esc(STAT_FIELDS.find(f=>f.key===h.key||f.label===h.key)?.label||h.key)+' : '+esc(h.pValue)+' contre '+esc(h.eValue)+' · '+esc(h.winner==='player'?'Point pour toi':h.winner==='enemy'?'Point adverse':'Égalité')+' · '+(h.actor==='ai'?'IA':'toi')+' · Écart : '+esc(h.margin??'—')+'</p>').join('')};
+ document.getElementById('page').innerHTML=arenaBattleMarkup(snapshot,{esc,renderCard:cardMarkup,galaxyMark:GALAXY_MARK});
+ setArenaLayout(true);presentArena({...snapshot,root:document.getElementById('page')});
 }
 async function challengeStat(key,fromAI=false){
   if(!battle||battle.finished||battle.stage!=='choose'||isAITurn()!==fromAI)return;
-  try{const r=await api('/api/battles/choose',{stat:key});battle=r.battle;state=r.state;updateBalances();if(battle?.finished)toast('Combat terminé : +'+Number(battle.reward?.coins||0)+' crédits crédités !');renderCombat();}catch(e){toast(e.message,true);}return;
+  try{const r=await api('/api/battles/choose',{stat:key});battle=r.battle;state=r.state;updateBalances();if(battle?.finished)toast('Combat terminé : +'+Number(battle.reward?.coins||0)+' crédits crédités !');if(view==='arena'&&arenaSection==='campaign')renderCombat();}catch(e){arenaNetwork('Action non confirmée. Vérifie ta connexion avant de réessayer.');toast(e.message,true);}return;
 
   if(!battle||battle.finished||battle.stage!=='choose'||!STAT_FIELDS.some(f=>f.key===key)||isAITurn()!==fromAI)return;
   const pc=getCard(battle.player[battle.round]),ec=getCard(battle.enemy[battle.round])||battle.revealedCard;
@@ -1919,23 +1919,23 @@ async function challengeStat(key,fromAI=false){
     save();
   }
   updateBalances();
-  renderCombat();
+  if(view==='arena'&&arenaSection==='campaign')renderCombat();
 }
 async function nextRound(){
-  try{const r=await api('/api/battles/next',{});battle=r.battle;renderCombat();}catch(e){toast(e.message,true);}return;
+  try{const r=await api('/api/battles/next',{});battle=r.battle;if(view==='arena'&&arenaSection==='campaign')renderCombat();}catch(e){arenaNetwork('Action non confirmée. Vérifie ta connexion avant de réessayer.');toast(e.message,true);}return;
 
   if(!battle||battle.finished||battle.stage!=='reveal'||battle.round>=3)return;
-  battle.round++;battle.stage='choose';battle.last=null;battle.direction=Math.random()<.5?'higher':'lower';renderCombat();
+  battle.round++;battle.stage='choose';battle.last=null;battle.direction=Math.random()<.5?'higher':'lower';if(view==='arena'&&arenaSection==='campaign')renderCombat();
 }
 async function quitBattle(){
   if(battle&&!battle.finished&&!confirm('Abandonner le duel ? La série sera remise à zéro.'))return;
-  try{const r=await api('/api/battles/abandon',{});state=r.state;battle=null;updateBalances();renderArena();}catch(e){toast(e.message,true);}return;
+  try{const r=await api('/api/battles/abandon',{});state=r.state;battle=null;updateBalances();if(view==='arena'&&arenaSection==='campaign')renderArena();}catch(e){toast(e.message,true);}return;
 
   if(battle&&!battle.finished){
     if(!confirm('Abandonner le duel ? La série de victoires sera remise à zéro sans récompense.'))return;
     state.streak=0;save();
   }
-  battle=null;renderArena();
+  battle=null;if(view==='arena'&&arenaSection==='campaign')renderArena();
 }
 function renderCreator(){
   if(!onlineUser||onlineUser.role!=='admin')return;
@@ -2035,6 +2035,11 @@ async function importSave(file){
 }
 
 // Contrôleurs : le serveur valide les achats, les duels et les actions admin.
+document.addEventListener('change',event=>{if(event.target.id==='m13-quality'){queueMicrotask(()=>{arenaPresentation.skip();if(arenaSnapshot)presentArena(arenaSnapshot);});return;}if(event.target.id!=='rb-quality')return;const next=event.target.value;if(!['spectacular','balanced','fluid'].includes(next))return;arenaQuality=next;try{localStorage.setItem('mashup-arena-quality-v151',next);}catch{}arenaPresentation.skip();if(arenaSnapshot)presentArena(arenaSnapshot);});
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',()=>{arenaPresentation.skip();if(arenaSnapshot)presentArena(arenaSnapshot);});
+window.addEventListener('offline',()=>{if(view==='arena')arenaNetwork('Connexion interrompue. Aucun résultat supplémentaire n’est confirmé.');});
+window.addEventListener('online',()=>{if(view==='arena'&&arenaSection==='online')renderOnline();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)arenaPresentation.skip();});
 document.addEventListener('click',event=>{
   const nav=event.target.closest('button[data-view]');if(nav){setView(nav.dataset.view);return;}
   const button=event.target.closest('[data-action]');if(!button)return;
@@ -2045,6 +2050,7 @@ document.addEventListener('click',event=>{
     case 'album-page':albumPage=Math.max(0,Number(button.dataset.page)||0);renderCollectionGrid();document.querySelector('.v15-album-host')?.scrollIntoView({block:'nearest',behavior:'auto'});break;
     case 'deck-load-more':deckVisibleLimit+=24;renderDeckRoster();break;
     case 'open-pack':openPack(button.dataset.pack);break;
+    case 'arena-skip':arenaPresentation.skip();break;
     case 'arena-mode':arenaMode=button.dataset.mode==='double'?'double':'simple';renderArena();break;
     case 'deck-add':editDeckCard(button.dataset.id,deckSelectionMode);break;
     case 'deck-edit':editDeckCard(button.dataset.id,button.dataset.mode,true);break;
@@ -2081,7 +2087,7 @@ document.addEventListener('click',event=>{
     case 'invite-open':arenaSection='online';setView('arena');break;
     case 'open-online-arena':arenaSection='online';setView('arena');break;
     case 'market-open-player':marketMode='trades';setView('market');marketUI.selectPartner(button.dataset.id);break;
-    case 'v11-market-mode':marketMode=button.dataset.mode==='trades'?'trades':'sale';renderMarketHub();break;
+    case 'v11-market-mode':marketUI.unmount();marketMode=button.dataset.mode==='trades'?'trades':'sale';renderMarketHub();break;
     case 'v11-open-sale-picker':v11UI.openSalePicker();break;
     case 'v11-create-listing':v11UI.sell();break;
     case 'v11-buy-listing':v11UI.buy(button.dataset.id,Number(button.dataset.price),button.dataset.name||'cette carte');break;
@@ -2097,21 +2103,21 @@ document.addEventListener('click',event=>{
     case 'save-showcase-v109':saveShowcaseV109();break;
     case 'save-collection-reward-admin':collectionRewardsUI.saveAdmin();break;
     case 'open-series-admin':setView('admin');document.getElementById('admin-series-section')?.scrollIntoView({behavior:'smooth',block:'start'});break;
-    case 'arena-section':arenaSection=button.dataset.section==='online'?'online':'campaign';renderArena();break;
+    case 'arena-section':arenaPresentation.clear();arenaSnapshot=null;arenaSection=button.dataset.section==='online'?'online':'campaign';renderArena();break;
     case 'pvp-accept':answerPvp(true);break;
     case 'pvp-decline':answerPvp(false);break;
     case 'pvp-bet-select':pvpAction('bet/config',{field:button.dataset.field,value:button.dataset.field==='stake'?Number(button.dataset.value):button.dataset.value});break;
     case 'pvp-bet-custom':submitCustomPvpBet();break;
-    case 'pvp-choose':pvpAction('choose',{stat:button.dataset.stat});break;
-    case 'pvp-next':pvpAction('next');break;
-    case 'pvp-quit':pvpAction('quit');break;
+    case 'pvp-choose':withArenaRequest(()=>pvpAction('choose',{stat:button.dataset.stat}));break;
+    case 'pvp-next':withArenaRequest(()=>pvpAction('next'));break;
+    case 'pvp-quit':withArenaRequest(()=>pvpAction('quit'));break;
     case 'clear-collection-filters':collFilter='owned';collRarity='all';collUniverse='all';collSort='rarity-desc';collSearch='';resetCollectionWindow();renderCollection();break;
     case 'load-more-collection':collVisibleLimit+=collectionBatchSize();renderCollectionGrid({append:true});break;
-    case 'start-battle':startBattle();break;
-    case 'quit-battle':quitBattle();break;
-    case 'challenge-stat':challengeStat(button.dataset.stat,false);break;
-    case 'ai-turn':playAITurn();break;
-    case 'next-round':nextRound();break;
+    case 'start-battle':withArenaRequest(startBattle);break;
+    case 'quit-battle':withArenaRequest(quitBattle);break;
+    case 'challenge-stat':withArenaRequest(()=>challengeStat(button.dataset.stat,false));break;
+    case 'ai-turn':withArenaRequest(playAITurn);break;
+    case 'next-round':withArenaRequest(nextRound);break;
     case 'symbol':draft.icon=button.dataset.symbol;document.querySelectorAll('.symbol-choice').forEach(el=>el.classList.toggle('active',el.dataset.symbol===draft.icon));renderCreatorPreview();break;
     case 'studio-more':imageStudio.more();break;
     case 'studio-batch-confirm':imageStudio.confirmBatch();break;
@@ -2280,7 +2286,7 @@ async function loadOnlineGame(){
   albumPage=0;if(battle){view='arena';arenaSection='campaign';}render();pollInvitations();
 }
 async function logoutOnline(){
- sessionEpoch++;onlineUser=null;arenaPresentation.clear();
+ sessionEpoch++;onlineUser=null;arenaPresentation.clear();arenaSnapshot=null;arenaActionBusy=false;marketUI.clearSession();setArenaLayout(false);
  clearTimeout(preferenceTimer);preferenceTimer=null;preferenceDirty=false;preferenceSaving=false;
  onlineBusy=false;invitationPollBusy=false;onlineLobbyData=null;myPublicProfile=null;betStakeDraft=null;renderOnline.fingerprint='';renderOnline.lastMatchId=null;
  revealTimeline?.cancel();revealTimeline=null;completePutAway=null;sealedPackCleanup?.();sealedPackCleanup=null;
@@ -2367,7 +2373,7 @@ async function renderOnline(silent=false){
  if(Number.isSafeInteger(data.balance)){state.coins=data.balance;updateBalances();}
  // On évite de reconstruire l'écran si les données n'ont pas changé, pour ne pas gêner le défilement mobile.
  const fingerprint=JSON.stringify(data.match?.updatedAt||0)+'|'+JSON.stringify(data.players.map(x=>[x.id,x.pseudo,x.stats.pvpWins]))+'|'+JSON.stringify((data.leaderboard||[]).map(x=>[x.id,x.wins,x.losses]));
- if(silent&&fingerprint===renderOnline.fingerprint)return;
+ if(silent&&fingerprint===renderOnline.fingerprint){arenaNetwork('');return;}
  renderOnline.fingerprint=fingerprint;onlineLobbyData=data;
  const m=data.match;if(m?.id!==renderOnline.lastMatchId){betStakeDraft=null;renderOnline.lastMatchId=m?.id||null;}const opponentIds=new Set(m?[m.host,m.guest]:[]);
  let body='';
@@ -2384,34 +2390,39 @@ async function renderOnline(silent=false){
   const secs=m.bet.matchedAt?Math.max(0,Math.ceil((m.bet.matchedAt+3000-Date.now())/1000)):null;
   body=`<section class="panel bet-negotiation"><div class="eyebrow">◉ PARIMATCH · ACCORD DES DEUX JOUEURS</div><h3>Choisissez les mêmes paramètres</h3><p class="panel-p">Toi et ${guestName} devez sélectionner le même mode et la même mise. Les cases choisies s'allument en bleu. Un décompte de 3 secondes démarre après votre accord.</p><h4>Format du duel</h4>${choices('mode',[['simple','Classique · 3 cartes'],['double','Double · 6 cartes']])}<h4>Mise par joueur · montant libre</h4><div class="bet-custom-stake"><label for="bet-custom-stake">Saisis ta mise exacte (1 à 1 000 000 crédits)</label><div class="bet-custom-entry"><input id="bet-custom-stake" type="number" min="1" max="1000000" step="1" inputmode="numeric" placeholder="Ex. 375" value="${esc(betStakeDraft??(mine.stake??''))}"><button class="btn btn-primary" type="button" data-action="pvp-bet-custom">Proposer cette mise</button></div><div class="bet-stake-compare"><div class="bet-stake-chip ${mine.stake!==null?'mine':''} ${mine.stake!==null&&mine.stake===other.stake?'matched':''}"><small>${esc(ownName)} a choisi</small><strong>${mine.stake!==null?Number(mine.stake).toLocaleString('fr-FR')+' ◉':'En attente…'}</strong></div><div class="bet-stake-chip ${other.stake!==null?'theirs':''} ${other.stake!==null&&mine.stake===other.stake?'matched':''}"><small>${guestName} a choisi</small><strong>${other.stake!==null?Number(other.stake).toLocaleString('fr-FR')+' ◉':'En attente…'}</strong></div></div></div><p class="small-note">Tu disposes de ${state.coins} crédits. Les crédits sont réservés uniquement au démarrage. Le gagnant reçoit deux fois la mise ; en cas d’égalité, chacun récupère sa mise.</p>${secs!==null?`<div class="bet-countdown"><span id="bet-clock">${secs}</span><strong>Accord confirmé ! Début dans ${secs} seconde${secs>1?'s':''}…</strong></div>`:'<div class="pvp-waiting"><span class="wait-spinner" aria-hidden="true"></span> En attente de l’accord sur les deux paramètres…</div>'}<button class="btn btn-sm" data-action="pvp-quit">Annuler le pari</button></section>`;
  }else{
-  const mine=m.host===onlineUser.id?'host':'guest';const myScore=mine==='host'?m.hostScore:m.guestScore,otherScore=mine==='host'?m.guestScore:m.hostScore;const myTurn=m.actor===onlineUser.id;
-  body=`<section class="panel pvp-field"><div class="pvp-turn-banner">${m.status==='finished'?'PARTIE TERMINÉE':m.status==='forfeit'?'PARTIE ABANDONNÉE':m.stage==='reveal'?'RÉSULTAT DE LA MANCHE':myTurn?'À TOI DE CHOISIR':'TOUR DE L’ADVERSAIRE'} · Manche ${m.round+1}/4 · ${m.direction==='higher'?'↑ PLUS GRAND GAGNE':'↓ PLUS PETIT GAGNE'}${m.status==='active'&&m.stage==='choose'?'<span class="pvp-timer" id="pvp-countdown" aria-label="Temps restant">--</span>':''}</div>
-  <div class="flex-between" style="margin:18px 0"><h3>Toi : ${myScore} — ${otherScore} : ${esc(m.opponent.pseudo)}</h3><button class="btn btn-sm" data-action="pvp-quit">${m.status==='active'?'Abandonner':'Fermer'}</button></div>
-  <div class="pvp-duel-grid ${m.mode==='double'?'pvp-double':'pvp-single'} ${m.status==='active'&&m.stage==='choose'&&!myTurn?'waiting-clash':''}"><div class="pvp-side"><div class="eyebrow">TES CARTES</div><div class="pvp-card-pair">${m.ownCards.map(c=>cardMarkup(c,{revealedOpponent:true})).join('')}</div></div><div class="vs">VS</div><div class="pvp-side"><div class="eyebrow">ADVERSAIRE</div><div class="pvp-card-pair">${m.stage==='reveal'||m.status==='finished'?m.enemyCards.map(c=>cardMarkup(c,{revealedOpponent:true})).join(''):Array.from({length:m.mode==='double'?2:1},()=>'<div class="pvp-hidden">?</div>').join('')}</div></div></div>
-  ${m.status==='active'&&m.stage==='choose'&&myTurn?`<div class="divider"></div><h3>Choisis la statistique</h3><div class="pvp-stats">${STAT_FIELDS.map(f=>`<button data-action="pvp-choose" data-stat="${f.key}">${esc(f.label)} · ${m.ownCards.reduce((a,c)=>a+statValue(c,f.key),0)}</button>`).join('')}</div>`:''}
-  ${m.status==='active'&&m.stage==='choose'&&!myTurn?'<div class="pvp-waiting"><span class="wait-spinner" aria-hidden="true"></span><div><strong>L’adversaire réfléchit…</strong><small>Il choisit sa statistique. Le résultat apparaîtra automatiquement.</small></div></div>':''}
-  ${m.stage==='reveal'?`<h3>Résultat : ${esc(m.history.at(-1)?.winner===mine?'Manche gagnée':m.history.at(-1)?.winner===(mine==='host'?'guest':'host')?'Manche perdue':m.history.at(-1)?.winner||'Égalité')}</h3><div class="comparison-numbers"><b>${(mine==='host'?m.history.at(-1)?.h:m.history.at(-1)?.g)||0}</b><strong>${esc(STAT_FIELDS.find(f=>f.key===m.history.at(-1)?.key)?.label||m.history.at(-1)?.key||'')}</strong><b>${(mine==='host'?m.history.at(-1)?.g:m.history.at(-1)?.h)||0}</b></div>${m.status==='active'?m.meReady?'<div class="pvp-waiting"><span class="wait-spinner" aria-hidden="true"></span><div><strong>En attente de l’adversaire…</strong><small>La manche suivante commence lorsque vous avez tous les deux validé.</small></div></div>':'<button class="btn btn-primary pvp-next-button" data-action="pvp-next">Prêt pour la manche suivante →</button>':''}`:''}
-  ${['finished','forfeit'].includes(m.status)?`<div class="battle-end"><h2>${m.result==='draw'?'Égalité':m.result===mine?'Victoire !':'Défaite'}</h2><p>${m.bet?.locked?(m.result==='draw'?'Égalité : chaque joueur récupère sa mise.':m.result===mine?`Tu as remporté ${m.bet.stake*2} crédits (mise comprise) !`:`Tu as perdu ta mise de ${m.bet.stake} crédits.`):'Les victoires en ligne apparaissent sur ton profil. Aucun crédit n’est distribué dans ce mode.'}</p></div>`:''}
-  <details><summary>Historique des manches</summary>${m.history.map((h,i)=>`<p>Manche ${i+1} : ${esc(h.key)} · ${h.h} contre ${h.g} (${h.winner})</p>`).join('')}</details></section>`;
+  const mine=m.host===onlineUser.id?'host':'guest',other=mine==='host'?'guest':'host',finished=['finished','forfeit'].includes(m.status);
+  const last=m.history?.at(-1),rawWinner=finished?m.result:last?.winner;
+  const winner=rawWinner===mine||rawWinner===onlineUser.id?'player':rawWinner===other||rawWinner===(mine==='host'?m.guest:m.host)?'enemy':['draw','tie','Égalité'].includes(rawWinner)?'draw':'';
+  const revealed=m.stage==='reveal'||m.status==='finished';
+  const snapshot={source:'pvp',matchId:m.id,mode:m.mode,round:m.round,stage:m.stage,direction:m.direction,turn:m.actor===onlineUser.id?'player':'enemy',
+   playerCards:m.ownCards||[],enemyRevealed:revealed,enemyCards:revealed?m.enemyCards||[]:[],playerScore:mine==='host'?m.hostScore:m.guestScore,enemyScore:mine==='host'?m.guestScore:m.hostScore,
+   winner,stat:STAT_FIELDS.find(f=>f.key===last?.key||f.label===last?.key)?.key,pValue:mine==='host'?last?.h:last?.g,eValue:mine==='host'?last?.g:last?.h,
+   finished,meReady:m.meReady,opponentName:m.opponent?.pseudo,deadlineAt:m.status==='active'&&m.stage==='choose'?m.deadlineAt:null,
+   reward:m.reward,balance:finished&&Number.isSafeInteger(data.balance)?data.balance:undefined,
+   endNote:m.bet?.locked?'La mise et le solde sont gérés par le serveur.':'Retrouve tes victoires dans ton profil.',stats:STAT_FIELDS,
+   values:Object.fromEntries(STAT_FIELDS.map(f=>[f.key,(m.ownCards||[]).reduce((sum,c)=>sum+statValue(c,f.key),0)])),quality:arenaQuality,
+   historyHTML:(m.history||[]).map((h,i)=>'<p>Manche '+(i+1)+' : '+esc(STAT_FIELDS.find(f=>f.key===h.key||f.label===h.key)?.label||h.key)+' · '+esc(mine==='host'?h.h:h.g)+' contre '+esc(mine==='host'?h.g:h.h)+' · '+esc(h.winner===mine?'Point pour toi':h.winner===other?'Point adverse':'Égalité')+'</p>').join('')};
+  body=arenaBattleMarkup(snapshot,{esc,renderCard:cardMarkup,galaxyMark:GALAXY_MARK});
+
  }
  const standings=`<section class="panel" style="margin-top:14px"><div class="eyebrow">CLASSEMENT MULTIJOUEUR</div><h3>Meilleurs joueurs</h3><div class="pvp-ranking">${(data.leaderboard||[]).slice(0,10).map((x,i)=>`<div class="pvp-rank-row"><strong>${i+1}</strong><span>${esc(x.pseudo)}</span><strong>${x.wins} V · ${x.losses} D</strong></div>`).join('')||'<p class="small-note">Aucun classement disponible.</p>'}</div></section>`;
- if(m&&m.status==='active')body=`<div class="pvp-resume">${m.bet?'PARIMATCH · '+m.bet.stake+' crédits misés · ':'Partie active · '}${m.mode==='double'?'Double':'Classique'} · Manche ${m.round+1}/4. Tu peux quitter la page et revenir ici pour reprendre le même duel.</div>`+body;
- const root=document.getElementById('pvp-arena-root');if(root)root.innerHTML=body+standings;
+
+ const root=document.getElementById('pvp-arena-root');const inBattle=!!m&&['active','finished','forfeit'].includes(m.status);if(root){root.innerHTML=body+(inBattle?'':standings);setArenaLayout(inBattle);root.parentElement.querySelector('.page-lead')?.toggleAttribute('hidden',inBattle);root.parentElement.querySelector(':scope > .arena-main-switch')?.toggleAttribute('hidden',inBattle);}
  if(root&&m){
   const mine=m.host===onlineUser.id?'host':'guest',other=mine==='host'?'guest':'host';
   const last=m.history?.at(-1),finished=['finished','forfeit'].includes(m.status);
   const rawWinner=finished?m.result:last?.winner;
   const winner=rawWinner===mine||rawWinner===onlineUser.id?'player':rawWinner===other||rawWinner===(mine==='host'?m.guest:m.host)?'enemy':['draw','tie','Égalité'].includes(rawWinner)?'draw':'';
-  arenaPresentation.update({root,matchId:m.id,round:m.round,stage:m.stage,stat:STAT_FIELDS.find(f=>f.key===last?.key||f.label===last?.key)?.key,winner,finished,playerScore:mine==='host'?m.hostScore:m.guestScore,enemyScore:mine==='host'?m.guestScore:m.hostScore,turn:m.actor===onlineUser.id?'player':'enemy'});
+  presentArena({root,direction:m.direction,mode:m.mode,pValue:mine==='host'?last?.h:last?.g,eValue:mine==='host'?last?.g:last?.h,matchId:m.id,round:m.round,stage:m.stage,stat:STAT_FIELDS.find(f=>f.key===last?.key||f.label===last?.key)?.key,winner,finished,playerScore:mine==='host'?m.hostScore:m.guestScore,enemyScore:mine==='host'?m.guestScore:m.hostScore,turn:m.actor===onlineUser.id?'player':'enemy'});
  }
  updatePvpClock();
- }catch(e){if(attemptEpoch===sessionEpoch&&!silent)toast(e.message,true);}finally{if(attemptEpoch===sessionEpoch)onlineBusy=false;}
+ }catch(e){if(attemptEpoch===sessionEpoch&&view==='arena'&&arenaSection==='online'){arenaNetwork('Connexion interrompue. Le dernier état confirmé est conservé ; synchronisation au prochain essai.');if(!silent)toast(e.message,true);}}finally{if(attemptEpoch===sessionEpoch)onlineBusy=false;}
 }
 function updatePvpClock(){
  const betClock=document.getElementById('bet-clock');if(betClock&&onlineLobbyData?.match?.bet?.matchedAt){betClock.textContent=Math.max(0,Math.ceil((onlineLobbyData.match.bet.matchedAt+3000-Date.now())/1000));}
  const label=document.getElementById('pvp-countdown');if(!label)return;
  const m=onlineLobbyData?.match;
- if(!m||!Number(m.deadlineAt)){label.textContent='75 s';return;}
+ if(!m||!Number(m.deadlineAt)){label.textContent='Synchronisation…';return;}
  const seconds=Math.max(0,Math.ceil((Number(m.deadlineAt)-Date.now())/1000));
  label.textContent=seconds+' s';label.style.color=seconds<=15?'#ffc9ab':'#f7faff';
 }
@@ -2444,7 +2455,7 @@ async function answerInvitation(accept){
 }
 async function createPvpChallenge(id,mode){try{await api('/api/pvp/challenge',{targetId:id,mode});arenaSection='online';view='arena';renderArena();}catch(e){toast(e.message,true);}}
 async function answerPvp(accept){const m=onlineLobbyData?.match;if(!m)return;try{await api('/api/pvp/respond',{id:m.id,accept});renderOnline.fingerprint='';await renderOnline();}catch(e){toast(e.message,true);}}
-async function pvpAction(action,more={}){const m=onlineLobbyData?.match;if(!m)return;try{await api('/api/pvp/'+action,{id:m.id,...more});renderOnline.fingerprint='';await renderOnline();}catch(e){toast(e.message,true);}}
+async function pvpAction(action,more={}){const m=onlineLobbyData?.match;if(!m)return;try{await api('/api/pvp/'+action,{id:m.id,...more});renderOnline.fingerprint='';await renderOnline();}catch(e){arenaNetwork('Action non confirmée. Vérifie ta connexion avant de réessayer.');toast(e.message,true);}}
 async function submitCustomPvpBet(){
  const el=document.getElementById('bet-custom-stake');if(!el)return;
  const raw=el.value.trim(),amount=Number(raw);

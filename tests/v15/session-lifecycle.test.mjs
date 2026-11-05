@@ -19,7 +19,7 @@ test('Même compte reconnecté : une réponse de la session précédente est ref
 
 test('Arène : un ancien poll ne bloque ni ne déverrouille le poll du nouveau compte',async()=>{
   const old=deferred(),fresh=deferred(),messages=[];let count=0;
-  const context=vm.createContext({view:'arena',arenaSection:'online',onlineBusy:false,sessionEpoch:0,api:()=>++count===1?old.promise:fresh.promise,toast:message=>messages.push(message)});
+  const context=vm.createContext({view:'arena',arenaSection:'online',onlineBusy:false,sessionEpoch:0,arenaNetwork:()=>{},api:()=>++count===1?old.promise:fresh.promise,toast:message=>messages.push(message)});
   vm.runInContext(extract('async function renderOnline(silent=false){','function updatePvpClock(){'),context);
   const first=context.renderOnline();assert.equal(context.onlineBusy,true);
   context.sessionEpoch++;context.onlineBusy=false;
