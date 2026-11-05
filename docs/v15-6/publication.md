@@ -7,7 +7,7 @@ Cette version est une **branche de développement à vérifier**, conformément 
 - Dépôt : `fpdorian-glitch/Mashup`.
 - Branche : `feature/mashup-v15-6-immersion-match-2`, créée depuis `main` au commit `15968dc` (V15.5.1).
 - Version préparée : `15.6.0`, état `development` dans `version.json`. Le journal indique également une version de développement.
-- Le dernier commit et le statut distant sont consignés à la fin de ce document après enregistrement de la branche.
+- Code et preuves enregistrés au commit `4635ec4`, suivis d’une mise à jour documentaire et du script de reproduction du profil. Le statut distant est consigné ci-dessous.
 
 ## Préparation backend privée
 
@@ -41,4 +41,8 @@ Ne jamais écraser un portefeuille récent par une ancienne sauvegarde pour annu
 
 ## Statut Git
 
-À compléter après enregistrement et vérification du push de la branche de développement. Aucune publication du jeu autorisée par cette livraison.
+**Branche de développement envoyée avec succès sur GitHub** : [feature/mashup-v15-6-immersion-match-2](https://github.com/fpdorian-glitch/Mashup/tree/feature/mashup-v15-6-immersion-match-2). Le push puis `git ls-remote --heads` ont confirmé le commit fonctionnel `4635ec42f6996251b35316f2990f4690305c2393` et le maintien de `main` à `15968dcc90b57cfc67bcd1be2f2edcf8f5fb3643`.
+
+Le service privé est enregistré dans son historique Git local au commit `18a6c0d`, sans remote. Son archive de revue a été contrôlée par SHA-256 et reste hors du dépôt public.
+
+Aucune PR créée ou fusionnée, aucune commande de déploiement exécutée, aucune opération Supabase effectuée. Le workflow de tests de branche est préparé ; son statut distant n’est pas revendiqué comme vérifié. Les résultats décrits sont les exécutions locales observées.

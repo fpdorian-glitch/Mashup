@@ -9,7 +9,12 @@ const hydrationMatch=source.match(/^[ \t]*const face=button\.querySelector\('\[d
 assert.ok(hydrationMatch,'expected one chosen-card hydration site');
 const bare=source.replace(hydrationMatch[0],''),lines=hydrationMatch[0].trim().split('\n').map(line=>line.trim());
 const shifted=bare.replace('    const prelude=boosterFX.preludeMs(upcoming);',lines.map(line=>'    '+line).join('\n')+'\n    const prelude=boosterFX.preludeMs(upcoming);');
-const late=bare.replace("        button.classList.add('revealed');",lines.map(line=>'        '+line).join('\n')+"\n        button.classList.add('revealed');");
+const revealAnchor="onReveal:()=>{clearOpeningOmen();button.classList.add('revealed');boosterFX.play(upcoming);},";
+assert.ok(bare.includes(revealAnchor),'expected reveal callback in the final client');
+const late=bare.replace(revealAnchor,"onReveal:()=>{clearOpeningOmen();\n"+lines.map(line=>'        '+line).join('\n')+"\n        button.classList.add('revealed');boosterFX.play(upcoming);\n      },");
+assert.notEqual(late,bare,'late hydration variant must be reconstructed');
+assert.notEqual(shifted,bare,'intent hydration variant must be reconstructed');
+for(const html of [late,shifted])assert.equal((html.match(/if\(face\)face\.innerHTML=/g)||[]).length,1,'one chosen-card hydration site per variant');
 const noStack='<style>.opening-fullscreen .pack-stack-surface::before{content:none!important}.opening-fullscreen .pack-stack-layer{border-width:1px!important;box-shadow:none!important}</style>';
 const variants=[{id:'late-hydration-reference',html:late},{id:'hydrate-at-intent',html:shifted},{id:'without-new-paper-edges',html:late.replace('</head>',noStack+'</head>')}];
 const reportName=process.env.V156_PROFILE_OUTPUT||'booster-profile-reproduction.json';
