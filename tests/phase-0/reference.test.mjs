@@ -24,7 +24,7 @@ const money=db=>db.users.reduce((n,u)=>n+u.state.coins,0);
 test('Référence phase 0 : fichiers inchangés et baseline historique des fichiers V13 modifiés',()=>{
  const manifest=JSON.parse(read('docs/phase-0/source-inventory.json'));
  assert.ok(manifest.files.length>40);
- const revised=new Set(['index.html','06-v10-cards.js','04-games-ui.js','09-mashup-updates.js','10-development-journal.js','12-booster-reveal.js','20-market-v10-9.js','18-v10-8-collection.js','patrons/index.html','content/convergence-series2.json','backend/collection-rewards-v10-8.js','backend/collection-rewards-v10-9.js','backend/achievements-v11.js','backend/leaderboards-v11.js','backend/market-v11.js','22-v11-economy-ui.js','29-v11-4-market-picker.js','32-v12-performance.js','version.json']);
+ const revised=new Set(['index.html','03-games.css','manifest.webmanifest','06-v10-cards.js','04-games-ui.js','09-mashup-updates.js','10-development-journal.js','12-booster-reveal.js','20-market-v10-9.js','18-v10-8-collection.js','patrons/index.html','content/convergence-series2.json','backend/collection-rewards-v10-8.js','backend/collection-rewards-v10-9.js','backend/achievements-v11.js','backend/leaderboards-v11.js','backend/market-v11.js','22-v11-economy-ui.js','29-v11-4-market-picker.js','32-v12-performance.js','version.json']);
  for(const f of manifest.files){
   const bytes=revised.has(f.path)?spawnSync('git',['show','d6ed7db3e522d41f4cb1ed91b4ed09aa88539e49:'+f.path],{cwd:root}):null;
   if(bytes)assert.equal(bytes.status,0,'Baseline historique '+f.path);
@@ -110,7 +110,8 @@ test('Missions : gain quotidien unique, renouvellement sans perdre hebdomadaire'
 });
 test('R03 corrigé : une réponse Jeux tardive ne remplace pas le nouvel écran',async()=>{
  const ctx=vm.createContext({Date,Number,String,Math,Set,console,document:{addEventListener(){},getElementById(){return null;},querySelector(){return null;},hidden:false},setInterval:()=>1,setTimeout:()=>1,clearTimeout(){}});
- vm.runInContext(read('04-games-ui.js').replace('export function createGamesUI','function createGamesUI'),ctx);
+ vm.runInContext(read('66-v15-4-casino-clock.js').replace(/^export /gm,''),ctx);
+ vm.runInContext(read('04-games-ui.js').replace(/^import .*?;\s*$/gm,'').replace('export function createGamesUI','function createGamesUI'),ctx);
  let currentView='games';let resolve;const api=()=>new Promise(r=>resolve=r);const ui=ctx.createGamesUI({api,getView:()=>currentView,toast(){},getUser:()=>({id:'fiction'}),showArena(){}});
  const element={isConnected:true,innerHTML:''};const pending=ui.mount(element);element.innerHTML='COLLECTION_TEST';currentView='collection';resolve({now:Date.now()});await pending;
  assert.equal(element.innerHTML,'COLLECTION_TEST');

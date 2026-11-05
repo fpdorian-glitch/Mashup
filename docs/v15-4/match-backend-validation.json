@@ -1,0 +1,33 @@
+{
+  "scope": "isolated-private-service-with-shared-public-engine",
+  "serviceVersion": "15.4.0",
+  "tests": 26,
+  "passed": 26,
+  "failed": 0,
+  "skipped": 0,
+  "realCanonicalLevelsPlayedThroughService": 100,
+  "finalUnlockedLevel": 101,
+  "fictionalFirstWinCreditsGranted": 17550,
+  "coverage": [
+    "server-authoritative-moves-and-transcript-verification",
+    "client-score-state-seed-reward-rejection",
+    "stored-role-administrator-authorization",
+    "account-and-session-isolation",
+    "first-win-idempotence-and-current-wallet-on-retry",
+    "concurrent-same-revision-and-duplicate-request-races",
+    "injected-commit-failure-rollback",
+    "wallet-cap-and-preserved-retry-right",
+    "campaign-unlocks-stars-best-scores-and-resume",
+    "economy-overrides-disable-and-replay-caps",
+    "server-utc-day-boundaries",
+    "engine-version-pinning",
+    "bounded-body-command-and-rate-validation"
+  ],
+  "transactionAdapter": "serialized-in-memory-copy-on-commit",
+  "productionRequests": 0,
+  "deployedSourcesDownloaded": false,
+  "migrationsApplied": false,
+  "edgeFunctionsDeployed": false,
+  "supabaseRestorationTested": false,
+  "limits": "No deployed router, SQL transaction, JWT/RLS integration, wallet mirror, physical device or Supabase restoration was tested. All users, balances and grants were fictional."
+}

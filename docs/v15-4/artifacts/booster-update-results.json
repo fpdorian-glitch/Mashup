@@ -1,0 +1,248 @@
+{
+  "productionRequests": 0,
+  "checks": [
+    {
+      "name": "Normal/exceptional opening, no mirrored face, loss-safe confirmation and Boosters return",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "b6cd5d5f-2a68-4aa9-ace7-1ca16f2e352c"
+          }
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpacks%2Fcommit]"
+      ]
+    },
+    {
+      "name": "Cancelled pending preparation sends one cancel and no commit",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "3bf47871-cc24-4a53-b92e-9980d69c5622"
+          }
+        },
+        {
+          "route": "/api/packs/cancel",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "Update banner defers reload during battle and pending purchase, then preserves auth storage",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          }
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {}
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/buy",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-listing"
+          }
+        },
+        {
+          "route": "/api/market/preview/fiction-listing",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedErrors": []
+    }
+  ],
+  "limits": "Chromium Linux. Real frontend; local API/auth fixtures. Pack debit/idempotence are simulated, not a verification of the deployed Supabase pack service.",
+  "faceMatrices": [
+    {
+      "m11": 0.98666,
+      "finite": true,
+      "stats": 5
+    },
+    {
+      "m11": 0.978713,
+      "finite": true,
+      "stats": 5
+    },
+    {
+      "m11": 0.98666,
+      "finite": true,
+      "stats": 5
+    }
+  ],
+  "boosterVideo": {
+    "available": true,
+    "name": "booster-preview.webm",
+    "frames": 151,
+    "durationSeconds": 3.84,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "success": true
+}

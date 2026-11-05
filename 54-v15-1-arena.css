@@ -966,3 +966,279 @@ html[data-m13-quality="eco"] .rb-card-object .v15-object-bevel {
 .rb-arena[data-rb-quality="fluid"] .inspect-front .tcg-card.v14-card>*{transform:none!important}
 
 @media(max-width:900px){.rb-choice-dock{padding-left:max(11px,env(safe-area-inset-left));padding-right:max(11px,env(safe-area-inset-right))}}
+
+/* V15.4 — the Nexus table. Static geometry carries the atmosphere; only finite
+   WAAPI transforms/opacity move during a confrontation. No particle loop. */
+.rb-shell {
+  --rb-ice: #99e7dc;
+  --rb-ember: #f0c68c;
+}
+.rb-arena {
+  border-color: #b3cec536 !important;
+  background:
+    linear-gradient(135deg, #3e655118, transparent 33%, #925f2c0a 75%),
+    #0b171b !important;
+  box-shadow: inset 0 0 0 5px #0a101454, 0 18px 54px #02080b55;
+}
+.rb-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1px solid #d2c9a51b;
+  padding-bottom: 12px;
+}
+.rb-heading small { color: #b3c6bd; }
+.rb-heading h1 { color: #f4e8ca; }
+.rb-top-actions .btn,
+.rb-top-actions select { min-height: 44px; }
+.rb-round-track {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 12px auto 4px;
+  padding: 0;
+  max-width: 430px;
+}
+.rb-round-track li {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6f8587;
+  font-size: 8px;
+}
+.rb-round-track li:after {
+  content: "";
+  height: 1px;
+  background: #b6cbc027;
+  flex: 1;
+  min-width: 2px;
+}
+.rb-round-track li:last-child { flex: 0 0 auto; }
+.rb-round-track li:last-child:after { display: none; }
+.rb-round-track li > span {
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1px solid #afc4be35;
+  font: 600 9px/1 system-ui;
+}
+.rb-round-track li > small { font-size: 8px; white-space: nowrap; }
+.rb-round-track .rb-round-done { color: #a4c6ba; }
+.rb-round-track .rb-round-done > span { background: #97c6a51a; border-color: #a3d2b742; }
+.rb-round-track .rb-round-current { color: #f1ddaf; }
+.rb-round-track .rb-round-current > span {
+  color: #112126;
+  background: #eddbac;
+  border-color: #fff3d5;
+  box-shadow: 0 0 0 3px #e2d3a912;
+}
+.rb-stage {
+  background: linear-gradient(90deg, #224b4615, transparent 40% 60%, #79522a10);
+  border: 1px solid #b9cdb915;
+  margin: 9px 0 0;
+}
+.rb-scenery { z-index: -1; }
+.rb-table-sigil {
+  position: absolute;
+  width: min(108%, 800px);
+  height: auto;
+  max-width: none;
+  left: 50%;
+  bottom: -4%;
+  transform: translateX(-50%);
+  color: #dcd4a8;
+  stroke: currentColor;
+  stroke-width: .8;
+  opacity: .21;
+}
+.rb-horizon {
+  transform: none;
+  bottom: -65%;
+  background: none;
+  box-shadow: none;
+  border-color: #b4d8c629;
+}
+.rb-orbit {
+  width: 76%;
+  left: 12%;
+  top: -25%;
+  border-color: #c4d8c41c;
+  box-shadow: inset 0 0 0 18px #b4d8c603, inset 0 0 0 19px #b4d8c608;
+}
+.rb-aurora {
+  position: absolute;
+  width: 48%;
+  height: 76%;
+  top: 12%;
+  opacity: .42;
+  background: radial-gradient(ellipse, #7dd2bb22, transparent 70%);
+}
+.rb-aurora--player { left: -4%; }
+.rb-aurora--enemy { right: -4%; background: radial-gradient(ellipse, #eec18d20, transparent 70%); }
+.rb-card-object { transform: rotateZ(-1.5deg); }
+.rb-team[data-rb-side="enemy"] .rb-card-object { transform: rotateZ(1.5deg); }
+.rb-victory-light {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  width: 94%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 70%, #f7de9b70, #b5f6d32b 34%, transparent 70%);
+  z-index: -1;
+}
+.rb-duel > .vs {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  aspect-ratio: 1;
+  font-size: 21px;
+  color: #f2e6c1;
+  isolation: isolate;
+}
+.rb-duel > .vs > span { position: relative; z-index: 1; }
+.rb-vs-wave {
+  position: absolute;
+  inset: -6px;
+  border: 1px solid #cfddc075;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+.rb-arena[data-rb-phase="impact"][data-rb-winner="player"] .rb-team[data-rb-side="player"] .rb-card-object,
+.rb-arena[data-rb-phase="result"][data-rb-winner="player"] .rb-team[data-rb-side="player"] .rb-card-object,
+.rb-arena[data-rb-phase="impact"][data-rb-winner="enemy"] .rb-team[data-rb-side="enemy"] .rb-card-object,
+.rb-arena[data-rb-phase="result"][data-rb-winner="enemy"] .rb-team[data-rb-side="enemy"] .rb-card-object {
+  outline: 1px solid #ffe7af7d;
+  outline-offset: 3px;
+  border-radius: 11px;
+}
+.rb-arena[data-rb-phase="result"][data-rb-winner="draw"] .rb-team:after {
+  border-color: #a4e0d0;
+  background: #a4e0d014;
+}
+.rb-loading .rb-team[data-rb-side="player"] .rb-card-object {
+  transform: translateY(-4px) rotateZ(-1deg);
+}
+.rb-thinking { display: inline-flex; align-items: center; gap: 4px; }
+.rb-thinking i { width: 4px; height: 4px; border-radius: 50%; background: #c0ddcc; opacity: .65; }
+.rb-rule-banner {
+  justify-content: space-between;
+  min-height: 46px;
+  padding: 6px 12px;
+  gap: 12px;
+}
+.rb-rule-context { display: grid; gap: 3px; min-width: 0; text-align: left; letter-spacing: 0; }
+.rb-rule-context > small { font: 500 8px/1.2 system-ui; color: #b1c7c8; }
+.rb-rule-context > strong { font: 600 10px/1.2 system-ui; color: #e4eee7; white-space: nowrap; }
+.rb-rule-direction { display: inline-flex; align-items: center; gap: 8px; }
+.rb-rule-direction > span { font-size: 10px; }
+.rb-choice-dock .stat-choice { gap: 5px; }
+.rb-stat-direction { color: #a3cbd0; font-size: 7px; line-height: 1; letter-spacing: 1px; }
+.rb-arena[data-rb-direction="lower"] .rb-stat-direction { color: #dfb485; }
+.rb-choice-dock .stat-choice:active { transform: translateY(-2px) !important; background: #284b4d; }
+.rb-choice-dock .stat-choice:focus-visible { outline-width: 2px; outline-color: #a6ebda; }
+.rb-outcome { position: relative; overflow: hidden; }
+.rb-outcome[data-result="player"] {
+  border-color: #e6d49d80;
+  background: radial-gradient(ellipse at 50% -20%, #e4d39732, transparent 70%), #132421;
+}
+.rb-outcome-record { font-size: 9px !important; letter-spacing: 1px; text-transform: uppercase; }
+.rb-medal { display: inline-block; }
+.rb-arena .battle-log {
+  border: 1px solid #afc7bb2b;
+  border-radius: 10px;
+  background: #92b8a507;
+  padding: 12px;
+}
+.rb-arena .battle-log summary { cursor: pointer; min-height: 24px; color: #c9d9ce; }
+.rb-arena .battle-log p { padding: 7px 0; border-bottom: 1px solid #b6cdb111; line-height: 1.6; }
+.rb-arena[data-rb-quality="fluid"] .rb-victory-light,
+.rb-arena[data-rb-quality="fluid"] .rb-vs-wave { display: none; }
+@media (max-width: 900px) {
+  .rb-topline { padding-bottom: 7px; }
+  .rb-heading { max-width: 105px; }
+  .rb-heading h1 { font-size: 16px; }
+  .rb-top-actions { gap: 4px; }
+  .rb-top-actions .btn { min-width: 44px; padding: 5px; }
+  .rb-top-actions select { width: 84px; min-height: 44px; }
+  .rb-round-track { margin: 8px 0 3px; gap: 4px; }
+  .rb-round-track li { gap: 4px; }
+  .rb-round-track li > small { font-size: 7px; }
+  .rb-round-track li > span { width: 18px; height: 18px; font-size: 8px; }
+  .rb-duel > .vs { width: 24px; font-size: 15px; }
+  .rb-rule-banner { min-height: 42px; padding: 5px 8px; gap: 7px; }
+  .rb-rule-direction { gap: 6px; }
+  .rb-rule-direction > span { font-size: 9px; letter-spacing: .3px; }
+  .rb-rule-context > strong { font-size: 9px; }
+  .rb-rule-context > small { font-size: 7px; }
+  .rb-choice-dock .stat-choice { min-height: 62px !important; gap: 4px; padding-top: 7px !important; padding-bottom: 7px !important; }
+  .rb-stat-direction { font-size: 6px; }
+}
+@media (max-width: 360px) {
+  .rb-heading { max-width: 89px; }
+  .rb-heading h1 { font-size: 14px; }
+  .rb-top-actions select { width: 80px; }
+  .rb-rule-context > strong { font-size: 8px; }
+  .rb-rule-direction > span { font-size: 8px; }
+  .rb-round-track li > small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-victory-light,
+  .rb-vs-wave { display: none; }
+  .rb-loading .rb-team[data-rb-side="player"] .rb-card-object { transform: none; }
+  .rb-choice-dock .stat-choice:active { transform: none !important; }
+}
+
+/* Two readable cards per team, with an explicit way to inspect the opposing duo.
+   The controls pan the presentation only; battle turns remain server-owned. */
+.rb-duo-navigation { display: none; }
+@media (max-width: 900px) {
+  .rb-duo-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 6px;
+  }
+  .rb-duo-navigation > button {
+    min-height: 44px;
+    padding: 6px 18px;
+    border: 1px solid #aac7bd35;
+    border-radius: 20px;
+    font: 500 9px/1.2 system-ui;
+    background: #10272b;
+    color: #a8c4c5;
+    cursor: pointer;
+  }
+  .rb-duo-navigation > button[aria-pressed="true"] { background: #ced5b71c; border-color: #d3ddb56b; color: #f0e5c1; }
+  .rb-duo-navigation > button:focus-visible { outline: 2px solid #c7e4ca; outline-offset: 2px; }
+  .rb-arena[data-rb-mode="double"] .rb-stage {
+    min-height: 255px;
+    max-height: max(255px, calc(100svh - 490px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+    scroll-margin-top: calc(8px + env(safe-area-inset-top));
+    scroll-margin-bottom: 245px;
+    scroll-padding-top: 6px;
+  }
+  .rb-arena[data-rb-mode="double"] .rb-stage:after { content: "Deux cartes par équipe · Compare les duos avec les boutons du bas"; }
+}
+
+@media (max-width: 340px) {
+  .rb-arena[data-rb-mode="double"] .rb-stage {
+    min-height: 230px;
+    max-height: max(230px, calc(100svh - 490px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+  }
+}
+@media (max-width: 900px) {
+  .rb-arena[data-rb-mode="double"] { margin-bottom: 82px; }
+}

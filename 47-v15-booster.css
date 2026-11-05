@@ -7,7 +7,7 @@
 .opening-fullscreen.fx-mythic{--v15-light:#ffb6ba}
 .opening-fullscreen.fx-ultra{--v15-light:#d8f4ff}
 .opening-fullscreen.fx-secret{--v15-light:#b8efd4}
-.opening-fullscreen.fx-ultra-secret{--v15-light:#e0ccff}
+.opening-fullscreen.fx-ultra-secret{--v15-light:#d0f9dd}
 .opening-fullscreen .opening-speed{min-height:44px;min-width:44px;touch-action:manipulation}
 .opening-fullscreen .opening-speed:focus-visible{outline:2px solid #e6d4a8;outline-offset:3px}
 .opening-fullscreen::before,.opening-fullscreen::after{animation:none!important}
@@ -69,4 +69,40 @@ html[data-m13-quality=eco] .v14-summary-item{opacity:1;transform:none}
   .opening-fullscreen .opening-vfx{display:none!important}
   .opening-fullscreen .opening-top-card.put-away,.v14-summary-item{animation:none!important;transform:none;translate:none;opacity:1}
   .v14-seal-trigger:active:not(:disabled) .v14-sealed-pack{transform:rotate(-4deg)}
+}
+
+/* V15.4 — direct manipulation of the existing packet, with no autoplay.
+   A vertical gesture still scrolls the page; the tear has a deliberate release. */
+.v14-seal-trigger{touch-action:pan-y}
+.v154-is-tearing:not(.v14-is-opening) .v14-seal-cap{
+  transform:translate3d(calc(var(--v154-tear-progress,0)*13%),calc(var(--v154-tear-progress,0)*-17%),0) rotate(calc(var(--v154-tear-progress,0)*9deg));
+}
+.v154-is-tearing:not(.v14-is-opening) .v14-seal-body{
+  transform:translate3d(0,calc(var(--v154-tear-progress,0)*1.3%),0);
+}
+.v154-is-tearing .v14-seal-cta{border-color:#f4dca2;background:#af8a3929}
+.v14-seal-cta{position:relative;overflow:hidden}
+.v154-is-tearing .v14-seal-cta::after{
+  content:"";position:absolute;bottom:0;left:0;width:calc(var(--v154-tear-progress,0)*100%);height:2px;background:#ebd099;pointer-events:none;
+}
+.v154-review-stats{
+  flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  width:min(360px,100%);margin:0 auto;padding:1px;border:1px solid #c7af7838;border-radius:10px;
+  background:#bca3711a;overflow:hidden;
+}
+.v154-review-stats>div{display:flex;flex-direction:column-reverse;gap:4px;align-items:center;padding:8px 4px;background:#151b20}
+.v154-review-stats dt{font:500 9px/1.2 var(--font,sans-serif);color:#aba68f}
+.v154-review-stats dd{margin:0;color:#e9dab8;font:650 20px/1 Georgia,serif;font-variant-numeric:tabular-nums}
+.v14-summary-item[data-review-spotlight=true] .v14-summary-card{outline:1px solid #ecdbac;outline-offset:3px}
+.v14-summary-item[data-review-spotlight=true][data-reveal-tier=secret] .v14-summary-card{outline-color:#b9e9c7}
+.v154-review-unavailable{display:grid;place-items:center;aspect-ratio:300/425;border:1px solid #b1b8a944;border-radius:10px;background:#182023;color:#aeb6ae;font:500 11px var(--font,sans-serif)}
+@media(max-height:580px){
+  .v154-review-stats>div{padding:5px 3px;gap:2px}
+  .v154-review-stats dd{font-size:15px}
+  .v154-review-stats dt{font-size:8px}
+}
+html[data-m13-quality=eco] .v154-is-tearing .v14-seal-cap,
+html[data-m13-quality=eco] .v154-is-tearing .v14-seal-body{transform:none}
+@media(prefers-reduced-motion:reduce){
+  .v154-is-tearing .v14-seal-cap,.v154-is-tearing .v14-seal-body{transform:none}
 }

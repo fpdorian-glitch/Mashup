@@ -1,16 +1,27 @@
 {
   "id": "./",
-  "name": "Mashup · Cartes vivantes",
+  "name": "Mashup · Le Nexus",
   "short_name": "Mashup",
   "lang": "fr",
-  "description": "Tes cartes. Tes amis. Ton multivers.",
+  "description": "Cartes vivantes, duels entre amis et Mashup Match.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#090d16",
   "theme_color": "#090d16",
   "icons": [
-    {"src": "./assets/mashup-app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "./assets/mashup-app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
-  ]
+    {
+      "src": "./assets/mashup-app-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/mashup-app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "version": "15.4.0"
 }

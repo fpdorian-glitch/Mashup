@@ -38,7 +38,15 @@ export function createArenaRebornPresentation({
     phase = "idle";
   const timers = new Set(),
     animations = new Set();
+  let pannedStage = null, pannedWindow = null;
+  function stopPan() {
+    if (pannedStage?.isConnected !== false) pannedStage?.scrollTo?.({top: pannedStage.scrollTop, behavior: "instant"});
+    pannedWindow?.scrollTo?.({top: pannedWindow.scrollY, left: pannedWindow.scrollX, behavior: "instant"});
+    pannedStage = null;
+    pannedWindow = null;
+  }
   function stop() {
+    stopPan();
     for (const id of timers) cancel(id);
     timers.clear();
     for (const a of animations) {
@@ -61,8 +69,26 @@ export function createArenaRebornPresentation({
     }
     return phase;
   }
+  function panTeam(event) {
+    const button = event.target?.closest?.("[data-rb-pan]");
+    const side = button?.getAttribute?.("data-rb-pan");
+    if (!field || !["player", "enemy"].includes(side)) return;
+    const stage = field.querySelector(".rb-stage"), team = field.querySelector('[data-rb-side="' + side + '"]');
+    if (!stage || !team) return;
+    event.preventDefault?.();
+    const behavior = isReducedMotion() || field.getAttribute?.("data-rb-quality") === "fluid" ? "instant" : "smooth";
+    const top = Math.max(0, team.getBoundingClientRect().top - stage.getBoundingClientRect().top + stage.scrollTop - 6);
+    pannedStage = stage;
+    pannedWindow = field.ownerDocument?.defaultView || null;
+    stage.scrollTo?.({top, behavior});
+    // Bring a whole duo above the fixed choices rather than shrinking four cards.
+    stage.scrollIntoView?.({block: "start", behavior});
+    field.setAttribute("data-rb-pan-side", side);
+    field.querySelectorAll("[data-rb-pan]").forEach(control => control.setAttribute("aria-pressed", String(control === button)));
+  }
   function clear() {
     stop();
+    field?.removeEventListener?.("click", panTeam);
     field = null;
     previousKey = null;
     previousMatch = null;
@@ -91,15 +117,17 @@ export function createArenaRebornPresentation({
       clear();
       return { changed: false, animated: false };
     }
-    const quality =
-      isReducedMotion() || snapshot.quality === "fluid"
-        ? "fluid"
-        : snapshot.quality || getQuality();
+    const requestedQuality = snapshot.quality || getQuality();
+    const quality = isReducedMotion() || requestedQuality === "fluid"
+      ? "fluid"
+      : ["balanced", "spectacular"].includes(requestedQuality) ? requestedQuality : "balanced";
     const key = arenaSnapshotKey(snapshot),
       changed = key !== previousKey,
       replaced = next !== field;
     if (changed || replaced) stop();
+    if (replaced) field?.removeEventListener?.("click", panTeam);
     field = next;
+    if (replaced) field.addEventListener?.("click", panTeam);
     const choose = snapshot.stage === "choose" && !snapshot.finished;
     const winner = ["player", "enemy", "draw", "tie"].includes(snapshot.winner)
       ? snapshot.winner
@@ -168,6 +196,27 @@ export function createArenaRebornPresentation({
           { duration: quality === "spectacular" ? 360 : 210 },
         ),
       );
+      if (!sameMatch) {
+        animate(field.querySelector(".vs"), [
+          {opacity: 0, transform: "scale(.66)"},
+          {opacity: 1, transform: "scale(1.12)", offset: .55},
+          {opacity: 1, transform: "scale(1)"},
+        ], {duration: quality === "spectacular" ? 480 : 280});
+        animate(field.querySelector(".rb-vs-wave"), [
+          {opacity: 0, transform: "scale(.3)"},
+          {opacity: .65, offset: .25},
+          {opacity: 0, transform: "scale(2)"},
+        ], {duration: quality === "spectacular" ? 520 : 300});
+      }
+      if (snapshot.turn === "enemy") {
+        field.querySelectorAll(".rb-thinking i").forEach((dot, i) => {
+          animate(dot, [
+            {opacity: .35, transform: "translateY(0)"},
+            {opacity: 1, transform: "translateY(-3px)", offset: .5},
+            {opacity: .35, transform: "translateY(0)"},
+          ], {duration: 660, delay: i * 90, iterations: 2});
+        });
+      }
     } else {
       const gap = Math.abs(Number(snapshot.pValue) - Number(snapshot.eValue));
       field.style?.setProperty(
@@ -240,6 +289,22 @@ export function createArenaRebornPresentation({
         ],
         { duration: 480, delay: steps[2].at },
       );
+      // The confirmed values remain in the DOM at all times: movement is visual only.
+      field.querySelectorAll(".rb-comparison b").forEach((value, i) => {
+        animate(value, [
+          {opacity: .55, transform: "translateY(5px) scale(.94)"},
+          {opacity: 1, transform: "translateY(0) scale(1)"},
+        ], {duration: 230, delay: steps[1].at + i * 35});
+      });
+      const victorySelectors = winner === "draw" || winner === "tie"
+        ? ["player", "enemy"] : [winner].filter(value => ["player", "enemy"].includes(value));
+      for (const side of victorySelectors) {
+        animate(field.querySelector('[data-rb-side="' + side + '"] .rb-victory-light'), [
+          {opacity: 0, transform: "translateX(-50%) scale(.65)"},
+          {opacity: winner === "draw" || winner === "tie" ? .35 : .75, offset: .35},
+          {opacity: 0, transform: "translateX(-50%) scale(1.3)"},
+        ], {duration: 700, delay: steps[2].at});
+      }
       if (sameMatch)
         animate(
           field.querySelector(".rb-scoreboard"),
@@ -250,7 +315,7 @@ export function createArenaRebornPresentation({
           ],
           { duration: 260, delay: end },
         );
-      if (snapshot.finished)
+      if (snapshot.finished) {
         animate(
           field.querySelector(".rb-outcome"),
           [
@@ -259,6 +324,15 @@ export function createArenaRebornPresentation({
           ],
           { duration: 350, delay: end },
         );
+        animate(field.querySelector(".rb-medal"), winner === "player" ? [
+          {opacity: .3, transform: "scale(.7) rotate(-12deg)"},
+          {opacity: 1, transform: "scale(1.15) rotate(4deg)", offset: .65},
+          {opacity: 1, transform: "scale(1) rotate(0deg)"},
+        ] : [
+          {opacity: .3, transform: "translateY(5px)"},
+          {opacity: 1, transform: "translateY(0)"},
+        ], {duration: winner === "player" ? 520 : 280, delay: end});
+      }
     }
     return { changed: true, animated: true };
   }

@@ -1,25 +1,40 @@
-import { inspectionObjectMarkup } from "./46-v15-living-cards.js?v=15.0.0";
+import { inspectionObjectMarkup } from "./46-v15-living-cards.js?v=15.4.0";
 import { catalogueIsActive } from "./58-catalogue.js";
 
-export function ruleBannerMarkup(direction, esc = String) {
-  const high = direction === "higher",
-    low = direction === "lower";
-  return (
-    '<div class="rb-rule-banner" data-rb-rule data-direction="' +
-    (high ? "higher" : low ? "lower" : "unknown") +
-    '"><b aria-hidden="true">' +
-    (high ? "↑" : low ? "↓" : "◇") +
-    "</b><span>" +
-    esc(
-      high
-        ? "PLUS GRAND GAGNE"
-        : low
-          ? "PLUS FAIBLE GAGNE"
-          : "RÈGLE EN ATTENTE",
-    ) +
-    "</span></div>"
-  );
+const escapeText = value => String(value ?? "").replace(/[&<>"']/g, character => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[character]));
+
+/** The same comparison rule stays next to all five actions on small screens. */
+export function ruleBannerMarkup(direction, esc = escapeText, context = {}) {
+  const high = direction === "higher", low = direction === "lower";
+  const round = Number(context.round);
+  const current = Number.isInteger(round) ? Math.min(4, Math.max(1, round + 1)) : 1;
+  const label = context.finished ? "Combat terminé" : "Manche " + current + " / 4";
+  const score = Number.isInteger(context.playerScore) && Number.isInteger(context.enemyScore)
+    ? ' · ' + context.playerScore + '–' + context.enemyScore : '';
+  return '<div class="rb-rule-banner" data-rb-rule data-direction="' +
+    (high ? "higher" : low ? "lower" : "unknown") + '">' +
+    '<span class="rb-rule-context"><small>' + esc(label + score) + '</small><strong>' +
+    esc(context.statLabel || (context.turn === "enemy" ? "Choix adverse" : "Statistique au choix")) +
+    '</strong></span><span class="rb-rule-direction"><b aria-hidden="true">' +
+    (high ? "↑" : low ? "↓" : "◇") + '</b><span>' +
+    esc(high ? "PLUS GRAND GAGNE" : low ? "PLUS FAIBLE GAGNE" : "RÈGLE EN ATTENTE") +
+    '</span></span></div>';
 }
+
+/** A four-step progress rail, never a prediction of future round results. */
+export function roundProgressMarkup(s, esc = String) {
+  const raw = Number(s.round), round = Number.isInteger(raw) ? Math.max(0, Math.min(3, raw)) : 0;
+  return '<ol class="rb-round-track" aria-label="Progression du combat en quatre manches">' +
+    Array.from({length: 4}, (_, i) => {
+      const done = s.finished || i < round, current = !s.finished && i === round;
+      return '<li class="' + (done ? 'rb-round-done' : current ? 'rb-round-current' : 'rb-round-future') +
+        '"' + (current ? ' aria-current="step"' : '') + '><span>' + (done ? '✓' : i + 1) +
+        '</span><small>' + esc('Manche ' + (i + 1)) + '</small></li>';
+    }).join('') + '</ol>';
+}
+
+const FLOOR = '<svg class="rb-table-sigil" viewBox="0 0 640 340" fill="none" aria-hidden="true"><ellipse cx="320" cy="230" rx="292" ry="94"/><ellipse cx="320" cy="230" rx="247" ry="74"/><ellipse cx="320" cy="230" rx="148" ry="47"/><path d="m320 160 52 70-52 70-52-70 52-70Zm-250 70h101m298 0h101M320 136v24m0 140v24"/><path d="m97 160 43 11-12 27-43-11 12-27Zm446 0-43 11 12 27 43-11-12-27Z"/></svg>';
+
 /** Only cards explicitly passed by the authorised battle snapshot are rendered. */
 export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
   const pvp = s.source === "pvp",
@@ -45,6 +60,8 @@ export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
       );
     if (!c)
       return '<div class="duel-card-wrap"><div class="rb-card-hidden" aria-label="Carte indisponible"><b>INDISPONIBLE</b></div></div>';
+    if (Object.getOwnPropertyDescriptor(c, "hidden")?.value === true)
+      return '<div class="duel-card-wrap"><div class="rb-card-hidden" aria-label="Carte indisponible"><b>À DÉCOUVRIR</b></div></div>';
     if (!catalogueIsActive(c))
       return '<div class="duel-card-wrap"><div class="rb-card-hidden" aria-label="Carte archivée"><b>CARTE ARCHIVÉE</b><small>Référence historique conservée</small></div></div>';
     return (
@@ -72,6 +89,7 @@ export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
         ).join("");
   const choose = !revealed && s.turn === "player",
     ai = !pvp && !revealed && s.turn === "enemy";
+  const teamNavigation = double ? '<div class="rb-duo-navigation" role="group" aria-label="Équipe visible dans le plateau"><button type="button" data-rb-pan="player" aria-pressed="true" aria-label="Afficher ton duo dans le plateau">Ton duo</button><button type="button" data-rb-pan="enemy" aria-pressed="false" aria-label="Afficher le duo adverse dans le plateau">Duo adverse</button></div>' : '';
   const buttons = choose
     ? '<div class="' +
       (pvp ? "pvp-stats" : "challenge-stat-grid") +
@@ -85,18 +103,19 @@ export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
             esc(f.key) +
             '" ' +
             (!["higher", "lower"].includes(s.direction) ? "disabled" : "") +
-            '><span class="stat-choice-title">' +
+            ' title="' + esc(f.label + (s.direction === "lower" ? " · La plus petite valeur gagne" : s.direction === "higher" ? " · La plus grande valeur gagne" : " · Règle en attente")) +
+            '"><span class="stat-choice-title">' +
             esc(f.label) +
             "</span><strong>" +
             esc(s.values?.[f.key] ?? "—") +
             "<small> / " +
             (double ? 200 : 100) +
-            "</small></strong></button>",
+            '</small></strong><span class="rb-stat-direction" aria-hidden="true">' + (s.direction === "higher" ? "↑ MAX" : s.direction === "lower" ? "↓ MIN" : "—") + '</span></button>',
         )
         .join("") +
       "</div>"
     : ai
-      ? '<div class="rb-wait"><button class="btn btn-primary" data-action="ai-turn">Découvrir le choix de l’IA →</button></div>'
+      ? '<div class="rb-wait rb-ai-choice"><span class="rb-thinking" aria-hidden="true"><i></i><i></i><i></i></span><button class="btn btn-primary" data-action="ai-turn">Découvrir le choix de l’IA →</button></div>'
       : !revealed
         ? '<div class="rb-wait pvp-waiting"><span class="wait-spinner" aria-hidden="true"></span><span>L’adversaire choisit sa statistique.<br>Le résultat viendra du serveur.</span></div>'
         : s.finished
@@ -168,7 +187,7 @@ export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
         : "") +
       "<p>" +
       esc(s.endNote || "") +
-      "</p></section>"
+      '</p><p class="rb-outcome-record">' + esc(s.finished ? "Quatre manches · " + (double ? "duos" : "combat simple") : "") + '</p></section>'
     : "";
   return (
     '<div class="rb-shell"><div class="rb-mode-switch arena-main-switch"><button class="btn ' +
@@ -181,7 +200,7 @@ export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
     (double ? "double" : "simple") +
     '" data-rb-quality="' +
     quality +
-    '"><header class="rb-topline"><div class="rb-heading"><small>ARENA REBORN · ' +
+    '"><header class="rb-topline"><div class="rb-heading"><small>NEXUS · ' +
     (pvp ? "PVP" : "CAMPAGNE") +
     "</small><h1>" +
     (double ? "Le choc des duos." : "Le cercle des légendes.") +
@@ -223,31 +242,31 @@ export function arenaBattleMarkup(s, { esc, renderCard, galaxyMark = "" }) {
     esc(s.opponentName || "ADVERSAIRE") +
     "</small><strong>" +
     esc(s.enemyScore) +
-    '</strong></div></div><div class="rb-stage"><div class="rb-scenery" aria-hidden="true"><span class="rb-horizon"></span><span class="rb-orbit"></span><i class="rb-impact"></i><i class="rb-sweep"></i></div><div class="rb-duel ' +
+    '</strong></div></div>' + roundProgressMarkup(s, esc) + '<div class="rb-stage"><div class="rb-scenery" aria-hidden="true">' + FLOOR + '<span class="rb-horizon"></span><span class="rb-orbit"></span><span class="rb-aurora rb-aurora--player"></span><span class="rb-aurora rb-aurora--enemy"></span><i class="rb-impact"></i><i class="rb-sweep"></i></div><div class="rb-duel ' +
     (pvp ? "pvp-duel-grid" : "combat-duel") +
     '"><div class="rb-team ' +
     (pvp ? "pvp-side" : "combat-team") +
     '" data-rb-side="player">' +
-    own +
-    '</div><span class="vs" aria-hidden="true">VS</span><div class="rb-team ' +
+    '<span class="rb-victory-light" aria-hidden="true"></span>' + own +
+    '</div><span class="vs" aria-hidden="true"><span>VS</span><i class="rb-vs-wave"></i></span><div class="rb-team ' +
     (pvp ? "pvp-side" : "combat-team") +
     '" data-rb-side="enemy">' +
-    enemy +
+    '<span class="rb-victory-light" aria-hidden="true"></span>' + enemy +
     '</div></div></div><div class="rb-phase-line" aria-hidden="true"><span class="rb-phase-label"></span></div>' +
     compare +
     outcome +
     '<div class="rb-choice-dock ' +
     (choose ? "challenge-choice" : "") +
     '" data-rb-stat-dock>' +
-    ruleBannerMarkup(s.direction, esc) +
-    buttons +
+    ruleBannerMarkup(s.direction, esc, {round: s.round, statLabel: stat?.label, turn: s.turn, finished: s.finished, playerScore: s.playerScore, enemyScore: s.enemyScore}) +
+    buttons + teamNavigation +
     '<p class="rb-rule-note">' +
     (double
       ? "Les deux valeurs de chaque équipe sont additionnées."
       : "Une statistique. Une confrontation.") +
     "</p></div>" +
     (s.historyHTML
-      ? '<details class="battle-log"><summary>Historique des manches</summary>' +
+      ? '<details class="battle-log"><summary>Consulter les résultats détaillés · 4 manches</summary>' +
         s.historyHTML +
         "</details>"
       : "") +

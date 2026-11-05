@@ -1,5 +1,7 @@
-/* Mashup V10 — Memory, seul mini-jeu ; le Casino et la Ligue restent inchangés. */
-export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'}){
+/* Mashup V15.4 — existing Memory/league transactions, server-synchronised clock. */
+import {createCasinoClock} from './66-v15-4-casino-clock.js?v=15.4.0';
+
+export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getView=()=>'games',getSessionKey=()=>getUser()?.id}){
   const TYPES=['memory'];
   const LABELS={memory:'Memory · Le Codex des paires'};
   const HELP={memory:'Retrouve les six paires de mondes. Premier échec gratuit, trois erreurs consécutives ensuite et tu perds.'};
@@ -7,41 +9,78 @@ export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'})
   const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const n=v=>Number(v||0).toLocaleString('fr-FR');
   const $=id=>document.getElementById(id);
-  let root=null,section='hub',snapshot=null,loading=false,delta=0,tick=null,lockedUntil=0,lastAlert='',lastPoll=0,memoryRevealTimer=null;
-  const serverNow=()=>Date.now()-delta;
+  let root=null,section='hub',snapshot=null,loading=false,tick=null,lockedUntil=0,lastAlert='',lastPoll=0,memoryRevealTimer=null;
+  let generation=0,activeRequest=null,destroyed=false,networkError=false;
+  const clock=createCasinoClock();
+  const serverNow=()=>clock.now()??Date.now();
   const profile=f=>h(f?.name||'IA inconnue');
   const sideName=(c,i)=>(c?.sides?.[i]||[]).map(f=>f.name).join(' + ')||'Équipe '+(i?'B':'A');
-  const available=()=>root?.isConnected&&getView()==='games';
+  const available=()=>!destroyed&&root?.isConnected&&getView()==='games';
+  const sameSession=token=>!destroyed&&token.generation===generation&&token.actor===getUser()?.id&&token.key===getSessionKey();
+  const clockState=()=>{const value=clock.read(snapshot);return networkError?{...value,stale:true,canBet:false}:value;};
+  const fingerprint=data=>JSON.stringify({...data,now:undefined});
   async function request(route='status',body){
-    if(loading)return null;loading=true;
-    try{
-      const oldAmount=$('games-amount')?.value,oldSide=document.querySelector('input[name="games-side"]:checked')?.value;
-      const actor=getUser()?.id;
-      const data=await api(route,body);if(getUser()?.id!==actor)return null;snapshot=data;delta=Date.now()-Number(data.now||Date.now());
-      // Le serveur commande désormais l'affichage temporaire des cartes : pas d'état local ambigu.
-      if(route==='start')lockedUntil=0;
-      if(available()){
-        draw();if(route==='status'&&section==='casino'){
-          if(oldAmount&&$('games-amount'))$('games-amount').value=oldAmount;
-          if(oldSide!==undefined){const selected=document.querySelector('input[name="games-side"][value="'+oldSide+'"]');if(selected)selected.checked=true;}
-        }
+    if(destroyed||!getUser())return null;
+    if(activeRequest){
+      if(route==='status')return activeRequest.promise;
+      if(activeRequest.route==='status'){
+        const waiting={generation,actor:getUser()?.id,key:getSessionKey()};
+        await activeRequest.promise;
+        return sameSession(waiting)?request(route,body):null;
       }
-      return data;
-    }catch(err){toast(err.message||'Impossible de joindre le serveur des jeux.',true);return null;}
-    finally{loading=false;}
+      return null;
+    }
+    const token={generation,actor:getUser()?.id,key:getSessionKey(),route,sentAt:Date.now(),promise:null};
+    activeRequest=token;loading=true;refreshTimer();
+    if(route==='move'&&section==='mini'&&available()){
+      document.querySelector?.('.games-memory-grid')?.setAttribute?.('aria-busy','true');
+      for(const button of document.querySelectorAll?.('.games-memory-card')||[])button.disabled=true;
+      const prompt=document.querySelector?.('.games-memory-instruction');if(prompt)prompt.textContent='Validation du choix…';
+    }
+    token.promise=(async()=>{
+      try{
+        const oldAmount=$('games-amount')?.value,oldSide=document.querySelector('input[name="games-side"]:checked')?.value;
+        const focused=document.activeElement?.id,previous=fingerprint(snapshot);
+        const data=await api(route,body);
+        if(!sameSession(token)||!data||typeof data!=='object')return null;
+        snapshot=data;networkError=false;clock.observe(data,{sentAt:token.sentAt,receivedAt:Date.now()});
+        // Memory reveal and credit changes remain entirely server-authoritative.
+        if(route==='start')lockedUntil=0;
+        if(available()){
+          if(route!=='status'||previous!==fingerprint(data)){
+            draw();
+            if(route==='status'&&section==='casino'){
+              if(oldAmount!==undefined&&$('games-amount'))$('games-amount').value=oldAmount;
+              if(oldSide!==undefined){const selected=document.querySelector('input[name="games-side"][value="'+oldSide+'"]');if(selected)selected.checked=true;}
+              if(focused==='games-amount')$('games-amount')?.focus?.({preventScroll:true});
+            }
+          }else refreshTimer();
+        }
+        return data;
+      }catch(err){
+        if(!sameSession(token))return null;
+        networkError=true;refreshTimer();
+        if(route!=='status')toast(err.message||'Impossible de joindre le serveur des jeux.',true);
+        if(route==='move'&&section==='mini'&&available())draw();
+        return null;
+      }finally{if(activeRequest===token){activeRequest=null;loading=false;refreshTimer();}}
+    })();
+    return token.promise;
   }
   const tabs=()=>`<nav class="games-tabs" aria-label="Modes Jeux">
     <button class="btn ${section==='hub'?'btn-primary':''}" data-games="hub">◈ Accueil</button>
     <button class="btn" data-games="arena">⚔ Arène</button>
     <button class="btn ${section==='casino'?'btn-primary':''}" data-games="casino">🎲 Ligue IA</button>
-    <button class="btn ${section==='mini'?'btn-primary':''}" data-games="mini">🧩 Memory</button></nav>`;
+    <button class="btn ${section==='mini'?'btn-primary':''}" data-games="mini">🧩 Memory</button>
+    <button class="btn games-match-link" data-games="match">✦ Mashup Match</button></nav>`;
   const intro=(name,sub)=>`<div class="page-lead"><div class="eyebrow">MASHUP · SAISON ${snapshot?.league?.season||1}</div><h1 class="heading">${name}</h1><p class="text-sub">${sub}</p></div>`;
-  const loadingBox=()=>`<section class="panel"><p>Connexion à la ligue…</p><button class="btn" data-games="refresh">Actualiser</button></section>`;
-  function hub(){return intro('Tous les <em>jeux.</em>','Arène, Ligue IA et Memory : joue et collectionne les univers. Les combats IA sont identiques pour tout le monde.')+tabs()+
+  const loadingBox=()=>`<section class="panel"><p>${networkError?'Connexion à la ligue indisponible. Réessaie dans un instant.':'Connexion à la ligue…'}</p><button class="btn" data-games="refresh">Actualiser</button></section>`;
+  function hub(){return intro('Tous les <em>jeux.</em>','Arène, Ligue IA, Memory et Mashup Match : choisis ton prochain défi. Les combats IA sont partagés par tous les joueurs.')+tabs()+
     `<div class="games-layout">
     <div class="games-hero-card"><span class="games-symbol">⚔</span><h3>Arène</h3><p>Affronte les IA ou défie les autres joueurs.</p><button class="btn btn-primary" data-games="arena">Entrer dans l’arène</button></div>
     <div class="games-hero-card"><span class="games-symbol">🏆</span><h3>Casino · Ligue IA</h3><p>20 IA, classement en direct, cotes variables et un duel toutes les 10 minutes.</p><button class="btn btn-primary" data-games="casino">Voir la ligue</button></div>
-    <div class="games-hero-card"><span class="games-symbol">🧩</span><h3>Memory · Le Codex</h3><p>Retrouve les paires, gagne des crédits et accomplis ton défi quotidien.</p><button class="btn btn-primary" data-games="mini">Choisir un jeu</button></div></div>`;}
+    <div class="games-hero-card"><span class="games-symbol">🧩</span><h3>Memory · Le Codex</h3><p>Retrouve les paires, gagne des crédits et accomplis ton défi quotidien.</p><button class="btn btn-primary" data-games="mini">Jouer au Memory</button></div>
+    <div class="games-hero-card games-match-card"><span class="games-symbol">✦</span><span class="eyebrow">NOUVEAU · 10 MONDES</span><h3>Mashup Match</h3><p>Aligne les éclats, combine les pouvoirs et découvre une campagne de 100 niveaux.</p><button class="btn btn-primary" data-games="match">Découvrir Mashup Match</button></div></div>`;}
   function fighterCard(f){return `<div class="games-fighter"><div class="games-fighter-avatar">${profile(f).slice(0,1)}</div><div><strong>${profile(f)}</strong><small>Puissance ${n(f.power)} · Elo ${n(f.elo)}</small><small>${n(f.wins)} V · ${n(f.losses)} D</small></div></div>`;}
   function team(c,side){return `<article class="games-team-v9"><div class="games-team-head"><small>ÉQUIPE ${side===0?'A':'B'}</small><strong>${sideName(c,side).split(' + ').map(h).join(' + ')}</strong></div>${(c?.sides?.[side]||[]).map(fighterCard).join('')}
     <div class="games-odd"><span>Cote</span><strong>×${n(c?.odds?.[side]||1)}</strong><small>Chance estimée : ${Math.round((c?.probabilities?.[side]||.5)*100)} %</small></div></article>`;}
@@ -54,29 +93,42 @@ export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'})
       ${all.length===50?'<p class="games-muted">50 plus gros paris affichés.</p>':''}</section>`;
   }
   function live(){const c=snapshot?.live;if(!c)return '';
-    const steps=c.revealedRounds||[],finished=c.winner!==undefined&&c.winner!==null;
+    const steps=c.revealedRounds||[],finished=c.finished===true||['finished','settled'].includes(c.status)||c.winner!==undefined&&c.winner!==null;
     return `<section class="panel games-panel games-live"><div class="games-live-heading"><div><span class="games-live-dot"></span><strong>${finished?'COMBAT TERMINÉ':'🔴 COMBAT EN DIRECT'}</strong><p>Tout le monde regarde le même duel au même instant.</p></div><div class="games-progress"><span>${finished?'Résultat':'Manche en cours'}</span><strong>${finished?'FIN':n(Math.min(4,steps.length+1))+' / 4'}</strong></div></div>
       <div class="games-versus-compact"><strong>${sideName(c,0).split(' + ').map(h).join(' + ')}</strong><span>VS</span><strong>${sideName(c,1).split(' + ').map(h).join(' + ')}</strong></div>
-      <div class="games-rounds">${[0,1,2,3].map(i=>{const r=steps[i];return `<div class="games-round ${r?'games-round-done':''}"><b>Manche ${i+1}</b>${r?`<span>${h(r.stat)} · ${n(r.a)} – ${n(r.b)}</span><strong>Point ${r.winner===0?'A':'B'}</strong>`:'<span>🔒 Résultat à venir</span>'}</div>`;}).join('')}</div>
-      ${finished?`<div class="games-result-band">🏆 Victoire de l’équipe ${c.winner===0?'A':'B'} · Score ${n(c.score?.[0])} – ${n(c.score?.[1])}</div>`:'<p class="games-muted">Une manche se dévoile toutes les 9 secondes. Le résultat final est révélé à la fin.</p>'}
+      <div class="games-rounds">${[0,1,2,3].map(i=>{const r=steps[i];return `<div class="games-round ${r?'games-round-done':''}"><b>Manche ${i+1}</b>${r?`<span>${h(r.stat)} · ${n(r.a)} – ${n(r.b)}</span><strong>${r.winner===null?'Égalité':'Point '+(r.winner===0?'A':'B')}</strong>`:'<span>🔒 Résultat à venir</span>'}</div>`;}).join('')}</div>
+      ${finished?`<div class="games-result-band">${c.winner===null?'◇ Égalité':'🏆 Victoire de l’équipe '+(c.winner===0?'A':'B')} · Score ${n(c.score?.[0])} – ${n(c.score?.[1])}</div>`:'<p class="games-muted">Une manche se dévoile toutes les 9 secondes. Le résultat final est révélé à la fin.</p>'}
       </section>`;
   }
   function standings(){const players=snapshot?.league?.standings||[];return `<section class="panel games-panel"><div class="games-progress"><div><h3>🏆 Classement des 20 IA</h3><p class="games-muted">Classement par résultats, puis Elo. L'Elo et les séries influencent les cotes, mais des surprises restent possibles.</p></div><span class="pill">SAISON ${snapshot?.league?.season||1}</span></div>
     <div class="games-leaderboard"><div class="games-leader-games games-leaderhead"><span>#</span><span>IA</span><span>V</span><span>D</span><span>Elo</span></div>${players.map(f=>`<div class="games-leader-games"><span>${n(f.rank)}</span><strong>${profile(f)} <small>P${n(f.power)}</small></strong><span>${n(f.wins)}</span><span>${n(f.losses)}</span><span>${n(f.elo)}</span></div>`).join('')}</div></section>`;}
   function betHistory(){const list=snapshot?.historyBets||[];if(!list.length)return `<p class="games-muted">Aucun pari terminé pour l’instant.</p>`;return list.slice(0,6).map(x=>`<div class="games-history-item"><b>${x.bet.side===x.winner?'🏆 Pari gagné':'✕ Pari perdu'} · ${x.mode==='double'?'Double':'Simple'}</b><p class="games-muted">Mise ${n(x.bet.amount)} · Cote ×${n(x.bet.odds||x.odds?.[x.bet.side]||1)} · Gain ${n(x.bet.payout||0)} crédits</p></div>`).join('');}
   function historical(){const data=snapshot?.history||[];return `<section class="panel games-panel"><h3>Derniers combats</h3>${data.length?data.slice(0,8).map(c=>`<details class="games-history-item"><summary><strong>🏆 ${c.legacy?'Ancien combat':sideName(c,c.winner).split(' + ').map(h).join(' + ')}</strong> · ${c.mode==='double'?'Double':'Simple'} · ${c.score?.join('–')||''}</summary>${(c.rounds||[]).map((r,i)=>`<p class="games-muted">Manche ${i+1} · ${h(r.stat)} · ${n(r.a)}–${n(r.b)} · ${r.winner===null?'Égalité':r.winner===0?'A':'B'}</p>`).join('')}</details>`).join(''):'<p class="games-muted">La nouvelle saison commence !</p>'}</section>`;}
-  function casino(){const s=snapshot;if(!s)return intro('Casino <em>Ligue IA.</em>','Un combat toutes les 10 minutes.')+tabs()+loadingBox();if(!s.league)return intro('Casino <em>Ligue IA.</em>','Championnat en cours de mise à jour.')+tabs()+'<section class="panel"><h3>Nouvelle version du serveur attendue</h3><p>Les paris sont momentanément indisponibles pendant l’installation. Aucune mise ne sera prélevée ici.</p><button class="btn" data-games="refresh">Réessayer</button></section>';const c=s.current,bet=s.bet;
+  function casinoClockMarkup(){
+    const value=clockState();
+    return `<section class="games-casino-clock-panel" id="games-casino-clock-panel" data-casino-phase="${value.phase}" data-casino-urgent="${value.urgent}">
+      <div class="games-casino-clock-heading"><span class="eyebrow">PROCHAIN COMBAT IA</span><span class="games-casino-mode">${snapshot?.current?.mode==='double'?'DUEL DOUBLE':'LIGUE PARTAGÉE'}</span></div>
+      <div class="games-casino-time-row"><strong class="games-countdown" id="games-clock" role="timer" aria-label="Temps avant le prochain combat IA" aria-live="off">${value.text}</strong><div><strong id="games-casino-phase">${h(value.label)}</strong><p id="games-casino-sync">${networkError?'Connexion interrompue · synchronisation nécessaire':value.stale?'Actualisation de l’horaire…':value.deadline===null?'En attente du calendrier du serveur':'Horaire synchronisé avec la ligue'}</p></div></div>
+      <p class="games-casino-last-call" id="games-casino-alert" ${value.urgent?'':'hidden'}>Dernières secondes : le combat approche.</p>
+      <button class="btn btn-sm games-clock-refresh" data-games="refresh" type="button">↻ Synchroniser</button>
+    </section>`;
+  }
+  function casino(){
+    const s=snapshot,c=s?.current,bet=s?.bet,value=clockState();
+    const heading=intro('Casino <em>Ligue IA.</em>','20 IA, une ligue partagée, des cotes calculées selon les performances et des combats suivis manche par manche.');
+    const lead=heading+casinoClockMarkup()+tabs();
+    // The clock stays present during loading, maintenance and missing schedules.
+    if(!s)return lead+loadingBox();
+    if(!s.league)return lead+'<section class="panel"><h3>Ligue momentanément indisponible</h3><p>Le calendrier et les paris attendent la confirmation du serveur. Aucune mise ne sera prélevée ici.</p><button class="btn" data-games="refresh">Réessayer</button></section>';
     const amount=bet?.amount||100,prof=bet?.side===0?'A':'B';
-    return intro('Casino <em>Ligue IA.</em>','20 IA, une ligue partagée, des cotes calculées selon les performances et des combats suivis manche par manche.')+tabs()+
-      live()+`<section class="panel"><div class="games-progress"><div><span class="eyebrow">PROCHAIN COMBAT · ${c?.mode==='double'?'DOUBLE RARE':'CLASSIQUE'}</span><h3>${c?'Saison '+n(c.season)+' · Prochain affrontement':'Match en préparation…'}</h3></div><div class="games-time-chip"><small>Début du combat dans</small><strong class="games-countdown" id="games-clock">--:--</strong></div></div>
-      <p class="games-muted">Le match débute automatiquement à la fin de ce décompte. Les mêmes adversaires, manches et résultats sont synchronisés pour tous les joueurs.</p>
+    return lead+live()+`<section class="panel games-next-match"><div class="games-progress"><div><span class="eyebrow">${c?.mode==='double'?'DOUBLE RARE':'CLASSIQUE'}</span><h3>${c?'Saison '+n(c.season)+' · Prochain affrontement':'Match en préparation…'}</h3></div></div>
+      <p class="games-muted">Les mêmes adversaires, manches et résultats sont synchronisés pour tous les joueurs. Les paris ferment à l’horaire du serveur.</p>
       ${c?`<div class="games-versus">${team(c,0)}<strong class="games-vs">VS</strong>${team(c,1)}</div>`:''}
       ${bet?`<div class="games-banner"><strong>✓ Pari enregistré pour l’équipe ${prof}</strong> · ${n(amount)} crédits prélevés · Cote ×${n(bet.odds)} · Gain possible : <b>${n(Math.floor(amount*bet.odds))}</b> crédits.</div>`:
       `<div class="games-bet-form"><div class="games-bet-options"><label><input name="games-side" type="radio" value="0" checked> Parier sur A · ×${n(c?.odds?.[0])}</label><label><input name="games-side" type="radio" value="1"> Parier sur B · ×${n(c?.odds?.[1])}</label></div>
-        <div class="games-controls"><label>Mise virtuelle (10 à 25 000)<input type="number" id="games-amount" min="10" max="25000" step="1" value="100"></label><button class="btn btn-primary" data-games="bet">Valider mon pari</button></div></div>`}
+        <div class="games-controls"><label>Mise virtuelle (10 à 25 000)<input type="number" id="games-amount" min="10" max="25000" step="1" value="100"></label><button class="btn btn-primary" data-games="bet" ${value.canBet&&!loading?'':'disabled'}>Valider mon pari</button></div><p class="games-muted">L’acceptation et le débit sont toujours confirmés par le serveur.</p></div>`}
       <div class="games-alert-help"><span>🔔 Alerte dans le jeu 20 secondes avant le combat si tu as parié.</span><button class="btn btn-sm" data-games="notifications">Activer les notifications navigateur</button></div>
-      </section>`+
-      betsList(c)+standings()+historical()+`<section class="panel games-panel"><h3>Mes paris</h3>${betHistory()}</section>`;
+      </section>`+betsList(c)+standings()+historical()+`<section class="panel games-panel"><h3>Mes paris</h3>${betHistory()}</section>`;
   }
   function miniResult(s){return intro('Mini-<em>jeux.</em>','Tu peux rejouer immédiatement et autant de fois que tu veux.')+tabs()+`<section class="games-end-card ${s.won?'games-end-win':'games-end-loss'}" role="status" aria-live="assertive"><div class="games-end-emblem">${s.won?'🏆':'✕'}</div><div class="eyebrow">${h(LABELS[s.type])}</div><h2>${s.won?'VICTOIRE !':'DÉFAITE !'}</h2><p>${s.won?'Bravo ! Tu as réussi toutes les étapes.':'Trois erreurs consécutives ont terminé la partie.'}</p>
     ${s.last?.rightAnswer&&!s.won?`<p>Bonne réponse : <b>${h(s.last.rightAnswer)}</b></p>`:''}
@@ -107,8 +159,8 @@ export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'})
   }
   function mini(){const s=snapshot;if(!s)return intro('Mini-<em>jeux.</em>','Jeux sans limite.')+tabs()+loadingBox();if(!s.league)return intro('Mini-<em>jeux.</em>','Mise à jour des règles en cours.')+tabs()+'<section class="panel"><h3>Installation du nouveau serveur nécessaire</h3><p>Les parties illimitées seront disponibles après la mise à jour de la fonction Supabase.</p><button class="btn" data-games="refresh">Actualiser</button></section>';if(s.active&&(!s.active.done||(s.active.type==='memory'&&s.active.revealUntil>serverNow())))return miniSession(s.active);if(s.active?.done&&section==='mini'&&!showPicker)return miniResult(s.active);
     const daily=s.daily||{wins:[],played:[],claimed:false};const count=TYPES.filter(type=>daily.wins?.includes(type)).length;
-    return intro('Mini-<em>jeux.</em>','Un seul mini-jeu : le Memory. Rejoue sans limite et récupère tes récompenses.')+tabs()+
-    `<div class="games-mini-grid">${TYPES.map(type=>`<article class="games-mini-item"><div class="games-mini-emoji">${ICONS[type]}</div><div class="eyebrow">${daily.wins?.includes(type)?'✓ DÉFI DU JOUR VALIDÉ':'PARTIES ILLIMITÉES'}</div><h3>${h(LABELS[type])}</h3><p>${HELP[type]}</p><p>🏅 Victoire : <strong>+${n(s.settings?.[type])} crédits</strong></p><button class="btn btn-primary" data-games="start" data-type="${type}">Jouer maintenant</button></article>`).join('')}</div>
+    return intro('Mini-<em>jeux.</em>','Le Memory et Mashup Match : deux façons de relever les défis du multivers.')+tabs()+
+    `<div class="games-mini-grid"><article class="games-mini-item games-match-card"><div class="games-mini-emoji">✦</div><div class="eyebrow">CAMPAGNE · 100 NIVEAUX</div><h3>Mashup Match</h3><p>Combine les éclats et les pouvoirs à travers dix mondes originaux.</p><button class="btn btn-primary" data-games="match">Explorer les mondes</button></article>${TYPES.map(type=>`<article class="games-mini-item"><div class="games-mini-emoji">${ICONS[type]}</div><div class="eyebrow">${daily.wins?.includes(type)?'✓ DÉFI DU JOUR VALIDÉ':'PARTIES ILLIMITÉES'}</div><h3>${h(LABELS[type])}</h3><p>${HELP[type]}</p><p>🏅 Victoire : <strong>+${n(s.settings?.[type])} crédits</strong></p><button class="btn btn-primary" data-games="start" data-type="${type}">Jouer maintenant</button></article>`).join('')}</div>
     <section class="panel games-panel"><h3>✦ Défi quotidien</h3><p class="games-muted">Remporte une partie de Memory aujourd’hui pour récupérer ${n(s.settings?.daily)} crédits de bonus. Les autres victoires restent récompensées.</p><div class="games-progress"><strong>${count} / 1 défi validé</strong><button class="btn btn-primary" data-games="daily" ${count!==1||daily.claimed?'disabled':''}>${daily.claimed?'Bonus déjà obtenu':'Réclamer le bonus'}</button></div></section>`;
   }
   let showPicker=false;
@@ -127,38 +179,72 @@ export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'})
     refreshTimer();
   }
   function refreshTimer(){
-    const c=snapshot?.current,clock=$('games-clock');if(!c)return;
-    const diff=Math.max(0,c.closesAt-serverNow()),sec=Math.ceil(diff/1000);
-    if(clock)clock.textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');
-    if(diff<=20000&&diff>0&&snapshot.bet&&lastAlert!==c.id){
-      lastAlert=c.id;toast('🔔 Ton combat IA commence dans 20 secondes !');
+    const value=clockState(),node=$('games-clock'),panel=$('games-casino-clock-panel');
+    if(node)node.textContent=value.text;
+    if(panel){panel.dataset.casinoPhase=value.phase;panel.dataset.casinoUrgent=String(value.urgent);}
+    const phase=$('games-casino-phase');if(phase)phase.textContent=value.label;
+    const sync=$('games-casino-sync');if(sync)sync.textContent=networkError?'Connexion interrompue · synchronisation nécessaire':value.stale?'Actualisation de l’horaire…':value.deadline===null?'En attente du calendrier du serveur':'Horaire synchronisé avec la ligue';
+    const alert=$('games-casino-alert');if(alert)alert.hidden=!value.urgent;
+    const button=document.querySelector('[data-games="bet"]');if(button)button.disabled=loading||!value.canBet;
+    if(value.urgent&&snapshot?.bet&&lastAlert!==value.matchId){
+      lastAlert=value.matchId;toast('🔔 Ton combat IA commence dans 20 secondes !');
       if(typeof Notification!=='undefined'&&Notification.permission==='granted'){try{new Notification('Mashup · Casino IA',{body:'Ton combat commence dans 20 secondes !'});}catch{}}
     }
   }
-  function activateTicker(){if(tick)return;tick=setInterval(()=>{
-    refreshTimer();const now=Date.now();// Ajuster la fréquence au besoin : alerte et combat en direct restent réactifs.
-    const closeIn=(snapshot?.current?.closesAt??0)-serverNow();
-    const nearFight=closeIn>0&&closeIn<=30000;
-    const watching=available()&&section==='casino';
-    const hasBet=!!snapshot?.bet;
-    const allowed=!!getUser()&&(watching||hasBet)&&!document.hidden;
-    const pace=snapshot?.live?.live||(nearFight&&(watching||hasBet))?3000:watching?15000:hasBet?20000:Infinity;
-    if(allowed&&!loading&&now-lastPoll>=pace){
-      lastPoll=now;request('status');
-    }
-  },1000);}
-  async function mount(element){root=element;section='hub';showPicker=true;activateTicker();draw();await request('status');}
+  function stopTicker(){if(tick!==null){if(typeof clearInterval==='function')clearInterval(tick);tick=null;}}
+  function activateTicker(){
+    if(tick!==null||destroyed)return;
+    tick=setInterval(()=>{
+      if(destroyed)return;
+      refreshTimer();
+      const now=Date.now(),value=clockState(),nearFight=value.remainingMs!==null&&value.remainingMs<=30000;
+      const watching=available()&&section==='casino',hasBet=!!snapshot?.bet;
+      const allowed=!!getUser()&&(watching||hasBet)&&!document.hidden;
+      const live=snapshot?.live&&!snapshot.live.finished&&!['finished','settled'].includes(snapshot.live.status)&&snapshot.live.winner==null;
+      const pace=live||nearFight?3000:watching?15000:hasBet?20000:Infinity;
+      if(allowed&&!loading&&now-lastPoll>=pace){lastPoll=now;request('status');}
+      if(!available()&&!hasBet)stopTicker();
+    },1000);
+  }
+  function wake(){
+    if(destroyed||!getUser()||document.hidden)return;
+    refreshTimer();
+    if((available()&&section==='casino')||snapshot?.bet){lastPoll=Date.now();request('status');}
+  }
+  async function mount(element){
+    if(destroyed)return;
+    root=element;section='hub';showPicker=true;activateTicker();draw();await request('status');
+  }
+  function unmount(){
+    root=null;
+    if(memoryRevealTimer){clearTimeout(memoryRevealTimer);memoryRevealTimer=null;}
+    if(!snapshot?.bet)stopTicker();
+  }
+  function clearSession(){
+    generation++;activeRequest=null;loading=false;networkError=false;snapshot=null;clock.clear();
+    lockedUntil=0;lastAlert='';lastPoll=0;section='hub';showPicker=true;unmount();stopTicker();
+  }
+  function getActivity(){
+    const active=snapshot?.active;
+    const playing=!!active&&(!active.done||active.type==='memory'&&(active.revealUntil||0)>serverNow());
+    return {busy:loading,active:playing,reason:loading?'Une opération des jeux est en cours.':playing?'Une partie de Memory est en cours.':''};
+  }
   async function mountAdmin(element){
     if(getUser()?.role!=='admin')return;const box=document.createElement('section');box.className='panel games-admin-settings';box.id='games-admin-settings';
     box.innerHTML='<div class="eyebrow">RÉGLAGES · LIGUE & MINI-JEUX</div><h3>Casino IA — Cotes et récompenses</h3><div id="games-admin-form">Chargement…</div>';element.appendChild(box);
     const data=await request('status');if(!data||!box.isConnected)return;
     const keys=[['memory','Crédits gagnés · Memory',0,5000,1],['daily','Bonus du défi quotidien',0,5000,1],['multiplierSimple','Coefficient de cotes · Simple',1,10,.01],['multiplierDouble','Coefficient de cotes · Double',1,10,.01],['doubleChance','Fréquence Double (0 à 1)',0,1,.01]];
-    $('games-admin-form').innerHTML=`<div class="games-admin-grid">${keys.map(([k,title,min,max,step])=>`<label>${title}<input data-games-setting="${k}" type="number" min="${min}" max="${max}" step="${step}" value="${Number(data.settings[k])}"></label>`).join('')}</div><p class="games-muted">Les cotes réelles évoluent selon l’Elo, les victoires et la forme des IA. Ces deux coefficients modifient le niveau des cotes des nouveaux combats (valeurs actuellement 1,8 simple et 2,6 double). Les paris déjà posés ne changent pas. Les crédits gagnés en mini-jeux sont attribués à chaque victoire.</p><button class="btn btn-primary" data-games="save-admin">Enregistrer les réglages</button>`;
+    const form=$('games-admin-form');if(!form||getUser()?.role!=='admin')return;
+    form.innerHTML=`<div class="games-admin-grid">${keys.map(([k,title,min,max,step])=>`<label>${title}<input data-games-setting="${k}" type="number" min="${min}" max="${max}" step="${step}" value="${Number(data.settings?.[k]||0)}"></label>`).join('')}</div><p class="games-muted">Les cotes réelles évoluent selon l’Elo, les victoires et la forme des IA. Ces deux coefficients modifient le niveau des cotes des nouveaux combats (valeurs actuellement 1,8 simple et 2,6 double). Les paris déjà posés ne changent pas. Les crédits gagnés en mini-jeux sont attribués à chaque victoire.</p><button class="btn btn-primary" data-games="save-admin">Enregistrer les réglages</button>`;
   }
-  document.addEventListener('click',async event=>{
-    const target=event.target.closest('[data-games]');if(!target)return;
-    const action=target.dataset.games;if(action==='arena'){showArena();return;}
-    if(['hub','casino','mini'].includes(action)){section=action;if(action==='mini')showPicker=true;draw();if(action!=='hub')request('status');return;}
+  async function handleClick(event){
+    const target=event.target?.closest?.('[data-games]');if(!target||destroyed)return;
+    const action=target.dataset.games;
+    const admin=action==='save-admin'&&getUser()?.role==='admin'&&target.closest('.games-admin-settings');
+    if(!admin&&(!available()||root.contains?.(target)===false))return;
+    if(action==='arena'){showArena();return;}
+    if(action==='match'){showMatch();return;}
+    if(['hub','casino','mini'].includes(action)){section=action;if(action==='mini')showPicker=true;draw();if(typeof window!=='undefined')window.scrollTo?.({top:0,behavior:'instant'});if(action!=='hub')request('status');return;}
     if(action==='refresh'){await request('status');return;}
     if(action==='notifications'){
       if(typeof Notification==='undefined')return toast('Ton navigateur ne prend pas en charge les notifications.',true);
@@ -166,12 +252,14 @@ export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'})
     }
     if(!snapshot)return;
     if(action==='bet'){
+      if(loading)return toast('Synchronisation en cours. Réessaie dans un instant.',true);
+      if(!clockState().canBet){toast('Les paris attendent une confirmation récente du calendrier. Actualise la ligue.',true);await request('status');return;}
       const amount=Number($('games-amount')?.value),side=Number(document.querySelector('input[name="games-side"]:checked')?.value||0);
       if(!Number.isSafeInteger(amount)||amount<10||amount>25000)return toast('Choisis une mise entière entre 10 et 25 000.',true);
       if(!confirm(`Miser ${n(amount)} crédits sur ${sideName(snapshot.current,side)} ? La mise est débitée immédiatement.`))return;
       await request('bet',{amount,side});return;
     }
-    if(action==='start'||action==='replay'){showPicker=false;await request('start',{type:'memory'});section='mini';draw();return;}
+    if(action==='start'||action==='replay'){const data=await request('start',{type:'memory'});if(data&&available()){showPicker=false;section='mini';draw();}return;}
     if(action==='flip'){
       if((snapshot.active?.revealUntil||0)>serverNow()||loading)return;
       await request('move',{index:Number(target.dataset.index),sessionId:snapshot.active?.id});return;
@@ -184,8 +272,13 @@ export function createGamesUI({api,toast,getUser,showArena,getView=()=>'games'})
     if(action==='daily'){const r=await request('daily',{});if(r)toast('Bonus quotidien attribué !');return;}
     if(action==='save-admin'){
       const settings={};document.querySelectorAll('#games-admin-form [data-games-setting]').forEach(x=>settings[x.dataset.gamesSetting]=Number(x.value));
-      try{const r=await api('admin',settings);snapshot=r;toast('Réglages enregistrés pour tout Mashup.');}catch(err){toast(err.message,true);}return;
+      if(getUser()?.role!=='admin')return;
+      const r=await request('admin',settings);if(r)toast('Réglages enregistrés pour tout Mashup.');return;
     }
-  });
-  return {mount,mountAdmin};
+  }
+  document.addEventListener('click',handleClick);
+  document.addEventListener('visibilitychange',wake);
+  if(typeof window!=='undefined'){window.addEventListener('online',wake);window.addEventListener('pageshow',wake);window.addEventListener('focus',wake);}
+  function destroy(){clearSession();destroyed=true;document.removeEventListener?.('click',handleClick);document.removeEventListener?.('visibilitychange',wake);if(typeof window!=='undefined'){window.removeEventListener?.('online',wake);window.removeEventListener?.('pageshow',wake);window.removeEventListener?.('focus',wake);}}
+  return {mount,mountAdmin,unmount,clearSession,destroy,getActivity};
 }
