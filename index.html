@@ -1452,7 +1452,6 @@ function weightedCard(minRarity){
 }
 function rollCard(){const options=allCards().filter(c=>RARITIES[c.rarity]);return options[Math.floor(Math.random()*options.length)];}
 function confirmPackOnServer(id,openingId){return api('/api/packs/commit',{id,openingId});}
-function cancelPackOnServer(id,openingId){return api('/api/packs/cancel',{id,openingId});}
 async function openPack(id){
  if(onlineUser&&pendingPackStore.read(onlineUser.id)){toast('Confirme ou abandonne ton booster en attente avant d’en ouvrir un autre.',true);return;}
  if(!onlineUser||packLoading||packPendingId||packFinalizing)return;
@@ -1465,7 +1464,7 @@ async function openPack(id){
  document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Préparation de ton booster"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Préparation de ton booster…</h2><p>Le serveur prépare le tirage. Aucun crédit n'a été débité.</p><button class="btn btn-sm" data-action="cancel-pack-loading" type="button">Annuler</button></section></div>`;
  try{
   const r=await api('/api/packs/prepare',{id,attemptId});
-  if(packCancelRequested){packCancelPromise=cancelPackOnServer(id,r.openingId).catch(()=>{});try{await packCancelPromise;}finally{if(attemptEpoch===sessionEpoch)packCancelPromise=null;}if(attemptEpoch===sessionEpoch)document.getElementById('modal-root').innerHTML='';return;}
+  if(packCancelRequested){packCancelPromise=api('/api/packs/cancel',{id,openingId:r.openingId}).catch(()=>{});try{await packCancelPromise;}finally{if(attemptEpoch===sessionEpoch)packCancelPromise=null;}if(attemptEpoch===sessionEpoch)document.getElementById('modal-root').innerHTML='';return;}
   packPendingId=r.openingId;packPendingPackId=id;
   pendingPackStore.remember(onlineUser?.id,id,r.openingId);
   packResults=r.results;packRevealed=new Set();showOpening();
@@ -1587,7 +1586,8 @@ async function abandonPendingPack(){
  if(!confirm('Abandonner ce tirage non terminé ? Les cartes non confirmées ne seront pas obtenues.'))return;
  pendingPackRecoveryBusy=true;
  try{
-   await cancelPackOnServer(ticket.packId,ticket.openingId);
+   // A prepared pack is not charged; an abandoned receipt can be replaced by the next attempt.
+   // Do not create a second network path for cancellation.
    pendingPackStore.forget(ticket.userId,ticket.openingId);
    await loadOnlineGame();
    toast('Tirage abandonné. Aucun nouveau débit effectué.');
