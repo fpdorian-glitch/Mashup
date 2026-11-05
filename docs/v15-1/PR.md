@@ -32,3 +32,6 @@ gh pr create --repo fpdorian-glitch/Mashup --base main --head feature/mashup-v15
 ```
 
 [Ouvrir la création de PR](https://github.com/fpdorian-glitch/Mashup/compare/main...feature/mashup-v15-1-arena-reborn?expand=1).
+
+
+État réel : branche poussée. La création automatique de PR a échoué sur `api.github.com/graphql` (`Forbidden`). Aucune PR distante, fusion ou publication réalisée. Titre, description et preuves prêts pour la revue ; statut CI distant à consulter dans GitHub.

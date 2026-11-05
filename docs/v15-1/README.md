@@ -76,3 +76,12 @@ Avant une publication : approuver les rendus, tester Safari/iPhone et Chrome/And
 Aucune migration DB n’est nécessaire. Avant fusion, abandonner la branche ne change rien à la production. Après une éventuelle publication approuvée, annuler les commits frontend V15.1 ou rétablir ensemble les fichiers et versions de `19375ce` ; ne pas restaurer un ancien inventaire par-dessus de nouvelles transactions légitimes.
 
 Titre, description et état réel de la livraison GitHub : [PR.md](PR.md). Aucune fusion sur main n’est autorisée par cette livraison.
+
+
+## Livraison GitHub effective
+
+Branche envoyée sur origin : **feature/mashup-v15-1-arena-reborn**. Fonctionnalités : `e6c6f95` ; preuves et démonstrations : `f3c3719`. Main reste sur `19375ce`.
+
+La commande de création de pull request a été exécutée ; l’accès à `https://api.github.com/graphql` a répondu **Forbidden**. **Aucune PR distante n’a été créée.** La configuration réseau actuelle n’autorise pas `api.github.com` ; les droits API devront aussi être vérifiés une fois ce domaine accessible. Aucun secret supplémentaire demandé ou copié. Le statut CI distant n’a pas pu être consulté par cette API ; les validations locales sont celles documentées ci-dessus.
+
+[Ouvrir la création de PR](https://github.com/fpdorian-glitch/Mashup/compare/main...feature/mashup-v15-1-arena-reborn?expand=1) · [Description prête](PR.md). Aucune fusion, aucun déploiement.
