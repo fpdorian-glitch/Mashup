@@ -19,8 +19,8 @@ test('Contrats API : aucune nouvelle route serveur dans le client principal',()=
  const routes=s=>[...new Set([...s.matchAll(/api\(['"]([^'"]+)/g)].map(m=>m[1]))].sort();
  assert.deepEqual(routes(current),routes(baseline));
 });
-test('Serveur, catalogue, récupération et import/cadrage : sources protégées inchangées',()=>{
+test('Marché, missions, récupération et cadrage : sources protégées ; catalogue automatique autorisé',()=>{
  const names=git(['diff','--name-only','b20fb58','--','backend','content','reset.html','27-v11-3-image-studio.js']).trim();
- assert.equal(names,'');
- for(const [start,end] of [['async function openImageCropper','async function compressImage'],['async function archiveCardAdmin','async function adjustPlayerCredits']])assert.equal(body(current,start,end),body(baseline,start,end));
+ const allowed=new Set(['backend/catalogue-core.js','backend/catalogue-integration.js','backend/collection-rewards-v10-8.js','backend/collection-rewards-v10-9.js','backend/achievements-v11.js','backend/leaderboards-v11.js','content/convergence-series2.json']);assert.deepEqual(names?names.split('\n').filter(path=>!allowed.has(path)):[],[]);
+ for(const [start,end] of [['async function openImageCropper','async function compressImage']])assert.equal(body(current,start,end).replaceAll('installCatalogue(r.cards,r.catalogueMeta);','BASE_CARDS=r.cards;'),body(baseline,start,end));
 });

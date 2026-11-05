@@ -1,12 +1,13 @@
 /* Mashup V10.8 — collection milestones, one-time server-validated rewards. */
-export function createCollectionRewardsUI({api,esc,toast,onState,onVouchers}){
-  let items=[],inFlight=null,claiming=false,lastFetch=0;
+export function createCollectionRewardsUI({api,esc,toast,onState,onVouchers,getMetrics}){
+  let items=[],inFlight=null,claiming=false,lastFetch=0,revision=0;
   const count=n=>Math.max(0,Number(n)||0).toLocaleString('fr-FR');
   function render(number){
     const info=items.find(x=>x.series===Number(number));
+    const metrics=getMetrics?.(Number(number));
     if(!info)return '<section class="collection-rewards-panel" id="collection-rewards-panel" data-series="'+Number(number)+'"><p class="small-note">Chargement des récompenses de collection…</p></section>';
     const tiers=(info.tiers||[]).map(t=>{
-      const ready=!!t.unlocked,claimed=!!t.claimed,pct=Number(t.percent)||0;
+      const ready=!!t.unlocked&&(!metrics||metrics.total>0),claimed=!!t.claimed,pct=Number(t.percent)||0;
       const description=pct===100?'Titre exclusif : Maître de la série':pct===50?'Palier collector':pct===75?'Bonus de collection avancée':'Première étape de la série';
       const bonus=t.boosterId?'<small class="reward-booster-label">🎁 1 booster '+esc(t.boosterName||t.boosterId)+' offert</small>':'';
       const action=claimed?'<span class="collection-reward-status">✓ Récompense récupérée</span>':ready?
@@ -14,9 +15,11 @@ export function createCollectionRewardsUI({api,esc,toast,onState,onVouchers}){
         '<span class="collection-reward-status">🔒 À débloquer</span>';
       return '<article class="collection-reward-tier '+(claimed?'claimed':ready?'ready':'')+'"><span class="collection-reward-pct">'+pct+' %</span><strong>+'+count(t.reward)+' crédits</strong>'+bonus+'<small>'+description+'</small>'+action+'</article>';
     }).join('');
-    return '<section class="collection-rewards-panel" id="collection-rewards-panel" data-series="'+Number(number)+'"><div class="collection-rewards-head"><div><span class="eyebrow">✦ RÉCOMPENSES DE COLLECTION</span><h3>Les trésors du Codex</h3><p>'+count(info.owned)+' / '+count(info.total)+' cartes normales distinctes. Les Secrètes sont hors progression.<br>Chaque palier est récupérable une seule fois par compte.</p></div>'+(info.badge?'<span class="collection-rewards-badge">✦ '+esc(info.badge)+'</span>':'')+'</div><div class="collection-rewards-grid">'+tiers+'</div></section>';
+    return '<section class="collection-rewards-panel" id="collection-rewards-panel" data-series="'+Number(number)+'"><div class="collection-rewards-head"><div><span class="eyebrow">✦ RÉCOMPENSES DE COLLECTION</span><h3>Les trésors du Codex</h3><p>'+count(metrics?.owned??info.owned)+' / '+count(metrics?.total??info.total)+' cartes normales distinctes. Les Secrètes sont hors progression.<br>Chaque palier est récupérable une seule fois par compte.</p></div>'+(info.badge?'<span class="collection-rewards-badge">✦ '+esc(info.badge)+'</span>':'')+'</div><div class="collection-rewards-grid">'+tiers+'</div></section>';
   }
+  function invalidate(){revision++;inFlight=null;lastFetch=0;const node=document.getElementById('collection-rewards-panel');if(node?.dataset.series)node.outerHTML=render(Number(node.dataset.series));}
   function setData(data){
+    revision++;inFlight=null;
     items=Array.isArray(data)?data:[];lastFetch=data?Date.now():0;
     const node=document.getElementById('collection-rewards-panel');
     if(node&&node.dataset.series)node.outerHTML=render(Number(node.dataset.series));
@@ -24,12 +27,13 @@ export function createCollectionRewardsUI({api,esc,toast,onState,onVouchers}){
   async function refresh({force=false}={}){
     if(inFlight)return inFlight;
     if(!force&&Date.now()-lastFetch<30000)return;
-    inFlight=(async()=>{
-      try{const reply=await api('/api/collection/rewards');if(Array.isArray(reply.collectionRewards))setData(reply.collectionRewards);}
-      catch(e){toast(e.message||'Récompenses de collection indisponibles.',true);}
-      finally{inFlight=null;}
-    })();
-    return inFlight;
+    const observed=revision;
+    const task=Promise.resolve().then(async()=>{
+      try{const reply=await api('/api/collection/rewards');if(observed===revision&&Array.isArray(reply.collectionRewards))setData(reply.collectionRewards);}
+      catch(e){if(observed===revision)toast(e.message||'Récompenses de collection indisponibles.',true);}
+      finally{if(inFlight===task)inFlight=null;}
+    });
+    inFlight=task;return task;
   }
   async function claim(series,percent){
     if(claiming||!Number.isInteger(series)||!Number.isInteger(percent))return;
@@ -75,5 +79,5 @@ export function createCollectionRewardsUI({api,esc,toast,onState,onVouchers}){
       if(r.ok){toast('Récompenses de collection enregistrées.');adminCfg.rewards=r.rewards;await refresh({force:true});}
     }catch(e){toast(e.message||'Enregistrement impossible.',true);}
   }
-  return {render,setData,refresh,claim,adminMarkup,loadAdmin,saveAdmin};
+  return {render,setData,refresh,claim,invalidate,adminMarkup,loadAdmin,saveAdmin};
 }

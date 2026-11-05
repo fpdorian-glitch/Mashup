@@ -48,6 +48,7 @@ a{color:inherit}button{font:inherit;cursor:pointer}.wrap{max-width:1400px;margin
 </div>
 <script type="module">
 import {renderMashupV10Card} from './06-v10-cards.js?v=11.1';
+import {catalogueDisplayIndex,catalogueEditionText} from './58-catalogue.js?v=15.2.0';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const rarities={common:'Commune',rare:'Rare',epic:'Épique',legendary:'Légendaire',mythic:'Mythique',ultra:'Ultra'};
@@ -69,20 +70,21 @@ const notes={
  nebuleuse:['Acier stellaire','Plasma azur','Prisme violet','Soleil doré','Nébuleuse rouge','Blanc holographique','Plein cadre spatial','Chrome doré','Aurora verte'],
  eclipse:['Argent patiné','Bleu spectral','Violet nocturne','Couronne solaire','Éclat cramoisi','Cristal lunaire','Illustration intégrale','Or noir','Cercles secrets']
 };
+const demoNumbers=catalogueDisplayIndex(data.map((c,i)=>({...c,editionSeries:2,editionNumber:i+1})));
 const context={
  esc, safeImage:()=>'',CSSColor:(x,f)=>/^#[a-f\d]{6}$/i.test(x||'')?x:f,
  statValue:(c,k)=>Number(c[k])||0,
  STAT_FIELDS:[{key:'power',label:'Puissance'},{key:'size',label:'Taille'},{key:'def',label:'Défense'},{key:'aura',label:'Aura'},{key:'intelligence',label:'Intelligence'}],
  RARITIES:Object.fromEntries(Object.keys(rarities).map(x=>[x,{label:rarities[x]}])),
  rarityName:rarityLabel,
- editionText:c=>'N°'+String(c.editionNumber).padStart(3,'0')+'/130 · S02',
+ editionText:c=>catalogueEditionText(c,demoNumbers),
  onlineUser:{role:'admin'},
  state:{owned:Object.fromEntries(data.map(c=>[c.id,1])),artwork:{}}
 };
 function render(theme){
  const root=$('grid');root.replaceChildren();
  for(let i=0;i<data.length;i++){
-  const c={...data[i],editionSeries:2,editionNumber:i+1,editionTotal:130,color1:'#3b8195',color2:'#0f2544',variant:data[i].variant||'standard'};
+  const c={...data[i],editionSeries:2,editionNumber:i+1,color1:'#3b8195',color2:'#0f2544',variant:data[i].variant||'standard'};
   const item=document.createElement('div');item.className='sample';
   item.innerHTML=renderMashupV10Card(c,{lazy:false},context)+
    '<div class="sample-name">'+names[i]+'</div><div class="sample-note">'+notes[theme][i]+'</div>';

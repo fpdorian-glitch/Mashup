@@ -1,4 +1,6 @@
-/* Mashup V10.9: admin-configurable collection rewards & one-time booster coupons. */
+/* Mashup V10.9: admin-configurable collection rewards & one-time booster coupons.
+ * Load catalogue-core.js first: catalogue membership is the only denominator.
+ */
 const V109_COLLECTION_DEFAULTS={25:{credits:300,boosterId:''},50:{credits:600,boosterId:'cosmos'},75:{credits:1000,boosterId:''},100:{credits:2000,boosterId:''}};
 function collectionRewardConfig(db){
  const out={};const packs=getPackMap(db);
@@ -26,16 +28,19 @@ function collectionRewardSummary(u,db){
  const claimed=u.collectionRewardsV108&&typeof u.collectionRewardsV108==='object'&&!Array.isArray(u.collectionRewardsV108)?u.collectionRewardsV108:{};
  const catalog=Array.isArray(db.cards)?db.cards:[];
  const cfg=collectionRewardConfig(db);
- return (Array.isArray(db.series)?db.series:[]).map(series=>{
+ const seenSeries=new Set();
+ return (Array.isArray(db.series)?db.series:[]).filter(series=>{
+   const number=Number(series?.number);
+   if(!Number.isSafeInteger(number)||number<1||seenSeries.has(number))return false;
+   seenSeries.add(number);return true;
+ }).map(series=>{
    const number=Number(series.number);
-   const cards=catalog.filter(c=>!c.archived&&c.variant!=='secret'&&(Number(c.editionSeries)||1)===number);
-   const total=number===1?158:(Number.isSafeInteger(Number(series.targetCount))&&Number(series.targetCount)>0?Number(series.targetCount):cards.length||1);
-   const owned=cards.filter(c=>Number(u.state?.owned?.[c.id])>0).length;
-   return {series:number,name:String(series.name||'Série'),owned,total,percent:Math.min(100,Math.floor(100*owned/Math.max(1,total))),
+   const {total,owned,percent}=catalogueSeriesMetrics(catalog,number,u.state?.owned||{});
+   return {series:number,name:String(series.name||'Série'),owned,total,percent,
      tiers:Object.entries(cfg).map(([threshold,prize])=>{
        const pct=Number(threshold);
        return {percent:pct,reward:prize.credits,boosterId:prize.boosterId,boosterName:prize.boosterName,
-         unlocked:owned*100>=total*pct,claimed:claimed[number+':'+pct]===true};
+         unlocked:total>0&&owned*100>=total*pct,claimed:claimed[number+':'+pct]===true};
      }),badge:claimed[number+':100']===true?'Maître de la série':null
    };
  }).filter(s=>Number.isSafeInteger(s.series)&&s.series>0);

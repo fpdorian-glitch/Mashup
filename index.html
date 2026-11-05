@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#090d16" />
-  <meta name="mashup-version" content="15.1.0" />
+  <meta name="mashup-version" content="15.2.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Mashup" />
   <meta name="description" content="Mashup — Le jeu de cartes de tous tes univers." />
@@ -1067,25 +1067,26 @@
 @media(prefers-reduced-motion:reduce){.waiting-clash .pvp-card-pair,.waiting-clash .vs,.waiting-clash .vs::before,.waiting-clash .vs::after{animation:none!important}}
 
 </style>
-<script src="./09-mashup-updates.js?v=15.1.0" defer></script>
+<script src="./09-mashup-updates.js?v=15.2.0" defer></script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.76.1/+esm';
-import { albumMarkup } from './43-v15-album.js?v=15.0.0';
+import { albumMarkup } from './43-v15-album.js?v=15.2.0';
+import { createAutoCatalogue, catalogueIsActive, catalogueOwnedCopies } from './58-catalogue.js?v=15.2.0';
 import { inspectionObjectMarkup, physicalLightingForTilt } from './46-v15-living-cards.js?v=15.0.0';
 import { createRevealTimeline } from './49-v15-reveal-timeline.js?v=15.0.0';
 import { createArenaRebornPresentation } from './53-v15-1-arena.js?v=15.1.0';
-import { arenaBattleMarkup } from './57-v15-1-battle-view.js?v=15.1.0';
+import { arenaBattleMarkup } from './57-v15-1-battle-view.js?v=15.2.0';
 import { sealedPackMarkup, summaryMarkup, mountSealedPack } from './38-v14-booster.js?v=15.0.0';
-import { createCatalogueIndex, cardSearchText, normalizeSearch, renderCardWindow, inspectionLimits, presentBalance, reflectionForTilt } from './41-v14-runtime.js?v=14.0.1';
-import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=15.0.0';
+import { cardSearchText, normalizeSearch, renderCardWindow, inspectionLimits, presentBalance, reflectionForTilt } from './41-v14-runtime.js?v=14.0.1';
+import { createMobilePresentation, homeMarkup } from './35-mobile-premium.js?v=15.2.0';
 import { createGamesUI } from './04-games-ui.js?v=13.0.0';
 import { renderMashupV10Card } from './06-v10-cards.js?v=15.0.0';
-import { createDevelopmentJournal } from './10-development-journal.js?v=15.1.0';
+import { createDevelopmentJournal } from './10-development-journal.js?v=15.2.0';
 import { startMashupV12Performance } from './32-v12-performance.js?v=14.0.0';
 import { createBoosterRevealFX } from './12-booster-reveal.js?v=15.0.0';
 import { createImageStudio } from './27-v11-3-image-studio.js?v=11.3.0';
 import { createMissionsUI } from './15-missions-ui.js?v=10.6';
-import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=10.9';
+import { createCollectionRewardsUI } from './18-v10-8-collection.js?v=15.2.0';
 import { createMarketUI } from './20-market-v10-9.js?v=15.1.0';
 import { createV11UI } from './22-v11-economy-ui.js?v=11.4.0';
 import { createSaleCardPicker } from './29-v11-4-market-picker.js?v=11.4.0';
@@ -1105,11 +1106,11 @@ const STAT_FIELDS = [
   {key:'intelligence', label:'Intelligence', short:'INT', emoji:'◈'}
 ];
 const imageStudio=createImageStudio({
-  getCards:()=>BASE_CARDS,
+  getCards:()=>allCards(),
   getAdmin:()=>onlineUser?.role==='admin',
   escapeHtml:esc,
   openCropper:(file,id)=>openImageCropper(file,id),
-  saveCard:async(card,art)=>{const previous=new Map(BASE_CARDS.filter(c=>c.art).map(c=>[c.id,c.art]));const r=await api('/api/admin/cards',{card:{...card,art}});BASE_CARDS=(r.cards||BASE_CARDS).map(c=>({...c,art:c.art||(c.id===card.id?art:previous.get(c.id)||'')}));return r;},
+  saveCard:async(card,art)=>{const previous=new Map(BASE_CARDS.filter(c=>c.art).map(c=>[c.id,c.art]));const r=await api('/api/admin/cards',{card:{...card,art}});installCatalogue((r.cards||BASE_CARDS).map(c=>({...c,art:c.art||(c.id===card.id?art:previous.get(c.id)||'')})),r.catalogueMeta);return r;},
   notify:(message,error=false)=>toast(message,error)
 });
 let BASE_CARDS = [
@@ -1190,7 +1191,7 @@ async function withArenaRequest(action){
 const developmentJournal=createDevelopmentJournal({api,getUser:()=>onlineUser,esc,toast});
 const boosterFX=createBoosterRevealFX();
 const missionsUI=createMissionsUI({api,getUser:()=>onlineUser,esc,toast,onState:next=>{state=next;updateBalances();}});
-const collectionRewardsUI=createCollectionRewardsUI({api,esc,toast,onState:next=>{state=next;updateBalances();},onVouchers:next=>{packVouchers=next||{};}});
+const collectionRewardsUI=createCollectionRewardsUI({api,esc,toast,getMetrics:number=>currentCatalogue().metrics(number,state.owned),onState:next=>{state=next;updateBalances();},onVouchers:next=>{packVouchers=next||{};}});
 const v11UI=createV11UI({
  api,esc,toast,
  getCards:()=>allCards().filter(c=>!c.hidden&&c.variant!=='secret'&&Number(state.owned?.[c.id])>0)
@@ -1230,7 +1231,7 @@ let arenaMode='simple';
 let arenaSection='campaign'; // campagne IA ou combats joueurs, tous deux dans l'onglet Arène
 let deckVisibleLimit=24;
 let deckSelectionMode='simple',deckRarity='all',deckUniverse='all',deckSort='rarity-desc',deckSearch='',deckOwnership='owned';
-let SERIES=[{number:1,name:'Série 01 · Originelle',description:'158 cartes',color:'#c5db90',cover:'✦',targetCount:158}],SERIES_TOTALS={},collectionSeries=0,seriesDraft=[];
+let SERIES=[{number:1,name:'Série 01 · Originelle',description:'Collection originelle',color:'#c5db90',cover:'✦'}],SERIES_TOTALS={},collectionSeries=0,seriesDraft=[];
 let myPublicProfile=null,onlineLobbyData=null,onlineBusy=false;
 let incomingChallenge=null;let invitationPollBusy=false;
 let battleRewards={simple:{win:150,bonus:55,maxWin:690,winDust:10,bonusDust:3,maxDust:50,draw:40,loss:20},double:{win:150,bonus:55,maxWin:690,winDust:10,bonusDust:3,maxDust:50,draw:40,loss:20}};
@@ -1269,22 +1270,39 @@ function loadSave(){
   return clone(DEFAULT_SAVE);
 }
 function save(){updateBalances();if(onlineUser)savePreferences();}
-const catalogueIndex=createCatalogueIndex();
+const autoCatalogue=createAutoCatalogue(BASE_CARDS);
+let catalogueBase=null,catalogueCustom=null,catalogueBaseSize=-1,catalogueCustomSize=-1,catalogueMeta=null,activeCards=[],activeCardIndex=new Map();
 const cardNameCollator=new Intl.Collator('fr');
-function allCards(){return catalogueIndex.all(BASE_CARDS,state.custom);}
-function getCard(id){return catalogueIndex.get(id,BASE_CARDS,state.custom);}
+function currentCatalogue(){
+ const custom=Array.isArray(state?.custom)?state.custom:[];
+ if(catalogueBase!==BASE_CARDS||catalogueCustom!==custom||catalogueBaseSize!==BASE_CARDS.length||catalogueCustomSize!==custom.length){
+  autoCatalogue.replace([...BASE_CARDS,...custom],{publicMetadata:catalogueMeta});
+  activeCards=autoCatalogue.cards().filter(c=>!c.hidden);activeCardIndex=new Map(activeCards.map(c=>[c.id,c]));
+  catalogueBase=BASE_CARDS;catalogueCustom=custom;catalogueBaseSize=BASE_CARDS.length;catalogueCustomSize=custom.length;
+  SERIES_TOTALS=autoCatalogue.metadata().seriesTotals;
+ }
+ return autoCatalogue;
+}
+function installCatalogue(cards,publicMetadata=null){
+ BASE_CARDS=Array.isArray(cards)?cards:[];catalogueMeta=publicMetadata||null;catalogueBase=null;currentCatalogue();
+ collectionRewardsUI.invalidate?.();
+}
+function allCards(){currentCatalogue();return activeCards;}
+function getCard(id){currentCatalogue();return activeCardIndex.get(id);}
+function seriesDescription(series){const text=String(series?.description||'');return /^\s*\d+\s+cartes?(?:\s+normales?)?\s*$/i.test(text)?'':text;}
+
 function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function CSSColor(value,fallback){return /^#[0-9a-fA-F]{6}$/.test(value||'')?value:fallback;}
 function safeImage(uri){return typeof uri==='string'&&(/^(?:data:image\/(?:png|jpeg|webp);base64,[A-Za-z0-9+/=]+)$/.test(uri)||/^https:\/\/lxpgdhwfxeicuofycqup\.supabase\.co\/functions\/v1\/mashup-art\?card=[A-Za-z0-9_-]{1,95}&key=[a-fA-F0-9-]{36}$/.test(uri))?uri:'';}
 function updateBalances(){const motion=!matchMedia('(prefers-reduced-motion: reduce)').matches&&document.documentElement.dataset.m13Quality!=='eco';presentBalance(document.getElementById('coin-balance'),state.coins,{motion});presentBalance(document.getElementById('dust-balance'),state.dust,{motion});}
 function toast(message,error=false){const root=document.getElementById('toast-root');root.innerHTML=`<div class="toast ${error?'error':''}">${esc(message)}</div>`;clearTimeout(toast.t);toast.t=setTimeout(()=>root.innerHTML='',3300);}
 function newDraft(){return {editionSeries:SERIES.find(x=>x.number!==1)?.number||1,name:'',subtitle:'Une nouvelle légende',family:'Original',rarity:'rare',power:72,size:50,def:66,aura:78,intelligence:76,icon:'✨',color1:'#5c7f8d',color2:'#453d69',ability:'Talent unique',desc:'Une carte imaginée dans ton univers.',art:'',variant:'standard'};}
-function normalCards(){return allCards().filter(c=>!c.hidden&&c.variant!=='secret');}
-function ownedCount(){return normalCards().filter(c=>(state.owned[c.id]||0)>0).length;}
+function normalCards(){return currentCatalogue().metrics().cards;}
+function ownedCount(number){return currentCatalogue().metrics(number,state.owned).owned;}
 function ownedSecretCount(){return allCards().filter(c=>c.variant==='secret'&&(state.owned[c.id]||0)>0).length;}
-function totalCopies(){return Object.values(state.owned).reduce((s,n)=>s+(Number(n)||0),0);}
+function totalCopies(number){return currentCatalogue().cards().filter(c=>number===undefined||(Number(c.editionSeries)||1)===number).reduce((sum,c)=>sum+catalogueOwnedCopies(state.owned,c.id),0);}
 function rarityName(key){return (RARITIES[key]||RARITIES.common).label;}
-function editionText(card){const series=Number(card?.editionSeries)||1;const setting=SERIES.find(x=>x.number===series);const total=series===1?158:(Number(card?.editionTotal)||Number(setting?.targetCount)||Math.max(1,allCards().filter(c=>!c.hidden&&c.variant!=='secret'&&(Number(c.editionSeries)||1)===series).length));return card?.editionNumber?`N°${String(card.editionNumber).padStart(3,'0')}/${total} · S${String(series).padStart(2,'0')}`:'S'+String(series).padStart(2,'0');}
+function editionText(card){return currentCatalogue().editionText(card);}
 function cardRarityLabel(card){const base=rarityName(card?.rarity);return base+(card?.variant==='full_art'?' FA':card?.variant==='gold'?' Gold':card?.variant==='secret'?' Secrète':'');}
 function cardVariantRank(card){return (RARITIES[card?.rarity]?.sort??0)+(card?.variant==='full_art'?0.2:card?.variant==='gold'?0.35:card?.variant==='secret'?0.5:0);}
 function secretEnergyMarkup(){return `<svg class="secret-energy" viewBox="0 0 300 430" aria-hidden="true" preserveAspectRatio="none"><defs>
@@ -1334,6 +1352,7 @@ function activateOpeningOmen(card){
   return level;
 }
 function cardMarkup(card,options={}){
+  if(card&&!catalogueIsActive(card))return '<div class="card-empty archived-card" role="img" aria-label="Carte archivée, hors du catalogue actif">Carte archivée</div>';
   return renderMashupV10Card(card,options,{esc,safeImage,CSSColor,statValue,STAT_FIELDS,RARITIES,rarityName,cardRarityLabel,editionText,onlineUser,state});
 }
 function labelIntro(eyebrow,title,sub){return `<div class="page-lead"><div class="eyebrow">${eyebrow}</div><h1 class="heading">${title}</h1><p class="text-sub">${sub}</p></div>`;}
@@ -1397,7 +1416,7 @@ const gamesUI = createGamesUI({
 
 function renderPacks(){
   document.getElementById('page').innerHTML=`
-    ${homeMarkup({esc,cards:allCards(),renderCard:cardMarkup,packs:PACKS,state,user:onlineUser,owned:ownedCount(),total:normalCards().length})}
+    ${homeMarkup({esc,cards:allCards(),renderCard:cardMarkup,packs:PACKS,state,user:onlineUser,owned:ownedCount(),total:currentCatalogue().metrics().total})}
     <section><div class="section-top"><div><div class="eyebrow">01 / LES INVOCATIONS</div><h3 class="small-heading">Choisis ton booster.</h3><p>Chaque ouverture est une surprise. Les boosters cachent une galaxie, et les doublons rapportent des éclats.</p></div><span class="pill">✦ Des découvertes à chaque ouverture</span></div>
     <div class="pack-grid">${PACKS.map((p,i)=>`<article class="pack ${i===PACKS.length-1?'pack-featured':''}"><div class="pack-head"><span class="pack-index">PACK ${String(i+1).padStart(2,'0')}</span><span class="pack-chip">${esc(p.chip||((p.count>=5)?'5 CARTES':'ÉDITION'))}</span></div><div class="pack-visual"><div class="pack-art-gleam" style="--p1:${p.p1}"></div><div class="pack-pouch" style="--p1:${p.p1};--p2:${p.p2}">${GALAXY_MARK}</div></div><h4>${esc(p.name)}</h4><div class="pack-desc">${esc(p.description||`${p.count} cartes`)}</div><div class="pack-bottom"><span class="pack-price">${p.free&&!state.freePackUsed?'GRATUIT':Number(packVouchers[p.id])>0?'🎟 BON OFFERT ×'+Number(packVouchers[p.id]):p.price+(p.currency==='dust'?' <small>✧</small>':' <small>◉</small>')}</span><button class="btn btn-sm ${i===PACKS.length-1?'btn-primary':''}" data-action="open-pack" data-pack="${p.id}">Ouvrir <span class="arrow">↗</span></button></div></article>`).join('')}</div></section>
     ${missionsUI.homeTeaser()}
@@ -1531,7 +1550,7 @@ async function finishOpening(){
   if(Array.isArray(r.cards)){
     const artwork=new Map(BASE_CARDS.filter(c=>c&&!c.hidden&&c.art).map(c=>[c.id,c.art]));
     for(const drawn of r.results||[])if(drawn?.id&&drawn.art)artwork.set(drawn.id,drawn.art);
-    BASE_CARDS=r.cards.map(c=>({...c,art:c.art||artwork.get(c.id)||''}));
+    installCatalogue(r.cards.map(c=>({...c,art:c.art||artwork.get(c.id)||''})),r.catalogueMeta);
   }
   packPendingId=null;packPendingPackId=null;updateBalances();packFinalizing=false;
   closeModal();if(view!=='packs')setView('packs');collectionRewardsUI.refresh({force:true});toast('Booster confirmé : cartes ajoutées à ta collection !');
@@ -1549,14 +1568,14 @@ function closeModal(){
 }
 
 function seriesProgressMarkup(number){
- const ser=SERIES.find(x=>x.number===number);const total=number===1?158:(Number(ser?.targetCount)||1);
+ const metrics=currentCatalogue().metrics(number,state.owned),total=metrics.total;
  const visible=allCards().filter(c=>!c.hidden&&(Number(c.editionSeries)||1)===number&&(c.variant!=='secret'||onlineUser?.role==='admin'||(state.owned?.[c.id]>0)));
  const normals=visible.filter(c=>c.variant!=='secret');
  const unlocked=normals.filter(c=>(state.owned?.[c.id]||0)>0);
  const secrets=visible.filter(c=>c.variant==='secret'&&(state.owned?.[c.id]||0)>0);
- const rate=Math.min(100,Math.round(100*unlocked.length/Math.max(1,total)));
- const rares=Object.entries(RARITIES).map(([k,v])=>{const count=unlocked.filter(c=>c.rarity===k).length;const available=Number(SERIES_TOTALS[number]?.byRarity?.[k])||0;return `<div><small>${esc(v.label)}</small><b>${count} obtenue${count>1?'s':''}</b></div>`;}).join('');
- return `<div class="series-progress"><div class="flex-between"><strong>Progression · ${unlocked.length} carte${unlocked.length>1?'s':''} obtenue${unlocked.length>1?'s':''}</strong><strong>${rate} %</strong></div><div class="series-meter"><div class="series-meter-fill" style="width:${rate}%"></div></div><div class="series-progress-grid">${rares}<div><small>Variantes FA</small><b>${unlocked.filter(c=>c.variant==='full_art').length}</b></div><div><small>Variantes Gold</small><b>${unlocked.filter(c=>c.variant==='gold').length}</b></div>${secrets.length?`<div><small>✦ Cartes secrètes découvertes</small><b>${secrets.length}</b></div>`:''}</div>${secrets.length?`<div class="secret-discovery">✦ Surprise ! ${secrets.length} carte${secrets.length>1?'s':''} secrète${secrets.length>1?'s':''} dévoilée${secrets.length>1?'s':''} en dehors de la collection habituelle.</div>`:''}${state.latestCardId&&visible.some(c=>c.id===state.latestCardId&&(state.owned?.[c.id]||0)>0)?`<p class="small-note">Dernière découverte : <strong>${esc(visible.find(c=>c.id===state.latestCardId)?.name||'')}</strong></p>`:''}</div>`;
+ const rate=metrics.percent;
+ const rares=Object.entries(RARITIES).map(([k,v])=>{const count=unlocked.filter(c=>c.rarity===k).length;return `<div><small>${esc(v.label)}</small><b>${count} obtenue${count>1?'s':''}</b></div>`;}).join('');
+ return `<div class="series-progress"><div class="flex-between"><strong>Progression · <span data-catalogue-progress data-series="${number}">${metrics.owned} / ${total}</span> cartes normales obtenues</strong><strong>${rate} %</strong></div><div class="series-meter"><div class="series-meter-fill" style="width:${rate}%"></div></div><div class="series-progress-grid">${rares}<div><small>Variantes FA</small><b>${unlocked.filter(c=>c.variant==='full_art').length}</b></div><div><small>Variantes Gold</small><b>${unlocked.filter(c=>c.variant==='gold').length}</b></div>${secrets.length?`<div><small>✦ Cartes secrètes découvertes</small><b>${secrets.length}</b></div>`:''}</div>${secrets.length?`<div class="secret-discovery">✦ Surprise ! ${secrets.length} carte${secrets.length>1?'s':''} secrète${secrets.length>1?'s':''} dévoilée${secrets.length>1?'s':''} en dehors de la collection habituelle.</div>`:''}${state.latestCardId&&visible.some(c=>c.id===state.latestCardId&&(state.owned?.[c.id]||0)>0)?`<p class="small-note">Dernière découverte : <strong>${esc(visible.find(c=>c.id===state.latestCardId)?.name||'')}</strong></p>`:''}</div>`;
 }
 function setCollectionDisplay(mode){
  const next=mode==='album'?'album':'classic';
@@ -1566,9 +1585,9 @@ function setCollectionDisplay(mode){
  renderCollection();
 }
 function renderCollection(){
-  if(!collectionSeries){document.getElementById('page').innerHTML=`${labelIntro('02 / LE CODEX','Choisis ta <em>série.</em>','Chaque série possède sa propre collection et sa numérotation.')}<div class="series-choice-grid">${SERIES.map(x=>`<button class="series-choice" data-action="choose-series" data-series="${x.number}" style="--series-color:${CSSColor(x.color,'#364a62')}"><span>✦ S${String(x.number).padStart(2,'0')}</span><strong>${esc(x.name)}</strong><small>${esc(x.description||'Explore cette collection')}</small></button>`).join('')}</div>`;return;}
+  if(!collectionSeries){document.getElementById('page').innerHTML=`${labelIntro('02 / LE CODEX','Choisis ta <em>série.</em>','Chaque série possède sa propre collection et sa numérotation.')}<div class="series-choice-grid">${SERIES.map(x=>`<button class="series-choice" data-action="choose-series" data-series="${x.number}" style="--series-color:${CSSColor(x.color,'#364a62')}"><span>✦ S${String(x.number).padStart(2,'0')}</span><strong>${esc(x.name)}</strong><small>${esc(seriesDescription(x)||'Explore cette collection')}</small><small data-catalogue-series="${x.number}">${currentCatalogue().metrics(x.number).total} cartes normales</small></button>`).join('')}</div>`;return;}
   document.getElementById('page').innerHTML=`${labelIntro('02 / LE CODEX','Ta collection<em>.</em>','Explore tes découvertes : clique sur une carte pour voir sa fiche, puis sur la carte de la fiche pour l’admirer en grand et l’incliner.')}
-    <div class="series-return"><button class="btn btn-sm" data-action="back-series">← Choisir une autre série</button><strong>${esc(SERIES.find(x=>x.number===collectionSeries)?.name||'Série')}</strong></div><div class="mini-metrics"><div class="metric"><span>CARTES NORMALES OBTENUES</span><strong>${ownedCount()}</strong></div><div class="metric"><span>EXEMPLAIRES OBTENUS</span><strong>${totalCopies()}</strong></div><div class="metric"><span>ÉCLATS DE DOUBLONS</span><strong>${state.dust}</strong></div></div>
+    <div class="series-return"><button class="btn btn-sm" data-action="back-series">← Choisir une autre série</button><strong>${esc(SERIES.find(x=>x.number===collectionSeries)?.name||'Série')}</strong></div><div class="mini-metrics"><div class="metric"><span>CARTES NORMALES OBTENUES</span><strong>${ownedCount(collectionSeries)}</strong></div><div class="metric"><span>EXEMPLAIRES OBTENUS</span><strong>${totalCopies(collectionSeries)}</strong></div><div class="metric"><span>ÉCLATS DE DOUBLONS</span><strong>${state.dust}</strong></div></div>
     ${seriesProgressMarkup(collectionSeries)}${collectionRewardsUI.render(collectionSeries)}<div class="collection-filters panel">
       <div class="eyebrow">RECHERCHE & FILTRES COMBINABLES</div>
       <div class="collection-controls">
@@ -1595,7 +1614,7 @@ function renderCollectionGrid({append=false}={}){
     const rankA=cardVariantRank(a),rankB=cardVariantRank(b);
     const byName=cardNameCollator.compare(a.name,b.name);
     if(collSort==='rarity-asc')return rankA-rankB||byName;
-    if(collSort==='serial')return (Number(a.editionNumber)||9999)-(Number(b.editionNumber)||9999);
+    if(collSort==='serial')return (currentCatalogue().display().get(a.id)?.number||Infinity)-(currentCatalogue().display().get(b.id)?.number||Infinity);
     if(collSort==='name-asc')return byName;
     if(collSort==='name-desc')return -byName;
     if(collSort==='universe-asc')return a.family.localeCompare(b.family,'fr')||rankB-rankA||byName;
@@ -1605,7 +1624,7 @@ function renderCollectionGrid({append=false}={}){
   if(collectionDisplay==='album'){
     const grid=document.getElementById('collection-grid');if(!grid)return;
     grid.className='v15-album-host';
-    grid.innerHTML=albumMarkup({cards:result,catalogue:allCards().filter(c=>(Number(c.editionSeries)||1)===collectionSeries),owned:state.owned,series:SERIES.find(x=>x.number===collectionSeries),renderCard:cardMarkup,esc,page:albumPage,pageSize:matchMedia('(max-width: 700px)').matches?6:12});
+    grid.innerHTML=albumMarkup({cards:result,catalogue:allCards().filter(c=>(Number(c.editionSeries)||1)===collectionSeries),owned:state.owned,series:SERIES.find(x=>x.number===collectionSeries),renderCard:cardMarkup,displayIndex:currentCatalogue().display(),completeNormalSlots:!query&&collFilter==='all'&&collRarity==='all'&&collUniverse==='all',metrics:currentCatalogue().metrics(collectionSeries,state.owned),esc,page:albumPage,pageSize:matchMedia('(max-width: 700px)').matches?6:12});
     const more=document.getElementById('collection-load-more');if(more)more.hidden=true;
     const counter=document.getElementById('collection-count');if(counter)counter.textContent='Album · recherche et filtres actifs';
     return;
@@ -1615,7 +1634,7 @@ function renderCollectionGrid({append=false}={}){
   if(countElement)countElement.textContent=result.length?shown.length+' / '+result.length+' cartes affichées':'Aucune carte trouvée';
   const grid=document.getElementById('collection-grid');
   if(!grid)return;
-  if(result.length)renderCardWindow(grid,shown,c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin'),lazy:true})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`,{append,version:JSON.stringify([state.owned,state.favorites])});
+  if(result.length)renderCardWindow(grid,shown,c=>`<div class="collection-item ${state.owned[c.id]?'':'unowned'}">${state.favorites.includes(c.id)?'<span class="favorite-marker">★</span>':''}${cardMarkup(c,{accessible:!!(state.owned[c.id]||onlineUser?.role==='admin'),lazy:true})}<span class="ownership">${state.owned[c.id]?`× ${state.owned[c.id]}`:'NON OBTENUE'}</span></div>`,{append,version:JSON.stringify([state.owned,state.favorites,currentCatalogue().metadata().revision])});
   else grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">✳</div><h3>Aucune carte trouvée</h3><p>Modifie tes filtres ou ouvre quelques boosters.</p><button class="btn btn-primary" data-view="packs">Découvrir les boosters</button></div>`;
   const loadMore=document.getElementById('collection-load-more');
   if(loadMore){
@@ -1625,7 +1644,7 @@ function renderCollectionGrid({append=false}={}){
   }
 }
 function showDetail(id){
-  const c=getCard(id);if(!c||c.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[id]))return;
+  const c=getCard(id);if(!c||!catalogueIsActive(c)||c.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[id]))return;
   const owned=state.owned[id]||0;const isFav=state.favorites.includes(id);const inDeck=state.deck.includes(id);
   document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Détail de carte ${esc(c.name)}"><div class="modal-box" style="max-width:690px"><div class="modal-head"><div><div class="eyebrow">FICHE DE COLLECTION · ${esc(cardRarityLabel(c).toUpperCase())}</div><h2>${esc(c.name)}</h2></div><button class="icon-button" data-action="close-modal" aria-label="Fermer">×</button></div><div class="detail-grid"><div><button class="zoom-trigger" data-action="zoom-card" data-id="${esc(id)}" aria-label="Agrandir la carte ${esc(c.name)}" title="Agrandir et inspecter la carte">${cardMarkup(c)}<span class="zoom-tag">⤢ VOIR EN GRAND</span></button><p class="detail-zoom-hint">Clique sur la carte pour examiner ses reflets en 3D.</p></div><div class="detail-text"><span class="pill">✧ ${esc(c.family)} · ${esc(cardRarityLabel(c))}</span>${c.rarity==='mythic'?'<div class="foil-badge mythic">✦ Noir chrome · rouge et or</div>':c.rarity==='legendary'?'<div class="foil-badge legendary">✦ Finition brillante dorée</div>':c.rarity==='epic'?'<div class="foil-badge">✧ Finition holographique</div>':''}<h3>${esc(c.ability)}</h3><p>${esc(c.desc)}</p><div class="divider"></div><div class="detail-stat-list">${STAT_FIELDS.map(f=>`<div><span>${f.label}</span><b>${statValue(c,f.key)} / 100</b></div>`).join('')}</div><p>${owned?`Tu possèdes <strong>${owned}</strong> exemplaire${owned>1?'s':''} de cette carte.`:'Tu ne possèdes pas encore cette carte.'}</p><div class="detail-actions">${onlineUser?.role==='admin'?`<button class="btn btn-sm" data-action="studio-jump" data-id="${esc(id)}">✧ Illustration</button><button class="btn btn-sm btn-primary" data-action="edit-card" data-id="${esc(id)}">✎ Modifier la carte</button>`:''}<button class="btn btn-sm" data-action="favorite" data-id="${esc(id)}">${isFav?'★ Retirer des favoris':'☆ Ajouter aux favoris'}</button>${owned?`<button class="btn btn-sm ${inDeck?'btn-danger':''}" data-action="deck-toggle" data-id="${esc(id)}">${inDeck?'− Retirer du deck':'+ Ajouter au deck'}</button>`:''}</div><div class="divider"></div>${onlineUser?.role==='admin'?`<label class="upload-zone">📁 ${state.artwork[id]||c.art?'Changer':'Importer'} l’illustration de cette carte<input type="file" accept="image/png,image/jpeg,image/webp" data-artwork-id="${esc(id)}"></label><p class="small-note">Ajoute une photo ou un dessin personnel. L’image remplace l’emblème, sans modifier le patron TCG.</p>${state.artwork[id]?`<button class="btn btn-quiet btn-sm" data-action="remove-art" data-id="${esc(id)}">Retirer le visuel importé</button>`:''}`:''}</div></div></div></div>`;
 }
@@ -1653,7 +1672,7 @@ function inspectSpring(frameTime){
 function startInspectionMotion(){if(!inspectionFrame){if(inspection)inspection.lastFrame=0;inspectionFrame=requestAnimationFrame(inspectSpring);}}
 function stopInspectionMotion(){if(inspectionFrame)cancelAnimationFrame(inspectionFrame);inspectionFrame=0;}
 function showMagnifiedCard(id){
-  const c=getCard(id);if(!c||c.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[id]))return;
+  const c=getCard(id);if(!c||!catalogueIsActive(c)||c.hidden||(onlineUser?.role!=='admin'&&!state.owned?.[id]))return;
   stopInspectionMotion();
   inspection={id,back:false,rx:0,ry:0,trx:0,try:0,vrx:0,vry:0,dragging:false,pointerId:null,x:0,y:0,startX:0,startY:0,lastFrame:0};
   document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop inspect-backdrop" role="dialog" aria-modal="true" aria-label="Carte grand format ${esc(c.name)}">
@@ -1724,7 +1743,7 @@ function inspectReset(){
   startInspectionMotion();
 }
 function toggleFavorite(id){if(state.favorites.includes(id))state.favorites=state.favorites.filter(k=>k!==id);else state.favorites.push(id);save();showDetail(id);}
-function toggleDeck(id){if(!state.owned[id])return toast('Tu dois posséder cette carte.',true);if(state.deck.includes(id))state.deck=state.deck.filter(x=>x!==id);else if(state.deck.length>=3)return toast('Ton deck possède déjà 3 cartes. Retire-en une.',true);else state.deck.push(id);save();if(document.getElementById('modal-root').children.length)showDetail(id);else renderArena();}
+function toggleDeck(id){if(!getCard(id)||!state.owned[id])return toast('Tu dois posséder cette carte.',true);if(state.deck.includes(id))state.deck=state.deck.filter(x=>x!==id);else if(state.deck.length>=3)return toast('Ton deck possède déjà 3 cartes. Retire-en une.',true);else state.deck.push(id);save();if(document.getElementById('modal-root').children.length)showDetail(id);else renderArena();}
 function arenaDifficulty(streak){
   if(streak>=9)return {name:'Maître du multivers',desc:'Choix de statistiques quasi parfaits',select:0.99,group:'master'};
   if(streak>=6)return {name:'Expert',desc:'Choix de statistiques très précis',select:0.87,group:'expert'};
@@ -1766,9 +1785,9 @@ function renderArena(){
     <div class="arena-main-switch"><button class="btn btn-primary" data-action="arena-section" data-section="campaign">⚔ Campagne contre l’IA</button><button class="btn" data-action="arena-section" data-section="online">◎ Combats en ligne</button></div><div class="mode-tabs"><button class="btn ${mode==='simple'?'btn-primary':''}" data-action="arena-mode" data-mode="simple">⚔ Campagne classique</button><button class="btn ${mode==='double'?'btn-primary':''}" data-action="arena-mode" data-mode="double">⚔⚔ Mode Double</button></div>
     ${renderLadder()}
     <div class="arena-layout"><section class="panel"><div class="eyebrow">${mode==='double'?'DUEL DOUBLE':'CAMPAGNE CLASSIQUE'}</div><h3>${mode==='double'?'Deux cartes contre deux':'Une carte contre une'}</h3><p class="panel-p">${mode==='double'?'Deux scores sont additionnés de chaque côté par manche. Un deck de six cartes est nécessaire ; les trois duos jouent une fois, puis un duo est rejoué.':'Une carte par côté et par manche. Prépare un deck de trois cartes différentes.'}</p>
-      <div class="deck-slot-grid arena-deck-cards">${deck.map(id=>{const c=getCard(id);return c?`<div>${cardMarkup(c)}</div>`:''}).join('')}${Array.from({length:Math.max(0,targetCount-deck.length)},()=>'<div class="deck-empty-slot">+</div>').join('')}</div>
-      <p class="small-note arena-swipe-hint">Sur téléphone, fais glisser les cartes horizontalement pour toutes les voir.</p><button class="btn btn-primary btn-lg" data-action="start-battle" ${deck.length!==targetCount?'disabled':''}>Lancer le combat ↗</button>
-      <button class="btn btn-quiet" data-view="decks">Modifier mes decks</button><p class="small-note">${deck.length}/${targetCount} cartes · Adversaire : ${esc(diff.name)} · 4 manches</p></section>
+      <div class="deck-slot-grid arena-deck-cards">${deck.map(id=>{const c=getCard(id);return c?`<div>${cardMarkup(c)}</div>`:'<div class="deck-empty-slot">Carte archivée<br>Référence conservée</div>'}).join('')}${Array.from({length:Math.max(0,targetCount-deck.length)},()=>'<div class="deck-empty-slot">+</div>').join('')}</div>
+      <p class="small-note arena-swipe-hint">Sur téléphone, fais glisser les cartes horizontalement pour toutes les voir.</p><button class="btn btn-primary btn-lg" data-action="start-battle" ${deck.length!==targetCount||!deck.every(id=>getCard(id)&&catalogueOwnedCopies(state.owned,id)>0)?'disabled':''}>Lancer le combat ↗</button>
+      <button class="btn btn-quiet" data-view="decks">Modifier mes decks</button><p class="small-note">${deck.length}/${targetCount} références de deck · ${deck.some(id=>!getCard(id))?'Carte archivée : remplace-la avant de jouer. · ':''}Adversaire : ${esc(diff.name)} · 4 manches</p></section>
     <section class="panel"><h3>Règles du mode ${mode==='double'?'Double':'Classique'}</h3><div class="arena-rules">
       <p><span class="rule-number">01</span> La règle ↑ ou ↓ est annoncée avant chaque manche.</p>
       <p><span class="rule-number">02</span> Tu choisis la statistique aux manches 1 et 3 ; l’IA aux manches 2 et 4.</p>
@@ -1793,7 +1812,7 @@ function renderDecks(){
  if(!onlineUser)return;
  const simple=state.deck||[],double=state.deckDouble||[];
  const deckRow=(id,label,selected,max)=>`<section class="panel deck-editor-panel"><div class="flex-between"><div><div class="eyebrow">${label}</div><h3>${selected.length}/${max} cartes</h3></div><button class="btn btn-sm" data-action="clear-deck" data-mode="${id}">Vider</button></div>
- <p class="small-note">${id==='double'?'Les positions 1+2, 3+4 et 5+6 forment tes duos. Clique sur une carte pour la retirer.':'Trois cartes différentes pour la campagne.'}</p><div class="deck-picks">${selected.map((cardId,i)=>{const c=getCard(cardId);return c?`<button class="deck-pick-card" data-action="deck-edit" data-mode="${id}" data-id="${esc(c.id)}" title="Retirer ${esc(c.name)}"><span class="remove-x">×</span>${cardMarkup(c)}<small>${i+1}. ${esc(c.name)}</small></button>`:''}).join('')}${Array.from({length:max-selected.length},()=>'<span class="deck-pick empty">+</span>').join('')}</div></section>`;
+ <p class="small-note">${id==='double'?'Les positions 1+2, 3+4 et 5+6 forment tes duos. Clique sur une carte pour la retirer.':'Trois cartes différentes pour la campagne.'}</p><div class="deck-picks">${selected.map((cardId,i)=>{const c=getCard(cardId);return c?`<button class="deck-pick-card" data-action="deck-edit" data-mode="${id}" data-id="${esc(c.id)}" title="Retirer ${esc(c.name)}"><span class="remove-x">×</span>${cardMarkup(c)}<small>${i+1}. ${esc(c.name)}</small></button>`:`<button class="deck-pick-card archived-deck-reference" data-action="deck-edit" data-mode="${id}" data-id="${esc(cardId)}" aria-label="Retirer la référence archivée de l’emplacement ${i+1}"><strong>Carte archivée</strong><small>Emplacement ${i+1} · Référence conservée</small><span>Retirer du deck</span></button>`}).join('')}${Array.from({length:max-selected.length},()=>'<span class="deck-pick empty">+</span>').join('')}</div></section>`;
  document.getElementById('page').innerHTML=`${labelIntro('04 / DECKS','Construis tes <em>équipes.</em>','Les cartes affichées sont les vraies cartes de ta collection. Les filtres et le deck sélectionné restent actifs après chaque ajout.')}
  <div class="deck-two-panels">${deckRow('simple','DECK CLASSIQUE',simple,3)}${deckRow('double','DECK DOUBLE',double,6)}</div>
  <section class="panel" style="margin-top:16px"><div class="flex-between"><h3>Choisir mes cartes</h3><label>Ajouter au <select id="deck-choose-mode"><option value="simple" ${deckSelectionMode==='simple'?'selected':''}>Deck classique (3)</option><option value="double" ${deckSelectionMode==='double'?'selected':''}>Deck Double (6)</option></select></label></div>
@@ -1809,7 +1828,7 @@ function editDeckCard(id,mode,forceRemove=false){
  deckSelectionMode=mode==='double'?'double':'simple';
  const key=deckSelectionMode==='double'?'deckDouble':'deck',max=deckSelectionMode==='double'?6:3,arr=Array.isArray(state[key])?state[key]:[];
  if(arr.includes(id))state[key]=arr.filter(x=>x!==id);
- else if(!forceRemove){if(!state.owned[id])return toast('Carte non obtenue.',true);if(arr.length>=max)return toast('Ce deck est complet.',true);state[key]=[...arr,id];}
+ else if(!forceRemove){if(!getCard(id)||!state.owned[id])return toast('Carte indisponible dans le catalogue actif.',true);if(arr.length>=max)return toast('Ce deck est complet.',true);state[key]=[...arr,id];}
  save();renderDecks();
 }
 function renderRules(){
@@ -1942,10 +1961,10 @@ function renderCreator(){
   document.getElementById('page').innerHTML=`${labelIntro('04 / LE LABORATOIRE',editingCardId?'Modifier une <em>carte.</em>':'L’atelier <em>créatif.</em>',editingCardId?'Les changements seront publiés sur cette carte pour tous les joueurs.':'Crée une carte à ton image. Choisis son identité, ses statistiques, sa rareté et son illustration. Le patron s’adapte immédiatement.')}
     <div class="creator-layout"><div class="panel"><div class="eyebrow">IDENTITÉ DE LA CARTE</div><div class="field-row"><div class="field"><label for="draft-name">Nom de la carte</label><input id="draft-name" type="text" maxlength="35" placeholder="Ex. Le Roi des étoiles" data-draft="name" value="${esc(draft.name)}"></div><div class="field"><label for="draft-subtitle">Sous-titre</label><input id="draft-subtitle" maxlength="48" type="text" data-draft="subtitle" value="${esc(draft.subtitle)}"></div></div>
     <div class="field-row"><div class="field"><label for="draft-family">Univers / type</label><input id="draft-family" maxlength="25" type="text" data-draft="family" value="${esc(draft.family)}"></div><div class="field"><label for="draft-rarity">Rareté</label><select id="draft-rarity" data-draft="rarity">${Object.keys(RARITIES).map(key=>`<option value="${key}" ${draft.rarity===key?'selected':''}>${rarityName(key)}</option>`).join('')}</select></div></div>
-    <div class="field-row"><div class="field"><label for="draft-series">Série de la carte</label><select id="draft-series" data-draft="editionSeries" ${editingCardId?'disabled':''}>${SERIES.map(x=>`<option value="${x.number}" ${(draft.editionSeries||1)===x.number?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div><div class="field"><span class="small-note">La Série 01 reste limitée aux 158 cartes originales. Crée une autre série pour les nouvelles cartes.</span></div></div><div class="field-row"><div class="field"><label for="draft-variant">Finition</label><select id="draft-variant" data-draft="variant"><option value="standard" ${!draft.variant||draft.variant==='standard'?'selected':''}>Standard</option><option value="full_art" ${draft.variant==='full_art'?'selected':''}>Full Art — illustration plein cadre</option><option value="gold" ${draft.variant==='gold'?'selected':''}>Gold — édition dorée</option><option value="secret" ${draft.variant==='secret'?'selected':''}>Secrète — énergie verte, hors collection</option></select><small>Une Secrète de la Série 02 (130 cartes) sera numérotée 131/130, 132/130… et restera invisible jusqu'à sa découverte.</small></div><div class="field"><label>Rareté de collection</label><div class="pill" style="margin-top:12px">${esc(cardRarityLabel(draft))}</div></div></div>
+    <div class="field-row"><div class="field"><label for="draft-series">Série de la carte</label><select id="draft-series" data-draft="editionSeries" ${editingCardId?'disabled':''}>${SERIES.map(x=>`<option value="${x.number}" ${(draft.editionSeries||1)===x.number?'selected':''}>${esc(x.name)}</option>`).join('')}</select></div><div class="field"><span class="small-note">Le nombre de cartes normales est calculé automatiquement dans chaque série.</span></div></div><div class="field-row"><div class="field"><label for="draft-variant">Finition</label><select id="draft-variant" data-draft="variant"><option value="standard" ${!draft.variant||draft.variant==='standard'?'selected':''}>Standard</option><option value="full_art" ${draft.variant==='full_art'?'selected':''}>Full Art — illustration plein cadre</option><option value="gold" ${draft.variant==='gold'?'selected':''}>Gold — édition dorée</option><option value="secret" ${draft.variant==='secret'?'selected':''}>Secrète — énergie verte, hors collection</option></select><small>Les Secrètes conservent leur numéro historique hors série et restent hors du total normal.</small></div><div class="field"><label>Rareté de collection</label><div class="pill" style="margin-top:12px">${esc(cardRarityLabel(draft))}</div></div></div>
     <div class="field-row"><div class="field"><label for="draft-ability">Nom du pouvoir</label><input id="draft-ability" maxlength="35" type="text" data-draft="ability" value="${esc(draft.ability)}"></div><div class="field"><label for="draft-desc">Description du pouvoir</label><textarea id="draft-desc" maxlength="115" data-draft="desc">${esc(draft.desc)}</textarea></div></div>
     <div class="divider"></div><div class="eyebrow">STATISTIQUES</div>${STAT_FIELDS.map(f=>[f.key,f.label.toUpperCase()]).map(([key,label])=>`<div class="slider-field"><div class="slider-label"><span>${label}</span><b id="draft-val-${key}">${draft[key]}</b></div><input type="range" min="20" max="100" value="${draft[key]}" data-draft="${key}" aria-label="${label}"></div>`).join('')}
-    <div class="divider"></div><div class="eyebrow">ILLUSTRATION PERSONNALISÉE</div><p class="panel-p">Choisis un emblème pour commencer, ou ajoute directement ton dessin / ta photo.</p><div class="symbol-choices">${['✨','🐉','🦊','🧙','⚔️','🌙','🔥','💎','🌊','🌸','🤖','👑'].map(icon=>`<button class="symbol-choice ${draft.icon===icon?'active':''}" data-action="symbol" data-symbol="${icon}" aria-label="Emblème ${icon}">${icon}</button>`).join('')}</div><label class="upload-zone">📁 ${draft.art?'Illustration chargée — changer l’image':'Importer un dessin ou une photo'}<input id="draft-image" type="file" accept="image/png,image/jpeg,image/webp"></label><p class="small-note">Déplace, zoome et recadre ton image avant de l’enregistrer. Le recadrage sera visible pour tous.</p><div class="divider"></div><button class="btn btn-primary btn-lg" data-action="create-card">${editingCardId?'✎ Enregistrer les modifications':'✳ Publier la carte pour tous'}</button><button class="btn btn-quiet" data-action="reset-draft">Recommencer</button>${editingCardId?`<button class="btn btn-sm btn-danger" data-action="archive-card" data-id="${esc(editingCardId)}">Supprimer cette carte</button>`:""}</div>
+    <div class="divider"></div><div class="eyebrow">ILLUSTRATION PERSONNALISÉE</div><p class="panel-p">Choisis un emblème pour commencer, ou ajoute directement ton dessin / ta photo.</p><div class="symbol-choices">${['✨','🐉','🦊','🧙','⚔️','🌙','🔥','💎','🌊','🌸','🤖','👑'].map(icon=>`<button class="symbol-choice ${draft.icon===icon?'active':''}" data-action="symbol" data-symbol="${icon}" aria-label="Emblème ${icon}">${icon}</button>`).join('')}</div><label class="upload-zone">📁 ${draft.art?'Illustration chargée — changer l’image':'Importer un dessin ou une photo'}<input id="draft-image" type="file" accept="image/png,image/jpeg,image/webp"></label><p class="small-note">Déplace, zoome et recadre ton image avant de l’enregistrer. Le recadrage sera visible pour tous.</p><div class="divider"></div><button class="btn btn-primary btn-lg" data-action="create-card">${editingCardId?'✎ Enregistrer les modifications':'✳ Publier la carte pour tous'}</button><button class="btn btn-quiet" data-action="reset-draft">Recommencer</button>${editingCardId?`<button class="btn btn-sm btn-danger" data-action="archive-card" data-id="${esc(editingCardId)}">Archiver cette carte</button>`:""}</div>
     <aside class="panel preview-panel"><div class="eyebrow">APERÇU EN DIRECT</div><p class="preview-label">Ta future carte, dans le patron officiel Mashup.</p><div class="preview-card" id="creator-preview"></div><p class="small-note">Les cadres changent selon la rareté : papier, azur, violet, or et noir chrome mythique. Le visuel reste libre.</p></aside></div>`;
   document.getElementById('page').firstElementChild?.insertAdjacentHTML('afterend',imageStudio.markup());
   imageStudio.refresh();
@@ -1955,7 +1974,7 @@ function renderCreator(){
 function renderCreatorPreview(){const c={...draft,id:'preview',name:draft.name.trim()||'Nouvelle carte',subtitle:draft.subtitle||'Une nouvelle légende'};const node=document.getElementById('creator-preview');if(node)node.innerHTML=cardMarkup(c,{image:draft.art});for(const key of STAT_FIELDS.map(f=>f.key)){const el=document.getElementById('draft-val-'+key);if(el)el.textContent=draft[key];}}
 async function createCard(){
   if(!onlineUser||onlineUser.role!=='admin')return;
-  try{const result=await api('/api/admin/cards',{card:{...draft,id:editingCardId||undefined}});BASE_CARDS=result.cards;state.custom=[];if(!editingCardId)state.owned[result.card.id]=1;editingCardId=null;draft=newDraft();toast(result.card.name+' : carte enregistrée pour tous !');collFilter='all';setView('collection');}catch(e){toast(e.message,true);}return;
+  try{const result=await api('/api/admin/cards',{card:{...draft,id:editingCardId||undefined}});installCatalogue(result.cards,result.catalogueMeta);state.custom=[];if(!editingCardId)state.owned[result.card.id]=1;editingCardId=null;draft=newDraft();toast(result.card.name+' : carte enregistrée pour tous !');collFilter='all';setView('collection');}catch(e){toast(e.message,true);}return;
 
   const name=draft.name.trim();if(name.length<2)return toast('Donne un nom de 2 caractères minimum à ta carte.',true);
   if(name.length>35)return toast('Nom trop long.',true);
@@ -1999,7 +2018,7 @@ async function applyImageCrop(){
   const {canvas,cardId}=cropEditor;const output=canvas.toDataURL('image/jpeg',.82);
   if(output.length>2200000){toast('Image trop grande. Essaie une autre illustration.',true);return;}
   if(cardId){
-    try{const fromStudio=Boolean(cropEditor?.fromStudio);const c=getCard(cardId);if(!c)throw new Error('Carte introuvable.');const r=await api('/api/admin/cards',{card:{...c,art:output}});BASE_CARDS=r.cards;closeModal();if(fromStudio)imageStudio.refresh();else showDetail(cardId);toast('Illustration recadrée enregistrée.');}catch(e){toast(e.message,true);}
+    try{const fromStudio=Boolean(cropEditor?.fromStudio);const c=getCard(cardId);if(!c)throw new Error('Carte introuvable.');const r=await api('/api/admin/cards',{card:{...c,art:output}});installCatalogue(r.cards,r.catalogueMeta);closeModal();if(fromStudio)imageStudio.refresh();else showDetail(cardId);toast('Illustration recadrée enregistrée.');}catch(e){toast(e.message,true);}
   }else{
     draft.art=output;closeModal();renderCreatorPreview();toast('Cadrage appliqué à la carte.');
   }
@@ -2020,7 +2039,7 @@ function exportSave(){
 }
 async function importSave(file){
  if(onlineUser?.role!=='admin')return;
- try{const raw=JSON.parse(await file.text());if(!confirm('Importer cette ancienne collection dans ton compte admin et publier ses cartes personnalisées ?'))return;const r=await api('/api/admin/import',{save:raw});BASE_CARDS=r.cards;state=r.state;state.custom=[];render();toast('Collection V4 importée sur ton compte !');}catch(e){toast(e.message||'Sauvegarde invalide.',true);}return;
+ try{const raw=JSON.parse(await file.text());if(!confirm('Importer cette ancienne collection dans ton compte admin et publier ses cartes personnalisées ?'))return;const r=await api('/api/admin/import',{save:raw});installCatalogue(r.cards,r.catalogueMeta);state=r.state;state.custom=[];render();toast('Collection V4 importée sur ton compte !');}catch(e){toast(e.message||'Sauvegarde invalide.',true);}return;
   if(!file)return;
   if(file.size>12*1024*1024){toast('Sauvegarde trop volumineuse.',true);return;}
   try{
@@ -2276,7 +2295,7 @@ async function bootOnline(){
   }catch(e){showAuth('login',e.message);}
 }
 async function loadOnlineGame(){
-  const r=await api('/api/bootstrap');onlineUser=r.user;developmentJournal.setPosts(r.devPosts||[]);missionsUI.setData(r.missions);collectionRewardsUI.setData(r.collectionRewards);packVouchers=r.vouchers||{};BASE_CARDS=r.cards;SERIES=r.series||SERIES;SERIES_TOTALS=r.seriesTotals||{};seriesDraft=SERIES.map(x=>({...x}));myPublicProfile=r.profile;state=r.state;state.custom=[];state.artwork={};syncClientPacks(r.packs||PACKS);packRates=r.packRates||structuredClone(PACK_RATE_DEFAULTS);battleRewards=r.battleRewards||battleRewards;battle=r.battle&&!r.battle.finished?r.battle:null;if(battle?.mode)arenaMode=battle.mode;
+  const r=await api('/api/bootstrap');onlineUser=r.user;developmentJournal.setPosts(r.devPosts||[]);missionsUI.setData(r.missions);collectionRewardsUI.setData(r.collectionRewards);packVouchers=r.vouchers||{};installCatalogue(r.cards,r.catalogueMeta);SERIES=r.series||SERIES;SERIES_TOTALS=currentCatalogue().metadata().seriesTotals;seriesDraft=SERIES.map(x=>({...x}));myPublicProfile=r.profile;state=r.state;state.custom=[];state.artwork={};syncClientPacks(r.packs||PACKS);packRates=r.packRates||structuredClone(PACK_RATE_DEFAULTS);battleRewards=r.battleRewards||battleRewards;battle=r.battle&&!r.battle.finished?r.battle:null;if(battle?.mode)arenaMode=battle.mode;
   document.getElementById('auth-cover').style.display='none';
   document.getElementById('admin-nav').hidden=onlineUser.role!=='admin';
   document.getElementById('creator-nav').hidden=onlineUser.role!=='admin';
@@ -2295,38 +2314,39 @@ async function logoutOnline(){
  if(cropEditor){URL.revokeObjectURL(cropEditor.url);cropEditor=null;}
  document.getElementById('modal-root').innerHTML='';
  missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);
- state=clone(DEFAULT_SAVE);battle=null;incomingChallenge=null;albumPage=0;showInvitationBanner();mobilePresentation.sync();
+ state=clone(DEFAULT_SAVE);installCatalogue([]);battle=null;incomingChallenge=null;albumPage=0;showInvitationBanner();mobilePresentation.sync();
  document.getElementById('auth-cover').style.display='grid';document.getElementById('auth-content').textContent='Déconnexion en cours…';
  try{await mashupAuth.auth.signOut();}catch{}showAuth('login');
 }
 
-async function removeOnlineArt(id){if(onlineUser?.role!=='admin')return;const c=getCard(id);if(!c)return;try{const r=await api('/api/admin/cards',{card:{...c,art:''}});BASE_CARDS=r.cards;showDetail(id);toast('Illustration retirée du catalogue.');}catch(e){toast(e.message,true);}}
+async function removeOnlineArt(id){if(onlineUser?.role!=='admin')return;const c=getCard(id);if(!c)return;try{const r=await api('/api/admin/cards',{card:{...c,art:''}});installCatalogue(r.cards,r.catalogueMeta);showDetail(id);toast('Illustration retirée du catalogue.');}catch(e){toast(e.message,true);}}
 function avatarMarkup(v){const img=safeImage(v);return img?`<img class="profile-avatar" src="${img}" alt="Photo de profil">`:`<div class="profile-avatar">${esc(v||'✦')}</div>`;}
 function captureSeriesDraft(){
   for(let i=0;i<seriesDraft.length;i++){
-    for(const field of ['name','description','color','cover','targetCount']){
+    for(const field of ['name','description','color','cover']){
       const input=document.querySelector(`[data-series-field="${field}"][data-series-index="${i}"]`);
       if(input)seriesDraft[i][field]=input.value;
     }
   }
 }
 function renderSeriesEditor(){
-  const root=document.getElementById('series-editor');if(!root)return;
-  root.innerHTML=seriesDraft.map((x,i)=>`<div class="series-editor-line" data-series-row="${x.number}"><div class="series-editor-number">S${String(x.number).padStart(2,'0')}<small>${BASE_CARDS.filter(c=>!c.hidden&&(Number(c.editionSeries)||1)===x.number).length} cartes</small></div><label>Nom<input data-series-field="name" data-series-index="${i}" value="${esc(x.name)}" maxlength="48" placeholder="Nom de série" required></label><label>Description<input data-series-field="description" data-series-index="${i}" value="${esc(x.description||'')}" maxlength="120" placeholder="Description"></label><label>Couleur<input type="color" data-series-field="color" data-series-index="${i}" value="${CSSColor(x.color,'#8fbab2')}"></label><label>Emblème<input data-series-field="cover" data-series-index="${i}" value="${esc(x.cover||'✦')}" maxlength="4"></label><label>Collection normale<input type="number" data-series-field="targetCount" data-series-index="${i}" value="${x.number===1?158:Number(x.targetCount)||130}" min="1" max="500" ${x.number===1?'disabled':''} title="Ex. 130 : les secrètes commencent au numéro 131/130"></label></div>`).join('');
+ const root=document.getElementById('series-editor');if(!root)return;
+ root.innerHTML=seriesDraft.map((x,i)=>`<div class="series-editor-line" data-series-row="${x.number}"><div class="series-editor-number">S${String(x.number).padStart(2,'0')}<small data-series-total="${x.number}">${currentCatalogue().metrics(x.number).total} cartes normales actives</small></div><label>Nom<input data-series-field="name" data-series-index="${i}" value="${esc(x.name)}" maxlength="48" required></label><label>Description<input data-series-field="description" data-series-index="${i}" value="${esc(seriesDescription(x))}" maxlength="120"></label><label>Couleur<input type="color" data-series-field="color" data-series-index="${i}" value="${CSSColor(x.color,'#8fbab2')}"></label><label>Emblème<input data-series-field="cover" data-series-index="${i}" value="${esc(x.cover||'✦')}" maxlength="4"></label><div class="small-note">Total automatique · les Secrètes sont hors série</div></div>`).join('');
 }
+
 function addSeriesDraft(){
   if(onlineUser?.role!=='admin')return;
   captureSeriesDraft();
   if(seriesDraft.length>=30)return toast('Maximum 30 séries.',true);
   const n=1+Math.max(0,...seriesDraft.map(x=>x.number));
-  seriesDraft.push({number:n,name:`Série ${String(n).padStart(2,'0')}`,description:'Une nouvelle collection',color:'#8fbab2',cover:'✦',targetCount:130});
+  seriesDraft.push({number:n,name:`Série ${String(n).padStart(2,'0')}`,description:'Une nouvelle collection',color:'#8fbab2',cover:'✦'});
   renderSeriesEditor();
   document.querySelector('[data-series-row="'+n+'"]')?.scrollIntoView({behavior:'smooth',block:'center'});
 }
 async function saveSeriesDraft(){
   if(onlineUser?.role!=='admin')return;
   captureSeriesDraft();
-  try{const r=await api('/api/admin/series',{series:seriesDraft.map(x=>({...x,targetCount:Number(x.targetCount)||130}))});SERIES=r.series;seriesDraft=SERIES.map(x=>({...x}));toast('Séries enregistrées.');captureBoosterDraft();renderSeriesEditor();renderPackRateEditor();}
+  try{const r=await api('/api/admin/series',{series:seriesDraft.map(x=>({...x,targetCount:currentCatalogue().metrics(x.number).total}))});SERIES=r.series;seriesDraft=SERIES.map(x=>({...x}));toast('Séries enregistrées.');captureBoosterDraft();renderSeriesEditor();renderPackRateEditor();}
   catch(e){toast(e.message,true);}
 }
 async function compactAvatar(file){if(!file||!file.type.startsWith('image/'))throw new Error('Choisis une photo JPG, PNG ou WebP.');if(file.size>6*1024*1024)throw new Error('Photo trop grande.');
@@ -2501,14 +2521,14 @@ async function renderAdmin(){
   collectionRewardsUI.loadAdmin();
 }
 function boosterContentEditor(p,i){
-  const families=[...new Set(BASE_CARDS.filter(c=>!c.hidden).map(c=>c.family||'Original'))].sort((a,b)=>a.localeCompare(b,'fr'));
+  const families=[...new Set(allCards().map(c=>c.family||'Original'))].sort((a,b)=>a.localeCompare(b,'fr'));
   const mode=p.filterMode||'all';
   const series=SERIES.slice().sort((a,b)=>a.number-b.number);
   return `<details><summary>🎴 Contenu du booster — ${mode==='all'?'Toutes les cartes':mode==='universes'?'Univers sélectionnés':mode==='series'?'Séries sélectionnées':'Cartes choisies'}</summary>
     <div class="booster-contents"><label>Mode de sélection<select data-pack-field="filterMode" data-pack-index="${i}" data-content-mode="${i}"><option value="all" ${mode==='all'?'selected':''}>Tout le catalogue</option><option value="universes" ${mode==='universes'?'selected':''}>Un ou plusieurs univers</option><option value="series" ${mode==='series'?'selected':''}>Une ou plusieurs séries complètes</option><option value="cards" ${mode==='cards'?'selected':''}>Choix précis des cartes</option></select></label>
-    <div class="content-mode-panel" data-content-panel="${i}-series" ${mode==='series'?'':'hidden'}><p class="rate-help">Les cartes de toutes les séries cochées sont automatiquement incluses, y compris celles que tu ajouteras plus tard. Une série vide ne peut pas encore alimenter un booster.</p><div class="content-picker-list">${series.map(s=>`<label><input type="checkbox" data-allow-series="${i}" value="${s.number}" ${(p.allowedSeries||[]).includes(s.number)?'checked':''}><span>S${String(s.number).padStart(2,'0')} · ${esc(s.name)} <small>(${BASE_CARDS.filter(c=>!c.hidden&&(Number(c.editionSeries)||1)===s.number).length} cartes)</small></span></label>`).join('')}</div></div>
+    <div class="content-mode-panel" data-content-panel="${i}-series" ${mode==='series'?'':'hidden'}><p class="rate-help">Les cartes de toutes les séries cochées sont automatiquement incluses, y compris celles que tu ajouteras plus tard. Une série vide ne peut pas encore alimenter un booster.</p><div class="content-picker-list">${series.map(s=>`<label><input type="checkbox" data-allow-series="${i}" value="${s.number}" ${(p.allowedSeries||[]).includes(s.number)?'checked':''}><span>S${String(s.number).padStart(2,'0')} · ${esc(s.name)} <small>(${currentCatalogue().metrics(s.number).total} normales)</small></span></label>`).join('')}</div></div>
     <div class="content-mode-panel" data-content-panel="${i}-universes" ${mode==='universes'?'':'hidden'}><p class="rate-help">Coche les univers que ce booster pourra contenir.</p><div class="content-picker-list">${families.map(f=>`<label><input type="checkbox" data-allow-universe="${i}" value="${esc(f)}" ${p.allowedUniverses?.includes(f)?'checked':''}><span>${esc(f)}</span></label>`).join('')}</div></div>
-    <div class="content-mode-panel" data-content-panel="${i}-cards" ${mode==='cards'?'':'hidden'}><p class="rate-help">Sélectionne chaque carte autorisée, même si elle appartient à un univers différent.</p><input type="search" data-content-search="${i}" placeholder="Rechercher une carte ou un univers…"><div class="content-picker-controls"><button class="btn btn-sm" data-action="select-pack-cards" data-pack-index="${i}">Tout sélectionner</button><button class="btn btn-sm" data-action="clear-pack-cards" data-pack-index="${i}">Tout retirer</button></div><div class="content-picker-list" data-content-card-list="${i}">${BASE_CARDS.filter(c=>!c.hidden).map(c=>`<label data-card-search="${esc((c.name+' '+c.family).toLowerCase())}"><input type="checkbox" data-allow-card="${i}" value="${esc(c.id)}" ${p.allowedCardIds?.includes(c.id)?'checked':''}><span>${esc(c.name)} <small>· ${esc(c.family)}</small></span></label>`).join('')}</div></div>
+    <div class="content-mode-panel" data-content-panel="${i}-cards" ${mode==='cards'?'':'hidden'}><p class="rate-help">Sélectionne chaque carte autorisée, même si elle appartient à un univers différent.</p><input type="search" data-content-search="${i}" placeholder="Rechercher une carte ou un univers…"><div class="content-picker-controls"><button class="btn btn-sm" data-action="select-pack-cards" data-pack-index="${i}">Tout sélectionner</button><button class="btn btn-sm" data-action="clear-pack-cards" data-pack-index="${i}">Tout retirer</button></div><div class="content-picker-list" data-content-card-list="${i}">${allCards().map(c=>`<label data-card-search="${esc((c.name+' '+c.family).toLowerCase())}"><input type="checkbox" data-allow-card="${i}" value="${esc(c.id)}" ${p.allowedCardIds?.includes(c.id)?'checked':''}><span>${esc(c.name)} <small>· ${esc(c.family)}</small></span></label>`).join('')}</div></div>
     </div></details>`;
 }
 // La virgule française et le point sont acceptés, avec jusqu'à 3 décimales.
@@ -2660,8 +2680,8 @@ function renderAdminCards(filter=''){
   if(onlineUser?.role!=='admin')return;
   const node=document.getElementById('admin-card-list');if(!node)return;
   const q=String(filter).trim().toLocaleLowerCase('fr-FR');
-  const cards=BASE_CARDS.filter(c=>(c.name+' '+c.family+' '+c.id).toLocaleLowerCase('fr-FR').includes(q));
-  node.innerHTML=cards.length?cards.slice(0,150).map(c=>`<div class="admin-card-row"><div><strong>${esc(c.name)}</strong><small>${esc(c.family)} · ${esc(cardRarityLabel(c))} · ${esc(c.id)}</small></div><div class="admin-card-actions"><button class="btn btn-sm" data-action="edit-card" data-id="${esc(c.id)}">✎ Modifier</button><button class="btn btn-sm btn-danger" data-action="archive-card" data-id="${esc(c.id)}" aria-label="Supprimer ${esc(c.name)}">Supprimer</button></div></div>`).join(''):'<p class="panel-p">Aucune carte trouvée.</p>';
+  const cards=allCards().filter(c=>(c.name+' '+c.family+' '+c.id).toLocaleLowerCase('fr-FR').includes(q));
+  node.innerHTML=cards.length?cards.slice(0,150).map(c=>`<div class="admin-card-row"><div><strong>${esc(c.name)}</strong><small>${esc(c.family)} · ${esc(cardRarityLabel(c))} · ${esc(c.id)}</small></div><div class="admin-card-actions"><button class="btn btn-sm" data-action="edit-card" data-id="${esc(c.id)}">✎ Modifier</button><button class="btn btn-sm btn-danger" data-action="archive-card" data-id="${esc(c.id)}" aria-label="Archiver ${esc(c.name)}">Archiver</button></div></div>`).join(''):'<p class="panel-p">Aucune carte trouvée.</p>';
   if(cards.length>150)node.insertAdjacentHTML('beforeend',`<p class="small-note">150 cartes affichées sur ${cards.length}. Affine la recherche.</p>`);
 }
 function renderArchivedCards(filter=''){
@@ -2669,10 +2689,10 @@ function renderArchivedCards(filter=''){
   const node=document.getElementById('admin-archived-list');if(!node)return;
   const q=String(filter).trim().toLocaleLowerCase('fr-FR');
   const cards=archivedAdminCards.filter(c=>(c.name+' '+c.family+' '+c.id).toLocaleLowerCase('fr-FR').includes(q));
-  node.innerHTML=cards.length?cards.slice(0,150).map(c=>`<div class="admin-card-row"><div><strong>${esc(c.name)}</strong><small>${esc(c.family||'Univers')} · ${esc(c.id)}</small></div><div class="admin-card-actions"><button class="btn btn-sm" data-action="restore-card" data-id="${esc(c.id)}">↺ Restaurer</button></div></div>`).join(''):'<p class="small-note">Aucune carte supprimée.</p>';
+  node.innerHTML=cards.length?cards.slice(0,150).map(c=>`<div class="admin-card-row"><div><strong>${esc(c.name)}</strong><small>${esc(c.family||'Univers')} · ${esc(c.id)}</small></div><div class="admin-card-actions"><button class="btn btn-sm" data-action="restore-card" data-id="${esc(c.id)}">↺ Restaurer</button></div></div>`).join(''):'<p class="small-note">Aucune carte archivée.</p>';
   if(archivedAdminCards.length>150)node.insertAdjacentHTML('beforeend','<p class="small-note">Les 150 premiers résultats sont affichés. Utilise la recherche pour affiner.</p>');
   const details=document.getElementById('admin-archived-details');
-  if(details){const summary=details.querySelector('summary');if(summary)summary.textContent='♻ Cartes supprimées ('+archivedAdminCards.length+') · Restaurer une carte';}
+  if(details){const summary=details.querySelector('summary');if(summary)summary.textContent='♻ Cartes archivées ('+archivedAdminCards.length+') · Restaurer une carte';}
 }
 async function refreshArchivedAdmin(){
   if(onlineUser?.role!=='admin')return;
@@ -2687,12 +2707,12 @@ async function archiveCardAdmin(id,archived){
   const c=archived?BASE_CARDS.find(x=>x.id===id):archivedAdminCards.find(x=>x.id===id);
   if(!c){toast('Carte introuvable. Actualise le catalogue.',true);return;}
   if(archived){
-    const answer=prompt('Supprimer « '+c.name+' » du catalogue et des tirages ? Les joueurs conserveront leur historique et la carte pourra être restaurée.\n\nÉcris SUPPRIMER pour confirmer :');
-    if(answer!=='SUPPRIMER')return;
+    const answer=prompt('Archiver « '+c.name+' » du catalogue et des tirages ? Les joueurs conserveront leur historique et la carte pourra être restaurée.\n\nÉcris ARCHIVER pour confirmer :');
+    if(answer!=='ARCHIVER')return;
   }else if(!confirm('Restaurer « '+c.name+' » dans le catalogue et les boosters concernés ?'))return;
   try{
     const result=await api('/api/admin/archive-card',{id,archived});
-    BASE_CARDS=result.cards||BASE_CARDS;
+    installCatalogue(result.cards||BASE_CARDS,result.catalogueMeta);
     if(archived&&editingCardId===id){editingCardId=null;draft=newDraft();}
     toast(archived?'Carte retirée du jeu. Restauration possible depuis l’administration.':'Carte restaurée dans le catalogue.');
     setView('admin');

@@ -1,0 +1,209 @@
+{
+  "format": "mashup-offline-catalogue-audit-v1",
+  "mode": "in-memory-copy-simulation",
+  "datasetScope": "repository-seed-not-production",
+  "productionExecutable": false,
+  "series": 2,
+  "before": {
+    "records": 100,
+    "uniqueCards": 100,
+    "normalActive": 90,
+    "secretActive": 0,
+    "archived": 10,
+    "inactiveOther": 0,
+    "unclassifiedActive": 0,
+    "duplicateRows": 0,
+    "invalidRows": 0
+  },
+  "matchingUniverseCards": 10,
+  "toArchive": 0,
+  "alreadyArchived": 10,
+  "ambiguousRecords": 0,
+  "ambiguousReasons": {},
+  "ignoredOtherSeries": 0,
+  "impacts": {
+    "ownership": {
+      "status": "unknown",
+      "reason": "users-not-provided"
+    },
+    "decks": {
+      "status": "unknown",
+      "reason": "users-not-provided"
+    },
+    "doubleDecks": {
+      "status": "unknown",
+      "reason": "users-not-provided"
+    },
+    "listings": {
+      "status": "unknown",
+      "reason": "listingsV11-not-provided"
+    },
+    "trades": {
+      "status": "unknown",
+      "reason": "tradesV109-not-provided"
+    },
+    "battles": {
+      "status": "unknown",
+      "reason": "battles-not-provided"
+    },
+    "pvp": {
+      "status": "unknown",
+      "reason": "pvpMatches-not-provided"
+    },
+    "openings": {
+      "status": "unknown",
+      "reason": "openings-not-provided"
+    }
+  },
+  "blockingReasons": [
+    "unknown-or-partial-ownership",
+    "unknown-or-partial-decks",
+    "unknown-or-partial-doubleDecks",
+    "unknown-or-partial-listings",
+    "unknown-or-partial-trades",
+    "unknown-or-partial-battles",
+    "unknown-or-partial-pvp",
+    "unknown-or-partial-openings"
+  ],
+  "productionReviewStatus": "blocked",
+  "coverage": "Only documented snapshot containers are inspected. Missing data is unknown, not zero. Full deployed schema and transaction behavior remain unverified.",
+  "publicTargets": [
+    {
+      "id": "s2-conv-power-rangers-01",
+      "name": "Tommy Oliver",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "legendary",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 53,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-02",
+      "name": "Jason Lee Scott",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "epic",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 54,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-03",
+      "name": "Kimberly Hart",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "epic",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 55,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-04",
+      "name": "Billy Cranston",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "rare",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 56,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-05",
+      "name": "Rita Repulsa",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "rare",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 57,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-06",
+      "name": "Trini Kwan",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 58,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-07",
+      "name": "Zack Taylor",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 59,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-08",
+      "name": "Lord Zedd",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 60,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-09",
+      "name": "Zordon",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 61,
+      "alreadyArchived": true
+    },
+    {
+      "id": "s2-conv-power-rangers-10",
+      "name": "Alpha 5",
+      "family": null,
+      "universe": "Power Rangers",
+      "loreGroup": "power-rangers",
+      "rarity": "common",
+      "variant": "standard",
+      "editionSeries": 2,
+      "editionNumber": 62,
+      "alreadyArchived": true
+    }
+  ],
+  "simulation": {
+    "after": {
+      "records": 100,
+      "uniqueCards": 100,
+      "normalActive": 90,
+      "secretActive": 0,
+      "archived": 10,
+      "inactiveOther": 0,
+      "unclassifiedActive": 0,
+      "duplicateRows": 0,
+      "invalidRows": 0
+    },
+    "changedCardRecords": 0,
+    "archiveFlagRoundTripExact": true,
+    "sourceObjectUnchanged": true,
+    "productionRestorationTested": false
+  }
+}

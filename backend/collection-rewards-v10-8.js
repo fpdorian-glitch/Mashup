@@ -2,20 +2,24 @@
  * Claim idempotence is stored with the player in mashup_private.game_runtime,
  * in the same transaction as the existing wallet mirror.
  * Secret cards never contribute to milestones.
+ * Load catalogue-core.js before this fragment. Counts are derived, never configured.
  */
 const COLLECTION_REWARD_TIERS=Object.freeze({25:300,50:600,75:1000,100:2000});
 function collectionRewardSummary(u,db){
   const claimed=u.collectionRewardsV108&&typeof u.collectionRewardsV108==='object'&&!Array.isArray(u.collectionRewardsV108)?u.collectionRewardsV108:{};
   const catalog=Array.isArray(db.cards)?db.cards:[];
-  return (Array.isArray(db.series)?db.series:[]).map(series=>{
+  const seenSeries=new Set();
+  return (Array.isArray(db.series)?db.series:[]).filter(series=>{
+    const number=Number(series?.number);
+    if(!Number.isSafeInteger(number)||number<1||seenSeries.has(number))return false;
+    seenSeries.add(number);return true;
+  }).map(series=>{
     const number=Number(series.number);
-    const cards=catalog.filter(c=>!c.archived&&c.variant!=='secret'&&(Number(c.editionSeries)||1)===number);
-    const total=number===1?158:(Number.isSafeInteger(Number(series.targetCount))&&Number(series.targetCount)>0?Number(series.targetCount):cards.length||1);
-    const owned=cards.filter(c=>Number(u.state?.owned?.[c.id])>0).length;
-    return {series:number,name:String(series.name||'Série'),owned,total,percent:Math.min(100,Math.floor(100*owned/Math.max(1,total))),
+    const {total,owned,percent}=catalogueSeriesMetrics(catalog,number,u.state?.owned||{});
+    return {series:number,name:String(series.name||'Série'),owned,total,percent,
       tiers:Object.entries(COLLECTION_REWARD_TIERS).map(([threshold,value])=>{
         const pct=Number(threshold);
-        return {percent:pct,reward:value,unlocked:owned*100>=total*pct,claimed:claimed[number+':'+pct]===true};
+        return {percent:pct,reward:value,unlocked:total>0&&owned*100>=total*pct,claimed:claimed[number+':'+pct]===true};
       }),
       badge:claimed[number+':100']===true?'Maître de la série':null
     };
