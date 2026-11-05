@@ -16,6 +16,8 @@ Part de `main` **18f8d14**. Aucun changement de backend, catalogue, illustration
 
 ## Validation
 
+**123 tests unitaires, 12 groupes navigateur et 11 scénarios de fiabilité réussis.** Comparaison séquentielle sur trois répétitions : p95 rAF de 16,7 à 16,8 ms sur Chromium Linux, sans gain FPS revendiqué.
+
 Résultats et commandes reproductibles : [rapport V15](README.md), [validation](validation.md), [preuves Node](unit-results.txt), [régression navigateur](artifacts/browser-results.json), [fiabilité](artifacts/reliability-results.json), [mesures V14/V15](artifacts/performance-results.json).
 
 [Comparaison visuelle](artifacts/comparison.html) · [24 finitions](artifacts/cards-24-finishes.png) · [inspection](artifacts/card-inspection.png) · [ouverture filmée](artifacts/booster-preview.webm) · [album](artifacts/album-mobile.png).
@@ -33,3 +35,6 @@ gh pr create --repo fpdorian-glitch/Mashup --base main --head feature/mashup-v15
 ```
 
 [Créer la PR dans GitHub](https://github.com/fpdorian-glitch/Mashup/compare/main...feature/mashup-v15-immersion?expand=1).
+
+
+État de livraison : branche poussée ; création de PR tentée mais refusée par l’accès réseau à `api.github.com/graphql` (`Forbidden`). Aucune PR, fusion ou publication effectuée. Les validations locales ont réussi ; le statut CI distant reste à consulter.

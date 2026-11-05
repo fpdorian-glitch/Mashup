@@ -79,3 +79,12 @@ Prérequis : Node 24, Chromium (`/usr/bin/chromium` ou `CHROMIUM_PATH`), histori
 Retour arrière : avant fusion, fermer la PR suffit. Après une éventuelle publication autorisée, rétablir **ensemble** les fichiers frontend et versions de `18f8d14`, ou annuler les commits V15. Il n’y a aucune migration de données à inverser. Ne pas restaurer un ancien inventaire par-dessus de nouvelles transactions légitimes. Les préférences locales V15 sont sans effet dans V14.
 
 Titre, description et commande de PR dans [PR.md](PR.md). La création distante dépend de l’accès API GitHub ; son état effectif doit être vérifié avant de considérer une PR comme créée.
+
+
+## Livraison GitHub effective
+
+Branche **envoyée sur origin** : `feature/mashup-v15-immersion`. Commit des fonctionnalités : `0e6f0e7` ; preuves de validation : `0d72595`. `main` reste sur `18f8d14` ; aucune fusion et aucun déploiement.
+
+La création de PR a réellement été tentée avec `gh pr create`. Elle a échoué sur `https://api.github.com/graphql` : **Forbidden**. **Aucune PR distante n’a été créée.** La politique réseau actuelle n’autorise pas `api.github.com` ; une fois ce domaine accessible, les droits API devront également être vérifiés. Aucun nouveau jeton n’a été demandé ou copié.
+
+[Ouvrir la création de PR](https://github.com/fpdorian-glitch/Mashup/compare/main...feature/mashup-v15-immersion?expand=1) · [Titre et description préparés](PR.md). La suite CI est configurée, mais son statut distant n’a pas pu être interrogé par cette API. Les résultats locaux restent consultables et reproductibles dans ce dossier.
