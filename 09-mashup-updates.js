@@ -4,7 +4,7 @@
  */
 (()=>{
   'use strict';
-  const CURRENT_VERSION='15.3.1';
+  const CURRENT_VERSION='15.3.2';
   const CHECK_EVERY_MS=4*60*1000;
   const REFRESH_GUARD_MS=45000;
   const $=id=>document.getElementById(id);
