@@ -1,6 +1,5 @@
 {
   "version": "15.6.0",
-  "status": "development",
-  "preparedAt": "2026-11-06",
-  "notes": "Immersion 3D des boosters, glissement continu Mashup Match et progression publique des joueurs avec service compatible."
+  "publishedAt": "2026-11-06",
+  "notes": "Boosters 3D manipulables, ouverture physique et Mashup Match tactile plus fluide. Le classement public reste désactivé tant que son raccordement Supabase réel n’est pas validé."
 }
