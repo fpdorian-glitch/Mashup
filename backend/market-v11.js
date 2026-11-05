@@ -1,7 +1,7 @@
 /* Mashup V11 — public listings with private escrow.
  * Executed inside the existing PostgreSQL game_runtime FOR UPDATE transaction.
  * No real currency; all amounts are in-game credits.
- * Secret cards cannot be listed (undiscovered content remains secret).
+ * Only actively listed cards may be publicly previewed, including Secret variants.
  */
 const V11_MAX_PRICE=250000;
 const V11_MARKET_BASE={common:90,rare:220,epic:650,legendary:1800,mythic:4800,ultra:11500};
@@ -18,7 +18,7 @@ function marketV11Estimate(db,card){
  return Math.max(10,Math.round(base*finish*scarce/10)*10);
 }
 function marketV11CardPublic(c){
- return {id:c.id,name:c.name,rarity:c.rarity,variant:c.variant,family:c.family,series:Number(c.editionSeries)||1};
+ return {id:c.id,name:c.name,subtitle:c.subtitle||'',rarity:c.rarity,variant:c.variant,family:c.family,series:Number(c.editionSeries)||1,editionSeries:Number(c.editionSeries)||1,editionNumber:Number(c.editionNumber)||0,editionTotal:Number(c.editionTotal)||0,power:c.power,size:c.size,def:c.def,aura:c.aura,intelligence:c.intelligence,icon:c.icon||'✦',color1:c.color1||'#576a81',color2:c.color2||'#182b39'};
 }
 function marketV11Result(db,l){
  const c=db.cards.find(x=>x.id===l.cardId)||null;
@@ -36,11 +36,18 @@ function marketV11List(db,u){
  const mine=listings.filter(l=>l.seller===u.id).slice(-25).reverse().map(l=>marketV11Result(db,l));
  return {listings:available,myListings:mine,limits:{maxPrice:V11_MAX_PRICE,maxActive:12}};
 }
+function marketV11Preview(db,u,id){
+ const listing=(db.listingsV11||[]).find(l=>l.id===id&&l.status==='active');
+ if(!listing||!db.users.some(p=>p.id===listing.seller&&!p.disabled))fail(404,'Annonce indisponible.');
+ const card=marketV11Card(db,listing.cardId);
+ if(!card)fail(404,'Carte indisponible.');
+ // The endpoint is not a general card lookup: only an existing public listing can reveal artwork.
+ return {card:{id:card.id,art:typeof card.art==='string'?card.art:''}};
+}
 function marketV11ValidateCard(db,u,id){
  if(typeof id!=='string'||id.length>100)fail(400,'Identifiant de carte incorrect.');
  const card=marketV11Card(db,id);
  if(!card)fail(404,'Cette carte n’est plus dans le catalogue.');
- if(card.variant==='secret')fail(403,'Les cartes Secrètes ne peuvent pas être affichées dans le marché public.');
  if((Number(u.state?.owned?.[id])||0)<1)fail(409,'Tu ne possèdes plus d’exemplaire disponible.');
  return card;
 }
@@ -82,7 +89,7 @@ function marketV11Buy(db,buyer,id){
  const seller=db.users.find(u=>u.id===listing.seller&&!u.disabled);
  if(!seller)fail(409,'Le vendeur n’est plus disponible.');
  const card=marketV11Card(db,listing.cardId);
- if(!card||card.variant==='secret')fail(409,'Carte indisponible.');
+ if(!card)fail(409,'Carte indisponible.');
  const payment=Number(listing.price);
  const funds=Number(buyer.state?.coins),sellerFunds=Number(seller.state?.coins);
  if(!Number.isSafeInteger(payment)||payment<10||payment>V11_MAX_PRICE)fail(409,'Annonce invalide.');

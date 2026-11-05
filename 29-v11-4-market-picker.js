@@ -1,5 +1,5 @@
 /* Mashup V11.4 — accessible, on-demand collection picker for public sales.
- * Keeps all filters local. Only owned, non-secret cards enter the picker;
+ * Keeps all filters local. Only owned, active cards enter the picker (including secrets);
  * server-side ownership and escrow validation remain authoritative.
  */
 export function createSaleCardPicker({getCards,getFavorites,esc,renderCard,onPick}){
@@ -16,7 +16,7 @@ export function createSaleCardPicker({getCards,getFavorites,esc,renderCard,onPic
     return '<div class="v114-selection-card"><div class="v114-selection-art">'+renderCard(card,{lazy:true,revealedOpponent:true})+'</div><div><strong>'+esc(card.name)+'</strong><small>'+esc(card.family||'Univers')+' · '+esc(card.rarity||'')+' · S'+(Number(card.editionSeries)||1)+'</small><small>'+fmt(card.qty)+' exemplaire(s) disponible(s)</small></div></div>';
   }
   function filtered(){
-    const cards=getCards().filter(c=>c&&c.id&&Number(c.qty)>0&&!c.hidden&&c.variant!=='secret');
+    const cards=getCards().filter(c=>c&&c.id&&Number(c.qty)>0&&!c.hidden);
     const favs=new Set(getFavorites()||[]);
     const q=normalize(filters.search.trim());
     return cards.filter(c=>
@@ -63,7 +63,7 @@ export function createSaleCardPicker({getCards,getFavorites,esc,renderCard,onPic
   }
   function open(){
     if(root())return;
-    const cards=getCards().filter(c=>c&&!c.hidden&&c.variant!=='secret'&&Number(c.qty)>0);
+    const cards=getCards().filter(c=>c&&!c.hidden&&Number(c.qty)>0);
     const rarities=[['all','Toutes'],...Object.keys(rarityOrder).map(k=>[k,({common:'Commune',rare:'Rare',epic:'Épique',legendary:'Légendaire',mythic:'Mythique',ultra:'Ultra'})[k]])];
     const families=[...new Set(cards.map(c=>c.family).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fr'));
     const series=[...new Set(cards.map(c=>Number(c.editionSeries)||1))].sort((a,b)=>a-b);
@@ -112,7 +112,7 @@ export function createSaleCardPicker({getCards,getFavorites,esc,renderCard,onPic
     if(event.target===root()||event.target.closest('[data-v114-close]')){close();return;}
     const select=event.target.closest('[data-v114-pick]');
     if(select){
-      const card=getCards().find(c=>c.id===select.dataset.v114Pick&&!c.hidden&&c.variant!=='secret'&&c.qty>0);
+      const card=getCards().find(c=>c.id===select.dataset.v114Pick&&!c.hidden&&c.qty>0);
       if(card){onPick(card);close();}
       return;
     }
