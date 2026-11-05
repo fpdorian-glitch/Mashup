@@ -36,6 +36,6 @@ L’utilisateur a demandé la publication de la V15.4 après vérification. Le d
 
 ## Accès et limitations connues
 
-La connexion Supabase MCP et les identités/secrets de déploiement ne sont pas configurés. Le CLI Supabase n’est pas authentifié. L’API GitHub était également refusée par la politique réseau de cet environnement lors de la livraison précédente ; le statut de la tentative actuelle sera consigné dans `delivery.md`.
+La connexion Supabase MCP et les identités/secrets de déploiement ne sont pas configurés. Le CLI Supabase n’est pas authentifié. La branche a été poussée, mais la création de PR a retourné `Forbidden` sur l’API GitHub, destination non permise par la politique réseau. Le statut exact et le formulaire de création sont dans [delivery.md](delivery.md).
 
 Android Chrome et iPhone Safari physiques n’ont pas été testés. Les essais présents utilisent Chromium Linux, des fenêtres mobiles et le tactile simulé. Aucun résultat d’authentification/JWT/RLS, de paiement ou de calendrier de production n’est déduit de ces simulations.

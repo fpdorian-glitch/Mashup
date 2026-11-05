@@ -53,7 +53,7 @@ Le [contrat préparé](match-api.md), les [preuves backend agrégées](match-bac
 
 ## Preuves
 
-Voir [validation.md](validation.md), [les mesures de performance](performance.md) et la [comparaison visuelle V15.3.2/V15.4](artifacts/comparison.html).
+Voir [validation.md](validation.md), [le statut de la branche et de la PR](delivery.md), [les mesures de performance](performance.md) et la [comparaison visuelle V15.3.2/V15.4](artifacts/comparison.html).
 
 Captures : [Match](artifacts/match-board-level-1.png), [campagne](artifacts/match-campaign.png), [économie Admin](artifacts/match-admin-economy.png), [matériaux](artifacts/v154-card-materials.png), [Casino 320 px](artifacts/casino-clock-320.png).
 
