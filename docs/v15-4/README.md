@@ -1,6 +1,6 @@
 # Mashup V15.4 — Le Nexus des mondes
 
-Branche `feature/mashup-v15-4-grand-update`, créée depuis `main` au commit `f82a8cd` (V15.3.1). Date : 5 novembre 2026, Europe/Paris.
+Branche `feature/mashup-v15-4-grand-update`, créée depuis `main` au commit `f82a8cd` (V15.3.1), puis mise à jour avec `d486c86` (V15.3.2) avant livraison. Date : 5 novembre 2026, Europe/Paris.
 
 **Le client et le service privé local sont développés et testés. La publication coordonnée reste bloquée par l’absence de connexion Supabase et des sources déployées exactes.** Aucun compte réel, crédit, inventaire, catalogue, annonce ou statistique n’a été modifié. Aucune migration ou Edge Function n’a été déployée.
 
@@ -16,7 +16,7 @@ La confrontation anime les valeurs, la carte gagnante, le recul adverse ou l’�
 
 Six substrats différencient papier, métal brossé, violet, or, chrome noir et chrome blanc. Gold, Full Art et Secrètes gardent leur composition existante. La lumière spéculaire et le reflet vert des Secrètes réagissent à l’inclinaison, sans modifier les illustrations ou les cinq statistiques.
 
-Le scellé accepte désormais un glissement horizontal, avec annulation des gestes incomplets, verticaux ou interrompus. Le tap et le clavier restent disponibles. Le bilan distingue nouvelles cartes, doublons et pièces remarquables sans changer l’ordre du tirage. Les protections de préparation/confirmation restent en place ; le bouton final ramène aux Boosters. Les tests réels du client vérifient aussi l’orientation des faces et la reprise après réponse perdue.
+Le scellé accepte désormais un glissement horizontal, avec annulation des gestes incomplets, verticaux ou interrompus. Le tap et le clavier restent disponibles. Le bilan distingue nouvelles cartes, doublons et pièces remarquables sans changer l’ordre du tirage. Les protections V15.3.2 de préparation, confirmation automatique et récupération restent en place. Le serveur confirme dès la dernière carte rangée ; le bilan reste consultable, puis le bouton final ramène aux Boosters sans nouvelle transaction. Les tests réels du client vérifient aussi l’orientation des faces et la reprise après réponse perdue.
 
 ### Casino et stabilité
 
@@ -53,7 +53,7 @@ Le [contrat préparé](match-api.md), les [preuves backend agrégées](match-bac
 
 ## Preuves
 
-Voir [validation.md](validation.md), [les mesures de performance](performance.md) et la [comparaison visuelle V15.3.1/V15.4](artifacts/comparison.html).
+Voir [validation.md](validation.md), [les mesures de performance](performance.md) et la [comparaison visuelle V15.3.2/V15.4](artifacts/comparison.html).
 
 Captures : [Match](artifacts/match-board-level-1.png), [campagne](artifacts/match-campaign.png), [économie Admin](artifacts/match-admin-economy.png), [matériaux](artifacts/v154-card-materials.png), [Casino 320 px](artifacts/casino-clock-320.png).
 

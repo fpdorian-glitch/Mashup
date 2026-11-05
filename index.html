@@ -1253,7 +1253,7 @@ let selectedPack = null;
 let packResults = [];
 let packVouchers={};
 let packRevealed = new Set();
-let packLoading=false,packCancelRequested=false,packPendingId=null,packPendingPackId=null,packFinalizing=false,packCancelPromise=null;
+let packLoading=false,packCancelRequested=false,packPendingId=null,packPendingPackId=null,packFinalizing=false,packCancelPromise=null,packConfirmed=false;
 let betStakeDraft=null;
 let battle = null;
 let draft = newDraft();
@@ -1417,13 +1417,19 @@ async function gamesApi(route,body){
     if(!reply.ok)throw Object.assign(new Error(output.error||'Les jeux ne répondent pas.'),{status:reply.status});
     if(sessionEpoch!==requestEpoch||onlineUser?.id!==accountId)throw new Error('La session a changé. Reconnecte-toi aux jeux.');
     if(Number.isSafeInteger(output.credits)&&output.credits>=0){state.coins=output.credits;updateBalances();}
+    if(route.startsWith('match/'))applyMatchWallet(output.state);
     return output;
   }finally{finish();}
+}
+function applyMatchWallet(confirmed){
+  if(!Number.isSafeInteger(confirmed?.coins)||confirmed.coins<0)return;
+  // Match only grants credits. Preserve local inventory and unsaved deck edits.
+  state.coins=confirmed.coins;updateBalances();
 }
 const matchUI=createMashupMatchUI({
   api:(route,body)=>gamesApi('match/'+route,body),getUser:()=>onlineUser,getSessionKey:()=>sessionEpoch,
   getView:()=>view==='games'&&gamesMode==='match'?'games':'inactive',toast,
-  onState:confirmed=>{if(confirmed&&typeof confirmed==='object'){state=confirmed;updateBalances();}},
+  onState:applyMatchWallet,
   onExit:()=>{matchUI.unmount();gamesMode='hub';renderGames();}
 });
 const gamesUI=createGamesUI({
@@ -1474,7 +1480,7 @@ async function openPack(id){
  const attemptEpoch=sessionEpoch;
  const p=PACKS.find(x=>x.id===id);if(!p)return;
  if(!(p.free&&!state.freePackUsed)&&!(Number(packVouchers[p.id])>0)&&state[p.currency==='dust'?'dust':'coins']<p.price){toast('Crédits ou éclats insuffisants.',true);return;}
- packLoading=true;packCancelRequested=false;selectedPack=p;
+ packConfirmed=false;packLoading=true;packCancelRequested=false;selectedPack=p;
  const attemptId=globalThis.crypto?.randomUUID?.()||('try-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,13));
  document.getElementById('modal-root').innerHTML=`<div class="modal-backdrop opening-backdrop" role="dialog" aria-modal="true" aria-label="Préparation de ton booster"><section class="opening-loading"><span class="wait-spinner" aria-hidden="true"></span><h2>Préparation de ton booster…</h2><p>Le serveur prépare le tirage. Aucun crédit n'a été débité.</p><button class="btn btn-sm" data-action="cancel-pack-loading" type="button">Annuler</button></section></div>`;
  try{
@@ -1504,9 +1510,9 @@ function renderOpeningStack(){
   if(left===0){
     clearOpeningOmen();boosterFX.reset();
     stage.innerHTML=summaryMarkup(packResults,cardMarkup,esc);
-    if(tip)tip.textContent='Enregistrement sécurisé du booster en cours…';
+    if(tip)tip.textContent=packConfirmed?'Tes cartes sont enregistrées. Prends le temps de les admirer.':'Enregistrement sécurisé du booster en cours…';
     if(progress)progress.textContent=`${packResults.length} / ${packResults.length} cartes découvertes`;
-    if(done){done.textContent='Confirmer et revenir aux boosters ↗';done.hidden=false;done.focus({preventScroll:true});}
+    if(done){done.textContent=packConfirmed?'Revenir aux boosters ↗':'Confirmer et revenir aux boosters ↗';done.hidden=false;done.focus({preventScroll:true});}
     if(shouldConfirmRevealedPack({revealed:packRevealed.size,total:packResults.length,pendingId:packPendingId,busy:packFlipBusy,loading:packLoading,finalizing:packFinalizing})){
       queueMicrotask(()=>{if(shouldConfirmRevealedPack({revealed:packRevealed.size,total:packResults.length,pendingId:packPendingId,busy:packFlipBusy,loading:packLoading,finalizing:packFinalizing}))void finishOpening();});
     }
@@ -1603,6 +1609,7 @@ async function abandonPendingPack(){
  finally{pendingPackRecoveryBusy=false;}
 }
 async function finishOpening(){
+ if(packConfirmed&&!pendingRecoveryTicket){closeModal();if(view!=='packs')setView('packs');return;}
  const recovering=Boolean(pendingRecoveryTicket);
  if(!recovering&&(packFlipBusy||packFinalizing||packLoading||!packPendingId||packRevealed.size<packResults.length))return;
  if(recovering&&(packFinalizing||packLoading))return;
@@ -1626,8 +1633,10 @@ async function finishOpening(){
     installCatalogue(r.cards.map(c=>({...c,art:c.art||artwork.get(c.id)||''})),r.catalogueMeta);
   }
   pendingPackStore.forget(onlineUser?.id,openingId);
-  packPendingId=null;packPendingPackId=null;updateBalances();packFinalizing=false;
-  closeModal();if(view!=='packs')setView('packs');collectionRewardsUI.refresh({force:true});toast('Booster confirmé : cartes ajoutées à ta collection !');
+  packPendingId=null;packPendingPackId=null;packConfirmed=true;updateBalances();packFinalizing=false;
+  if(done?.isConnected){done.disabled=false;done.textContent='Revenir aux boosters ↗';}
+  const tip=document.getElementById('opening-instruction');if(tip)tip.textContent='Tes cartes sont enregistrées. Prends le temps de les admirer.';
+  collectionRewardsUI.refresh({force:true});toast('Booster confirmé : cartes ajoutées à ta collection !');
  }catch(e){
   if(attemptEpoch!==sessionEpoch)return;
   packFinalizing=false;
@@ -1646,7 +1655,7 @@ function closeModal(){
  if(packPendingId){toast('Termine ton booster et confirme pour conserver les cartes.',true);return;}
  revealTimeline?.cancel();revealTimeline=null;completePutAway=null;
  sealedPackCleanup?.();sealedPackCleanup=null;
- clearTimeout(packFlipTimer);packFlipTimer=null;packFlipBusy=false;packCardFaceUp=false;clearOpeningOmen();boosterFX.reset();setOpeningTheme('');stopInspectionMotion();inspection=null;
+ clearTimeout(packFlipTimer);packFlipTimer=null;packFlipBusy=false;packCardFaceUp=false;packConfirmed=false;clearOpeningOmen();boosterFX.reset();setOpeningTheme('');stopInspectionMotion();inspection=null;
  if(cropEditor){URL.revokeObjectURL(cropEditor.url);cropEditor=null;}
  document.getElementById('modal-root').innerHTML='';if(view==='packs'||view==='collection'||view==='arena')render();
 }
@@ -2401,7 +2410,7 @@ async function logoutOnline(){
  onlineBusy=false;invitationPollBusy=false;onlineLobbyData=null;myPublicProfile=null;betStakeDraft=null;renderOnline.fingerprint='';renderOnline.lastMatchId=null;
  revealTimeline?.cancel();revealTimeline=null;completePutAway=null;sealedPackCleanup?.();sealedPackCleanup=null;
  clearTimeout(packFlipTimer);packFlipTimer=null;boosterFX.reset();clearOpeningOmen();stopInspectionMotion();inspection=null;
- packLoading=false;packFinalizing=false;packPendingId=null;packPendingPackId=null;packCancelPromise=null;packResults=[];packRevealed=new Set();
+ packLoading=false;packFinalizing=false;packConfirmed=false;packPendingId=null;packPendingPackId=null;packCancelPromise=null;packResults=[];packRevealed=new Set();
  if(cropEditor){URL.revokeObjectURL(cropEditor.url);cropEditor=null;}
  document.getElementById('modal-root').innerHTML='';
  missionsUI.setData(null);collectionRewardsUI.setData(null);packVouchers={};developmentJournal.setPosts([]);

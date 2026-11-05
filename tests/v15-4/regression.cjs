@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {laboratory,fixtureContext,openHome,navigate,recordScene,ARTIFACTS,saveJson}=require('./harness.cjs');
 (async()=>{
- const lab=await laboratory(),report={baseline:'f82a8cd',started:new Date().toISOString(),productionRequests:0,checks:[],screenshots:[],limits:'Chromium Linux, tactile simulé. Aucun téléphone physique ni vrai backend testé.'};
+ const lab=await laboratory(),report={baseline:'d486c86',started:new Date().toISOString(),productionRequests:0,checks:[],screenshots:[],limits:'Chromium Linux, tactile simulé. Aucun téléphone physique ni vrai backend testé.'};
  let active;
  async function shot(page,name,fullPage=false){await page.screenshot({path:path.join(ARTIFACTS,name),fullPage});report.screenshots.push(name);}
  async function scenario(name,fn,size={width:390,height:844}){

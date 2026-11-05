@@ -1,6 +1,6 @@
 {
-  "baseline": "f82a8cd",
-  "started": "2026-11-05T20:36:08.868Z",
+  "baseline": "d486c86",
+  "started": "2026-11-05T21:06:18.114Z",
   "productionRequests": 0,
   "checks": [
     {
@@ -988,21 +988,6 @@
         },
         {
           "route": "/api/bootstrap",
-          "method": "GET",
-          "payload": null
-        },
-        {
-          "route": "/api/trades",
-          "method": "GET",
-          "payload": null
-        },
-        {
-          "route": "/api/pvp/invitations",
-          "method": "GET",
-          "payload": null
-        },
-        {
-          "route": "/api/trades",
           "method": "GET",
           "payload": null
         }
@@ -2703,15 +2688,15 @@
   "combatVideo": {
     "available": true,
     "name": "combat-preview.webm",
-    "frames": 322,
-    "durationSeconds": 7.23,
+    "frames": 315,
+    "durationSeconds": 7.36,
     "source": "Real Chromium screencast frames with browser timestamps"
   },
   "tradesVideo": {
     "available": true,
     "name": "trades-preview.webm",
-    "frames": 9,
-    "durationSeconds": 0.58,
+    "frames": 11,
+    "durationSeconds": 0.61,
     "source": "Real Chromium screencast frames with browser timestamps"
   },
   "success": true

@@ -30,8 +30,8 @@ async function laboratory({baseline=false}={}){
  let baselineRoot=null;
  if(baseline){
   baselineRoot=fs.mkdtempSync(path.join(os.tmpdir(),'mashup-v154-baseline-'));
-  const archive=spawnSync('git',['archive','f82a8cd'],{cwd:ROOT,maxBuffer:100*1024*1024});
-  assert.equal(archive.status,0,'La référence f82a8cd doit être disponible localement.');
+  const archive=spawnSync('git',['archive','d486c86'],{cwd:ROOT,maxBuffer:100*1024*1024});
+  assert.equal(archive.status,0,'La référence d486c86 doit être disponible localement.');
   const extract=spawnSync('tar',['-x','-C',baselineRoot],{input:archive.stdout});
   assert.equal(extract.status,0,'Extraction de la référence en lecture seule.');
  }

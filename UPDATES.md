@@ -1,3 +1,11 @@
+## Mashup V15.4.0 — Le Nexus des mondes (préparée le 5 novembre 2026)
+
+- Arène Nexus, matières des cartes, scellés tactiles, horloge serveur du Casino et actualisation protégée.
+- Mashup Match : 100 niveaux et dix mondes, moteur déterministe et campagne d’entraînement complète.
+- Service de campagne privé préparé ; raccordement et déploiement Supabase nécessaires avant activation des gains réels.
+- Protections de récupération et confirmation automatique V15.3.2 conservées ; bilan consultable après confirmation.
+- Aucun déploiement, migration ou changement de données réelles effectué par cette préparation.
+
 ## Mashup V15.3.2 — Ouvertures fiabilisées (5 novembre 2026)
 
 - Confirmation automatiquement déclenchée dès que la dernière carte d'un booster est mise de côté. Le serveur reste seul responsable de l'attribution et du débit.

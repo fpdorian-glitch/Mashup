@@ -25,13 +25,22 @@ const {laboratory,fixtureContext,openHome,navigate,ARTIFACTS,saveJson,recordScen
    }
    await page.screenshot({path:path.join(ARTIFACTS,'booster-final-review.png')});await page.waitForTimeout(900);report.boosterVideo=await recording();
    await page.locator('.m13-dock [data-m13-view="collection"]').evaluate(node=>node.click());
-   await page.locator('#opening-done').click();await page.getByRole('button',{name:'Réessayer la confirmation'}).waitFor();assert.equal(await page.evaluate(()=>window.MASHUP_UPDATE_SAFETY().safe),false);
-   await page.locator('#opening-done').click();await page.locator('.m13-home').waitFor();assert.equal(committed.size,1);assert.equal(attempts,2);assert.equal(await page.locator('#modal-root').textContent(),'');
+   await page.getByRole('button',{name:'Réessayer la confirmation'}).waitFor();assert.equal(attempts,1);assert.equal(await page.evaluate(()=>window.MASHUP_UPDATE_SAFETY().safe),false);
+   await page.locator('#opening-done').click();await page.getByRole('button',{name:'Revenir aux boosters ↗'}).waitFor();assert.equal(await page.locator('.v14-opening-summary').isVisible(),true);await page.locator('#opening-done').click();await page.locator('.m13-home').waitFor();assert.equal(committed.size,1);assert.equal(attempts,2);assert.equal(await page.locator('#modal-root').textContent(),'');
    const calls=f.calls.filter(call=>call.route==='/api/packs/commit');assert.equal(calls[0].payload.openingId,calls[1].payload.openingId);assert.equal(await page.evaluate(()=>window.MASHUP_UPDATE_SAFETY().safe),true);
   });
   await scenario('Cancelled pending preparation sends one cancel and no commit',async(page,f)=>{
    const pending=f.controls.deferNext('/api/packs/prepare');await page.locator('.m13-hero [data-action="open-pack"]').click();await pending.started;await page.locator('[data-action="cancel-pack-loading"]').click();pending.release();await page.waitForFunction(()=>document.querySelector('#modal-root')?.children.length===0);
    assert.equal(f.calls.filter(call=>call.route==='/api/packs/cancel').length,1);assert.equal(f.calls.filter(call=>call.route==='/api/packs/commit').length,0);
+  });
+  await scenario('V15.3.2 interrupted opening survives reload and recovers without preparing a second pack',async(page,f)=>{
+   let commits=0;const ownedBefore=f.fixtures.state.owned[f.fixtures.cards[0].id];
+   f.controls.set('/api/packs/commit',({call,body})=>{assert.equal(call.payload.openingId,'fiction-opening');commits++;if(commits===1)f.fixtures.state.owned[f.fixtures.cards[0].id]++;return {body:{...body,state:f.fixtures.state}};});
+   await page.locator('.m13-hero [data-action="open-pack"]').click();await page.locator('[data-v14-break-seal]').waitFor();
+   await page.reload({waitUntil:'networkidle'});await page.locator('[data-action="recover-pending-pack"]').waitFor();
+   await page.locator('.m13-hero [data-action="open-pack"]').click();assert.equal(f.calls.filter(call=>call.route==='/api/packs/prepare').length,1);
+   await page.locator('[data-action="recover-pending-pack"]').click();await page.waitForFunction(()=>!document.querySelector('[data-action="recover-pending-pack"]'));
+   assert.equal(commits,1);assert.equal(f.fixtures.state.owned[f.fixtures.cards[0].id],ownedBefore+1);await page.reload({waitUntil:'networkidle'});await page.locator('.m13-home').waitFor();assert.equal(await page.locator('[data-action="recover-pending-pack"]').count(),0);
   });
   await scenario('Memory keeps its existing move contract, server win/loss and confirmed credits',async(page,f)=>{
    let game=null,coins=2450;const found=new Set();

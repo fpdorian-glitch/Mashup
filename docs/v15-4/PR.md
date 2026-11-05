@@ -2,9 +2,11 @@ La V15.4 ajoute Mashup Match et améliore l’arène, les matières des cartes, 
 
 Mashup Match possède un vrai moteur déterministe, 100 niveaux dans dix mondes, bonus combinables, cascades, obstacles, progression et éditeur économique. Les cent grilles canoniques ont chacune un parcours gagnant vérifié. Un entraînement local explicitement sans crédits fonctionne si le service de campagne n’est pas activé ; aucune victoire client ne donne de crédit réel.
 
+Les derniers changements de `main` (V15.3.2) sont intégrés : confirmation automatique et récupération des ouvertures. Le bilan reste affiché après sécurisation.
+
 L’arène conserve ses règles et ses requêtes serveur. Le Casino affiche son horloge avant le direct et recalcule l’heure depuis le serveur. Les actualisations sont différées pendant parties/transactions, et un changement de compte pendant la lecture Auth bloque l’envoi d’une ancienne action.
 
-Les sources du catalogue, illustrations, fragments économiques et corrections V15.3.1 sont protégées par comparaison à `f82a8cd`. Aucun joueur réel, tirage, inventaire ou solde n’a été modifié.
+Les sources du catalogue, illustrations, fragments économiques et corrections V15.3.1 et les protections de boosters V15.3.2 sont conservées depuis `d486c86`. Aucun joueur réel, tirage, inventaire ou solde n’a été modifié.
 
 Validation : suites Node du client et du backend privé, scénarios Chromium de campagne, économie, Casino à deux comptes, combats IA/PvP, échanges, boosters et PWA. Les preuves, captures, vidéos et mesures comparatives se trouvent dans `docs/v15-4/validation.md` et `docs/v15-4/performance.md`.
 

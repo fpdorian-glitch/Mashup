@@ -30,13 +30,8 @@
           "method": "POST",
           "payload": {
             "id": "starter",
-            "attemptId": "b6cd5d5f-2a68-4aa9-ace7-1ca16f2e352c"
+            "attemptId": "98e30525-d2ec-46a7-bf89-2350b05423d3"
           }
-        },
-        {
-          "route": "/api/collection/rewards",
-          "method": "GET",
-          "payload": null
         },
         {
           "route": "/api/packs/commit",
@@ -45,6 +40,11 @@
             "id": "starter",
             "openingId": "fiction-opening"
           }
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null
         },
         {
           "route": "/api/packs/commit",
@@ -93,7 +93,7 @@
           "method": "POST",
           "payload": {
             "id": "starter",
-            "attemptId": "3bf47871-cc24-4a53-b92e-9980d69c5622"
+            "attemptId": "f9395058-82c1-45e5-8dfe-53aab769aa3f"
           }
         },
         {
@@ -102,6 +102,246 @@
           "payload": {
             "id": "starter",
             "openingId": "fiction-opening"
+          }
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "V15.3.2 interrupted opening survives reload and recovers without preparing a second pack",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "877b4264-f0ec-4fe1-b7a3-0306be0a27f6"
+          }
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          }
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "Memory keeps its existing move contract, server win/loss and confirmed credits",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null
+        },
+        {
+          "route": "start",
+          "method": "POST",
+          "payload": {
+            "type": "memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 0,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 6,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 1,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 7,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 2,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 8,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 3,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 9,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 4,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 10,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 5,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 11,
+            "sessionId": "fiction-memory"
+          }
+        },
+        {
+          "route": "start",
+          "method": "POST",
+          "payload": {
+            "type": "memory"
           }
         }
       ],
@@ -222,17 +462,17 @@
   "limits": "Chromium Linux. Real frontend; local API/auth fixtures. Pack debit/idempotence are simulated, not a verification of the deployed Supabase pack service.",
   "faceMatrices": [
     {
-      "m11": 0.98666,
+      "m11": 1,
       "finite": true,
       "stats": 5
     },
     {
-      "m11": 0.978713,
+      "m11": 0.9879771176999999,
       "finite": true,
       "stats": 5
     },
     {
-      "m11": 0.98666,
+      "m11": 0.989649,
       "finite": true,
       "stats": 5
     }
@@ -240,8 +480,8 @@
   "boosterVideo": {
     "available": true,
     "name": "booster-preview.webm",
-    "frames": 151,
-    "durationSeconds": 3.84,
+    "frames": 140,
+    "durationSeconds": 4.54,
     "source": "Real Chromium screencast frames with browser timestamps"
   },
   "success": true

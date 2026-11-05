@@ -73,6 +73,11 @@ test('Campaign has exactly 100 level actions and ten original worlds, with serve
 test('Training campaign explicitly separates device progression from online rewards',()=>{
  const html=matchCampaignMarkup({training:true,rewards:rewards()});assert.match(html,/ENTRAÎNEMENT · AUCUN CRÉDIT/);assert.match(html,/sur cet appareil pour ton compte/);assert.doesNotMatch(html,/\+20 crédits|Première victoire/);
 });
+test('Disabled server rewards never advertise credits on unclaimed campaign levels',()=>globals(async()=>{
+ const root=element(),reply=status();reply.economy.enabled=false;
+ const ui=createMashupMatchUI({api:async()=>reply,getUser:()=>({id:'fiction-A'})});
+ try{await ui.mount(root);assert.match(root.innerHTML,/Récompenses temporairement désactivées/);assert.equal((root.innerHTML.match(/Gains suspendus/g)||[]).length,100);assert.doesNotMatch(root.innerHTML,/\+20 crédits/);}finally{ui.clearSession();}
+}));
 
 test('A shaped board retains one keyboard entry point and locks sealed cells',()=>{
  const level=MATCH_LEVELS.find(value=>value.mask[0]===false),a=active(level.id),html=matchBoardMarkup(a);

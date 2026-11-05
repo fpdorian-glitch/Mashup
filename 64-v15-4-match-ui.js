@@ -92,7 +92,7 @@ function worldFor(level) { return MATCH_WORLDS.find(world=>Number(world.id)===Nu
 function safeColor(color) {return /^#[0-9a-f]{6}$/i.test(String(color))?color:'#7dd8be';}
 function knownReward(rewards,id) {const value=own(rewards,String(id));return Number.isSafeInteger(value)&&value>=0?value:null;}
 
-export function matchCampaignMarkup({progress={},training=false,rewards={},available=true,active=null,quality='auto'}={}) {
+export function matchCampaignMarkup({progress={},training=false,rewards={},available=true,rewardsEnabled=true,active=null,quality='auto'}={}) {
   const p=normalizeMatchProgress(progress),completed=Object.values(p.levels).filter(level=>level.completed).length,totalStars=Object.values(p.levels).reduce((sum,level)=>sum+level.stars,0);
   const next=clampLevel(p.unlocked),currentLevel=getMatchLevel(next),currentWorld=worldFor(currentLevel);
   const resume=active?.state?.status==='playing';
@@ -100,13 +100,13 @@ export function matchCampaignMarkup({progress={},training=false,rewards={},avail
     '<header class="mm-header"><button class="mm-back" data-mm-action="exit" data-games="hub" aria-label="Retour aux jeux">← <span>Jeux</span></button><span class="mm-brand">MASHUP<span>MATCH</span></span><span class="mm-status-pill">'+(training?'Sur cet appareil':'Campagne')+'</span></header>'+
     '<div class="mm-campaign-hero" style="--mm-world:'+safeColor(currentWorld.color)+'"><div class="mm-orbit-mark" aria-hidden="true">✦<i></i><b></b></div><div class="mm-kicker">100 NIVEAUX · 10 MONDES</div><h1>Aligne les mondes.<br><em>Réveille le multivers.</em></h1><p>Un échange, une réaction en chaîne. Fais naître des rayons, des novas et des prismes.</p>'+
     '<button class="mm-primary" data-mm-action="'+(resume?'resume':'level')+'" data-mm-level="'+next+'">'+(resume?'Reprendre le niveau '+active.levelId:completed===MATCH_LEVELS.length?'Rejouer le dernier niveau':'Continuer · Niveau '+next)+'<span aria-hidden="true">↗</span></button></div>'+
-    (training?'<aside class="mm-training-note" role="note"><b>ENTRAÎNEMENT · AUCUN CRÉDIT</b><span>Étoiles et parcours conservés sur cet appareil pour ton compte. Cet entraînement ne change pas ta campagne en ligne.</span></aside>':'<p class="mm-server-note">Progression et premières récompenses validées par le serveur.</p>')+
+    (training?'<aside class="mm-training-note" role="note"><b>ENTRAÎNEMENT · AUCUN CRÉDIT</b><span>Étoiles et parcours conservés sur cet appareil pour ton compte. Cet entraînement ne change pas ta campagne en ligne.</span></aside>':'<p class="mm-server-note">'+(rewardsEnabled?'Progression et premières récompenses validées par le serveur.':'Récompenses temporairement désactivées · tes étoiles et ta progression restent sauvegardées.')+'</p>')+
     '<div class="mm-campaign-metrics"><div><strong>'+completed+'<small> / '+MATCH_LEVELS.length+'</small></strong><span>Niveaux terminés</span></div><div><strong>'+totalStars+'<small> / '+MATCH_LEVELS.length*3+'</small></strong><span>Étoiles réunies</span></div><div><strong>'+Math.min(10,Math.floor(completed/10))+'<small> / 10</small></strong><span>Mondes traversés</span></div></div>'+
     '<div class="mm-worlds">'+MATCH_WORLDS.map(world=>{
       const levels=MATCH_LEVELS.filter(level=>Number(level.worldId??level.world)===Number(world.id)),done=levels.filter(level=>p.levels[level.id]?.completed).length,current=levels.some(level=>level.id===next),first=levels[0]?.id||1;
       return '<details class="mm-world '+(done===levels.length?'is-complete':'')+'" style="--mm-world:'+safeColor(world.color)+'" '+(current?'open':'')+'><summary><span class="mm-world-icon" aria-hidden="true">'+escapeHTML(world.icon||'✦')+'</span><span><small>MONDE '+String(world.id).padStart(2,'0')+' · '+done+'/'+levels.length+'</small><strong>'+escapeHTML(world.name||'Monde '+world.id)+'</strong><em>'+escapeHTML(world.subtitle||'Une nouvelle traversée du multivers')+'</em></span><b aria-hidden="true">'+(done===levels.length?'✓':first>p.unlocked?'◇':'+')+'</b></summary><ol class="mm-levels" start="'+first+'">'+levels.map(level=>{
         const saved=p.levels[level.id],locked=level.id>p.unlocked&&!saved?.completed,reward=training?null:knownReward(rewards,level.id),claimed=saved?.rewardClaimed;
-        return '<li><button class="mm-level '+(locked?'is-locked':saved?.completed?'is-complete':level.id===next?'is-current':'')+'" data-mm-action="level" data-mm-level="'+level.id+'" '+(locked||!available?'disabled':'')+' aria-label="Niveau '+level.id+' · '+escapeHTML(level.name||'')+(locked?' · verrouillé':saved?.completed?' · terminé':' · disponible')+'"><span class="mm-level-number">'+(locked?'<span aria-hidden="true">◇</span><small>'+level.id+'</small>':level.id)+'</span>'+starsMarkup(saved?.stars||0)+'<span class="mm-level-reward">'+(training?'Entraînement':claimed?'✓ Obtenue':reward===null?'Première victoire':'+'+reward+' crédits')+'</span></button></li>';
+        return '<li><button class="mm-level '+(locked?'is-locked':saved?.completed?'is-complete':level.id===next?'is-current':'')+'" data-mm-action="level" data-mm-level="'+level.id+'" '+(locked||!available?'disabled':'')+' aria-label="Niveau '+level.id+' · '+escapeHTML(level.name||'')+(locked?' · verrouillé':saved?.completed?' · terminé':' · disponible')+'"><span class="mm-level-number">'+(locked?'<span aria-hidden="true">◇</span><small>'+level.id+'</small>':level.id)+'</span>'+starsMarkup(saved?.stars||0)+'<span class="mm-level-reward">'+(training?'Entraînement':claimed?'✓ Obtenue':!rewardsEnabled?'Gains suspendus':reward===null?'Première victoire':'+'+reward+' crédits')+'</span></button></li>';
       }).join('')+'</ol></details>';
     }).join('')+'</div><footer class="mm-comfort"><label>Animations <select data-mm-quality><option value="auto" '+(quality==='auto'?'selected':'')+'>Adaptatives</option><option value="full" '+(quality==='full'?'selected':'')+'>Complètes</option><option value="simple" '+(quality==='simple'?'selected':'')+'>Simples</option><option value="off" '+(quality==='off'?'selected':'')+'>Sans mouvement</option></select></label><span>Les préférences de mouvement réduit sont toujours respectées.</span></footer></section>';
 }
@@ -180,7 +180,7 @@ function adminFormMarkup(config,revision) {
 function overrideMarkup(id='',value='') {return '<div class="mm-override"><label>Niveau<input type="number" min="1" max="100" data-mm-override-id value="'+escapeHTML(id)+'" required></label><label>Crédits<input type="number" min="0" max="5000" data-mm-override-value value="'+escapeHTML(value)+'" required></label><button class="mm-quiet" type="button" data-mm-admin="remove-override" aria-label="Retirer ce gain individuel">×</button></div>';}
 
 export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',onState=()=>{},toast=()=>{},getView=()=>'games',onExit=()=>{}}) {
-  let root=null,active=null,trainingActive=null,progress=normalizeMatchProgress(),trainingProgress=normalizeMatchProgress(),publicRewards={},mode='loading',screen='campaign',busy=false,epoch=0,sequence=0,pending=null,selected=null,focusIndex=0,reward=null,error='',quality='auto',animations=[],listeners=[],poll=null,pointer=null,suppressClick=0,adminBusy=false,storageWarned=false;
+  let root=null,active=null,trainingActive=null,progress=normalizeMatchProgress(),trainingProgress=normalizeMatchProgress(),publicRewards={},rewardsEnabled=true,mode='loading',screen='campaign',busy=false,epoch=0,sequence=0,pending=null,selected=null,focusIndex=0,reward=null,error='',quality='auto',animations=[],listeners=[],poll=null,pointer=null,suppressClick=0,adminBusy=false,storageWarned=false;
   let adminRoot=null,adminConfig=null,adminRevision=null,adminEpoch=0;
   const actor=()=>String(getUser()?.id||'')+'@'+String(getSessionKey());
   const mounted=()=>!!root?.isConnected&&['games','match'].includes(getView());
@@ -191,7 +191,7 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
   function stopEffects(){for(const animation of animations)animation.cancel?.();animations=[];root?.querySelectorAll?.('.mm-effects')?.forEach(node=>node.remove());}
   function unbind(){for(const cleanup of listeners)cleanup();listeners=[];if(poll)clearInterval(poll);poll=null;stopEffects();}
   function unmount(){epoch++;unbind();root=null;busy=false;pending=null;pointer=null;}
-  function clearSession(){unmount();active=null;trainingActive=null;progress=normalizeMatchProgress();trainingProgress=normalizeMatchProgress();publicRewards={};mode='loading';reward=null;error='';selected=null;adminEpoch++;adminRoot=null;adminConfig=null;adminBusy=false;storageWarned=false;}
+  function clearSession(){unmount();active=null;trainingActive=null;progress=normalizeMatchProgress();trainingProgress=normalizeMatchProgress();publicRewards={};rewardsEnabled=true;mode='loading';reward=null;error='';selected=null;adminEpoch++;adminRoot=null;adminConfig=null;adminBusy=false;storageWarned=false;}
   function currentProgress(){return mode==='training'?trainingProgress:progress;}
   function draw(){
     if(!mounted())return;stopEffects();
@@ -200,7 +200,7 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
     else if(screen==='play'&&active){
       root.innerHTML=matchBoardMarkup(active,{selected,focusIndex,busy,training:mode==='training'});
       const outcome=root.querySelector('[data-mm-outcome]');if(outcome)outcome.innerHTML=outcomeMarkup(active,{training:mode==='training',reward});
-    }else root.innerHTML=matchCampaignMarkup({progress:currentProgress(),training:mode==='training',rewards:publicRewards,active,quality});
+    }else root.innerHTML=matchCampaignMarkup({progress:currentProgress(),training:mode==='training',rewards:publicRewards,rewardsEnabled,active,quality});
     if(error&&mode!=='loading')root.insertAdjacentHTML('afterbegin','<div class="mm-network" role="alert"><span>'+escapeHTML(error)+'</span><button class="mm-quiet" data-mm-action="'+(pending?'retry-request':'refresh')+'">Réessayer</button></div>');
     root.querySelectorAll('[data-mm-action="level"],[data-mm-action="next"],[data-mm-action="retry"],[data-mm-action="abandon"]').forEach(button=>{if(busy)button.disabled=true;});
   }
@@ -209,6 +209,7 @@ export function createMashupMatchUI({api,getUser=()=>null,getSessionKey=()=>'',o
     if(data.active!==undefined){if(data.active!==null&&!validateMatchSnapshot(data.active))throw Error('Le plateau reçu est invalide. Synchronise la campagne.');active=data.active;}
     if(data.progress)progress=normalizeMatchProgress(data.progress);
     if(data.economy?.levelRewards&&typeof data.economy.levelRewards==='object')publicRewards=data.economy.levelRewards;
+    if(typeof data.economy?.enabled==='boolean')rewardsEnabled=data.economy.enabled;
     if(data.active!==undefined)reward=data.active?.reward||(data.active?.state?.status==='won'?(data.reward||data.rewards||null):null);
     else if(data.reward||data.rewards)reward=data.reward||data.rewards;
     if(data.state&&typeof data.state==='object'&&!Array.isArray(data.state)&&!Object.hasOwn(data.state,'board'))onState(data.state);

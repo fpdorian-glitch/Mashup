@@ -1,5 +1,5 @@
 {
-  "baseline": "f82a8cd",
+  "baseline": "d486c86",
   "engine": "155.0.8059.79",
   "productionRequests": 0,
   "checks": [
@@ -9,6 +9,7 @@
     "Actualisation et second navigateur retrouvent progression/étoiles serveur; autre compte indépendant et accès admin masqué",
     "Admin : tranches, gain individuel, replays plafonnés, prévisualisation100gains; configuration commune et gain73appliqué au niveau2",
     "Replay : gain réduit3crédits puis plafond journalier par niveau, sans réattribution de première victoire",
+    "Pause des gains commune : annonce claire, victoire sans crédit et droit conservé; réactivation attribue la première récompense une seule fois",
     "Navigation pendant réponse admin : aucun panneau tardif ajouté à la nouvelle page",
     "Ancien backend200{} détecté : entraînement complet distinct, progression locale après reload, zérocrédit; 320/390/1024px sans débordement et mouvement réduit"
   ],
@@ -23,8 +24,8 @@
   "matchVideo": {
     "available": true,
     "name": "match-preview.webm",
-    "frames": 28,
-    "durationSeconds": 1.7,
+    "frames": 30,
+    "durationSeconds": 1.62,
     "source": "Real Chromium screencast frames with browser timestamps"
   },
   "expectedNetworkErrors": [

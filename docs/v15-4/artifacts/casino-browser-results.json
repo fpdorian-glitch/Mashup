@@ -1,5 +1,5 @@
 {
-  "baseline": "f82a8cd",
+  "baseline": "d486c86",
   "productionRequests": 0,
   "browser": "155.0.8059.79",
   "physicalPhone": false,
@@ -19,8 +19,8 @@
   "limits": "Chromium Linux with touch and mobile viewport simulation. API/Auth are intercepted; no real server schedule, wallet or physical phone was tested.",
   "geometry": [
     {
-      "top": 298.515625,
-      "bottom": 348.90625,
+      "top": 298.8705749511719,
+      "bottom": 349.2611999511719,
       "width": 116.984375,
       "viewport": {
         "width": 390,

@@ -6,7 +6,7 @@ const {laboratory,fixtureContext,openHome,navigate,ARTIFACTS,saveJson}=require('
 
 (async()=>{
  const lab=await laboratory(),contexts=[],fixtures=[],pages=[];
- const report={baseline:'f82a8cd',productionRequests:0,browser:lab.browser.version(),physicalPhone:false,checks:[],screenshots:[],limits:'Chromium Linux with touch and mobile viewport simulation. API/Auth are intercepted; no real server schedule, wallet or physical phone was tested.'};
+ const report={baseline:'d486c86',productionRequests:0,browser:lab.browser.version(),physicalPhone:false,checks:[],screenshots:[],limits:'Chromium Linux with touch and mobile viewport simulation. API/Auth are intercepted; no real server schedule, wallet or physical phone was tested.'};
  try{
   const deadline=Date.now()+462000;
   const fighters=[
