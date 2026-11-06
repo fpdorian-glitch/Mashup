@@ -7,8 +7,8 @@ const manifest=JSON.parse(readFileSync(new URL('../../manifest.webmanifest',impo
 const version=JSON.parse(readFileSync(new URL('../../version.json',import.meta.url),'utf8'));
 test('invitation polling uses exclusive active and passive modes',()=>{
  assert.ok(html.includes("const activeInvitations=()=>view==='online'||(view==='arena'&&arenaSection==='online');"));
- assert.ok(html.includes("onlineUser&&!activeInvitations())pollInvitations();},45000"));
- assert.ok(html.includes("onlineUser&&activeInvitations())pollInvitations();},20000"));
+ assert.ok(html.includes("onlineUser&&!activeInvitations())pollInvitations();},90000"));
+ assert.ok(html.includes("onlineUser&&activeInvitations())pollInvitations();},30000"));
  assert.ok(!html.includes("onlineUser)pollInvitations();},45000"));
 });
 test('published release markers align',()=>{

@@ -1,5 +1,5 @@
 {
-  "version": "15.6.0",
+  "version": "15.6.1",
   "publishedAt": "2026-11-06",
-  "notes": "Boosters 3D manipulables, ouverture physique et Mashup Match tactile plus fluide. Le classement public reste désactivé tant que son raccordement Supabase réel n’est pas validé."
+  "notes": "Optimisation egress renforcée : cache catalogue backend, moins de contrôles Auth réseau, polling réduit et suppression des lectures de récompenses en double après les boosters."
 }
