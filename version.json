@@ -1,5 +1,5 @@
 {
-  "version": "15.7.0",
+  "version": "15.7.1",
   "publishedAt": "2026-11-06",
-  "notes": "Maintenance du catalogue et amélioration des contrôles administrateur."
+  "notes": "Compteurs des séries mis à jour automatiquement, sans plafond par série. Réglages de confidentialité conservés."
 }
