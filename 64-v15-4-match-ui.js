@@ -4,9 +4,9 @@
  */
 import {createMatch, applyMove, progressFor} from './62-v15-4-match-engine.js';
 import {MATCH_LEVELS, MATCH_WORLDS, getMatchLevel} from './63-v15-4-match-levels.js';
-import {createMatchGesture} from './71-v15-6-match-gesture.js?v=15.6.0';
-import {createMatchSocial} from './73-v15-6-match-social.js?v=15.6.0';
-import {createMatchPresentation} from './75-v15-6-match-presentation.js?v=15.6.0';
+import {createMatchGesture} from './71-v15-6-match-gesture.js?v=15.6.1';
+import {createMatchSocial} from './73-v15-6-match-social.js?v=15.6.1';
+import {createMatchPresentation} from './75-v15-6-match-presentation.js?v=15.6.1';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const SYMBOL_NAMES = ['Soleil', 'Cristal', 'Lune', 'Flamme', 'Orbite', 'Feuille'];
