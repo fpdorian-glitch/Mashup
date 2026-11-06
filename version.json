@@ -1,5 +1,5 @@
 {
-  "version": "15.7.1",
+  "version": "15.7.2",
   "publishedAt": "2026-11-06",
-  "notes": "Compteurs des séries mis à jour automatiquement, sans plafond par série. Réglages de confidentialité conservés."
+  "notes": "Optimisation du chargement et du cache des illustrations : catalogue plus léger, qualité des cartes conservée."
 }
