@@ -1,4 +1,4 @@
-import { inspectionObjectMarkup } from "./46-v15-living-cards.js?v=15.7.0";
+import { inspectionObjectMarkup } from "./46-v15-living-cards.js?v=15.7.1";
 import { catalogueIsActive } from "./58-catalogue.js";
 
 const escapeText = value => String(value ?? "").replace(/[&<>"']/g, character => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[character]));
