@@ -1,4 +1,4 @@
-/* Mashup V10.8 — collection milestones, one-time server-validated rewards. */
+/* Mashup V15.6.1 — collection milestones with egress-aware caching. */
 export function createCollectionRewardsUI({api,esc,toast,onState,onVouchers,getMetrics}){
   let items=[],inFlight=null,claiming=false,lastFetch=0,revision=0;
   const count=n=>Math.max(0,Number(n)||0).toLocaleString('fr-FR');
@@ -26,7 +26,7 @@ export function createCollectionRewardsUI({api,esc,toast,onState,onVouchers,getM
   }
   async function refresh({force=false}={}){
     if(inFlight)return inFlight;
-    if(!force&&Date.now()-lastFetch<30000)return;
+    if(!force&&Date.now()-lastFetch<600000)return;
     const observed=revision;
     const task=Promise.resolve().then(async()=>{
       try{const reply=await api('/api/collection/rewards');if(observed===revision&&Array.isArray(reply.collectionRewards))setData(reply.collectionRewards);}
