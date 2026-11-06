@@ -1,5 +1,5 @@
 {
-  "version": "15.6.1",
+  "version": "15.7.0",
   "publishedAt": "2026-11-06",
-  "notes": "Optimisation egress renforcée : cache catalogue backend, moins de contrôles Auth réseau, polling réduit et suppression des lectures de récompenses en double après les boosters."
+  "notes": "Maintenance du catalogue et amélioration des contrôles administrateur."
 }
