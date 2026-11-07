@@ -1,0 +1,16 @@
+✔ A verified identity is mandatory; client actors and wallet fields cannot be supplied (2.720597ms)
+✔ Unseen/offline recipient keeps the canonical request; reading never accepts or changes inventory (1.950972ms)
+✔ Two devices share read receipts and cannot mark another recipient’s event as read (3.983768ms)
+✔ Lease expiry, background and multi-device activity prevent infinite presence (0.860672ms)
+✔ An older in-flight active pulse cannot resurrect a device after its newer background pulse (0.494568ms)
+✔ A metadata transaction failure rolls back lease and read acknowledgements together (1.450755ms)
+✔ Only minimal approved presence, events and public packet rates leave the service (0.532907ms)
+✔ Stable projections use a small unchanged response and old revisions cannot acknowledge new requests (0.399094ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 68.367742

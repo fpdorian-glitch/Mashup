@@ -1,0 +1,11 @@
+PASS Booster first, natural scrolling and no V16 shell 320
+PASS Booster first, natural scrolling and no V16 shell 360
+PASS Booster first, natural scrolling and no V16 shell 390
+PASS Booster first, natural scrolling and no V16 shell 430
+PASS Booster first, natural scrolling and no V16 shell 1280
+PASS Confirmed odds, zero rates, admin update and no fabricated default
+PASS Rarity counts use distinct active IDs and collection filters/album stay available
+PASS Persistent existing trade request, badge, read without acceptance and reload
+PASS Player filter is local, unavailable presence is honest, direct challenge keeps the server payload
+PASS Secret/private series do not leak in progression, packet filters or public profiles
+PASS Notifications overlay preserves active Match board and closes with Escape
