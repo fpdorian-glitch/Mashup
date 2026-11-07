@@ -1,6 +1,5 @@
 {
   "version": "16.1.0",
-  "status": "development",
-  "preparedAt": "2026-11-07",
-  "notes": "Accueil centré sur les boosters, probabilités confirmées et progression de collection par rareté. Interactions sociales améliorées sur la base V15.7.2."
+  "notes": "Accueil centré sur les boosters, probabilités confirmées et progression de collection par rareté. Interactions sociales améliorées sur la base V15.7.2.",
+  "publishedAt": "2026-11-07"
 }
