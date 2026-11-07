@@ -40,3 +40,9 @@ Configurer `NODE_PATH` si Playwright est installé dans un répertoire de valida
 Retour arrière : conserver la référence publiée `79172e1`, puis rétablir les fichiers frontend de cette référence dans une PR corrective si nécessaire. Aucune restauration de base ni migration inverse n’est nécessaire pour cette V16. Ne jamais effacer le stockage Auth ou la progression d’entraînement pour revenir en arrière.
 
 Le workflow GitHub prépare aussi ces cinq suites publiques en séquence et archive leurs preuves. Son exécution distante n’est pas attestée par les essais locaux ; elle reste à consulter sur la branche. Les tests Match avec service privé sont exécutés localement uniquement.
+
+## État de livraison
+
+Le développement testé a été poussé sur `feature/mashup-v16-mobile-shell` (commit de code `d9b0176`). La création automatique de PR par `gh pr create` a échoué : `Post https://api.github.com/graphql: Forbidden`. La description est prête dans [PR.md](PR.md).
+
+[Ouvrir la Pull Request sur GitHub](https://github.com/fpdorian-glitch/Mashup/pull/new/feature/mashup-v16-mobile-shell). La PR n’a donc pas été créée automatiquement. Aucune fusion ni publication n’a été effectuée.
