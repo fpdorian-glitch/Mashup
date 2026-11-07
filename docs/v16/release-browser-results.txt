@@ -1,0 +1,16 @@
+PASS Structure fixe et cinq destinations 320
+PASS Structure fixe et cinq destinations 360
+PASS Structure fixe et cinq destinations 390
+PASS Structure fixe et cinq destinations 430
+PASS Structure fixe et cinq destinations 1280
+PASS Album, filtres et historique réel du navigateur
+PASS Marché : confirmation, refus réseau, état autoritaire, double clic et navigation verrouillée
+PASS Marché : réponse partielle, rechargement de secours et inventaire conservé
+PASS Vente : choix depuis la collection et prix conservé entre rubriques
+PASS Erreur de lecture marché : réessai et navigation possible
+PASS Profil, missions, decks, amis, classements, succès, atelier et administration accessibles
+PASS Probabilités confirmées, booster complet et confirmation unique
+PASS Mashup Match : parcours interne, plateau et boutons visibles en 320 px
+PASS Séries privées et carte Secrète non découverte masquées
+PASS Memory : accès direct, paire confirmée et navigation de ligue
+PASS Déconnexion : compte et lectures tardives isolés

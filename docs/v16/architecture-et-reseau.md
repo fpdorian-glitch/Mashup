@@ -1,5 +1,7 @@
 # Mashup V16 — architecture et audit UX/réseau
 
+Ce document décrit les vérifications de préparation. La publication autorisée ensuite est suivie dans [PUBLICATION.md](PUBLICATION.md).
+
 Référence publiée examinée : `79172e1e11b5b529009d23f0357c5e923954f32c` (V15.7.2). Développement sur `feature/mashup-v16-mobile-shell`, sans publication.
 
 ## Interface livrée

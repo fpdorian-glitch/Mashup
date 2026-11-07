@@ -1,6 +1,6 @@
 # Mashup V16 — le multivers en poche
 
-Branche : `feature/mashup-v16-mobile-shell`. Référence : `79172e1` (V15.7.2 publiée). Aucun déploiement ni changement de données de joueurs.
+Version **16.0.0**, publication autorisée par le propriétaire le **7 novembre 2026**. Référence précédente : `79172e1` (V15.7.2). Aucun changement des données de joueurs ni du backend Supabase. Voir [les contrôles de publication](PUBLICATION.md).
 
 La V16 remplace les pages principales défilantes par cinq destinations fixes et des sous-écrans : accueil avec galerie 3D, collection et filtres, six modes de jeu, marché en quatre rubriques, menu et administration. Le moteur des cartes et les règles sont conservés.
 
@@ -29,20 +29,20 @@ Configurer `NODE_PATH` si Playwright est installé dans un répertoire de valida
 
 `tests/v16/match.cjs` utilise en plus `MASHUP_MATCH_FIXTURE_MODULE`, chemin d’un service de test privé local compatible. Aucun code backend privé n’est copié dans ce dépôt ; les autres tests ne nécessitent pas ce fichier. Le service employé est une simulation en mémoire, pas une copie attestée de l’Edge Function déployée.
 
-## Validation avant publication par le propriétaire
+## Contrôles complémentaires sur matériel et services réels
 
 1. Examiner les changements et les captures, puis essayer la branche dans un hébergement de prévisualisation isolé.
 2. Sur un projet de test avec comptes fictifs, confirmer les contrats réels : état complet ou repli après achat/échange, reprise d’un booster et des combats, gains Match, visibilité des séries, administration.
 3. Sur Android et iPhone physiques : navigation Retour, clavier, rotation, zones de sécurité, installation PWA, multitâche et réseau intermittent. Ces essais matériels n’ont pas été réalisés ici.
 4. Mesurer les octets réels et les en-têtes d’illustration Supabase. Aucune économie de production n’est garantie par les chiffres du laboratoire.
-5. Publier uniquement après validation explicite. Les métadonnées de cette branche indiquent `development` ; la date/statut de sortie sont à établir au moment de la publication.
+5. La publication du client est désormais autorisée. Ses métadonnées portent la date du 7 novembre 2026 ; les essais sur téléphones physiques et sur un backend de préproduction restent non réalisés.
 
 Retour arrière : conserver la référence publiée `79172e1`, puis rétablir les fichiers frontend de cette référence dans une PR corrective si nécessaire. Aucune restauration de base ni migration inverse n’est nécessaire pour cette V16. Ne jamais effacer le stockage Auth ou la progression d’entraînement pour revenir en arrière.
 
-Le workflow GitHub prépare aussi ces cinq suites publiques en séquence et archive leurs preuves. Son exécution distante n’est pas attestée par les essais locaux ; elle reste à consulter sur la branche. Les tests Match avec service privé sont exécutés localement uniquement.
+Le workflow GitHub prépare aussi ces cinq suites publiques en séquence et archive leurs preuves. Son exécution distante a été observée réussie pour `26bc81b` : [run 42370508726](https://github.com/fpdorian-glitch/Mashup/actions/runs/42370508726). Les tests Match avec service privé sont exécutés localement uniquement.
 
-## État de livraison
+## Historique de la préparation avant autorisation
 
 Le développement testé a été poussé sur `feature/mashup-v16-mobile-shell` (commit de code `d9b0176`). La création automatique de PR par `gh pr create` a échoué : `Post https://api.github.com/graphql: Forbidden`. La description est prête dans [PR.md](PR.md).
 
-[Ouvrir la Pull Request sur GitHub](https://github.com/fpdorian-glitch/Mashup/pull/new/feature/mashup-v16-mobile-shell). La PR n’a donc pas été créée automatiquement. Aucune fusion ni publication n’a été effectuée.
+[Ouvrir la Pull Request sur GitHub](https://github.com/fpdorian-glitch/Mashup/pull/new/feature/mashup-v16-mobile-shell). La PR n’a donc pas été créée automatiquement à cette étape. La demande ultérieure « Publie la dernier version » autorise maintenant la publication du client par avance rapide de main, selon [PUBLICATION.md](PUBLICATION.md).

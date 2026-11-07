@@ -17,8 +17,8 @@ test('Marketplace estimates, server payloads and limits remain unchanged',()=>{
 test('Marketplace card HTML remains exact while preview transport gains session cleanup',()=>{
  const render=s=>s.slice(s.indexOf(' function render(listing)'),s.indexOf(' async function load(id)'));assert.equal(render(read('61-v15-3-market-art.js')),render(before('61-v15-3-market-art.js')));
 });
-test('V16 is a development version with no deployment workflow and explicit fresh-read transport',()=>{
- const version=JSON.parse(read('version.json'));assert.equal(version.version,'16.0.0');assert.equal(version.status,'development');assert.equal(version.publishedAt,undefined);assert.equal(JSON.parse(read('manifest.webmanifest')).version,version.version);
+test('V16 release metadata stays consistent with the client and fresh-read transport',()=>{
+ const version=JSON.parse(read('version.json'));assert.equal(version.version,'16.0.0');assert.equal(version.status,undefined);assert.equal(version.preparedAt,undefined);assert.equal(version.publishedAt,'2026-11-07');assert.equal(JSON.parse(read('manifest.webmanifest')).version,version.version);
  const css=read('78-v16-app.css');assert.doesNotMatch(css,/\.tcg-card[^\n{]*\{|\.v10-(?:stat|picture|frame)[^\n{]*\{/);assert.match(read('index.html'),/appNavigation\.navigate/);
 });
 

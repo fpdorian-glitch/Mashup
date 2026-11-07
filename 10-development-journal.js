@@ -22,7 +22,7 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Version de Mashup">'+
       '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 7 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V16 — Le multivers en poche</h4></div><span class="dev-v12-badge">V16.0.0 · APERÇU</span></div>'+
+      '<h4>Mashup V16 — Le multivers en poche</h4></div><span class="dev-v12-badge">V16.0.0</span></div>'+
       '<p>Une interface pensée comme un jeu mobile : cinq destinations permanentes, des écrans dédiés et tes boosters au centre de l’accueil. Les cartes, règles et récompenses sont conservées.</p>'+
       '<div class="dev-v12-changes">'+
       '<span>Accueil : carrousel tactile, prix et probabilités confirmées par le serveur.</span>'+

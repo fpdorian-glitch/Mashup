@@ -11,7 +11,7 @@ test('V15.6 retains V15.5.1 rules, campaign, wallets, catalogue, illustrations a
 });
 test('Client metadata and browser resources remain consistent',()=>{
  const read=file=>fs.readFileSync(new URL(file,root),'utf8'),html=read('index.html'),version=JSON.parse(read('version.json'));
- assert.equal(version.version,'16.0.0');assert.equal(version.status,'development');assert.equal(version.publishedAt,undefined);
+ assert.equal(version.version,'16.0.0');assert.equal(version.status,undefined);assert.equal(version.publishedAt,'2026-11-07');
  assert.equal(JSON.parse(read('manifest.webmanifest')).version,version.version);
  for(const file of ['72-v15-6-match-motion.css','74-v15-6-match-social.css','76-v15-6-match-presentation.css'])assert.ok(html.includes('./'+file+'?v='+version.version));
  const ui=read('64-v15-4-match-ui.js');for(const file of ['71-v15-6-match-gesture.js','73-v15-6-match-social.js','75-v15-6-match-presentation.js'])assert.ok(ui.includes('./'+file+'?v='+version.version));

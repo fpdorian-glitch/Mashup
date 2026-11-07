@@ -1,5 +1,7 @@
 # V16 — validation et résultats mesurés
 
+Ce document décrit les vérifications de préparation. La publication autorisée ensuite est suivie dans [PUBLICATION.md](PUBLICATION.md).
+
 ## Résultats fonctionnels
 
 - **413/414 tests Node**, aucune erreur, aucun test ignoré ; référence initiale **391/391**. [Journal final](unit-results.txt), [référence](baseline-unit-results.txt).
