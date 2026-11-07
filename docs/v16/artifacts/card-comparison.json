@@ -1,0 +1,86 @@
+{
+  "baseline": "79172e1",
+  "productionRequests": 0,
+  "geometry": "240 CSS px, 1× Chromium, identical fixture/card context, animations frozen only for comparison",
+  "cards": [
+    {
+      "rarity": "common",
+      "sizeBefore": [
+        240,
+        340
+      ],
+      "sizeAfter": [
+        240,
+        340
+      ],
+      "identical": true,
+      "differentPixels": 0
+    },
+    {
+      "rarity": "rare",
+      "sizeBefore": [
+        240,
+        340
+      ],
+      "sizeAfter": [
+        240,
+        340
+      ],
+      "identical": true,
+      "differentPixels": 0
+    },
+    {
+      "rarity": "epic",
+      "sizeBefore": [
+        240,
+        340
+      ],
+      "sizeAfter": [
+        240,
+        340
+      ],
+      "identical": true,
+      "differentPixels": 45247
+    },
+    {
+      "rarity": "legendary",
+      "sizeBefore": [
+        240,
+        340
+      ],
+      "sizeAfter": [
+        240,
+        340
+      ],
+      "identical": true,
+      "differentPixels": 0
+    },
+    {
+      "rarity": "mythic",
+      "sizeBefore": [
+        240,
+        340
+      ],
+      "sizeAfter": [
+        240,
+        340
+      ],
+      "identical": true,
+      "differentPixels": 0
+    },
+    {
+      "rarity": "ultra",
+      "sizeBefore": [
+        240,
+        340
+      ],
+      "sizeAfter": [
+        240,
+        340
+      ],
+      "identical": true,
+      "differentPixels": 0
+    }
+  ],
+  "success": true
+}

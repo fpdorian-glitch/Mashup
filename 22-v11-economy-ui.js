@@ -1,8 +1,9 @@
+import {hasCompleteAccountState} from './79-v16-network.js?v=16.0.0';
 /* Mashup V15.3 — marketplace, leaderboard & permanent achievements.
  * All transactions occur on Supabase. Pages load their own small data on demand.
  */
-import {createMarketArtPreviews} from './61-v15-3-market-art.js?v=15.3.0';
-export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,renderCard,createSaleCardPicker,getUser,getView,getMarketMode,onState,refreshAccount}){
+import {createMarketArtPreviews} from './61-v15-3-market-art.js?v=16.0.0';
+export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,renderCard,createSaleCardPicker,getUser,getView,getMarketMode,onState,refreshAccount,getSessionKey=()=>getUser()?.id,confirmAction=null}){
  let market={listings:[],myListings:[],limits:{maxPrice:250000}},leaderboard=null,boardMode='collection',achievements=[],marketBusy=false,achBusy=false;
  const fmt=n=>Math.max(0,Number(n)||0).toLocaleString('fr-FR');
  const cardEstimate=c=>{
@@ -12,7 +13,8 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
  };
  const viewMoney=n=>fmt(n)+' ◉';
  const myCards=()=>getCards().filter(c=>!c.hidden&&c.qty>0).sort((a,b)=>a.name.localeCompare(b.name,'fr'));
- let selectedSaleCardId='';
+ let selectedSaleCardId='',salePrice='',saleSection='browse',marketSession=null,marketGeneration=0,marketLimit=40;
+ let savedFilters={search:'',rarity:'all',series:'all',universe:'all',price:''};
  const picker=createSaleCardPicker({getCards:myCards,getFavorites,esc,renderCard,onPick:applySelectedSaleCard});
  function applySelectedSaleCard(card){
    selectedSaleCardId=card.id;
@@ -59,8 +61,8 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
  function updateResults(){
    const root=marketRoot();if(!root)return;
    const list=root.querySelector('#v11-market-results');if(!list)return;
-   const found=filteredListings();
-   list.innerHTML=found.length?found.map(l=>listingCard(l)).join(''):'<div class="empty-state"><p>Aucune annonce correspondant aux filtres.</p></div>';
+   const found=filteredListings();const shown=found.slice(0,marketLimit);
+   list.innerHTML=found.length?shown.map(l=>listingCard(l)).join('')+(found.length>shown.length?'<button type="button" class="btn" data-action="v16-more-market">Afficher plus de cartes</button>':''):'<div class="empty-state"><p>Aucune annonce correspondant aux filtres.</p></div>';
    const count=root.querySelector('#v11-market-count');if(count)count.textContent=fmt(found.length)+' annonce(s)';
    marketArt.observe(market.listings,market.myListings);
  }
@@ -72,16 +74,16 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
    const price=root?.querySelector('#v11-sale-price');
    if(price&&selected&&(!price.value||Number(price.value)<10))price.value=cardEstimate(selected);
  }
+ function rememberFilters(){const root=marketRoot();if(!root)return;const price=root.querySelector('#v11-sale-price');if(price)salePrice=price.value;for(const [key,id] of Object.entries({search:'v11-filter-search',rarity:'v11-filter-rarity',series:'v11-filter-series',universe:'v11-filter-universe',price:'v11-filter-price'})){const input=root.querySelector('#'+id);if(input)savedFilters[key]=input.value;}}
+ function resetSession(){const next=String(getUser()?.id||'')+'@'+String(getSessionKey());if(next===marketSession)return;marketSession=next;marketGeneration++;market={listings:[],myListings:[],limits:{maxPrice:250000}};selectedSaleCardId='';salePrice='';savedFilters={search:'',rarity:'all',series:'all',universe:'all',price:''};marketArt.clearSession?.();marketBusy=false;}
  function renderMarket(){
-   const root=marketRoot();if(!root)return;
-   const mine=myCards();
-   const chosen=mine.some(c=>c.id===selectedSaleCardId)?selectedSaleCardId:'';
-   selectedSaleCardId=chosen;
-   const selectedPrice=marketRoot()?.querySelector('#v11-sale-price')?.value||'';
+   const root=marketRoot();if(!root)return;rememberFilters();
+   const mine=myCards(),chosen=mine.some(c=>c.id===selectedSaleCardId)?selectedSaleCardId:'';selectedSaleCardId=chosen;
+   const selectedPrice=root.querySelector('#v11-sale-price')?.value??salePrice;
    const rarity=['common','rare','epic','legendary','mythic','ultra'].map(x=>'<option value="'+x+'">'+esc(x)+'</option>').join('');
    const universe=[...new Set((market.listings||[]).map(l=>l.card?.family).filter(Boolean))].sort();
    const series=[...new Set((market.listings||[]).map(l=>l.card?.series).filter(Boolean))].sort((a,b)=>a-b);
-   root.innerHTML='<section class="panel v11-listing-creator"><div><span class="eyebrow">✦ ANNONCES PUBLIQUES</span><h3>Mettre une carte en vente</h3><p>Choisis ton prix en crédits. Un exemplaire est réservé jusqu’à la vente ou l’annulation ; jamais de monnaie réelle.</p></div>'+
+   const markup='<section class="panel v11-listing-creator"><div><span class="eyebrow">✦ ANNONCES PUBLIQUES</span><h3>Mettre une carte en vente</h3><p>Choisis ton prix en crédits. Un exemplaire est réservé jusqu’à la vente ou l’annulation ; jamais de monnaie réelle.</p></div>'+
      '<div class="v11-sale-form"><div class="v114-sale-card-field"><span>Carte à vendre</span><div class="v114-sale-card-choice"><div id="v11-sale-selection">'+picker.renderPreview(mine.find(c=>c.id===chosen))+'</div><button class="btn btn-sm" type="button" data-action="v11-open-sale-picker">✧ Parcourir ma collection ↗</button></div><input id="v11-sale-card" type="hidden" value="'+esc(chosen)+'"></div>'+
      '<label>Prix demandé (10 à 250 000)<input id="v11-sale-price" type="number" min="10" max="250000" step="1" inputmode="numeric" value="'+esc(selectedPrice)+'"></label>'+
      '<div class="v11-sale-controls"><small id="v11-sale-estimate">Estimation indicative selon la rareté.</small><button class="btn btn-primary" data-action="v11-create-listing">Publier une annonce ↗</button></div></div></section>'+
@@ -94,23 +96,25 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
      '<div class="flex-between"><span id="v11-market-count" class="small-note"></span><span class="small-note">Les prix sont fixés librement par les joueurs.</span></div>'+
      '<div class="v11-market-grid" id="v11-market-results"></div></section>'+
      '<section class="panel v11-sales-panel"><h3>Mes annonces</h3><div class="v11-market-grid">'+((market.myListings||[]).length?market.myListings.map(l=>listingCard(l,true)).join(''):'<p class="small-note">Aucune annonce publiée.</p>')+'</div></section>';
+
+   const template=document.createElement('template');template.innerHTML=markup;
+   const sections=[...template.content.children];const selected=saleSection==='sell'?sections[0]:saleSection==='mine'?sections[2]:sections[1];
+   root.replaceChildren(selected);
+   for(const [key,id] of Object.entries({search:'v11-filter-search',rarity:'v11-filter-rarity',series:'v11-filter-series',universe:'v11-filter-universe',price:'v11-filter-price'})){const input=root.querySelector('#'+id);if(input)input.value=savedFilters[key];}
    updateEstimatedPrice();updateResults();
-   if(!root.dataset.v11Bound){root.dataset.v11Bound='1';root.addEventListener('input',e=>{
-     if(e.target.matches('#v11-filter-search,#v11-filter-price'))updateResults();
-   });root.addEventListener('change',e=>{
-     if(e.target.matches('#v11-filter-rarity,#v11-filter-series,#v11-filter-universe'))updateResults();
-     if(e.target.matches('#v11-sale-card'))updateEstimatedPrice();
-   });}
+   if(!root.dataset.v11Bound){root.dataset.v11Bound='1';root.addEventListener('input',e=>{if(e.target.matches('#v11-sale-price'))salePrice=e.target.value;if(e.target.matches('#v11-filter-search,#v11-filter-price')){marketLimit=40;rememberFilters();updateResults();}});root.addEventListener('change',e=>{if(e.target.matches('#v11-filter-rarity,#v11-filter-series,#v11-filter-universe')){marketLimit=40;rememberFilters();updateResults();}if(e.target.matches('#v11-sale-card'))updateEstimatedPrice();});}
    marketArt.observe(market.listings,market.myListings);
  }
- async function refreshMarket({showErrors=true}={}){
+ async function refreshMarket({showErrors=true,fresh=false}={}){
+   resetSession();const generation=marketGeneration,actor=marketSession;
    if(marketBusy)return;
    marketBusy=true;try{
-     const data=await api('/api/market/listings');
+     const data=await api('/api/market/listings',undefined,{fresh});
+     if(generation!==marketGeneration||actor!==marketSession)return;
      if(data?.listings)market=data;
      if(getView()==='market'&&getMarketMode()==='sale'&&marketRoot())renderMarket();
-   }catch(e){if(showErrors)toast(e.message||'Marché indisponible.',true);}
-   finally{marketBusy=false;}
+   }catch(e){if(generation!==marketGeneration||actor!==marketSession)return;if(getView()==='market'&&getMarketMode()==='sale'&&marketRoot()){if(market.listings?.length)renderMarket();else marketRoot().innerHTML='<section class="panel" role="alert"><h3>Le marché attend ta connexion.</h3><p>Les annonces ne sont pas disponibles. Aucune transaction n’a été confirmée.</p><button class="btn" data-action="v11-refresh-market">Réessayer</button></section>';}if(showErrors)toast(e.message||'Marché indisponible.',true);}
+   finally{if(generation===marketGeneration)marketBusy=false;}
  }
  async function sell(){
    if(marketBusy)return;
@@ -118,41 +122,53 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
    const price=Number(marketRoot()?.querySelector('#v11-sale-price')?.value);
    if(!id){toast('Choisis une carte à vendre.',true);return;}
    if(!Number.isSafeInteger(price)||price<10||price>250000){toast('Indique un prix entre 10 et 250 000 crédits.',true);return;}
-   marketBusy=true;let ok=false;
+   const generation=marketGeneration,accountSession=getSessionKey();
+   marketBusy=true;let ok=false,confirmedState=false;
    try{const r=await api('/api/market/list',{cardId:id,price});
+     if(generation!==marketGeneration||accountSession!==getSessionKey())return;
      ok=true;
-     if(r.state)onState(r.state);
+     if(hasCompleteAccountState(r.state)){confirmedState=true;onState(r.state);}
      toast('Carte mise en vente. Un exemplaire est réservé.');
    }catch(e){toast(e.message,true);}
-   finally{marketBusy=false;}
-   if(ok){selectedSaleCardId='';await refreshAccount();}await refreshMarket();
+   finally{if(generation===marketGeneration)marketBusy=false;}
+   if(generation!==marketGeneration||accountSession!==getSessionKey())return;
+   if(ok){selectedSaleCardId='';salePrice='';if(!confirmedState)await refreshAccount();}await refreshMarket();
  }
  async function buy(id,price,name){
    if(marketBusy)return;
-   if(!window.confirm('Acheter '+name+' pour '+viewMoney(price)+' ? Cette opération est définitive.'))return;
-   marketBusy=true;let ok=false;
+   const actor=getUser()?.id,session=getSessionKey();
+   const accepted=confirmAction?await confirmAction({name,price}):window.confirm('Acheter '+name+' pour '+viewMoney(price)+' ? Cette opération est définitive.');
+   if(!accepted||actor!==getUser()?.id||session!==getSessionKey()||getView()!=='market')return;
+   const generation=marketGeneration,accountSession=getSessionKey();
+   marketBusy=true;let ok=false,confirmedState=false;
    try{
      const r=await api('/api/market/buy',{id});
+     if(generation!==marketGeneration||accountSession!==getSessionKey())return;
      ok=true;
-     if(r.state)onState(r.state);
+     if(hasCompleteAccountState(r.state)){confirmedState=true;onState(r.state);}
      toast('Carte achetée ! Elle est désormais dans ta collection.');
    }catch(e){toast(e.message||'Achat impossible.',true);}
-   finally{marketBusy=false;}
-   if(ok)await refreshAccount();await refreshMarket();
+   finally{if(generation===marketGeneration)marketBusy=false;}
+   if(generation!==marketGeneration||accountSession!==getSessionKey())return;
+   if(ok&&!confirmedState)await refreshAccount();await refreshMarket();
  }
  async function cancel(id){
    if(marketBusy)return;
-   marketBusy=true;let ok=false;
+   const generation=marketGeneration,accountSession=getSessionKey();
+   marketBusy=true;let ok=false,confirmedState=false;
    try{
      const r=await api('/api/market/cancel',{id});
+     if(generation!==marketGeneration||accountSession!==getSessionKey())return;
      ok=true;
-     if(r.state)onState(r.state);
+     if(hasCompleteAccountState(r.state)){confirmedState=true;onState(r.state);}
      toast('Annonce annulée : ta carte a été rendue.');
    }catch(e){toast(e.message,true);}
-   finally{marketBusy=false;}
-   if(ok)await refreshAccount();await refreshMarket();
+   finally{if(generation===marketGeneration)marketBusy=false;}
+   if(generation!==marketGeneration||accountSession!==getSessionKey())return;
+   if(ok&&!confirmedState)await refreshAccount();await refreshMarket();
  }
- async function mountMarket(){
+ async function mountMarket({section='browse'}={}){
+   resetSession();rememberFilters();saleSection=['browse','sell','mine'].includes(section)?section:'browse';
    if(!marketRoot())return;
    marketRoot().innerHTML='<div class="panel"><p>Chargement des annonces du Multivers…</p></div>';
    await refreshMarket();
@@ -208,6 +224,6 @@ export function createV11UI({api,esc,toast,getCards,getFavorites,getCardById,ren
    }catch(e){toast(e.message,true);}
    finally{achBusy=false;}
  }
- return {mountMarket,refreshMarket,sell,buy,cancel,openSalePicker:()=>picker.open(),mountLeaderboards,changeBoard,
+ return {unmount:()=>{rememberFilters();marketArt.unmount?.();},mountMarket,refreshMarket:options=>refreshMarket(options||{fresh:true}),moreMarket:()=>{marketLimit+=40;updateResults();},clearSession:()=>{marketSession=null;marketGeneration++;marketBusy=false;selectedSaleCardId='';salePrice='';savedFilters={search:'',rarity:'all',series:'all',universe:'all',price:''};marketArt.clearSession?.();},sell,buy,cancel,openSalePicker:()=>picker.open(),mountLeaderboards,changeBoard,
    mountAchievements,claimAchievement,cardEstimate};
 }

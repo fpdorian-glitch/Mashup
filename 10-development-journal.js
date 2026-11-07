@@ -21,18 +21,16 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   // current version even when developer-post history cannot be retrieved.
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Version de Mashup">'+
-      '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 6 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V15.6 — Entre tes mains</h4></div><span class="dev-v12-badge">V15.6.0</span></div>'+
-      '<p>Des paquets à manipuler, des symboles qui suivent ton doigt et une expérience Mashup plus immersive. Cette version conserve les règles, les niveaux et les récompenses existants.</p>'+
+      '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 7 NOVEMBRE 2026</div>'+
+      '<h4>Mashup V16 — Le multivers en poche</h4></div><span class="dev-v12-badge">V16.0.0 · APERÇU</span></div>'+
+      '<p>Une interface pensée comme un jeu mobile : cinq destinations permanentes, des écrans dédiés et tes boosters au centre de l’accueil. Les cartes, règles et récompenses sont conservées.</p>'+
       '<div class="dev-v12-changes">'+
-      '<span>Galerie : paquets en relief, épaisseur, plis métalliques, défilement magnétique et sélection centrale.</span>'+
-      '<span>Ouverture : scellé tactile, déchirure en profondeur et émergence des cartes, avec mode rapide.</span>'+
-      '<span>La face de chaque carte apparaît seulement au moment où tu choisis de la révéler.</span>'+
-      '<span>Match : les symboles suivent ton doigt en continu et prévisualisent leur échange avant le relâchement.</span>'+
-      '<span>Chutes, atterrissages et cascades continus ; une nouvelle interaction peut passer les effets.</span>'+
-      '<span>Classement public préparé mais non activé tant que son raccordement Supabase réel n’est pas validé.</span>'+
-      '<span>Les progressions d’entraînement restent distinctes des parcours en ligne.</span>'+
-      '<span>Navigation au clavier, deux touches, récupération des boosters et modes d’animations réduites conservés.</span>'+
+      '<span>Accueil : carrousel tactile, prix et probabilités confirmées par le serveur.</span>'+
+      '<span>Collection : album, recherche, filtres et favoris dans un panneau dédié.</span>'+
+      '<span>Jouer : six modes réunis, avec les commandes à portée de main.</span>'+
+      '<span>Marché : acheter, vendre, retrouver ses annonces et échanger dans des rubriques distinctes.</span>'+
+      '<span>Navigation : retour à l’écran précédent et protection des transactions en cours.</span>'+
+      '<span>Transferts : lectures simultanées regroupées, cache temporaire de présentation et rechargements du catalogue évités après un état serveur confirmé.</span>'+
       '</div><details class="dev-v12-history"><summary>Les versions précédentes</summary>'+
       '<p><b>V15.5.1 :</b> invitations sans sondages en double et transferts de données allégés.</p>'+
       '<p><b>V15.5 :</b> galerie filtrée par série, accès Match et illustrations séparées du catalogue.</p>'+

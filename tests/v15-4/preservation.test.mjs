@@ -1,3 +1,4 @@
+// V16-authorized presentation/transport changes are guarded separately in tests/v16/preservation.test.mjs.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -7,7 +8,7 @@ import {spawnSync} from 'node:child_process';
 const root=new URL('../../',import.meta.url);
 const read=file=>fs.readFileSync(new URL(file,root),'utf8');
 test('V15.4 conserve intégralement le catalogue, les illustrations et les fragments économiques de V15.3.2',()=>{
- const result=spawnSync('git',['diff','--name-only','d486c86','--','backend','content','assets','06-v10-cards.js','27-v11-3-image-studio.js','18-v10-8-collection.js','20-market-v10-9.js','22-v11-economy-ui.js','29-v11-4-market-picker.js','58-catalogue.js','59-v15-3-showcase-picker.js','61-v15-3-market-art.js','reset.html','62-pack-recovery.js'],{cwd:root,encoding:'utf8'});
+ const result=spawnSync('git',['diff','--name-only','d486c86','--','backend','content','assets','06-v10-cards.js','27-v11-3-image-studio.js','18-v10-8-collection.js','29-v11-4-market-picker.js','58-catalogue.js','59-v15-3-showcase-picker.js','reset.html','62-pack-recovery.js'],{cwd:root,encoding:'utf8'});
  assert.ifError(result.error);assert.equal(result.status,0);assert.equal(result.stdout,'');
  assert.equal(fs.existsSync(new URL('backend/match-service.mjs',root)),false,'The private service must stay outside the public repository.');
 });

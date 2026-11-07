@@ -1,0 +1,79 @@
+{
+  "baseline": "79172e1",
+  "productionRequests": 0,
+  "browser": "155.0.8059.79",
+  "physicalPhone": false,
+  "checks": [
+    {
+      "name": "Structure fixe et cinq destinations 320"
+    },
+    {
+      "name": "Structure fixe et cinq destinations 360"
+    },
+    {
+      "name": "Structure fixe et cinq destinations 390"
+    },
+    {
+      "name": "Structure fixe et cinq destinations 430"
+    },
+    {
+      "name": "Structure fixe et cinq destinations 1280"
+    },
+    {
+      "name": "Album, filtres et historique réel du navigateur"
+    },
+    {
+      "name": "Marché : confirmation, refus réseau, état autoritaire, double clic et navigation verrouillée"
+    },
+    {
+      "name": "Marché : réponse partielle, rechargement de secours et inventaire conservé"
+    },
+    {
+      "name": "Vente : choix depuis la collection et prix conservé entre rubriques"
+    },
+    {
+      "name": "Erreur de lecture marché : réessai et navigation possible"
+    },
+    {
+      "name": "Profil, missions, decks, amis, classements, succès, atelier et administration accessibles"
+    },
+    {
+      "name": "Probabilités confirmées, booster complet et confirmation unique"
+    },
+    {
+      "name": "Mashup Match : parcours interne, plateau et boutons visibles en 320 px"
+    },
+    {
+      "name": "Séries privées et carte Secrète non découverte masquées"
+    },
+    {
+      "name": "Memory : accès direct, paire confirmée et navigation de ligue"
+    },
+    {
+      "name": "Déconnexion : compte et lectures tardives isolés"
+    }
+  ],
+  "screenshots": [
+    "home-320.png",
+    "home-360.png",
+    "home-390.png",
+    "home-430.png",
+    "home-1280.png",
+    "collection-filters-restored.png",
+    "market-confirm.png",
+    "market-sell.png",
+    "admin-mobile.png",
+    "booster-review.png",
+    "match-320.png",
+    "memory.png"
+  ],
+  "limits": "Chromium Linux with simulated touch/mobile viewport. Fictional API/Auth. No Safari, physical phone or deployed backend validation.",
+  "boosterVideo": {
+    "available": true,
+    "name": "v16-booster.webm",
+    "frames": 102,
+    "durationSeconds": 2.32,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "success": true
+}

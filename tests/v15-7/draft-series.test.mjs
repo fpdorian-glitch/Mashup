@@ -19,7 +19,7 @@ test('New admin series are private and unavailable in boosters by default',()=>{
 test('Player-facing release notes do not announce unannounced series',()=>{
   const version=JSON.parse(readFileSync(new URL('../../version.json',import.meta.url),'utf8'));
   assert.doesNotMatch(version.notes,/série\s*0[34]|fortnite|mario/i);
-  assert.equal(version.version,'15.7.2');
+  assert.match(version.version,/^\d+\.\d+\.\d+$/);
 });
 
 test('The admin never submits a fixed target count with the series settings',()=>{

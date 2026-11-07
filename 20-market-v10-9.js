@@ -1,3 +1,4 @@
+import {hasCompleteAccountState} from './79-v16-network.js?v=16.0.0';
 import {
   createTradeSelection,
   filterTradeCards,
@@ -524,7 +525,8 @@ export function createMarketUI({
         kind === "accept" ? "Échange effectué !" : "Proposition mise à jour.",
       );
       if (kind === "accept") {
-        await onFreshAccount();
+        if (hasCompleteAccountState(r.state)) onState?.(r.state);
+        else await onFreshAccount();
         onAccepted?.();
       }
       if (alive(t)) await refresh();

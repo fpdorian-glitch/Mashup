@@ -1,5 +1,6 @@
 {
-  "version": "15.7.2",
-  "publishedAt": "2026-11-06",
-  "notes": "Optimisation du chargement et du cache des illustrations : catalogue plus léger, qualité des cartes conservée."
+  "version": "16.0.0",
+  "status": "development",
+  "preparedAt": "2026-11-07",
+  "notes": "Une interface de jeu mobile, un accueil immersif et une navigation instantanée. Lectures réseau optimisées, cartes et règles conservées."
 }

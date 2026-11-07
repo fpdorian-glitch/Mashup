@@ -1,0 +1,950 @@
+{
+  "baseline": "79172e1",
+  "version": "16.0.0",
+  "method": "Local native HTTP server, actual Chromium HTTP cache, identical fictional catalogues (360 cards), identical PNG image bytes, uncompressed JSON. External HTTPS blocked by CDP; no request interception.",
+  "limits": "Controlled simulated Supabase/GitHub sources, not production Supabase egress. No actual deployed headers, RLS, JWT, device radio, iPhone or Android hardware measured.",
+  "before": {
+    "cold": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 4,
+          "bodyBytes": 252108
+        },
+        "supabase-art": {
+          "requests": 3,
+          "bodyBytes": 139449
+        },
+        "github-static": {
+          "requests": 75,
+          "bodyBytes": 1154705
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 84,
+        "cacheHits": 0,
+        "encodedBytes": 1564697
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        }
+      ]
+    },
+    "journey": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 6,
+          "bodyBytes": 253008
+        },
+        "supabase-art": {
+          "requests": 25,
+          "bodyBytes": 1162075
+        },
+        "github-static": {
+          "requests": 75,
+          "bodyBytes": 1154705
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 108,
+        "cacheHits": 0,
+        "encodedBytes": 2593462
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        }
+      ]
+    },
+    "warm": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 7,
+          "bodyBytes": 253884
+        },
+        "supabase-art": {
+          "requests": 25,
+          "bodyBytes": 1162075
+        },
+        "github-static": {
+          "requests": 75,
+          "bodyBytes": 1154705
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 109,
+        "cacheHits": 0,
+        "encodedBytes": 2594538
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        }
+      ]
+    },
+    "purchase": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 12,
+          "bodyBytes": 514088
+        },
+        "supabase-art": {
+          "requests": 25,
+          "bodyBytes": 1162075
+        },
+        "github-static": {
+          "requests": 75,
+          "bodyBytes": 1154705
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 116,
+        "cacheHits": 0,
+        "encodedBytes": 2855744
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/buy",
+          "bytes": 6468,
+          "method": "POST"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        }
+      ]
+    },
+    "session": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 23,
+          "bodyBytes": 807058
+        },
+        "supabase-art": {
+          "requests": 33,
+          "bodyBytes": 1533939
+        },
+        "github-static": {
+          "requests": 76,
+          "bodyBytes": 1164452
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 136,
+        "cacheHits": 0,
+        "encodedBytes": 3534514
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/buy",
+          "bytes": 6468,
+          "method": "POST"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/packs/prepare",
+          "bytes": 2079,
+          "method": "POST"
+        },
+        {
+          "route": "/api/packs/commit",
+          "bytes": 253492,
+          "method": "POST"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/battles/start",
+          "bytes": 6846,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7022,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/next",
+          "bytes": 489,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7124,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/next",
+          "bytes": 594,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7236,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/next",
+          "bytes": 705,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7359,
+          "method": "POST"
+        }
+      ]
+    },
+    "httpCacheProbe": {
+      "bytes": 46483,
+      "cacheControl": "private,max-age=31536000,immutable",
+      "additionalServerRequests": 0
+    },
+    "homePerformance": {
+      "domNodes": 658,
+      "cards": 3,
+      "images": 3,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.7,
+        "maxMs": 16.8,
+        "over33ms": 0
+      },
+      "jsHeapUsedBytes": 4916287,
+      "jsHeapTotalBytes": 8516567,
+      "longTasks": [],
+      "overflow": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "quality": "high"
+    },
+    "cpu4xHome": {
+      "domNodes": 737,
+      "cards": 3,
+      "images": 3,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 16.8,
+        "over33ms": 0
+      },
+      "jsHeapUsedBytes": 4815742,
+      "jsHeapTotalBytes": 15987666,
+      "longTasks": [],
+      "overflow": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "quality": "high"
+    },
+    "collectionPerformance": {
+      "samples": 90,
+      "p50ms": 16.699999999999818,
+      "p95ms": 16.700000000000273,
+      "over33ms": 0,
+      "domNodes": 1620
+    },
+    "interactions": [
+      {
+        "view": "collection",
+        "automationToTwoFramesMs": 81.6
+      },
+      {
+        "view": "market",
+        "automationToTwoFramesMs": 106.2
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 149.3
+      },
+      {
+        "view": "collection",
+        "automationToTwoFramesMs": 126
+      },
+      {
+        "view": "market",
+        "automationToTwoFramesMs": 88.4
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 122.9
+      },
+      {
+        "view": "market",
+        "automationToTwoFramesMs": 89.5
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 93.5
+      },
+      {
+        "view": "arena",
+        "automationToTwoFramesMs": 173
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 105.1
+      }
+    ],
+    "pageErrors": []
+  },
+  "after": {
+    "cold": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 4,
+          "bodyBytes": 252108
+        },
+        "supabase-art": {
+          "requests": 0,
+          "bodyBytes": 0
+        },
+        "github-static": {
+          "requests": 79,
+          "bodyBytes": 1219127
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 85,
+        "cacheHits": 0,
+        "encodedBytes": 1489901
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        }
+      ]
+    },
+    "journey": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 6,
+          "bodyBytes": 253008
+        },
+        "supabase-art": {
+          "requests": 25,
+          "bodyBytes": 1162075
+        },
+        "github-static": {
+          "requests": 79,
+          "bodyBytes": 1219127
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 112,
+        "cacheHits": 0,
+        "encodedBytes": 2658775
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        }
+      ]
+    },
+    "warm": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 6,
+          "bodyBytes": 253008
+        },
+        "supabase-art": {
+          "requests": 25,
+          "bodyBytes": 1162075
+        },
+        "github-static": {
+          "requests": 79,
+          "bodyBytes": 1219127
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 112,
+        "cacheHits": 0,
+        "encodedBytes": 2658775
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        }
+      ]
+    },
+    "purchase": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 8,
+          "bodyBytes": 260352
+        },
+        "supabase-art": {
+          "requests": 25,
+          "bodyBytes": 1162075
+        },
+        "github-static": {
+          "requests": 79,
+          "bodyBytes": 1219127
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 116,
+        "cacheHits": 0,
+        "encodedBytes": 2666520
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/buy",
+          "bytes": 6468,
+          "method": "POST"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        }
+      ]
+    },
+    "session": {
+      "bySource": {
+        "supabase-json": {
+          "requests": 19,
+          "bodyBytes": 553322
+        },
+        "supabase-art": {
+          "requests": 33,
+          "bodyBytes": 1533939
+        },
+        "github-static": {
+          "requests": 80,
+          "bodyBytes": 1228874
+        },
+        "test-sdk": {
+          "requests": 1,
+          "bodyBytes": 171
+        }
+      },
+      "browser": {
+        "requests": 136,
+        "cacheHits": 0,
+        "encodedBytes": 3345290
+      },
+      "apiRoutes": [
+        {
+          "route": "/api/status",
+          "bytes": 23,
+          "method": "GET"
+        },
+        {
+          "route": "/api/auth/me",
+          "bytes": 101,
+          "method": "GET"
+        },
+        {
+          "route": "/api/bootstrap",
+          "bytes": 251965,
+          "method": "GET"
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "bytes": 19,
+          "method": "GET"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/market/buy",
+          "bytes": 6468,
+          "method": "POST"
+        },
+        {
+          "route": "/api/market/listings",
+          "bytes": 876,
+          "method": "GET"
+        },
+        {
+          "route": "/api/packs/prepare",
+          "bytes": 2079,
+          "method": "POST"
+        },
+        {
+          "route": "/api/packs/commit",
+          "bytes": 253492,
+          "method": "POST"
+        },
+        {
+          "route": "/api/collection/rewards",
+          "bytes": 24,
+          "method": "GET"
+        },
+        {
+          "route": "/api/battles/start",
+          "bytes": 6846,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7022,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/next",
+          "bytes": 489,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7124,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/next",
+          "bytes": 594,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7236,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/next",
+          "bytes": 705,
+          "method": "POST"
+        },
+        {
+          "route": "/api/battles/choose",
+          "bytes": 7359,
+          "method": "POST"
+        }
+      ]
+    },
+    "httpCacheProbe": {
+      "bytes": 46483,
+      "cacheControl": "private,max-age=31536000,immutable",
+      "additionalServerRequests": 0
+    },
+    "homePerformance": {
+      "domNodes": 393,
+      "cards": 0,
+      "images": 0,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 16.8,
+        "over33ms": 0
+      },
+      "jsHeapUsedBytes": 5675822,
+      "jsHeapTotalBytes": 9453510,
+      "longTasks": [],
+      "overflow": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "quality": "high"
+    },
+    "cpu4xHome": {
+      "domNodes": 394,
+      "cards": 0,
+      "images": 0,
+      "frameIntervals": {
+        "samples": 90,
+        "p50ms": 16.7,
+        "p95ms": 16.8,
+        "maxMs": 16.8,
+        "over33ms": 0
+      },
+      "jsHeapUsedBytes": 4994819,
+      "jsHeapTotalBytes": 15505763,
+      "longTasks": [],
+      "overflow": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "quality": "high"
+    },
+    "collectionPerformance": {
+      "samples": 90,
+      "p50ms": 16.699999999999818,
+      "p95ms": 16.799999999999727,
+      "over33ms": 0,
+      "domNodes": 1607
+    },
+    "interactions": [
+      {
+        "view": "collection",
+        "automationToTwoFramesMs": 82.2
+      },
+      {
+        "view": "market",
+        "automationToTwoFramesMs": 90.3
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 68.9
+      },
+      {
+        "view": "collection",
+        "automationToTwoFramesMs": 121.3
+      },
+      {
+        "view": "market",
+        "automationToTwoFramesMs": 65.3
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 68.2
+      },
+      {
+        "view": "market",
+        "automationToTwoFramesMs": 51.5
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 63.6
+      },
+      {
+        "view": "games",
+        "automationToTwoFramesMs": 63
+      },
+      {
+        "view": "packs",
+        "automationToTwoFramesMs": 92.3
+      }
+    ],
+    "pageErrors": []
+  },
+  "success": true
+}

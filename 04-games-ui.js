@@ -1,7 +1,7 @@
 /* Mashup V15.5 — existing Memory/league transactions, server-synchronised clock. */
 import {createCasinoClock} from './66-v15-4-casino-clock.js?v=15.4.0';
 
-export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getView=()=>'games',getSessionKey=()=>getUser()?.id}){
+export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getView=()=>'games',getSessionKey=()=>getUser()?.id,onHub=null,onSection=()=>{}}){
   const TYPES=['memory'];
   const LABELS={memory:'Memory · Le Codex des paires'};
   const HELP={memory:'Retrouve les six paires de mondes. Premier échec gratuit, trois erreurs consécutives ensuite et tu perds.'};
@@ -168,7 +168,7 @@ export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getV
   function draw(){
     if(!available())return;
     if(memoryRevealTimer){clearTimeout(memoryRevealTimer);memoryRevealTimer=null;}
-    root.innerHTML=section==='casino'?casino():section==='mini'?mini():hub();
+    root.innerHTML=section==='casino'?casino():section==='mini'?mini():section==='league'?intro('Ligue <em>IA.</em>','Saisons, classement et résultats validés par le serveur.')+tabs()+standings()+historical():hub();
     const active=snapshot?.active;
     if(section==='mini'&&active?.type==='memory'){
       const remaining=(active.revealUntil||0)-serverNow();
@@ -212,9 +212,9 @@ export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getV
     refreshTimer();
     if((available()&&section==='casino')||snapshot?.bet){lastPoll=Date.now();request('status');}
   }
-  async function mount(element){
+  async function mount(element,{section:requested='hub'}={}){
     if(destroyed)return;
-    root=element;section='hub';showPicker=true;activateTicker();draw();await request('status');
+    root=element;section=['hub','casino','mini','league'].includes(requested)?requested:'hub';showPicker=!(section==='mini'&&snapshot?.active&&!snapshot.active.done);activateTicker();draw();await request('status');
   }
   function unmount(){
     root=null;
@@ -243,9 +243,10 @@ export function createGamesUI({api,toast,getUser,showArena,showMatch=()=>{},getV
     const action=target.dataset.games;
     const admin=action==='save-admin'&&getUser()?.role==='admin'&&target.closest('.games-admin-settings');
     if(!admin&&(!available()||root.contains?.(target)===false))return;
+    if(action==='hub'&&onHub){onHub();return;}
     if(action==='arena'){showArena();return;}
     if(action==='match'){showMatch();return;}
-    if(['hub','casino','mini'].includes(action)){section=action;if(action==='mini')showPicker=true;draw();if(typeof window!=='undefined')window.scrollTo?.({top:0,behavior:'instant'});if(action!=='hub')request('status');return;}
+    if(['hub','casino','mini'].includes(action)){section=action;onSection(action);if(action==='mini')showPicker=true;draw();if(typeof window!=='undefined')window.scrollTo?.({top:0,behavior:'instant'});if(action!=='hub')request('status');return;}
     if(action==='refresh'){await request('status');return;}
     if(action==='notifications'){
       if(typeof Notification==='undefined')return toast('Ton navigateur ne prend pas en charge les notifications.',true);
