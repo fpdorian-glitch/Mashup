@@ -1,9 +1,0 @@
-PASS Authenticated fixture leases show an actually active second fictional account
-PASS A sends an exchange using both existing collection selectors
-PASS B receives a request over Match without altering its board or accepting a trade
-PASS A second B device restores the same pending trade and its server read receipt
-PASS Network failure retains confirmed requests and recovery restores synchronization
-PASS The existing duel action produces a battle notification in the same inbox
-PASS Changed public rates refresh an open odds dialog without downloading the catalogue
-PASS A closed application loses its online status after the bounded lease
-PASS No wallet, inventory acceptance, production request or personal data was modified

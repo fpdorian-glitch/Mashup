@@ -4,7 +4,7 @@
  */
 (()=>{
   'use strict';
-  const CURRENT_VERSION='16.1.0';
+  const CURRENT_VERSION='16.1.1';
   // A cached HTML document can load a newer updater asset. The visible client
   // version belongs to the HTML snapshot, not to this individual script.
   const htmlVersion=document.querySelector?.('meta[name="mashup-version"]')?.content;

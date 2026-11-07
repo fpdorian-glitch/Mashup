@@ -21,17 +21,18 @@ export function createDevelopmentJournal({api,getUser,esc,toast}){
   // current version even when developer-post history cannot be retrieved.
   function releaseMarkup(){
     return '<article class="dev-v12-release" aria-label="Version de Mashup">'+
-      '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ APERÇU EN DÉVELOPPEMENT · 7 NOVEMBRE 2026</div>'+
-      '<h4>Mashup V16.1 — Place au jeu</h4></div><span class="dev-v12-badge">V16.1</span></div>'+
-      '<p>Sur la base V15.7.2 : tes boosters dès l’accueil, une collection plus claire et les demandes de tes amis à portée de main.</p>'+
+      '<div class="dev-v12-head"><div><div class="dev-v12-kicker">✦ NOTES DE VERSION · 6 NOVEMBRE 2026</div>'+
+      '<h4>Mashup V15.6 — Entre tes mains</h4></div><span class="dev-v12-badge">V15.6.0</span></div>'+
+      '<p>Des paquets à manipuler, des symboles qui suivent ton doigt et une expérience Mashup plus immersive. Cette version conserve les règles, les niveaux et les récompenses existants.</p>'+
       '<div class="dev-v12-changes">'+
-      '<span>Accueil compact : avatar, crédits, boosters tactiles et raccourcis, avec défilement naturel.</span>'+
-      '<span>Probabilités : taux confirmés par le serveur, couleurs des raretés et garanties expliquées.</span>'+
-      '<span>Collection : cartes possédées / total par rareté, sans compter les exemplaires en double.</span>'+
-      '<span>Notifications : retrouve tes échanges et combats depuis tous les écrans, sans accepter une demande en la lisant.</span>'+
-      '<span>Amis : recherche, accès direct au défi, à l’échange et à la vitrine.</span>'+
-      '<span>La présence en direct et la lecture entre appareils seront activées après validation de leur service serveur.</span>'+
-      '<span>Les illustrations, matières des cartes, règles et transactions existantes sont conservées.</span>'+
+      '<span>Galerie : paquets en relief, épaisseur, plis métalliques, défilement magnétique et sélection centrale.</span>'+
+      '<span>Ouverture : scellé tactile, déchirure en profondeur et émergence des cartes, avec mode rapide.</span>'+
+      '<span>La face de chaque carte apparaît seulement au moment où tu choisis de la révéler.</span>'+
+      '<span>Match : les symboles suivent ton doigt en continu et prévisualisent leur échange avant le relâchement.</span>'+
+      '<span>Chutes, atterrissages et cascades continus ; une nouvelle interaction peut passer les effets.</span>'+
+      '<span>Classement public préparé mais non activé tant que son raccordement Supabase réel n’est pas validé.</span>'+
+      '<span>Les progressions d’entraînement restent distinctes des parcours en ligne.</span>'+
+      '<span>Navigation au clavier, deux touches, récupération des boosters et modes d’animations réduites conservés.</span>'+
       '</div><details class="dev-v12-history"><summary>Les versions précédentes</summary>'+
       '<p><b>V15.5.1 :</b> invitations sans sondages en double et transferts de données allégés.</p>'+
       '<p><b>V15.5 :</b> galerie filtrée par série, accès Match et illustrations séparées du catalogue.</p>'+
