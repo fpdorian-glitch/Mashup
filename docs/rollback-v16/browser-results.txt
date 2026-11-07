@@ -1,0 +1,3 @@
+PASS legacy home, collection, market, Match training and return 320x568
+PASS legacy home, collection, market, Match training and return 390x844
+PASS legacy home, collection, market, Match training and return 1280x800

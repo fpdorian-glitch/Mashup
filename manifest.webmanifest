@@ -3,7 +3,7 @@
   "name": "Mashup · Le Nexus",
   "short_name": "Mashup",
   "lang": "fr",
-  "description": "Ton multivers de cartes. Boosters, collection et aventures entre amis.",
+  "description": "Paquets en relief, cartes vivantes, duels entre amis et Mashup Match.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -23,5 +23,5 @@
       "purpose": "any"
     }
   ],
-  "version": "16.0.0"
+  "version": "16.0.1"
 }

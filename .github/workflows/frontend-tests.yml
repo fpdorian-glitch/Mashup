@@ -3,7 +3,7 @@ name: Frontend regression tests
 on:
   pull_request:
   push:
-    branches: [feature/mashup-v15-immersion, feature/mashup-v15-1-arena-reborn, feature/mashup-auto-series-catalog, feature/mashup-v15-4-grand-update, feature/mashup-v15-6-immersion-match-2, feature/mashup-v16-mobile-shell]
+    branches: [feature/mashup-v15-immersion, feature/mashup-v15-1-arena-reborn, feature/mashup-auto-series-catalog, feature/mashup-v15-4-grand-update, feature/mashup-v15-6-immersion-match-2, fix/restore-v15-7-2-mobile]
 
 permissions:
   contents: read
@@ -21,36 +21,4 @@ jobs:
         with:
           node-version: '24'
       - name: Check syntax, protected contracts and presentation behavior
-        run: node --test --test-isolation=none tests/phase-0/reference.test.mjs tests/mobile/presentation.test.mjs tests/v14/*.test.mjs tests/v15/*.test.mjs tests/v15-1/*.test.mjs tests/catalogue/*.test.mjs tests/v15-3/*.test.mjs tests/v15-4/*.test.mjs tests/v15-5/*.test.mjs tests/v15-6/*.test.mjs tests/v15-7/*.test.mjs tests/v16/*.test.mjs
-
-  v16-browser:
-    runs-on: ubuntu-latest
-    timeout-minutes: 12
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - name: Install isolated test dependencies
-        run: |
-          npm install --prefix "$RUNNER_TEMP/mashup-ui" --ignore-scripts --no-save playwright-core@1.64.1
-          python -m pip install Pillow==13.0.0
-      - name: Exercise the real client with fictional services
-        run: |
-          export NODE_PATH="$RUNNER_TEMP/mashup-ui/node_modules"
-          export CHROMIUM_PATH="$(command -v google-chrome || command -v chromium)"
-          node tests/v16/browser.cjs
-          node tests/v16/regression.cjs
-          node tests/v16/casino.cjs
-          node tests/v16/cards.cjs
-          node tests/v16/network-browser.cjs
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: mashup-v16-browser-evidence
-          path: docs/v16/artifacts/
+        run: node --test --test-isolation=none tests/phase-0/reference.test.mjs tests/mobile/presentation.test.mjs tests/v14/*.test.mjs tests/v15/*.test.mjs tests/v15-1/*.test.mjs tests/catalogue/*.test.mjs tests/v15-3/*.test.mjs tests/v15-4/*.test.mjs tests/v15-5/*.test.mjs tests/v15-6/*.test.mjs tests/v15-7/*.test.mjs

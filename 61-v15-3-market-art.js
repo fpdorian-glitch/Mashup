@@ -1,7 +1,7 @@
 /* V15.3: retrieve artwork only for a card on an active, public sale listing. */
 export function createMarketArtPreviews({api,renderCard,getCardById,getRoot,getView,getMode}){
  const cache=new Map(),pending=new Set();
- let observer=null,active=new Map(),generation=0;
+ let observer=null,active=new Map();
  function render(listing){
    const card=listing.card||{};
    const local=getCardById(card.id);
@@ -10,23 +10,20 @@ export function createMarketArtPreviews({api,renderCard,getCardById,getRoot,getV
    return renderCard(preview&&preview.id===card.id?{...base,art:preview.art}:base,{lazy:true,revealedOpponent:true});
  }
  async function load(id){
-   if(getView()!=='market'||getMode()!=='sale'||getRoot()?.isConnected===false)return;
    const listing=active.get(id);
    if(!listing||pending.has(id)||cache.has(id))return;
-   pending.add(id);const token=generation;
+   pending.add(id);
    try{
      const result=await api('/api/market/preview/'+encodeURIComponent(id));
-     if(token!==generation)return;
      if(!result?.card||result.card.id!==listing.card.id)return;
      cache.set(id,{id:result.card.id,art:result.card.art||''});
-     while(cache.size>96)cache.delete(cache.keys().next().value);
      const root=getRoot();if(!root||getView()!=='market'||getMode()!=='sale')return;
      for(const el of root.querySelectorAll('[data-v153-listing]')){
        if(el.dataset.v153Listing!==id||!el.isConnected)continue;
        const current=active.get(id);if(current)el.innerHTML=render(current);
      }
    }catch{ /* Keep the graceful no-art fallback during a transient failure. */ }
-   finally{if(token===generation)pending.delete(id);}
+   finally{pending.delete(id);}
  }
  function observe(listings=[],mine=[]){
    observer?.disconnect();observer=null;
@@ -42,7 +39,5 @@ export function createMarketArtPreviews({api,renderCard,getCardById,getRoot,getV
    },{rootMargin:'180px',threshold:0.01});
    nodes.forEach(el=>observer.observe(el));
  }
- function unmount(){generation++;observer?.disconnect();observer=null;active.clear();pending.clear();}
- function clearSession(){unmount();cache.clear();}
- return {render,observe,unmount,clearSession};
+ return {render,observe};
 }

@@ -1,5 +1,5 @@
 {
-  "version": "16.0.0",
-  "notes": "Une interface de jeu mobile, un accueil immersif et une navigation instantanée. Lectures réseau optimisées, cartes et règles conservées.",
-  "publishedAt": "2026-11-07"
+  "version": "16.0.1",
+  "publishedAt": "2026-11-07",
+  "notes": "Retour à l’interface V15.7.2 pour rétablir la compatibilité mobile. Comptes, collections et règles conservés."
 }
