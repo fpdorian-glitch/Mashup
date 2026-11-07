@@ -1,0 +1,693 @@
+{
+  "productionRequests": 0,
+  "checks": [
+    {
+      "name": "Normal/exceptional opening, no mirrored face, loss-safe confirmation and Boosters return",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "eb400e2e-7d44-4524-8954-4d2e030f8552"
+          },
+          "responseBytes": 1917,
+          "requestBytes": 67
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          },
+          "responseBytes": 53,
+          "requestBytes": 46
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          },
+          "responseBytes": 25745,
+          "requestBytes": 46
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ],
+      "expectedErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable) [https://lxpgdhwfxeicuofycqup.supabase.co/functions/v1/mashup-api-gh?route=%2Fapi%2Fpacks%2Fcommit]"
+      ]
+    },
+    {
+      "name": "Cancelled pending preparation sends one cancel and no commit",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "67d4f4c0-f8e8-4bfe-8ecd-a5c82c985756"
+          },
+          "responseBytes": 1917,
+          "requestBytes": 67
+        },
+        {
+          "route": "/api/packs/cancel",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          },
+          "responseBytes": 2,
+          "requestBytes": 46
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "V15.3.2 interrupted opening survives reload and recovers without preparing a second pack",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/packs/prepare",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "attemptId": "69a181cc-e3a1-49f9-b6f8-e3e61e9417ef"
+          },
+          "responseBytes": 1917,
+          "requestBytes": 67
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/packs/commit",
+          "method": "POST",
+          "payload": {
+            "id": "starter",
+            "openingId": "fiction-opening"
+          },
+          "responseBytes": 25745,
+          "requestBytes": 46
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "Memory keeps its existing move contract, server win/loss and confirmed credits",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 159,
+          "requestBytes": 0
+        },
+        {
+          "route": "status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 159,
+          "requestBytes": 0
+        },
+        {
+          "route": "start",
+          "method": "POST",
+          "payload": {
+            "type": "memory"
+          },
+          "responseBytes": 326,
+          "requestBytes": 17
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 0,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 360,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 6,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 398,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 1,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 432,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 7,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 470,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 2,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 504,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 8,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 542,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 3,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 576,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 9,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 614,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 4,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 648,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 10,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 686,
+          "requestBytes": 41
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 5,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 720,
+          "requestBytes": 40
+        },
+        {
+          "route": "move",
+          "method": "POST",
+          "payload": {
+            "index": 11,
+            "sessionId": "fiction-memory"
+          },
+          "responseBytes": 780,
+          "requestBytes": 41
+        },
+        {
+          "route": "start",
+          "method": "POST",
+          "payload": {
+            "type": "memory"
+          },
+          "responseBytes": 261,
+          "requestBytes": 17
+        }
+      ],
+      "expectedErrors": []
+    },
+    {
+      "name": "Update banner defers reload during battle and pending purchase, then preserves auth storage",
+      "success": true,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/battles/start",
+          "method": "POST",
+          "payload": {
+            "mode": "simple"
+          },
+          "responseBytes": 1756,
+          "requestBytes": 17
+        },
+        {
+          "route": "/api/battles/abandon",
+          "method": "POST",
+          "payload": {},
+          "responseBytes": 1314,
+          "requestBytes": 2
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 823,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/market/buy",
+          "method": "POST",
+          "payload": {
+            "id": "fiction-listing"
+          },
+          "responseBytes": 2,
+          "requestBytes": 24
+        },
+        {
+          "route": "/api/market/preview/fiction-listing",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 2,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/market/listings",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 823,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "payload": null,
+          "responseBytes": 68,
+          "requestBytes": 0
+        }
+      ],
+      "expectedErrors": []
+    }
+  ],
+  "limits": "Chromium Linux. Real frontend; local API/auth fixtures. Pack debit/idempotence are simulated, not a verification of the deployed Supabase pack service.",
+  "faceMatrices": [
+    {
+      "m11": 0.989651,
+      "finite": true,
+      "stats": 5
+    },
+    {
+      "m11": 0.978714,
+      "finite": true,
+      "stats": 5
+    },
+    {
+      "m11": 0.989639,
+      "finite": true,
+      "stats": 5
+    }
+  ],
+  "boosterVideo": {
+    "available": true,
+    "name": "booster-interruptions-preview.webm",
+    "frames": 115,
+    "durationSeconds": 3.25,
+    "source": "Real Chromium screencast frames with browser timestamps"
+  },
+  "success": true
+}

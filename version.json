@@ -1,5 +1,5 @@
 {
-  "version": "16.0.1",
-  "publishedAt": "2026-11-07",
-  "notes": "Retour à l’interface V15.7.2 pour rétablir la compatibilité mobile. Comptes, collections et règles conservés."
+  "version": "16.1.0",
+  "notes": "Accueil centré sur les boosters, probabilités confirmées et progression de collection par rareté. Interactions sociales améliorées sur la base V15.7.2.",
+  "publishedAt": "2026-11-07"
 }

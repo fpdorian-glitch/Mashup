@@ -1,0 +1,6138 @@
+{
+  "limits": "Sequential Chromium Linux headless, GPU disabled; fictional API intercepted (HTTP cache disabled). Raw decoded local resources and fictional JSON body bytes, not compressed production egress. No physical Android, Safari, internet latency or real Supabase tested.",
+  "productionRequests": 0,
+  "results": [
+    {
+      "version": "V15.7.2",
+      "width": 390,
+      "sample": 1,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 332,
+          "loadMs": 333
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9737,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 188,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 142025,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 50,
+          "over33ms": 1
+        },
+        "jsHeapUsedBytes": 3622896,
+        "jsHeapTotalBytes": 6719632,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1666,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4060390,
+        "jsHeapTotalBytes": 6983106,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V16.1",
+      "width": 390,
+      "sample": 1,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 292,
+          "loadMs": 296
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9802,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9560,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4655,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2580,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10567,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 952,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6439,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 255,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3696798,
+        "jsHeapTotalBytes": 7279058,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1695,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4895497,
+        "jsHeapTotalBytes": 7542509,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V15.7.2",
+      "width": 390,
+      "sample": 2,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 273,
+          "loadMs": 275
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9737,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 188,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 142025,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3593648,
+        "jsHeapTotalBytes": 7243836,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1666,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4428034,
+        "jsHeapTotalBytes": 7245166,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V16.1",
+      "width": 390,
+      "sample": 2,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 295,
+          "loadMs": 297
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9802,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9560,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4655,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2580,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 952,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10567,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6439,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 255,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3656706,
+        "jsHeapTotalBytes": 7278974,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1695,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4856081,
+        "jsHeapTotalBytes": 7542425,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V15.7.2",
+      "width": 390,
+      "sample": 3,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 286,
+          "loadMs": 288
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9737,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 188,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 142025,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3596372,
+        "jsHeapTotalBytes": 6981692,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1666,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4239810,
+        "jsHeapTotalBytes": 6983022,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V16.1",
+      "width": 390,
+      "sample": 3,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 336,
+          "loadMs": 338
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9802,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9560,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4655,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2580,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10567,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 952,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6439,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 255,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3649758,
+        "jsHeapTotalBytes": 7016830,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 1695,
+        "cards": 24,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4848449,
+        "jsHeapTotalBytes": 7542425,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V15.7.2",
+      "width": 1280,
+      "sample": 1,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 350,
+          "loadMs": 352
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9737,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 188,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 142025,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 33.3,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3630040,
+        "jsHeapTotalBytes": 7243920,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 2332,
+        "cards": 36,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 33.4,
+          "over33ms": 1
+        },
+        "jsHeapUsedBytes": 4467641,
+        "jsHeapTotalBytes": 7245277,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V16.1",
+      "width": 1280,
+      "sample": 1,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 374,
+          "loadMs": 377
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9802,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9560,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4655,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2580,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10567,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 952,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6439,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 255,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3678054,
+        "jsHeapTotalBytes": 7541202,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 2361,
+        "cards": 36,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 5047504,
+        "jsHeapTotalBytes": 7943968,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V15.7.2",
+      "width": 1280,
+      "sample": 2,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 378,
+          "loadMs": 387
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9737,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 188,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 142025,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3599332,
+        "jsHeapTotalBytes": 7243836,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 2332,
+        "cards": 36,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4058185,
+        "jsHeapTotalBytes": 7507337,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V16.1",
+      "width": 1280,
+      "sample": 2,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 381,
+          "loadMs": 384
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9802,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9560,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4655,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2580,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10567,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 952,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6439,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 255,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3893846,
+        "jsHeapTotalBytes": 7278974,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 2361,
+        "cards": 36,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 5032732,
+        "jsHeapTotalBytes": 7943872,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V15.7.2",
+      "width": 1280,
+      "sample": 3,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 341,
+          "loadMs": 344
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9737,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 188,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 142025,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 674,
+        "cards": 3,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 33.3,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3612108,
+        "jsHeapTotalBytes": 7243836,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 2332,
+        "cards": 36,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.7,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 4057961,
+        "jsHeapTotalBytes": 7245193,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    },
+    {
+      "version": "V16.1",
+      "width": 1280,
+      "sample": 3,
+      "startup": {
+        "navigation": {
+          "domContentLoadedMs": 333,
+          "loadMs": 336
+        },
+        "resources": [
+          {
+            "type": "link",
+            "bytes": 20814,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 23411,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10568,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9125,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10764,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7806,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1566,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 5421,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8660,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8585,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2498,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 790,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12481,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8601,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1106,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7905,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 17880,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 28417,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10716,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 8416,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 16724,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7913,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 12364,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 45458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 11682,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 10093,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2074,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 3458,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 20132,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 29440,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 7377,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 1358,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 968,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 14674,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9304,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 9802,
+            "local": true
+          },
+          {
+            "type": "link",
+            "bytes": 2018,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7300,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "script",
+            "bytes": 13790,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4967,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2780,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12333,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13632,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12530,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 12451,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1206,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 31022,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 46077,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6060,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3610,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9560,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5544,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9183,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10187,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6520,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 21635,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9524,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16313,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 5630,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 1852,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13467,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2580,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4655,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10567,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 952,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 6439,
+            "local": true
+          },
+          {
+            "type": "css",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 255,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 9664,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3459,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 4014,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 20085,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 10801,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 13200,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 16323,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 7171,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 3639,
+            "local": true
+          },
+          {
+            "type": "script",
+            "bytes": 2303,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "other",
+            "bytes": 866,
+            "local": true
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          },
+          {
+            "type": "fetch",
+            "bytes": 0,
+            "local": false
+          }
+        ]
+      },
+      "home": {
+        "domNodes": 439,
+        "cards": 0,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 90,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 3658114,
+        "jsHeapTotalBytes": 7278974,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collection": {
+        "domNodes": 2361,
+        "cards": 36,
+        "images": 0,
+        "frameIntervals": {
+          "samples": 60,
+          "p50ms": 16.7,
+          "p95ms": 16.8,
+          "maxMs": 16.8,
+          "over33ms": 0
+        },
+        "jsHeapUsedBytes": 5234440,
+        "jsHeapTotalBytes": 7681740,
+        "longTasks": [],
+        "overflow": false,
+        "viewport": {
+          "width": 1280,
+          "height": 800
+        },
+        "quality": "high"
+      },
+      "collectionApiRequests": 1,
+      "apiCalls": [
+        {
+          "route": "/api/status",
+          "method": "GET",
+          "responseBytes": 23,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/auth/me",
+          "method": "GET",
+          "responseBytes": 100,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/bootstrap",
+          "method": "GET",
+          "responseBytes": 24172,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/pvp/invitations",
+          "method": "GET",
+          "responseBytes": 19,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/trades",
+          "method": "GET",
+          "responseBytes": 68,
+          "requestBytes": 0
+        },
+        {
+          "route": "/api/collection/rewards",
+          "method": "GET",
+          "responseBytes": 24,
+          "requestBytes": 0
+        }
+      ]
+    }
+  ]
+}

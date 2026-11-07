@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "checks": [
+    "Authenticated fixture leases show an actually active second fictional account",
+    "A sends an exchange using both existing collection selectors",
+    "B receives a request over Match without altering its board or accepting a trade",
+    "A second B device restores the same pending trade and its server read receipt",
+    "Network failure retains confirmed requests and recovery restores synchronization",
+    "The existing duel action produces a battle notification in the same inbox",
+    "Changed public rates refresh an open odds dialog without downloading the catalogue",
+    "A closed application loses its online status after the bounded lease",
+    "No wallet, inventory acceptance, production request or personal data was modified"
+  ],
+  "mode": "private in-memory service + real frontend in three isolated Chromium contexts",
+  "productionRequests": 0,
+  "realSupabaseVerified": false,
+  "physicalPhone": false
+}

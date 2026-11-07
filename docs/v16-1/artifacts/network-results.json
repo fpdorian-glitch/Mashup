@@ -1,0 +1,11 @@
+{
+  "scope": "50 fictional pending trades. Raw JSON body only; no HTTP headers, compression, database cost or production egress. Stable snapshot has no other active player heartbeat.",
+  "legacyTradeListBodyBytes": 28950,
+  "socialProjectionBodyBytes": 8440,
+  "unchangedBodyBytes": 113,
+  "legacyVisiblePollSeconds": 45,
+  "serverVisiblePollSeconds": 30,
+  "hiddenRecurringRequests": 0,
+  "collectionCounterRequests": 0,
+  "productionRequests": 0
+}
